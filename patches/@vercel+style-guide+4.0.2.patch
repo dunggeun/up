@@ -1,0 +1,16 @@
+diff --git a/node_modules/@vercel/style-guide/eslint/react.js b/node_modules/@vercel/style-guide/eslint/react.js
+index 8d5705d..8ca55f5 100644
+--- a/node_modules/@vercel/style-guide/eslint/react.js
++++ b/node_modules/@vercel/style-guide/eslint/react.js
+@@ -2,11 +2,9 @@ module.exports = {
+   extends: [
+     'plugin:react/recommended',
+     'plugin:react-hooks/recommended',
+-    'plugin:jsx-a11y/recommended',
+     'plugin:import/react',
+     'prettier',
+     require.resolve('./rules/react'),
+-    require.resolve('./rules/jsx-a11y'),
+   ],
+   settings: {
+     react: {

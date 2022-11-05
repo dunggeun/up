@@ -1,16 +1,55 @@
+const { resolve } = require('node:path');
+
+const project = resolve(__dirname, 'tsconfig.json');
+
+/**
+ * @todo 추후 커스텀 touchable 컴포넌트 구현시 해당 컴포넌트 이름으로 설정
+ */
+const CUSTOM_TOUCHABLE_COMPONENTS = ['CustomButton'];
+
 module.exports = {
   root: true,
-  extends: '@react-native-community',
-  parser: '@typescript-eslint/parser',
-  plugins: ['@typescript-eslint'],
+  extends: [
+    require.resolve('@vercel/style-guide/eslint/node'),
+    require.resolve('@vercel/style-guide/eslint/react'),
+    require.resolve('@vercel/style-guide/eslint/typescript'),
+    'plugin:react-native-a11y/all',
+  ],
+  parserOptions: {
+    project,
+  },
+  settings: {
+    'import/resolver': {
+      typescript: {
+        project,
+      },
+    },
+  },
   overrides: [
     {
-      files: ['*.ts', '*.tsx'],
+      files: ['*.js?(x)', '*.ts?(x)'],
       rules: {
-        '@typescript-eslint/no-shadow': ['error'],
-        'no-shadow': 'off',
-        'no-undef': 'off',
+        'quotes': ['error', 'single'],
+        'object-curly-spacing': ['error', 'always'],
+        'array-bracket-spacing': 'off',
+        'unicorn/filename-case': 'off',
+        'react-native-a11y/has-accessibility-props': [
+          'error',
+          {
+            'touchables': CUSTOM_TOUCHABLE_COMPONENTS,
+          },
+        ],
+        'react-native-a11y/has-valid-accessibility-descriptors': [
+          'error',
+          {
+            'touchables': CUSTOM_TOUCHABLE_COMPONENTS,
+          },
+        ],
       },
+    },
+    {
+      files: ['**/?(*.)+(spec|test).ts?(x)'],
+      extends: [require.resolve('@vercel/style-guide/eslint/jest')],
     },
   ],
 };
