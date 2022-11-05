@@ -10,7 +10,7 @@
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint .",
-    "pod:install": "cd ios && pod install",
+    "pod:install": "cd ios && USE_FABRIC=1 RCT_NEW_ARCH_ENABLED=1 pod install",
     "gradle:clean": "cd android && ./gradlew clean"
   },
   "dependencies": {
