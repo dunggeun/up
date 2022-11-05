@@ -10,7 +10,8 @@
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint .",
-    "pod:install": "cd ios && pod install"
+    "pod:install": "cd ios && pod install",
+    "gradle:clean": "cd android && ./gradlew clean"
   },
   "dependencies": {
     "react": "18.1.0",
