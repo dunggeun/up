@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { SplashScreen } from './src/screens';
 import type { PropsWithChildren } from 'react';
-import { RootStackNavigator } from './src/screens';
+
+// eslint-disable-next-line import/no-named-as-default-member
+const Navigator = React.lazy(() => import('./src/navigators'));
 
 function AppProviders<T = unknown>({ children }: PropsWithChildren<T>): JSX.Element {
   return (
@@ -17,7 +20,9 @@ function AppProviders<T = unknown>({ children }: PropsWithChildren<T>): JSX.Elem
 export function App(): JSX.Element {
   return (
     <AppProviders>
-      <RootStackNavigator />
+      <Suspense fallback={<SplashScreen />} >
+        <Navigator />
+      </Suspense>
     </AppProviders>
   );
 }
