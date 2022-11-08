@@ -29,8 +29,17 @@ module.exports = {
     {
       files: ['*.js?(x)', '*.ts?(x)'],
       rules: {
+        'semi': ['error', 'always'],
         'quotes': ['error', 'single'],
         'object-curly-spacing': ['error', 'always'],
+        'import/order': [
+          'error',
+          {
+            'groups': [
+              'builtin', 'external', 'parent', 'sibling', 'index', 'type'
+            ],
+          },
+        ],
         'array-bracket-spacing': 'off',
         'unicorn/filename-case': 'off',
         'react-native-a11y/has-accessibility-props': [
