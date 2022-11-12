@@ -35,8 +35,14 @@ module.exports = {
         'import/order': [
           'error',
           {
-            'groups': [
-              'builtin', 'external', 'parent', 'sibling', 'index', 'type'
+            groups: [
+              'builtin',
+              'external',
+              'internal',
+              'parent',
+              'sibling',
+              'index',
+              'type',
             ],
           },
         ],
@@ -45,13 +51,13 @@ module.exports = {
         'react-native-a11y/has-accessibility-props': [
           'error',
           {
-            'touchables': CUSTOM_TOUCHABLE_COMPONENTS,
+            touchables: CUSTOM_TOUCHABLE_COMPONENTS,
           },
         ],
         'react-native-a11y/has-valid-accessibility-descriptors': [
           'error',
           {
-            'touchables': CUSTOM_TOUCHABLE_COMPONENTS,
+            touchables: CUSTOM_TOUCHABLE_COMPONENTS,
           },
         ],
       },

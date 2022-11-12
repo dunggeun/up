@@ -2,6 +2,7 @@
 {
   "extends": "@vercel/style-guide/typescript",
   "compilerOptions": {
+    "baseUrl": ".",
     "target": "esnext",
     "module": "commonjs",
     "types": ["react-native", "jest"],
@@ -18,7 +19,12 @@
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
     "esModuleInterop": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "paths": {
+      "src": [
+        "./src"
+      ],
+    },
   },
   "exclude": [
     "node_modules",
