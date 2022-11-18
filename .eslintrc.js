@@ -71,5 +71,13 @@ module.exports = {
         '@typescript-eslint/no-unsafe-member-access': 'off',
       },
     },
+    {
+      files: ['**/*.stories.tsx', '**/*.storybook.tsx'],
+      rules: {
+        'import/no-default-export': 'off',
+        'react/function-component-definition': 'off',
+        '@typescript-eslint/explicit-function-return-type': 'off',
+      },
+    },
   ],
 };

@@ -21,6 +21,9 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "paths": {
+      "@/App": [
+        "./App.tsx"
+      ],
       "src": [
         "./src"
       ],

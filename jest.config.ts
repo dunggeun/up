@@ -1,10 +1,4 @@
-const TRANSFORM_IGNORE_PACKAGES = [
-  '@react-native',
-  '@dripsy/core',
-  '@expo',
-  'react-native',
-  'dripsy',
-] as const;
+import { transformIgnorePackages } from './shares';
 
 const config = {
   preset: 'react-native',
@@ -13,7 +7,7 @@ const config = {
     '<rootDir>/tests/setup.ts',
   ],
   transformIgnorePatterns: [
-    `node_modules/(?!${TRANSFORM_IGNORE_PACKAGES.join('|')})`,
+    `node_modules/(?!${transformIgnorePackages.join('|')})`,
   ],
   collectCoverageFrom: ['src/**/*.{ts,tsx}', '!**/*.d.ts', '!**/index.ts'],
   testPathIgnorePatterns: ['/node_modules/'],
