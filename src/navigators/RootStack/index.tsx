@@ -1,7 +1,7 @@
 import React from 'react';
-import { Text } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { createStackNavigator } from '@react-navigation/stack';
+import { Demo } from 'src/components/Demo';
 import type { RootStackScreenParamList } from './types';
 
 const RootStack = createStackNavigator<RootStackScreenParamList>();
@@ -9,7 +9,7 @@ const RootStack = createStackNavigator<RootStackScreenParamList>();
 function Screen(): JSX.Element {
   return (
     <SafeAreaView>
-      <Text>Hello, world!</Text>
+      <Demo text="Hello, world!" />
     </SafeAreaView>
   );
 }
