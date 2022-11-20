@@ -9,9 +9,48 @@ declare module 'dripsy' {
 }
 
 const ROOT_FONT_SIZE = 16;
+const FONT_NAME = 'BMJUA';
 
 const themeLight = makeTheme({
   colors,
+  customFonts: {
+    [FONT_NAME]: {
+      bold: FONT_NAME,
+      default: FONT_NAME,
+      normal: FONT_NAME,
+    },
+  },
+  fonts: {
+    root: FONT_NAME,
+    heading: FONT_NAME,
+  },
+  fontSizes: {
+    $default: ROOT_FONT_SIZE,
+    $h1: ROOT_FONT_SIZE * 1.5,
+    $h2: ROOT_FONT_SIZE * 1.25,
+    $h3: ROOT_FONT_SIZE,
+    $text: ROOT_FONT_SIZE,
+  },
+  text: {
+    // Default text style
+    body: {
+      fontSize: ROOT_FONT_SIZE,
+    },
+    h1: {
+      fontSize: '$h1',
+    },
+    h2: {
+      fontSize: '$h2',
+    },
+    h3: {
+      fontSize: '$h3',
+    },
+    p: {
+      fontSize: '$text',
+      mt: '$00',
+      mb: '$00',
+    },
+  },
   space: {
     $00: 0,
     $01: ROOT_FONT_SIZE * 0.25,
@@ -22,15 +61,7 @@ const themeLight = makeTheme({
     $06: ROOT_FONT_SIZE * 1.5,
     $07: ROOT_FONT_SIZE * 2,
   },
-  fontSizes: {
-    $default: ROOT_FONT_SIZE,
-    $h1: ROOT_FONT_SIZE * 1.5,
-    $h2: ROOT_FONT_SIZE * 1.25,
-    $h3: ROOT_FONT_SIZE,
-    $text: ROOT_FONT_SIZE,
-  },
   radii: {
-    $sm: 6,
     $md: 8,
     $full: 9999,
   },
@@ -51,26 +82,6 @@ const themeLight = makeTheme({
     center: {
       alignItems: 'center',
       justifyContent: 'center',
-    },
-  },
-  text: {
-    // Default text style
-    body: {
-      fontSize: ROOT_FONT_SIZE,
-    },
-    h1: {
-      fontSize: '$h1',
-    },
-    h2: {
-      fontSize: '$h2',
-    },
-    h3: {
-      fontSize: '$h3',
-    },
-    p: {
-      fontSize: '$text',
-      mt: '$0',
-      mb: '$0',
     },
   },
   types: {
