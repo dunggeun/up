@@ -1,3 +1,7 @@
+import { createElement } from 'react';
+import { DripsyProvider } from 'dripsy';
+import { themeLight } from '../src/themes';
+
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
   controls: {
@@ -7,3 +11,14 @@ export const parameters = {
     },
   },
 };
+
+export const decorators = [
+  (Story) => (
+    createElement(
+      DripsyProvider, { theme: themeLight },
+      createElement(Story),
+    )
+  ),
+];
+
+
