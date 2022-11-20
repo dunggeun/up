@@ -1,15 +1,20 @@
 import React from 'react';
-import { DripsyProvider, Text } from 'dripsy';
-import { themeLight } from 'src/themes';
+import { ScrollView } from 'react-native';
+import { H1, H2, H3, P } from 'dripsy';
+import { colors } from 'src/themes/colors';
 
 export interface DemoProps { text: string }
 
-const style = { fontFamily: 'BMJUA' };
-
 export function Demo ({ text }: DemoProps): JSX.Element {
   return (
-    <DripsyProvider theme={themeLight}>
-      <Text style={style}>{text}</Text>
-    </DripsyProvider>
+    <ScrollView>
+      <H1>Heading 1</H1>
+      <H2>Heading 2</H2>
+      <H3>Heading 3</H3>
+      <P>Default: {text}</P>
+      {Object.keys(colors).map((color) => {
+        return <P key={color} sx={{ color }}>{`${color}: ${text}`}</P>;
+      })}
+    </ScrollView>
   );
 }
