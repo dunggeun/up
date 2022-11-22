@@ -9,6 +9,10 @@ const CUSTOM_TOUCHABLE_COMPONENTS = ['CustomButton'];
 
 module.exports = {
   root: true,
+  env: {
+    browser: true,
+    node: true,
+  },
   extends: [
     require.resolve('@vercel/style-guide/eslint/node'),
     require.resolve('@vercel/style-guide/eslint/react'),
