@@ -2,3 +2,7 @@
 
 babel.config.js
 metro.config.js
+
+node_modules/
+dist/
+public/
