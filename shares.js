@@ -3,5 +3,6 @@ exports.transformIgnorePackages = [
   '@dripsy/core',
   '@expo',
   'react-native',
+  'react-native-reanimated',
   'dripsy',
 ];

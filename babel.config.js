@@ -1,5 +1,5 @@
 module.exports = (api) => {
-  api.cache.using(() => process.env.BABEL_ENV);
+  api.cache.using(() => process.env.STORYBOOK);
   const appComponent = process.env.STORYBOOK === '1' ? './App.storybook' : './App';
 
   return {
@@ -16,6 +16,8 @@ module.exports = (api) => {
           },
         },
       ],
+      'react-native-reanimated/plugin',
+      '@babel/plugin-proposal-export-namespace-from',
     ],
   };
 };
