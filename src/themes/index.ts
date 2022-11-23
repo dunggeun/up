@@ -1,5 +1,8 @@
+
+import { Platform } from 'react-native';
 import { makeTheme } from 'dripsy';
 import { colors } from './colors';
+import { webFont } from './utils';
 
 type Theme = typeof themeLight;
 
@@ -9,15 +12,18 @@ declare module 'dripsy' {
 }
 
 const ROOT_FONT_SIZE = 16;
-const FONT_NAME = 'BMJUA';
+const FONT_NAME = Platform.select({
+  web: 'Jua',
+  default: 'BMJUA',
+});
 
 const themeLight = makeTheme({
   colors,
   customFonts: {
     [FONT_NAME]: {
-      bold: FONT_NAME,
-      default: FONT_NAME,
-      normal: FONT_NAME,
+      bold: webFont(FONT_NAME),
+      default: webFont(FONT_NAME),
+      normal: webFont(FONT_NAME),
     },
   },
   fonts: {
