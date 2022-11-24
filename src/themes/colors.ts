@@ -26,3 +26,19 @@ export const colors = {
   $text_secondary: '#777777',
   $text_tertiary: '#cccccc',
 };
+
+export const LIGHT_COLORS: (keyof typeof colors)[] = [
+  '$warning',
+  '$white',
+  '$strawberry',
+  '$yellow',
+  '$lemon',
+  '$mint',
+  '$sky',
+  '$secondary_1',
+  '$secondary_2',
+  '$text_tertiary',
+];
+
+export const DARK_COLORS = (Object.keys(colors) as (keyof typeof colors)[])
+  .filter((color) => !LIGHT_COLORS.includes(color));
