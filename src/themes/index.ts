@@ -44,17 +44,38 @@ const themeLight = makeTheme({
     },
     h1: {
       fontSize: '$h1',
+      mt: '$00',
+      mb: '$00',
     },
     h2: {
       fontSize: '$h2',
+      mt: '$00',
+      mb: '$00',
     },
     h3: {
       fontSize: '$h3',
+      mt: '$00',
+      mb: '$00',
     },
     p: {
       fontSize: '$text',
       mt: '$00',
       mb: '$00',
+    },
+    primary: {
+      color: '$text_primary',
+    },
+    secondary: {
+      color: '$text_secondary',
+    },
+    tertiary: {
+      color: '$text_tertiary',
+    },
+    black: {
+      color: '$black',
+    },
+    white: {
+      color: '$white',
     },
   },
   space: {
