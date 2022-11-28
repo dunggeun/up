@@ -64,7 +64,7 @@ export function Button ({
   containerStyle,
   onPressIn,
   onPressOut,
-  ...restProps,
+  ...restProps
 }: ButtonProps): JSX.Element {
   const [isActive, setIsActive] = useState(false);
   const labelVariant = isLight(color) ? 'primary' : 'white';
