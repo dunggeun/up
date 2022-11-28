@@ -13,6 +13,7 @@ module.exports = (api) => {
           alias: {
             '@/App': appComponent,
             src: './src',
+            tests: './tests',
           },
         },
       ],

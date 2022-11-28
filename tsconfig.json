@@ -27,6 +27,9 @@
       "src": [
         "./src"
       ],
+      "tests": [
+        "./tests"
+      ],
     },
   },
   "exclude": [
