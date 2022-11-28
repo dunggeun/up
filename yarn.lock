@@ -10514,6 +10514,11 @@ node-releases@^2.0.6:
   resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-2.0.6.tgz#8a7088c63a55e493845683ebf3c828d8c51c5503"
   integrity sha512-PiVXnNuFm5+iYkLBNeq5211hvO38y63T0i2KKh2KnUs3RpzJ+JtODFjkD8yjLwnDkTYF1eKXheUwdssR+NRZdg==
 
+node-self@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/node-self/-/node-self-1.0.1.tgz#d342926214efc705a14be25aa046e2c7aa6c0512"
+  integrity sha512-SUJd0GsEh2xE4Z8gSN9jjv1TxCBGQweJXCqkvXmg5J92VIcFuYdZ7LE6euF1G/XQid3JitYtp4V5EdOATc51tw==
+
 node-stream-zip@^1.9.1:
   version "1.15.0"
   resolved "https://registry.yarnpkg.com/node-stream-zip/-/node-stream-zip-1.15.0.tgz#158adb88ed8004c6c49a396b50a6a5de3bca33ea"
