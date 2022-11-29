@@ -33,6 +33,7 @@ const getStories = () => {
   return [
     require("../src/components/Demo.stories.tsx"),
     require("../src/designs/atoms/Button/Button.stories.tsx"),
+    require("../src/designs/atoms/Input/Input.stories.tsx"),
   ];
 };
 
