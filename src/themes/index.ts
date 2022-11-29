@@ -89,6 +89,7 @@ const themeLight = makeTheme({
     $07: ROOT_FONT_SIZE * 2,
   },
   radii: {
+    $input: 32,
     $md: 8,
     $full: 9999,
   },
