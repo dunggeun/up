@@ -9,7 +9,7 @@ export interface DemoProps {
 
 export function Demo({ text }: DemoProps): JSX.Element {
   return (
-    <ScrollView>
+    <ScrollView nativeID="demo" testID="demo">
       <H1>Heading 1</H1>
       <H2>Heading 2</H2>
       <H3>Heading 3</H3>

@@ -7,3 +7,5 @@ node_modules/
 dist/
 public/
 coverage/
+
+.detoxrc.js

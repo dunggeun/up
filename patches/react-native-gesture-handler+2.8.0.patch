@@ -1,0 +1,12 @@
+diff --git a/node_modules/react-native-gesture-handler/android/build.gradle b/node_modules/react-native-gesture-handler/android/build.gradle
+index fa5ffe4..4522e04 100644
+--- a/node_modules/react-native-gesture-handler/android/build.gradle
++++ b/node_modules/react-native-gesture-handler/android/build.gradle
+@@ -170,6 +170,7 @@ android {
+         // only the ones that make the build fail (ideally we should only include libgesturehandler but we
+         // are only allowed to specify exclude patterns)
+         exclude "**/libreact_render*.so"
++        pickFirst "**/*.so"
+     }
+ 
+     sourceSets.main {

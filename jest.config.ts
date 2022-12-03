@@ -20,7 +20,7 @@ const config = {
     '!**/*.d.ts',
     '!**/*.stories.tsx',
   ],
-  testPathIgnorePatterns: ['/node_modules/'],
+  testPathIgnorePatterns: ['/e2e/', '/node_modules/'],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
 } as const;
 
