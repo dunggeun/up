@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`atoms/H1 렌더링 되었을 때 스냅샷이 일치해야 한다 1`] = `
+<Text
+  accessibilityRole="header"
+  style={
+    Array [
+      Object {
+        "fontSize": 64,
+        "fontWeight": "bold",
+        "marginVertical": 21.44,
+      },
+      Array [
+        Object {
+          "fontFamily": "BMJUA",
+          "fontSize": 24,
+          "marginVertical": 0,
+          "paddingBottom": 4,
+        },
+        Object {
+          "fontWeight": "normal",
+        },
+        undefined,
+        Object {},
+      ],
+    ]
+  }
+>
+  Heading 1
+</Text>
+`;

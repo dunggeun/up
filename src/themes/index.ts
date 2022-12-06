@@ -17,6 +17,8 @@ const FONT_NAME = Platform.select({
   default: 'BMJUA',
 });
 
+const overrideHeadingStyle = { fontWeight: 'normal' } as const;
+
 const themeLight = makeTheme({
   colors,
   customFonts: {
@@ -28,7 +30,6 @@ const themeLight = makeTheme({
   },
   fonts: {
     root: FONT_NAME,
-    heading: FONT_NAME,
   },
   fontSizes: {
     $default: ROOT_FONT_SIZE,
@@ -41,26 +42,27 @@ const themeLight = makeTheme({
     // Default text style
     body: {
       fontSize: ROOT_FONT_SIZE,
+      paddingBottom: '$01',
     },
     h1: {
+      marginVertical: 0,
+      paddingBottom: '$01',
       fontSize: '$h1',
-      mt: '$00',
-      mb: '$00',
     },
     h2: {
+      marginVertical: 0,
+      paddingBottom: '$01',
       fontSize: '$h2',
-      mt: '$00',
-      mb: '$00',
     },
     h3: {
+      marginVertical: 0,
+      paddingBottom: '$01',
       fontSize: '$h3',
-      mt: '$00',
-      mb: '$00',
     },
     p: {
+      marginVertical: 0,
+      paddingBottom: '$01',
       fontSize: '$text',
-      mt: '$00',
-      mb: '$00',
     },
     primary: {
       color: '$text_primary',
@@ -123,4 +125,4 @@ const themeDark: Theme = {
   ...themeLight,
 };
 
-export { themeLight, themeDark };
+export { themeLight, themeDark, overrideHeadingStyle };
