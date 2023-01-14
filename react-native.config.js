@@ -15,6 +15,11 @@ module.exports = {
         },
       },
     },
+    'react-native-haptic-feedback': {
+      platforms: {
+        android: null,
+      },
+    },
   },
   assets:['./assets/fonts/'],
 };
