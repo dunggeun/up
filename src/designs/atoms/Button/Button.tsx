@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo } from 'react';
+import { Platform } from 'react-native';
 import { GestureDetector, Gesture } from 'react-native-gesture-handler';
 import Animated, {
   useSharedValue,
@@ -7,6 +8,7 @@ import Animated, {
   runOnJS,
 } from 'react-native-reanimated';
 import { styled, useSx, View, Text } from 'dripsy';
+import Haptic from 'react-native-haptic-feedback';
 import { isLight } from 'src/themes/utils';
 
 import type { ViewStyle } from 'react-native';
@@ -16,6 +18,7 @@ export interface ButtonProps {
   label: string;
   color: keyof typeof colors;
   active?: boolean;
+  haptic?: boolean;
   containerStyle?: ViewStyle;
   onPress?: () => void;
   onLongPress?: () => void;
@@ -41,11 +44,16 @@ const Shadow = styled(View)({
   borderRadius: '$md',
 });
 
+function triggerHaptic (): void {
+  Haptic.trigger('impactMedium');
+}
+
 export function Button ({
   label,
   color,
   containerStyle,
   active,
+  haptic = true,
   onPress,
   onLongPress,
 }: ButtonProps): JSX.Element {
@@ -76,10 +84,14 @@ export function Button ({
 
   const pressGesture = useMemo(() => (
     Gesture.Tap()
-      .onTouchesDown(() => (position.value = DEPTH))
+      .onTouchesDown(() => {
+        // Haptic feedback on only iOS
+        Platform.OS === 'ios' && haptic && runOnJS(triggerHaptic)();
+        position.value = DEPTH;
+      })
       .onTouchesUp(() => (position.value = withTiming(0, { duration: RELEASE_DURATION })))
       .onEnd(() => onPress && runOnJS(onPress)())
-  ), [position, onPress]);
+  ), [position, haptic, onPress]);
 
   useEffect(() => {
     position.value = active ? DEPTH : 0;
