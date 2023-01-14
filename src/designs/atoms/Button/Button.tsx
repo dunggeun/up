@@ -1,23 +1,30 @@
-import React, { useState } from 'react';
-import { styled, View, Text, Pressable } from 'dripsy';
+import React, { useEffect, useMemo } from 'react';
+import { GestureDetector, Gesture } from 'react-native-gesture-handler';
+import Animated, {
+  useSharedValue,
+  useAnimatedStyle,
+  withTiming,
+  runOnJS,
+} from 'react-native-reanimated';
+import { styled, useSx, View, Text } from 'dripsy';
 import { isLight } from 'src/themes/utils';
 
-import type { ComponentPropsWithRef } from 'react';
-import type { ViewStyle, GestureResponderEvent } from 'react-native';
+import type { ViewStyle } from 'react-native';
 import type { colors } from 'src/themes/colors';
 
-type PressableProps = ComponentPropsWithRef<typeof Pressable>;
-
-export interface ButtonProps extends PressableProps {
+export interface ButtonProps {
   label: string;
   color: keyof typeof colors;
   active?: boolean;
   containerStyle?: ViewStyle;
+  onPress?: () => void;
+  onLongPress?: () => void;
 }
 
 const HEIGHT = 56;
 const BORDER_WIDTH = 2;
 const DEPTH = 5;
+const RELEASE_DURATION = 100;
 
 const Container = styled(View)({
   position: 'relative',
@@ -34,64 +41,60 @@ const Shadow = styled(View)({
   borderRadius: '$md',
 });
 
-const Cap = styled(View)((
-  { color, active }: Pick<ButtonProps, 'color'> & { active: boolean }
-) => ({
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  width: '100%',
-  height: '100%',
-  borderRadius: '$md',
-  borderWidth: BORDER_WIDTH,
-  borderColor: '$text_primary',
-  backgroundColor: color,
-  marginTop: active ? DEPTH : 0,
-}));
-
-const StyledPressable = styled(Pressable)({
-  position: 'absolute',
-  top: 0,
-  left: 0,
-  width: '100%',
-  height: '100%',
-  backgroundColor: 'transparent',
-});
-
 export function Button ({
   label,
   color,
   containerStyle,
-  onPressIn,
-  onPressOut,
-  ...restProps
+  active,
+  onPress,
+  onLongPress,
 }: ButtonProps): JSX.Element {
-  const [isActive, setIsActive] = useState(false);
+  const sx = useSx();
+  const position = useSharedValue(0);
+  const capPositionStyle = useAnimatedStyle(() => ({ top: position.value }));
   const labelVariant = isLight(color) ? 'primary' : 'white';
 
-  const handlePressIn = (event: GestureResponderEvent): void => {
-    setIsActive(true);
-    onPressIn?.(event);
-  };
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+  const capStyle = sx({
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
+    height: '100%',
+    borderRadius: '$md',
+    borderWidth: BORDER_WIDTH,
+    borderColor: '$text_primary',
+    backgroundColor: color,
+  });
 
-  const handlePressOut = (event: GestureResponderEvent): void => {
-    setIsActive(false);
-    onPressOut?.(event);
-  };
+  const longPressGesture = useMemo(() => (
+    Gesture
+      .LongPress()
+      .onStart(() => onLongPress && runOnJS(onLongPress)())
+      .onEnd(() => (position.value = withTiming(0, { duration: RELEASE_DURATION })))
+  ), [position, onLongPress]);
+
+  const pressGesture = useMemo(() => (
+    Gesture.Tap()
+      .onTouchesDown(() => (position.value = DEPTH))
+      .onTouchesUp(() => (position.value = withTiming(0, { duration: RELEASE_DURATION })))
+      .onEnd(() => onPress && runOnJS(onPress)())
+  ), [position, onPress]);
+
+  useEffect(() => {
+    position.value = active ? DEPTH : 0;
+  }, [position, active]);
 
   return (
-    <Container
-      style={containerStyle}
-    >
-      <Shadow />
-      <Cap active={isActive} color={color}>
-        <Text variants={[labelVariant, 'h2']}>{label}</Text>
-      </Cap>
-      <StyledPressable
-        {...restProps}
-        onPressIn={handlePressIn}
-        onPressOut={handlePressOut}
-      />
-    </Container>
+    <GestureDetector gesture={longPressGesture}>
+      <GestureDetector gesture={pressGesture}>
+        <Container style={containerStyle}>
+          <Shadow />
+          <Animated.View style={[capStyle, capPositionStyle]}>
+            <Text variants={[labelVariant, 'h2']}>{label}</Text>
+          </Animated.View>
+        </Container>
+      </GestureDetector>
+    </GestureDetector>
   );
 }

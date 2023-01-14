@@ -1,6 +1,9 @@
 import { createElement } from 'react';
 import { DripsyProvider } from 'dripsy';
+import { enableExperimentalWebImplementation } from 'react-native-gesture-handler';
 import { themeLight } from '../src/themes';
+
+enableExperimentalWebImplementation(true);
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
