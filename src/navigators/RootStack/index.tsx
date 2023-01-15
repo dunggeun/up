@@ -13,7 +13,7 @@ function Screen(): JSX.Element {
 
   return (
     <SafeAreaView>
-      <Button accessibilityRole="button" color="$blue" label="Button!" />
+      <Button color="$blue" label="Button!" />
       <Input
         onChangeText={(value): void => setInputValue(value)}
         placeholder="Input here"
