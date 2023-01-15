@@ -21,6 +21,8 @@ export interface ButtonProps extends AccessibilityProps {
   disableHaptic?: boolean;
   disableLongPress?: boolean;
   containerStyle?: ViewStyle;
+  leftAdornment?: React.ReactElement,
+  rightAdornment?: React.ReactElement,
   onPress?: () => void;
   onLongPress?: () => void;
 }
@@ -40,12 +42,28 @@ const Shadow = styled(View)({
   borderRadius: '$md',
 });
 
+const Label = styled(Text, { 
+  defaultVariant: 'text.h2',
+})(({
+  isLightBackground,
+  hasAdornment,
+}: {
+  isLightBackground: boolean,
+  hasAdornment: boolean;
+}) => ({
+  width: hasAdornment ? 'auto' : '100%',
+  color: isLightBackground ? '$text_primary' : '$white',
+  textAlign: 'center',
+}));
+
 export function Button ({
   label,
   color,
   containerStyle,
   disableHaptic = false,
   disableLongPress = false,
+  leftAdornment,
+  rightAdornment,
   accessibilityHint,
   accessibilityLabel,
   accessibilityState,
@@ -64,14 +82,15 @@ export function Button ({
     onPress,
     onLongPress
   });
-  const isLightColor = isLight(color);
-  const labelVariant = isLightColor ? 'primary' : 'white';
-  const dimColor = isLightColor ? '$black' : '$white';
+  const isLightBackground = isLight(color);
+  const dimColor = isLightBackground ? '$black' : '$white';
 
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const capStyle = sx({
     display: 'flex',
-    justifyContent: 'center',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingX: '$04',
     alignItems: 'center',
     width: '100%',
     height: '100%',
@@ -104,7 +123,14 @@ export function Button ({
         >
           <Shadow />
           <Animated.View style={[capStyle, animatedCapStyle]}>
-            <Text variants={[labelVariant, 'h2']}>{label}</Text>
+            {leftAdornment ? leftAdornment : null}
+            <Label
+              hasAdornment={Boolean(leftAdornment || rightAdornment)}
+              isLightBackground={isLightBackground}
+            >
+              {label}
+            </Label>
+            {rightAdornment ? rightAdornment : null}
           </Animated.View>
           <Animated.View style={[dimStyle, animatedDimStyle]} />
         </Container>
