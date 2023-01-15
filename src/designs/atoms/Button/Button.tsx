@@ -4,6 +4,7 @@ import { GestureDetector, Gesture } from 'react-native-gesture-handler';
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
+  withDelay,
   withTiming,
   runOnJS,
 } from 'react-native-reanimated';
@@ -33,6 +34,8 @@ const HEIGHT = 56;
 const BORDER_WIDTH = 2;
 const DEPTH = 5;
 const RELEASE_DURATION = 100;
+const LONG_PRESS_DURATION = 500;
+const LONG_PRESS_DELAY = 200;
 
 const Container = styled(View)({
   position: 'relative',
@@ -66,9 +69,13 @@ export function Button ({
   onLongPress,
 }: ButtonProps): JSX.Element {
   const sx = useSx();
-  const position = useSharedValue(0);
-  const capPositionStyle = useAnimatedStyle(() => ({ top: position.value }));
-  const labelVariant = isLight(color) ? 'primary' : 'white';
+  const capPosition = useSharedValue(0);
+  const dimPosition = useSharedValue(0);
+  const capAnimatedStyle = useAnimatedStyle(() => ({ top: capPosition.value }));
+  const dimAnimatedStyle = useAnimatedStyle(() => ({ top: capPosition.value, width: `${dimPosition.value}%` }));
+  const isLightColor = isLight(color);
+  const labelVariant = isLightColor ? 'primary' : 'white';
+  const dimColor = isLightColor ? '$black' : '$white';
 
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const capStyle = sx({
@@ -83,27 +90,53 @@ export function Button ({
     backgroundColor: color,
   });
 
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+  const dimStyle = sx({
+    position: 'absolute',
+    left: 0,
+    height: '100%',
+    borderRadius: '$md',
+    backgroundColor: dimColor,
+    opacity: .2,
+  });
+
   const longPressGesture = useMemo(() => (
     Gesture
       .LongPress()
+      .minDuration(LONG_PRESS_DURATION)
+      .onBegin(() => {
+        dimPosition.value = withDelay(
+          LONG_PRESS_DELAY,
+          withTiming(100, {
+            duration: LONG_PRESS_DURATION - LONG_PRESS_DELAY
+          })
+        );
+      })
       .onStart(() => onLongPress && runOnJS(onLongPress)())
-      .onEnd(() => (position.value = withTiming(0, { duration: RELEASE_DURATION })))
-  ), [position, onLongPress]);
+      .onEnd(() => {
+        capPosition.value = withTiming(0, { duration: RELEASE_DURATION });
+      })
+      .onFinalize(() => {
+        dimPosition.value = withTiming(0, { duration: RELEASE_DURATION });
+      })
+  ), [capPosition, dimPosition, onLongPress]);
 
   const pressGesture = useMemo(() => (
     Gesture.Tap()
       .onTouchesDown(() => {
         // Haptic feedback on only iOS
         Platform.OS === 'ios' && haptic && runOnJS(triggerHaptic)();
-        position.value = DEPTH;
+        capPosition.value = DEPTH;
       })
-      .onTouchesUp(() => (position.value = withTiming(0, { duration: RELEASE_DURATION })))
+      .onTouchesUp(() => {
+        capPosition.value = withTiming(0, { duration: RELEASE_DURATION });
+      })
       .onEnd(() => onPress && runOnJS(onPress)())
-  ), [position, haptic, onPress]);
+  ), [capPosition, haptic, onPress]);
 
   useEffect(() => {
-    position.value = active ? DEPTH : 0;
-  }, [position, active]);
+    capPosition.value = active ? DEPTH : 0;
+  }, [capPosition, active]);
 
   return (
     <GestureDetector gesture={longPressGesture}>
@@ -117,9 +150,10 @@ export function Button ({
           style={containerStyle}
         >
           <Shadow />
-          <Animated.View style={[capStyle, capPositionStyle]}>
+          <Animated.View style={[capStyle, capAnimatedStyle]}>
             <Text variants={[labelVariant, 'h2']}>{label}</Text>
           </Animated.View>
+          <Animated.View style={[dimStyle, dimAnimatedStyle]} />
         </Container>
       </GestureDetector>
     </GestureDetector>
