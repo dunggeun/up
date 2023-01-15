@@ -22,7 +22,7 @@ const StyledTextInput = styled(TextInput)({
   fontSize: '$h2',
 });
 
-export const Input = forwardRef<InputRef, TextInputProps>(function Input (props, ref): JSX.Element {
+export const Input = forwardRef<InputRef, InputProps>(function Input (props, ref): JSX.Element {
   const { theme } = useDripsyTheme();
 
   return (
