@@ -20,7 +20,7 @@ const Container = styled(View)(({ color }: Pick<TagProps, 'color'>) => ({
   paddingY: '$01',
   borderRadius: '$full',
   borderWidth: BORDER_WIDTH,
-  borderColor: 'text_primary',
+  borderColor: '$text_primary',
   backgroundColor: color,
 }));
 
