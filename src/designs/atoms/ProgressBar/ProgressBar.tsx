@@ -7,10 +7,10 @@ import Animated, {
   withSpring,
 } from 'react-native-reanimated';
 
-import type { ComponentPropsWithRef } from 'react';
+import type { ComponentPropsWithoutRef } from 'react';
 import type { colors } from 'src/themes/colors';
 
-type ViewProps = ComponentPropsWithRef<typeof View>;
+type ViewProps = ComponentPropsWithoutRef<typeof View>;
 
 export interface ProgressBarProps extends Partial<ViewProps> {
   value: number;
