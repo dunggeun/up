@@ -11,10 +11,15 @@ import { styled, useSx, View, Text } from 'dripsy';
 import Haptic from 'react-native-haptic-feedback';
 import { isLight } from 'src/themes/utils';
 
-import type { ViewStyle } from 'react-native';
+import type { ViewStyle, ViewProps } from 'react-native';
 import type { colors } from 'src/themes/colors';
 
-export interface ButtonProps {
+type AccessibilityProps = Pick<
+  ViewProps,
+  'accessibilityHint' | 'accessibilityLabel' | 'accessibilityState'
+>;
+
+export interface ButtonProps extends AccessibilityProps {
   label: string;
   color: keyof typeof colors;
   active?: boolean;
@@ -54,6 +59,9 @@ export function Button ({
   containerStyle,
   active,
   haptic = true,
+  accessibilityHint,
+  accessibilityLabel,
+  accessibilityState,
   onPress,
   onLongPress,
 }: ButtonProps): JSX.Element {
@@ -100,7 +108,14 @@ export function Button ({
   return (
     <GestureDetector gesture={longPressGesture}>
       <GestureDetector gesture={pressGesture}>
-        <Container style={containerStyle}>
+        <Container
+          accessibilityHint={accessibilityHint ?? accessibilityLabel}
+          accessibilityLabel={accessibilityLabel}
+          accessibilityRole="button"
+          accessibilityState={accessibilityState}
+          accessible
+          style={containerStyle}
+        >
           <Shadow />
           <Animated.View style={[capStyle, capPositionStyle]}>
             <Text variants={[labelVariant, 'h2']}>{label}</Text>
