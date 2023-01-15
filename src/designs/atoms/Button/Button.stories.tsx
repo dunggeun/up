@@ -39,8 +39,32 @@ const Template = (args: ButtonProps) => (
   </View>
 );
 
+const DummyAdornment = () => (<View sx={{ width: 24, height: 24, backgroundColor: 'gray' } } />);
+
 export const $Default = Template.bind({});
 // @ts-ignore
 $Default.args = {
   label: 'Button',
+};
+
+export const $WithLeftAdornment = Template.bind({});
+// @ts-ignore
+$WithLeftAdornment.args = {
+  label: 'Left',
+  leftAdornment: <DummyAdornment />
+};
+
+export const $WithRightAdornment = Template.bind({});
+// @ts-ignore
+$WithRightAdornment.args = {
+  label: 'Right',
+  rightAdornment: <DummyAdornment />
+};
+
+export const $WithAdornments = Template.bind({});
+// @ts-ignore
+$WithAdornments.args = {
+  label: 'Both',
+  leftAdornment: <DummyAdornment />,
+  rightAdornment: <DummyAdornment />
 };
