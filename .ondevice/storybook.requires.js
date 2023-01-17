@@ -48,6 +48,7 @@ const getStories = () => {
     require("../src/designs/atoms/ProgressBar/ProgressBar.stories.tsx"),
     require("../src/designs/atoms/Tag/Tag.stories.tsx"),
     require("../src/designs/atoms/Text/Text.stories.tsx"),
+    require("../src/designs/molecules/AppBar/AppBar.stories.tsx"),
   ];
 };
 
