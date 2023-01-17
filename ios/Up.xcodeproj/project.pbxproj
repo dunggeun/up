@@ -15,6 +15,7 @@
 		5B94720A1CC2434D9F643BD5 /* BMJUA.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6A8D210DE20A4C7993AE67B9 /* BMJUA.ttf */; };
 		7699B88040F8A987B510C191 /* libPods-Up-UpTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-Up-UpTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		88A40DC02977177E00F71CD3 /* www in Resources */ = {isa = PBXBuildFile; fileRef = 88A40DBF2977177E00F71CD3 /* www */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		5DCACB8F33CDC322A6C60F78 /* libPods-Up.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Up.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A8D210DE20A4C7993AE67B9 /* BMJUA.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = BMJUA.ttf; path = ../assets/fonts/BMJUA.ttf; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Up/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		88A40DBF2977177E00F71CD3 /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; path = www; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-Up-UpTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Up-UpTests.release.xcconfig"; path = "Target Support Files/Pods-Up-UpTests/Pods-Up-UpTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -88,6 +90,7 @@
 		13B07FAE1A68108700A75B9A /* Up */ = {
 			isa = PBXGroup;
 			children = (
+				88A40DBF2977177E00F71CD3 /* www */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -253,6 +256,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88A40DC02977177E00F71CD3 /* www in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				5B94720A1CC2434D9F643BD5 /* BMJUA.ttf in Resources */,
