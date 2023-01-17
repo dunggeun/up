@@ -76,6 +76,12 @@ module.exports = {
       },
     },
     {
+      files: ['**/assets/icons/*.tsx'],
+      rules: {
+        'import/no-named-as-default': 'off',
+      },
+    },
+    {
       files: ['**/*.stories.tsx', '**/*.storybook.tsx'],
       rules: {
         'camelcase': 'off',
