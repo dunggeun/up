@@ -5359,6 +5359,11 @@ builtin-status-codes@^3.0.0:
   resolved "https://registry.yarnpkg.com/builtin-status-codes/-/builtin-status-codes-3.0.0.tgz#85982878e21b98e1c66425e03d0174788f569ee8"
   integrity sha512-HpGFw18DgFWlncDfjTa2rcQ4W88O1mC8e8yZ2AvQY5KDaktSTwo+KRf6nHK6FRI5FyRyb/5T6+TSxfP7QyGsmQ==
 
+bxd@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/bxd/-/bxd-1.0.0.tgz#283ba0770dd144454b14b469ec08e2afcdae7007"
+  integrity sha512-MB+hAk4B1LuvsYq74iJc+7uXccJcwl2n5oqOi/IpQ8yF3pR9XYbzWSQ37/6pVf1U/5jentNTZMWAl9a2qIa0MQ==
+
 bytes@3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/bytes/-/bytes-3.0.0.tgz#d32815404d689699f85a4ea4fa8755dd13a96048"
