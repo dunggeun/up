@@ -1,0 +1,10 @@
+{
+  "common": {
+    "label": {
+      "title": "제목",
+      "close": "닫기",
+      "go_back": "뒤로가기",
+      "empty": "비어있음"
+    }
+  }
+}

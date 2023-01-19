@@ -10,6 +10,11 @@ self.__reanimatedWorkletInit = (): void => {};
 // eslint-disable-next-line @typescript-eslint/no-unsafe-return
 jest.mock('react-native-reanimated', () => require('react-native-reanimated/mock'));
 
+jest.mock('react-native-localize', () => ({
+  __esModule: true,
+  getLocales: (): ({ languageCode: string })[] => [{ languageCode: 'en' }],
+}));
+
 beforeAll(() => {
   // do something
 });

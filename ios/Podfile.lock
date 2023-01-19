@@ -764,6 +764,8 @@ PODS:
     - React-Codegen
     - React-RCTFabric
     - ReactCommon/turbomodule/core
+  - RNLocalize (2.2.4):
+    - React-Core
   - RNReactNativeHapticFeedback (1.14.0):
     - RCT-Folly
     - RCTRequired
@@ -909,6 +911,7 @@ DEPENDENCIES:
   - "RNCAsyncStorage (from `../node_modules/@react-native-async-storage/async-storage`)"
   - "RNDateTimePicker (from `../node_modules/@react-native-community/datetimepicker`)"
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
+  - RNLocalize (from `../node_modules/react-native-localize`)
   - RNReactNativeHapticFeedback (from `../node_modules/react-native-haptic-feedback`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
@@ -1020,6 +1023,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-community/datetimepicker"
   RNGestureHandler:
     :path: "../node_modules/react-native-gesture-handler"
+  RNLocalize:
+    :path: "../node_modules/react-native-localize"
   RNReactNativeHapticFeedback:
     :path: "../node_modules/react-native-haptic-feedback"
   RNReanimated:
@@ -1088,6 +1093,7 @@ SPEC CHECKSUMS:
   RNCAsyncStorage: 8616bd5a58af409453ea4e1b246521bb76578d60
   RNDateTimePicker: 515431cd1a50a1fab054de40c7fc6a2cdd4803ab
   RNGestureHandler: 9d2ebd17a9fef618d9720e3d95ff5e6607acf8d4
+  RNLocalize: 0df7970cfc60389f00eb62fd7c097dc75af3fb4f
   RNReactNativeHapticFeedback: 2ea699b897d31911fcc5a3234fe903161d576f97
   RNReanimated: 7589e40c5cc799247d7aa233eb793d4a888c2e64
   RNScreens: 208223c783496e6d0aa92ffdf307f61d58756fc1
