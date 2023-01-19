@@ -5,6 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { t } from 'src/translations';
 import { Button, Input } from 'src/designs';
 import { DatabaseModule } from 'src/modules';
+import { useAppInitialize } from 'src/hooks';
 import {
   Landing as LandingScreen,
   RegisterUser as RegisterUserScreen,
@@ -103,8 +104,7 @@ function Screen(): JSX.Element {
 }
 
 export function RootStackNavigator(): JSX.Element | null {
-  const isReady = true;
-  const authorized = false;
+  const { isReady, authorized } = useAppInitialize();
 
   return isReady ? (
     <RootStack.Navigator initialRouteName={authorized ? 'Main' : 'Landing'} screenOptions={{ headerShown: false }} >

@@ -3,7 +3,6 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { DripsyProvider } from 'dripsy';
-import { SplashScreen } from 'src/screens';
 import { themeLight } from 'src/themes';
 import type { PropsWithChildren } from 'react';
 
@@ -29,7 +28,7 @@ function AppProviders<T = unknown>({ children }: PropsWithChildren<T>): JSX.Elem
 export function App(): JSX.Element {
   return (
     <AppProviders>
-      <Suspense fallback={<SplashScreen />} >
+      <Suspense fallback={null}>
         <Navigator />
       </Suspense>
     </AppProviders>
