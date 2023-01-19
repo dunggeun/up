@@ -1,10 +1,10 @@
-import type { ParamListBase } from '@react-navigation/native';
 import type { StackScreenProps } from '@react-navigation/stack';
 
-export interface RootStackScreenParamList extends ParamListBase {
+// eslint-disable-next-line @typescript-eslint/consistent-type-definitions
+export type RootStackScreenParamList = {
   Main: undefined;
-  Common: undefined;
-  Idle: undefined;
+  Landing: undefined;
+  RegisterUser: undefined;
 }
 
 export type RootStackProps<RouteName extends keyof RootStackScreenParamList> =

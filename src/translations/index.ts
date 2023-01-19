@@ -36,4 +36,4 @@ i18next
   .catch(noop);
 
 export const i18n = i18next;
-export const t = i18next.t;
+export const t = (key: string): string => i18next.t(key);
