@@ -2,8 +2,13 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Platform } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { createStackNavigator } from '@react-navigation/stack';
+import { t } from 'src/translations';
 import { Button, Input } from 'src/designs';
 import { DatabaseModule } from 'src/modules';
+import {
+  Landing as LandingScreen,
+  RegisterUser as RegisterUserScreen,
+} from 'src/screens';
 
 import type { Quest } from 'src/modules/database/models';
 import type { RootStackScreenParamList } from './types';
@@ -97,10 +102,26 @@ function Screen(): JSX.Element {
   );
 }
 
-export function RootStackNavigator(): JSX.Element {
-  return (
-    <RootStack.Navigator screenOptions={{ headerShown: false }}>
+export function RootStackNavigator(): JSX.Element | null {
+  const isReady = true;
+  const authorized = false;
+
+  return isReady ? (
+    <RootStack.Navigator initialRouteName={authorized ? 'Main' : 'Landing'} screenOptions={{ headerShown: false }} >
+      <RootStack.Screen
+        component={LandingScreen}
+        name="Landing"
+        options={{
+          title: t('title.landing'),
+          animationEnabled: false
+        }}
+      />
+      <RootStack.Screen
+        component={RegisterUserScreen}
+        name="RegisterUser"
+        options={{ title: t('title.register_user') }}
+      />
       <RootStack.Screen component={Screen} name="Main" />
     </RootStack.Navigator>
-  );
+  ) : null;
 }
