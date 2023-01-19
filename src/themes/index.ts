@@ -18,6 +18,9 @@ const FONT_NAME = Platform.select({
 });
 
 const overrideHeadingStyle = { fontWeight: 'normal' } as const;
+const presets = {
+  flexWhite: { flex: 1, backgroundColor: 'white' }
+} as const;
 
 const themeLight = makeTheme({
   colors,
@@ -125,4 +128,9 @@ const themeDark: Theme = {
   ...themeLight,
 };
 
-export { themeLight, themeDark, overrideHeadingStyle };
+export {
+  themeLight,
+  themeDark,
+  overrideHeadingStyle,
+  presets,
+};
