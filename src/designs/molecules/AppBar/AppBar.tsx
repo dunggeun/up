@@ -1,6 +1,7 @@
 import React from 'react';
 import { styled, View, Pressable } from 'dripsy';
 import { H2 } from 'src/designs/atoms';
+import { t } from 'src/translations';
 import { Icons } from 'src/assets';
 
 export interface AppBarProps {
@@ -11,11 +12,11 @@ export interface AppBarProps {
 
 const HIT_SLOP = 5;
 
-// @todo 다국어 처리 시 a11y 대응 함께 진행
 const ACCESSIBILITY = {
-  title: 'title',
-  back: 'go back',
-  close: 'close',
+  title: t('label.title'),
+  back: t('label.go_back'),
+  close: t('label.close'),
+  empty: t('label.empty'),
 } as const;
 
 const Container = styled(View)({
@@ -60,7 +61,7 @@ export function AppBar ({
       </SideButtonArea>
       <H2
         accessibilityHint={ACCESSIBILITY.title}
-        accessibilityLabel={title || 'empty'}
+        accessibilityLabel={title || ACCESSIBILITY.empty}
         sx={{ color: '$text_primary' }}
       >
         {title}

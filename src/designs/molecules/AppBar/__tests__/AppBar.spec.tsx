@@ -2,6 +2,7 @@ import React from 'react';
 import { render as testRender, screen, fireEvent, cleanup } from '@testing-library/react-native';
 import { faker } from '@faker-js/faker';
 import { withDripsy } from 'tests/utils';
+import { t } from 'src/translations';
 import { AppBar } from '../AppBar';
 
 import type { AppBarProps } from '../AppBar';
@@ -30,7 +31,7 @@ describe('molecules/AppBar', () => {
 
   describe('앱바 제어 버튼', () => {
     describe('뒤로가기 버튼', () => {
-      const A11Y_HINT = 'go back';
+      const A11Y_HINT = t('label.go_back');
 
       describe('뒤로가기 버튼 이벤트 핸들러가 존재하는 경우', () => {
         let onBackPress: jest.Mock;
@@ -58,7 +59,7 @@ describe('molecules/AppBar', () => {
     });
 
     describe('닫기 버튼', () => {
-      const A11Y_HINT = 'close';
+      const A11Y_HINT = t('label.close');
 
       describe('닫기 버튼 이벤트 핸들러가 존재하는 경우', () => {
         let onClosePress: jest.Mock;
