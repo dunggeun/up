@@ -1,4 +1,5 @@
 import React, { Suspense } from 'react';
+import { StatusBar } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
@@ -28,6 +29,7 @@ function AppProviders<T = unknown>({ children }: PropsWithChildren<T>): JSX.Elem
 export function App(): JSX.Element {
   return (
     <AppProviders>
+      <StatusBar barStyle="dark-content" />
       <Suspense fallback={null}>
         <Navigator />
       </Suspense>
