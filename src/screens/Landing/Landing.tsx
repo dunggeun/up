@@ -33,7 +33,7 @@ export function Landing ({ navigation }: LandingProps): JSX.Element {
         <AppBar />
         <Content>
           <PageTitleArea>
-            <H1>{t('message.greeting')}</H1>
+            <H1 variant="primary">{t('message.greeting')}</H1>
           </PageTitleArea>
         </Content>
         <ButtonArea>
