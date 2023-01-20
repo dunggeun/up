@@ -33,9 +33,9 @@ const themeLight = makeTheme({
   },
   fontSizes: {
     $default: ROOT_FONT_SIZE,
-    $h1: ROOT_FONT_SIZE * 1.5,
-    $h2: ROOT_FONT_SIZE * 1.25,
-    $h3: ROOT_FONT_SIZE,
+    $h1: ROOT_FONT_SIZE * 2,
+    $h2: ROOT_FONT_SIZE * 1.5,
+    $h3: ROOT_FONT_SIZE * 1.25,
     $text: ROOT_FONT_SIZE,
   },
   text: {

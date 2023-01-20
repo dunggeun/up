@@ -13,7 +13,7 @@ exports[`atoms/H2 렌더링 되었을 때 스냅샷이 일치해야 한다 1`] =
       [
         {
           "fontFamily": "BMJUA",
-          "fontSize": 20,
+          "fontSize": 24,
           "marginVertical": 0,
           "paddingBottom": 4,
         },
