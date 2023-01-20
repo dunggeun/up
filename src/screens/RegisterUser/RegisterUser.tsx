@@ -46,7 +46,7 @@ export function RegisterUser ({ navigation }: RegisterUserProps): JSX.Element {
         <AppBar onBackPress={handlePressBackButton} />
         <Content>
           <PageTitleArea>
-            <H1>{t('message.enter_name')}</H1>
+            <H1 variant="primary">{t('message.enter_name')}</H1>
           </PageTitleArea>
           <Input onChangeText={handleChangeUserName} placeholder={placeholder} />
         </Content>
