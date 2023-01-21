@@ -17,7 +17,6 @@ type AccessibilityProps = Pick<
 export interface ButtonProps extends AccessibilityProps {
   label: string;
   color: keyof typeof colors;
-  active?: boolean;
   disableHaptic?: boolean;
   disableLongPress?: boolean;
   containerStyle?: ViewStyle;
