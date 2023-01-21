@@ -30,6 +30,12 @@ export default {
       options: getColors(),
       control: { type: 'select' },
     },
+    disabled: {
+      name: 'disabled',
+      description: '비활성화 여부',
+      type: { name: 'boolean' },
+      control: { type: 'boolean' },
+    },
   },
 } as ComponentMeta<typeof Button>;
 
@@ -45,6 +51,13 @@ export const $Default = Template.bind({});
 // @ts-ignore
 $Default.args = {
   label: 'Button',
+};
+
+export const $Disabled = Template.bind({});
+// @ts-ignore
+$Disabled.args = {
+  label: 'Disabled',
+  disabled: true,
 };
 
 export const $WithLeftAdornment = Template.bind({});
