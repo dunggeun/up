@@ -9,14 +9,7 @@ import type { colors } from 'src/themes/colors';
 import type { ButtonProps } from '../Button';
 
 const render = (props: ButtonProps): ReturnType<typeof testRender> => (
-  testRender(
-    withDripsy(
-      <Button
-        accessibilityRole="button"
-        {...props}
-      />
-    )
-  )
+  testRender(withDripsy(<Button {...props} />))
 );
 
 describe('atoms/Button', () => {
