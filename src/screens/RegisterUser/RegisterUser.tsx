@@ -45,22 +45,22 @@ export function RegisterUser ({ navigation }: RegisterUserProps): JSX.Element {
     <SafeAreaView style={presets.flexWhite}>
       <KeyboardAvoidingView style={{ flex: 1 }}>
         <Container>
-            <AppBar onBackPress={handlePressBackButton} />
-            <Content>
-              <PageTitleArea>
-                <H1 variant="primary">{t('message.enter_name')}</H1>
-              </PageTitleArea>
-              <Input onChangeText={handleChangeUserName} placeholder={placeholder} />
-            </Content>
-            <ButtonArea>
-              <Button
-                color="$brand"
-                disableLongPress
-                disabled={userName.length < 2}
-                label={t('label.go_level_up')}
-                onPress={handlePressStartButton}
-              />
-            </ButtonArea>
+          <AppBar onBackPress={handlePressBackButton} />
+          <Content>
+            <PageTitleArea>
+              <H1 variant="primary">{t('message.enter_name')}</H1>
+            </PageTitleArea>
+            <Input onChangeText={handleChangeUserName} placeholder={placeholder} />
+          </Content>
+          <ButtonArea>
+            <Button
+              color="$brand"
+              disableLongPress
+              disabled={userName.length < 2}
+              label={t('label.go_level_up')}
+              onPress={handlePressStartButton}
+            />
+          </ButtonArea>
         </Container>
       </KeyboardAvoidingView>
     </SafeAreaView>
