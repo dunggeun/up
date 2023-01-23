@@ -4,6 +4,7 @@ import { styled, Container } from 'dripsy';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { t } from 'src/translations';
 import { presets } from 'src/themes';
+import { KeyboardAvoidingView } from 'src/components';
 import { Button, Input, H1, AppBar } from 'src/designs';
 
 import type { RootStackProps } from 'src/navigators/RootStack/types';
@@ -42,23 +43,26 @@ export function RegisterUser ({ navigation }: RegisterUserProps): JSX.Element {
 
   return (
     <SafeAreaView style={presets.flexWhite}>
-      <Container>
-        <AppBar onBackPress={handlePressBackButton} />
-        <Content>
-          <PageTitleArea>
-            <H1 variant="primary">{t('message.enter_name')}</H1>
-          </PageTitleArea>
-          <Input onChangeText={handleChangeUserName} placeholder={placeholder} />
-        </Content>
-        <ButtonArea>
-          <Button
-            color="$brand"
-            disableLongPress
-            label={t('label.go_level_up')}
-            onPress={handlePressStartButton}
-          />
-        </ButtonArea>
-      </Container>
+      <KeyboardAvoidingView style={{ flex: 1 }}>
+        <Container>
+            <AppBar onBackPress={handlePressBackButton} />
+            <Content>
+              <PageTitleArea>
+                <H1 variant="primary">{t('message.enter_name')}</H1>
+              </PageTitleArea>
+              <Input onChangeText={handleChangeUserName} placeholder={placeholder} />
+            </Content>
+            <ButtonArea>
+              <Button
+                color="$brand"
+                disableLongPress
+                disabled={userName.length < 2}
+                label={t('label.go_level_up')}
+                onPress={handlePressStartButton}
+              />
+            </ButtonArea>
+        </Container>
+      </KeyboardAvoidingView>
     </SafeAreaView>
   );
 }
