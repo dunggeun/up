@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { View } from 'react-native';
 import { styled, Container } from 'dripsy';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useActor } from '@xstate/react';
+import { AppManager } from 'src/modules';
 import { t } from 'src/translations';
 import { presets } from 'src/themes';
 import { KeyboardAvoidingView } from 'src/components';
@@ -26,6 +28,7 @@ const ButtonArea = styled(View)({
 export function RegisterUser ({ navigation }: RegisterUserProps): JSX.Element {
   const placeholder = t('placeholder.enter_name');
   const [userName, setUserName] = useState('');
+  const [_, send] = useActor(AppManager.getInstance().getService());
 
   const handlePressBackButton = (): void => {
     navigation.goBack();
@@ -35,10 +38,14 @@ export function RegisterUser ({ navigation }: RegisterUserProps): JSX.Element {
     setUserName(name);
   };
 
-  const handlePressStartButton = () => {
-    // @todo: store user name and navigate to main screen
-    // eslint-disable-next-line no-console
-    console.log({ userName });
+  const handlePressStartButton = (): void => {
+    send({
+      type: 'LOGIN',
+      user: {
+        ...AppManager.getBaseUser(),
+        name: userName,
+      },
+    });
   };
 
   return (

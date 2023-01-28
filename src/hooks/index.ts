@@ -1,1 +1,1 @@
-export * from './useAppInitialize';
+export * from './useIsAuthorized';

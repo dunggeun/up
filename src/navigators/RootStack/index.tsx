@@ -2,10 +2,11 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Platform } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { createStackNavigator } from '@react-navigation/stack';
+import { useActor } from '@xstate/react';
 import { t } from 'src/translations';
 import { Button, Input } from 'src/designs';
-import { DatabaseModule } from 'src/modules';
-import { useAppInitialize } from 'src/hooks';
+import { AppManager, DatabaseModule } from 'src/modules';
+import { useIsAuthorized } from 'src/hooks';
 import {
   Landing as LandingScreen,
   RegisterUser as RegisterUserScreen,
@@ -25,6 +26,7 @@ function Screen(): JSX.Element {
   useRef(new DatabaseModule());
   const [inputValue, setInputValue] = useState('');
   const [targetId, setTargetId] = useState('');
+  const [_, send] = useActor(AppManager.getInstance().getService());
 
   useEffect(() => {
     module.initialize().catch(noop);
@@ -82,6 +84,10 @@ function Screen(): JSX.Element {
     module.clear('quest').then(onSuccess('clear')).catch(noop);
   };
 
+  const handlePressLogout = (): void => {
+    send({ type: 'LOGOUT' });
+  };
+
   return (
     <SafeAreaView style={{ padding: 16, gap: 24 }}>
       <Input
@@ -99,29 +105,47 @@ function Screen(): JSX.Element {
       <Button color="$green" label="Update" onPress={handlePressUpdate} />
       <Button color="$red" label="Delete" onPress={handlePressDelete}/>
       <Button color="$red" label="Clear" onPress={handlePressClear}/>
+      <Button color="$red" label="Logout" onPress={handlePressLogout}/>
     </SafeAreaView>
   );
 }
 
 export function RootStackNavigator(): JSX.Element | null {
-  const { isReady, authorized } = useAppInitialize();
+  AppManager.getInstance().initialize();
+  const { authorized } = useIsAuthorized();
 
-  return isReady ? (
-    <RootStack.Navigator initialRouteName={authorized ? 'Main' : 'Landing'} screenOptions={{ headerShown: false }} >
-      <RootStack.Screen
-        component={LandingScreen}
-        name="Landing"
-        options={{
-          title: t('title.landing'),
-          animationEnabled: false
-        }}
-      />
-      <RootStack.Screen
-        component={RegisterUserScreen}
-        name="RegisterUser"
-        options={{ title: t('title.register_user') }}
-      />
-      <RootStack.Screen component={Screen} name="Main" />
+  const renderScreens = (): JSX.Element => {
+    switch (authorized) {
+      case true:
+        return (
+          <RootStack.Screen component={Screen} name="Main" />
+        );
+
+      case false:
+      default:
+        return (
+          <>
+            <RootStack.Screen
+              component={LandingScreen}
+              name="Landing"
+              options={{
+                title: t('title.landing'),
+                animationEnabled: false
+              }}
+            />
+            <RootStack.Screen
+              component={RegisterUserScreen}
+              name="RegisterUser"
+              options={{ title: t('title.register_user') }}
+            />
+          </>
+        );
+    }
+  };
+
+  return (
+    <RootStack.Navigator screenOptions={{ headerShown: false }} >
+      {renderScreens()}
     </RootStack.Navigator>
-  ) : null;
+  );
 }
