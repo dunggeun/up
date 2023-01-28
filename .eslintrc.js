@@ -67,6 +67,14 @@ module.exports = {
       },
     },
     {
+      files: ['src/stores/machines/**/*.ts'],
+      rules: {
+        '@typescript-eslint/ban-types': 'off',
+        '@typescript-eslint/no-invalid-void-type': 'off',
+        '@typescript-eslint/consistent-type-imports': 'off',
+      },
+    },
+    {
       files: ['**/?(*.)+(spec|test).ts?(x)'],
       extends: [require.resolve('@vercel/style-guide/eslint/jest')],
       rules: {

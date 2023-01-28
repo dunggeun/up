@@ -6,6 +6,7 @@
     "prepare": "husky install",
     "prestart": "yarn update-stories",
     "postinstall": "patch-package",
+    "typegen": "xstate typegen src/stores/machines",
     "start": "react-native start",
     "start:native": "yarn start",
     "start:web": "webpack serve --mode=development --config react-native-web.config.js",
@@ -28,6 +29,7 @@
     "@react-native-community/slider": "^4.3.3",
     "@react-navigation/native": "^6.0.13",
     "@react-navigation/stack": "^6.3.4",
+    "@xstate/react": "^3.0.2",
     "bxd": "^1.0.0",
     "dripsy": "^3.8.1",
     "i18next": "^22.4.9",
@@ -43,7 +45,8 @@
     "react-native-screens": "^3.18.2",
     "react-native-sqlite-storage": "^6.0.1",
     "react-native-svg": "^13.7.0",
-    "react-native-web": "^0.18.10"
+    "react-native-web": "^0.18.10",
+    "xstate": "^4.35.2"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
@@ -71,6 +74,7 @@
     "@types/react-native-sqlite-storage": "^5.0.2",
     "@types/react-test-renderer": "^18.0.0",
     "@vercel/style-guide": "^4.0.2",
+    "@xstate/cli": "^0.4.2",
     "babel-jest": "^29.2.1",
     "babel-loader": "8.3.0",
     "babel-plugin-module-resolver": "^4.1.0",
