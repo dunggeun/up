@@ -1,0 +1,1 @@
+export const APP_MINIMUM_LOADING_DURATION = 1000;
