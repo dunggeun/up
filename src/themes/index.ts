@@ -1,6 +1,7 @@
 
 import { Platform } from 'react-native';
 import { makeTheme } from 'dripsy';
+import { CONTAINER_MAX_WIDTH } from 'src/constants';
 import { colors } from './colors';
 import { webFont } from './utils';
 
@@ -99,7 +100,7 @@ const themeLight = makeTheme({
     $full: 9999,
   },
   sizes: {
-    container: 600,
+    container: CONTAINER_MAX_WIDTH,
   },
   layout: {
     // Base container style
