@@ -8,9 +8,9 @@ import type { FunctionComponent } from 'react';
 import type { StyleProp, ViewStyle, TextStyle } from 'react-native';
 import type { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 
-const TAB_BAR_HEIGHT = 70;
-const TAB_BAR_MIN_WIDTH = 250;
-const BORDER_WIDTH = 2;
+export const TAB_BAR_HEIGHT = 70;
+export const TAB_BAR_MIN_WIDTH = 250;
+export const BORDER_WIDTH = 2;
 
 const BottomFixedArea = styled(View)({
   position: 'absolute',
