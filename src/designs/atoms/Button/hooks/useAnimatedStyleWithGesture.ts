@@ -12,7 +12,7 @@ import {
   withTiming,
   runOnJS
 } from 'react-native-reanimated';
-import Haptic from 'react-native-haptic-feedback';
+import { triggerHaptic } from 'src/utils';
 import {
   PRESS_DEPTH,
   LONG_PRESS_DELAY,
@@ -25,10 +25,6 @@ interface AnimatedStyleWithGestureConfig {
   disableLongPress: boolean;
   onPress?: () => void;
   onLongPress?: () => void;
-}
-
-function triggerHaptic (): void {
-  Haptic.trigger('impactMedium');
 }
 
 export const useAnimatedStyleWithGesture = ({
