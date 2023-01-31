@@ -1,6 +1,7 @@
 import React, { createElement } from 'react';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { styled, View } from 'dripsy';
+import { triggerHaptic } from 'src/utils';
 import { CONTAINER_MAX_WIDTH } from 'src/constants';
 
 import type { FunctionComponent } from 'react';
@@ -57,6 +58,8 @@ export function TabBar ({ state, descriptors, navigation }: BottomTabBarProps): 
             : options.tabBarInactiveTintColor;
 
           const onPress = (): void => {
+            triggerHaptic();
+
             const event = navigation.emit({
               type: 'tabPress',
               target: route.key,
