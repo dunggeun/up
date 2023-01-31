@@ -8,7 +8,8 @@ import { CONTAINER_MAX_WIDTH } from 'src/constants';
 
 import type { MainTabScreenParamList } from './types';
 
-const TAB_BAR_HEIGHT = 60;
+const TAB_BAR_HEIGHT = 70;
+const TAB_BAR_MIN_WIDTH = 250;
 const BORDER_WIDTH = 2;
 
 const MainTab = createBottomTabNavigator<MainTabScreenParamList>();
@@ -25,7 +26,8 @@ export function MainTabNavigator(): JSX.Element {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const tabBarStyle = sx({
     alignSelf: 'center',
-    width: '90%',
+    width: '50%',
+    minWidth: TAB_BAR_MIN_WIDTH,
     maxWidth: CONTAINER_MAX_WIDTH,
     height: TAB_BAR_HEIGHT,
     padding: '$04',
@@ -42,7 +44,7 @@ export function MainTabNavigator(): JSX.Element {
   const tabBarItemOptions = useMemo(() => ({
     tabBarShowLabel: false,
     tabBarActiveTintColor: theme.colors.$brand,
-    tabBarInactiveTintColor: theme.colors.$text_primary,
+    tabBarInactiveTintColor: theme.colors.$text_tertiary,
     tabBarItemStyle: {
       paddingBottom: theme.space.$01,
     },
