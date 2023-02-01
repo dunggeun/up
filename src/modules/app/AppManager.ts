@@ -40,6 +40,8 @@ export class AppManager {
     const currentTimestamp = Number(new Date());
     return {
       exp: 0,
+      badge: 0,
+      theme: 0,
       createdAt: currentTimestamp,
       updatedAt: currentTimestamp,
     };
