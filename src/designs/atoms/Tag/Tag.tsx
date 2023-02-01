@@ -15,7 +15,6 @@ export interface TagProps extends ViewProps {
 const BORDER_WIDTH = 2;
 
 const Container = styled(View)(({ color }: Pick<TagProps, 'color'>) => ({
-  alignSelf: 'baseline',
   paddingX: '$02',
   paddingY: '$01',
   borderRadius: '$full',
