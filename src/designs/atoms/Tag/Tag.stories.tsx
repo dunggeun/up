@@ -31,7 +31,7 @@ export default {
 } as ComponentMeta<typeof Tag>;
 
 const Template = (args: TagProps) => (
-  <View sx={{ flex: 1, padding: '$04' }}>
+  <View sx={{ padding: '$04', flexDirection: 'row' }}>
     <Tag {...args} />
   </View>
 );
@@ -44,7 +44,7 @@ $Default.args = {
 };
 
 export const $Tags = () => (
-  <View sx={{ flex: 1, padding: '$04', flexDirection: 'row', gap: '$02' }}>
+  <View sx={{ padding: '$04', flexDirection: 'row', gap: '$02' }}>
     <Tag color="$red" label="Red" />
     <Tag color="$yellow" label="Yellow" />
     <Tag color="$blue" label="Blue" />
