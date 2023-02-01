@@ -43,18 +43,24 @@ export const useAnimatedStyleWithGesture = ({
   const capStyle = useAnimatedStyle(() => ({ top: capPosition.value }));
   const dimStyle = useAnimatedStyle(() => ({ top: capPosition.value, width: `${dimPosition.value}%` }));
 
-  const pressGesture = useMemo(() => (
-    Gesture.Tap()
-      .onTouchesDown(() => {
-        // Haptic feedback on only iOS
-        Platform.OS === 'ios' && !disableHaptic && runOnJS(triggerHaptic)();
-        capPosition.value = PRESS_DEPTH;
-      })
-      .onTouchesUp(() => {
-        capPosition.value = withTiming(0, { duration: RELEASE_DURATION });
-      })
-      .onEnd(() => onPress && runOnJS(onPress)())
-  ), [capPosition, disableHaptic, onPress]);
+  const pressGesture = useMemo(() => {
+    const release = (): void => {
+      'worklet';
+      capPosition.value = withTiming(0, { duration: RELEASE_DURATION });
+    };
+    
+    return (
+      Gesture.Tap()
+        .onTouchesDown(() => {
+          // Haptic feedback on only iOS
+          Platform.OS === 'ios' && !disableHaptic && runOnJS(triggerHaptic)();
+          capPosition.value = PRESS_DEPTH;
+        })
+        .onTouchesUp(release)
+        .onTouchesCancelled(release)
+        .onEnd(() => onPress && runOnJS(onPress)())
+    );
+  }, [capPosition, disableHaptic, onPress]);
 
   const longPressGesture = useMemo(() => {
     const gesture = Gesture
