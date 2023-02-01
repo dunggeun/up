@@ -78,8 +78,7 @@ export function Button ({
 }: ButtonProps): JSX.Element {
   const sx = useSx();
   const {
-    pressGesture,
-    longPressGesture,
+    gesture,
     capStyle: animatedCapStyle,
     dimStyle: animatedDimStyle,
   } = useAnimatedStyleWithGesture({
@@ -117,31 +116,29 @@ export function Button ({
   });
 
   return (
-    <ConditionalGestureDetector disabled={disabled} gesture={longPressGesture}>
-      <ConditionalGestureDetector disabled={disabled} gesture={pressGesture}>
-        <Container
-          accessibilityHint={accessibilityHint ?? accessibilityLabel}
-          accessibilityLabel={accessibilityLabel}
-          accessibilityRole="button"
-          accessibilityState={{ disabled }}
-          accessible
-          disabled={disabled}
-          style={containerStyle}
-        >
-          <Shadow />
-          <Animated.View style={[capStyle, animatedCapStyle]}>
-            {leftAdornment ? leftAdornment : null}
-            <Label
-              hasAdornment={Boolean(leftAdornment || rightAdornment)}
-              isLightBackground={isLightBackground}
-            >
-              {label}
-            </Label>
-            {rightAdornment ? rightAdornment : null}
-          </Animated.View>
-          <Animated.View style={[dimStyle, animatedDimStyle]} />
-        </Container>
-      </ConditionalGestureDetector>
+    <ConditionalGestureDetector disabled={disabled} gesture={gesture}>
+      <Container
+        accessibilityHint={accessibilityHint ?? accessibilityLabel}
+        accessibilityLabel={accessibilityLabel}
+        accessibilityRole="button"
+        accessibilityState={{ disabled }}
+        accessible
+        disabled={disabled}
+        style={containerStyle}
+      >
+        <Shadow />
+        <Animated.View style={[capStyle, animatedCapStyle]}>
+          {leftAdornment ? leftAdornment : null}
+          <Label
+            hasAdornment={Boolean(leftAdornment || rightAdornment)}
+            isLightBackground={isLightBackground}
+          >
+            {label}
+          </Label>
+          {rightAdornment ? rightAdornment : null}
+        </Animated.View>
+        <Animated.View style={[dimStyle, animatedDimStyle]} />
+      </Container>
     </ConditionalGestureDetector>
   );
 }
