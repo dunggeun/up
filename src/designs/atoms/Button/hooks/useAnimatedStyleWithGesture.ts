@@ -3,7 +3,7 @@ import { Platform, type ViewStyle } from 'react-native';
 import {
   Gesture,
   type TapGesture,
-  type LongPressGesture
+  type ExclusiveGesture
 } from 'react-native-gesture-handler';
 import {
   useSharedValue,
@@ -33,8 +33,7 @@ export const useAnimatedStyleWithGesture = ({
   onPress,
   onLongPress,
 }: AnimatedStyleWithGestureConfig): {
-  pressGesture: TapGesture,
-  longPressGesture: LongPressGesture,
+  gesture: TapGesture | ExclusiveGesture,
   capStyle: ViewStyle,
   dimStyle: ViewStyle,
 } => {
@@ -48,27 +47,28 @@ export const useAnimatedStyleWithGesture = ({
       'worklet';
       capPosition.value = withTiming(0, { duration: RELEASE_DURATION });
     };
-    
+
     return (
       Gesture.Tap()
-        .onTouchesDown(() => {
+        .onStart(() => {
           // Haptic feedback on only iOS
           Platform.OS === 'ios' && !disableHaptic && runOnJS(triggerHaptic)();
           capPosition.value = PRESS_DEPTH;
         })
         .onTouchesUp(release)
         .onTouchesCancelled(release)
-        .onEnd(() => onPress && runOnJS(onPress)())
+        .onEnd(() => {
+          release();
+          onPress && runOnJS(onPress)();
+        })
     );
   }, [capPosition, disableHaptic, onPress]);
 
-  const longPressGesture = useMemo(() => {
-    const gesture = Gesture
+  const longPressGesture = useMemo(() => (
+    Gesture
       .LongPress()
-      .minDuration(LONG_PRESS_DURATION);
-    
-    if (!disableLongPress) {
-      gesture.onBegin(() => {
+      .minDuration(LONG_PRESS_DURATION)
+      .onBegin(() => {
         dimPosition.value = withDelay(
           LONG_PRESS_DELAY,
           withTiming(100, {
@@ -76,17 +76,24 @@ export const useAnimatedStyleWithGesture = ({
           })
         );
       })
-      .onStart(() => onLongPress && runOnJS(onLongPress)())
+      .onStart(() => {
+        Platform.OS === 'ios' && !disableHaptic && runOnJS(triggerHaptic)();
+        onLongPress && runOnJS(onLongPress)();
+        capPosition.value = PRESS_DEPTH;
+      })
       .onEnd(() => {
         capPosition.value = withTiming(0, { duration: RELEASE_DURATION });
       })
       .onFinalize(() => {
         dimPosition.value = withTiming(0, { duration: RELEASE_DURATION });
-      });
-    }
+      })
+  ), [capPosition, dimPosition, disableHaptic, onLongPress]);
 
-    return gesture;
-  }, [capPosition, dimPosition, disableLongPress, onLongPress]);
+  const gesture = useMemo(() => (
+    disableLongPress
+      ? pressGesture
+      : Gesture.Exclusive(pressGesture, longPressGesture)
+  ), [pressGesture, longPressGesture, disableLongPress]);
 
-  return { pressGesture, longPressGesture, capStyle, dimStyle };
+  return { gesture, capStyle, dimStyle };
 };
