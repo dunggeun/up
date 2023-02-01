@@ -20,6 +20,10 @@
     "forceConsistentCasingInFileNames": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
+    "typeRoots": [
+      "./src/types/images/index.d.ts",
+      "./node_modules/@types"
+    ],
     "paths": {
       "@/App": [
         "./App.tsx"

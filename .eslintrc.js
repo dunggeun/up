@@ -67,6 +67,13 @@ module.exports = {
       },
     },
     {
+      files: ['**/*.d.ts'],
+      rules: {
+        'import/no-default-export': 'off',
+        '@typescript-eslint/consistent-type-imports': 'off'
+      },
+    },
+    {
       files: ['src/stores/machines/**/*.ts'],
       rules: {
         '@typescript-eslint/ban-types': 'off',
