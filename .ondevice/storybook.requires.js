@@ -40,6 +40,7 @@ try {
 const getStories = () => {
   return [
     require("../src/components/Demo.stories.tsx"),
+    require("../src/components/LinearGradient/LinearGradient.stories.tsx"),
     require("../src/designs/atoms/Button/Button.stories.tsx"),
     require("../src/designs/atoms/H1/H1.stories.tsx"),
     require("../src/designs/atoms/H2/H2.stories.tsx"),
