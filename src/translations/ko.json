@@ -6,11 +6,13 @@
       "go_back": "뒤로가기",
       "empty": "비어있음",
       "start": "시작하기",
-      "go_level_up": "레벨업 하러 가기"
+      "go_level_up": "레벨업 하러 가기",
+      "add_new_quest": "새 퀘스트 추가하기"
     },
     "title": {
       "landing": "환영합니다",
-      "register_user": "도전자 등록하기"
+      "register_user": "도전자 등록하기",
+      "quest_in_progress": "진행중인 퀘스트"
     },
     "placeholder": {
       "enter_name": "이름을 입력해주세요"
@@ -18,6 +20,9 @@
     "message": {
       "greeting": "환영합니다!\n업 챌린지에 도전해보세요",
       "enter_name": "업 도전자님의\n이름을 알려주세요"
+    },
+    "badge": {
+      "0": "슈퍼유저"
     }
   }
 }
