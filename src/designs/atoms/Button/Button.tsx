@@ -20,6 +20,7 @@ export interface ButtonProps extends AccessibilityProps {
   disabled?: boolean;
   disableHaptic?: boolean;
   disableLongPress?: boolean;
+  style?: ViewStyle;
   containerStyle?: ViewStyle;
   leftAdornment?: React.ReactElement,
   rightAdornment?: React.ReactElement,
@@ -68,6 +69,7 @@ function ConditionalGestureDetector({
 export function Button ({
   children,
   color,
+  style,
   containerStyle,
   disabled = false,
   disableHaptic = false,
@@ -144,7 +146,7 @@ export function Button ({
         style={containerStyle}
       >
         <Shadow />
-        <Animated.View style={[capStyle, animatedCapStyle]}>
+        <Animated.View style={[capStyle, style, animatedCapStyle]}>
           {leftAdornment ? leftAdornment : null}
           {renderChildren()}
           {rightAdornment ? rightAdornment : null}
