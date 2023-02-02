@@ -1,6 +1,7 @@
 import { interpret, type InterpreterFrom } from 'xstate';
 import { globalMachine } from 'src/stores';
 import { delay } from 'src/utils';
+import { basicColors } from 'src/themes/colors';
 import { APP_MINIMUM_LOADING_DURATION } from 'src/constants';
 import { BADGE_SET, FALLBACK_BADGE } from './badges';
 
@@ -57,6 +58,10 @@ export class AppManager {
     const badge = BADGE_SET[id];
     const [title, image] = badge ?? FALLBACK_BADGE;
     return { title, image };
+  }
+
+  public static getThemeKeys(): string[] {
+    return Object.keys(basicColors);
   }
 
   private authorize(): Promise<boolean> {
