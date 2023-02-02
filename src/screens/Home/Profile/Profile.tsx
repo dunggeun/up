@@ -1,7 +1,7 @@
 import React from 'react';
 import { styled, View, Image } from 'dripsy';
 import { H1, Text, ProgressBar } from 'src/designs';
-import { getBadge } from './utils';
+import { AppManager } from 'src/modules';
 
 import type { User } from 'src/types';
 
@@ -54,7 +54,7 @@ const LevelProgress = styled(ProgressBar)({
 
 export function Profile ({ user }: ProfileProps): JSX.Element {
   const percent = (user.exp / MAX * 100).toFixed(1);
-  const { title: badgeTitle, image: badgeImage } = getBadge(user.badge);
+  const { title: badgeTitle, image: badgeImage } = AppManager.getBadge(user.badge);
 
   return (
     <Container>

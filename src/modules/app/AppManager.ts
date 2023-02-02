@@ -2,8 +2,10 @@ import { interpret, type InterpreterFrom } from 'xstate';
 import { globalMachine } from 'src/stores';
 import { delay } from 'src/utils';
 import { APP_MINIMUM_LOADING_DURATION } from 'src/constants';
+import { BADGE_SET, FALLBACK_BADGE } from './badges';
 
 import type { User } from 'src/types';
+import type { Badge } from './types';
 
 export class AppManager {
   private static instance: AppManager | null = null;
@@ -45,6 +47,16 @@ export class AppManager {
       createdAt: currentTimestamp,
       updatedAt: currentTimestamp,
     };
+  }
+
+  public static getTotalBadgeCount(): number {
+    return BADGE_SET.length;
+  }
+
+  public static getBadge(id: number): Badge {
+    const badge = BADGE_SET[id];
+    const [title, image] = badge ?? FALLBACK_BADGE;
+    return { title, image };
   }
 
   private authorize(): Promise<boolean> {
