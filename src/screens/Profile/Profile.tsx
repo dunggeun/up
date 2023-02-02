@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { ScrollView } from 'react-native';
 import { SafeAreaView as RNSafeAreaView } from 'react-native-safe-area-context';
-import { Container, styled, useDripsyTheme, View } from 'dripsy';
+import { styled, useDripsyTheme, Container, View } from 'dripsy';
 import { useActor } from '@xstate/react';
 import { H1, Input } from 'src/designs';
-import { LinearGradient, Section } from 'src/components';
+import { FadeInView, LinearGradient, Section } from 'src/components';
 import { AppManager } from 'src/modules';
 import { useMainTabBarInset } from 'src/hooks';
 import { t } from 'src/translations';
@@ -57,25 +57,27 @@ export function Profile (_props: ProfileProps): JSX.Element {
   };
 
   return (
-    <SafeAreaView edges={['top', 'left', 'right']}>
-      <Container>
-        <Header>
-          <H1 variant="primary">{t('title.profile')}</H1>
-          <ListShadow color={theme.colors.$white} rotate={90} toOpacity={0} />
-        </Header>
-        <Main>
-          <Section title={t('label.name')}>
-            <Input
-              onChangeText={handleChangeUserName}
-              placeholder={t('placeholder.enter_name')}
-              value={userName}
-            />
-          </Section>
-          <BadgeSection />
-          <ThemeSection />
-          <View sx={{ height: bottomInset }} />
-        </Main>
-      </Container>
-    </SafeAreaView>
+    <FadeInView>
+      <SafeAreaView edges={['top', 'left', 'right']}>
+        <Container>
+          <Header>
+            <H1 variant="primary">{t('title.profile')}</H1>
+            <ListShadow color={theme.colors.$white} rotate={90} toOpacity={0} />
+          </Header>
+          <Main>
+            <Section title={t('label.name')}>
+              <Input
+                onChangeText={handleChangeUserName}
+                placeholder={t('placeholder.enter_name')}
+                value={userName}
+              />
+            </Section>
+            <BadgeSection />
+            <ThemeSection />
+            <View sx={{ height: bottomInset }} />
+          </Main>
+        </Container>
+      </SafeAreaView>
+    </FadeInView>
   );
 }
