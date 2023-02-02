@@ -41,7 +41,7 @@ export function MainTabNavigator(): JSX.Element {
     >
       <MainTab.Screen
         component={Empty}
-        name="User"
+        name="Profile"
         options={{ tabBarIcon: Profile }}
       />
       <MainTab.Screen
