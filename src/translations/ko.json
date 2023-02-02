@@ -7,12 +7,16 @@
       "empty": "비어있음",
       "start": "시작하기",
       "go_level_up": "레벨업 하러 가기",
-      "add_new_quest": "새 퀘스트 추가하기"
+      "add_new_quest": "새 퀘스트 추가하기",
+      "name": "이름",
+      "badge": "뱃지",
+      "theme": "테마"
     },
     "title": {
       "landing": "환영합니다",
       "register_user": "도전자 등록하기",
-      "quest_in_progress": "진행중인 퀘스트"
+      "quest_in_progress": "진행중인 퀘스트",
+      "profile": "프로필 정보"
     },
     "placeholder": {
       "enter_name": "이름을 입력해주세요"

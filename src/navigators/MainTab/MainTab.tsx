@@ -4,7 +4,10 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useDripsyTheme } from 'dripsy';
 import { Home, Menu, Profile } from 'src/assets/icons';
 import { TabBar } from 'src/components';
-import { Home as HomeScreen } from 'src/screens';
+import {
+  Profile as ProfileScreen,
+  Home as HomeScreen
+} from 'src/screens';
 
 import type { MainTabScreenParamList } from './types';
 
@@ -40,7 +43,7 @@ export function MainTabNavigator(): JSX.Element {
       tabBar={TabBar}
     >
       <MainTab.Screen
-        component={Empty}
+        component={ProfileScreen}
         name="Profile"
         options={{ tabBarIcon: Profile }}
       />
