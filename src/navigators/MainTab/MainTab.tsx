@@ -22,6 +22,7 @@ export function MainTabNavigator(): JSX.Element {
   const tabBarOptions = useMemo(() => ({
     title: '',
     headerShown: false,
+    unmountOnBlur: false,
     tabBarShowLabel: false,
     tabBarActiveTintColor: theme.colors.$brand,
     tabBarInactiveTintColor: theme.colors.$text_tertiary,
