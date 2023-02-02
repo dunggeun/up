@@ -45,9 +45,10 @@ function CreateQuestButton({ onPress }: Pick<ButtonProps, 'onPress'>): JSX.Eleme
     <Button
       color="$white"
       disableLongPress
-      label={`+ ${t('label.add_new_quest')}`}
       onPress={onPress}
-    />
+    >
+      {`+ ${t('label.add_new_quest')}`}
+    </Button>
   );
 }
 
@@ -66,13 +67,14 @@ export function QuestList ({ quests, onCreate }: QuestListProps): JSX.Element {
     return (
       <Button
         color="$white"
-        label={data.item.title}
         rightAdornment={
           shouldShowBadge
             ? <Tag color="$brand" label={`x${data.item.current_streak}`}/>
             : <View />
         }
-      />
+      >
+        {data.item.title}
+      </Button>
     );
   };
 
