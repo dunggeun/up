@@ -1,4 +1,8 @@
-import React, { type ComponentPropsWithoutRef } from 'react';
+import React, {
+  type ComponentPropsWithoutRef,
+  type PropsWithChildren,
+  type ReactNode
+} from 'react';
 import { GestureDetector } from 'react-native-gesture-handler';
 import Animated from 'react-native-reanimated';
 import { styled, useSx, View, Text } from 'dripsy';
@@ -12,7 +16,6 @@ import type { colors } from 'src/themes/colors';
 type AccessibilityProps = Pick<ViewProps, 'accessibilityHint' | 'accessibilityLabel'>;
 
 export interface ButtonProps extends AccessibilityProps {
-  label: string;
   color: keyof typeof colors;
   disabled?: boolean;
   disableHaptic?: boolean;
@@ -63,7 +66,7 @@ function ConditionalGestureDetector({
 }
 
 export function Button ({
-  label,
+  children,
   color,
   containerStyle,
   disabled = false,
@@ -75,7 +78,7 @@ export function Button ({
   accessibilityLabel,
   onPress,
   onLongPress,
-}: ButtonProps): JSX.Element {
+}: PropsWithChildren<ButtonProps>): JSX.Element {
   const sx = useSx();
   const {
     gesture,
@@ -115,6 +118,20 @@ export function Button ({
     opacity: .2,
   });
 
+  const renderChildren = (): ReactNode => {
+    if (typeof children === 'string') {
+      return (
+        <Label
+          hasAdornment={Boolean(leftAdornment || rightAdornment)}
+          isLightBackground={isLightBackground}
+        >
+          {children}
+        </Label>
+      );
+    } 
+    return children;
+  };
+
   return (
     <ConditionalGestureDetector disabled={disabled} gesture={gesture}>
       <Container
@@ -129,12 +146,7 @@ export function Button ({
         <Shadow />
         <Animated.View style={[capStyle, animatedCapStyle]}>
           {leftAdornment ? leftAdornment : null}
-          <Label
-            hasAdornment={Boolean(leftAdornment || rightAdornment)}
-            isLightBackground={isLightBackground}
-          >
-            {label}
-          </Label>
+          {renderChildren()}
           {rightAdornment ? rightAdornment : null}
         </Animated.View>
         <Animated.View style={[dimStyle, animatedDimStyle]} />

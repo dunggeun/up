@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type PropsWithChildren } from 'react';
 import { render as testRender, screen, fireEvent, cleanup } from '@testing-library/react-native';
 import { faker } from '@faker-js/faker';
 import { withDripsy } from 'tests/utils';
@@ -8,7 +8,7 @@ import { Button } from '../Button';
 import type { colors } from 'src/themes/colors';
 import type { ButtonProps } from '../Button';
 
-const render = (props: ButtonProps): ReturnType<typeof testRender> => (
+const render = (props: PropsWithChildren<ButtonProps>): ReturnType<typeof testRender> => (
   testRender(withDripsy(<Button {...props} />))
 );
 
@@ -25,9 +25,9 @@ describe('atoms/Button', () => {
     cleanup();
   });
 
-  describe('버튼 라벨을 지정했을 때', () => {
-    it('라벨이 버튼 텍스트에 표기되어야 한다', () => {
-      render({ label, color });
+  describe('버튼 자식이 존재할 때', () => {
+    it('자식이 버튼 내에 렌더링 되어야 한다', () => {
+      render({ children: label, color });
       expect(screen.getByText(label)).not.toBeNull();
     });
   });
@@ -40,7 +40,7 @@ describe('atoms/Button', () => {
     });
 
     it('onPress 이벤트 핸들러가 호출되어야 한다', () => {
-      render({ label, color, onPress });
+      render({ children: label, color, onPress });
   
       fireEvent(screen.getByText(label), 'press');
       expect(onPress).toHaveBeenCalled();

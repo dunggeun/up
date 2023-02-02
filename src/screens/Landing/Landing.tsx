@@ -40,9 +40,10 @@ export function Landing ({ navigation }: LandingProps): JSX.Element {
           <Button
             color="$brand"
             disableLongPress
-            label={t('label.start')}
             onPress={handlePressNextButton}
-          />
+          >
+            {t('label.start')}
+          </Button>
         </ButtonArea>
       </Container>
     </SafeAreaView>
