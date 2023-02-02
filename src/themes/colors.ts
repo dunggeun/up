@@ -1,9 +1,4 @@
-export const colors = {
-  $brand: '#2196f3',
-  // Level colors
-  $success: '#4caf50',
-  $warning: '#ffeb3b',
-  $danger: '#f44336',
+export const basicColors = {
   // Basic colors
   $white: '#ffffff',
   $black: '#000000',
@@ -19,13 +14,23 @@ export const colors = {
   $sky: '#81d4fa',
   $purple: '#ab47bc',
   $dark: '#424242',
+} as const;
+
+export const colors = {
+  $brand: '#2196f3',
+  // Level colors
+  $success: '#4caf50',
+  $warning: '#ffeb3b',
+  $danger: '#f44336',
+  // Basic colors
+  ...basicColors,
+  // Text & Background colors
   $secondary_1: '#cccccc80',
   $secondary_2: '#cccccc40',
-  // Text colors
   $text_primary: '#2e2e2e',
   $text_secondary: '#777777',
   $text_tertiary: '#cccccc',
-};
+} as const;
 
 export const LIGHT_COLORS: (keyof typeof colors)[] = [
   '$warning',
