@@ -11,6 +11,12 @@ import type { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 export const TAB_BAR_HEIGHT = 70;
 export const TAB_BAR_MIN_WIDTH = 250;
 export const BORDER_WIDTH = 2;
+const TAB_HIT_SLOP = {
+  top: 10,
+  bottom: 10,
+  left: 16,
+  right: 16,
+};
 
 const BottomFixedArea = styled(View)({
   position: 'absolute',
@@ -84,6 +90,7 @@ export function TabBar ({ state, descriptors, navigation }: BottomTabBarProps): 
               accessibilityLabel={options.tabBarAccessibilityLabel}
               accessibilityRole="button"
               accessibilityState={isFocused ? { selected: true } : {}}
+              hitSlop={TAB_HIT_SLOP}
               key={route.name}
               onLongPress={onLongPress}
               onPress={onPress}
