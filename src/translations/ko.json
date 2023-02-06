@@ -16,7 +16,9 @@
       "landing": "환영합니다",
       "register_user": "도전자 등록하기",
       "quest_in_progress": "진행중인 퀘스트",
-      "profile": "프로필 정보"
+      "profile": "프로필 정보",
+      "home": "홈",
+      "menu": "메뉴"
     },
     "placeholder": {
       "enter_name": "이름을 입력해주세요"

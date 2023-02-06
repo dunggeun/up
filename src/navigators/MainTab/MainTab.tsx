@@ -8,6 +8,7 @@ import {
   Profile as ProfileScreen,
   Home as HomeScreen
 } from 'src/screens';
+import { t } from 'src/translations';
 
 import type { MainTabScreenParamList } from './types';
 
@@ -22,6 +23,7 @@ export function MainTabNavigator(): JSX.Element {
   const { bottom } = useSafeAreaInsets();
 
   const tabBarOptions = useMemo(() => ({
+    title: '',
     headerShown: false,
     tabBarShowLabel: false,
     tabBarActiveTintColor: theme.colors.$brand,
@@ -45,17 +47,26 @@ export function MainTabNavigator(): JSX.Element {
       <MainTab.Screen
         component={ProfileScreen}
         name="Profile"
-        options={{ tabBarIcon: Profile }}
+        options={{
+          title: t('title.profile'),
+          tabBarIcon: Profile,
+        }}
       />
       <MainTab.Screen
         component={HomeScreen}
         name="Home"
-        options={{ tabBarIcon: Home }}
+        options={{
+          title: t('title.home'),
+          tabBarIcon: Home,
+        }}
       />
       <MainTab.Screen
         component={Empty}
         name="Menu"
-        options={{ tabBarIcon: Menu }}
+        options={{
+          title: t('title.menu'),
+          tabBarIcon: Menu,
+        }}
       />
     </MainTab.Navigator>
   );
