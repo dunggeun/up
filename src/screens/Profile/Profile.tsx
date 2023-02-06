@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { ScrollView } from 'react-native';
 import { SafeAreaView as RNSafeAreaView } from 'react-native-safe-area-context';
 import { styled, useDripsyTheme, Container, View } from 'dripsy';
@@ -47,14 +47,27 @@ export function Profile (_props: ProfileProps): JSX.Element {
   const [state] = useActor(AppManager.getInstance().getService());
   const { bottomInset } = useMainTabBarInset();
   const { theme } = useDripsyTheme();
-
-  useEffect(() => {
-    setUserName(state.context.user?.name ?? '');
-  }, [state.context.user?.name]);
+  const user = state.context.user;
 
   const handleChangeUserName = (name: string): void => {
     setUserName(name);
   };
+
+  const handlePressBadge = useCallback((_id: number): void => {
+    // @todo
+  }, []);
+
+  const handleLongPressBadge = useCallback((_id: number): void => {
+    // @todo
+  }, []);
+
+  const handlePressTheme = useCallback((_id: number): void => {
+    // @todo
+  }, []);
+
+  useEffect(() => {
+    setUserName(user?.name ?? '');
+  }, [user?.name]);
 
   return (
     <FadeInView>
@@ -72,8 +85,11 @@ export function Profile (_props: ProfileProps): JSX.Element {
                 value={userName}
               />
             </Section>
-            <BadgeSection />
-            <ThemeSection />
+            <BadgeSection
+              onLongPressBadge={handleLongPressBadge}
+              onPressBadge={handlePressBadge}
+            />
+            <ThemeSection onPressBadge={handlePressTheme} />
             <View sx={{ height: bottomInset }} />
           </Main>
         </Container>

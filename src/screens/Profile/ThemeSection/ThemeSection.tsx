@@ -5,7 +5,11 @@ import { Button } from 'src/designs';
 import { AppManager } from 'src/modules';
 import { t } from 'src/translations';
 
-import type { colors } from 'src/themes/colors';
+import type { Theme } from 'src/modules/app/types';
+
+export interface ThemeSectionProps {
+  onPressBadge: (themeId: number) => void;
+}
 
 const THEMES_PER_COUNT = 5;
 
@@ -24,7 +28,9 @@ const buttonContainerStyle = {
   height: 45,
 };
 
-export const ThemeSection = memo(function ThemeSection (): JSX.Element {
+export const ThemeSection = memo(function ThemeSection ({
+  onPressBadge,
+}: ThemeSectionProps): JSX.Element {
   const sx = useSx();
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const overridingButtonStyle = sx({
@@ -32,9 +38,9 @@ export const ThemeSection = memo(function ThemeSection (): JSX.Element {
     paddingY: '$01',
   });
 
-  const getThemes = (): string[][] => {
-    let row: string[] = [];
-    const colors: string[][] = [];
+  const getThemes = (): Theme[][] => {
+    let row: Theme[] = [];
+    const colors: Theme[][] = [];
     const themeColors = AppManager.getThemeKeys();
   
     for (let i = 0; i < themeColors.length; i++) {
@@ -65,12 +71,13 @@ export const ThemeSection = memo(function ThemeSection (): JSX.Element {
         {getThemes().map((themeRow, index) => (
           // eslint-disable-next-line react/no-array-index-key
           <Row key={index}>
-            {themeRow.map((color) => (
+            {themeRow.map((theme) => (
               <Button
-                color={color as keyof typeof colors}
+                color={theme.key}
                 containerStyle={buttonContainerStyle}
                 disableLongPress
-                key={color}
+                key={theme.id}
+                onPress={(): void => onPressBadge(theme.id)}
                 // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
                 style={overridingButtonStyle}
               />

@@ -7,6 +7,11 @@ import { t } from 'src/translations';
 
 import type { Badge } from 'src/modules/app/types';
 
+export interface BadgeSectionProps {
+  onPressBadge: (badgeId: number) => void;
+  onLongPressBadge: (badgeId: number) => void;
+}
+
 const BADGES_PER_COUNT = 5;
 
 const Rows = styled(View)({
@@ -29,7 +34,10 @@ const buttonContainerStyle = {
   height: 45,
 };
 
-export const BadgeSection = memo(function BadgeSection (): JSX.Element {
+export const BadgeSection = memo(function BadgeSection ({
+  onPressBadge,
+  onLongPressBadge,
+}: BadgeSectionProps): JSX.Element {
   const sx = useSx();
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const overridingButtonStyle = sx({
@@ -40,9 +48,9 @@ export const BadgeSection = memo(function BadgeSection (): JSX.Element {
   const getBadges = (): Badge[][] => {
     let row: Badge[] = [];
     const badges: Badge[][] = [];
-    const badgeCount = AppManager.getTotalBadgeCount();
-  
-    for (let i = 0; i < badgeCount; i++) {
+    const totalBadges = AppManager.getBadges();
+
+    for (let i = 0; i < totalBadges.length; i++) {
       const currentBadge = AppManager.getBadge(i);
       if (i % BADGES_PER_COUNT === 0) {
         row = [currentBadge];
@@ -74,6 +82,8 @@ export const BadgeSection = memo(function BadgeSection (): JSX.Element {
                 color="$white"
                 containerStyle={buttonContainerStyle}
                 key={badge.title}
+                onLongPress={(): void => onLongPressBadge(badge.id)}
+                onPress={(): void => onPressBadge(badge.id)}
                 // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
                 style={overridingButtonStyle}
               >

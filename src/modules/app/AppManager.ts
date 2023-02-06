@@ -1,12 +1,11 @@
 import { interpret, type InterpreterFrom } from 'xstate';
 import { globalMachine } from 'src/stores';
 import { delay } from 'src/utils';
-import { basicColors } from 'src/themes/colors';
 import { APP_MINIMUM_LOADING_DURATION } from 'src/constants';
 import { BADGE_SET, FALLBACK_BADGE } from './badges';
 
 import type { User } from 'src/types';
-import type { Badge } from './types';
+import type { Badge, Theme } from './types';
 
 export class AppManager {
   private static instance: AppManager | null = null;
@@ -50,18 +49,33 @@ export class AppManager {
     };
   }
 
-  public static getTotalBadgeCount(): number {
-    return BADGE_SET.length;
+  public static getBadges(): typeof BADGE_SET {
+    return BADGE_SET;
   }
 
   public static getBadge(id: number): Badge {
     const badge = BADGE_SET[id];
     const [title, image] = badge ?? FALLBACK_BADGE;
-    return { title, image };
+    return { id, title, image };
   }
 
-  public static getThemeKeys(): string[] {
-    return Object.keys(basicColors);
+  public static getThemeKeys(): Theme[] {
+    return [
+      { id: 0, key: '$blue' },
+      { id: 1, key: '$red' },
+      { id: 2, key: '$yellow' },
+      { id: 3, key: '$green' },
+      { id: 4, key: '$mint' },
+      { id: 5, key: '$sky' },
+      { id: 6, key: '$purple' },
+      { id: 7, key: '$hot_pink' },
+      { id: 8, key: '$strawberry' },
+      { id: 9, key: '$orange' },
+      { id: 10, key: '$lemon' },
+      { id: 11, key: '$white' },
+      { id: 12, key: '$dark' },
+      { id: 13, key: '$black' },
+    ];
   }
 
   private authorize(): Promise<boolean> {
