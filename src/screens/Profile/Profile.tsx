@@ -6,11 +6,12 @@ import { useActor } from '@xstate/react';
 import { H1, Input } from 'src/designs';
 import { FadeInView, LinearGradient, Section } from 'src/components';
 import { AppManager } from 'src/modules';
-import { useMainTabBarInset } from 'src/hooks';
+import { useMainTabBarInset, useDebounce } from 'src/hooks';
 import { t } from 'src/translations';
 import { BadgeSection } from './BadgeSection';
 import { ThemeSection } from './ThemeSection';
 
+import type { User } from 'src/types';
 import type { MainTabProps } from 'src/navigators/MainTab/types';
 
 type ProfileProps = MainTabProps<'Profile'>;
@@ -44,26 +45,35 @@ const ListShadow = styled(LinearGradient)({
 
 export function Profile (_props: ProfileProps): JSX.Element {
   const [userName, setUserName] = useState('');
-  const [state] = useActor(AppManager.getInstance().getService());
+  const [state, send] = useActor(AppManager.getInstance().getService());
   const { bottomInset } = useMainTabBarInset();
   const { theme } = useDripsyTheme();
   const user = state.context.user;
 
-  const handleChangeUserName = (name: string): void => {
-    setUserName(name);
+  const editUser = useCallback((
+    modifyData: Partial<Pick<User, 'name' | 'badge' | 'theme'>>,
+  ) => {
+    send({ type: 'EDIT_USER', user: modifyData });
+  }, [send]);
+
+  const { trigger: lazyEditUser } = useDebounce(editUser, 500);
+
+  const handleChangeUserName = (value: string): void => {
+    lazyEditUser({ name: value });
+    setUserName(value);
   };
 
-  const handlePressBadge = useCallback((_id: number): void => {
-    // @todo
-  }, []);
+  const handlePressBadge = useCallback((id: number): void => {
+    editUser({ badge: id });
+  }, [editUser]);
 
   const handleLongPressBadge = useCallback((_id: number): void => {
     // @todo
   }, []);
 
-  const handlePressTheme = useCallback((_id: number): void => {
-    // @todo
-  }, []);
+  const handlePressTheme = useCallback((id: number): void => {
+    editUser({ theme: id });
+  }, [editUser]);
 
   useEffect(() => {
     setUserName(user?.name ?? '');
