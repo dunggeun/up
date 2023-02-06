@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { useSx, Container } from 'dripsy';
+import { useSx, useDripsyTheme, Container } from 'dripsy';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Profile } from './Profile';
 import { QuestList } from './QuestList';
@@ -113,11 +113,12 @@ const dummyQuests = [
 
 export function Home (_props: HomeProps): JSX.Element {
   const { top } = useSafeAreaInsets();
+  const { theme } = useDripsyTheme();
   const sx = useSx();
 
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const containerStyle = sx({
-    paddingTop: top || '$04',
+    paddingTop: top + theme.space.$04,
     gap: '$04',
   });
 
