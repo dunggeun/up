@@ -15,9 +15,11 @@ export const globalMachine = createMachine(
       events: {} as { type: 'AUTO_LOGIN' }
                   | { type: 'LOGIN'; user: User }
                   | { type: 'LOGOUT' }
-                  | { type: 'REFRESH' },
+                  | { type: 'REFRESH' }
+                  | { type: 'EDIT_USER'; user: Partial<Pick<User, 'name' | 'badge' | 'theme'>> },
       services: {} as {
         loadUser: { data: User };
+        updateUser: { data: User };
         saveUser: { data: void };
         cleanup: { data: void };
       },
@@ -54,10 +56,12 @@ export const globalMachine = createMachine(
         on: {
           LOGOUT: 'unauthorized',
           REFRESH: '.refreshing',
+          EDIT_USER: '.updating',
         },
         states: {
           idle: {},
           refreshing: {
+            entry: ['onRefreshing'],
             invoke: {
               src: 'loadUser',
               onDone: {
@@ -65,6 +69,17 @@ export const globalMachine = createMachine(
                 actions: 'setUser',
               },
               onError: '#unauthorized'
+            },
+          },
+          updating: {
+            entry: ['onUpdateUser'],
+            invoke: {
+              src: 'updateUser',
+              onDone: {
+                target: 'idle',
+                actions: 'setUser',
+              },
+              onError: 'idle',
             },
           },
         },
@@ -104,8 +119,14 @@ export const globalMachine = createMachine(
       onLoading: () => {
         console.log(TAG, 'onLoading');
       },
-      onAuthorized: () => {
-        console.log(TAG, 'onAuthorized');
+      onAuthorized: (_context, event) => {
+        console.log(TAG, 'onAuthorized', event.data);
+      },
+      onRefreshing: () => {
+        console.log(TAG, 'onRefreshing');
+      },
+      onUpdateUser: (_context, event) => {
+        console.log(TAG, 'onUpdateUser', event.user);
       },
       onUnauthorized: () => {
         console.log(TAG, 'onUnauthorized');
@@ -120,6 +141,13 @@ export const globalMachine = createMachine(
         }
 
         return JSON.parse(stringifiedUser) as User;
+      },
+      updateUser: async (context, event) => {
+        if (!context.user) throw new Error('user not exist in context');
+    
+        const modifiedUser = { ...context.user, ...event.user } as User;
+        await AsyncStorage.setItem('user', JSON.stringify(modifiedUser));
+        return modifiedUser;
       },
       saveUser: async (_context, event) => {
         await AsyncStorage.setItem('user', JSON.stringify(event.user));
