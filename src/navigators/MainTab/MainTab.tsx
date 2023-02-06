@@ -6,17 +6,14 @@ import { Home, Menu, Profile } from 'src/assets/icons';
 import { TabBar } from 'src/components';
 import {
   Profile as ProfileScreen,
-  Home as HomeScreen
+  Home as HomeScreen,
+  Menu as MenuScreen
 } from 'src/screens';
 import { t } from 'src/translations';
 
 import type { MainTabScreenParamList } from './types';
 
 const MainTab = createBottomTabNavigator<MainTabScreenParamList>();
-
-function Empty(): null {
-  return null;
-}
 
 export function MainTabNavigator(): JSX.Element {
   const { theme } = useDripsyTheme();
@@ -61,7 +58,7 @@ export function MainTabNavigator(): JSX.Element {
         }}
       />
       <MainTab.Screen
-        component={Empty}
+        component={MenuScreen}
         name="Menu"
         options={{
           title: t('title.menu'),
