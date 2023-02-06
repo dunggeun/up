@@ -5,6 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { DripsyProvider } from 'dripsy';
 import { navigationRef } from 'src/navigators/helpers';
+import { titleFormatter } from 'src/utils';
 import { themeLight } from 'src/themes';
 import type { PropsWithChildren } from 'react';
 
@@ -18,7 +19,10 @@ function AppProviders<T = unknown>({ children }: PropsWithChildren<T>): JSX.Elem
     <GestureHandlerRootView style={gestureHandlerStyle}>
       <SafeAreaProvider>
         <DripsyProvider theme={themeLight}>
-          <NavigationContainer ref={navigationRef}>
+          <NavigationContainer
+            documentTitle={{ formatter: titleFormatter }}
+            ref={navigationRef}
+          >
             {children}
           </NavigationContainer>
         </DripsyProvider>
