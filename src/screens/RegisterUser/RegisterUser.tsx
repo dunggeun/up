@@ -64,9 +64,10 @@ export function RegisterUser ({ navigation }: RegisterUserProps): JSX.Element {
               color="$brand"
               disableLongPress
               disabled={userName.length < 2}
-              label={t('label.go_level_up')}
               onPress={handlePressStartButton}
-            />
+            >
+              {t('label.go_level_up')}
+            </Button>
           </ButtonArea>
         </Container>
       </KeyboardAvoidingView>
