@@ -3,15 +3,13 @@ import { styled, View, Pressable } from 'dripsy';
 import { H2 } from 'src/designs/atoms';
 import { Icons } from 'src/assets';
 import { t } from 'src/translations';
-import { APP_BAR_HEIGHT } from 'src/constants';
+import { APP_BAR_HEIGHT, HIT_SLOP } from 'src/constants';
 
 export interface AppBarProps {
   title?: string;
   onBackPress?: () => void;
   onClosePress?: () => void;
 }
-
-const HIT_SLOP = 5;
 
 const ACCESSIBILITY = {
   title: t('label.title'),
