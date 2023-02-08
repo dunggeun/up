@@ -1,23 +1,29 @@
 import React from 'react';
-import { StyleSheet, Text } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { styled, View, Image } from 'dripsy';
+import { presets } from 'src/themes';
+import { APP_BAR_HEIGHT, LANDING_LOGO_SIZE, LANDING_LOGO_MARGIN } from 'src/constants';
+import Logo from 'src/assets/images/logo.png';
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'white',
-  },
-  text: {
-    color: 'black',
-  },
+const LogoArea = styled(View)({
+  flex: 1,
+  justifyContent: 'center',
+  alignItems: 'center',
+  paddingTop: APP_BAR_HEIGHT,
+  paddingBottom: LANDING_LOGO_MARGIN,
+});
+
+const LogoImage = styled(Image)({
+  width: LANDING_LOGO_SIZE,
+  height: LANDING_LOGO_SIZE,
 });
 
 export function SplashScreen(): JSX.Element {
   return (
-    <SafeAreaView style={styles.container}>
-      <Text style={styles.text}>Splash</Text>
+    <SafeAreaView style={presets.flexWhite}>
+      <LogoArea>
+        <LogoImage source={Logo} />
+      </LogoArea>
     </SafeAreaView>
   );
 }

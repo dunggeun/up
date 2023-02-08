@@ -1,8 +1,9 @@
 import React from 'react';
 import { styled, View, Pressable } from 'dripsy';
 import { H2 } from 'src/designs/atoms';
-import { t } from 'src/translations';
 import { Icons } from 'src/assets';
+import { t } from 'src/translations';
+import { APP_BAR_HEIGHT } from 'src/constants';
 
 export interface AppBarProps {
   title?: string;
@@ -23,7 +24,7 @@ const Container = styled(View)({
   flexDirection: 'row',
   justifyContent: 'space-between',
   alignItems: 'center',
-  height: 56,
+  height: APP_BAR_HEIGHT,
   paddingX: '$04',
   backgroundColor: '$white',
 });
