@@ -21,7 +21,11 @@ export function RootStackNavigator(): JSX.Element | null {
     switch (authorized) {
       case true:
         return (
-          <RootStack.Screen component={MainTabNavigator} name="Main" />
+          <RootStack.Screen
+            component={MainTabNavigator}
+            name="Main"
+            options={{ animationEnabled: false }}
+          />
         );
 
       case false:
