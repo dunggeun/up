@@ -44,6 +44,16 @@ const Shadow = styled(View)({
   borderRadius: '$md',
 });
 
+const DimContainer = styled(View)({
+  position: 'absolute',
+  top: 0,
+  bottom: -PRESS_DEPTH,
+  left: 0,
+  right: 0,
+  borderRadius: '$md',
+  overflow: 'hidden',
+});
+
 const Label = styled(Text, { 
   defaultVariant: 'text.h2',
 })(({
@@ -151,7 +161,9 @@ export function Button ({
           {renderChildren()}
           {rightAdornment ? rightAdornment : null}
         </Animated.View>
-        <Animated.View style={[dimStyle, animatedDimStyle]} />
+        <DimContainer>
+          <Animated.View style={[dimStyle, animatedDimStyle]} />
+        </DimContainer>
       </Container>
     </ConditionalGestureDetector>
   );
