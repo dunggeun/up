@@ -14,7 +14,9 @@
       "version": "버전",
       "send_feedback": "피드백 보내기",
       "rating": "UP 평점주기 & 리뷰",
-      "open_source": "오픈소스 프로젝트"
+      "open_source": "오픈소스 프로젝트",
+      "reset_data": "데이터 초기화",
+      "reset_confirm": "네, 삭제할게요"
     },
     "title": {
       "landing": "환영합니다",
@@ -22,14 +24,16 @@
       "quest_in_progress": "진행중인 퀘스트",
       "profile": "프로필 정보",
       "home": "홈",
-      "menu": "메뉴"
+      "menu": "메뉴",
+      "reset_data": "UP 데이터 초기화"
     },
     "placeholder": {
       "enter_name": "이름을 입력해주세요"
     },
     "message": {
       "greeting": "환영합니다!\n업 챌린지에 도전해보세요",
-      "enter_name": "업 도전자님의\n이름을 알려주세요"
+      "enter_name": "업 도전자님의\n이름을 알려주세요",
+      "reset_data": "지금까지 기록된 데이터가 모두 사라지고\n이전으로 되돌릴 수 없어요.\n\n삭제 하시려면 버튼을 꾹 눌러주세요."
     },
     "badge": {
       "0": "슈퍼유저"

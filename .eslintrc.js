@@ -91,7 +91,7 @@ module.exports = {
       },
     },
     {
-      files: ['**/assets/icons/*.tsx'],
+      files: ['**/assets/icons/*.tsx', '**/assets/symbols/*.tsx'],
       rules: {
         'import/no-named-as-default': 'off',
       },
