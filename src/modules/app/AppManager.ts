@@ -1,7 +1,9 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { interpret, type InterpreterFrom } from 'xstate';
 import { globalMachine } from 'src/stores';
 import { delay } from 'src/utils';
 import { APP_MINIMUM_LOADING_DURATION } from 'src/constants';
+import { DatabaseModule } from '../database';
 import { BADGE_SET, FALLBACK_BADGE } from './badges';
 
 import type { User } from 'src/types';
@@ -10,6 +12,7 @@ import type { Badge, Theme } from './types';
 export class AppManager {
   private static instance: AppManager | null = null;
   private service = interpret(globalMachine);
+  private database = new DatabaseModule();
   private status: 'pending' | 'fulfilled' | 'error' = 'pending';
   private task: Promise<void>;
   private error: Error | null = null;
@@ -17,6 +20,7 @@ export class AppManager {
   private constructor() {
     this.service.start();
     this.task = Promise.all([
+      this.database.initialize(),
       (async (): Promise<void> => {
         if (await this.authorize()) {
           // @todo: 사용자 데이터 로드
@@ -107,5 +111,13 @@ export class AppManager {
 
   getService(): InterpreterFrom<typeof globalMachine> {
     return this.service;
+  }
+
+  async resetUserData(): Promise<void> {
+    await Promise.all([
+      this.database.clear('quest'),
+      this.database.clear('achieve'),
+    ]);
+    await AsyncStorage.clear();
   }
 }
