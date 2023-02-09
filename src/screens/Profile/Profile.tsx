@@ -1,10 +1,14 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { ScrollView } from 'react-native';
-import { SafeAreaView as RNSafeAreaView } from 'react-native-safe-area-context';
 import { styled, useDripsyTheme, Container, View } from 'dripsy';
 import { useActor } from '@xstate/react';
 import { H1, Input } from 'src/designs';
-import { FadeInView, LinearGradient, Section } from 'src/components';
+import {
+  SafeAreaView,
+  FadeInView,
+  LinearGradient,
+  Section
+} from 'src/components';
 import { AppManager } from 'src/modules';
 import { useMainTabBarInset, useDebounce } from 'src/hooks';
 import { t } from 'src/translations';
@@ -17,10 +21,6 @@ import type { MainTabProps } from 'src/navigators/MainTab/types';
 type ProfileProps = MainTabProps<'Profile'>;
 
 const SHADOW_HEIGHT = 16;
-
-const SafeAreaView = styled(RNSafeAreaView)({
-  flex: 1,
-});
 
 const Header = styled(View)({
   position: 'relative',
@@ -81,7 +81,7 @@ export function Profile (_props: ProfileProps): JSX.Element {
 
   return (
     <FadeInView>
-      <SafeAreaView edges={['top', 'left', 'right']}>
+      <SafeAreaView insetBottom={false}>
         <Container>
           <Header>
             <H1 variant="primary">{t('title.profile')}</H1>

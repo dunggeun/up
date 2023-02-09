@@ -1,10 +1,10 @@
 import React from 'react';
 import { styled, Container, View, Image } from 'dripsy';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { presets } from 'src/themes';
+import { SafeAreaView } from 'src/components';
 import { Button, H1, AppBar } from 'src/designs';
-import { t } from 'src/translations';
+import { presets } from 'src/themes';
 import { LANDING_LOGO_SIZE, LANDING_LOGO_MARGIN } from 'src/constants';
+import { t } from 'src/translations';
 import Logo from 'src/assets/images/logo.png';
 
 import type { RootStackProps } from 'src/navigators/RootStack/types';

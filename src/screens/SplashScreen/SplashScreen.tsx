@@ -1,6 +1,6 @@
 import React from 'react';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import { styled, View, Image } from 'dripsy';
+import { SafeAreaView } from 'src/components';
 import { presets } from 'src/themes';
 import { APP_BAR_HEIGHT, LANDING_LOGO_SIZE, LANDING_LOGO_MARGIN } from 'src/constants';
 import Logo from 'src/assets/images/logo.png';
