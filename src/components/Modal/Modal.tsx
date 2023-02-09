@@ -34,6 +34,7 @@ const ModalContainer = styled(View)({
   borderWidth: 2,
   borderColor: '$text_primary',
   backgroundColor: '$white',
+  gap: '$04',
 });
 
 const ModalHeader = styled(View)({
