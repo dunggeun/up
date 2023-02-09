@@ -51,7 +51,12 @@ export function RootStackNavigator(): JSX.Element | null {
   };
 
   return (
-    <RootStack.Navigator screenOptions={{ headerShown: false }} >
+    <RootStack.Navigator
+      screenOptions={{
+        headerShown: false,
+        cardStyle: { backgroundColor: 'white' },
+      }}
+    >
       {renderScreens()}
     </RootStack.Navigator>
   );
