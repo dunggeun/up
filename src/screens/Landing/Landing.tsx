@@ -1,4 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import Animated, {
+  useSharedValue,
+  useAnimatedStyle,
+  withSpring
+} from 'react-native-reanimated';
 import { styled, Container, View, Image } from 'dripsy';
 import { SafeAreaView } from 'src/components';
 import { Button, H1, AppBar } from 'src/designs';
@@ -27,15 +32,29 @@ const LogoArea = styled(View)({
 });
 
 const LogoImage = styled(Image)({
-  width: LANDING_LOGO_SIZE,
-  height: LANDING_LOGO_SIZE,
+  width: '100%',
+  height: '100%',
 });
 
 const ButtonArea = styled(View)({
   paddingY: '$04',
 });
 
+const scaleLogoViewStyle = {
+  width: LANDING_LOGO_SIZE,
+  height: LANDING_LOGO_SIZE,
+} as const;
+
 export function Landing ({ navigation }: LandingProps): JSX.Element {
+  const scale = useSharedValue(1);
+  const animatedLogoViewStyle = useAnimatedStyle(() => ({
+    transform: [{ scale: scale.value }],
+  }));
+
+  useEffect(() => {
+    scale.value = withSpring(1.5, { damping: 2.5, stiffness: 120 });
+  }, [scale]);
+
   const handlePressNextButton = (): void => {
     navigation.navigate('RegisterUser');
   };
@@ -49,7 +68,9 @@ export function Landing ({ navigation }: LandingProps): JSX.Element {
             <H1 variant="primary">{t('message.greeting')}</H1>
           </PageTitleArea>
           <LogoArea>
-            <LogoImage source={Logo} />
+            <Animated.View style={[scaleLogoViewStyle, animatedLogoViewStyle]}>
+              <LogoImage source={Logo} />
+            </Animated.View>
           </LogoArea>
         </Content>
         <ButtonArea>

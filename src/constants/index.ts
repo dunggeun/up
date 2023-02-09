@@ -1,3 +1,4 @@
+import { Dimensions } from 'react-native';
 import { version } from '../../package.json';
 
 export const VERSION = version;
@@ -17,3 +18,7 @@ export const TOUCHABLE_OPACITY_HIT_SLOP = {
   left: HIT_SLOP,
   right: HIT_SLOP,
 } as const;
+
+const window = Dimensions.get('window');
+export const WINDOW_WIDTH = window.width;
+export const WINDOW_HEIGHT = window.height;

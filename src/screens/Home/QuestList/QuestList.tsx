@@ -1,11 +1,14 @@
 import React, { useMemo } from 'react';
 import { FlatList } from 'react-native';
 import { styled, useDripsyTheme, View } from 'dripsy';
-import { Button, H2, Tag } from 'src/designs';
+import { Button, H2 } from 'src/designs';
 import { LinearGradient } from 'src/components';
 import { useMainTabBarInset } from 'src/hooks';
+import { WINDOW_HEIGHT } from 'src/constants';
 import { t } from 'src/translations';
 
+import { BUTTON_HEIGHT } from 'src/designs/atoms/Button/constants';
+import { QuestItem } from '../QuestItem';
 import type { ListRenderItemInfo } from 'react-native';
 import type { ButtonProps } from 'src/designs';
 import type { Quest } from 'src/types';
@@ -16,6 +19,7 @@ export interface QuestListProps {
 }
 
 const SHADOW_HEIGHT = 16;
+const LAST_ANIMATABLE_ITEM_INDEX = Math.floor((WINDOW_HEIGHT - 110) / BUTTON_HEIGHT) - 1;
 
 const ListContainer = styled(View)({
   flex: 1,
@@ -62,19 +66,12 @@ export function QuestList ({ quests, onCreate }: QuestListProps): JSX.Element {
   }), [theme]);
 
   const renderItem = (data: ListRenderItemInfo<Quest>): JSX.Element => {
-    const shouldShowBadge = data.item.current_streak > 0;
-
     return (
-      <Button
-        color="$white"
-        rightAdornment={
-          shouldShowBadge
-            ? <Tag color="$brand" label={`x${data.item.current_streak}`}/>
-            : <View />
-        }
-      >
-        {data.item.title}
-      </Button>
+      <QuestItem
+        animate={LAST_ANIMATABLE_ITEM_INDEX > data.index}
+        data={data.item}
+        index={data.index}
+      />
     );
   };
 
