@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
 import { View } from 'react-native';
-import { styled, Container } from 'dripsy';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import { useActor } from '@xstate/react';
+import { styled, Container } from 'dripsy';
+import { SafeAreaView, KeyboardAvoidingView } from 'src/components';
+import { Button, Input, H1, AppBar } from 'src/designs';
 import { AppManager } from 'src/modules';
 import { t } from 'src/translations';
-import { presets } from 'src/themes';
-import { KeyboardAvoidingView } from 'src/components';
-import { Button, Input, H1, AppBar } from 'src/designs';
 
 import type { RootStackProps } from 'src/navigators/RootStack/types';
 
@@ -49,8 +47,8 @@ export function RegisterUser ({ navigation }: RegisterUserProps): JSX.Element {
   };
 
   return (
-    <SafeAreaView style={presets.flexWhite}>
-      <KeyboardAvoidingView style={{ flex: 1 }}>
+    <SafeAreaView>
+      <KeyboardAvoidingView>
         <Container>
           <AppBar onBackPress={handlePressBackButton} />
           <Content>

@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { useActor } from '@xstate/react';
-import { SafeAreaView as RNSafeAreaView } from 'react-native-safe-area-context';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { styled, Container, View } from 'dripsy';
-import { FadeInView } from 'src/components';
+import { SafeAreaView, FadeInView } from 'src/components';
 import { H1, Text } from 'src/designs';
 import { useMainTabBarInset } from 'src/hooks';
 import { delay } from 'src/utils';
@@ -19,10 +18,6 @@ import { DeleteConfirmModal } from './DeleteConfirmModal';
 import type { MainTabProps } from 'src/navigators/MainTab/types';
 
 type MenuProps = MainTabProps<'Menu'>;
-
-const SafeAreaView = styled(RNSafeAreaView)({
-  flex: 1,
-});
 
 const Header = styled(View)({
   width: '100%',
@@ -93,7 +88,7 @@ export function Menu (_props: MenuProps): JSX.Element {
 
   return (
     <FadeInView>
-      <SafeAreaView edges={['top', 'left', 'right']}>
+      <SafeAreaView insetBottom={false}>
         <Container>
           <Header>
             <H1 variant="primary">{t('title.menu')}</H1>
