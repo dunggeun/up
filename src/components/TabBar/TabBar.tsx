@@ -64,7 +64,7 @@ export function TabBar ({ state, descriptors, navigation }: BottomTabBarProps): 
             : options.tabBarInactiveTintColor;
 
           const onPress = (): void => {
-            triggerHaptic();
+            triggerHaptic('selection');
 
             const event = navigation.emit({
               type: 'tabPress',
