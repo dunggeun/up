@@ -1,11 +1,6 @@
-import React, { useEffect } from 'react';
-import { StyleSheet } from 'react-native';
+import React, { useEffect, useRef } from 'react';
+import { StyleSheet, Animated } from 'react-native';
 import { styled, useDripsyTheme, View } from 'dripsy';
-import Animated, {
-  useSharedValue,
-  useAnimatedStyle,
-  withSpring,
-} from 'react-native-reanimated';
 
 import type { ComponentPropsWithoutRef } from 'react';
 import type { colors } from 'src/themes/colors';
@@ -49,17 +44,26 @@ export function ProgressBar ({
   ...restProps
 }: ProgressBarProps): JSX.Element {
   const { theme } = useDripsyTheme();
-  const percent = useSharedValue(calculatePercent(value, max));
-  const barWidthStyle = useAnimatedStyle(() => ({ width: `${percent.value}%` }), []);
+  const widthAnimation = useRef(new Animated.Value(0)).current;
   const barColorStyle = { backgroundColor: theme.colors[color] };
 
   useEffect(() => {
-    percent.value = withSpring(calculatePercent(value, max));
-  }, [percent, value, max]);
+    Animated.timing(widthAnimation, {
+      toValue: calculatePercent(value, max),
+      useNativeDriver: false,
+    }).start();
+  }, [widthAnimation, value, max]);
+
+  const animatedStyle = {
+    width: widthAnimation.interpolate({
+      inputRange: [0, 100],
+      outputRange: ['0%', '100%'],
+    }),
+  };
 
   return (
     <Container {...restProps} accessibilityValue={{ min: 0, max, now: value }}>
-      <Animated.View style={[styles.barDefault, barColorStyle, barWidthStyle]} />
+      <Animated.View style={[styles.barDefault, barColorStyle, animatedStyle]} />
     </Container>
   );
-}
+};
