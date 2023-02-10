@@ -2,7 +2,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { interpret, type InterpreterFrom } from 'xstate';
 import { globalMachine } from 'src/stores';
 import { delay } from 'src/utils';
-import { APP_MINIMUM_LOADING_DURATION } from 'src/constants';
+import { APP_MINIMUM_LOADING_DURATION, BASE_EXP } from 'src/constants';
 import { DatabaseModule } from '../database';
 import { BADGE_SET, FALLBACK_BADGE } from './badges';
 
@@ -42,10 +42,16 @@ export class AppManager {
     return AppManager.instance;
   }
 
+  public static getExpByLevel(level: number): number {
+    return Math.floor(level * BASE_EXP * Math.log10(level)) + BASE_EXP;
+  }
+
   public static getBaseUser(): Omit<User, 'name'> {
     const currentTimestamp = Number(new Date());
     return {
-      exp: 0,
+      level: 1,
+      currentExp: 0,
+      totalExp: 0,
       badge: 0,
       theme: 0,
       createdAt: currentTimestamp,

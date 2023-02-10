@@ -1,6 +1,8 @@
 export interface User {
   name: string;
-  exp: number;
+  level: number;
+  totalExp: number;
+  currentExp: number;
   badge: number;
   theme: number;
   createdAt: number;
