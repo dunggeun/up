@@ -1,4 +1,9 @@
-import React from 'react';
+import React, {
+  memo,
+  useState,
+  useMemo,
+  useLayoutEffect
+} from 'react';
 import { styled, View, Image } from 'dripsy';
 import { H1, Text, ProgressBar } from 'src/designs';
 import { AppManager } from 'src/modules';
@@ -10,9 +15,6 @@ interface ProfileProps {
 }
 
 const BADGE_BORDER_WIDTH = 2;
-
-// @todo: 삭제 후 실제 데이터로 변경
-const MAX = 135;
 
 const Container = styled(View)({
   width: '100%',
@@ -52,9 +54,18 @@ const LevelProgress = styled(ProgressBar)({
   width: '100%',
 });
 
-export function Profile ({ user }: ProfileProps): JSX.Element {
-  const percent = (user.exp / MAX * 100).toFixed(1);
+export const Profile = memo(function Profile ({ user }: ProfileProps): JSX.Element {
+  const [requiredExp, setRequiredExp] = useState(0); 
   const { title: badgeTitle, image: badgeImage } = AppManager.getBadge(user.badge);
+
+  useLayoutEffect(() => {
+    setRequiredExp(AppManager.getExpByLevel(user.level));
+  }, [user.level]);
+
+  const percent = useMemo(
+    () => (user.currentExp / requiredExp * 100).toFixed(1),
+    [user.currentExp, requiredExp]
+  );
 
   return (
     <Container>
@@ -62,13 +73,13 @@ export function Profile ({ user }: ProfileProps): JSX.Element {
         <Badge>
           <BadgeImage source={badgeImage} />
         </Badge>
-        <H1 variant="primary">Lv.30 {user.name}</H1>
+        <H1 variant="primary">Lv.{user.level} {user.name}</H1>
         <Text variant="secondary">{badgeTitle}</Text>
       </InformationSection>
       <ProgressSection>
-        <LevelProgress color="$brand" max={MAX} value={user.exp} />
-        <Text variant="tertiary">{`${percent}% (${user.exp}/${MAX})`}</Text>
+        <LevelProgress color="$brand" max={requiredExp} value={user.currentExp} />
+        <Text variant="tertiary">{`${percent}% (${user.currentExp}/${requiredExp})`}</Text>
       </ProgressSection>
     </Container>
   );
-}
+});
