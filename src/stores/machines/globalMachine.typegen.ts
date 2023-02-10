@@ -3,6 +3,11 @@
 export interface Typegen0 {
   '@@xstate/typegen': true;
   internalEvents: {
+    'done.invoke.(machine).authorized.calculating:invocation[0]': {
+      type: 'done.invoke.(machine).authorized.calculating:invocation[0]';
+      data: unknown;
+      __tip: 'See the XState TS docs to learn how to strongly type this.';
+    };
     'done.invoke.(machine).authorized.refreshing:invocation[0]': {
       type: 'done.invoke.(machine).authorized.refreshing:invocation[0]';
       data: unknown;
@@ -37,6 +42,7 @@ export interface Typegen0 {
     'xstate.init': { type: 'xstate.init' };
   };
   invokeSrcNameMap: {
+    calculateLevel: 'done.invoke.(machine).authorized.calculating:invocation[0]';
     cleanup: 'done.invoke.unauthorized:invocation[0]';
     loadUser:
       | 'done.invoke.(machine).authorized.refreshing:invocation[0]'
@@ -52,6 +58,7 @@ export interface Typegen0 {
   };
   eventsCausingActions: {
     onAuthorized: 'done.invoke.loading:invocation[0]';
+    onCalculating: 'REWARD';
     onIdle: 'xstate.init';
     onLoading:
       | 'AUTO_LOGIN'
@@ -69,6 +76,7 @@ export interface Typegen0 {
       | 'error.platform.loading:invocation[0]'
       | 'xstate.after(DEFAULT_TIMEOUT)#loading';
     setUser:
+      | 'done.invoke.(machine).authorized.calculating:invocation[0]'
       | 'done.invoke.(machine).authorized.refreshing:invocation[0]'
       | 'done.invoke.(machine).authorized.updating:invocation[0]'
       | 'done.invoke.loading:invocation[0]';
@@ -80,6 +88,7 @@ export interface Typegen0 {
   };
   eventsCausingGuards: {};
   eventsCausingServices: {
+    calculateLevel: 'REWARD';
     cleanup:
       | 'LOGOUT'
       | 'error.platform.(machine).authorized.refreshing:invocation[0]'
@@ -94,6 +103,7 @@ export interface Typegen0 {
   };
   matchesStates:
     | 'authorized'
+    | 'authorized.calculating'
     | 'authorized.idle'
     | 'authorized.refreshing'
     | 'authorized.updating'
@@ -103,7 +113,7 @@ export interface Typegen0 {
     | 'unauthorized.idle'
     | 'unauthorized.validating'
     | {
-        authorized?: 'idle' | 'refreshing' | 'updating';
+        authorized?: 'calculating' | 'idle' | 'refreshing' | 'updating';
         unauthorized?: 'idle' | 'validating';
       };
   tags: never;

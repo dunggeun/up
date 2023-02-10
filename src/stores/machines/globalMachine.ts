@@ -2,6 +2,11 @@
 /* eslint-disable no-console */
 import { createMachine, assign } from 'xstate';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+
+// @todo: cycle 이슈 수정
+// eslint-disable-next-line import/no-cycle
+import { AppManager } from 'src/modules';
+
 import type { User } from 'src/types';
 
 const TAG = 'GlobalMachine';
@@ -16,11 +21,13 @@ export const globalMachine = createMachine(
                   | { type: 'LOGIN'; user: User }
                   | { type: 'LOGOUT' }
                   | { type: 'REFRESH' }
-                  | { type: 'EDIT_USER'; user: Partial<Pick<User, 'name' | 'badge' | 'theme'>> },
+                  | { type: 'EDIT_USER'; user: Partial<Pick<User, 'name' | 'badge' | 'theme'>> }
+                  | { type: 'REWARD'; exp: number },
       services: {} as {
         loadUser: { data: User };
         updateUser: { data: User };
         saveUser: { data: void };
+        calculateLevel: { data: User };
         cleanup: { data: void };
       },
     },
@@ -57,6 +64,7 @@ export const globalMachine = createMachine(
           LOGOUT: 'unauthorized',
           REFRESH: '.refreshing',
           EDIT_USER: '.updating',
+          REWARD: '.calculating',
         },
         states: {
           idle: {},
@@ -75,6 +83,17 @@ export const globalMachine = createMachine(
             entry: ['onUpdateUser'],
             invoke: {
               src: 'updateUser',
+              onDone: {
+                target: 'idle',
+                actions: 'setUser',
+              },
+              onError: 'idle',
+            },
+          },
+          calculating: {
+            entry: ['onCalculating'],
+            invoke: {
+              src: 'calculateLevel',
               onDone: {
                 target: 'idle',
                 actions: 'setUser',
@@ -128,6 +147,9 @@ export const globalMachine = createMachine(
       onUpdateUser: (_context, event) => {
         console.log(TAG, 'onUpdateUser', event.user);
       },
+      onCalculating: (_context, event) => {
+        console.log(TAG, 'onCalculating', event.exp);
+      },
       onUnauthorized: () => {
         console.log(TAG, 'onUnauthorized');
       },
@@ -151,6 +173,24 @@ export const globalMachine = createMachine(
       },
       saveUser: async (_context, event) => {
         await AsyncStorage.setItem('user', JSON.stringify(event.user));
+      },
+      calculateLevel: async (context, event) => {
+        const user = context.user;
+        if (!user) throw new Error('user not exist in context');
+
+        const earnedExp = event.exp;
+        const targetExp = AppManager.getExpByLevel(user.level);
+        const modifiedUser = { ...user, totalExp: user.totalExp + earnedExp } as User;
+
+        if (targetExp <= user.currentExp + earnedExp) {
+          modifiedUser.currentExp = user.currentExp + earnedExp - targetExp;
+          modifiedUser.level = user.level + 1;
+        } else {
+          modifiedUser.currentExp = user.currentExp + earnedExp;
+        }
+
+        await AsyncStorage.setItem('user', JSON.stringify(modifiedUser));
+        return modifiedUser;
       },
       cleanup: () => AsyncStorage.clear(),
     },

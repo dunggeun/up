@@ -1,23 +1,16 @@
 
 import React from 'react';
+import { useActor } from '@xstate/react';
 import { useSx, useDripsyTheme, Container } from 'dripsy';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { FadeInView } from 'src/components';
+import { AppManager } from 'src/modules';
 import { Profile } from './Profile';
 import { QuestList } from './QuestList';
 
 import type { MainTabProps } from 'src/navigators/MainTab/types';
 
 type HomeProps = MainTabProps<'Home'>;
-
-const dummyUser = {
-  name: '근둥',
-  exp: 100,
-  badge: 0,
-  theme: 0,
-  createdAt: Number(new Date()),
-  updatedAt: Number(new Date())
-};
 
 const dummyQuests = [
   {
@@ -112,10 +105,12 @@ const dummyQuests = [
   },
 ];
 
-export function Home (_props: HomeProps): JSX.Element {
+export function Home (_props: HomeProps): JSX.Element | null {
+  const [state] = useActor(AppManager.getInstance().getService());
   const { top } = useSafeAreaInsets();
   const { theme } = useDripsyTheme();
   const sx = useSx();
+  const user = state.context.user;
 
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const containerStyle = sx({
@@ -127,11 +122,15 @@ export function Home (_props: HomeProps): JSX.Element {
     // @todo: 퀘스트 생성 화면으로 이동
   };
 
+  if (!user) {
+    return null;
+  }
+
   return (
     <FadeInView>
       {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
       <Container style={containerStyle}>
-        <Profile user={dummyUser} />
+        <Profile user={user} />
         <QuestList
           onCreate={handlePressCreateQuestButton}
           quests={dummyQuests}
