@@ -22,3 +22,5 @@ export const TOUCHABLE_OPACITY_HIT_SLOP = {
 const window = Dimensions.get('window');
 export const WINDOW_WIDTH = window.width;
 export const WINDOW_HEIGHT = window.height;
+
+export const BASE_EXP = 3;
