@@ -74,7 +74,7 @@ export function Menu (_props: MenuProps): JSX.Element {
 
     try {
       await Promise.all([
-        app.resetUserData(),
+        app.reset(),
         delay(APP_MINIMUM_LOADING_DURATION),
       ]);
       setDeleteConfirmModalVisibility(false);

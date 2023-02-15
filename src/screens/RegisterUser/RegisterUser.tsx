@@ -5,6 +5,7 @@ import { styled, Container } from 'dripsy';
 import { SafeAreaView, KeyboardAvoidingView } from 'src/components';
 import { Button, Input, H1, AppBar } from 'src/designs';
 import { AppManager } from 'src/modules';
+import * as AppHelpers from 'src/modules/app/helpers';
 import { t } from 'src/translations';
 
 import type { RootStackProps } from 'src/navigators/RootStack/types';
@@ -39,10 +40,7 @@ export function RegisterUser ({ navigation }: RegisterUserProps): JSX.Element {
   const handlePressStartButton = (): void => {
     send({
       type: 'LOGIN',
-      user: {
-        ...AppManager.getBaseUser(),
-        name: userName,
-      },
+      user: AppHelpers.createUserData(userName),
     });
   };
 
