@@ -6,7 +6,7 @@ import React, {
 } from 'react';
 import { styled, View, Image } from 'dripsy';
 import { H1, Text, ProgressBar } from 'src/designs';
-import { AppManager } from 'src/modules';
+import * as AppHelpers from 'src/modules/app/helpers';
 
 import type { User } from 'src/types';
 
@@ -56,10 +56,10 @@ const LevelProgress = styled(ProgressBar)({
 
 export const Profile = memo(function Profile ({ user }: ProfileProps): JSX.Element {
   const [requiredExp, setRequiredExp] = useState(0); 
-  const { title: badgeTitle, image: badgeImage } = AppManager.getBadge(user.badge);
+  const { title: badgeTitle, image: badgeImage } = AppHelpers.getBadge(user.badge);
 
   useLayoutEffect(() => {
-    setRequiredExp(AppManager.getExpByLevel(user.level));
+    setRequiredExp(AppHelpers.getExpByLevel(user.level));
   }, [user.level]);
 
   const percent = useMemo(

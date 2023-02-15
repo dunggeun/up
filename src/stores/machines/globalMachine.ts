@@ -2,10 +2,7 @@
 /* eslint-disable no-console */
 import { createMachine, assign } from 'xstate';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
-// @todo: cycle 이슈 수정
-// eslint-disable-next-line import/no-cycle
-import { AppManager } from 'src/modules';
+import { getExpByLevel } from 'src/modules/app/helpers';
 
 import type { User } from 'src/types';
 
@@ -179,7 +176,7 @@ export const globalMachine = createMachine(
         if (!user) throw new Error('user not exist in context');
 
         const earnedExp = event.exp;
-        const targetExp = AppManager.getExpByLevel(user.level);
+        const targetExp = getExpByLevel(user.level);
         const modifiedUser = { ...user, totalExp: user.totalExp + earnedExp } as User;
 
         if (targetExp <= user.currentExp + earnedExp) {

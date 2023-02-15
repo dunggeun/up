@@ -2,7 +2,7 @@ import React, { memo } from 'react';
 import { styled, useSx, View } from 'dripsy';
 import { Section } from 'src/components';
 import { Button } from 'src/designs';
-import { AppManager } from 'src/modules';
+import * as AppHelpers from 'src/modules/app/helpers';
 import { t } from 'src/translations';
 
 import type { Theme } from 'src/modules/app/types';
@@ -41,7 +41,7 @@ export const ThemeSection = memo(function ThemeSection ({
   const getThemes = (): Theme[][] => {
     let row: Theme[] = [];
     const colors: Theme[][] = [];
-    const themeColors = AppManager.getThemeKeys();
+    const themeColors = AppHelpers.getThemes();
   
     for (let i = 0; i < themeColors.length; i++) {
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion

@@ -2,7 +2,7 @@ import React, { memo } from 'react';
 import { styled, useSx, View, Image } from 'dripsy';
 import { Section } from 'src/components';
 import { Button } from 'src/designs';
-import { AppManager } from 'src/modules';
+import * as AppHelpers from 'src/modules/app/helpers';
 import { t } from 'src/translations';
 
 import type { Badge } from 'src/modules/app/types';
@@ -48,10 +48,10 @@ export const BadgeSection = memo(function BadgeSection ({
   const getBadges = (): Badge[][] => {
     let row: Badge[] = [];
     const badges: Badge[][] = [];
-    const totalBadges = AppManager.getBadges();
+    const totalBadges = AppHelpers.getBadges();
 
     for (let i = 0; i < totalBadges.length; i++) {
-      const currentBadge = AppManager.getBadge(i);
+      const currentBadge = AppHelpers.getBadge(i);
       if (i % BADGES_PER_COUNT === 0) {
         row = [currentBadge];
         badges.push(row);
