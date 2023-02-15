@@ -35,7 +35,7 @@ export function OpenSourceProject ({
 
   return (
     <SafeAreaView insetBottom={false}>
-      <AppBar onBackPress={handlePressBackButton} title={t('title.open_source')} />
+      <AppBar onBackPress={handlePressBackButton} shadow title={t('title.open_source')} />
       <Container
         contentContainerStyle={{ paddingBottom: bottom }}
         sx={theme.layout.container}
