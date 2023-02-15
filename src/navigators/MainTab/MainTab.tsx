@@ -9,6 +9,7 @@ import {
   Home as HomeScreen,
   Menu as MenuScreen
 } from 'src/screens';
+import { useUserThemeColor } from 'src/hooks';
 import { t } from 'src/translations';
 
 import type { MainTabScreenParamList } from './types';
@@ -18,13 +19,14 @@ const MainTab = createBottomTabNavigator<MainTabScreenParamList>();
 export function MainTabNavigator(): JSX.Element {
   const { theme } = useDripsyTheme();
   const { bottom } = useSafeAreaInsets();
+  const userColor = useUserThemeColor();
 
   const tabBarOptions = useMemo(() => ({
     title: '',
     headerShown: false,
     unmountOnBlur: false,
     tabBarShowLabel: false,
-    tabBarActiveTintColor: theme.colors.$brand,
+    tabBarActiveTintColor: theme.colors[userColor],
     tabBarInactiveTintColor: theme.colors.$text_tertiary,
     tabBarStyle: {
       marginBottom: bottom || theme.space.$04,
@@ -32,7 +34,7 @@ export function MainTabNavigator(): JSX.Element {
     tabBarIconStyle: {
       transform: [{ scale: 1.5 }]
     },
-  }), [theme, bottom]);
+  }), [theme, bottom, userColor]);
 
   return (
     <MainTab.Navigator

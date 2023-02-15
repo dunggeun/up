@@ -7,6 +7,7 @@ import Animated, {
 } from 'react-native-reanimated';
 import { View } from 'dripsy';
 import { Button, Tag } from 'src/designs';
+import { useUserThemeColor } from 'src/hooks';
 
 import type { Quest } from 'src/types';
 
@@ -23,6 +24,7 @@ export function QuestItem ({
   index,
   animate
 }: QuestItemProps): JSX.Element {
+  const userColor = useUserThemeColor();
   const animateValue = useSharedValue(animate ? 1 : 0);
   const shouldShowBadge = data.current_streak > 0;
 
@@ -44,7 +46,7 @@ export function QuestItem ({
         color="$white"
         rightAdornment={
           shouldShowBadge
-            ? <Tag color="$brand" label={`x${data.current_streak}`}/>
+            ? <Tag color={userColor} label={`x${data.current_streak}`}/>
             : <View />
         }
       >

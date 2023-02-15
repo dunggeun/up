@@ -6,6 +6,7 @@ import React, {
 } from 'react';
 import { styled, View, Image } from 'dripsy';
 import { H1, Text, ProgressBar } from 'src/designs';
+import { useUserThemeColor } from 'src/hooks';
 import * as AppHelpers from 'src/modules/app/helpers';
 
 import type { User } from 'src/types';
@@ -55,7 +56,8 @@ const LevelProgress = styled(ProgressBar)({
 });
 
 export const Profile = memo(function Profile ({ user }: ProfileProps): JSX.Element {
-  const [requiredExp, setRequiredExp] = useState(0); 
+  const userColor = useUserThemeColor();
+  const [requiredExp, setRequiredExp] = useState(0);
   const { title: badgeTitle, image: badgeImage } = AppHelpers.getBadge(user.badge);
 
   useLayoutEffect(() => {
@@ -77,7 +79,7 @@ export const Profile = memo(function Profile ({ user }: ProfileProps): JSX.Eleme
         <Text variant="secondary">{badgeTitle}</Text>
       </InformationSection>
       <ProgressSection>
-        <LevelProgress color="$brand" max={requiredExp} value={user.currentExp} />
+        <LevelProgress color={userColor} max={requiredExp} value={user.currentExp} />
         <Text variant="tertiary">{`${percent}% (${user.currentExp}/${requiredExp})`}</Text>
       </ProgressSection>
     </Container>

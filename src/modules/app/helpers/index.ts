@@ -1,7 +1,13 @@
-import { BASE_EXP, BADGE_SET, FALLBACK_BADGE, THEMES } from '../data';
+import {
+  BASE_EXP,
+  BADGE_SET,
+  FALLBACK_BADGE,
+  THEMES,
+  FALLBACK_THEME
+} from '../data';
 
 import type { User } from 'src/types';
-import type { Badge } from '../types';
+import type { Badge, Theme } from '../types';
 
 export const createUserData = (name: string): User => {
   const currentTimestamp = Number(new Date());
@@ -30,6 +36,10 @@ export const getBadge = (id: number): Badge => {
 
 export const getBadges = (): typeof BADGE_SET => {
   return BADGE_SET;
+};
+
+export const getTheme = (id: number): Theme => {
+  return THEMES[id] ?? FALLBACK_THEME;
 };
 
 export const getThemes = (): typeof THEMES => THEMES;

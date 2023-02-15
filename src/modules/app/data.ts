@@ -28,11 +28,10 @@ export const THEMES: Theme[] = [
   { id: 4, key: '$mint' },
   { id: 5, key: '$sky' },
   { id: 6, key: '$purple' },
-  { id: 7, key: '$hot_pink' },
-  { id: 8, key: '$strawberry' },
-  { id: 9, key: '$orange' },
-  { id: 10, key: '$lemon' },
-  { id: 11, key: '$white' },
-  { id: 12, key: '$dark' },
-  { id: 13, key: '$black' },
+  { id: 7, key: '$strawberry' },
+  { id: 8, key: '$orange' },
+  { id: 9, key: '$dark' },
 ];
+
+// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+export const FALLBACK_THEME = THEMES[0]!;
