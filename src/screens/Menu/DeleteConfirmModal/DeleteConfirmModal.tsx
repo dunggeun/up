@@ -66,6 +66,9 @@ export function DeleteConfirmModal ({
           </Animated.View>
         </WarningSymbolArea>
         <Message variant="text.primary">{t('message.reset_data')}</Message>
+        <Message variant="text.secondary">
+          {`(${t('message.reset_data_guide')})`}
+        </Message>
         <Button
           color="$red"
           disabled={isLoading}
