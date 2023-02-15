@@ -1,13 +1,9 @@
 export const basicColors = {
   // Basic colors
-  $white: '#ffffff',
-  $black: '#000000',
   $red: '#f44336',
-  $hot_pink: '#ec407a',
   $strawberry: '#f8bbd0',
   $orange: '#ff9800',
   $yellow: '#ffeb3b',
-  $lemon: '#fff59d',
   $green: '#4caf50',
   $mint: '#80cbc4',
   $blue: '#2196f3',
@@ -22,6 +18,8 @@ export const colors = {
   $success: '#4caf50',
   $warning: '#ffeb3b',
   $danger: '#f44336',
+  $white: '#ffffff',
+  $black: '#000000',
   // Basic colors
   ...basicColors,
   // Text & Background colors
@@ -37,7 +35,6 @@ export const LIGHT_COLORS: (keyof typeof colors)[] = [
   '$white',
   '$strawberry',
   '$yellow',
-  '$lemon',
   '$mint',
   '$sky',
   '$secondary_1',

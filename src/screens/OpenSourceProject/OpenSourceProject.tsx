@@ -4,6 +4,7 @@ import { styled, useDripsyTheme, View } from 'dripsy';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { AppBar, Button } from 'src/designs';
 import { SafeAreaView, ListItem } from 'src/components';
+import { useUserThemeColor } from 'src/hooks';
 import { noop } from 'src/utils';
 import { UP_REPOSITORY_URL, DEPENDENCIES } from 'src/constants';
 import { t } from 'src/translations';
@@ -24,6 +25,7 @@ export function OpenSourceProject ({
 }: OpenSourceProjectProps): JSX.Element {
   const { theme } = useDripsyTheme();
   const { bottom } = useSafeAreaInsets();
+  const userColor = useUserThemeColor();
 
   const handlePressBackButton = (): void => {
     navigation.goBack();
@@ -42,7 +44,7 @@ export function OpenSourceProject ({
       >
         <UpRepositorySection>
           <Button
-            color="$brand"
+            color={userColor}
             disableLongPress
             onPress={handlePressUpRepository}
           >
