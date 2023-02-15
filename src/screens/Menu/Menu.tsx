@@ -2,17 +2,18 @@ import React, { useState } from 'react';
 import { useActor } from '@xstate/react';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { styled, Container, View } from 'dripsy';
-import { SafeAreaView, FadeInView } from 'src/components';
+import { SafeAreaView, FadeInView, ListItem } from 'src/components';
 import { H1, Text } from 'src/designs';
 import { useMainTabBarInset } from 'src/hooks';
-import { delay } from 'src/utils';
+import { delay, openMail } from 'src/utils';
 import { AppManager } from 'src/modules';
+import { navigate } from 'src/navigators/helpers';
 import {
   VERSION,
-  APP_MINIMUM_LOADING_DURATION
+  APP_MINIMUM_LOADING_DURATION,
+  DEVELOPER_EMAIL
 } from 'src/constants';
 import { t } from 'src/translations';
-import { MenuItem } from './MenuItem';
 import { DeleteConfirmModal } from './DeleteConfirmModal';
 
 import type { MainTabProps } from 'src/navigators/MainTab/types';
@@ -43,12 +44,11 @@ export function Menu (_props: MenuProps): JSX.Element {
   const [_, send] = useActor(app.getService());
   const { bottomInset } = useMainTabBarInset();
 
-  const handlePressVersion = (): void => {
-    // @todo
-  };
-
   const handlePressSendFeedback = (): void => {
-    // @todo
+    openMail(DEVELOPER_EMAIL, {
+      subject: t('template.send_feedback.title'),
+      body: t('template.send_feedback.body'),
+    });
   };
 
   const handlePressRating = (): void => {
@@ -56,7 +56,7 @@ export function Menu (_props: MenuProps): JSX.Element {
   };
 
   const handlePressOpenSource = (): void => {
-    // @todo
+    navigate('Common', 'OpenSourceProject');
   };
 
   const handlePressReset = (): void => {
@@ -94,20 +94,19 @@ export function Menu (_props: MenuProps): JSX.Element {
             <H1 variant="primary">{t('title.menu')}</H1>
           </Header>
           <Main>
-            <MenuItem
+            <ListItem
               label={t('label.version')}
-              onPress={handlePressVersion}
               subLabel={VERSION}
             />
-            <MenuItem
+            <ListItem
               label={t('label.send_feedback')}
               onPress={handlePressSendFeedback}
             />
-            <MenuItem
+            <ListItem
               label={t('label.rating')}
               onPress={handlePressRating}
             />
-            <MenuItem
+            <ListItem
               label={t('label.open_source')}
               onPress={handlePressOpenSource}
             />
