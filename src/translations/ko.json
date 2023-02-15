@@ -16,7 +16,8 @@
       "rating": "UP 평점주기 & 리뷰",
       "open_source": "오픈소스 프로젝트",
       "reset_data": "데이터 초기화",
-      "reset_confirm": "네, 삭제할게요"
+      "reset_confirm": "네, 삭제할게요",
+      "up_repository": "Up 소스코드 저장소"
     },
     "title": {
       "landing": "환영합니다",
@@ -25,7 +26,8 @@
       "profile": "프로필 정보",
       "home": "홈",
       "menu": "메뉴",
-      "reset_data": "UP 데이터 초기화"
+      "reset_data": "UP 데이터 초기화",
+      "open_source": "오픈소스 프로젝트"
     },
     "placeholder": {
       "enter_name": "이름을 입력해주세요"
@@ -37,6 +39,12 @@
     },
     "badge": {
       "0": "슈퍼유저"
+    },
+    "template": {
+      "send_feedback": {
+        "title": "Feedback for Up",
+        "body": ""
+      }
     }
   }
 }

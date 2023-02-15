@@ -1,7 +1,8 @@
 import { Dimensions } from 'react-native';
-import { version } from '../../package.json';
+import { version, dependencies } from '../../package.json';
 
 export const VERSION = version;
+export const DEPENDENCIES = dependencies;
 
 export const APP_MINIMUM_LOADING_DURATION = 1000;
 
@@ -22,3 +23,6 @@ export const TOUCHABLE_OPACITY_HIT_SLOP = {
 const window = Dimensions.get('window');
 export const WINDOW_WIDTH = window.width;
 export const WINDOW_HEIGHT = window.height;
+
+export const DEVELOPER_EMAIL = 'dev.ghlee@gmail.com';
+export const UP_REPOSITORY_URL = 'https://github.com/dunggeun/up';

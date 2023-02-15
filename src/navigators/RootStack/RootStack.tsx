@@ -8,6 +8,7 @@ import {
   RegisterUser as RegisterUserScreen,
 } from 'src/screens';
 import { MainTabNavigator } from '../MainTab';
+import { CommonStackNavigator } from '../CommonStack';
 
 import type { RootStackScreenParamList } from './types';
 
@@ -21,11 +22,17 @@ export function RootStackNavigator(): JSX.Element | null {
     switch (authorized) {
       case true:
         return (
-          <RootStack.Screen
-            component={MainTabNavigator}
-            name="Main"
-            options={{ animationEnabled: false }}
-          />
+          <>
+            <RootStack.Screen
+              component={MainTabNavigator}
+              name="Main"
+              options={{ animationEnabled: false }}
+            />
+            <RootStack.Screen
+              component={CommonStackNavigator}
+              name="Common"
+            />
+          </>
         );
 
       case false:

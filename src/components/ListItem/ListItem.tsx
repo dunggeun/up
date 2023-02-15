@@ -3,7 +3,7 @@ import { styled } from 'dripsy';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { H2, Text } from 'src/designs';
 
-export interface MenuItemProps {
+export interface ListItemProps {
   label: string;
   subLabel?: string;
   onPress?: () => void;
@@ -16,11 +16,11 @@ const Container = styled(TouchableOpacity)({
   paddingY: '$04',
 });
 
-export function MenuItem ({
+export function ListItem ({
   label,
   subLabel,
   onPress,
-}: MenuItemProps): JSX.Element {
+}: ListItemProps): JSX.Element {
   return (
     <Container onPress={onPress}>
       <H2 variant="primary">{label}</H2>
