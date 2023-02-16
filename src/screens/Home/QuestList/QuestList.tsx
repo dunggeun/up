@@ -3,7 +3,7 @@ import { FlatList } from 'react-native';
 import { styled, useDripsyTheme, View } from 'dripsy';
 import { Button, H2 } from 'src/designs';
 import { LinearGradient } from 'src/components';
-import { useMainTabBarInset } from 'src/hooks';
+import { useMainTabBarInset, useUserThemeColor } from 'src/hooks';
 import { WINDOW_HEIGHT } from 'src/constants';
 import { t } from 'src/translations';
 
@@ -60,6 +60,7 @@ function CreateQuestButton({ onPress }: Pick<ButtonProps, 'onPress'>): JSX.Eleme
 export function QuestList ({ quests, onCreate, onPress }: QuestListProps): JSX.Element {
   const { bottomInset } = useMainTabBarInset();
   const { theme } = useDripsyTheme();
+  const userColor = useUserThemeColor();
   const listStyle = useMemo(() => ({
     paddingTop: theme.space.$04,
     paddingHorizontal: theme.space.$04,
@@ -73,6 +74,7 @@ export function QuestList ({ quests, onCreate, onPress }: QuestListProps): JSX.E
         data={data.item}
         index={data.index}
         onPress={(): void => onPress(data.item.id)}
+        tagColor={userColor}
       />
     );
   };
@@ -95,7 +97,7 @@ export function QuestList ({ quests, onCreate, onPress }: QuestListProps): JSX.E
         }
         data={quests}
         extraData={quests}
-        keyExtractor={(data): string => data.id.toString()}
+        keyExtractor={(data): string => data.id.toString() + userColor}
         renderItem={renderItem}
         style={listStyle}
       />
