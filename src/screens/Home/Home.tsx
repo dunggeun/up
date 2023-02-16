@@ -4,6 +4,7 @@ import { useActor } from '@xstate/react';
 import { useSx, useDripsyTheme, Container } from 'dripsy';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { FadeInView } from 'src/components';
+import { navigate } from 'src/navigators/helpers';
 import { AppManager } from 'src/modules';
 import { Profile } from './Profile';
 import { QuestList } from './QuestList';
@@ -119,7 +120,7 @@ export function Home (_props: HomeProps): JSX.Element | null {
   });
 
   const handlePressCreateQuestButton = (): void => {
-    // @todo: 퀘스트 생성 화면으로 이동
+    navigate('Quest', 'CreateQuest');
   };
 
   if (!user) {

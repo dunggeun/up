@@ -4,6 +4,7 @@ import type { StackScreenProps } from '@react-navigation/stack';
 export type RootStackScreenParamList = {
   Main: undefined;
   Common: undefined;
+  Quest: undefined;
   Landing: undefined;
   RegisterUser: undefined;
 }

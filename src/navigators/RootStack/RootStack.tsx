@@ -1,14 +1,15 @@
 import React from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
-import { t } from 'src/translations';
+import { createStackNavigator, TransitionPresets } from '@react-navigation/stack';
 import { AppManager } from 'src/modules';
 import { useIsAuthorized } from 'src/hooks';
 import {
   Landing as LandingScreen,
   RegisterUser as RegisterUserScreen,
 } from 'src/screens';
+import { t } from 'src/translations';
 import { MainTabNavigator } from '../MainTab';
 import { CommonStackNavigator } from '../CommonStack';
+import { QuestStackNavigator } from '../QuestStack';
 
 import type { RootStackScreenParamList } from './types';
 
@@ -31,6 +32,11 @@ export function RootStackNavigator(): JSX.Element | null {
             <RootStack.Screen
               component={CommonStackNavigator}
               name="Common"
+            />
+            <RootStack.Screen
+              component={QuestStackNavigator}
+              name="Quest"
+              options={TransitionPresets.ModalSlideFromBottomIOS}
             />
           </>
         );

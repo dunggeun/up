@@ -1,3 +1,4 @@
+import type { QuestStackScreenParamList } from './QuestStack/types';
 import type { MainTabScreenParamList } from './MainTab/types';
 import type { CommonStackScreenParamList } from './CommonStack/types';
 
@@ -5,4 +6,5 @@ import type { CommonStackScreenParamList } from './CommonStack/types';
 export type NavigatorScreens = {
   Main: MainTabScreenParamList;
   Common: CommonStackScreenParamList;
+  Quest: QuestStackScreenParamList;
 }
