@@ -29,7 +29,7 @@ const FooterShadow = styled(LinearGradient)({
   paddingBottom: '$04',
 });
 
-function CommonLayout ({ children }: { children?: ReactNode }): JSX.Element {
+export function CommonLayout ({ children }: { children?: ReactNode }): JSX.Element {
   return (
     <SafeAreaView>
       <DripsyContainer>
