@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import { FlatList } from 'react-native';
 import { styled, useDripsyTheme, View } from 'dripsy';
-import { Button, H2 } from 'src/designs';
+import { Button, H2, H3 } from 'src/designs';
 import { LinearGradient } from 'src/components/LinearGradient';
 import { useMainTabBarInset, useUserThemeColor } from 'src/hooks';
 import { WINDOW_HEIGHT } from 'src/constants';
@@ -43,6 +43,14 @@ const ListShadow = styled(LinearGradient)({
 
 const ItemSeparatorComponent = styled(View)({
   marginBottom: '$04',
+});
+
+const ListEmptyComponent = styled(H3, {
+  defaultVariant: 'text.secondary',
+})({
+  width: '100%',
+  marginTop: '20%',
+  textAlign: 'center',
 });
 
 function CreateQuestButton({ onPress }: Pick<ButtonProps, 'onPress'>): JSX.Element {
@@ -87,6 +95,11 @@ export function QuestList ({ quests, onCreate, onPress }: QuestListProps): JSX.E
       </ListTitleArea>
       <FlatList
         ItemSeparatorComponent={ItemSeparatorComponent}
+        ListEmptyComponent={
+          <ListEmptyComponent>
+            {t('message.empty_quest')}
+          </ListEmptyComponent>
+        }
         ListFooterComponent={View}
         ListFooterComponentStyle={{ height: bottomInset }}
         ListHeaderComponent={
