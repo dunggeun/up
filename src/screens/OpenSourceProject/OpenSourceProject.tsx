@@ -1,9 +1,8 @@
 import React from 'react';
-import { Linking, ScrollView } from 'react-native';
-import { styled, useDripsyTheme, View } from 'dripsy';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { AppBar, Button } from 'src/designs';
-import { SafeAreaView, ListItem } from 'src/components';
+import { Linking } from 'react-native';
+import { styled, View } from 'dripsy';
+import { Button, CommonLayout } from 'src/designs';
+import { ListItem } from 'src/components';
 import { useUserThemeColor } from 'src/hooks';
 import { noop } from 'src/utils';
 import { UP_REPOSITORY_URL, DEPENDENCIES } from 'src/constants';
@@ -13,8 +12,6 @@ import type { CommonStackProps } from 'src/navigators/CommonStack/types';
 
 export type OpenSourceProjectProps = CommonStackProps<'OpenSourceProject'>;
 
-const Container = styled(ScrollView)();
-
 const UpRepositorySection = styled(View)({
   flex: 1,
   paddingY: '$04',
@@ -23,8 +20,6 @@ const UpRepositorySection = styled(View)({
 export function OpenSourceProject ({
   navigation
 }: OpenSourceProjectProps): JSX.Element {
-  const { theme } = useDripsyTheme();
-  const { bottom } = useSafeAreaInsets();
   const userColor = useUserThemeColor();
 
   const handlePressBackButton = (): void => {
@@ -36,12 +31,9 @@ export function OpenSourceProject ({
   };
 
   return (
-    <SafeAreaView insetBottom={false}>
-      <AppBar onBackPress={handlePressBackButton} shadow title={t('title.open_source')} />
-      <Container
-        contentContainerStyle={{ paddingBottom: bottom }}
-        sx={theme.layout.container}
-      >
+    <CommonLayout>
+      <CommonLayout.Header onBackPress={handlePressBackButton} title={t('title.open_source')} />
+      <CommonLayout.Body>
         <UpRepositorySection>
           <Button
             color={userColor}
@@ -54,7 +46,8 @@ export function OpenSourceProject ({
         {Object.keys(DEPENDENCIES).map((dependency) => (
           <ListItem key={dependency} label={dependency}/>
         ))}
-      </Container>
-    </SafeAreaView>
+      </CommonLayout.Body>
+      <CommonLayout.Footer />
+    </CommonLayout>
   );
 }
