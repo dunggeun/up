@@ -6,9 +6,9 @@ import { H1, Input } from 'src/designs';
 import {
   SafeAreaView,
   FadeInView,
-  LinearGradient,
   Section
 } from 'src/components';
+import { LinearGradient } from 'src/components/LinearGradient';
 import { AppManager } from 'src/modules';
 import { useMainTabBarInset, useDebounce } from 'src/hooks';
 import { t } from 'src/translations';

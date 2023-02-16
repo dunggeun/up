@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import { FlatList } from 'react-native';
 import { styled, useDripsyTheme, View } from 'dripsy';
 import { Button, H2 } from 'src/designs';
-import { LinearGradient } from 'src/components';
+import { LinearGradient } from 'src/components/LinearGradient';
 import { useMainTabBarInset, useUserThemeColor } from 'src/hooks';
 import { WINDOW_HEIGHT } from 'src/constants';
 import { t } from 'src/translations';
