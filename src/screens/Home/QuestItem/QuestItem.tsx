@@ -15,6 +15,7 @@ export interface QuestItemProps {
   data: Quest;
   index: number;
   animate: boolean;
+  onPress: () => void;
 }
 
 const DELAY = 80;
@@ -22,7 +23,8 @@ const DELAY = 80;
 export function QuestItem ({
   data,
   index,
-  animate
+  animate,
+  onPress,
 }: QuestItemProps): JSX.Element {
   const userColor = useUserThemeColor();
   const animateValue = useSharedValue(animate ? 1 : 0);
@@ -44,6 +46,7 @@ export function QuestItem ({
     <Animated.View style={animatedViewStyle}>
       <Button
         color="$white"
+        onPress={onPress}
         rightAdornment={
           shouldShowBadge
             ? <Tag color={userColor} label={`x${data.current_streak}`}/>

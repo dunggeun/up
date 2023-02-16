@@ -20,6 +20,8 @@ export const TOUCHABLE_OPACITY_HIT_SLOP = {
   right: HIT_SLOP,
 } as const;
 
+export const DATE_FORMAT = 'YYYY.MM.DD';
+
 const window = Dimensions.get('window');
 export const WINDOW_WIDTH = window.width;
 export const WINDOW_HEIGHT = window.height;

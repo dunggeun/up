@@ -16,6 +16,7 @@ import type { Quest } from 'src/types';
 export interface QuestListProps {
   quests: Quest[];
   onCreate: () => void;
+  onPress: (id: number) => void;
 }
 
 const SHADOW_HEIGHT = 16;
@@ -56,7 +57,7 @@ function CreateQuestButton({ onPress }: Pick<ButtonProps, 'onPress'>): JSX.Eleme
   );
 }
 
-export function QuestList ({ quests, onCreate }: QuestListProps): JSX.Element {
+export function QuestList ({ quests, onCreate, onPress }: QuestListProps): JSX.Element {
   const { bottomInset } = useMainTabBarInset();
   const { theme } = useDripsyTheme();
   const listStyle = useMemo(() => ({
@@ -71,6 +72,7 @@ export function QuestList ({ quests, onCreate }: QuestListProps): JSX.Element {
         animate={LAST_ANIMATABLE_ITEM_INDEX > data.index}
         data={data.item}
         index={data.index}
+        onPress={(): void => onPress(data.item.id)}
       />
     );
   };

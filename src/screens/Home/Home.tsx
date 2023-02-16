@@ -123,6 +123,10 @@ export function Home (_props: HomeProps): JSX.Element | null {
     navigate('Quest', 'CreateQuest');
   };
 
+  const handlePressQuestButton = (questId: number): void => {
+    navigate('Quest', 'QuestDetail', { id: questId });
+  };
+
   if (!user) {
     return null;
   }
@@ -134,6 +138,7 @@ export function Home (_props: HomeProps): JSX.Element | null {
         <Profile user={user} />
         <QuestList
           onCreate={handlePressCreateQuestButton}
+          onPress={handlePressQuestButton}
           quests={dummyQuests}
         />
       </Container>
