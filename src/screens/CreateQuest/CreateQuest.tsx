@@ -1,8 +1,7 @@
 import React, { useState, useRef, useCallback } from 'react';
 import { Animated } from 'react-native';
-import { styled, Container, View } from 'dripsy';
-import { SafeAreaView } from 'src/components';
-import { AppBar, Button, Input, H1, H2, Text } from 'src/designs';
+import { styled, View } from 'dripsy';
+import { CommonLayout, Button, Input, H1, H2, Text } from 'src/designs';
 import { useUserThemeColor } from 'src/hooks';
 import { t } from 'src/translations';
 
@@ -19,21 +18,16 @@ enum CreateQuestPhase {
 const MEMO_INPUT_HEIGHT = 200;
 const FADE_DURATION = 250;
 
-const Content = styled(Animated.View)({ flex: 1 });
+const PhaseWrapper = styled(Animated.View)({ flex: 1 });
 
-const Body = styled(View)({
+const Content = styled(View)({
   flex: 1,
   gap: '$04',
 });
 
-const Header = styled(View)({
+const Description = styled(View)({
   width: '100%',
   paddingY: '$04',
-});
-
-const Footer = styled(View)({
-  gap: '$04',
-  paddingBottom: '$04',
 });
 
 const MemoInput = styled(Input)({
@@ -112,17 +106,19 @@ export function CreateQuest ({ navigation }: CreateQuestProps): JSX.Element {
     switch (phase) {
       case CreateQuestPhase.EnterTitle:
         return (
-          <React.Fragment key={CreateQuestPhase.EnterTitle}>
-            <Header>
-              <H1 variant="primary">{t('title.new_quest_title')}</H1>
-            </Header>
-            <Body>
-              <Input
-                onChangeText={setQuestName}
-                placeholder={t('placeholder.enter_name')}
-              />
-            </Body>
-            <Footer>
+          <>
+            <CommonLayout.Body key={CreateQuestPhase.EnterTitle}>
+              <Description>
+                <H1 variant="primary">{t('title.new_quest_title')}</H1>
+              </Description>
+              <Content>
+                <Input
+                  onChangeText={setQuestName}
+                  placeholder={t('placeholder.enter_name')}
+                />
+              </Content>
+            </CommonLayout.Body>
+            <CommonLayout.Footer>
               <Button
                 color={userColor}
                 disableLongPress
@@ -131,44 +127,48 @@ export function CreateQuest ({ navigation }: CreateQuestProps): JSX.Element {
               >
                 {t('label.next')}
               </Button>
-            </Footer>
-          </React.Fragment>
+            </CommonLayout.Footer>
+          </>
         );
 
       case CreateQuestPhase.EnterMemo:
         return (
-          <React.Fragment key={CreateQuestPhase.EnterMemo}>
-            <Header>
-              <H1 variant="primary">{t('title.new_quest_memo')}</H1>
-            </Header>
-            <Body>
-              <H2 variant="primary">{questName}</H2>
-              <MemoInput
-                multiline
-                onChangeText={setQuestMemo}
-                placeholder={t('placeholder.enter_memo')}
-              />
-            </Body>
-            <Footer>
+          <>
+            <CommonLayout.Body key={CreateQuestPhase.EnterMemo}>
+              <Description>
+                <H1 variant="primary">{t('title.new_quest_memo')}</H1>
+              </Description>
+              <Content>
+                <H2 variant="primary">{questName}</H2>
+                <MemoInput
+                  multiline
+                  onChangeText={setQuestMemo}
+                  placeholder={t('placeholder.enter_memo')}
+                />
+              </Content>
+            </CommonLayout.Body>
+            <CommonLayout.Footer>
               <AcceptMessage>{t('message.quest_warning')}</AcceptMessage>
               <Button color={userColor} onLongPress={handlePressNextButton}>
                 {t('label.accept_quest')}
               </Button>
-            </Footer>
-          </React.Fragment>
+            </CommonLayout.Footer>
+          </>
         );
 
       case CreateQuestPhase.Accepted:
         return (
-          <React.Fragment key={CreateQuestPhase.Accepted}>
-            <Header>
-              <H1 variant="primary">{t('title.new_quest_accepted')}</H1>
-            </Header>
-            <Body>
-              <H2 variant="primary">{questName}</H2>
-              <Text variant="secondary">{questMemo}</Text>
-            </Body>
-            <Footer>
+          <>
+            <CommonLayout.Body key={CreateQuestPhase.Accepted}>
+              <Description>
+                <H1 variant="primary">{t('title.new_quest_accepted')}</H1>
+              </Description>
+              <Content>
+                <H2 variant="primary">{questName}</H2>
+                <Text variant="secondary">{questMemo}</Text>
+              </Content>
+            </CommonLayout.Body>
+            <CommonLayout.Footer>
               <Button
                 color="$white"
                 disableLongPress
@@ -183,27 +183,23 @@ export function CreateQuest ({ navigation }: CreateQuestProps): JSX.Element {
               >
                 {t('label.ok')}
               </Button>
-            </Footer>
-          </React.Fragment>
+            </CommonLayout.Footer>
+          </>
         );
     }
   };
 
   return (
-    <SafeAreaView>
-      <AppBar
-        onBackPress={
+    <CommonLayout>
+      <CommonLayout.Header onBackPress={
           phase === CreateQuestPhase.EnterMemo
             ? handlePressBackButton
             : undefined
         }
-        onClosePress={handlePressCloseButton}
-      />
-      <Container>
-        <Content style={{ opacity: fadeAnimation }}>
-          {renderContent()}
-        </Content>
-      </Container>
-    </SafeAreaView>
+        onClosePress={handlePressCloseButton} />
+      <PhaseWrapper style={{ opacity: fadeAnimation }}>
+        {renderContent()}
+      </PhaseWrapper>
+    </CommonLayout>
   );
 }
