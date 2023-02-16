@@ -21,7 +21,15 @@
       "next": "다음으로",
       "accept_quest": "길게 눌러 퀘스트 수락하기",
       "share": "공유하기",
-      "ok": "확인"
+      "ok": "확인",
+      "quest_done": "퀘스트 완료하기",
+      "weekday_0": "일",
+      "weekday_1": "월",
+      "weekday_2": "화",
+      "weekday_3": "수",
+      "weekday_4": "목",
+      "weekday_5": "금",
+      "weekday_6": "토"
     },
     "title": {
       "landing": "환영합니다",
@@ -34,7 +42,11 @@
       "open_source": "오픈소스 프로젝트",
       "new_quest_title": "새로운 퀘스트 제목을\n입력해주세요",
       "new_quest_memo": "퀘스트에 남기고 싶은\n메모가 있나요?",
-      "new_quest_accepted": "새로운 퀘스트를\n수락했어요"
+      "new_quest_accepted": "새로운 퀘스트를\n수락했어요",
+      "memo": "메모",
+      "quest_info": "퀘스트 정보",
+      "quest_history_in_4_week": "최근 4주 퀘스트 기록",
+      "quest_total_exp": "누적 경험치"
     },
     "placeholder": {
       "enter_name": "이름을 입력해주세요",
@@ -45,7 +57,10 @@
       "enter_name": "업 도전자님의\n이름을 알려주세요",
       "reset_data": "지금까지 기록된 데이터가 모두 사라지고\n이전으로 되돌릴 수 없어요.\n\n정말 삭제하시겠어요?",
       "reset_data_guide": "삭제 하시려면 버튼을 길게 눌러주세요",
-      "quest_warning": "퀘스트를 수락하면 제목과 메모를\n변경하기 어려우니 신중하게 확인해주세요"
+      "quest_warning": "퀘스트를 수락하면 제목과 메모를\n변경하기 어려우니 신중하게 확인해주세요",
+      "quest_description": "지금까지 %@번 챌린지를 완료했고, 최대 %@일 연속 기록을 달성했어요",
+      "quest_current_streak": "(현재 연속 기록: %@일)",
+      "quest_total_exp": "%@ 부터 지금까지 본 퀘스트로 얻은 경험치는 아래와 같아요"
     },
     "badge": {
       "0": "슈퍼유저"

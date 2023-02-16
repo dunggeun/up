@@ -14,5 +14,5 @@ export const navigate = <
   screenName: ScreenName,
   params?: ParamType
 ): void => {
-  navigationRef.current?.navigate(name as string, { screenName, params } as object);
+  navigationRef.current?.navigate(name as string, { screen: screenName, params } as object);
 };

@@ -4,5 +4,6 @@ export * from './Landing';
 export * from './Menu';
 export * from './OpenSourceProject';
 export * from './Profile';
+export * from './QuestDetail';
 export * from './RegisterUser';
 export * from './SplashScreen';
