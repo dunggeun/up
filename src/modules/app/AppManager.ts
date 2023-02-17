@@ -19,6 +19,7 @@ export class AppManager {
     this.service.start();
     this.task = Promise.all([
       (async (): Promise<void> => {
+        await this.storageManager.initialize();
         if (await this.authorize()) {
           setRecoil(questList, await this.storageManager.getQuestList());
         }

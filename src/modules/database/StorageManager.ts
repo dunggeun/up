@@ -9,10 +9,7 @@ export class StorageManager {
   private database = new DatabaseModule();
 
   private constructor () {
-    this.database.initialize().catch((error) => {
-      // eslint-disable-next-line no-console
-      console.error('StorageManager', error);
-    });
+    // empty constructor
   }
 
   public static getInstance (): StorageManager {
@@ -21,6 +18,10 @@ export class StorageManager {
     }
     return StorageManager.instance;
   }
+
+  initialize (): Promise<void> {
+    return this.database.initialize();
+  }  
 
   getQuestList (): Promise<Quest[]> {
     return this.database.select('quest', undefined, {
