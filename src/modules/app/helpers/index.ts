@@ -6,7 +6,7 @@ import {
   FALLBACK_THEME
 } from '../data';
 
-import type { User } from 'src/types';
+import type { User, Quest } from 'src/types';
 import type { Badge, Theme } from '../types';
 
 export const createUserData = (name: string): User => {
@@ -20,6 +20,19 @@ export const createUserData = (name: string): User => {
     theme: 0,
     createdAt: currentTimestamp,
     updatedAt: currentTimestamp,
+  };
+};
+
+export const createQuestData = (title: string, description = ''): Quest => {
+  const currentTimestamp = Number(new Date());
+  return {
+    id: currentTimestamp,
+    title,
+    description,
+    current_streak: 0,
+    max_streak: 0,
+    created_at: currentTimestamp,
+    finished_at: 0,
   };
 };
 

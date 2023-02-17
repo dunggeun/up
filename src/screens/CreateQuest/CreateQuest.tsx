@@ -1,8 +1,12 @@
 import React, { useState, useRef, useCallback } from 'react';
 import { Animated } from 'react-native';
 import { styled, View } from 'dripsy';
+import { getRecoil, setRecoil } from 'recoil-nexus';
 import { CommonLayout, Button, Input, H1, H2, Text } from 'src/designs';
 import { useUserThemeColor } from 'src/hooks';
+import { StorageManager } from 'src/modules';
+import { createQuestData } from 'src/modules/app/helpers';
+import { questList } from 'src/stores';
 import { t } from 'src/translations';
 
 import type { QuestStackProps } from 'src/navigators/QuestStack/types';
@@ -21,6 +25,7 @@ const FADE_DURATION = 250;
 const PhaseWrapper = styled(Animated.View)({ flex: 1 });
 
 const Content = styled(View)({
+  position: 'relative',
   flex: 1,
   gap: '$04',
 });
@@ -78,6 +83,16 @@ export function CreateQuest ({ navigation }: CreateQuestProps): JSX.Element {
     });
   }, [fadeAnimation]);
 
+  const createQuest = useCallback(() => {
+    const newQuest = createQuestData(questName, questMemo);
+    return StorageManager
+      .getInstance()
+      .addQuest(newQuest)
+      .then(() => {
+        setRecoil(questList, [newQuest, ...getRecoil(questList)]); 
+      });
+  }, [questName, questMemo]);
+
   const handlePressNextButton = useCallback((): void => {
     switch (phase) {
       case CreateQuestPhase.EnterTitle:
@@ -85,8 +100,14 @@ export function CreateQuest ({ navigation }: CreateQuestProps): JSX.Element {
         break;
 
       case CreateQuestPhase.EnterMemo:
-        // @todo 퀘스트 생성 및 저장
-        changePhase(CreateQuestPhase.Accepted);
+        createQuest()
+          .then(() => {
+            changePhase(CreateQuestPhase.Accepted);
+          })
+          .catch((error) => {
+            // eslint-disable-next-line no-console
+            console.error('createQuest', error);
+          });
         break;
 
       case CreateQuestPhase.Accepted:
@@ -96,7 +117,7 @@ export function CreateQuest ({ navigation }: CreateQuestProps): JSX.Element {
       default:
         break;
     }
-  }, [phase, navigation, changePhase]);
+  }, [phase, navigation, createQuest, changePhase]);
 
   const handlePressShareButton = useCallback((): void => {
     // @todo

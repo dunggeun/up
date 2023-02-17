@@ -1,4 +1,5 @@
 import React, { useState, useCallback, useEffect } from 'react';
+import { getRecoil, setRecoil } from 'recoil-nexus';
 import { styled } from 'dripsy';
 import dayjs from 'dayjs';
 import { Button, H3, Text } from 'src/designs';
@@ -7,6 +8,8 @@ import { useUserThemeColor } from 'src/hooks';
 import { replacePlaceholder } from 'src/utils';
 import { DATE_FORMAT } from 'src/constants';
 import { t } from 'src/translations';
+import { StorageManager } from 'src/modules';
+import { questList } from '../../stores/recoil/quest/atom';
 import { DetailSection, WeeklyHistory } from './components';
 
 import type { Quest } from 'src/types';
@@ -33,18 +36,14 @@ export function QuestDetail ({ navigation, route }: QuestDetailProps): JSX.Eleme
   const userColor = useUserThemeColor();
 
   useEffect(() => {
-    // @todo
-    setTimeout(() => {
-      setQuest({
-        id,
-        title: '테스트 퀘스트',
-        description: '메모에요',
-        created_at: new Date().valueOf(),
-        finished_at: 0,
-        current_streak: 0,
-        max_streak: 0,
+    StorageManager
+      .getInstance()
+      .getQuest(id)
+      .then(setQuest)
+      .catch((error) => {
+        // eslint-disable-next-line no-console
+        console.error('getQuest', error);
       });
-    }, 500);
   }, [id]);
 
   const handlePressCloseButton = (): void => {
@@ -52,8 +51,34 @@ export function QuestDetail ({ navigation, route }: QuestDetailProps): JSX.Eleme
   };
 
   const handlePressDoneButton = useCallback((): void => {
-    // @todo
-  }, []);
+    const currentQuestList = getRecoil(questList);
+    const targetQuestIndex = currentQuestList.findIndex((data) => data.id === id);
+    const targetQuest = currentQuestList[targetQuestIndex];
+    const currentTimestamp = Number(new Date());
+  
+    if (!targetQuest) return;
+
+    StorageManager
+      .getInstance()
+      .updateQuest(id, {
+        ...targetQuest,
+        finished_at: currentTimestamp
+      })
+      .then(() => {
+        const updatedQuest = currentQuestList[targetQuestIndex];
+        if (updatedQuest) {
+          updatedQuest.finished_at = currentTimestamp;
+        }
+        setRecoil(questList, [...currentQuestList]);
+
+        // @todo 안내 모달 노출 후 뒤로가기 처리
+        navigation.goBack();
+      })
+      .catch((error) => {
+        // eslint-disable-next-line no-console
+        console.error('updateQuest', error);
+      });
+  }, [id, navigation]);
 
   if (quest === null) {
     return null;
