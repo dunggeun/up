@@ -6,10 +6,10 @@ import { Button, H3, Text } from 'src/designs';
 import { CommonLayout } from 'src/designs/layouts/CommonLayout';
 import { useUserThemeColor } from 'src/hooks';
 import { replacePlaceholder } from 'src/utils';
+import { StorageManager } from 'src/modules';
+import { questList } from 'src/stores';
 import { DATE_FORMAT } from 'src/constants';
 import { t } from 'src/translations';
-import { StorageManager } from 'src/modules';
-import { questList } from '../../stores/recoil/quest/atom';
 import { DetailSection, WeeklyHistory } from './components';
 
 import type { Quest } from 'src/types';
