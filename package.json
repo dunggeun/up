@@ -48,6 +48,8 @@
     "react-native-sqlite-storage": "^6.0.1",
     "react-native-svg": "^13.7.0",
     "react-native-web": "^0.18.10",
+    "recoil": "^0.7.6",
+    "recoil-nexus": "^0.4.0",
     "xstate": "^4.35.2"
   },
   "devDependencies": {

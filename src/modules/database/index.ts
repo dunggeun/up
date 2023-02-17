@@ -1,1 +1,1 @@
-export { NativeDatabaseModule as DatabaseModule } from './native';
+export * from './StorageManager';

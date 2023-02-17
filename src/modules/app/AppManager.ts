@@ -1,14 +1,16 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { interpret, type InterpreterFrom } from 'xstate';
-import { globalMachine } from 'src/stores';
+import { setRecoil } from 'recoil-nexus';
+import { globalMachine, questList } from 'src/stores';
 import { delay } from 'src/utils';
 import { APP_MINIMUM_LOADING_DURATION } from 'src/constants';
-import { DatabaseModule } from '../database';
+import { StorageManager } from '../database';
+
 
 export class AppManager {
   private static instance: AppManager | null = null;
+  private storageManager = StorageManager.getInstance();
   private service = interpret(globalMachine);
-  private database = new DatabaseModule();
   private status: 'pending' | 'fulfilled' | 'error' = 'pending';
   private task: Promise<void>;
   private error: Error | null = null;
@@ -16,10 +18,9 @@ export class AppManager {
   private constructor() {
     this.service.start();
     this.task = Promise.all([
-      this.database.initialize(),
       (async (): Promise<void> => {
         if (await this.authorize()) {
-          // @todo: 사용자 데이터 로드
+          setRecoil(questList, await this.storageManager.getQuestList());
         }
       })(),
       delay(APP_MINIMUM_LOADING_DURATION),
@@ -70,10 +71,7 @@ export class AppManager {
   }
 
   async reset(): Promise<void> {
-    await Promise.all([
-      this.database.clear('quest'),
-      this.database.clear('achieve'),
-    ]);
+    await this.storageManager.clear();
     await AsyncStorage.clear();
   }
 }

@@ -1,5 +1,7 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, type PropsWithChildren } from 'react';
 import { StatusBar } from 'react-native';
+import { RecoilRoot } from 'recoil';
+import RecoilNexus from 'recoil-nexus';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
@@ -7,7 +9,6 @@ import { DripsyProvider } from 'dripsy';
 import { navigationRef } from 'src/navigators/helpers';
 import { titleFormatter } from 'src/utils';
 import { themeLight } from 'src/themes';
-import type { PropsWithChildren } from 'react';
 
 // eslint-disable-next-line import/no-named-as-default-member
 const Navigator = React.lazy(() => import('src/navigators'));
@@ -19,12 +20,15 @@ function AppProviders<T = unknown>({ children }: PropsWithChildren<T>): JSX.Elem
     <GestureHandlerRootView style={gestureHandlerStyle}>
       <SafeAreaProvider>
         <DripsyProvider theme={themeLight}>
-          <NavigationContainer
-            documentTitle={{ formatter: titleFormatter }}
-            ref={navigationRef}
-          >
-            {children}
-          </NavigationContainer>
+          <RecoilRoot>
+            <RecoilNexus />
+            <NavigationContainer
+              documentTitle={{ formatter: titleFormatter }}
+              ref={navigationRef}
+            >
+              {children}
+            </NavigationContainer>
+          </RecoilRoot>
         </DripsyProvider>
       </SafeAreaProvider>
     </GestureHandlerRootView>

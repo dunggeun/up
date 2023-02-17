@@ -50,6 +50,7 @@ module.exports = {
             ],
           },
         ],
+        'no-bitwise': 'off',
         'array-bracket-spacing': 'off',
         'unicorn/filename-case': 'off',
         'react-native-a11y/has-accessibility-props': [
