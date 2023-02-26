@@ -28,3 +28,10 @@ export const WINDOW_HEIGHT = window.height;
 
 export const DEVELOPER_EMAIL = 'dev.ghlee@gmail.com';
 export const UP_REPOSITORY_URL = 'https://github.com/dunggeun/up';
+
+export const SHARED_CONFIG = {
+  scrollableViewProps: {
+    onStartShouldSetResponderCapture: () => true,
+    onMoveShouldSetResponderCapture: () => true,
+  },
+} as const;

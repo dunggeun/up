@@ -1,9 +1,10 @@
 import React, { type ReactNode } from 'react';
-import { ScrollView } from 'react-native';
+import { Animated } from 'react-native';
 import { styled, Container as DripsyContainer, View } from 'dripsy';
 import { LinearGradient } from 'src/components/LinearGradient';
 import { SafeAreaView } from 'src/components/SafeAreaView';
 import { AppBar, type AppBarProps } from 'src/designs/molecules/AppBar';
+import { SHARED_CONFIG } from 'src/constants';
 
 const HeaderWrapper = styled(View)({
   marginX: '-$04',
@@ -49,11 +50,11 @@ CommonLayout.Header = function Header (props: Omit<AppBarProps, 'shadow'>): JSX.
 
 CommonLayout.Body = function Body ({ children }: { children?: ReactNode }): JSX.Element {
   return (
-    <ScrollView>
+    <Animated.ScrollView {...SHARED_CONFIG.scrollableViewProps}>
       <BodyWrapper>
         {children}
       </BodyWrapper>
-    </ScrollView>
+    </Animated.ScrollView>
   );
 };
 
