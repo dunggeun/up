@@ -1,10 +1,10 @@
 import React, { useMemo } from 'react';
-import { FlatList } from 'react-native';
+import { Animated } from 'react-native';
 import { styled, useDripsyTheme, View } from 'dripsy';
 import { Button, H2, H3 } from 'src/designs';
 import { LinearGradient } from 'src/components/LinearGradient';
 import { useMainTabBarInset, useUserThemeColor } from 'src/hooks';
-import { WINDOW_HEIGHT } from 'src/constants';
+import { SHARED_CONFIG, WINDOW_HEIGHT } from 'src/constants';
 import { t } from 'src/translations';
 
 import { BUTTON_HEIGHT } from 'src/designs/atoms/Button/constants';
@@ -93,7 +93,7 @@ export function QuestList ({ quests, onCreate, onPress }: QuestListProps): JSX.E
         <H2 variant="primary">{t('title.quest_in_progress')}</H2>
         <ListShadow color={theme.colors.$white} rotate={90} toOpacity={0} />
       </ListTitleArea>
-      <FlatList
+      <Animated.FlatList
         ItemSeparatorComponent={ItemSeparatorComponent}
         ListEmptyComponent={
           <ListEmptyComponent>
@@ -113,6 +113,7 @@ export function QuestList ({ quests, onCreate, onPress }: QuestListProps): JSX.E
         keyExtractor={(data): string => data.id.toString() + userColor}
         renderItem={renderItem}
         style={listStyle}
+        {...SHARED_CONFIG.scrollableViewProps}
       />
     </ListContainer>
   );

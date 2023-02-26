@@ -1,17 +1,9 @@
-import { useMemo } from 'react';
-import { Platform, type ViewStyle } from 'react-native';
+import { useRef, type ComponentProps } from 'react';
 import {
-  Gesture,
-  type TapGesture,
-  type ExclusiveGesture
-} from 'react-native-gesture-handler';
-import {
-  useSharedValue,
-  useAnimatedStyle,
-  withDelay,
-  withTiming,
-  runOnJS
-} from 'react-native-reanimated';
+  Animated,
+  PanResponder,
+  type PanResponderInstance
+} from 'react-native';
 import { triggerHaptic } from 'src/utils';
 import {
   PRESS_DEPTH,
@@ -27,73 +19,89 @@ interface AnimatedStyleWithGestureConfig {
   onLongPress?: () => void;
 }
 
+type AnimatedStyle = ComponentProps<typeof Animated.View>['style'];
+
+enum AnimateState {
+  ACTIVE = 1,
+  INACTIVE = 0
+}
+
 export const useAnimatedStyleWithGesture = ({
   disableHaptic,
   disableLongPress,
   onPress,
   onLongPress,
 }: AnimatedStyleWithGestureConfig): {
-  gesture: TapGesture | ExclusiveGesture,
-  capStyle: ViewStyle,
-  dimStyle: ViewStyle,
+  responder: PanResponderInstance,
+  capStyle: AnimatedStyle,
+  dimStyle: AnimatedStyle,
+
 } => {
-  const capPosition = useSharedValue(0);
-  const dimPosition = useSharedValue(0);
-  const capStyle = useAnimatedStyle(() => ({ top: capPosition.value }));
-  const dimStyle = useAnimatedStyle(() => ({ top: capPosition.value, width: `${dimPosition.value}%` }));
+  const timeoutRef = useRef<NodeJS.Timeout>();
+  const isLongPressRef = useRef(false);
+  const capPosition = useRef(new Animated.Value(0)).current;
+  const dimSize = useRef(new Animated.Value(0)).current;
 
-  const pressGesture = useMemo(() => {
-    const release = (): void => {
-      'worklet';
-      capPosition.value = withTiming(0, { duration: RELEASE_DURATION });
-    };
+  const applyTapAnimation = (): void => {
+    capPosition.setValue(PRESS_DEPTH);
+  };
 
-    return (
-      Gesture.Tap()
-        .onStart(() => {
-          // Haptic feedback on only iOS
-          Platform.OS === 'ios' && !disableHaptic && runOnJS(triggerHaptic)();
-          capPosition.value = PRESS_DEPTH;
-        })
-        .onTouchesUp(release)
-        .onTouchesCancelled(release)
-        .onEnd(() => {
-          release();
-          onPress && runOnJS(onPress)();
-        })
-    );
-  }, [capPosition, disableHaptic, onPress]);
+  const applyLongTapAnimation = (): void => {
+    Animated.timing(dimSize, {
+      toValue: AnimateState.ACTIVE,
+      useNativeDriver: false,
+      delay: LONG_PRESS_DELAY,
+      duration: LONG_PRESS_DURATION - LONG_PRESS_DELAY,
+    }).start();
+  };
 
-  const longPressGesture = useMemo(() => (
-    Gesture
-      .LongPress()
-      .minDuration(LONG_PRESS_DURATION)
-      .onBegin(() => {
-        dimPosition.value = withDelay(
-          LONG_PRESS_DELAY,
-          withTiming(100, {
-            duration: LONG_PRESS_DURATION - LONG_PRESS_DELAY
-          })
-        );
-      })
-      .onStart(() => {
-        Platform.OS === 'ios' && !disableHaptic && runOnJS(triggerHaptic)();
-        onLongPress && runOnJS(onLongPress)();
-        capPosition.value = PRESS_DEPTH;
-      })
-      .onEnd(() => {
-        capPosition.value = withTiming(0, { duration: RELEASE_DURATION });
-      })
-      .onFinalize(() => {
-        dimPosition.value = withTiming(0, { duration: RELEASE_DURATION });
-      })
-  ), [capPosition, dimPosition, disableHaptic, onLongPress]);
+  const releaseAnimations = (): void => {
+    clearTimeout(timeoutRef.current);
+    Animated.timing(capPosition, {
+      useNativeDriver: false,
+      duration: RELEASE_DURATION,
+      toValue: AnimateState.INACTIVE,
+    }).start();
+    Animated.timing(dimSize, {
+      useNativeDriver: false,
+      duration: RELEASE_DURATION,
+      toValue: AnimateState.INACTIVE,
+    }).start();
+  };
 
-  const gesture = useMemo(() => (
-    disableLongPress
-      ? pressGesture
-      : Gesture.Exclusive(pressGesture, longPressGesture)
-  ), [pressGesture, longPressGesture, disableLongPress]);
+  const responder = useRef(
+    PanResponder.create({
+      onStartShouldSetPanResponder: () => true,
+      onPanResponderTerminate: () => releaseAnimations(),
+      onPanResponderGrant: () => {
+        !disableHaptic && triggerHaptic('impactLight');
+        applyTapAnimation();
 
-  return { gesture, capStyle, dimStyle };
+        if (disableLongPress) return;
+
+        clearTimeout(timeoutRef.current);
+        timeoutRef.current = setTimeout(() => {
+          isLongPressRef.current = true;
+          !disableHaptic && triggerHaptic('rigid');
+        }, LONG_PRESS_DURATION);
+        applyLongTapAnimation();
+      },
+      onPanResponderRelease: () => {
+        releaseAnimations();
+        isLongPressRef.current ? onLongPress?.() : onPress?.();
+        isLongPressRef.current = false;
+      },
+    }),
+  ).current;
+
+  const capStyle = { marginTop: capPosition };
+  const dimStyle = {
+    marginTop: capPosition,
+    width: dimSize.interpolate({
+      inputRange: [AnimateState.INACTIVE, AnimateState.ACTIVE],
+      outputRange: ['0%', '100%'],
+    }),
+  };
+
+  return { responder, capStyle, dimStyle };
 };

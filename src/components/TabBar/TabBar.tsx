@@ -1,5 +1,5 @@
 import React, { createElement } from 'react';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { TouchableOpacity } from 'react-native';
 import { styled, View } from 'dripsy';
 import { triggerHaptic } from 'src/utils';
 import { CONTAINER_MAX_WIDTH } from 'src/constants';
@@ -45,6 +45,7 @@ const Container = styled(View)({
 const TabItem = styled(TouchableOpacity)({
   flex: 1,
   justifyContent: 'center',
+  alignItems: 'center',
 });
 
 export function TabBar ({ state, descriptors, navigation }: BottomTabBarProps): JSX.Element {

@@ -1,16 +1,13 @@
 import React, {
-  type ComponentPropsWithoutRef,
   type PropsWithChildren,
   type ReactNode
 } from 'react';
-import { GestureDetector } from 'react-native-gesture-handler';
-import Animated from 'react-native-reanimated';
+import { Animated, type ViewStyle, type ViewProps } from 'react-native';
 import { styled, useSx, View, Text } from 'dripsy';
 import { isLight } from 'src/themes/utils';
 import { useAnimatedStyleWithGesture } from './hooks';
 import { BORDER_WIDTH, BUTTON_HEIGHT, PRESS_DEPTH } from './constants';
 
-import type { ViewStyle, ViewProps } from 'react-native';
 import type { colors } from 'src/themes/colors';
 
 type AccessibilityProps = Pick<ViewProps, 'accessibilityHint' | 'accessibilityLabel'>;
@@ -28,7 +25,7 @@ export interface ButtonProps extends AccessibilityProps {
   onLongPress?: () => void;
 }
 
-const Container = styled(View)(({ disabled }: { disabled: boolean }) => ({
+const Container = styled(Animated.View)(({ disabled }: { disabled: boolean }) => ({
   position: 'relative',
   height: BUTTON_HEIGHT,
   opacity: disabled ? .5 : 1,
@@ -68,14 +65,6 @@ const Label = styled(Text, {
   textAlign: 'center',
 }));
 
-function ConditionalGestureDetector({
-  children,
-  disabled,
-  ...props
-}: ComponentPropsWithoutRef<typeof GestureDetector> & { disabled: boolean }): JSX.Element {
-  return disabled ? <>{children}</> : <GestureDetector {...props}>{children}</GestureDetector>;
-}
-
 export function Button ({
   children,
   color,
@@ -93,7 +82,7 @@ export function Button ({
 }: PropsWithChildren<ButtonProps>): JSX.Element {
   const sx = useSx();
   const {
-    gesture,
+    responder,
     capStyle: animatedCapStyle,
     dimStyle: animatedDimStyle,
   } = useAnimatedStyleWithGesture({
@@ -145,26 +134,25 @@ export function Button ({
   };
 
   return (
-    <ConditionalGestureDetector disabled={disabled} gesture={gesture}>
-      <Container
-        accessibilityHint={accessibilityHint ?? accessibilityLabel}
-        accessibilityLabel={accessibilityLabel}
-        accessibilityRole="button"
-        accessibilityState={{ disabled }}
-        accessible
-        disabled={disabled}
-        style={containerStyle}
-      >
-        <Shadow />
-        <Animated.View style={[capStyle, style, animatedCapStyle]}>
-          {leftAdornment ? leftAdornment : null}
-          {renderChildren()}
-          {rightAdornment ? rightAdornment : null}
-        </Animated.View>
-        <DimContainer>
-          <Animated.View style={[dimStyle, animatedDimStyle]} />
-        </DimContainer>
-      </Container>
-    </ConditionalGestureDetector>
+    <Container
+      accessibilityHint={accessibilityHint ?? accessibilityLabel}
+      accessibilityLabel={accessibilityLabel}
+      accessibilityRole="button"
+      accessibilityState={{ disabled }}
+      accessible
+      disabled={disabled}
+      style={containerStyle}
+      {...responder.panHandlers}
+    >
+      <Shadow />
+      <Animated.View style={[capStyle, style, animatedCapStyle]}>
+        {leftAdornment ? leftAdornment : null}
+        {renderChildren()}
+        {rightAdornment ? rightAdornment : null}
+      </Animated.View>
+      <DimContainer>
+        <Animated.View style={[dimStyle, animatedDimStyle]} />
+      </DimContainer>
+    </Container>
   );
 }
