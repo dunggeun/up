@@ -30,6 +30,10 @@ export function OpenSourceProject ({
     Linking.openURL(UP_REPOSITORY_URL).catch(noop);
   };
 
+  const handlePressLibrary = (packageName: string): void => {
+    Linking.openURL(`https://www.npmjs.com/package/${packageName}`).catch(noop);
+  };
+
   return (
     <CommonLayout>
       <CommonLayout.Header onBackPress={handlePressBackButton} title={t('title.open_source')} />
@@ -44,7 +48,11 @@ export function OpenSourceProject ({
           </Button>
         </UpRepositorySection>
         {Object.keys(DEPENDENCIES).map((dependency) => (
-          <ListItem key={dependency} label={dependency}/>
+          <ListItem
+            key={dependency}
+            label={dependency}
+            onPress={(): void => handlePressLibrary(dependency)}
+          />
         ))}
       </CommonLayout.Body>
       <CommonLayout.Footer />
