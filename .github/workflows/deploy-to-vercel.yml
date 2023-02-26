@@ -1,0 +1,12 @@
+name: deploy-to-vercel
+
+on:
+  push:
+    tags:        
+      - 'release/*'
+
+jobs:
+  hook:
+    runs-on: ubuntu-latest
+    steps:
+    - run: curl -X POST -d {} ${{ vars.PRODUCTION_DEPLOY_HOOK }}
