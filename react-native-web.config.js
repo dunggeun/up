@@ -46,8 +46,11 @@ const svgLoaderConfiguration = {
 
 module.exports = {
   devtool: process.env.NODE_ENV === 'development'
-    ? 'inline-nosources-cheap-source-map'
+    ? 'eval-source-map'
     : false,
+  devServer: {
+    allowedHosts: 'all',
+  },
   entry: {
     app: path.join(__dirname, 'index.web.js'),
   },
