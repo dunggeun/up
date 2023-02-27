@@ -1,1 +1,1 @@
-export * from './RegisterUser';
+export * from './RegisterUserScreen';

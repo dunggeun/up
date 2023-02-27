@@ -1,6 +1,6 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import { OpenSourceProject } from 'src/screens';
+import { OpenSourceProjectScreen } from 'src/screens';
 
 import type { CommonStackScreenParamList } from './types';
 
@@ -16,7 +16,7 @@ export function CommonStackNavigator(): JSX.Element {
       }}
     >
       <CommonStack.Screen
-        component={OpenSourceProject}
+        component={OpenSourceProjectScreen}
         name="OpenSourceProject"
       />
     </CommonStack.Navigator>

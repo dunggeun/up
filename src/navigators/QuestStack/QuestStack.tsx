@@ -1,6 +1,6 @@
 import React from 'react';
 import { createStackNavigator, TransitionPresets } from '@react-navigation/stack';
-import { CreateQuest, QuestDetail } from 'src/screens';
+import { CreateQuestScreen, QuestDetailScreen } from 'src/screens';
 
 import type { QuestStackScreenParamList } from './types';
 
@@ -17,11 +17,11 @@ export function QuestStackNavigator(): JSX.Element {
       }}
     >
       <QuestStack.Screen
-        component={CreateQuest}
+        component={CreateQuestScreen}
         name="CreateQuest"
       />
       <QuestStack.Screen
-        component={QuestDetail}
+        component={QuestDetailScreen}
         name="QuestDetail"
       />
     </QuestStack.Navigator>

@@ -1,1 +1,1 @@
-export * from './OpenSourceProject';
+export * from './OpenSourceProjectScreen';

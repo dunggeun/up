@@ -1,35 +1,45 @@
 import React, { useState } from 'react';
 import { View } from 'react-native';
+import { useActor } from '@xstate/react';
 import { styled } from 'dripsy';
 import { CommonLayout, Button, Input, H1 } from 'src/designs';
+import { AppManager } from 'src/modules';
+import * as AppHelpers from 'src/modules/app/helpers';
 import { t } from 'src/translations';
 
-interface RegisterUserProps {
-  onPressBack: () => void;
-  onPressStart: (username: string) => void;
-}
+import type { RootStackProps } from 'src/navigators/RootStack/types';
+
+type RegisterUserScreenProps = RootStackProps<'RegisterUser'>;
 
 const PageTitleArea = styled(View)({
   paddingY: '$04',
 });
 
-export function RegisterUser ({
-  onPressBack,
-  onPressStart
-}: RegisterUserProps): JSX.Element {
+
+export function RegisterUserScreen({
+  navigation
+}: RegisterUserScreenProps): JSX.Element {
   const [userName, setUserName] = useState('');
+  const [_, send] = useActor(AppManager.getInstance().getService());
+
+  const handlePressBackButton = (): void => {
+    navigation.goBack();
+  };
 
   const handleChangeUserName = (name: string): void => {
     setUserName(name);
   };
 
   const handlePressStartButton = (): void => {
-    onPressStart(userName);
+    send({
+      type: 'LOGIN',
+      user: AppHelpers.createUserData(userName),
+    });
   };
 
   return (
     <CommonLayout keyboardAvoiding>
-      <CommonLayout.Header onBackPress={onPressBack} />
+      <CommonLayout.Header onBackPress={handlePressBackButton} />
       <CommonLayout.Body scrollEnabled={false}>
         <PageTitleArea>
           <H1 variant="primary">{t('message.enter_name')}</H1>

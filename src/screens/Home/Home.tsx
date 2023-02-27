@@ -1,57 +1,32 @@
 
 import React from 'react';
-import { useActor } from '@xstate/react';
-import { useRecoilValue } from 'recoil';
-import { useSx, useDripsyTheme, Container } from 'dripsy';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { FadeInView } from 'src/components';
-import { navigate } from 'src/navigators/helpers';
-import { AppManager } from 'src/modules';
-import { activeQuestList } from 'src/stores';
-import { Profile } from './Profile';
-import { QuestList } from './QuestList';
+import { CommonLayout } from 'src/designs';
+import { Profile, QuestList } from './components';
+import type { User, Quest } from 'src/types';
 
-import type { MainTabProps } from 'src/navigators/MainTab/types';
+interface HomeProps {
+  user: User;
+  questList: Quest[];
+  onPressCreateQuest: () => void;
+  onPressQuest: (questId: number) => void;
+}
 
-type HomeProps = MainTabProps<'Home'>;
-
-export function Home (_props: HomeProps): JSX.Element | null {
-  const [state] = useActor(AppManager.getInstance().getService());
-  const { top } = useSafeAreaInsets();
-  const { theme } = useDripsyTheme();
-  const quests = useRecoilValue(activeQuestList);
-  const sx = useSx();
-  const user = state.context.user;
-
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-  const containerStyle = sx({
-    paddingTop: top + theme.space.$04,
-    gap: '$04',
-  });
-
-  const handlePressCreateQuestButton = (): void => {
-    navigate('Quest', 'CreateQuest');
-  };
-
-  const handlePressQuestButton = (questId: number): void => {
-    navigate('Quest', 'QuestDetail', { id: questId });
-  };
-
-  if (!user) {
-    return null;
-  }
-
+export function Home ({
+  user,
+  questList,
+  onPressQuest,
+  onPressCreateQuest
+}: HomeProps): JSX.Element | null {
   return (
-    <FadeInView>
-      {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
-      <Container style={containerStyle}>
+    <CommonLayout insetBottom={false}>
+      <CommonLayout.Body scrollEnabled={false}>
         <Profile user={user} />
         <QuestList
-          onCreate={handlePressCreateQuestButton}
-          onPress={handlePressQuestButton}
-          quests={quests}
+          onCreate={onPressCreateQuest}
+          onPress={onPressQuest}
+          quests={questList}
         />
-      </Container>
-    </FadeInView>
+      </CommonLayout.Body>
+    </CommonLayout>
   );
 }

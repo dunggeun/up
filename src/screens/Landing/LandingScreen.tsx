@@ -4,21 +4,15 @@ import Animated, {
   useAnimatedStyle,
   withSpring
 } from 'react-native-reanimated';
-import { styled, Container, View, Image } from 'dripsy';
-import { SafeAreaView } from 'src/components';
-import { Button, H1, AppBar } from 'src/designs';
-import { presets } from 'src/themes';
+import { styled, View, Image } from 'dripsy';
+import { CommonLayout, Button, H1 } from 'src/designs';
 import { LANDING_LOGO_SIZE, LANDING_LOGO_MARGIN } from 'src/constants';
 import { t } from 'src/translations';
 import Logo from 'src/assets/images/logo.png';
 
 import type { RootStackProps } from 'src/navigators/RootStack/types';
 
-type LandingProps = RootStackProps<'Landing'>;
-
-const Content = styled(View)({
-  flex: 1,
-});
+type LandingScreenProps = RootStackProps<'Landing'>;
 
 const PageTitleArea = styled(View)({
   paddingY: '$04',
@@ -36,16 +30,12 @@ const LogoImage = styled(Image)({
   height: '100%',
 });
 
-const ButtonArea = styled(View)({
-  paddingY: '$04',
-});
-
 const scaleLogoViewStyle = {
   width: LANDING_LOGO_SIZE,
   height: LANDING_LOGO_SIZE,
 } as const;
 
-export function Landing ({ navigation }: LandingProps): JSX.Element {
+export function LandingScreen({ navigation }: LandingScreenProps): JSX.Element {
   const scale = useSharedValue(1);
   const animatedLogoViewStyle = useAnimatedStyle(() => ({
     transform: [{ scale: scale.value }],
@@ -60,29 +50,27 @@ export function Landing ({ navigation }: LandingProps): JSX.Element {
   };
 
   return (
-    <SafeAreaView style={presets.flexWhite}>
-      <Container>
-        <AppBar />
-        <Content>
-          <PageTitleArea>
-            <H1 variant="primary">{t('message.greeting')}</H1>
-          </PageTitleArea>
-          <LogoArea>
-            <Animated.View style={[scaleLogoViewStyle, animatedLogoViewStyle]}>
-              <LogoImage source={Logo} />
-            </Animated.View>
-          </LogoArea>
-        </Content>
-        <ButtonArea>
-          <Button
-            color="$brand"
-            disableLongPress
-            onPress={handlePressNextButton}
-          >
-            {t('label.start')}
-          </Button>
-        </ButtonArea>
-      </Container>
-    </SafeAreaView>
+    <CommonLayout>
+      <CommonLayout.Header />
+      <CommonLayout.Body scrollEnabled={false}>
+        <PageTitleArea>
+          <H1 variant="primary">{t('message.greeting')}</H1>
+        </PageTitleArea>
+        <LogoArea>
+          <Animated.View style={[scaleLogoViewStyle, animatedLogoViewStyle]}>
+            <LogoImage source={Logo} />
+          </Animated.View>
+        </LogoArea>
+      </CommonLayout.Body>
+      <CommonLayout.Footer>
+        <Button
+          color="$brand"
+          disableLongPress
+          onPress={handlePressNextButton}
+        >
+          {t('label.start')}
+        </Button>
+      </CommonLayout.Footer>
+    </CommonLayout>
   );
 }

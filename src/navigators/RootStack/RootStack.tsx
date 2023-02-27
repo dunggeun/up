@@ -2,10 +2,7 @@ import React from 'react';
 import { createStackNavigator, TransitionPresets } from '@react-navigation/stack';
 import { AppManager } from 'src/modules';
 import { useIsAuthorized } from 'src/hooks';
-import {
-  Landing as LandingScreen,
-  RegisterUser as RegisterUserScreen,
-} from 'src/screens';
+import { LandingScreen, RegisterUserScreen } from 'src/screens';
 import { t } from 'src/translations';
 import { MainTabNavigator } from '../MainTab';
 import { CommonStackNavigator } from '../CommonStack';
