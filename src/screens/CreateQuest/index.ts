@@ -1,1 +1,1 @@
-export * from './CreateQuest';
+export * from './CreateQuestScreen';

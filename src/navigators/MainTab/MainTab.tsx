@@ -4,11 +4,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useDripsyTheme } from 'dripsy';
 import { Home, Menu, Profile } from 'src/assets/icons';
 import { TabBar } from 'src/components';
-import {
-  Profile as ProfileScreen,
-  Home as HomeScreen,
-  Menu as MenuScreen
-} from 'src/screens';
+import { ProfileScreen, HomeScreen, MenuScreen } from 'src/screens';
 import { useUserThemeColor } from 'src/hooks';
 import { t } from 'src/translations';
 

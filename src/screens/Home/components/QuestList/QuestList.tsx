@@ -6,9 +6,9 @@ import { LinearGradient } from 'src/components/LinearGradient';
 import { useMainTabBarInset, useUserThemeColor } from 'src/hooks';
 import { SHARED_CONFIG, WINDOW_HEIGHT } from 'src/constants';
 import { t } from 'src/translations';
-
 import { BUTTON_HEIGHT } from 'src/designs/atoms/Button/constants';
 import { QuestItem } from '../QuestItem';
+
 import type { ListRenderItemInfo } from 'react-native';
 import type { ButtonProps } from 'src/designs';
 import type { Quest } from 'src/types';

@@ -21,6 +21,7 @@ const Container = styled(View)({
   width: '100%',
   flexDirection: 'column',
   gap: '$02',
+  marginTop: '$04',
 });
 
 const InformationSection = styled(View)({

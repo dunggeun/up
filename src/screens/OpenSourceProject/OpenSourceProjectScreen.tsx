@@ -17,7 +17,7 @@ const UpRepositorySection = styled(View)({
   paddingY: '$04',
 });
 
-export function OpenSourceProject ({
+export function OpenSourceProjectScreen({
   navigation
 }: OpenSourceProjectProps): JSX.Element {
   const userColor = useUserThemeColor();
