@@ -1,6 +1,5 @@
 import React, { memo, type PropsWithChildren } from 'react';
-import { Modal as RNModal } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { Modal as RNModal, TouchableOpacity } from 'react-native';
 import { styled, View } from 'dripsy';
 import { H2 } from 'src/designs';
 import { Close } from 'src/assets/icons';
@@ -45,7 +44,6 @@ const ModalHeader = styled(View)({
 });
 
 const CloseButton = styled(TouchableOpacity)({
-  flex: 1,
   justifyContent: 'center',
 });
 

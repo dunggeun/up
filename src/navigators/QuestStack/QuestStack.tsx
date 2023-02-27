@@ -1,6 +1,7 @@
 import React from 'react';
 import { createStackNavigator, TransitionPresets } from '@react-navigation/stack';
 import { CreateQuestScreen, QuestDetailScreen } from 'src/screens';
+import { SHARED_CONFIG } from 'src/constants';
 
 import type { QuestStackScreenParamList } from './types';
 
@@ -12,7 +13,7 @@ export function QuestStackNavigator(): JSX.Element {
       
       screenOptions={{
         headerShown: false,
-        cardStyle: { backgroundColor: 'white' },
+        cardStyle: SHARED_CONFIG.navigatorCardStyle,
         ...TransitionPresets.ModalSlideFromBottomIOS,
       }}
     >

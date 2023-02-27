@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { Animated } from 'react-native';
+import { FlatList } from 'react-native';
 import { styled, useDripsyTheme, View } from 'dripsy';
 import { Button, H2, H3 } from 'src/designs';
 import { LinearGradient } from 'src/components/LinearGradient';
@@ -91,9 +91,9 @@ export function QuestList ({ quests, onCreate, onPress }: QuestListProps): JSX.E
     <ListContainer>
       <ListTitleArea>
         <H2 variant="primary">{t('title.quest_in_progress')}</H2>
-        <ListShadow color={theme.colors.$white} rotate={90} toOpacity={0} />
+        <ListShadow color={theme.colors.$white} direction="to-down" />
       </ListTitleArea>
-      <Animated.FlatList
+      <FlatList
         ItemSeparatorComponent={ItemSeparatorComponent}
         ListEmptyComponent={
           <ListEmptyComponent>
