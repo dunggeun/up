@@ -1,6 +1,6 @@
 import React from 'react';
+import { TouchableOpacity } from 'react-native';
 import { styled } from 'dripsy';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 import { H2, Text } from 'src/designs';
 
 export interface ListItemProps {

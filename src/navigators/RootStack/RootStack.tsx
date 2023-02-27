@@ -4,6 +4,7 @@ import { AppManager } from 'src/modules';
 import { useIsAuthorized } from 'src/hooks';
 import { LandingScreen, RegisterUserScreen } from 'src/screens';
 import { t } from 'src/translations';
+import { SHARED_CONFIG } from 'src/constants';
 import { MainTabNavigator } from '../MainTab';
 import { CommonStackNavigator } from '../CommonStack';
 import { QuestStackNavigator } from '../QuestStack';
@@ -64,7 +65,7 @@ export function RootStackNavigator(): JSX.Element | null {
     <RootStack.Navigator
       screenOptions={{
         headerShown: false,
-        cardStyle: { backgroundColor: 'white' },
+        cardStyle: SHARED_CONFIG.navigatorCardStyle,
       }}
     >
       {renderScreens()}

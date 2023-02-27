@@ -11,33 +11,19 @@ export default {
   component: LinearGradient,
   args: {
     color: '#ffffff',
-    rotate: 0,
+    direction: 'to-down',
   },
   argTypes: {
     color: {
       name: 'color',
       type: { name: 'string', required: true },
       description: '그라데이션 색상',
-      table: {
-        type: { summary: 'string' },
-      },
-      control: { type: 'text' },
+      options: ['to-down', 'to-up'],
+      control: { type: 'select' },
     },
-    rotate: {
-      name: 'rotate',
+    direction: {
+      name: 'direction',
       description: '그라데이션 방향',
-      type: { name: 'number' },
-      control: { type: 'number' },
-    },
-    fromOpacity: {
-      name: 'fromOpacity',
-      description: '그라데이션 시작 투명도',
-      type: { name: 'number' },
-      control: { type: 'number' },
-    },
-    toOpacity: {
-      name: 'toOpacity',
-      description: '그라데이션 종료 투명도',
       type: { name: 'number' },
       control: { type: 'number' },
     },
@@ -70,6 +56,4 @@ Default.args = {
     width: '100%',
     height: 50,
   },
-  fromOpacity: 1,
-  toOpacity: 0,
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { TouchableOpacity } from 'react-native';
 import { styled, View } from 'dripsy';
 import { CommonLayout, Text } from 'src/designs';
 import { ListItem } from 'src/components';

@@ -63,7 +63,7 @@ export function AppBar ({
 }: AppBarProps): JSX.Element {
   return (
     <Container>
-      {shadow ? <AppBarShadow color="white" rotate={90} toOpacity={0} /> : null}
+      {shadow ? <AppBarShadow color="white" direction="to-down" /> : null}
       <SideButtonArea>
         {onBackPress ? (
           <SideButton

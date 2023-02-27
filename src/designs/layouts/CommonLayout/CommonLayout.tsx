@@ -9,6 +9,7 @@ import { SHARED_CONFIG } from 'src/constants';
 
 const HeaderWrapper = styled(View)({
   marginX: '-$04',
+  zIndex: 3,
 });
 
 const ScrollView = styled(Animated.ScrollView)({
@@ -92,7 +93,7 @@ CommonLayout.Body = function Body ({
 CommonLayout.Footer = function Footer ({ children }: PropsWithChildren<{}>): JSX.Element {
   return (
     <FooterWrapper withPadding={Boolean(children)}>
-      <FooterShadow color="white" fromOpacity={0} rotate={90} toOpacity={1} />
+      <FooterShadow color="white" direction="to-up" />
       {children}
     </FooterWrapper>
   );

@@ -1,6 +1,7 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { OpenSourceProjectScreen } from 'src/screens';
+import { SHARED_CONFIG } from 'src/constants';
 
 import type { CommonStackScreenParamList } from './types';
 
@@ -12,7 +13,7 @@ export function CommonStackNavigator(): JSX.Element {
     <CommonStack.Navigator
       screenOptions={{
         headerShown: false,
-        cardStyle: { backgroundColor: 'white' },
+        cardStyle: SHARED_CONFIG.navigatorCardStyle,
       }}
     >
       <CommonStack.Screen

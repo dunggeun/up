@@ -20,11 +20,9 @@ const LogoImage = styled(Image)({
 export function SplashScreen(): JSX.Element {
   return (
     <CommonLayout>
-      <CommonLayout.Body>
-        <LogoArea>
-          <LogoImage source={Logo} />
-        </LogoArea>
-      </CommonLayout.Body>
+      <LogoArea>
+        <LogoImage source={Logo} />
+      </LogoArea>
     </CommonLayout>
   );
 }

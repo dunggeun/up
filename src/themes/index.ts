@@ -108,7 +108,6 @@ const themeLight = makeTheme({
       flex: 1,
       px: '$04',
       backgroundColor: '$white',
-      ...(Platform.OS === 'web' ? { maxHeight: '100vh' } : null),
     },
     // Container variants
     wide: {

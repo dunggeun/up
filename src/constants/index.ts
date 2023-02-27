@@ -30,6 +30,10 @@ export const DEVELOPER_EMAIL = 'dev.ghlee@gmail.com';
 export const UP_REPOSITORY_URL = 'https://github.com/dunggeun/up';
 
 export const SHARED_CONFIG = {
+  navigatorCardStyle: {
+    flex: 1,
+    backgroundColor: 'white',
+  },
   scrollableViewProps: {
     onStartShouldSetResponderCapture: () => true,
     onMoveShouldSetResponderCapture: () => true,
