@@ -7,4 +7,5 @@ export * from './PageTitle';
 export * from './ListItem';
 export * from './Section';
 export * from './TabBar';
+export * from './Toast';
 export * from './TransitionGroup';
