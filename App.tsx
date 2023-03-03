@@ -6,6 +6,7 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { DripsyProvider } from 'dripsy';
+import { Toast } from 'src/components';
 import { navigationRef } from 'src/navigators/helpers';
 import { titleFormatter } from 'src/utils';
 import { themeLight } from 'src/themes';
@@ -29,6 +30,7 @@ function AppProviders<T = unknown>({ children }: PropsWithChildren<T>): JSX.Elem
               {children}
             </NavigationContainer>
           </RecoilRoot>
+          <Toast />
         </DripsyProvider>
       </SafeAreaProvider>
     </GestureHandlerRootView>
