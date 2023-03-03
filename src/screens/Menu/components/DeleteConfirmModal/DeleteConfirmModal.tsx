@@ -1,10 +1,6 @@
-import React, { useEffect } from 'react';
-import Animated, {
-  useSharedValue,
-  useAnimatedStyle,
-  withTiming
-} from 'react-native-reanimated';
+import React from 'react';
 import { ActivityIndicator, styled, View } from 'dripsy';
+import { AnimatePresence, MotiView } from 'moti';
 import { Modal } from 'src/components';
 import { Button, Text } from 'src/designs';
 import { Warning } from 'src/assets/symbols';
@@ -46,24 +42,23 @@ export function DeleteConfirmModal ({
   onClose,
   onDelete,
 }: DeleteConfirmModalProps): JSX.Element {
-  const visibilityRate = useSharedValue(0);
-  const loadingViewAnimatedStyle = useAnimatedStyle(() => ({
-    height: visibilityRate.value * LOADING_VIEW_HEIGHT,
-    opacity: visibilityRate.value,
-  }));
-
-  useEffect(() => {
-    visibilityRate.value = withTiming(isLoading ? 1 : 0);
-  }, [visibilityRate, isLoading]);
-
   return (
     <Modal onClose={onClose} title={t('title.reset_data')} visible={visible}>
       <Content>
         <WarningSymbolArea>
           <Warning />
-          <Animated.View style={[loadingViewStyle, loadingViewAnimatedStyle]}>
-            <ActivityIndicator />
-          </Animated.View>
+          <AnimatePresence>
+            {isLoading ? (
+              <MotiView
+                animate={{ opacity: 1, height: LOADING_VIEW_HEIGHT }}
+                from={{ opacity: 0, height: 0 }}
+                style={loadingViewStyle}
+                transition={{ type: 'timing' }}
+              >
+                <ActivityIndicator />
+              </MotiView>
+            ) : null}
+          </AnimatePresence>
         </WarningSymbolArea>
         <Message variant="text.primary">{t('message.reset_data')}</Message>
         <Message variant="text.secondary">

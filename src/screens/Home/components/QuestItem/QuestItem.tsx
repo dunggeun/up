@@ -1,11 +1,6 @@
-import React, { useEffect } from 'react';
-import Animated, {
-  useSharedValue,
-  useAnimatedStyle,
-  withTiming,
-  withDelay
-} from 'react-native-reanimated';
+import React from 'react';
 import { View } from 'dripsy';
+import { MotiView } from 'moti';
 import { Button, Tag } from 'src/designs';
 
 import type { Quest } from 'src/types';
@@ -28,35 +23,46 @@ export function QuestItem ({
   tagColor,
   onPress,
 }: QuestItemProps): JSX.Element {
-  const animateValue = useSharedValue(animate ? 1 : 0);
   const shouldShowBadge = data.current_streak > 0;
 
-  const animatedViewStyle = useAnimatedStyle(() => ({
-    opacity: 1 - animateValue.value,
-    transform: [
-      { translateY: animateValue.value * 20 },
-      { scale: 0.8 + (1 - 0.8) * (1 - animateValue.value) },
-    ],
-  }));
+  const wrap = (component: JSX.Element): JSX.Element => {
+    if (animate) {
+      return (
+        <MotiView
+          animate={{
+            opacity: 1,
+            scale: 1,
+            translateY: 0,
+          }}
+          delay={index * DELAY}
+          from={{
+            opacity: 0,
+            scale: 0.8,
+            translateY: 20,
+          }}
+          transition={{
+            type: 'timing',
+          }}
+        >
+          {component}
+        </MotiView>
+      );
+    } 
+    return component;
+  };
+  
 
-  useEffect(() => {
-    animateValue.value = withDelay(index * DELAY, withTiming(0));
-  }, [animateValue, index]);
-
-  return (
-    <Animated.View style={animatedViewStyle}>
-      <Button
-        color="$white"
-        onPress={onPress}
-        rightAdornment={
-          shouldShowBadge
-            ? <Tag color={tagColor} label={`x${data.current_streak}`}/>
-            : <View />
-        }
-      >
-        {data.title}
-      </Button>
-    </Animated.View>
+  return wrap(
+    <Button
+      color="$white"
+      onPress={onPress}
+      rightAdornment={
+        shouldShowBadge
+          ? <Tag color={tagColor} label={`x${data.current_streak}`}/>
+          : <View />
+      }
+    >
+      {data.title}
+    </Button>
   );
 }
-
