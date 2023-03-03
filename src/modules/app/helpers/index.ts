@@ -18,6 +18,7 @@ export const createUserData = (name: string): User => {
     totalExp: 0,
     badge: 0,
     theme: 0,
+    unlockedBadges: {},
     createdAt: currentTimestamp,
     updatedAt: currentTimestamp,
   };

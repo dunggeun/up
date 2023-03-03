@@ -4,6 +4,7 @@ export interface User {
   totalExp: number;
   currentExp: number;
   badge: number;
+  unlockedBadges: Record<string, boolean>;
   theme: number;
   createdAt: number;
   updatedAt: number;

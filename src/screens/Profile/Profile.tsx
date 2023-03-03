@@ -68,6 +68,7 @@ export function Profile ({ user, onEditUser }: ProfileProps): JSX.Element {
           <BadgeSection
             onLongPressBadge={handleLongPressBadge}
             onPressBadge={handlePressBadge}
+            unlockedBadges={user.unlockedBadges}
           />
           <ThemeSection onPressBadge={handlePressTheme} />
           <View sx={{ height: bottomInset }} />

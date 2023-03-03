@@ -5,9 +5,11 @@ import { Button } from 'src/designs';
 import * as AppHelpers from 'src/modules/app/helpers';
 import { t } from 'src/translations';
 
+import type { User } from 'src/types';
 import type { Badge } from 'src/modules/app/types';
 
 export interface BadgeSectionProps {
+  unlockedBadges: User['unlockedBadges'];
   onPressBadge: (badgeId: number) => void;
   onLongPressBadge: (badgeId: number) => void;
 }
@@ -35,6 +37,7 @@ const buttonContainerStyle = {
 };
 
 export const BadgeSection = memo(function BadgeSection ({
+  unlockedBadges,
   onPressBadge,
   onLongPressBadge,
 }: BadgeSectionProps): JSX.Element {
@@ -81,6 +84,7 @@ export const BadgeSection = memo(function BadgeSection ({
               <Button
                 color="$white"
                 containerStyle={buttonContainerStyle}
+                disabled={!unlockedBadges[badge.id]}
                 key={badge.title}
                 onLongPress={(): void => onLongPressBadge(badge.id)}
                 onPress={(): void => onPressBadge(badge.id)}
