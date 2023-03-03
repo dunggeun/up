@@ -1,8 +1,9 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { ScrollView } from 'react-native';
-import { styled, View } from 'dripsy';
+import { styled, Text, View } from 'dripsy';
 import { CommonLayout, Input } from 'src/designs';
 import { Section } from 'src/components';
+import * as Toast from 'src/components/Toast';
 import { useMainTabBarInset, useDebounce } from 'src/hooks';
 import { t } from 'src/translations';
 import { BadgeSection, ThemeSection } from './components';
@@ -20,11 +21,16 @@ const Main = styled(ScrollView)({
   gap: '$02',
 });
 
+const EditedToastContent = <Text>{t('message.user_edited')}</Text>;
+
 export function Profile ({ user, onEditUser }: ProfileProps): JSX.Element {
   const [userName, setUserName] = useState('');
   const { bottomInset } = useMainTabBarInset();
 
-  const { trigger: lazyEditUser } = useDebounce(onEditUser, 500);
+  const { trigger: lazyEditUser } = useDebounce((value: Partial<Pick<User, 'theme' | 'name' | 'badge'>>) => {
+    onEditUser(value);
+    Toast.show(EditedToastContent);
+  }, 500);
 
   const handleChangeUserName = (value: string): void => {
     lazyEditUser({ name: value });
