@@ -142,7 +142,7 @@ export function Button ({
       accessible
       disabled={disabled}
       style={containerStyle}
-      {...responder.panHandlers}
+      {...(disabled ? null : responder.panHandlers)}
     >
       <Shadow />
       <Animated.View style={[capStyle, style, animatedCapStyle]}>
