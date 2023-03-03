@@ -65,7 +65,8 @@
       "user_edited": "정보가 수정되었어요"
     },
     "badge": {
-      "0": "슈퍼유저"
+      "0": "",
+      "1": "슈퍼유저"
     },
     "template": {
       "send_feedback": {

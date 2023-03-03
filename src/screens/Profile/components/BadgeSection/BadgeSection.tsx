@@ -74,6 +74,10 @@ export const BadgeSection = memo(function BadgeSection ({
       .map((_, index) => (<View key={`empty${index}`} sx={buttonContainerStyle} />));
   };
 
+  const isUnlocked = (id: number): boolean => {
+    return id !== 0 && !unlockedBadges[id];
+  };
+
   return (
     <Section title={t('label.badge')}>
       <Rows>
@@ -84,14 +88,14 @@ export const BadgeSection = memo(function BadgeSection ({
               <Button
                 color="$white"
                 containerStyle={buttonContainerStyle}
-                disabled={!unlockedBadges[badge.id]}
+                disabled={isUnlocked(badge.id)}
                 key={badge.title}
                 onLongPress={(): void => onLongPressBadge(badge.id)}
                 onPress={(): void => onPressBadge(badge.id)}
                 // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
                 style={overridingButtonStyle}
               >
-                <BadgeImage source={badge.image} />
+                {badge.image ? <BadgeImage source={badge.image} /> : null}
               </Button>
             ))}
             {fillEmpty(BADGES_PER_COUNT - badgeRow.length)}

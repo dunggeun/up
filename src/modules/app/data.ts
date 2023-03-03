@@ -6,6 +6,7 @@ import type { Theme } from './types';
 export const BASE_EXP = 3;
 
 export const BADGE_SET = [
+  ['', null],
   [t('badge.0'), dummy],
   [t('badge.1'), dummy],
   [t('badge.2'), dummy],
@@ -18,7 +19,7 @@ export const BADGE_SET = [
   [t('badge.9'), dummy],
 ] as const;
 
-export const FALLBACK_BADGE = ['', dummy] as const;
+export const FALLBACK_BADGE = BADGE_SET[0];
 
 export const THEMES: Theme[] = [
   { id: 0, key: '$blue' },
