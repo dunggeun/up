@@ -1,10 +1,6 @@
-import React, { useEffect } from 'react';
-import Animated, {
-  useSharedValue,
-  useAnimatedStyle,
-  withSpring
-} from 'react-native-reanimated';
+import React from 'react';
 import { styled, View, Image } from 'dripsy';
+import { MotiView } from 'moti';
 import { CommonLayout, Button, H1 } from 'src/designs';
 import { LANDING_LOGO_SIZE, LANDING_LOGO_MARGIN } from 'src/constants';
 import { t } from 'src/translations';
@@ -36,15 +32,6 @@ const scaleLogoViewStyle = {
 } as const;
 
 export function LandingScreen({ navigation }: LandingScreenProps): JSX.Element {
-  const scale = useSharedValue(1);
-  const animatedLogoViewStyle = useAnimatedStyle(() => ({
-    transform: [{ scale: scale.value }],
-  }));
-
-  useEffect(() => {
-    scale.value = withSpring(1.5, { damping: 2.5, stiffness: 120 });
-  }, [scale]);
-
   const handlePressNextButton = (): void => {
     navigation.navigate('RegisterUser');
   };
@@ -57,9 +44,18 @@ export function LandingScreen({ navigation }: LandingScreenProps): JSX.Element {
           <H1 variant="primary">{t('message.greeting')}</H1>
         </PageTitleArea>
         <LogoArea>
-          <Animated.View style={[scaleLogoViewStyle, animatedLogoViewStyle]}>
+          <MotiView
+            animate={{ scale: 1.5 }}
+            from={{ scale: 1 }}
+            style={scaleLogoViewStyle}
+            transition={{
+              type: 'spring',
+              damping: 2.5,
+              stiffness: 120,
+            }}
+          >
             <LogoImage source={Logo} />
-          </Animated.View>
+          </MotiView>
         </LogoArea>
       </CommonLayout.Body>
       <CommonLayout.Footer>

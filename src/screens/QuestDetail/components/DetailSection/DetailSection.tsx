@@ -1,6 +1,6 @@
-import React, { useRef, useEffect, type PropsWithChildren } from 'react';
-import { Animated } from 'react-native';
-import { styled } from 'dripsy';
+import React, { type PropsWithChildren } from 'react';
+import { styled, View } from 'dripsy';
+import { MotiView } from 'moti';
 import { H2 } from 'src/designs';
 
 export interface DetailSectionProps {
@@ -8,7 +8,7 @@ export interface DetailSectionProps {
   delay?: number;
 }
 
-const SectionContainer = styled(Animated.View)({
+const SectionContainer = styled(View)({
   gap: '$04',
 });
 
@@ -23,20 +23,17 @@ export function DetailSection ({
   title,
   delay
 }: PropsWithChildren<DetailSectionProps>): JSX.Element {
-  const fadeAnimation = useRef(new Animated.Value(0)).current;
-
-  useEffect(() => {
-    Animated.timing(fadeAnimation, {
-      toValue: 1,
-      delay,
-      useNativeDriver: true,
-    }).start();
-  }, [fadeAnimation, delay]);
-
   return (
-    <SectionContainer style={{ opacity: fadeAnimation }}>
-      <SectionTitle>{title}</SectionTitle>
-      {children}
-    </SectionContainer>
+    <MotiView
+      animate={{ opacity: 1 }}
+      delay={delay}
+      from={{ opacity: 0 }}
+      transition={{ type: 'timing' }}
+    >
+      <SectionContainer>
+        <SectionTitle>{title}</SectionTitle>
+        {children}
+      </SectionContainer>
+    </MotiView>
   );
 }
