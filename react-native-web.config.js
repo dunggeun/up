@@ -26,6 +26,12 @@ const babelLoaderConfiguration = {
   },
 };
 
+const jsModuleConfiguration = {
+  test: /\.mjs$/,
+  include: /node_modules/,
+  type: 'javascript/auto'
+};
+
 const imageLoaderConfiguration = {
   test: /\.(png|jpe?g|gif)$/i,
   use: [
@@ -69,6 +75,7 @@ module.exports = {
   module: {
     rules: [
       babelLoaderConfiguration,
+      jsModuleConfiguration,
       imageLoaderConfiguration,
       svgLoaderConfiguration,
     ],

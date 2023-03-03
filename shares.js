@@ -6,4 +6,5 @@ exports.transformIgnorePackages = [
   'react-native',
   'react-native-reanimated',
   'dripsy',
+  'moti',
 ];
