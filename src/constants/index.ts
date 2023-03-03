@@ -22,6 +22,9 @@ export const TOUCHABLE_OPACITY_HIT_SLOP = {
 
 export const DATE_FORMAT = 'YYYY.MM.DD';
 
+export const TOAST_ANIMATION_DURATION = 500;
+export const TOAST_DURATION = 3000;
+
 const window = Dimensions.get('window');
 export const WINDOW_WIDTH = window.width;
 export const WINDOW_HEIGHT = window.height;
