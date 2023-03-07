@@ -1,4 +1,7 @@
+// eslint-disable-next-line eslint-comments/disable-enable-pair
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import React, {
+  useMemo,
   type PropsWithChildren,
   type ReactNode
 } from 'react';
@@ -25,9 +28,13 @@ export interface ButtonProps extends AccessibilityProps {
   onLongPress?: () => void;
 }
 
-const Container = styled(Animated.View)(({ disabled }: { disabled: boolean }) => ({
+const Container = styled(Animated.View)(({
   position: 'relative',
   height: BUTTON_HEIGHT,
+}));
+
+const ContentWrapper = styled(View)(({ disabled }: { disabled: boolean }) => ({
+  flex: 1,
   opacity: disabled ? .5 : 1,
 }));
 
@@ -94,7 +101,6 @@ export function Button ({
   const isLightBackground = isLight(color);
   const dimColor = isLightBackground ? '$black' : '$white';
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const capStyle = sx({
     display: 'flex',
     flexDirection: 'row',
@@ -109,7 +115,6 @@ export function Button ({
     backgroundColor: color,
   });
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const dimStyle = sx({
     position: 'absolute',
     left: 0,
@@ -119,18 +124,24 @@ export function Button ({
     opacity: .2,
   });
 
+  const disabledStyle = useMemo(() => {
+    return {
+      cap: sx({ borderColor: '$text_tertiary' }),
+      shadow: sx({ backgroundColor: '$text_tertiary' })
+    };
+  }, [sx]);
+
   const renderChildren = (): ReactNode => {
-    if (typeof children === 'string') {
-      return (
-        <Label
-          hasAdornment={Boolean(leftAdornment || rightAdornment)}
-          isLightBackground={isLightBackground}
-        >
-          {children}
-        </Label>
-      );
-    } 
-    return children;
+    const content = typeof children === 'string' ? (
+      <Label
+        hasAdornment={Boolean(leftAdornment || rightAdornment)}
+        isLightBackground={isLightBackground}
+      >
+        {children}
+      </Label>
+    ) : children;
+
+    return <ContentWrapper disabled={disabled}>{content}</ContentWrapper>;
   };
 
   return (
@@ -140,12 +151,16 @@ export function Button ({
       accessibilityRole="button"
       accessibilityState={{ disabled }}
       accessible
-      disabled={disabled}
       style={containerStyle}
       {...(disabled ? null : responder.panHandlers)}
     >
-      <Shadow />
-      <Animated.View style={[capStyle, style, animatedCapStyle]}>
+      <Shadow style={disabled ? disabledStyle.shadow : undefined} />
+      <Animated.View style={[
+        capStyle,
+        animatedCapStyle,
+        style,
+        disabled ? disabledStyle.cap : undefined
+      ]}>
         {leftAdornment ? leftAdornment : null}
         {renderChildren()}
         {rightAdornment ? rightAdornment : null}

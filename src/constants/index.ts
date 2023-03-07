@@ -38,7 +38,7 @@ export const SHARED_CONFIG = {
     backgroundColor: 'white',
   },
   scrollableViewProps: {
-    onStartShouldSetResponderCapture: () => true,
-    onMoveShouldSetResponderCapture: () => true,
+    onStartShouldSetResponderCapture: () => false,
+    onMoveShouldSetResponderCapture: () => false,
   },
 } as const;

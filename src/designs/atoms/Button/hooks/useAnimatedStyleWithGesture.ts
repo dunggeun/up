@@ -69,6 +69,11 @@ export const useAnimatedStyleWithGesture = ({
     }).start();
   };
 
+  const triggerPressHandler = (): void => {
+    isLongPressRef.current ? onLongPress?.() : onPress?.();
+    isLongPressRef.current = false;
+  };
+
   const responder = useRef(
     PanResponder.create({
       onStartShouldSetPanResponder: () => true,
@@ -88,8 +93,7 @@ export const useAnimatedStyleWithGesture = ({
       },
       onPanResponderRelease: () => {
         releaseAnimations();
-        isLongPressRef.current ? onLongPress?.() : onPress?.();
-        isLongPressRef.current = false;
+        triggerPressHandler();
       },
     }),
   ).current;
