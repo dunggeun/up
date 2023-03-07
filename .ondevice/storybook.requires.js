@@ -8,6 +8,16 @@ import {
   clearDecorators,
 } from "@storybook/react-native";
 
+global.STORIES = [
+  {
+    titlePrefix: "",
+    directory: "./src",
+    files: "**/*.stories.?(ts|tsx|js|jsx)",
+    importPathMatcher:
+      "^\\.[\\\\/](?:src(?:\\/(?!\\.)(?:(?:(?!(?:^|\\/)\\.).)*?)\\/|\\/|$)(?!\\.)(?=.)[^/]*?\\.stories\\.(?:ts|tsx|js|jsx)?)$",
+  },
+];
+
 import "@storybook/addon-ondevice-notes/register";
 import "@storybook/addon-ondevice-controls/register";
 import "@storybook/addon-ondevice-backgrounds/register";
@@ -38,19 +48,19 @@ try {
 } catch {}
 
 const getStories = () => {
-  return [
-    require("../src/components/Demo.stories.tsx"),
-    require("../src/components/LinearGradient/LinearGradient.stories.tsx"),
-    require("../src/designs/atoms/Button/Button.stories.tsx"),
-    require("../src/designs/atoms/H1/H1.stories.tsx"),
-    require("../src/designs/atoms/H2/H2.stories.tsx"),
-    require("../src/designs/atoms/H3/H3.stories.tsx"),
-    require("../src/designs/atoms/Input/Input.stories.tsx"),
-    require("../src/designs/atoms/ProgressBar/ProgressBar.stories.tsx"),
-    require("../src/designs/atoms/Tag/Tag.stories.tsx"),
-    require("../src/designs/atoms/Text/Text.stories.tsx"),
-    require("../src/designs/molecules/AppBar/AppBar.stories.tsx"),
-  ];
+  return {
+    "./src/components/Demo.stories.tsx": require("../src/components/Demo.stories.tsx"),
+    "./src/components/LinearGradient/LinearGradient.stories.tsx": require("../src/components/LinearGradient/LinearGradient.stories.tsx"),
+    "./src/designs/atoms/Button/Button.stories.tsx": require("../src/designs/atoms/Button/Button.stories.tsx"),
+    "./src/designs/atoms/H1/H1.stories.tsx": require("../src/designs/atoms/H1/H1.stories.tsx"),
+    "./src/designs/atoms/H2/H2.stories.tsx": require("../src/designs/atoms/H2/H2.stories.tsx"),
+    "./src/designs/atoms/H3/H3.stories.tsx": require("../src/designs/atoms/H3/H3.stories.tsx"),
+    "./src/designs/atoms/Input/Input.stories.tsx": require("../src/designs/atoms/Input/Input.stories.tsx"),
+    "./src/designs/atoms/ProgressBar/ProgressBar.stories.tsx": require("../src/designs/atoms/ProgressBar/ProgressBar.stories.tsx"),
+    "./src/designs/atoms/Tag/Tag.stories.tsx": require("../src/designs/atoms/Tag/Tag.stories.tsx"),
+    "./src/designs/atoms/Text/Text.stories.tsx": require("../src/designs/atoms/Text/Text.stories.tsx"),
+    "./src/designs/molecules/AppBar/AppBar.stories.tsx": require("../src/designs/molecules/AppBar/AppBar.stories.tsx"),
+  };
 };
 
 configure(getStories, module, false);
