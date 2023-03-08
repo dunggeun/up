@@ -19,6 +19,7 @@ export const QuestSchema: BoxSchema = {
     type: BoxDB.Types.NUMBER,
     index: true,
   },
+  updated_at: BoxDB.Types.NUMBER,
   finished_at: {
     type: BoxDB.Types.NUMBER,
     index: true,

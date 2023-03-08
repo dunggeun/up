@@ -12,6 +12,7 @@ export interface QuestItemProps {
   animate: boolean;
   tagColor: keyof typeof basicColors;
   onPress: () => void;
+  onLongPress: () => void;
 }
 
 const DELAY = 80;
@@ -22,6 +23,7 @@ export function QuestItem ({
   animate,
   tagColor,
   onPress,
+  onLongPress,
 }: QuestItemProps): JSX.Element {
   const shouldShowBadge = data.current_streak > 0;
 
@@ -50,11 +52,11 @@ export function QuestItem ({
     } 
     return component;
   };
-  
 
   return wrap(
     <Button
       color="$white"
+      onLongPress={onLongPress}
       onPress={onPress}
       rightAdornment={
         shouldShowBadge

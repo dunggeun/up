@@ -9,13 +9,15 @@ interface HomeProps {
   questList: Quest[];
   onPressCreateQuest: () => void;
   onPressQuest: (questId: number) => void;
+  onLongPressQuest: (questId: number) => void;
 }
 
 export function Home ({
   user,
   questList,
   onPressQuest,
-  onPressCreateQuest
+  onPressCreateQuest,
+  onLongPressQuest,
 }: HomeProps): JSX.Element | null {
   return (
     <CommonLayout insetBottom={false}>
@@ -23,6 +25,7 @@ export function Home ({
         <Profile user={user} />
         <QuestList
           onCreate={onPressCreateQuest}
+          onLongPress={onLongPressQuest}
           onPress={onPressQuest}
           quests={questList}
         />

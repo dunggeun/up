@@ -1,4 +1,4 @@
-import React, { useRef, useMemo, useEffect } from 'react';
+import React, { memo, useRef, useEffect } from 'react';
 import { styled, Text, View } from 'dripsy';
 import { Animated } from 'react-native';
 import { t } from 'src/translations';
@@ -20,6 +20,7 @@ interface DayProps extends Pick<WeeklyHistoryProps, 'color'> {
 const DAY_CELL_SIZE = 25;
 const WEEK_DAYS = 7;
 const WEEKS = 4;
+const HISTORY_DAYS = WEEK_DAYS * WEEKS;
 
 const Container = styled(View)({
   gap: '$02',
@@ -46,13 +47,11 @@ const Header = styled(Week)({
   paddingX: '$02',
 });
 
-const getStatus = (value: number): Status => {
-  if (value === 0) {
-    return 'inactive';
-  } else if (value === -1) {
+const getStatus = (hasHistory: boolean, dayBefore: number): Status => {
+  if (dayBefore < 0) {
     return 'empty';
-  } 
-  return 'active';
+  }
+  return hasHistory ? 'active' : 'inactive';
 };
 
 function Day ({ color, status, delay }: DayProps): JSX.Element {
@@ -75,20 +74,23 @@ function Day ({ color, status, delay }: DayProps): JSX.Element {
   );
 }
 
-export function WeeklyHistory ({
+const getArrayForRender = (): null[][] => {
+  const dummy = Array.from({ length: HISTORY_DAYS }).fill(null) as null[];
+  const arr: null[][] = [];
+
+  for (let i = 0; i < WEEKS; i++) {
+    const sliceFrom = i * WEEK_DAYS;
+    arr.push(dummy.slice(sliceFrom, sliceFrom + WEEK_DAYS));
+  }
+
+  return arr;
+};
+
+export const WeeklyHistory = memo(function WeeklyHistory({
   color,
-  history
+  history,
 }: WeeklyHistoryProps): JSX.Element {
-  const computedHistory = useMemo(() => {
-    const weeks: number[][] = [];
-
-    for (let i = 0; i < WEEKS; i++) {
-      const sliceFrom = i * WEEK_DAYS;
-      weeks.push(history.slice(sliceFrom, sliceFrom + WEEK_DAYS));
-    }
-
-    return weeks;
-  }, [history]);
+  const weekDay = new Date().getDay();
 
   return (
     <Container>
@@ -115,15 +117,23 @@ export function WeeklyHistory ({
           {t('label.weekday_6')}
         </Text>
       </Header>
-      {computedHistory.map((daysInWeek, weekIndex) => (
+      {getArrayForRender().map((daysInWeek, weekIndex) => (
         // eslint-disable-next-line react/no-array-index-key
         <Week key={weekIndex}>
-          {daysInWeek.map((value, dayIndex) => (
-            // eslint-disable-next-line react/no-array-index-key
-            <Day color={color} delay={(weekIndex + dayIndex) * 100} key={dayIndex} status={getStatus(value)} />
-          ))}
+          {daysInWeek.map((_, dayIndex) => {
+            const dayBefore = HISTORY_DAYS - ((weekIndex * 7) + dayIndex) - (WEEK_DAYS - weekDay);
+            return (
+              <Day
+                color={color}
+                delay={(weekIndex + dayIndex) * 100}
+                // eslint-disable-next-line react/no-array-index-key
+                key={dayIndex}
+                status={getStatus(history.includes(dayBefore), dayBefore)}
+              />
+            );
+          })}
         </Week>
       ))}
     </Container>
   );
-}
+});

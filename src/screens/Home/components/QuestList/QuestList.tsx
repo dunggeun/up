@@ -17,6 +17,7 @@ export interface QuestListProps {
   quests: Quest[];
   onCreate: () => void;
   onPress: (id: number) => void;
+  onLongPress: (id: number) => void;
 }
 
 const SHADOW_HEIGHT = 16;
@@ -65,7 +66,12 @@ function CreateQuestButton({ onPress }: Pick<ButtonProps, 'onPress'>): JSX.Eleme
   );
 }
 
-export function QuestList ({ quests, onCreate, onPress }: QuestListProps): JSX.Element {
+export function QuestList ({
+  quests,
+  onCreate,
+  onPress,
+  onLongPress,
+}: QuestListProps): JSX.Element {
   const { bottomInset } = useMainTabBarInset();
   const { theme } = useDripsyTheme();
   const userColor = useUserThemeColor();
@@ -81,10 +87,15 @@ export function QuestList ({ quests, onCreate, onPress }: QuestListProps): JSX.E
         animate={LAST_ANIMATABLE_ITEM_INDEX > data.index}
         data={data.item}
         index={data.index}
+        onLongPress={(): void => onLongPress(data.item.id)}
         onPress={(): void => onPress(data.item.id)}
         tagColor={userColor}
       />
     );
+  };
+
+  const keyExtractor = (data: Quest): string => {
+    return data.id.toString() + userColor;
   };
 
   return (
@@ -110,7 +121,7 @@ export function QuestList ({ quests, onCreate, onPress }: QuestListProps): JSX.E
         }
         data={quests}
         extraData={quests}
-        keyExtractor={(data): string => data.id.toString() + userColor}
+        keyExtractor={keyExtractor}
         renderItem={renderItem}
         style={listStyle}
         {...SHARED_CONFIG.scrollableViewProps}

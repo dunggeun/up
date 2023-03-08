@@ -40,11 +40,16 @@ export const useAnimatedStyleWithGesture = ({
   const isLongPressRef = useRef(false);
   const capPosition = useRef(new Animated.Value(0)).current;
   const dimSize = useRef(new Animated.Value(0)).current;
-  const handlerRef = useRef({ onPress, onLongPress });
+  const optionsRef = useRef({ disableHaptic, disableLongPress, onPress, onLongPress });
 
   useEffect(() => {
-    handlerRef.current = { onPress, onLongPress };
-  }, [onPress, onLongPress]);
+    optionsRef.current = {
+      disableHaptic,
+      disableLongPress,
+      onPress,
+      onLongPress,
+    };
+  }, [disableHaptic, disableLongPress, onPress, onLongPress]);
 
   const applyTapAnimation = (): void => {
     capPosition.setValue(PRESS_DEPTH);
@@ -77,7 +82,7 @@ export const useAnimatedStyleWithGesture = ({
 
   const triggerPressHandler = (): void => {
     // eslint-disable-next-line @typescript-eslint/no-shadow
-    const { onPress, onLongPress } = handlerRef.current;
+    const { onPress, onLongPress } = optionsRef.current;
     isLongPressRef.current ? onLongPress?.() : onPress?.();
     isLongPressRef.current = false;
   };
@@ -87,6 +92,8 @@ export const useAnimatedStyleWithGesture = ({
       onStartShouldSetPanResponder: () => true,
       onPanResponderTerminate: () => releaseAnimations(),
       onPanResponderGrant: () => {
+        // eslint-disable-next-line @typescript-eslint/no-shadow
+        const { disableHaptic, disableLongPress } = optionsRef.current;
         !disableHaptic && triggerHaptic('impactLight');
         applyTapAnimation();
 
