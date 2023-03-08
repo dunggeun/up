@@ -75,7 +75,8 @@ export const BadgeSection = memo(function BadgeSection ({
   };
 
   const isUnlocked = (id: number): boolean => {
-    return id !== 0 && !unlockedBadges[id];
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-member-access
+    return id === 0 || unlockedBadges[id];
   };
 
   return (
@@ -88,7 +89,7 @@ export const BadgeSection = memo(function BadgeSection ({
               <Button
                 color="$white"
                 containerStyle={buttonContainerStyle}
-                disabled={isUnlocked(badge.id)}
+                disabled={!isUnlocked(badge.id)}
                 key={badge.id}
                 onLongPress={(): void => onLongPressBadge(badge.id)}
                 onPress={(): void => onPressBadge(badge.id)}
