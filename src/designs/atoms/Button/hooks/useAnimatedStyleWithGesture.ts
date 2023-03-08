@@ -1,4 +1,4 @@
-import { useRef, type ComponentProps } from 'react';
+import { useRef, useEffect, type ComponentProps } from 'react';
 import {
   Animated,
   PanResponder,
@@ -32,15 +32,19 @@ export const useAnimatedStyleWithGesture = ({
   onPress,
   onLongPress,
 }: AnimatedStyleWithGestureConfig): {
-  responder: PanResponderInstance,
-  capStyle: AnimatedStyle,
-  dimStyle: AnimatedStyle,
-
+  responder: PanResponderInstance;
+  capStyle: AnimatedStyle;
+  dimStyle: AnimatedStyle;
 } => {
   const timeoutRef = useRef<NodeJS.Timeout>();
   const isLongPressRef = useRef(false);
   const capPosition = useRef(new Animated.Value(0)).current;
   const dimSize = useRef(new Animated.Value(0)).current;
+  const handlerRef = useRef({ onPress, onLongPress });
+
+  useEffect(() => {
+    handlerRef.current = { onPress, onLongPress };
+  }, [onPress, onLongPress]);
 
   const applyTapAnimation = (): void => {
     capPosition.setValue(PRESS_DEPTH);
@@ -57,19 +61,23 @@ export const useAnimatedStyleWithGesture = ({
 
   const releaseAnimations = (): void => {
     clearTimeout(timeoutRef.current);
-    Animated.timing(capPosition, {
-      useNativeDriver: false,
-      duration: RELEASE_DURATION,
-      toValue: AnimateState.INACTIVE,
-    }).start();
-    Animated.timing(dimSize, {
-      useNativeDriver: false,
-      duration: RELEASE_DURATION,
-      toValue: AnimateState.INACTIVE,
-    }).start();
+    Animated.parallel([
+      Animated.timing(capPosition, {
+        useNativeDriver: false,
+        duration: RELEASE_DURATION,
+        toValue: AnimateState.INACTIVE,
+      }),
+      Animated.timing(dimSize, {
+        useNativeDriver: false,
+        duration: RELEASE_DURATION,
+        toValue: AnimateState.INACTIVE,
+      }),
+    ]).start();
   };
 
   const triggerPressHandler = (): void => {
+    // eslint-disable-next-line @typescript-eslint/no-shadow
+    const { onPress, onLongPress } = handlerRef.current;
     isLongPressRef.current ? onLongPress?.() : onPress?.();
     isLongPressRef.current = false;
   };
