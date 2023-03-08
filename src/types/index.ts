@@ -17,6 +17,7 @@ export interface Quest {
   max_streak: number;
   current_streak: number;
   created_at: number;
+  updated_at: number;
   finished_at: number;
 }
 
