@@ -33,8 +33,14 @@ const Container = styled(Animated.View)(({
   height: BUTTON_HEIGHT,
 }));
 
-const ContentWrapper = styled(View)(({ disabled }: { disabled: boolean }) => ({
-  flex: 1,
+const ContentWrapper = styled(View)(({
+  disabled,
+  hasAdornment,
+}: {
+  disabled: boolean;
+  hasAdornment: boolean;
+}) => ({
+  width: hasAdornment ? 'auto' : '100%',
   opacity: disabled ? .5 : 1,
 }));
 
@@ -60,14 +66,7 @@ const DimContainer = styled(View)({
 
 const Label = styled(Text, { 
   defaultVariant: 'text.h2',
-})(({
-  isLightBackground,
-  hasAdornment,
-}: {
-  isLightBackground: boolean,
-  hasAdornment: boolean;
-}) => ({
-  width: hasAdornment ? 'auto' : '100%',
+})(({ isLightBackground }: { isLightBackground: boolean }) => ({
   color: isLightBackground ? '$text_primary' : '$white',
   textAlign: 'center',
 }));
@@ -133,15 +132,19 @@ export function Button ({
 
   const renderChildren = (): ReactNode => {
     const content = typeof children === 'string' ? (
-      <Label
-        hasAdornment={Boolean(leftAdornment || rightAdornment)}
-        isLightBackground={isLightBackground}
-      >
+      <Label isLightBackground={isLightBackground}>
         {children}
       </Label>
     ) : children;
 
-    return <ContentWrapper disabled={disabled}>{content}</ContentWrapper>;
+    return (
+      <ContentWrapper
+        disabled={disabled}
+        hasAdornment={Boolean(leftAdornment || rightAdornment)}
+      >
+        {content}
+      </ContentWrapper>
+    );
   };
 
   return (
