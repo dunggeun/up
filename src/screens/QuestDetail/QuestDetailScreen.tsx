@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react';
-import { getRecoil, setRecoil } from 'recoil-nexus';
+import { useRecoilState } from 'recoil';
 import { StorageManager } from 'src/modules';
 import { questList } from 'src/stores';
 import { QuestDetail } from './QuestDetail';
@@ -13,15 +13,15 @@ export function QuestDetailScreen ({
   route
 }: QuestDetailScreenProps): JSX.Element {
   const { id } = route.params;
+  const [quests, setQuests] = useRecoilState(questList);
 
   const handlePressCloseButton = (): void => {
     navigation.goBack();
   };
 
   const handlePressDoneButton = (): void => {
-    const currentQuestList = getRecoil(questList);
-    const targetQuestIndex = currentQuestList.findIndex((data) => data.id === id);
-    const targetQuest = currentQuestList[targetQuestIndex];
+    const targetQuestIndex = quests.findIndex((data) => data.id === id);
+    const targetQuest = quests[targetQuestIndex];
     const currentTimestamp = Number(new Date());
   
     if (!targetQuest) return;
@@ -33,11 +33,11 @@ export function QuestDetailScreen ({
         finished_at: currentTimestamp
       })
       .then(() => {
-        const updatedQuest = currentQuestList[targetQuestIndex];
+        const updatedQuest = quests[targetQuestIndex];
         if (updatedQuest) {
           updatedQuest.finished_at = currentTimestamp;
         }
-        setRecoil(questList, [...currentQuestList]);
+        setQuests([...quests]);
 
         // @todo 안내 모달 노출 후 뒤로가기 처리
         navigation.goBack();

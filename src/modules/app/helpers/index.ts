@@ -6,7 +6,7 @@ import {
   FALLBACK_THEME
 } from '../data';
 
-import type { User, Quest } from 'src/types';
+import type { User, Quest, Achieve } from 'src/types';
 import type { Badge, Theme } from '../types';
 
 export const createUserData = (name: string): User => {
@@ -33,8 +33,29 @@ export const createQuestData = (title: string, description = ''): Quest => {
     current_streak: 0,
     max_streak: 0,
     created_at: currentTimestamp,
+    updated_at: 0,
     finished_at: 0,
   };
+};
+
+export const createAchieveData = ({
+  questId,
+  exp
+}: {
+  questId: number;
+  exp: number;
+}): Achieve => {
+  const currentTimestamp = Number(new Date());
+  return {
+    id: currentTimestamp,
+    qid: questId,
+    exp,
+    created_at: currentTimestamp,
+  };
+};
+
+export const getAchieveExpByStreak = (currentStreak: number): number => {
+  return Math.min(7, currentStreak || 1);
 };
 
 export const getExpByLevel = (level: number): number => {

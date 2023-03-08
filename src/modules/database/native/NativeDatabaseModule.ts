@@ -87,7 +87,7 @@ export class NativeDatabaseModule implements DatabaseModule<'quest' | 'achieve'>
 
   async update<Data extends DatabaseRecord>(
     model: 'quest' | 'achieve',
-    data: Data,
+    data: Partial<Data>,
     conditions?: WhereConditions,
   ): Promise<void> {
     if (!this.database) {

@@ -2,7 +2,7 @@ import { setRecoil } from 'recoil-nexus';
 import { questList } from 'src/stores';
 import { DatabaseModule } from './module';
 
-import type { Quest } from 'src/types';
+import type { Quest, Achieve } from 'src/types';
 
 export class StorageManager {
   private static instance: StorageManager | null = null;
@@ -45,13 +45,36 @@ export class StorageManager {
     return this.database.insert('quest', data);
   }
 
-  updateQuest (id: number, data: Quest): Promise<void> {
+  updateQuest (id: number, data: Partial<Quest>): Promise<void> {
     return this.database.update('quest', data, {
       id: {
         symbol: '=',
         value: id,
       },
     });
+  }
+
+  getAchieveList ({ qid }: Pick<Achieve, 'qid'>): Promise<Achieve[]> {
+    return this.database.select(
+      'achieve',
+      {
+        qid: {
+          symbol: '=',
+          value: qid,
+        },
+      },
+      {
+        order: {
+          target: 'created_at',
+          by: 'desc',
+        },
+        limit: 28,
+      },
+    );
+  }
+
+  addAchieve (data: Achieve): Promise<void> {
+    return this.database.insert('achieve', data);
   }
 
   async clear (): Promise<void> {

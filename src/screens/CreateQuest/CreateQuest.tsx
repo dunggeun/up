@@ -1,5 +1,5 @@
 import React from 'react';
-import { getRecoil, setRecoil } from 'recoil-nexus';
+import { useRecoilState } from 'recoil';
 import { CommonLayout } from 'src/designs';
 import { TransitionGroup } from 'src/components';
 import { useUserThemeColor } from 'src/hooks';
@@ -19,15 +19,14 @@ export function CreateQuest ({
   onPressShare
 }: CreateQuestProps): JSX.Element {
   const userColor = useUserThemeColor();
+  const [quests, setQuests] = useRecoilState(questList);
   const { phase, name, memo, setName, setMemo, back, next } = useQuestForm({
     onConfirm: () => {
       const newQuest = createQuestData(name, memo);
       return StorageManager
         .getInstance()
         .addQuest(newQuest)
-        .then(() => {
-          setRecoil(questList, [newQuest, ...getRecoil(questList)]); 
-        });
+        .then(() => setQuests([newQuest, ...quests]));
     },
   });
 

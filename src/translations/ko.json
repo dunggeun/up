@@ -62,7 +62,8 @@
       "quest_current_streak": "(현재 연속 기록: %@일)",
       "quest_total_exp": "%@ 부터 지금까지 본 퀘스트로 얻은 경험치는 아래와 같아요",
       "empty_quest": "진행중인 퀘스트가 없어요.\n\n새로운 퀘스트를 만들어보세요!",
-      "user_edited": "정보가 수정되었어요"
+      "user_edited": "정보가 수정되었어요",
+      "already_completed": "오늘 이미 달성한 퀘스트에요"
     },
     "badge": {
       "0": "",
