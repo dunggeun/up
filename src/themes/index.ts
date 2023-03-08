@@ -108,6 +108,7 @@ const themeLight = makeTheme({
       flex: 1,
       px: '$04',
       backgroundColor: '$white',
+      alignSelf: 'center',
     },
     // Container variants
     wide: {

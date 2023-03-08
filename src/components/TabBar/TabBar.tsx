@@ -31,7 +31,7 @@ const Container = styled(View)({
   alignSelf: 'center',
   width: '50%',
   minWidth: TAB_BAR_MIN_WIDTH,
-  maxWidth: CONTAINER_MAX_WIDTH,
+  maxWidth: CONTAINER_MAX_WIDTH / 2,
   height: TAB_BAR_HEIGHT,
   padding: '$04',
   borderRadius: '$full',
