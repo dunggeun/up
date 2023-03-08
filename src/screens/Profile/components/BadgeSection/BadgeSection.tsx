@@ -89,7 +89,7 @@ export const BadgeSection = memo(function BadgeSection ({
                 color="$white"
                 containerStyle={buttonContainerStyle}
                 disabled={isUnlocked(badge.id)}
-                key={badge.title}
+                key={badge.id}
                 onLongPress={(): void => onLongPressBadge(badge.id)}
                 onPress={(): void => onPressBadge(badge.id)}
                 // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
