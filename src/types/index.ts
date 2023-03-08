@@ -19,3 +19,10 @@ export interface Quest {
   created_at: number;
   finished_at: number;
 }
+
+export interface Achieve {
+  id: number;
+  qid: number;
+  exp: number;
+  created_at: number;
+}
