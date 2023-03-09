@@ -1,3 +1,4 @@
+export * from './DetailSection';
 export * from './FadeInView';
 export * from './KeyboardAvoidingView';
 export * from './SafeAreaView';

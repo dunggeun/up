@@ -1,6 +1,6 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import { OpenSourceProjectScreen } from 'src/screens';
+import { OpenSourceProjectScreen } from 'src/features/misc';
 import { SHARED_CONFIG } from 'src/constants';
 
 import type { CommonStackScreenParamList } from './types';

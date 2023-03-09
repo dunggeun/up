@@ -1,5 +1,11 @@
 import { StorageManager } from 'src/modules';
-import type { Quest, Achieve } from 'src/types';
+import type { Quest, Achieve } from 'src/features/quests';
+
+export const fetchQuests = (): Promise<Quest[]> => {
+  return StorageManager
+    .getInstance()
+    .getQuestList();
+};
 
 export const fetchQuestById = ({ questId }: { questId: Quest['id'] }): Promise<Quest> => {
   return StorageManager
