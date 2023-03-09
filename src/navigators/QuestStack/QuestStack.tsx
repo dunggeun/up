@@ -1,6 +1,9 @@
 import React from 'react';
 import { createStackNavigator, TransitionPresets } from '@react-navigation/stack';
-import { CreateQuestScreen, QuestDetailScreen } from 'src/screens';
+import {
+  QuestCreateScreen,
+  QuestDetailScreen,
+} from 'src/features/quests';
 import { SHARED_CONFIG } from 'src/constants';
 
 import type { QuestStackScreenParamList } from './types';
@@ -10,7 +13,6 @@ const QuestStack = createStackNavigator<QuestStackScreenParamList>();
 export function QuestStackNavigator(): JSX.Element {
   return (
     <QuestStack.Navigator
-      
       screenOptions={{
         headerShown: false,
         cardStyle: SHARED_CONFIG.navigatorCardStyle,
@@ -18,8 +20,8 @@ export function QuestStackNavigator(): JSX.Element {
       }}
     >
       <QuestStack.Screen
-        component={CreateQuestScreen}
-        name="CreateQuest"
+        component={QuestCreateScreen}
+        name="QuestCreate"
       />
       <QuestStack.Screen
         component={QuestDetailScreen}

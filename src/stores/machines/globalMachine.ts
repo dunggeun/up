@@ -4,7 +4,7 @@ import { createMachine, assign } from 'xstate';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { getExpByLevel } from 'src/modules/app/helpers';
 
-import type { User } from 'src/types';
+import type { User } from 'src/features/users';
 
 const TAG = 'GlobalMachine';
 

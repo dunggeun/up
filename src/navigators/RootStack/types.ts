@@ -6,7 +6,7 @@ export type RootStackScreenParamList = {
   Common: undefined;
   Quest: undefined;
   Landing: undefined;
-  RegisterUser: undefined;
+  UserRegister: undefined;
 }
 
 export type RootStackProps<RouteName extends keyof RootStackScreenParamList> =

@@ -6,7 +6,8 @@ import {
   FALLBACK_THEME
 } from '../data';
 
-import type { User, Quest, Achieve } from 'src/types';
+import type { User } from 'src/features/users';
+import type { Quest, Achieve } from 'src/features/quests';
 import type { Badge, Theme } from '../types';
 
 export const createUserData = (name: string): User => {

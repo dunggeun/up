@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react';
-import { SplashScreen } from 'src/screens';
+import { SplashScreen } from 'src/features/misc';
 import { RootStackNavigator } from './RootStack';
 
 export function Navigator(): JSX.Element {

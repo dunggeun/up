@@ -4,8 +4,12 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useDripsyTheme } from 'dripsy';
 import { Home, Menu, Profile } from 'src/assets/icons';
 import { TabBar } from 'src/components';
-import { ProfileScreen, HomeScreen, MenuScreen } from 'src/screens';
-import { useUserThemeColor } from 'src/hooks';
+import {
+  useUserThemeColor,
+  HomeScreen,
+  ProfileScreen,
+} from 'src/features/users';
+import { MenuScreen } from 'src/features/misc';
 import { t } from 'src/translations';
 
 import type { MainTabScreenParamList } from './types';

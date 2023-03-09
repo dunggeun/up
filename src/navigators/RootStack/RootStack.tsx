@@ -2,7 +2,8 @@ import React from 'react';
 import { createStackNavigator, TransitionPresets } from '@react-navigation/stack';
 import { AppManager } from 'src/modules';
 import { useIsAuthorized } from 'src/hooks';
-import { LandingScreen, RegisterUserScreen } from 'src/screens';
+import { UserRegisterScreen } from 'src/features/users';
+import { LandingScreen } from 'src/features/misc';
 import { t } from 'src/translations';
 import { SHARED_CONFIG } from 'src/constants';
 import { MainTabNavigator } from '../MainTab';
@@ -52,8 +53,8 @@ export function RootStackNavigator(): JSX.Element | null {
               }}
             />
             <RootStack.Screen
-              component={RegisterUserScreen}
-              name="RegisterUser"
+              component={UserRegisterScreen}
+              name="UserRegister"
               options={{ title: t('title.register_user') }}
             />
           </>
