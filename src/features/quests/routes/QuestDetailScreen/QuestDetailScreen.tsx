@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useQueryClient } from 'react-query';
 import { Button, CommonLayout } from 'src/designs';
 import { LoadingIndicator } from 'src/components';
@@ -8,6 +8,7 @@ import { useUserThemeColor } from 'src/features/users';
 
 import { useQuestDetail } from '../../hooks';
 import { QuestInformation } from '../../components/QuestInformation';
+import { QuestDoneModal } from '../../components/QuestDoneModal';
 
 import type { QuestStackProps } from 'src/navigators/QuestStack/types';
 
@@ -18,6 +19,7 @@ export function QuestDetailScreen({
   route
 }: QuestDetailScreenProps): JSX.Element {
   const { id } = route.params;
+  const [questDoneModalVisibility, setQuestDoneModalVisibility] = useState(false);
   const client = useQueryClient();
   const userColor = useUserThemeColor();
   const { data: questDetail, isLoading } = useQuestDetail({ id });
@@ -28,8 +30,14 @@ export function QuestDetailScreen({
   };
 
   const handlePressDoneButton = (): void => {
-    // @todo 안내 모달 노출 후 데이터 변경
+    setQuestDoneModalVisibility(true);
+  };
 
+  const handleQuestDoneModal = (): void => {
+    setQuestDoneModalVisibility(false);
+  };
+
+  const handleDone = (): void => {
     if (!questDetail?.quest) return;
 
     const currentTimestamp = Number(new Date());
@@ -50,26 +58,34 @@ export function QuestDetailScreen({
   };
 
   return shouldShowLoadingIndicator ? <LoadingIndicator /> : (
-    <CommonLayout>
-      <CommonLayout.Header
-        onClosePress={handlePressCloseButton}
-        title={questDetail.quest.title}
-      />
-      <CommonLayout.Body>
-        <QuestInformation
-          achieveList={questDetail.achieveList}
-          quest={questDetail.quest}
+    <>
+      <CommonLayout>
+        <CommonLayout.Header
+          onClosePress={handlePressCloseButton}
+          title={questDetail.quest.title}
         />
-      </CommonLayout.Body>
-      <CommonLayout.Footer>
-        <Button
-          color={userColor}
-          disableLongPress
-          onPress={handlePressDoneButton}
-        >
-          {t('label.quest_done')}
-        </Button>
-      </CommonLayout.Footer>
-    </CommonLayout>
+        <CommonLayout.Body>
+          <QuestInformation
+            achieveList={questDetail.achieveList}
+            quest={questDetail.quest}
+          />
+        </CommonLayout.Body>
+        <CommonLayout.Footer>
+          <Button
+            color={userColor}
+            disableLongPress
+            onPress={handlePressDoneButton}
+          >
+            {t('label.quest_done')}
+          </Button>
+        </CommonLayout.Footer>
+      </CommonLayout>
+      <QuestDoneModal
+        isLoading={loading}
+        onClose={handleQuestDoneModal}
+        onDone={handleDone}
+        visible={questDoneModalVisibility}
+      />
+    </>
   );
 }
