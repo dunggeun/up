@@ -17,6 +17,7 @@
       "open_source": "오픈소스 프로젝트",
       "reset_data": "데이터 초기화",
       "reset_confirm": "네, 삭제할게요",
+      "done_confirm": "네, 완료할게요",
       "up_repository": "Up 소스코드 저장소",
       "next": "다음으로",
       "accept_quest": "길게 눌러 퀘스트 수락하기",
@@ -46,7 +47,8 @@
       "memo": "메모",
       "quest_info": "퀘스트 정보",
       "quest_history_in_4_week": "최근 4주 퀘스트 기록",
-      "quest_total_exp": "누적 경험치"
+      "quest_total_exp": "누적 경험치",
+      "done_quest": "퀘스트 완료하기"
     },
     "placeholder": {
       "enter_name": "이름을 입력해주세요",
@@ -67,7 +69,8 @@
       "empty_quest": "진행중인 퀘스트가 없어요.\n\n새로운 퀘스트를 만들어보세요!",
       "user_edited": "정보가 수정되었어요",
       "already_completed": "오늘 이미 달성한 퀘스트에요",
-      "done_quest": "퀘스트가 완료 처리되었어요"
+      "done_quest": "퀘스트를 완료 처리하면 앞으로 본 퀘스트를\n수행할 수 없지만 기록은 계속 확인할 수 있어요.",
+      "done_quest_guide": "완료 처리하시려면 버튼을 길게 눌러주세요"
     },
     "badge": {
       "0": "",
