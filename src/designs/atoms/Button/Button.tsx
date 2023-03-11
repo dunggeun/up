@@ -40,7 +40,9 @@ const ContentWrapper = styled(View)(({
   disabled: boolean;
   hasAdornment: boolean;
 }) => ({
+  justifyContent: 'center',
   width: hasAdornment ? 'auto' : '100%',
+  height: '100%',
   opacity: disabled ? .5 : 1,
 }));
 
