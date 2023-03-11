@@ -16,7 +16,7 @@ const ToastContent = styled(Pressable)({
 });
 
 export const Toast = memo(function Toast () {
-  const [content, setContent] = useState<JSX.Element | null>(null);
+  const [content, setContent] = useState<React.ReactNode>(null);
   const { top } = useSafeAreaInsets();
   const sx = useSx();
 

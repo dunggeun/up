@@ -1,6 +1,7 @@
 import { QueryClient } from 'react-query';
 import { interpret, type InterpreterFrom } from 'xstate';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { ToastManager } from 'src/components/Toast/ToastManager';
 import { globalMachine } from 'src/stores';
 import { delay } from 'src/utils';
 import { APP_MINIMUM_LOADING_DURATION } from 'src/constants';
@@ -36,6 +37,10 @@ export class AppManager {
       AppManager.instance = new AppManager();
     }
     return AppManager.instance;
+  }
+
+  public static showToast(element: React.ReactNode): void {
+    ToastManager.getInstance().show(element);
   }
 
   private async prefetchUserData(): Promise<void> {
