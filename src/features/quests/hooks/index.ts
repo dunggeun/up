@@ -3,3 +3,4 @@ export * from './useAddQuest';
 export * from './useQuestDetail';
 export * from './useQuestPhase';
 export * from './useQuests';
+export * from './useUpdateQuest';
