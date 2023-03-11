@@ -55,6 +55,17 @@ export const createAchieveData = ({
   };
 };
 
+export const updateQuestForAddAchieve = (quest: Quest): Quest => {
+  const updatedQuest = { ...quest };
+  updatedQuest.current_streak++;
+  updatedQuest.max_streak = Math.max(
+    updatedQuest.max_streak,
+    updatedQuest.current_streak,
+  );
+  updatedQuest.updated_at = Number(new Date());
+  return updatedQuest;
+};
+
 export const getAchieveExpByStreak = (currentStreak: number): number => {
   return Math.min(7, currentStreak || 1);
 };

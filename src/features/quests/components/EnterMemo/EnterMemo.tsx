@@ -11,7 +11,7 @@ export interface EnterMemoProps {
   questName: string;
   userColor: keyof typeof colors;
   onChangeMemo: (text: string) => void;
-  onPressNext: () => void;
+  onPressAccept: () => void;
 }
 
 const MemoInput = styled(Input)({
@@ -22,7 +22,7 @@ export function EnterMemo ({
   questName,
   userColor,
   onChangeMemo,
-  onPressNext
+  onPressAccept
 }: EnterMemoProps): JSX.Element {
   return (
     <>
@@ -38,7 +38,7 @@ export function EnterMemo ({
         </PageContent>
       </CommonLayout.Body>
       <CommonLayout.Footer>
-        <Button color={userColor} onLongPress={onPressNext}>
+        <Button color={userColor} onLongPress={onPressAccept}>
           {t('label.accept_quest')}
         </Button>
       </CommonLayout.Footer>

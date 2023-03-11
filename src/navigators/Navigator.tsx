@@ -1,12 +1,13 @@
-import React, { Suspense } from 'react';
+import React from 'react';
+import { AnimateSuspense } from 'src/components';
 import { SplashScreen } from 'src/features/misc';
 import { RootStackNavigator } from './RootStack';
 
 export function Navigator(): JSX.Element {
   return (
-    <Suspense fallback={<SplashScreen />} >
+    <AnimateSuspense fallback={<SplashScreen />} >
       <RootStackNavigator />
       {/* other stacks */}
-    </Suspense>
+    </AnimateSuspense>
   );
 }

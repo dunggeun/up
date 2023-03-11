@@ -1,16 +1,12 @@
-import React from 'react';
-import { useRecoilState } from 'recoil';
+import React, { useState, useCallback, useLayoutEffect } from 'react';
 import { CommonLayout } from 'src/designs';
 import { TransitionGroup } from 'src/components';
 import { useUserThemeColor } from 'src/features/users';
-import { StorageManager } from 'src/modules';
-import { createQuestData } from 'src/modules/app/helpers';
-import { questList } from 'src/stores';
 
+import { useAddQuest, useQuestPhase, QuestFormPhase } from '../../hooks';
 import { EnterTitle } from '../../components/EnterTitle';
 import { EnterMemo } from '../../components/EnterMemo';
 import { QuestAccepted } from '../../components/QuestAccepted';
-import { useQuestForm, QuestFormPhase } from '../../hooks';
 
 import type { QuestStackProps } from 'src/navigators/QuestStack/types';
 
@@ -18,28 +14,30 @@ type QuestCreateScreenProps = QuestStackProps<'QuestCreate'>;
 
 export function QuestCreateScreen({ navigation }: QuestCreateScreenProps): JSX.Element {
   const userColor = useUserThemeColor();
-  const [quests, setQuests] = useRecoilState(questList);
-  const { phase, name, memo, setName, setMemo, back, next } = useQuestForm({
-    onConfirm: () => {
-      const newQuest = createQuestData(name, memo);
-      return StorageManager
-        .getInstance()
-        .addQuest(newQuest)
-        .then(() => setQuests([newQuest, ...quests]));
-    },
-  });
-
-  const handlePressCloseButton = (): void => {
-    navigation.goBack();
-  };
-
-  const handlePressShareButton = (): void => {
-    // @todo
-  };
+  const [name, setName] = useState('');
+  const [memo, setMemo] = useState('');
+  const { phase, back, next, complete } = useQuestPhase();
+  const { mutate, isSuccess } = useAddQuest();
 
   const backPressHandler = phase === QuestFormPhase.EnterMemo
     ? back
     : undefined;
+
+  const handlePressAcceptButton = (): void => {
+    mutate({ title: name, description: memo });
+  };
+
+  const handlePressCloseButton = useCallback((): void => {
+    navigation.goBack();
+  }, [navigation]);
+
+  const handlePressShareButton = useCallback((): void => {
+    // @todo
+  }, []);
+
+  useLayoutEffect(() => {
+    isSuccess && complete();
+  }, [isSuccess, complete]);
 
   return (
     <CommonLayout>
@@ -56,7 +54,7 @@ export function QuestCreateScreen({ navigation }: QuestCreateScreenProps): JSX.E
         />
         <EnterMemo
           onChangeMemo={setMemo}
-          onPressNext={next}
+          onPressAccept={handlePressAcceptButton}
           questName={name}
           userColor={userColor}
         />

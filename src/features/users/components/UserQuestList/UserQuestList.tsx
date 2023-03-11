@@ -3,6 +3,7 @@ import { FlatList, type ListRenderItemInfo } from 'react-native';
 import { styled, useDripsyTheme, View } from 'dripsy';
 import { Button, H2, H3, type ButtonProps } from 'src/designs';
 import { LinearGradient } from 'src/components/LinearGradient';
+import { useQuests } from 'src/features/quests/hooks';
 import { useMainTabBarInset } from 'src/hooks';
 import { SHARED_CONFIG, WINDOW_HEIGHT } from 'src/constants';
 import { t } from 'src/translations';
@@ -14,10 +15,7 @@ import { useUserThemeColor } from '../../hooks';
 import type { Quest } from 'src/features/quests';
 
 export interface UserQuestListProps {
-  quests: Quest[];
   onCreate: () => void;
-  onPress: (id: number) => void;
-  onLongPress: (id: number) => void;
 }
 
 const SHADOW_HEIGHT = 16;
@@ -68,12 +66,8 @@ function CreateQuestButton({ onPress }: Pick<ButtonProps, 'onPress'>): JSX.Eleme
   );
 }
 
-export function UserQuestList ({
-  quests,
-  onCreate,
-  onPress,
-  onLongPress,
-}: UserQuestListProps): JSX.Element {
+export function UserQuestList({ onCreate }: UserQuestListProps): JSX.Element {
+  const { data: quests } = useQuests({ suspense: true });
   const { bottomInset } = useMainTabBarInset();
   const { theme } = useDripsyTheme();
   const userColor = useUserThemeColor();
@@ -89,8 +83,6 @@ export function UserQuestList ({
         animate={LAST_ANIMATABLE_ITEM_INDEX > data.index}
         data={data.item}
         index={data.index}
-        onLongPress={(): void => onLongPress(data.item.id)}
-        onPress={(): void => onPress(data.item.id)}
         tagColor={userColor}
       />
     );

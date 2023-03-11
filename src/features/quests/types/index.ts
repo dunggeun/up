@@ -9,6 +9,11 @@ export interface Quest {
   finished_at: number;
 }
 
+export interface QuestDetail {
+  quest: Quest,
+  achieveList: Achieve[];
+}
+
 export interface Achieve {
   id: number;
   qid: number;
