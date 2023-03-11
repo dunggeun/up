@@ -20,6 +20,7 @@ export class ToastManager {
   }
 
   private dispatchContent (content: JSX.Element | null): void {
+    this.visibility = Boolean(content);
     this.handler?.(content);
 
     if (!content) return;
@@ -40,6 +41,7 @@ export class ToastManager {
       this.timer = setTimeout(() => {
         this.dispatchContent(content);
       }, TOAST_ANIMATION_DURATION);
+      return;
     }
     this.dispatchContent(content);
   }
