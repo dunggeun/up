@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
-import { useQueryClient } from 'react-query';
 import { Button, CommonLayout } from 'src/designs';
 import { LoadingIndicator } from 'src/components';
-import { StorageManager } from 'src/modules';
 import { t } from 'src/translations';
 import { useUserThemeColor } from 'src/features/users';
 
-import { useQuestDetail } from '../../hooks';
+import { useUpdateQuest, useQuestDetail } from '../../hooks';
 import { QuestInformation } from '../../components/QuestInformation';
 import { QuestDoneModal } from '../../components/QuestDoneModal';
 
@@ -20,9 +18,16 @@ export function QuestDetailScreen({
 }: QuestDetailScreenProps): JSX.Element {
   const { id } = route.params;
   const [questDoneModalVisibility, setQuestDoneModalVisibility] = useState(false);
-  const client = useQueryClient();
   const userColor = useUserThemeColor();
   const { data: questDetail, isLoading } = useQuestDetail({ id });
+  const { mutate } = useUpdateQuest({
+    onSuccess: () => {
+      setQuestDoneModalVisibility(false);
+      requestAnimationFrame(() => {
+        navigation.goBack();
+      });
+    },
+  });
   const shouldShowLoadingIndicator = isLoading || !questDetail;
 
   const handlePressCloseButton = (): void => {
@@ -40,21 +45,10 @@ export function QuestDetailScreen({
   const handleDone = (): void => {
     if (!questDetail?.quest) return;
 
-    const currentTimestamp = Number(new Date());
-    questDetail.quest;
-
-    StorageManager
-      .getInstance()
-      .updateQuest(id, {
-        ...questDetail.quest,
-        finished_at: currentTimestamp
-      })
-      .then(() => client.invalidateQueries('quest'))
-      .then(() => navigation.goBack())
-      .catch((error) => {
-        // eslint-disable-next-line no-console
-        console.error('updateQuest', error);
-      });
+    mutate({
+      questId: questDetail.quest.id,
+      data: { finished_at: Number(new Date()), },
+    });
   };
 
   return shouldShowLoadingIndicator ? <LoadingIndicator /> : (
@@ -81,7 +75,6 @@ export function QuestDetailScreen({
         </CommonLayout.Footer>
       </CommonLayout>
       <QuestDoneModal
-        isLoading={loading}
         onClose={handleQuestDoneModal}
         onDone={handleDone}
         visible={questDoneModalVisibility}
