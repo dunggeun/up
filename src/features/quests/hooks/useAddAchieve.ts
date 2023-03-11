@@ -2,7 +2,6 @@ import { createElement } from 'react';
 import { useActor } from '@xstate/react';
 import { useMutation, type UseMutationResult } from 'react-query';
 import { Text } from 'src/designs';
-import * as Toast from 'src/components/Toast';
 import { AppManager } from 'src/modules';
 import { updateQuestForAddAchieve } from 'src/modules/app/helpers';
 import { addAchieve, type AddAchieveResult } from 'src/data';
@@ -51,7 +50,7 @@ export const useAddAchieve = (): UseMutationResult<
         queryClient.setQueryData<Quest[]>('quests', context.previousQuests);
       }
   
-      Toast.show(ErrorToastContent);
+      AppManager.showToast(ErrorToastContent);
     },
     onSuccess: ({ achieve }) => {
       send({ type: 'REWARD', exp: achieve.exp });

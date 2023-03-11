@@ -4,7 +4,6 @@ import { useActor } from '@xstate/react';
 import { styled, View } from 'dripsy';
 import { CommonLayout, Input, Text } from 'src/designs';
 import { FadeInView, Section } from 'src/components';
-import * as Toast from 'src/components/Toast';
 import { AppManager } from 'src/modules';
 import { useDebounce, useMainTabBarInset } from 'src/hooks';
 import { t } from 'src/translations';
@@ -37,7 +36,7 @@ export function ProfileScreen(_props: ProfileScreenProps): JSX.Element | null {
 
   const { trigger: lazyEditUser } = useDebounce((value: Partial<Pick<User, 'theme' | 'name' | 'badge'>>) => {
     handleEditUser(value);
-    Toast.show(EditedToastContent);
+    AppManager.showToast(EditedToastContent);
   }, 500);
 
   const handleChangeUserName = (value: string): void => {

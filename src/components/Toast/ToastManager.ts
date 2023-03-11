@@ -1,6 +1,6 @@
 import { TOAST_ANIMATION_DURATION, TOAST_DURATION } from 'src/constants';
 
-type Handler = (content: JSX.Element | null) => void;
+type Handler = (content: React.ReactNode) => void;
 
 export class ToastManager {
   private static instance: ToastManager | null = null;
@@ -19,7 +19,7 @@ export class ToastManager {
     return ToastManager.instance;
   }
 
-  private dispatchContent (content: JSX.Element | null): void {
+  private dispatchContent (content: React.ReactNode): void {
     this.visibility = Boolean(content);
     this.handler?.(content);
 
@@ -34,7 +34,7 @@ export class ToastManager {
     this.handler = handler;
   }
 
-  show (content: JSX.Element): void {
+  show (content: React.ReactNode): void {
     clearTimeout(this.timer);
     if (this.visibility) {
       this.hide();

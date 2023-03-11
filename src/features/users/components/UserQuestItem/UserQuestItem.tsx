@@ -3,7 +3,7 @@ import dayjs from 'dayjs';
 import { View } from 'dripsy';
 import { MotiView } from 'moti';
 import { Button, Tag, Text } from 'src/designs';
-import * as Toast from 'src/components/Toast';
+import { AppManager } from 'src/modules';
 import { useAddAchieve } from 'src/features/quests/hooks';
 import { navigate } from 'src/navigators/helpers';
 import { t } from 'src/translations';
@@ -39,7 +39,7 @@ export function UserQuestItem ({
       && dayjs(data.updated_at).diff(dayjs(), 'days') === 0;
 
     if (alreadyCompletedToday) {
-      Toast.show(AlreadyCompletedToastContent);
+      AppManager.showToast(AlreadyCompletedToastContent);
       return;
     }
 
