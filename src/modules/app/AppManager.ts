@@ -1,14 +1,14 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { QueryClient } from 'react-query';
 import { interpret, type InterpreterFrom } from 'xstate';
-import { setRecoil } from 'recoil-nexus';
-import { globalMachine, questList } from 'src/stores';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { globalMachine } from 'src/stores';
 import { delay } from 'src/utils';
 import { APP_MINIMUM_LOADING_DURATION } from 'src/constants';
 import { StorageManager } from '../database';
 
-
 export class AppManager {
   private static instance: AppManager | null = null;
+  private queryClient = new QueryClient();
   private storageManager = StorageManager.getInstance();
   private service = interpret(globalMachine);
   private status: 'pending' | 'fulfilled' | 'error' = 'pending';
@@ -20,9 +20,7 @@ export class AppManager {
     this.task = Promise.all([
       (async (): Promise<void> => {
         await this.storageManager.initialize();
-        if (await this.authorize()) {
-          setRecoil(questList, await this.storageManager.getQuestList());
-        }
+        await this.prefetchUserData();
       })(),
       delay(APP_MINIMUM_LOADING_DURATION),
     ]).then(() => {
@@ -38,6 +36,15 @@ export class AppManager {
       AppManager.instance = new AppManager();
     }
     return AppManager.instance;
+  }
+
+  private async prefetchUserData(): Promise<void> {
+    if (!(await this.authorize())) return;
+
+    await this.queryClient.prefetchQuery(
+      'quests',
+      this.storageManager.getQuestList.bind(this.storageManager)
+    );
   }
 
   private authorize(): Promise<boolean> {
@@ -69,6 +76,10 @@ export class AppManager {
 
   getService(): InterpreterFrom<typeof globalMachine> {
     return this.service;
+  }
+
+  getQueryClient(): QueryClient {
+    return this.queryClient;
   }
 
   async reset(): Promise<void> {

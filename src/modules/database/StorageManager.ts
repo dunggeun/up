@@ -1,5 +1,3 @@
-import { setRecoil } from 'recoil-nexus';
-import { questList } from 'src/stores';
 import { DatabaseModule } from './module';
 
 import type { Quest, Achieve } from 'src/features/quests';
@@ -82,6 +80,5 @@ export class StorageManager {
       this.database.clear('quest'),
       this.database.clear('achieve'),
     ]);
-    setRecoil(questList, []);
   }
 }
