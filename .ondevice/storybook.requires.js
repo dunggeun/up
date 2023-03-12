@@ -57,6 +57,7 @@ const getStories = () => {
     "./src/designs/atoms/H3/H3.stories.tsx": require("../src/designs/atoms/H3/H3.stories.tsx"),
     "./src/designs/atoms/Input/Input.stories.tsx": require("../src/designs/atoms/Input/Input.stories.tsx"),
     "./src/designs/atoms/ProgressBar/ProgressBar.stories.tsx": require("../src/designs/atoms/ProgressBar/ProgressBar.stories.tsx"),
+    "./src/designs/atoms/Select/Select.stories.tsx": require("../src/designs/atoms/Select/Select.stories.tsx"),
     "./src/designs/atoms/Tag/Tag.stories.tsx": require("../src/designs/atoms/Tag/Tag.stories.tsx"),
     "./src/designs/atoms/Text/Text.stories.tsx": require("../src/designs/atoms/Text/Text.stories.tsx"),
     "./src/designs/molecules/AppBar/AppBar.stories.tsx": require("../src/designs/molecules/AppBar/AppBar.stories.tsx"),

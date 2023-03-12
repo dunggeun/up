@@ -30,12 +30,13 @@
       "weekday_3": "수",
       "weekday_4": "목",
       "weekday_5": "금",
-      "weekday_6": "토"
+      "weekday_6": "토",
+      "activate_quests": "진행중인 퀘스트",
+      "finished_quests": "완료한 퀘스트"
     },
     "title": {
       "landing": "환영합니다",
       "register_user": "도전자 등록하기",
-      "quest_in_progress": "진행중인 퀘스트",
       "profile": "프로필 정보",
       "home": "홈",
       "menu": "메뉴",
