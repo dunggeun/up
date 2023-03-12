@@ -5,18 +5,31 @@ import { AppManager } from 'src/modules';
 import { addQuest } from 'src/data';
 import { t } from 'src/translations';
 
+import type { Quest } from '../types';
+
 const manager = AppManager.getInstance();
 const queryClient = manager.getQueryClient();
 
 const ErrorToastContent = createElement(Text, null, t('message.error.common'));
 
 export const useAddQuest = (): UseMutationResult<
-  void,
+  Quest,
   Error,
   Parameters<typeof addQuest>[0]
 > => {
   return useMutation(addQuest, {
-    onError: () => AppManager.showToast(ErrorToastContent),
-    onSettled: () => void queryClient.invalidateQueries('quests'),
+    onSuccess: (quest) => {
+      queryClient.setQueryData<Quest[]>(
+        ['quests', 'list'],
+        (previousQuests = []) => [quest, ...previousQuests],
+      );
+
+      void queryClient.invalidateQueries(['quests', 'list'], {
+        refetchActive: false,
+      });
+    },
+    onError: (_error) => {
+      AppManager.showToast(ErrorToastContent);
+    },
   });
 };
