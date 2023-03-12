@@ -5,6 +5,8 @@ import { AppManager } from 'src/modules';
 import { updateQuest } from 'src/data';
 import { t } from 'src/translations';
 
+import type { Quest } from '../types';
+
 interface UseUpdateQuestParams {
   onSuccess?: () => void;
 }
@@ -17,16 +19,43 @@ const ErrorToastContent = createElement(Text, null, t('message.error.common'));
 export const useUpdateQuest = ({
   onSuccess,
 }: UseUpdateQuestParams): UseMutationResult<
-  void,
+  Partial<Quest>,
   Error,
   Parameters<typeof updateQuest>[0]
 > => {
   return useMutation(updateQuest, {
-    onError: () => AppManager.showToast(ErrorToastContent),
-    onSuccess: () => onSuccess?.(),
-    onSettled: (_data, _error, { questId }) => {
-      void queryClient.invalidateQueries(['quest', questId]);
-      void queryClient.invalidateQueries('quests');
+    onError: (_error) => {
+      AppManager.showToast(ErrorToastContent);
+    },
+    onSuccess: (data, { questId }) => {
+      const oldQuest = queryClient.getQueryData<Quest>(
+        ['quests', 'detail', questId],
+      );
+
+      if (oldQuest) {
+        const updatedQuest = { ...oldQuest, ...data };
+
+        queryClient.setQueryData<Quest>(
+          ['quests', 'detail', questId],
+          updatedQuest,
+        );
+
+        queryClient.setQueryData<Quest[]>(
+          ['quests', 'list'],
+          (previousQuests = []) => previousQuests.map(
+            (previousQuest) => previousQuest.id === oldQuest.id
+              ? updatedQuest
+              : previousQuest
+          ),
+        );
+      }
+
+      void queryClient.invalidateQueries(['quests', 'detail', questId], {
+        refetchActive: !oldQuest,
+      });
+      void queryClient.invalidateQueries(['quests', 'list']);
+
+      onSuccess?.();
     },
   });
 };

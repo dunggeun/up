@@ -47,8 +47,8 @@ export class AppManager {
     if (!(await this.authorize())) return;
 
     await this.queryClient.prefetchQuery(
-      'quests',
-      this.storageManager.getQuestList.bind(this.storageManager)
+      ['quests', 'list'],
+      () => this.storageManager.getQuestList(),
     );
   }
 

@@ -7,5 +7,7 @@ interface UseQuestConfig {
 }
 
 export const useQuests = ({ suspense }: UseQuestConfig): UseQueryResult<Quest[]> => {
-  return useQuery('quests', fetchQuests, { suspense });
+  return useQuery(['quests', 'list'], fetchQuests, {
+    suspense,
+  });
 };

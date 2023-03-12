@@ -1,7 +1,7 @@
 import { StorageManager } from 'src/modules';
 import { createAchieveData, createQuestData, getAchieveExpByStreak, updateQuestForAddAchieve } from 'src/modules/app/helpers';
 
-import type { Quest, Achieve, QuestDetail } from 'src/features/quests';
+import type { Quest, QuestDetail, Achieve } from 'src/features/quests';
 
 export interface QuestIdParam {
   questId: Quest['id'];
@@ -43,20 +43,26 @@ export interface AddQuestParams {
   description?: string;
 }
 
-export const addQuest = ({ title, description }: AddQuestParams): Promise<void> => {
+export const addQuest = ({ title, description }: AddQuestParams): Promise<Quest> => {
+  const newQuest = createQuestData(title, description);
   return StorageManager
     .getInstance()
-    .addQuest(createQuestData(title, description));
+    .addQuest(newQuest)
+    .then(() => newQuest);
 };
 
 export interface UpdateQuestParams extends QuestIdParam {
   data: Partial<Quest>;
 }
 
-export const updateQuest = ({ questId, data }: UpdateQuestParams): Promise<void> => {
+export const updateQuest = ({
+  questId,
+  data,
+}: UpdateQuestParams): Promise<UpdateQuestParams['data']> => {
   return StorageManager
     .getInstance()
-    .updateQuest(questId, data);
+    .updateQuest(questId, data)
+    .then(() => data);
 };
 
 export interface AddAchieveResult {

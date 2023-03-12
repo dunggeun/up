@@ -3,7 +3,6 @@ import { useActor } from '@xstate/react';
 import { useMutation, type UseMutationResult } from 'react-query';
 import { Text } from 'src/designs';
 import { AppManager } from 'src/modules';
-import { updateQuestForAddAchieve } from 'src/modules/app/helpers';
 import { addAchieve, type AddAchieveResult } from 'src/data';
 import { t } from 'src/translations';
 
@@ -24,40 +23,25 @@ export const useAddAchieve = (): UseMutationResult<
   const [_, send] = useActor(service);
 
   return useMutation(addAchieve, {
-    onMutate: async ({ questId }) => {
-      await queryClient.cancelQueries(['quest', questId]);
-      await queryClient.cancelQueries('quests');
-
-      const previousQuests = queryClient.getQueryData<Quest[]>('quests');
-      const targetIndex = previousQuests?.findIndex(({ id }) => id === questId) ?? -1;
-      const previousQuest = previousQuests?.[targetIndex];
-  
-      if (!~targetIndex && previousQuest) {
-        const updatedQuest = updateQuestForAddAchieve(previousQuest);
-        previousQuests[targetIndex] = updatedQuest;
-        queryClient.setQueryData<Quest>(['quest', questId], updatedQuest);
-        queryClient.setQueryData<Quest[]>(['quests'], [...previousQuests]);
-      }
-
-      return { previousQuest, previousQuests };
-    },
-    onError: (_error, { questId }, context) => {
-      if (context?.previousQuest) {
-        queryClient.setQueryData<Quest>(['quest', questId], context.previousQuest);
-      }
-
-      if (context?.previousQuests) {
-        queryClient.setQueryData<Quest[]>('quests', context.previousQuests);
-      }
-  
-      AppManager.showToast(ErrorToastContent);
-    },
-    onSuccess: ({ achieve }) => {
+    onSuccess: ({ quest, achieve }, { questId }) => {
+      queryClient.setQueryData<Quest>(['quests', 'detail', questId], quest);
+      queryClient.setQueryData<Quest[]>(
+        ['quests', 'list'],
+        (previousQuests = []) => previousQuests.map(
+          (previousQuest) => previousQuest.id === quest.id ? quest : previousQuest
+        ),
+      );
       send({ type: 'REWARD', exp: achieve.exp });
+
+      void queryClient.invalidateQueries(['quests', 'detail', questId], {
+        refetchActive: false,
+      });
+      void queryClient.invalidateQueries(['quests', 'list'], {
+        refetchActive: false,
+      });
     },
-    onSettled: (_data, _error, { questId }) => {
-      void queryClient.invalidateQueries(['quest', questId]);
-      void queryClient.invalidateQueries('quests');
+    onError: (_error) => {
+      AppManager.showToast(ErrorToastContent);
     },
   });
 };
