@@ -1,6 +1,6 @@
 import React from 'react';
 import { styled } from 'dripsy';
-import { CommonLayout, Button, Input, H2 } from 'src/designs';
+import { CommonLayout, Button, Input, H2, Text } from 'src/designs';
 import { PageTitle, PageContent } from 'src/components';
 import { t } from 'src/translations';
 import type { colors } from 'src/themes/colors';
@@ -16,6 +16,13 @@ export interface EnterMemoProps {
 
 const MemoInput = styled(Input)({
   height: MEMO_INPUT_HEIGHT,
+});
+
+const WarningText = styled(Text, {
+  defaultVariant: 'text.secondary',
+})({
+  padding: '$04',
+  textAlign: 'center',
 });
 
 export function EnterMemo ({
@@ -38,6 +45,7 @@ export function EnterMemo ({
         </PageContent>
       </CommonLayout.Body>
       <CommonLayout.Footer>
+        <WarningText>{t('message.quest_warning')}</WarningText>
         <Button color={userColor} onLongPress={onPressAccept}>
           {t('label.accept_quest')}
         </Button>
