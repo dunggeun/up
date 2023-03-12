@@ -19,7 +19,8 @@ export interface UserQuestItemProps {
 }
 
 const DELAY = 80;
-const AlreadyCompletedToastContent = <Text>{t('message.already_completed')}</Text>;
+const FinishedQuestToastContent = <Text variant="primary">{t('message.finished_quest')}</Text>;
+const AlreadyCompletedToastContent = <Text variant="primary">{t('message.already_completed')}</Text>;
 
 export function UserQuestItem ({
   data,
@@ -35,16 +36,25 @@ export function UserQuestItem ({
   }, [data.id]);
 
   const handleLongPress = useCallback(() => {
+    const isFinishedQuest = Boolean(data.finished_at);
     const alreadyCompletedToday = data.updated_at !== 0
       && dayjs(data.updated_at).diff(dayjs(), 'days') === 0;
 
-    if (alreadyCompletedToday) {
-      AppManager.showToast(AlreadyCompletedToastContent);
-      return;
+    switch (true) {
+      case isFinishedQuest:
+        AppManager.showToast(FinishedQuestToastContent);
+        return;
+
+      case alreadyCompletedToday:
+        AppManager.showToast(AlreadyCompletedToastContent);
+        return;
+
+      default:
+        break;
     }
 
     mutate({ questId: data.id });
-  }, [mutate, data.id, data.updated_at]);
+  }, [mutate, data.id, data.updated_at, data.finished_at]);
 
   const animatable = (component: JSX.Element): JSX.Element => {
     if (animate) {
