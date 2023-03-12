@@ -1,7 +1,7 @@
-import React, { useMemo } from 'react';
+import React, { useState, useMemo } from 'react';
 import { FlatList, type ListRenderItemInfo } from 'react-native';
 import { styled, useDripsyTheme, View } from 'dripsy';
-import { Button, H2, H3, type ButtonProps } from 'src/designs';
+import { Button, H3, Select, type ButtonProps } from 'src/designs';
 import { LinearGradient } from 'src/components/LinearGradient';
 import { useQuests } from 'src/features/quests/hooks';
 import { useMainTabBarInset } from 'src/hooks';
@@ -53,6 +53,10 @@ const EmptyView = styled(H3, {
 });
 
 const ListEmptyComponent = <EmptyView>{t('message.empty_quest')}</EmptyView>;
+const FILTER_ITEM = [
+  { value: 'activate', label: t('label.activate_quests') },
+  { value: 'finished', label: t('label.finished_quests') }
+] as const;
 
 function CreateQuestButton({ onPress }: Pick<ButtonProps, 'onPress'>): JSX.Element {
   return (
@@ -68,6 +72,7 @@ function CreateQuestButton({ onPress }: Pick<ButtonProps, 'onPress'>): JSX.Eleme
 
 export function UserQuestList({ onCreate }: UserQuestListProps): JSX.Element {
   const { data: quests } = useQuests({ suspense: true });
+  const [filterValue, setFilterValue] = useState<string>(FILTER_ITEM[0].value);
   const { bottomInset } = useMainTabBarInset();
   const { theme } = useDripsyTheme();
   const userColor = useUserThemeColor();
@@ -76,6 +81,16 @@ export function UserQuestList({ onCreate }: UserQuestListProps): JSX.Element {
     paddingHorizontal: theme.space.$04,
     marginHorizontal: -theme.space.$04,
   }), [theme]);
+
+  const filteredQuests = useMemo(() => {
+    if (!quests) return [];
+
+    return quests.filter((quest) => (
+      filterValue === 'activate'
+        ? quest.finished_at === 0
+        : quest.finished_at !== 0
+    ));
+  }, [quests, filterValue]);
 
   const renderItem = (data: ListRenderItemInfo<Quest>): JSX.Element => {
     return (
@@ -95,8 +110,19 @@ export function UserQuestList({ onCreate }: UserQuestListProps): JSX.Element {
   return (
     <ListContainer>
       <ListTitleArea>
-        <H2 variant="primary">{t('title.quest_in_progress')}</H2>
         <ListShadow color={theme.colors.$white} direction="to-down" />
+        <Select.Root initialValue={FILTER_ITEM[0]} onChange={setFilterValue}>
+          <Select.Trigger />
+          <Select.Content>
+            {FILTER_ITEM.map((item) => (
+              <Select.Item
+                key={item.value}
+                label={item.label}
+                value={item.value}
+              />
+            ))}
+          </Select.Content>
+        </Select.Root>
       </ListTitleArea>
       <FlatList
         ItemSeparatorComponent={ItemSeparatorComponent}
@@ -109,8 +135,8 @@ export function UserQuestList({ onCreate }: UserQuestListProps): JSX.Element {
             <ItemSeparatorComponent />
           </>
         }
-        data={quests}
-        extraData={quests}
+        data={filteredQuests}
+        extraData={filteredQuests}
         keyExtractor={keyExtractor}
         renderItem={renderItem}
         style={listStyle}

@@ -71,7 +71,8 @@
       "user_edited": "정보가 수정되었어요",
       "already_completed": "오늘 이미 달성한 퀘스트에요",
       "done_quest": "퀘스트를 완료 처리하면 앞으로 본 퀘스트를\n수행할 수 없지만 기록은 계속 확인할 수 있어요.",
-      "done_quest_guide": "완료 처리하시려면 버튼을 길게 눌러주세요"
+      "done_quest_guide": "완료 처리하시려면 버튼을 길게 눌러주세요",
+      "finished_quest": "완료 처리한 퀘스트는 진행할 수 없어요"
     },
     "badge": {
       "0": "",
