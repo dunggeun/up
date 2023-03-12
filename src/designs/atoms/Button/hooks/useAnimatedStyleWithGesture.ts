@@ -5,8 +5,8 @@ import {
   type PanResponderInstance
 } from 'react-native';
 import { triggerHaptic } from 'src/utils';
+import { PRESSABLE_DEPTH } from 'src/constants';
 import {
-  PRESS_DEPTH,
   LONG_PRESS_DELAY,
   LONG_PRESS_DURATION,
   RELEASE_DURATION
@@ -52,7 +52,7 @@ export const useAnimatedStyleWithGesture = ({
   }, [disableHaptic, disableLongPress, onPress, onLongPress]);
 
   const applyTapAnimation = (): void => {
-    capPosition.setValue(PRESS_DEPTH);
+    capPosition.setValue(PRESSABLE_DEPTH);
   };
 
   const applyLongTapAnimation = (): void => {

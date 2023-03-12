@@ -20,6 +20,9 @@ export const TOUCHABLE_OPACITY_HIT_SLOP = {
   right: HIT_SLOP,
 } as const;
 
+export const BORDER_WIDTH = 2;
+export const PRESSABLE_DEPTH = 5;
+
 export const DATE_FORMAT = 'YYYY.MM.DD';
 
 export const TOAST_ANIMATION_DURATION = 500;

@@ -7,9 +7,11 @@ import React, {
 } from 'react';
 import { Animated, type ViewStyle, type ViewProps } from 'react-native';
 import { styled, useSx, View, Text } from 'dripsy';
+import { presets } from 'src/themes';
 import { isLight } from 'src/themes/utils';
+import { PRESSABLE_DEPTH } from 'src/constants';
 import { useAnimatedStyleWithGesture } from './hooks';
-import { BORDER_WIDTH, BUTTON_HEIGHT, PRESS_DEPTH } from './constants';
+import { BUTTON_HEIGHT } from './constants';
 
 import type { colors } from 'src/themes/colors';
 
@@ -46,20 +48,12 @@ const ContentWrapper = styled(View)(({
   opacity: disabled ? .5 : 1,
 }));
 
-const Shadow = styled(View)({
-  position: 'absolute',
-  left: 0,
-  bottom: -PRESS_DEPTH,
-  width: '100%',
-  height: '100%',
-  backgroundColor: '$text_primary',
-  borderRadius: '$md',
-});
+const Shadow = styled(View)(presets.buttonShadow());
 
 const DimContainer = styled(View)({
   position: 'absolute',
   top: 0,
-  bottom: -PRESS_DEPTH,
+  bottom: -PRESSABLE_DEPTH,
   left: 0,
   right: 0,
   borderRadius: '$md',
@@ -102,19 +96,9 @@ export function Button ({
   const isLightBackground = isLight(color);
   const dimColor = isLightBackground ? '$black' : '$white';
 
-  const capStyle = sx({
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    paddingX: '$04',
-    alignItems: 'center',
-    width: '100%',
-    height: '100%',
-    borderRadius: '$md',
-    borderWidth: BORDER_WIDTH,
-    borderColor: '$text_primary',
+  const capStyle = sx(presets.buttonCap({
     backgroundColor: color,
-  });
+  }));
 
   const dimStyle = sx({
     position: 'absolute',
