@@ -8,3 +8,9 @@ exports.transformIgnorePackages = [
   'dripsy',
   'moti',
 ];
+
+exports.transformPackagesOnRspack = [
+  'dripsy',
+  '@dripsy/core',
+  'react-native',
+];
