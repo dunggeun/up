@@ -9,12 +9,12 @@
     "typegen": "xstate typegen src/stores/machines",
     "start": "react-native start",
     "start:native": "yarn start",
-    "start:web": "webpack serve --mode=development --config react-native-web.config.js",
+    "start:web": "rspack serve --mode=development --config react-native-web.config.js",
     "start:storybook:native": "STORYBOOK=1 yarn start",
     "start:storybook:web": "start-storybook --port 6006",
     "build:android": "react-native run-android",
     "build:ios": "react-native run-ios",
-    "build:web": "webpack --config react-native-web.config.js",
+    "build:web": "rspack --config react-native-web.config.js",
     "build:storybook:web": "build-storybook --output-dir public",
     "pod:install": "cd ios && RCT_NEW_ARCH_ENABLED=1 pod install",
     "gradle:clean": "cd android && ./gradlew clean",
@@ -52,6 +52,7 @@
     "react-query": "^3.39.3",
     "recoil": "^0.7.7",
     "recoil-nexus": "^0.4.0",
+    "setimmediate": "^1.0.5",
     "xstate": "^4.37.0"
   },
   "devDependencies": {
@@ -60,6 +61,7 @@
     "@babel/runtime": "^7.20.0",
     "@faker-js/faker": "^7.6.0",
     "@react-native-community/eslint-config": "^3.2.0",
+    "@rspack/cli": "^0.1.0",
     "@storybook/addon-actions": "^6.5.16",
     "@storybook/addon-controls": "^6.5.16",
     "@storybook/addon-essentials": "^6.5.16",
@@ -84,14 +86,9 @@
     "babel-jest": "^29.2.1",
     "babel-loader": "8.3.0",
     "babel-plugin-module-resolver": "^4.1.0",
-    "babel-plugin-react-native-web": "^0.18.10",
     "eslint": "^8.26.0",
-    "eslint-plugin-flowtype": "^8.0.3",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react-native-a11y": "^3.3.0",
-    "favicons-webpack-plugin": "^4.0.0",
-    "file-loader": "^6.2.0",
-    "html-webpack-plugin": "^4.5.2",
     "husky": "^8.0.0",
     "jest": "^29.2.1",
     "metro-react-native-babel-preset": "0.76.0",
@@ -100,11 +97,7 @@
     "prettier": "^2.4.1",
     "react-test-renderer": "^18.2.0",
     "ts-node": "^10.9.1",
-    "typescript": "^4.8.4",
-    "url-loader": "^4.1.1",
-    "webpack": "^4.46.0",
-    "webpack-cli": "^4.10.0",
-    "webpack-dev-server": "^4.11.1"
+    "typescript": "^4.8.4"
   },
   "prettier": "@vercel/style-guide/prettier"
 }

@@ -1,7 +1,16 @@
 {
+  "id": "/",
   "name": "Up",
   "short_name": "Up",
+  "start_url": "/",
   "theme_color": "#ffffff",
   "background_color": "#ffffff",
-  "display":"standalone"
+  "display":"standalone",
+  "icons": [
+    {
+      "src": "logo.png",
+      "sizes": "1024x1024",
+      "type": "image/png"
+    }
+  ]
 }
