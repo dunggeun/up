@@ -73,7 +73,7 @@ export interface AddAchieveResult {
 export const addAchieve = async ({ questId }: QuestIdParam): Promise<AddAchieveResult> => {
   const quest = await fetchQuestById({ questId });
   const updatedQuest = updateQuestForAddAchieve(quest);
-  const earnedExp = getAchieveExpByStreak(quest.current_streak);
+  const earnedExp = getAchieveExpByStreak(updatedQuest.current_streak);
   const achieve = createAchieveData({ questId, exp: earnedExp });
 
   return Promise.all([

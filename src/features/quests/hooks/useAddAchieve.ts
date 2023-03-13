@@ -6,7 +6,7 @@ import { AppManager } from 'src/modules';
 import { addAchieve, type AddAchieveResult } from 'src/data';
 import { t } from 'src/translations';
 
-import type { Quest } from '../types';
+import type { Quest, QuestDetail } from '../types';
 
 const manager = AppManager.getInstance();
 const queryClient = manager.getQueryClient();
@@ -24,7 +24,13 @@ export const useAddAchieve = (): UseMutationResult<
 
   return useMutation(addAchieve, {
     onSuccess: ({ quest, achieve }, { questId }) => {
-      queryClient.setQueryData<Quest>(['quests', 'detail', questId], quest);
+      queryClient.setQueryData<QuestDetail>(
+        ['quests', 'detail', questId],
+        (questDetail) => ({
+          quest,
+          achieveList: [achieve, ...(questDetail?.achieveList ?? [])],
+        }),
+      );
       queryClient.setQueryData<Quest[]>(
         ['quests', 'list'],
         (previousQuests = []) => previousQuests.map(
