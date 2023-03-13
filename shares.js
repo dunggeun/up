@@ -10,7 +10,6 @@ exports.transformIgnorePackages = [
 ];
 
 exports.transformPackagesOnRspack = [
-  'dripsy',
   '@dripsy/core',
   'react-native',
 ];
