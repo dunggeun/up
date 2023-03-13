@@ -1,3 +1,4 @@
+import { diffBeforeToday } from 'src/utils';
 import {
   BASE_EXP,
   BADGE_SET,
@@ -57,12 +58,23 @@ export const createAchieveData = ({
 
 export const updateQuestForAddAchieve = (quest: Quest): Quest => {
   const updatedQuest = { ...quest };
-  updatedQuest.current_streak++;
-  updatedQuest.max_streak = Math.max(
-    updatedQuest.max_streak,
-    updatedQuest.current_streak,
+  const isStreak = Boolean(
+    quest.updated_at &&
+    diffBeforeToday(quest.updated_at) <= 1
   );
+
+  if (isStreak || quest.updated_at === 0) {
+    updatedQuest.current_streak++;
+    updatedQuest.max_streak = Math.max(
+      updatedQuest.max_streak,
+      updatedQuest.current_streak,
+    );
+  } else {
+    updatedQuest.current_streak = 1;
+  }
+
   updatedQuest.updated_at = Number(new Date());
+
   return updatedQuest;
 };
 

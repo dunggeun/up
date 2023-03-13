@@ -1,5 +1,4 @@
-import React, { useCallback } from 'react';
-import dayjs from 'dayjs';
+import React, { useMemo, useCallback } from 'react';
 import { View } from 'dripsy';
 import { MotiView } from 'moti';
 import { Button, Tag, Text } from 'src/designs';
@@ -8,6 +7,7 @@ import { useAddAchieve } from 'src/features/quests/hooks';
 import { navigate } from 'src/navigators/helpers';
 import { t } from 'src/translations';
 
+import { diffBeforeToday } from 'src/utils';
 import type { Quest } from 'src/features/quests';
 import type { basicColors } from 'src/themes/colors';
 
@@ -29,7 +29,11 @@ export function UserQuestItem ({
   tagColor,
 }: UserQuestItemProps): JSX.Element {
   const { mutate } = useAddAchieve();
-  const shouldShowBadge = data.current_streak > 0;
+
+  const shouldShowBadge = useMemo(() => {
+    if (data.finished_at) return false;
+    return data.current_streak > 0 && diffBeforeToday(data.updated_at) <= 1;
+  }, [data.current_streak, data.updated_at, data.finished_at]);
 
   const handlePress = useCallback(() => {
     navigate('Quest', 'QuestDetail', { id: data.id });
@@ -37,8 +41,7 @@ export function UserQuestItem ({
 
   const handleLongPress = useCallback(() => {
     const isFinishedQuest = Boolean(data.finished_at);
-    const alreadyCompletedToday = data.updated_at !== 0
-      && dayjs(data.updated_at).diff(dayjs(), 'days') === 0;
+    const alreadyCompletedToday = diffBeforeToday(data.updated_at) === 0;
 
     switch (true) {
       case isFinishedQuest:
