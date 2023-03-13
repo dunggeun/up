@@ -1,4 +1,4 @@
 export * from './types';
 
-export * from './routes';
+export * from './screens';
 export * from './hooks';
