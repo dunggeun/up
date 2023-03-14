@@ -24,8 +24,8 @@ describe('atoms/Tag', () => {
       label = faker.word.noun();
       color = faker.helpers.arrayElement<keyof typeof colors>(getColors());
     });
-  
-    it('onChange 이벤트 핸들러가 호출되어야 한다', () => {
+
+    it('라벨이 렌더링 되어야 한다', () => {
       render({ label, color });
 
       expect(screen.getByText(label)).not.toBeNull();

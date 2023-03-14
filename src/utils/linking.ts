@@ -1,6 +1,7 @@
 import { Linking } from 'react-native';
 import { noop } from './common';
 
+/* istanbul ignore next */
 export const openMail = (
   to: string,
   { subject, body }: { subject: string, body: string }

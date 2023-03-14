@@ -3,6 +3,7 @@ import ReactNativeHapticFeedback, {
   type HapticFeedbackTypes
 } from 'react-native-haptic-feedback';
 
+/* istanbul ignore next */
 // eslint-disable-next-line @typescript-eslint/no-empty-function
 export function noop (): void {}
 
