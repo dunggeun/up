@@ -18,12 +18,14 @@
       "reset_data": "데이터 초기화",
       "reset_confirm": "네, 삭제할게요",
       "done_confirm": "네, 완료할게요",
+      "delete_confirm": "네, 삭제할게요",
       "up_repository": "Up 소스코드 저장소",
       "next": "다음으로",
       "accept_quest": "길게 눌러 퀘스트 수락하기",
       "share": "공유하기",
       "ok": "확인",
       "quest_done": "퀘스트 완료하기",
+      "quest_delete": "퀘스트 삭제하기",
       "weekday_0": "일",
       "weekday_1": "월",
       "weekday_2": "화",
@@ -49,7 +51,8 @@
       "quest_info": "퀘스트 정보",
       "quest_history_in_4_week": "최근 4주 퀘스트 기록",
       "quest_total_exp": "누적 경험치",
-      "done_quest": "퀘스트 완료하기"
+      "done_quest": "퀘스트 완료하기",
+      "delete_quest": "퀘스트 삭제하기"
     },
     "placeholder": {
       "enter_name": "이름을 입력해주세요",
@@ -65,6 +68,7 @@
       "reset_data_guide": "삭제 하시려면 버튼을 길게 눌러주세요",
       "quest_warning": "퀘스트를 수락하면 제목과 메모를\n변경하기 어려우니 신중하게 확인해주세요",
       "quest_description": "지금까지 %@번 퀘스트를 수행했고, 최대 %@일 연속 기록을 달성했어요",
+      "quest_finished_description": "%@에 종료된 퀘스트에요",
       "quest_current_streak": "(현재 연속 기록: %@일)",
       "quest_total_exp": "%@ 부터 지금까지 본 퀘스트로 얻은 경험치는 아래와 같아요",
       "empty_quest": "진행중인 퀘스트가 없어요.\n\n새로운 퀘스트를 만들어보세요!",
@@ -72,7 +76,9 @@
       "already_completed": "오늘 이미 달성한 퀘스트에요",
       "done_quest": "퀘스트를 완료 처리하면 앞으로 본 퀘스트를\n수행할 수 없지만 기록은 계속 확인할 수 있어요.",
       "done_quest_guide": "완료 처리하시려면 버튼을 길게 눌러주세요",
-      "finished_quest": "완료 처리한 퀘스트는 진행할 수 없어요"
+      "finished_quest": "완료 처리한 퀘스트는 진행할 수 없어요",
+      "delete_quest": "퀘스트를 삭제하면 지금까지의\n기록을 더 이상 확인할 수 없어요",
+      "delete_quest_guide": "종료 하시려면 버튼을 길게 눌러주세요"
     },
     "badge": {
       "0": "",
@@ -83,6 +89,9 @@
         "title": "Feedback for Up",
         "body": ""
       }
+    },
+    "format": {
+      "date": "YYYY.MM.DD"
     }
   }
 }
