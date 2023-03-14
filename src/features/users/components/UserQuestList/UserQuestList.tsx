@@ -104,7 +104,7 @@ export function UserQuestList({ onCreate }: UserQuestListProps): JSX.Element {
   };
 
   const keyExtractor = (data: Quest): string => {
-    return data.id.toString() + userColor;
+    return data.id.toString();
   };
 
   return (
