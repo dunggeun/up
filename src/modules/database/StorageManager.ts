@@ -52,6 +52,15 @@ export class StorageManager {
     });
   }
 
+  deleteQuest (id: number): Promise<void> {
+    return this.database.delete('quest', {
+      id: {
+        symbol: '=',
+        value: id,
+      },
+    });
+  }
+
   getAchieveList ({ qid }: Pick<Achieve, 'qid'>): Promise<Achieve[]> {
     return this.database.select(
       'achieve',
@@ -73,6 +82,15 @@ export class StorageManager {
 
   addAchieve (data: Achieve): Promise<void> {
     return this.database.insert('achieve', data);
+  }
+
+  deleteAchieve ({ qid }: Pick<Achieve, 'qid'>): Promise<void> {
+    return this.database.delete('achieve', {
+      qid: {
+        symbol: '=',
+        value: qid,
+      }
+    });
   }
 
   async clear (): Promise<void> {

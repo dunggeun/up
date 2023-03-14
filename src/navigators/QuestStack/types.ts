@@ -6,6 +6,9 @@ export type QuestStackScreenParamList = {
   QuestDetail: {
     id: number;
   };
+  QuestFinished: {
+    id: number;
+  };
 }
 
 export type QuestStackProps<RouteName extends keyof QuestStackScreenParamList> =

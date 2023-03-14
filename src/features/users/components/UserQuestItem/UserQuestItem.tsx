@@ -36,8 +36,13 @@ export function UserQuestItem ({
   }, [data.current_streak, data.updated_at, data.finished_at]);
 
   const handlePress = useCallback(() => {
-    navigate('Quest', 'QuestDetail', { id: data.id });
-  }, [data.id]);
+    const isFinished = data.finished_at;
+    navigate(
+      'Quest',
+      isFinished ? 'QuestFinished' : 'QuestDetail',
+      { id: data.id },
+    );
+  }, [data.id, data.finished_at]);
 
   const handleLongPress = useCallback(() => {
     const isFinishedQuest = Boolean(data.finished_at);

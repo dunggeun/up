@@ -3,6 +3,7 @@ import { createStackNavigator, TransitionPresets } from '@react-navigation/stack
 import {
   QuestCreateScreen,
   QuestDetailScreen,
+  QuestFinishedScreen,
 } from 'src/features/quests';
 import { SHARED_CONFIG } from 'src/constants';
 
@@ -26,6 +27,10 @@ export function QuestStackNavigator(): JSX.Element {
       <QuestStack.Screen
         component={QuestDetailScreen}
         name="QuestDetail"
+      />
+      <QuestStack.Screen
+        component={QuestFinishedScreen}
+        name="QuestFinished"
       />
     </QuestStack.Navigator>
   );

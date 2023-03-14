@@ -65,6 +65,12 @@ export const updateQuest = ({
     .then(() => data);
 };
 
+export const deleteQuest = async ({ questId }: QuestIdParam): Promise<void> => {
+  const manager = StorageManager.getInstance();
+  await manager.deleteAchieve({ qid: questId });
+  await manager.deleteQuest(questId);
+};
+
 export interface AddAchieveResult {
   quest: Quest;
   achieve: Achieve;

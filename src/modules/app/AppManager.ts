@@ -88,6 +88,7 @@ export class AppManager {
   }
 
   async reset(): Promise<void> {
+    this.queryClient.clear();
     await this.storageManager.clear();
     await AsyncStorage.clear();
   }
