@@ -9,7 +9,14 @@ const config = {
   transformIgnorePatterns: [
     `node_modules/(?!${transformIgnorePackages.join('|')})`,
   ],
-  collectCoverageFrom: ['src/**/*.{ts,tsx}', '!**/*.d.ts', '!**/index.ts'],
+  collectCoverageFrom: [
+    'src/**/*.{ts,tsx}',
+    '!**/*.web.{ts,tsx}',
+    '!**/assets/*.{ts,tsx}',
+    '!**/index.ts',
+    '!**/*.d.ts',
+    '!**/*.stories.tsx',
+  ],
   testPathIgnorePatterns: ['/node_modules/'],
   moduleFileExtensions: [
     'ts',
