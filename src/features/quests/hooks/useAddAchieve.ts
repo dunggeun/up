@@ -8,13 +8,19 @@ import { t } from 'src/translations';
 
 import type { Quest, QuestDetail } from '../types';
 
+interface UseAddAchieveParams {
+  onSuccess?: () => void;
+}
+
 const manager = AppManager.getInstance();
 const queryClient = manager.getQueryClient();
 const service = manager.getService();
 
 const ErrorToastContent = createElement(Text, null, t('message.error.common'));
 
-export const useAddAchieve = (): UseMutationResult<
+export const useAddAchieve = ({
+  onSuccess,
+}: UseAddAchieveParams): UseMutationResult<
   AddAchieveResult,
   Error,
   Parameters<typeof addAchieve>[0],
@@ -45,6 +51,8 @@ export const useAddAchieve = (): UseMutationResult<
       void queryClient.invalidateQueries(['quests', 'list'], {
         refetchActive: false,
       });
+
+      onSuccess?.();
     },
     onError: (_error) => {
       AppManager.showToast(ErrorToastContent);
