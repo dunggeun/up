@@ -1,11 +1,18 @@
 // eslint-disable-next-line eslint-comments/disable-enable-pair
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import React, {
+  forwardRef,
   useMemo,
   type PropsWithChildren,
-  type ReactNode
+  type ReactNode,
+  type ForwardedRef,
 } from 'react';
-import { Animated, type ViewStyle, type ViewProps } from 'react-native';
+import {
+  Animated,
+  type View as RNView,
+  type ViewStyle,
+  type ViewProps,
+} from 'react-native';
 import { styled, useSx, View, Text } from 'dripsy';
 import { presets } from 'src/themes';
 import { isLight } from 'src/themes/utils';
@@ -30,7 +37,7 @@ export interface ButtonProps extends AccessibilityProps {
   onLongPress?: () => void;
 }
 
-const Container = styled(Animated.View)(({
+const Container = styled(View)(({
   position: 'relative',
   height: BUTTON_HEIGHT,
 }));
@@ -67,7 +74,7 @@ const Label = styled(Text, {
   textAlign: 'center',
 }));
 
-export function Button ({
+export const Button = forwardRef(function Button({
   children,
   color,
   style,
@@ -81,7 +88,7 @@ export function Button ({
   accessibilityLabel,
   onPress,
   onLongPress,
-}: PropsWithChildren<ButtonProps>): JSX.Element {
+}: PropsWithChildren<ButtonProps>, ref: ForwardedRef<RNView>): JSX.Element {
   const sx = useSx();
   const {
     responder,
@@ -140,6 +147,7 @@ export function Button ({
       accessibilityRole="button"
       accessibilityState={{ disabled }}
       accessible
+      ref={ref}
       style={containerStyle}
       {...(disabled ? null : responder.panHandlers)}
     >
@@ -159,4 +167,4 @@ export function Button ({
       </DimContainer>
     </Container>
   );
-}
+});
