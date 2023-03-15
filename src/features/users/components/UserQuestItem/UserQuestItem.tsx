@@ -1,13 +1,16 @@
-import React, { useMemo, useCallback } from 'react';
+import React, { useMemo, useCallback, useRef } from 'react';
+import { useSetRecoilState } from 'recoil';
 import { View } from 'dripsy';
 import { MotiView } from 'moti';
 import { Button, Tag, Text } from 'src/designs';
 import { AppManager } from 'src/modules';
 import { useAddAchieve } from 'src/features/quests/hooks';
+import { questItemPosition } from 'src/features/quests/recoil/atoms';
 import { navigate } from 'src/navigators/helpers';
 import { t } from 'src/translations';
 
 import { diffBeforeToday } from 'src/utils';
+import type { View as RNView } from 'react-native';
 import type { Quest } from 'src/features/quests';
 import type { basicColors } from 'src/themes/colors';
 
@@ -28,7 +31,15 @@ export function UserQuestItem ({
   animate,
   tagColor,
 }: UserQuestItemProps): JSX.Element {
-  const { mutate } = useAddAchieve();
+  const buttonRef = useRef<RNView>(null);
+  const setItemPosition = useSetRecoilState(questItemPosition);
+  const { mutate } = useAddAchieve({
+    onSuccess: () => {
+      buttonRef.current?.measureInWindow((x, y) => {
+        setItemPosition({ x, y });
+      });
+    }
+  });
 
   const shouldShowBadge = useMemo(() => {
     if (data.finished_at) return false;
@@ -103,6 +114,7 @@ export function UserQuestItem ({
       color="$white"
       onLongPress={handleLongPress}
       onPress={handlePress}
+      ref={buttonRef}
       rightAdornment={renderBadge()}
     >
       {data.title}

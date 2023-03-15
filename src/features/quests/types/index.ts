@@ -20,3 +20,8 @@ export interface Achieve {
   exp: number;
   created_at: number;
 }
+
+export interface QuestItemPosition {
+  x: number;
+  y: number;
+}
