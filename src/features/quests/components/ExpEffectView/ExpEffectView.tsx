@@ -1,20 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useRecoilState } from 'recoil';
 import { styled, View } from 'dripsy';
-import { AnimatePresence, MotiView } from 'moti';
 import { useUserThemeColor } from 'src/features/users';
-import { WINDOW_WIDTH, BORDER_WIDTH } from 'src/constants';
 
 import { questItemPosition } from '../../recoil/atoms';
+import { ExpBubble } from '../ExpBubble';
 
-interface BubblePosition {
+interface BubblePositionWithKey {
+  key: number;
   x: number;
   y: number;
 }
-
-const BUBBLE_SIZE = 30;
-const EFFECT_DURATION = 300;
 
 const EffectContainer = styled(View)({
   position: 'absolute',
@@ -26,63 +23,41 @@ const EffectContainer = styled(View)({
   right: 0,
 });
 
-const Bubble = styled(MotiView)(({ color }: { color: string }) => ({
-  position: 'absolute',
-  width: 30,
-  height: 30,
-  borderRadius: 15,
-  borderWidth: BORDER_WIDTH,
-  borderColor: '$text_primary',
-  backgroundColor: color,
-}));
-
 export function ExpEffectView (): JSX.Element {
   const [
-    bubbleStartPosition,
-    setBubbleStartPosition,
-  ] = useState<BubblePosition>();
+    bubbleStartPositions,
+    setBubbleStartPositions,
+  ] = useState<BubblePositionWithKey[]>([]);
+  const keyRef = useRef(0);
   const userColor = useUserThemeColor();
-  const { top } = useSafeAreaInsets();
+  const { top, bottom } = useSafeAreaInsets();
   const [position, setPosition] = useRecoilState(questItemPosition);
 
   useEffect(() => {
     if (!position) return;
 
-    const xBias = Math.random() * BUBBLE_SIZE * 2;
-    const yBias = Math.random() * BUBBLE_SIZE * 2;
-    setBubbleStartPosition({ x: position.x + xBias, y: position.y + yBias });
+    const xBias = Math.random() * 100 + 50;
+    const key = keyRef.current++;
 
-    setTimeout(
-      () => setBubbleStartPosition(undefined),
-      EFFECT_DURATION * 2,
-    );
-  }, [position, setPosition]);
+    setBubbleStartPositions((value) => [
+      ...value,
+      {
+        key,
+        x: position.x + xBias,
+        y: position.y + 15 - top - bottom,
+      }
+    ]);
+
+    setTimeout(() => {
+      setBubbleStartPositions((value) => value.filter((v) => v.key !== key));
+    }, 1000);
+  }, [position, top, bottom, setPosition]);
 
   return (
     <EffectContainer pointerEvents="none">
-      <AnimatePresence exitBeforeEnter>
-        {bubbleStartPosition ? (
-          <Bubble
-            animate={{
-              scale: [1, 0],
-              opacity: 1,
-              top: top + 56,
-              left: WINDOW_WIDTH / 2 - BUBBLE_SIZE / 2,
-            }}
-            color={userColor}
-            from={{
-              scale: 0,
-              opacity: 0,
-              left: bubbleStartPosition.x,
-              top: bubbleStartPosition.y,
-            }}
-            transition={{
-              type: 'timing',
-              duration: EFFECT_DURATION,
-            }}
-          />
-        ) : null}
-      </AnimatePresence>
+      {bubbleStartPositions.map(({ key, x, y }) => (
+        <ExpBubble color={userColor} key={key} x={x} y={y} />
+      ))}
     </EffectContainer>
   );
 }
