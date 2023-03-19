@@ -25,7 +25,7 @@ export function QuestDeleteModal({
 }: QuestDeleteModalProps): JSX.Element {
   return (
     <Modal onClose={onClose} title={t('title.delete_quest')} visible={visible}>
-      <Content>
+      <Content testID="quest-delete-modal">
         <Message variant="text.primary">{t('message.delete_quest')}</Message>
         <Message variant="text.secondary">
           {`(${t('message.delete_quest_guide')})`}

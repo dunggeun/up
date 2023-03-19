@@ -11,9 +11,12 @@ const config = {
   ],
   collectCoverageFrom: [
     'src/**/*.{ts,tsx}',
+    '!src/modules/database/**/*',
     '!**/*.web.{ts,tsx}',
     '!**/assets/*.{ts,tsx}',
+    '!**/hooks/*.ts',
     '!**/index.ts',
+    '!**/types/*',
     '!**/*.d.ts',
     '!**/*.stories.tsx',
   ],

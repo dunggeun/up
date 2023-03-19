@@ -86,6 +86,7 @@ module.exports = {
       files: ['**/?(*.)+(spec|test).ts?(x)'],
       extends: [require.resolve('@vercel/style-guide/eslint/jest')],
       rules: {
+        'testing-library/no-render-in-setup': 'off',
         '@typescript-eslint/no-unsafe-assignment': 'off',
         '@typescript-eslint/no-unsafe-call': 'off',
         '@typescript-eslint/no-unsafe-member-access': 'off',

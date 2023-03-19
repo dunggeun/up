@@ -62,7 +62,11 @@ export function ProgressBar ({
   };
 
   return (
-    <Container {...restProps} accessibilityValue={{ min: 0, max, now: value }}>
+    <Container
+      accessibilityRole="progressbar"
+      accessibilityValue={{ min: 0, max, now: value }}
+      {...restProps}
+    >
       <Animated.View style={[styles.barDefault, barColorStyle, animatedStyle]} />
     </Container>
   );

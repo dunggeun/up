@@ -49,7 +49,6 @@ describe('atoms/Select', () => {
 
   describe('trigger 를 눌렀을 때', () => {
     beforeEach(() => {
-      // eslint-disable-next-line testing-library/no-render-in-setup
       render({ onChange, items });
       fireEvent(screen.getByTestId('select-trigger'), 'press');
     });
@@ -91,11 +90,10 @@ describe('atoms/Select', () => {
         value: faker.datatype.uuid(),
         label: faker.random.word(),
       };
+      render({ onChange: noop, items: [], initialValue });
     });
 
     it('기본 아이템 라벨이 노출되어야 한다', () => {
-      render({ onChange: noop, items: [], initialValue });
-
       expect(screen.getByText(initialValue.label)).not.toBeNull();
     });
   });

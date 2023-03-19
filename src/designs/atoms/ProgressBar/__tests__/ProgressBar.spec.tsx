@@ -26,12 +26,14 @@ describe('atoms/ProgressBar', () => {
       max = faker.datatype.number({ min: 50, max: 100 });
       value = faker.datatype.number({ min: MIN, max });
       color = faker.helpers.arrayElement<keyof typeof colors>(getColors());
+      render({ value, max, color });
     });
   
     it('a11y value 속성이 정상적으로 설정되어야 한다', () => {
-      render({ value, max, color });
-
-      expect(screen.getByA11yValue({ min: MIN, max, now: value })).not.toBeNull();
+      const progressBar = screen.getByRole('progressbar', {
+        value: { min: MIN, max, now: value },
+      });
+      expect(progressBar).not.toBeNull();
     });
   });
 });

@@ -44,7 +44,7 @@ export function DeleteConfirmModal ({
 }: DeleteConfirmModalProps): JSX.Element {
   return (
     <Modal onClose={onClose} title={t('title.reset_data')} visible={visible}>
-      <Content>
+      <Content testID="delete-confirm-modal">
         <WarningSymbolArea>
           <Warning />
           <AnimatePresence>

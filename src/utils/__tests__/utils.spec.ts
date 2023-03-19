@@ -8,6 +8,11 @@ import { triggerHaptic } from '../common';
 import { diffBeforeToday } from '../date';
 import { replacePlaceholder } from '../string';
 
+jest.mock('react-native-haptic-feedback', () => ({
+  __esModule: true,
+  default: { trigger: jest.fn() },
+}));
+
 describe('utils', () => {
   describe('async', () => {
     describe('delay', () => {
@@ -35,35 +40,32 @@ describe('utils', () => {
 
   describe('common', () => {
     describe('triggerHaptic', () => {
-      let triggerHapticSpy: jest.SpyInstance;
+      let mockedTrigger: jest.Mock;
 
       beforeEach(() => {
-        triggerHapticSpy = jest.spyOn(ReactNativeHapticFeedback, 'trigger');
-      });
-
-      afterEach(() => {
-        triggerHapticSpy.mockRestore();
+        mockedTrigger = jest.fn();
+        (ReactNativeHapticFeedback.trigger as jest.Mock) = mockedTrigger;
       });
 
       describe('ios 플랫폼인 경우', () => {
         beforeEach(() => {
           Platform.OS = 'ios';
+          triggerHaptic();
         });
 
         it('trigger가 호출되어야 한다', () => {
-          triggerHaptic();
-          expect(triggerHapticSpy).toHaveBeenCalledTimes(1);
+          expect(mockedTrigger).toHaveBeenCalledTimes(1);
         });
       });
 
       describe('android 플랫폼인 경우', () => {
         beforeEach(() => {
           Platform.OS = 'android';
+          triggerHaptic();
         });
 
         it('trigger가 호출되지 않아야 한다', () => {
-          triggerHaptic();
-          expect(triggerHapticSpy).not.toHaveBeenCalled();
+          expect(mockedTrigger).not.toHaveBeenCalled();
         });
       });
     });

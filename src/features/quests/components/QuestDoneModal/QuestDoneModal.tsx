@@ -28,7 +28,7 @@ export function QuestDoneModal({
 
   return (
     <Modal onClose={onClose} title={t('title.done_quest')} visible={visible}>
-      <Content>
+      <Content testID="quest-done-modal">
         <Message variant="text.primary">{t('message.done_quest')}</Message>
         <Message variant="text.secondary">
           {`(${t('message.done_quest_guide')})`}
