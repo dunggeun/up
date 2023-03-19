@@ -16,8 +16,11 @@ type HomeScreenProps = MainTabProps<'Home'>;
 
 export function HomeScreen(_props: HomeScreenProps): JSX.Element | null {
   const [state] = useActor(AppManager.getInstance().getService());
-
   const user = state.context.user;
+
+  const handlePressProfile = (): void => {
+    navigate('Quest', 'ShareStatus');
+  };
 
   const handlePressCreateQuest = (): void => {
     navigate('Quest', 'QuestCreate');
@@ -31,7 +34,7 @@ export function HomeScreen(_props: HomeScreenProps): JSX.Element | null {
     <FadeInView>
       <CommonLayout insetBottom={false}>
         <CommonLayout.Body scrollEnabled={false}>
-          <UserProfile user={user} />
+          <UserProfile onPress={handlePressProfile} user={user} />
           <AnimateSuspense fallback={<LoadingIndicator full={false} />}>
             <UserQuestList onCreate={handlePressCreateQuest} />
           </AnimateSuspense>

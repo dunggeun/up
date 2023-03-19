@@ -21,6 +21,10 @@ export interface Achieve {
   created_at: number;
 }
 
+export interface AchieveDetail extends Achieve {
+  quest_name: string;
+}
+
 export interface QuestItemPosition {
   x: number;
   y: number;

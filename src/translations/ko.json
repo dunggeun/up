@@ -52,7 +52,9 @@
       "quest_history_in_4_week": "최근 4주 퀘스트 기록",
       "quest_total_exp": "누적 경험치",
       "done_quest": "퀘스트 완료하기",
-      "delete_quest": "퀘스트 삭제하기"
+      "delete_quest": "퀘스트 삭제하기",
+      "my_status": "퀘스트 진행 상태",
+      "recent_achieved": "퀘스트 달성 기록 (최근 %@ 건)"
     },
     "placeholder": {
       "enter_name": "이름을 입력해주세요",
@@ -78,7 +80,8 @@
       "done_quest_guide": "완료 처리하시려면 버튼을 길게 눌러주세요",
       "finished_quest": "완료 처리한 퀘스트는 진행할 수 없어요",
       "delete_quest": "퀘스트를 삭제하면 지금까지의\n기록을 더 이상 확인할 수 없어요",
-      "delete_quest_guide": "종료 하시려면 버튼을 길게 눌러주세요"
+      "delete_quest_guide": "종료 하시려면 버튼을 길게 눌러주세요",
+      "empty_achieve": "퀘스트 달성 기록이 없어요"
     },
     "badge": {
       "0": "",
@@ -91,6 +94,9 @@
       },
       "share_new_quest": {
         "body": "새로운 '%@' 퀘스트를 수락했어요"
+      },
+      "share_status": {
+        "recent_achieve": "최근 달성"
       }
     },
     "format": {

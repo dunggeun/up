@@ -1,7 +1,13 @@
 import { StorageManager } from 'src/modules';
 import { createAchieveData, createQuestData, getAchieveExpByStreak, updateQuestForAddAchieve } from 'src/modules/app/helpers';
+import { RECENT_ACHIEVE_LIMIT } from 'src/constants';
 
-import type { Quest, QuestDetail, Achieve } from 'src/features/quests';
+import type {
+  Quest,
+  QuestDetail,
+  Achieve,
+  AchieveDetail,
+} from 'src/features/quests';
 
 export interface QuestIdParam {
   questId: Quest['id'];
@@ -23,6 +29,33 @@ export const fetchQuestById = ({ questId }: QuestIdParam): Promise<Quest> => {
       }
       return quest;
     });
+};
+
+export const fetchAchieves = async (): Promise<AchieveDetail[]> => {
+  const uniqueQid = new Set<number>();
+  const questNameRecord = new Map<number, string>();
+  const achieves = (
+    await StorageManager
+      .getInstance()
+      .getAchieveList()
+  ).slice(0, RECENT_ACHIEVE_LIMIT);
+
+  achieves.forEach(({ qid }) => uniqueQid.add(qid));
+
+  await Promise.all(
+    Array
+      .from(uniqueQid)
+      .map((id) =>
+        fetchQuestById({ questId: id }).then(({ title }) => {
+          questNameRecord.set(id, title);
+        })
+      )
+  );
+
+  return achieves.map((achieve) => ({
+    ...achieve,
+    quest_name: questNameRecord.get(achieve.qid) ?? '',
+  } as AchieveDetail));
 };
 
 export const fetchAchievesByQuestId = ({ questId }: QuestIdParam): Promise<Achieve[]> => {

@@ -26,6 +26,8 @@ export const PRESSABLE_DEPTH = 5;
 export const TOAST_ANIMATION_DURATION = 500;
 export const TOAST_DURATION = 3000;
 
+export const RECENT_ACHIEVE_LIMIT = 10;
+
 const window = Dimensions.get('window');
 export const WINDOW_WIDTH = window.width;
 export const WINDOW_HEIGHT = window.height;
