@@ -61,15 +61,10 @@ export class StorageManager {
     });
   }
 
-  getAchieveList ({ qid }: Pick<Achieve, 'qid'>): Promise<Achieve[]> {
+  getAchieveList (params?: Pick<Achieve, 'qid'>): Promise<Achieve[]> {
     return this.database.select(
       'achieve',
-      {
-        qid: {
-          symbol: '=',
-          value: qid,
-        },
-      },
+      undefined,
       {
         order: {
           target: 'created_at',

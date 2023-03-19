@@ -61,9 +61,7 @@ export function ProfileScreen(_props: ProfileScreenProps): JSX.Element | null {
     setUserName(user.name);
   }, [user]);
 
-  if (!user) return null;
-
-  return (
+  return user ? (
     <FadeInView>
       <CommonLayout insetBottom={false}>
       <CommonLayout.Header title={t('title.profile')} />
@@ -87,5 +85,5 @@ export function ProfileScreen(_props: ProfileScreenProps): JSX.Element | null {
       </CommonLayout.Body>
     </CommonLayout>
     </FadeInView>
-  );
+  ) : null;
 }
