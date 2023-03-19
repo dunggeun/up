@@ -21,13 +21,11 @@ describe('atoms/Input', () => {
     beforeEach(() => {
       placeholder = faker.word.verb();
       onChange = jest.fn();
+      render({ accessibilityHint: placeholder, onChange });
+      fireEvent(screen.getByHintText(placeholder), 'change');
     });
   
     it('onChange 이벤트 핸들러가 호출되어야 한다', () => {
-      render({ accessibilityHint: placeholder, onChange });
-  
-      fireEvent(screen.getByHintText(placeholder), 'change');
-      expect(onChange).toHaveBeenCalled();
       expect(onChange).toHaveBeenCalledTimes(1);
     });
   });

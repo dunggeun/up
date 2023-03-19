@@ -26,8 +26,11 @@ describe('atoms/Button', () => {
   });
 
   describe('버튼 자식이 존재할 때', () => {
-    it('자식이 버튼 내에 렌더링 되어야 한다', () => {
+    beforeEach(() => {
       render({ children: label, color });
+    });
+
+    it('자식이 버튼 내에 렌더링 되어야 한다', () => {
       expect(screen.getByText(label)).not.toBeNull();
     });
   });
@@ -37,13 +40,11 @@ describe('atoms/Button', () => {
 
     beforeEach(() => {
       onPress = jest.fn();
+      render({ children: label, color, onPress });
+      fireEvent(screen.getByText(label), 'press');
     });
 
-    it('onPress 이벤트 핸들러가 호출되어야 한다', () => {
-      render({ children: label, color, onPress });
-  
-      fireEvent(screen.getByText(label), 'press');
-      expect(onPress).toHaveBeenCalled();
+    it('onPress 이벤트 핸들러가 호출되어야 한다', () => {  
       expect(onPress).toHaveBeenCalledTimes(1);
     });
   });

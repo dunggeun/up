@@ -1,0 +1,646 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`screens/MenuScreen 렌더링 되었을 때 스냅샷이 일치해야 한다 1`] = `
+<View
+  collapsable={false}
+  style={
+    {
+      "flex": 1,
+      "opacity": 0,
+    }
+  }
+>
+  <View
+    style={
+      [
+        {},
+        {
+          "flex": 1,
+        },
+        undefined,
+        {
+          "paddingLeft": 0,
+          "paddingRight": 0,
+          "paddingTop": 0,
+        },
+        {},
+        {},
+      ]
+    }
+  >
+    <View
+      style={
+        [
+          {
+            "alignSelf": "center",
+            "backgroundColor": "#ffffff",
+            "flex": 1,
+            "marginHorizontal": "auto",
+            "maxWidth": 600,
+            "paddingHorizontal": 16,
+            "width": "100%",
+          },
+          undefined,
+          {},
+        ]
+      }
+    >
+      <View
+        style={
+          [
+            {},
+            {
+              "marginHorizontal": -16,
+              "zIndex": 3,
+            },
+            undefined,
+            {},
+            {},
+          ]
+        }
+      >
+        <View
+          style={
+            [
+              {},
+              {
+                "alignItems": "center",
+                "backgroundColor": "#ffffff",
+                "flexDirection": "row",
+                "height": 56,
+                "justifyContent": "space-between",
+                "paddingHorizontal": 16,
+                "position": "relative",
+              },
+              undefined,
+              {},
+              {},
+            ]
+          }
+        >
+          <View
+            style={
+              [
+                {
+                  "flex": 1,
+                },
+                {
+                  "bottom": 0,
+                  "elevation": 3,
+                  "height": 16,
+                  "left": 0,
+                  "marginBottom": -16,
+                  "position": "absolute",
+                  "right": 0,
+                  "zIndex": 3,
+                },
+                undefined,
+                {},
+                {},
+              ]
+            }
+          >
+            <RNSVGSvgView
+              align="none"
+              bbHeight="100%"
+              bbWidth="100%"
+              focusable={false}
+              meetOrSlice={0}
+              minX={0}
+              minY={0}
+              style={
+                [
+                  {
+                    "backgroundColor": "transparent",
+                    "borderWidth": 0,
+                  },
+                  {
+                    "flex": 0,
+                    "height": "100%",
+                    "width": "100%",
+                  },
+                ]
+              }
+              vbHeight={100}
+              vbWidth={100}
+            >
+              <RNSVGGroup
+                fill={
+                  {
+                    "payload": 4278190080,
+                    "type": 0,
+                  }
+                }
+              >
+                <RNSVGDefs>
+                  <RNSVGLinearGradient
+                    gradient={
+                      [
+                        0,
+                        -1,
+                        1,
+                        16777215,
+                      ]
+                    }
+                    gradientTransform={
+                      [
+                        6.123233995736766e-17,
+                        1,
+                        -1,
+                        6.123233995736766e-17,
+                        0,
+                        0,
+                      ]
+                    }
+                    gradientUnits={1}
+                    name="g"
+                    x1="0"
+                    x2="100"
+                    y1="0"
+                    y2="0"
+                  />
+                </RNSVGDefs>
+                <RNSVGRect
+                  fill={
+                    {
+                      "brushRef": "g",
+                      "type": 1,
+                    }
+                  }
+                  height="100%"
+                  propList={
+                    [
+                      "fill",
+                    ]
+                  }
+                  width="100%"
+                  x="0"
+                  y="0"
+                />
+              </RNSVGGroup>
+            </RNSVGSvgView>
+          </View>
+          <View
+            style={
+              [
+                {},
+                {
+                  "height": 30,
+                  "width": 30,
+                },
+                undefined,
+                {},
+                {},
+              ]
+            }
+          />
+          <Text
+            accessibilityHint="제목"
+            accessibilityLabel="메뉴"
+            accessibilityRole="header"
+            style={
+              [
+                {
+                  "fontSize": 48,
+                  "fontWeight": "bold",
+                  "marginVertical": 26.56,
+                },
+                [
+                  {
+                    "fontFamily": "BMJUA",
+                    "fontSize": 24,
+                    "marginVertical": 0,
+                    "paddingBottom": 4,
+                  },
+                  {
+                    "fontWeight": "normal",
+                  },
+                  undefined,
+                  {
+                    "color": "#2e2e2e",
+                  },
+                ],
+              ]
+            }
+          >
+            메뉴
+          </Text>
+          <View
+            style={
+              [
+                {},
+                {
+                  "height": 30,
+                  "width": 30,
+                },
+                undefined,
+                {},
+                {},
+              ]
+            }
+          />
+        </View>
+      </View>
+      <RCTScrollView
+        collapsable={false}
+        onMoveShouldSetResponderCapture={[Function]}
+        onStartShouldSetResponderCapture={[Function]}
+        scrollEventThrottle={0.0001}
+        style={
+          {
+            "flex": 1,
+            "marginHorizontal": -16,
+            "paddingHorizontal": 16,
+          }
+        }
+      >
+        <View>
+          <View
+            style={
+              [
+                {},
+                {
+                  "flex": 1,
+                  "gap": 16,
+                },
+                undefined,
+                {},
+                {},
+              ]
+            }
+          >
+            <View
+              style={
+                [
+                  {},
+                  {},
+                  undefined,
+                  {},
+                  {},
+                ]
+              }
+            >
+              <View
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={false}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "justifyContent": "space-between",
+                    "opacity": 1,
+                    "paddingVertical": 16,
+                  }
+                }
+              >
+                <Text
+                  accessibilityRole="header"
+                  style={
+                    [
+                      {
+                        "fontSize": 48,
+                        "fontWeight": "bold",
+                        "marginVertical": 26.56,
+                      },
+                      [
+                        {
+                          "color": "#2e2e2e",
+                          "fontFamily": "BMJUA",
+                          "fontSize": 24,
+                          "marginVertical": 0,
+                          "paddingBottom": 4,
+                        },
+                        {
+                          "fontWeight": "normal",
+                        },
+                        undefined,
+                        {},
+                      ],
+                    ]
+                  }
+                >
+                  버전
+                </Text>
+                <Text
+                  style={
+                    [
+                      {
+                        "color": "#777777",
+                        "fontFamily": "BMJUA",
+                        "fontSize": 16,
+                        "paddingBottom": 4,
+                      },
+                      undefined,
+                      {},
+                    ]
+                  }
+                >
+                  0.0.1
+                </Text>
+              </View>
+              <View
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "justifyContent": "space-between",
+                    "opacity": 1,
+                    "paddingVertical": 16,
+                  }
+                }
+              >
+                <Text
+                  accessibilityRole="header"
+                  style={
+                    [
+                      {
+                        "fontSize": 48,
+                        "fontWeight": "bold",
+                        "marginVertical": 26.56,
+                      },
+                      [
+                        {
+                          "color": "#2e2e2e",
+                          "fontFamily": "BMJUA",
+                          "fontSize": 24,
+                          "marginVertical": 0,
+                          "paddingBottom": 4,
+                        },
+                        {
+                          "fontWeight": "normal",
+                        },
+                        undefined,
+                        {},
+                      ],
+                    ]
+                  }
+                >
+                  피드백 보내기
+                </Text>
+              </View>
+              <View
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "justifyContent": "space-between",
+                    "opacity": 1,
+                    "paddingVertical": 16,
+                  }
+                }
+              >
+                <Text
+                  accessibilityRole="header"
+                  style={
+                    [
+                      {
+                        "fontSize": 48,
+                        "fontWeight": "bold",
+                        "marginVertical": 26.56,
+                      },
+                      [
+                        {
+                          "color": "#2e2e2e",
+                          "fontFamily": "BMJUA",
+                          "fontSize": 24,
+                          "marginVertical": 0,
+                          "paddingBottom": 4,
+                        },
+                        {
+                          "fontWeight": "normal",
+                        },
+                        undefined,
+                        {},
+                      ],
+                    ]
+                  }
+                >
+                  UP 평점주기 & 리뷰
+                </Text>
+              </View>
+              <View
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "justifyContent": "space-between",
+                    "opacity": 1,
+                    "paddingVertical": 16,
+                  }
+                }
+              >
+                <Text
+                  accessibilityRole="header"
+                  style={
+                    [
+                      {
+                        "fontSize": 48,
+                        "fontWeight": "bold",
+                        "marginVertical": 26.56,
+                      },
+                      [
+                        {
+                          "color": "#2e2e2e",
+                          "fontFamily": "BMJUA",
+                          "fontSize": 24,
+                          "marginVertical": 0,
+                          "paddingBottom": 4,
+                        },
+                        {
+                          "fontWeight": "normal",
+                        },
+                        undefined,
+                        {},
+                      ],
+                    ]
+                  }
+                >
+                  오픈소스 프로젝트
+                </Text>
+              </View>
+              <View
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  {
+                    "alignItems": "center",
+                    "justifyContent": "center",
+                    "opacity": 1,
+                    "paddingVertical": 16,
+                  }
+                }
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "BMJUA",
+                        "fontSize": 16,
+                        "paddingBottom": 4,
+                      },
+                      undefined,
+                      {
+                        "color": "#cccccc",
+                      },
+                    ]
+                  }
+                >
+                  데이터 초기화
+                </Text>
+              </View>
+              <View
+                style={
+                  [
+                    {},
+                    undefined,
+                    {
+                      "height": 102,
+                    },
+                  ]
+                }
+              />
+            </View>
+          </View>
+        </View>
+      </RCTScrollView>
+    </View>
+  </View>
+  <Modal
+    animationType="fade"
+    hardwareAccelerated={false}
+    transparent={true}
+    visible={false}
+  />
+</View>
+`;
