@@ -88,6 +88,9 @@
       "send_feedback": {
         "title": "Feedback for Up",
         "body": ""
+      },
+      "share_new_quest": {
+        "body": "새로운 '%@' 퀘스트를 수락했어요"
       }
     },
     "format": {

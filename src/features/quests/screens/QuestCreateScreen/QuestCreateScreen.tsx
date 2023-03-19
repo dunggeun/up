@@ -1,7 +1,11 @@
 import React, { useState, useCallback, useLayoutEffect } from 'react';
-import { CommonLayout } from 'src/designs';
+import { Share } from 'react-native';
+import { CommonLayout, Text } from 'src/designs';
 import { TransitionGroup } from 'src/components';
+import { AppManager } from 'src/modules';
 import { useUserThemeColor } from 'src/features/users';
+import { replacePlaceholder } from 'src/utils';
+import { t } from 'src/translations';
 
 import { useAddQuest, useQuestPhase, QuestFormPhase } from '../../hooks';
 import { EnterTitle } from '../../components/EnterTitle';
@@ -11,6 +15,8 @@ import { QuestAccepted } from '../../components/QuestAccepted';
 import type { QuestStackProps } from 'src/navigators/QuestStack/types';
 
 type QuestCreateScreenProps = QuestStackProps<'QuestCreate'>;
+
+const ErrorToastContent = <Text variant="primary">{t('message.error.common')}</Text>;
 
 export function QuestCreateScreen({ navigation }: QuestCreateScreenProps): JSX.Element {
   const userColor = useUserThemeColor();
@@ -32,8 +38,12 @@ export function QuestCreateScreen({ navigation }: QuestCreateScreenProps): JSX.E
   }, [navigation]);
 
   const handlePressShareButton = useCallback((): void => {
-    // @todo
-  }, []);
+    Share.share({
+      message: replacePlaceholder(t('template.share_new_quest.body'), name),
+    }).catch(() => {
+      AppManager.showToast(ErrorToastContent);
+    });
+  }, [name]);
 
   useLayoutEffect(() => {
     isSuccess && complete();
