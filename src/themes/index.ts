@@ -12,7 +12,8 @@ declare module 'dripsy' {
   interface DripsyCustomTheme extends Theme {}
 }
 
-const ROOT_FONT_SIZE = 16;
+export const ROOT_FONT_SIZE = 16;
+
 const FONT_NAME = Platform.select({
   web: 'Jua',
   default: 'BMJUA',

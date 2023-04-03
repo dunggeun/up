@@ -22,6 +22,14 @@ RN.Animated.timing = (): RN.Animated.timing => ({
 self.__reanimatedWorkletInit = (): void => {};
 jest.mock('react-native-reanimated', () => require('react-native-reanimated/mock'));
 
+jest.mock('react-native-share', () => ({
+  default: jest.fn(),
+}));
+
+jest.mock('react-native-webview', () => ({
+  default: DummyComponent,
+}));
+
 jest.mock('@react-native-async-storage/async-storage', () =>
   require('@react-native-async-storage/async-storage/jest/async-storage-mock'),
 );
