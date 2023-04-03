@@ -62,7 +62,8 @@
     },
     "message": {
       "error": {
-        "common": "문제가 발생했어요"
+        "common": "문제가 발생했어요",
+        "unsupported_platform": "현재 플랫폼에서 지원하지 않아요"
       },
       "greeting": "환영합니다!\n업 챌린지에 도전해보세요",
       "enter_name": "업 도전자님의\n이름을 알려주세요",

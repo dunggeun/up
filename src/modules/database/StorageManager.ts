@@ -64,7 +64,12 @@ export class StorageManager {
   getAchieveList (params?: Pick<Achieve, 'qid'>): Promise<Achieve[]> {
     return this.database.select(
       'achieve',
-      undefined,
+      params ? {
+        qid: {
+          symbol: '=',
+          value: params.qid,
+        },
+      } : undefined,
       {
         order: {
           target: 'created_at',

@@ -5,7 +5,12 @@
     "baseUrl": ".",
     "target": "esnext",
     "module": "commonjs",
-    "types": ["react-native", "jest"],
+    "types": [
+      "react-native",
+      "jest",
+      "./src/types/raw-loader.d.ts",
+      "./src/types/images.d.ts",
+    ],
     "lib": [
       "es2019"
     ],
@@ -20,10 +25,7 @@
     "forceConsistentCasingInFileNames": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "typeRoots": [
-      "./src/types/images/index.d.ts",
-      "./node_modules/@types"
-    ],
+    "typeRoots": ["./node_modules/@types"],
     "paths": {
       "@/App": [
         "./App.tsx"

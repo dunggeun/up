@@ -92,7 +92,6 @@ export const getBadge = (id: number): Badge => {
   return { id, title, image };
 };
 
-
 export const getBadges = (): typeof BADGE_SET => {
   return BADGE_SET;
 };

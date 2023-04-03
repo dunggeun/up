@@ -4,7 +4,6 @@ import {
   QuestCreateScreen,
   QuestDetailScreen,
   QuestFinishedScreen,
-  ShareStatusScreen,
 } from 'src/features/quests';
 import { SHARED_CONFIG } from 'src/constants';
 
@@ -32,10 +31,6 @@ export function QuestStackNavigator(): JSX.Element {
       <QuestStack.Screen
         component={QuestFinishedScreen}
         name="QuestFinished"
-      />
-      <QuestStack.Screen
-        component={ShareStatusScreen}
-        name="ShareStatus"
       />
     </QuestStack.Navigator>
   );
