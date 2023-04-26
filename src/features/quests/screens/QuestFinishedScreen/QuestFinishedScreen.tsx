@@ -13,10 +13,11 @@ type QuestFinishedScreenProps = QuestStackProps<'QuestFinished'>;
 
 export function QuestFinishedScreen({
   navigation,
-  route
+  route,
 }: QuestFinishedScreenProps): JSX.Element {
   const { id } = route.params;
-  const [questDeleteModalVisibility, setQuestDeleteModalVisibility] = useState(false);
+  const [questDeleteModalVisibility, setQuestDeleteModalVisibility] =
+    useState(false);
   const { data: questDetail, isLoading } = useQuestDetail({ id });
   const { mutate } = useDeleteQuest({
     onSuccess: () => {
@@ -38,7 +39,9 @@ export function QuestFinishedScreen({
     mutate({ questId: questDetail.quest.id });
   };
 
-  return shouldShowLoadingIndicator ? <LoadingIndicator /> : (
+  return shouldShowLoadingIndicator ? (
+    <LoadingIndicator />
+  ) : (
     <>
       <CommonLayout>
         <CommonLayout.Header

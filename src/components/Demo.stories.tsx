@@ -2,15 +2,15 @@ import React from 'react';
 import { View } from 'react-native';
 import { Demo } from './Demo';
 import type { ComponentProps } from 'react';
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 
 export default {
   title: 'components/Demo',
   component: Demo,
-} as ComponentMeta<typeof Demo>;
+} as Meta<typeof Demo>;
 
 type DemoProps = ComponentProps<typeof Demo>;
-type DemoStory = ComponentStory<typeof Demo>;
+type DemoStory = StoryFn<typeof Demo>;
 
 const templateStyle = { flex: 1 };
 

@@ -33,10 +33,10 @@ const loadingViewStyle = {
   alignItems: 'center',
   height: 0,
   opacity: 0,
-  overflow: 'hidden'
+  overflow: 'hidden',
 } as const;
 
-export function DeleteConfirmModal ({
+export function DeleteConfirmModal({
   visible,
   isLoading,
   onClose,
@@ -64,11 +64,7 @@ export function DeleteConfirmModal ({
         <Message variant="text.secondary">
           {`(${t('message.reset_data_guide')})`}
         </Message>
-        <Button
-          color="$red"
-          disabled={isLoading}
-          onLongPress={onDelete}
-        >
+        <Button color="$red" disabled={isLoading} onLongPress={onDelete}>
           {t('label.reset_confirm')}
         </Button>
       </Content>

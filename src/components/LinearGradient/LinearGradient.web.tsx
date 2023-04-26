@@ -9,7 +9,7 @@ const Container = styled(View)({ flex: 1 });
 const getGradientStyle = (color: string, degree: number): any => {
   return {
     backgroundColor: color,
-    background: `linear-gradient(${degree}deg, rgba(0,0,0,0), ${color})`
+    background: `linear-gradient(${degree}deg, rgba(0,0,0,0), ${color})`,
   };
 };
 
@@ -19,9 +19,11 @@ export function LinearGradient({
   style,
 }: LinearGradientProps): JSX.Element {
   return (
-    <Container style={[
-      getGradientStyle(color, direction === 'to-down' ? 0 : 180),
-      style
-    ]}/>
+    <Container
+      style={[
+        getGradientStyle(color, direction === 'to-down' ? 0 : 180),
+        style,
+      ]}
+    />
   );
 }

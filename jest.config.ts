@@ -21,14 +21,7 @@ const config = {
     '!**/*.stories.tsx',
   ],
   testPathIgnorePatterns: ['/node_modules/'],
-  moduleFileExtensions: [
-    'ts',
-    'tsx',
-    'js',
-    'jsx',
-    'json',
-    'node'
-  ],
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
 } as const;
 
 // eslint-disable-next-line import/no-default-export

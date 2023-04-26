@@ -90,11 +90,7 @@ describe('utils', () => {
   describe('string', () => {
     describe('replacePlaceholder', () => {
       const ARGS = ['hello', 'world'];
-      const TEST_CASES = [
-        'hello, world!',
-        '%@, world!',
-        '%@, %@!',
-      ] as const;
+      const TEST_CASES = ['hello, world!', '%@, world!', '%@, %@!'] as const;
       const RESULT = 'hello, world!';
 
       it.each(TEST_CASES)('placeholder 가 치환 되어야 한다', (template) => {

@@ -4,7 +4,7 @@ import { Text } from 'src/designs';
 import { LinearGradient } from './LinearGradient';
 
 import type { ComponentProps } from 'react';
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 
 export default {
   title: 'components/LinearGradient',
@@ -28,19 +28,16 @@ export default {
       control: { type: 'number' },
     },
   },
-} as ComponentMeta<typeof LinearGradient>;
+} as Meta<typeof LinearGradient>;
 
 type LinearGradientProps = ComponentProps<typeof LinearGradient>;
-type LinearGradientStory = ComponentStory<typeof LinearGradient>;
+type LinearGradientStory = StoryFn<typeof LinearGradient>;
 
 const templateStyle = { width: 300 };
 
 const Template = (args: LinearGradientProps) => (
   <View style={templateStyle}>
-    <Text
-      sx={{ position: 'absolute', top: 0, left: 0 }}
-      variant="primary"
-    >
+    <Text sx={{ position: 'absolute', top: 0, left: 0 }} variant="primary">
       우리 모두의 성장을 위해, Up
     </Text>
     <LinearGradient {...args} />

@@ -10,14 +10,16 @@ import type {
   SelectOptions,
 } from '../types';
 
-export class NativeDatabaseModule implements DatabaseModule<'quest' | 'achieve'> {
+export class NativeDatabaseModule
+  implements DatabaseModule<'quest' | 'achieve'>
+{
   private static DATABASE_NAME = 'up_v1.db';
   private static ERROR_MESSAGES = {
-    not_initialized: 'database not initialized' 
+    not_initialized: 'database not initialized',
   };
   private database: SQLiteDatabase | null = null;
 
-  async initialize (): Promise<void> {
+  async initialize(): Promise<void> {
     if (this.database) return;
 
     this.database = await SQLite.openDatabase({
@@ -30,16 +32,14 @@ export class NativeDatabaseModule implements DatabaseModule<'quest' | 'achieve'>
   async select<Data>(
     model: 'quest' | 'achieve',
     conditions?: WhereConditions,
-    options?: SelectOptions
+    options?: SelectOptions,
   ): Promise<Data[]> {
     if (!this.database) {
       throw new Error(NativeDatabaseModule.ERROR_MESSAGES.not_initialized);
     }
 
     let rows: Data[] = [];
-    const builder = new SQLBuilder()
-      .type('select')
-      .table(model);
+    const builder = new SQLBuilder().type('select').table(model);
 
     if (conditions) {
       builder.where(conditions);
@@ -52,13 +52,15 @@ export class NativeDatabaseModule implements DatabaseModule<'quest' | 'achieve'>
     if (typeof options?.limit === 'number') {
       builder.limit(options.limit);
     }
-  
+
     await this.database.transaction((tx) => {
-      tx.executeSql(builder.build()).then(([_, result]) => {
-        rows = result.rows.raw() as Data[];
-      }).catch((error) => {
-        throw error;
-      });
+      tx.executeSql(builder.build())
+        .then(([_, result]) => {
+          rows = result.rows.raw() as Data[];
+        })
+        .catch((error) => {
+          throw error;
+        });
     });
 
     return rows;
@@ -71,7 +73,7 @@ export class NativeDatabaseModule implements DatabaseModule<'quest' | 'achieve'>
     if (!this.database) {
       throw new Error(NativeDatabaseModule.ERROR_MESSAGES.not_initialized);
     }
-    
+
     const query = new SQLBuilder()
       .type('insert')
       .table(model)
@@ -94,10 +96,7 @@ export class NativeDatabaseModule implements DatabaseModule<'quest' | 'achieve'>
       throw new Error(NativeDatabaseModule.ERROR_MESSAGES.not_initialized);
     }
 
-    const builder = new SQLBuilder()
-      .type('update')
-      .table(model)
-      .values(data);
+    const builder = new SQLBuilder().type('update').table(model).values(data);
 
     if (conditions) {
       builder.where(conditions);
@@ -118,10 +117,8 @@ export class NativeDatabaseModule implements DatabaseModule<'quest' | 'achieve'>
       throw new Error(NativeDatabaseModule.ERROR_MESSAGES.not_initialized);
     }
 
-    const builder = new SQLBuilder()
-      .type('delete')
-      .table(model);
-    
+    const builder = new SQLBuilder().type('delete').table(model);
+
     if (conditions) {
       builder.where(conditions);
     }
@@ -133,7 +130,7 @@ export class NativeDatabaseModule implements DatabaseModule<'quest' | 'achieve'>
     });
   }
 
-  clear (model: 'quest' | 'achieve'): Promise<void> {
+  clear(model: 'quest' | 'achieve'): Promise<void> {
     return this.delete(model);
   }
 }

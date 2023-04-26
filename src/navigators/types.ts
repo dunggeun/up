@@ -7,4 +7,4 @@ export type NavigatorScreens = {
   Main: MainTabScreenParamList;
   Common: CommonStackScreenParamList;
   Quest: QuestStackScreenParamList;
-}
+};

@@ -22,10 +22,14 @@ export interface UserQuestItemProps {
 }
 
 const DELAY = 80;
-const FinishedQuestToastContent = <Text variant="primary">{t('message.finished_quest')}</Text>;
-const AlreadyCompletedToastContent = <Text variant="primary">{t('message.already_completed')}</Text>;
+const FinishedQuestToastContent = (
+  <Text variant="primary">{t('message.finished_quest')}</Text>
+);
+const AlreadyCompletedToastContent = (
+  <Text variant="primary">{t('message.already_completed')}</Text>
+);
 
-export function UserQuestItem ({
+export function UserQuestItem({
   data,
   index,
   animate,
@@ -38,7 +42,7 @@ export function UserQuestItem ({
       buttonRef.current?.measureInWindow((x, y) => {
         setItemPosition({ x, y });
       });
-    }
+    },
   });
 
   const shouldShowBadge = useMemo(() => {
@@ -48,11 +52,9 @@ export function UserQuestItem ({
 
   const handlePress = useCallback(() => {
     const isFinished = data.finished_at;
-    navigate(
-      'Quest',
-      isFinished ? 'QuestFinished' : 'QuestDetail',
-      { id: data.id },
-    );
+    navigate('Quest', isFinished ? 'QuestFinished' : 'QuestDetail', {
+      id: data.id,
+    });
   }, [data.id, data.finished_at]);
 
   const handleLongPress = useCallback(() => {
@@ -97,16 +99,18 @@ export function UserQuestItem ({
           {component}
         </MotiView>
       );
-    } 
+    }
     return component;
   };
 
   const renderBadge = (): JSX.Element => {
     return shouldShowBadge ? (
       <MotiView animate={{ scale: 1 }} from={{ scale: 0 }}>
-        <Tag color={tagColor} label={`x${data.current_streak}`}/>
+        <Tag color={tagColor} label={`x${data.current_streak}`} />
       </MotiView>
-    ) : <View />;
+    ) : (
+      <View />
+    );
   };
 
   return animatable(
@@ -118,6 +122,6 @@ export function UserQuestItem ({
       rightAdornment={renderBadge()}
     >
       {data.title}
-    </Button>
+    </Button>,
   );
 }

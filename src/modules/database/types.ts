@@ -9,10 +9,13 @@ export interface SelectOptions {
   };
 }
 
-export type WhereConditions = Record<string, {
-  symbol: '=' | '>' | '>=' | '<' | '<=';
-  value: Value
-}>;
+export type WhereConditions = Record<
+  string,
+  {
+    symbol: '=' | '>' | '>=' | '<' | '<=';
+    value: Value;
+  }
+>;
 
 export type DatabaseRecord = Record<string, Value>;
 
@@ -21,13 +24,16 @@ export interface DatabaseModule<Model = string> {
   select: <Data extends DatabaseRecord>(
     model: Model,
     condition?: WhereConditions,
-    options?: SelectOptions
+    options?: SelectOptions,
   ) => Promise<Data[]>;
   insert: <Data extends DatabaseRecord>(
-    model: Model, data: Data
+    model: Model,
+    data: Data,
   ) => Promise<void>;
   update: <Data extends DatabaseRecord>(
-    model: Model, data: Data, condition?: WhereConditions
+    model: Model,
+    data: Data,
+    condition?: WhereConditions,
   ) => Promise<void>;
   delete: (model: Model, condition?: WhereConditions) => Promise<void>;
   clear: (model: Model) => Promise<void>;

@@ -20,10 +20,7 @@ export function CommonStackNavigator(): JSX.Element {
         component={OpenSourceProjectScreen}
         name="OpenSourceProject"
       />
-      <CommonStack.Screen
-        component={UserStatusScreen}
-        name="UserStatus"
-      />
+      <CommonStack.Screen component={UserStatusScreen} name="UserStatus" />
     </CommonStack.Navigator>
   );
 }

@@ -8,7 +8,7 @@ export class ToastManager {
   private timer?: NodeJS.Timeout;
   private handler?: Handler;
 
-  private constructor () {
+  private constructor() {
     // empty constructor
   }
 
@@ -19,7 +19,7 @@ export class ToastManager {
     return ToastManager.instance;
   }
 
-  private dispatchContent (content: React.ReactNode): void {
+  private dispatchContent(content: React.ReactNode): void {
     this.visibility = Boolean(content);
     this.handler?.(content);
 
@@ -30,11 +30,11 @@ export class ToastManager {
     }, TOAST_DURATION);
   }
 
-  register (handler: Handler): void {
+  register(handler: Handler): void {
     this.handler = handler;
   }
 
-  show (content: React.ReactNode): void {
+  show(content: React.ReactNode): void {
     clearTimeout(this.timer);
     if (this.visibility) {
       this.hide();
@@ -46,7 +46,7 @@ export class ToastManager {
     this.dispatchContent(content);
   }
 
-  hide (): void {
+  hide(): void {
     this.dispatchContent(null);
   }
 }

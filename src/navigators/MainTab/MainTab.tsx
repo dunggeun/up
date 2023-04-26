@@ -21,20 +21,23 @@ export function MainTabNavigator(): JSX.Element {
   const { bottom } = useSafeAreaInsets();
   const userColor = useUserThemeColor();
 
-  const tabBarOptions = useMemo(() => ({
-    title: '',
-    headerShown: false,
-    unmountOnBlur: false,
-    tabBarShowLabel: false,
-    tabBarActiveTintColor: theme.colors[userColor],
-    tabBarInactiveTintColor: theme.colors.$text_tertiary,
-    tabBarStyle: {
-      marginBottom: bottom || theme.space.$04,
-    },
-    tabBarIconStyle: {
-      transform: [{ scale: 1.5 }]
-    },
-  }), [theme, bottom, userColor]);
+  const tabBarOptions = useMemo(
+    () => ({
+      title: '',
+      headerShown: false,
+      unmountOnBlur: false,
+      tabBarShowLabel: false,
+      tabBarActiveTintColor: theme.colors[userColor],
+      tabBarInactiveTintColor: theme.colors.$text_tertiary,
+      tabBarStyle: {
+        marginBottom: bottom || theme.space.$04,
+      },
+      tabBarIconStyle: {
+        transform: [{ scale: 1.5 }],
+      },
+    }),
+    [theme, bottom, userColor],
+  );
 
   return (
     <MainTab.Navigator
@@ -70,4 +73,4 @@ export function MainTabNavigator(): JSX.Element {
       />
     </MainTab.Navigator>
   );
-};
+}

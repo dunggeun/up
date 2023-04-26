@@ -17,7 +17,7 @@ import type { CommonStackProps } from 'src/navigators/CommonStack/types';
 type UserStatusProps = CommonStackProps<'UserStatus'>;
 
 export function UserStatusScreen({
-  navigation
+  navigation,
 }: UserStatusProps): JSX.Element | null {
   const [imageData, setImageData] = useState('');
   const userColor = useUserThemeColor();
@@ -66,4 +66,4 @@ export function UserStatusScreen({
       </CommonLayout.Footer>
     </CommonLayout>
   ) : null;
-};
+}

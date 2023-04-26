@@ -5,7 +5,7 @@ import { styled } from 'dripsy';
 
 import type { PropsWithChildren } from 'react';
 import type { ViewStyle } from 'react-native';
- 
+
 interface FadeInViewProps {
   style?: ViewStyle;
 }
@@ -14,9 +14,9 @@ const FADE_DURATION = 250;
 
 const StyledAnimatedView = styled(Animated.View)({ flex: 1 });
 
-export function FadeInView ({
+export function FadeInView({
   children,
-  style
+  style,
 }: PropsWithChildren<FadeInViewProps>): JSX.Element {
   const opacityAnimation = useRef(new Animated.Value(0)).current;
 
@@ -35,7 +35,7 @@ export function FadeInView ({
           useNativeDriver: true,
         }).start();
       };
-    }, [opacityAnimation])
+    }, [opacityAnimation]),
   );
 
   return (

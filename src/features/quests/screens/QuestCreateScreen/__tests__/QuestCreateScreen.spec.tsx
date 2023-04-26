@@ -11,7 +11,9 @@ import { t } from 'src/translations';
 
 import { QuestCreateScreen } from '../QuestCreateScreen';
 
-const render = (component: React.ReactElement): ReturnType<typeof testRender> => {
+const render = (
+  component: React.ReactElement,
+): ReturnType<typeof testRender> => {
   return testRender(withReactQuery(withDripsy(component)));
 };
 
@@ -34,7 +36,7 @@ describe('screens/QuestCreateScreen', () => {
     cleanup();
   });
 
-  describe('렌더링 되었을 때', () => {  
+  describe('렌더링 되었을 때', () => {
     it('스냅샷이 일치해야 한다', () => {
       const tree = screen.toJSON();
       expect(tree).toMatchSnapshot();
@@ -48,11 +50,13 @@ describe('screens/QuestCreateScreen', () => {
 
   describe('퀘스트 이름이 2글자 미만일 때', () => {
     beforeEach(() => {
-      const titlePlaceholder = screen.getByPlaceholderText(t('placeholder.enter_name'));
-      fireEvent.changeText(titlePlaceholder, faker.helpers.arrayElement([
-        '',
-        faker.random.alpha(1),
-      ]));
+      const titlePlaceholder = screen.getByPlaceholderText(
+        t('placeholder.enter_name'),
+      );
+      fireEvent.changeText(
+        titlePlaceholder,
+        faker.helpers.arrayElement(['', faker.random.alpha(1)]),
+      );
     });
 
     it('다음 버튼이 비활성화 되어있어야 한다', () => {
@@ -63,7 +67,9 @@ describe('screens/QuestCreateScreen', () => {
 
   describe('퀘스트 이름이 2글자 이상일 때', () => {
     beforeEach(() => {
-      const titlePlaceholder = screen.getByPlaceholderText(t('placeholder.enter_name'));
+      const titlePlaceholder = screen.getByPlaceholderText(
+        t('placeholder.enter_name'),
+      );
       fireEvent.changeText(titlePlaceholder, faker.random.alpha(5));
     });
 
@@ -92,7 +98,6 @@ describe('screens/QuestCreateScreen', () => {
           fireEvent(nextButton, 'longPress');
         });
 
-        // eslint-disable-next-line jest/expect-expect
         it('퀘스트 수락 화면이 렌더링 되어야 한다', () => {
           // TODO
         });

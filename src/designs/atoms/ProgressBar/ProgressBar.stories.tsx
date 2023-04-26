@@ -4,7 +4,7 @@ import { View } from 'dripsy';
 import { getColors } from 'src/themes/utils';
 import { ProgressBar } from './ProgressBar';
 
-import type { ComponentMeta } from '@storybook/react';
+import type { Meta } from '@storybook/react';
 import type { ProgressBarProps } from './ProgressBar';
 
 export default {
@@ -38,7 +38,7 @@ export default {
     options: getColors(),
     control: { type: 'select' },
   },
-} as ComponentMeta<typeof ProgressBar>;
+} as Meta<typeof ProgressBar>;
 
 const Template = (args: ProgressBarProps) => {
   const [max, setMax] = useState(100);
@@ -71,7 +71,7 @@ const Template = (args: ProgressBarProps) => {
           placeholder="max"
           value={String(max)}
         />
-        <TextInput 
+        <TextInput
           accessibilityHint="Test field"
           accessibilityLabel="Value field"
           onChangeText={handleChangeValue}

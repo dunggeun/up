@@ -26,17 +26,19 @@ const Container = styled(View)({
   gap: '$02',
 });
 
-const AnimatedDay = styled(Animated.View)(({
-  color,
-  status
-}: Pick<QuestHistoryProps, 'color'> & { status: Status }) => ({
-  width: DAY_CELL_SIZE,
-  height: DAY_CELL_SIZE,
-  borderWidth: 2,
-  borderColor: status === 'empty' ? '$text_tertiary' : '$text_primary',
-  borderRadius: 4,
-  backgroundColor: status === 'active' ? color : 'transparent',
-}));
+const AnimatedDay = styled(Animated.View)(
+  ({
+    color,
+    status,
+  }: Pick<QuestHistoryProps, 'color'> & { status: Status }) => ({
+    width: DAY_CELL_SIZE,
+    height: DAY_CELL_SIZE,
+    borderWidth: 2,
+    borderColor: status === 'empty' ? '$text_tertiary' : '$text_primary',
+    borderRadius: 4,
+    backgroundColor: status === 'active' ? color : 'transparent',
+  }),
+);
 
 const Week = styled(View)({
   flexDirection: 'row',
@@ -54,7 +56,7 @@ const getStatus = (hasHistory: boolean, dayBefore: number): Status => {
   return hasHistory ? 'active' : 'inactive';
 };
 
-function Day ({ color, status, delay }: DayProps): JSX.Element {
+function Day({ color, status, delay }: DayProps): JSX.Element {
   const fadeAnimation = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
@@ -95,33 +97,20 @@ export const QuestHistory = memo(function QuestHistory({
   return (
     <Container>
       <Header>
-        <Text variant="primary">
-          {t('label.weekday_0')}
-        </Text>
-        <Text variant="primary">
-          {t('label.weekday_1')}
-        </Text>
-        <Text variant="primary">
-          {t('label.weekday_2')}
-        </Text>
-        <Text variant="primary">
-          {t('label.weekday_3')}
-        </Text>
-        <Text variant="primary">
-          {t('label.weekday_4')}
-        </Text>
-        <Text variant="primary">
-          {t('label.weekday_5')}
-        </Text>
-        <Text variant="primary">
-          {t('label.weekday_6')}
-        </Text>
+        <Text variant="primary">{t('label.weekday_0')}</Text>
+        <Text variant="primary">{t('label.weekday_1')}</Text>
+        <Text variant="primary">{t('label.weekday_2')}</Text>
+        <Text variant="primary">{t('label.weekday_3')}</Text>
+        <Text variant="primary">{t('label.weekday_4')}</Text>
+        <Text variant="primary">{t('label.weekday_5')}</Text>
+        <Text variant="primary">{t('label.weekday_6')}</Text>
       </Header>
       {getArrayForRender().map((daysInWeek, weekIndex) => (
         // eslint-disable-next-line react/no-array-index-key
         <Week key={weekIndex}>
           {daysInWeek.map((_, dayIndex) => {
-            const dayBefore = HISTORY_DAYS - ((weekIndex * 7) + dayIndex) - (WEEK_DAYS - weekDay);
+            const dayBefore =
+              HISTORY_DAYS - (weekIndex * 7 + dayIndex) - (WEEK_DAYS - weekDay);
             return (
               <Day
                 color={color}

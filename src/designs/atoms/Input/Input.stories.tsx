@@ -2,14 +2,14 @@ import React from 'react';
 import { View } from 'dripsy';
 import { Input } from './Input';
 
-import type { ComponentMeta } from '@storybook/react';
+import type { Meta } from '@storybook/react';
 import type { InputProps } from './Input';
 
 export default {
   title: 'atoms/Input',
   component: Input,
   args: {},
-} as ComponentMeta<typeof Input>;
+} as Meta<typeof Input>;
 
 const Template = (args: InputProps) => (
   <View sx={{ flex: 1, padding: '$04' }}>

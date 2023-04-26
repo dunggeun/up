@@ -1,5 +1,10 @@
 import React from 'react';
-import { render as testRender, screen, fireEvent, cleanup } from '@testing-library/react-native';
+import {
+  render as testRender,
+  screen,
+  fireEvent,
+  cleanup,
+} from '@testing-library/react-native';
 import { faker } from '@faker-js/faker';
 import { withDripsy } from 'tests/utils';
 import { noop } from 'src/utils';
@@ -7,14 +12,16 @@ import {
   Select,
   type SelectItem,
   type SelectRootProps,
-  type SelectItemProps
+  type SelectItemProps,
 } from '../Select';
 
 const render = ({
   initialValue,
   onChange,
-  items
-}: SelectRootProps & { items: SelectItemProps[] }): ReturnType<typeof testRender> => {
+  items,
+}: SelectRootProps & { items: SelectItemProps[] }): ReturnType<
+  typeof testRender
+> => {
   return testRender(
     withDripsy(
       <Select.Root initialValue={initialValue} onChange={onChange}>
@@ -24,7 +31,7 @@ const render = ({
             <Select.Item {...item} key={item.value} />
           ))}
         </Select.Content>
-      </Select.Root>
+      </Select.Root>,
     ),
   );
 };
@@ -33,7 +40,7 @@ describe('atoms/Select', () => {
   let itemCount: number;
   let items: SelectItem[];
   let onChange: jest.Mock;
-  
+
   beforeAll(() => {
     onChange = jest.fn();
     itemCount = faker.datatype.number({ min: 1, max: 3 });
@@ -68,7 +75,10 @@ describe('atoms/Select', () => {
 
       beforeEach(() => {
         targetItem = faker.helpers.arrayElement(items);
-        fireEvent(screen.getByTestId(`select-item-${targetItem.value}`), 'press');
+        fireEvent(
+          screen.getByTestId(`select-item-${targetItem.value}`),
+          'press',
+        );
       });
 
       it('선택한 항목의 value 가 onChange 핸들러로 전달되어야 한다', () => {

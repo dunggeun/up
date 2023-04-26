@@ -19,7 +19,7 @@ interface UserCoverProps {
 }
 
 export interface UserCoverRef {
-  requestCoverImage: (config: CoverGenerateConfig) => void
+  requestCoverImage: (config: CoverGenerateConfig) => void;
 }
 
 // 정사각형 이미지 생성을 위해 같은 크기로 지정
@@ -28,11 +28,14 @@ const StyledWebView = styled(WebView)({
   height: 1,
 });
 
-const ErrorToastContent = <Text variant="primary">{t('message.error.common')}</Text>;
+const ErrorToastContent = (
+  <Text variant="primary">{t('message.error.common')}</Text>
+);
 
-export const UserCover = memo(function UserCover (
-  { user, onGenerated }: UserCoverProps,
-): JSX.Element | null {
+export const UserCover = memo(function UserCover({
+  user,
+  onGenerated,
+}: UserCoverProps): JSX.Element | null {
   const { data } = useRecentAchieves({ suspense: true });
   const userColor = useUserThemeColor();
   const sx = useSx();

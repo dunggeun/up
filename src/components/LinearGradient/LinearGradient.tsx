@@ -6,7 +6,7 @@ import Svg, {
   Rect,
   LinearGradient as SVGLinearGradient,
   Defs,
-  Stop
+  Stop,
 } from 'react-native-svg';
 import type { LinearGradientProps } from './types';
 
@@ -30,8 +30,16 @@ export function LinearGradient({
             y1="0"
             y2="0"
           >
-            <Stop offset="0" stopColor={color} stopOpacity={direction === 'to-down' ? 1 : 0} />
-            <Stop offset="1" stopColor={color} stopOpacity={direction === 'to-down' ? 0 : 1} />
+            <Stop
+              offset="0"
+              stopColor={color}
+              stopOpacity={direction === 'to-down' ? 1 : 0}
+            />
+            <Stop
+              offset="1"
+              stopColor={color}
+              stopOpacity={direction === 'to-down' ? 0 : 1}
+            />
           </SVGLinearGradient>
         </Defs>
         <Rect fill="url(#g)" height="100%" width="100%" x="0" y="0" />

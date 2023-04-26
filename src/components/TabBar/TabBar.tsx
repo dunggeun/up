@@ -48,7 +48,11 @@ const TabItem = styled(TouchableOpacity)({
   alignItems: 'center',
 });
 
-export function TabBar ({ state, descriptors, navigation }: BottomTabBarProps): JSX.Element {
+export function TabBar({
+  state,
+  descriptors,
+  navigation,
+}: BottomTabBarProps): JSX.Element {
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const tabDescriptor = descriptors[state.routes[0]?.key ?? '']!;
   const tabBarStyle = tabDescriptor.options.tabBarStyle as ViewStyle;
@@ -74,7 +78,11 @@ export function TabBar ({ state, descriptors, navigation }: BottomTabBarProps): 
             });
 
             if (!isFocused && !event.defaultPrevented) {
-              navigation.navigate({ name: route.name, merge: true, params: undefined });
+              navigation.navigate({
+                name: route.name,
+                merge: true,
+                params: undefined,
+              });
             }
           };
 
@@ -97,27 +105,27 @@ export function TabBar ({ state, descriptors, navigation }: BottomTabBarProps): 
               onPress={onPress}
               testID={options.tabBarTestID}
             >
-              {options.tabBarIcon ? (
-                createElement(
-                  options.tabBarIcon as FunctionComponent<{
-                    focused: boolean;
-                    color: string;
-                    size: number;
-                    style?: StyleProp<TextStyle>
-                  }>,
-                  {
-                    style: options.tabBarIconStyle,
-                    focused: isFocused,
-                    color: iconTintColor ?? '',
-                    size: 0,
-                  },
-                  null,
-                )
-              ) : null}
+              {options.tabBarIcon
+                ? createElement(
+                    options.tabBarIcon as FunctionComponent<{
+                      focused: boolean;
+                      color: string;
+                      size: number;
+                      style?: StyleProp<TextStyle>;
+                    }>,
+                    {
+                      style: options.tabBarIconStyle,
+                      focused: isFocused,
+                      color: iconTintColor ?? '',
+                      size: 0,
+                    },
+                    null,
+                  )
+                : null}
             </TabItem>
           );
         })}
       </Container>
     </BottomFixedArea>
   );
-};
+}

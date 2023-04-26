@@ -1,7 +1,10 @@
-
 import { Platform } from 'react-native';
 import { makeTheme, type Sx } from 'dripsy';
-import { CONTAINER_MAX_WIDTH, BORDER_WIDTH, PRESSABLE_DEPTH } from 'src/constants';
+import {
+  CONTAINER_MAX_WIDTH,
+  BORDER_WIDTH,
+  PRESSABLE_DEPTH,
+} from 'src/constants';
 import { colors } from './colors';
 import { webFont } from './utils';
 
@@ -21,30 +24,32 @@ const FONT_NAME = Platform.select({
 
 const overrideHeadingStyle = { fontWeight: 'normal' } as const;
 const presets = {
-  buttonCap: (style?: Sx) => ({
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    paddingX: '$04',
-    alignItems: 'center',
-    width: '100%',
-    height: '100%',
-    borderRadius: '$md',
-    borderWidth: BORDER_WIDTH,
-    borderColor: '$text_primary',
-    backgroundColor: '$white',
-    ...style,
-  } as Sx),
-  buttonShadow: (style?: Sx) => ({
-    position: 'absolute',
-    left: 0,
-    bottom: -PRESSABLE_DEPTH,
-    width: '100%',
-    height: '100%',
-    backgroundColor: '$text_primary',
-    borderRadius: '$md',
-    ...style,
-  } as Sx),
+  buttonCap: (style?: Sx) =>
+    ({
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      paddingX: '$04',
+      alignItems: 'center',
+      width: '100%',
+      height: '100%',
+      borderRadius: '$md',
+      borderWidth: BORDER_WIDTH,
+      borderColor: '$text_primary',
+      backgroundColor: '$white',
+      ...style,
+    } as Sx),
+  buttonShadow: (style?: Sx) =>
+    ({
+      position: 'absolute',
+      left: 0,
+      bottom: -PRESSABLE_DEPTH,
+      width: '100%',
+      height: '100%',
+      backgroundColor: '$text_primary',
+      borderRadius: '$md',
+      ...style,
+    } as Sx),
 } as const;
 
 const themeLight = makeTheme({
@@ -154,9 +159,4 @@ const themeDark: Theme = {
   ...themeLight,
 };
 
-export {
-  themeLight,
-  themeDark,
-  overrideHeadingStyle,
-  presets,
-};
+export { themeLight, themeDark, overrideHeadingStyle, presets };

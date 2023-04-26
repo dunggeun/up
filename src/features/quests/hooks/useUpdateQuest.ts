@@ -28,25 +28,28 @@ export const useUpdateQuest = ({
       AppManager.showToast(ErrorToastContent);
     },
     onSuccess: (data, { questId }) => {
-      const oldQuestDetail = queryClient.getQueryData<QuestDetail>(
-        ['quests', 'detail', questId],
-      );
+      const oldQuestDetail = queryClient.getQueryData<QuestDetail>([
+        'quests',
+        'detail',
+        questId,
+      ]);
 
       if (oldQuestDetail) {
         const updatedQuest = { ...oldQuestDetail.quest, ...data };
 
-        queryClient.setQueryData<QuestDetail>(
-          ['quests', 'detail', questId],
-          { ...oldQuestDetail, quest: updatedQuest },
-        );
+        queryClient.setQueryData<QuestDetail>(['quests', 'detail', questId], {
+          ...oldQuestDetail,
+          quest: updatedQuest,
+        });
 
         queryClient.setQueryData<Quest[]>(
           ['quests', 'list'],
-          (previousQuests = []) => previousQuests.map(
-            (previousQuest) => previousQuest.id === oldQuestDetail.quest.id
-              ? updatedQuest
-              : previousQuest
-          ),
+          (previousQuests = []) =>
+            previousQuests.map((previousQuest) =>
+              previousQuest.id === oldQuestDetail.quest.id
+                ? updatedQuest
+                : previousQuest,
+            ),
         );
 
         void queryClient.invalidateQueries(['quests', 'detail', questId]);

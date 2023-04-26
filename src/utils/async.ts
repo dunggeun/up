@@ -5,8 +5,12 @@ export const delay = (duration: number): Promise<void> => {
 };
 
 /* istanbul ignore next */
-// eslint-disable-next-line @typescript-eslint/no-shadow
-export const debounce = <T>(callback: (...args: T[]) => void, delay: number): (...args: T[]) => void => {
+
+export const debounce = <T>(
+  callback: (...args: T[]) => void,
+  // eslint-disable-next-line @typescript-eslint/no-shadow
+  delay: number,
+): ((...args: T[]) => void) => {
   let timer: NodeJS.Timeout;
   return (...args) => {
     clearTimeout(timer);

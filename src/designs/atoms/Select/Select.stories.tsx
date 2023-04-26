@@ -3,16 +3,16 @@ import { View } from 'dripsy';
 import { Text } from '../Text';
 import { Select } from './Select';
 
-import type { ComponentMeta } from '@storybook/react';
+import type { Meta } from '@storybook/react';
 
 export default {
   title: 'atoms/Select',
   component: Select.Root,
-} as ComponentMeta<typeof Select.Root>;
+} as Meta<typeof Select.Root>;
 
 const ITEMS = [
   { label: 'Apple', value: 'value_apple' },
-  { label: 'Banana', value: 'value_banana' }
+  { label: 'Banana', value: 'value_banana' },
 ] as const;
 
 const Template = () => {
@@ -27,7 +27,11 @@ const Template = () => {
         <Select.Trigger />
         <Select.Content>
           {ITEMS.map((item) => (
-            <Select.Item key={item.value} label={item.label} value={item.value}/>
+            <Select.Item
+              key={item.value}
+              label={item.label}
+              value={item.value}
+            />
           ))}
         </Select.Content>
       </Select.Root>

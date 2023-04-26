@@ -19,7 +19,8 @@ export interface UserQuestListProps {
 }
 
 const SHADOW_HEIGHT = 16;
-const LAST_ANIMATABLE_ITEM_INDEX = Math.floor((WINDOW_HEIGHT - 110) / BUTTON_HEIGHT) - 1;
+const LAST_ANIMATABLE_ITEM_INDEX =
+  Math.floor((WINDOW_HEIGHT - 110) / BUTTON_HEIGHT) - 1;
 
 const ListContainer = styled(View)({
   flex: 1,
@@ -55,16 +56,14 @@ const EmptyView = styled(H3, {
 const ListEmptyComponent = <EmptyView>{t('message.empty_quest')}</EmptyView>;
 const FILTER_ITEM = [
   { value: 'activate', label: t('label.activate_quests') },
-  { value: 'finished', label: t('label.finished_quests') }
+  { value: 'finished', label: t('label.finished_quests') },
 ] as const;
 
-function CreateQuestButton({ onPress }: Pick<ButtonProps, 'onPress'>): JSX.Element {
+function CreateQuestButton({
+  onPress,
+}: Pick<ButtonProps, 'onPress'>): JSX.Element {
   return (
-    <Button
-      color="$white"
-      disableLongPress
-      onPress={onPress}
-    >
+    <Button color="$white" disableLongPress onPress={onPress}>
       {`+ ${t('label.add_new_quest')}`}
     </Button>
   );
@@ -76,20 +75,23 @@ export function UserQuestList({ onCreate }: UserQuestListProps): JSX.Element {
   const { bottomInset } = useMainTabBarInset();
   const { theme } = useDripsyTheme();
   const userColor = useUserThemeColor();
-  const listStyle = useMemo(() => ({
-    paddingTop: theme.space.$04,
-    paddingHorizontal: theme.space.$04,
-    marginHorizontal: -theme.space.$04,
-  }), [theme]);
+  const listStyle = useMemo(
+    () => ({
+      paddingTop: theme.space.$04,
+      paddingHorizontal: theme.space.$04,
+      marginHorizontal: -theme.space.$04,
+    }),
+    [theme],
+  );
 
   const filteredQuests = useMemo(() => {
     if (!quests) return [];
 
-    return quests.filter((quest) => (
+    return quests.filter((quest) =>
       filterValue === 'activate'
         ? quest.finished_at === 0
-        : quest.finished_at !== 0
-    ));
+        : quest.finished_at !== 0,
+    );
   }, [quests, filterValue]);
 
   const renderItem = (data: ListRenderItemInfo<Quest>): JSX.Element => {
@@ -144,4 +146,4 @@ export function UserQuestList({ onCreate }: UserQuestListProps): JSX.Element {
       />
     </ListContainer>
   );
-};
+}

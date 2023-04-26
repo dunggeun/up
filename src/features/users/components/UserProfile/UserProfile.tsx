@@ -1,9 +1,4 @@
-import React, {
-  memo,
-  useState,
-  useMemo,
-  useLayoutEffect
-} from 'react';
+import React, { memo, useState, useMemo, useLayoutEffect } from 'react';
 import { TouchableOpacity } from 'react-native';
 import { styled, View, Image } from 'dripsy';
 import { H1, Text, ProgressBar } from 'src/designs';
@@ -65,28 +60,34 @@ export const UserProfile = memo(function UserProfile({
 }: UserProfileProps): JSX.Element {
   const userColor = useUserThemeColor();
   const [requiredExp, setRequiredExp] = useState(0);
-  const { title: badgeTitle, image: badgeImage } = AppHelpers.getBadge(user.badge);
+  const { title: badgeTitle, image: badgeImage } = AppHelpers.getBadge(
+    user.badge,
+  );
 
   useLayoutEffect(() => {
     setRequiredExp(AppHelpers.getExpByLevel(user.level));
   }, [user.level]);
 
   const percent = useMemo(
-    () => (user.currentExp / requiredExp * 100).toFixed(1),
-    [user.currentExp, requiredExp]
+    () => ((user.currentExp / requiredExp) * 100).toFixed(1),
+    [user.currentExp, requiredExp],
   );
 
   return (
     <Container onPress={onPress}>
       <InformationSection>
-        <Badge>
-          {badgeImage ? <BadgeImage source={badgeImage} /> : null}
-        </Badge>
-        <H1 variant="primary">Lv.{user.level} {user.name}</H1>
+        <Badge>{badgeImage ? <BadgeImage source={badgeImage} /> : null}</Badge>
+        <H1 variant="primary">
+          Lv.{user.level} {user.name}
+        </H1>
         <Text variant="secondary">{badgeTitle}</Text>
       </InformationSection>
       <ProgressSection>
-        <LevelProgress color={userColor} max={requiredExp} value={user.currentExp} />
+        <LevelProgress
+          color={userColor}
+          max={requiredExp}
+          value={user.currentExp}
+        />
         <Text variant="tertiary">{`${percent}% (${user.currentExp}/${requiredExp})`}</Text>
       </ProgressSection>
     </Container>

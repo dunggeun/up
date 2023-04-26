@@ -15,7 +15,7 @@ const PageTitleArea = styled(View)({
 });
 
 export function UserRegisterScreen({
-  navigation
+  navigation,
 }: UserRegisterScreenProps): JSX.Element {
   const [_, send] = useActor(AppManager.getInstance().getService());
   const [userName, setUserName] = useState('');

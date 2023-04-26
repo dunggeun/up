@@ -6,7 +6,7 @@ import { RootStackNavigator } from './RootStack';
 
 export function Navigator(): JSX.Element {
   return (
-    <AnimateSuspense fallback={<SplashScreen />} >
+    <AnimateSuspense fallback={<SplashScreen />}>
       <RootStackNavigator />
       <ExpEffectView />
     </AnimateSuspense>

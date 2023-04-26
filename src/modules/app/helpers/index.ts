@@ -4,7 +4,7 @@ import {
   BADGE_SET,
   FALLBACK_BADGE,
   THEMES,
-  FALLBACK_THEME
+  FALLBACK_THEME,
 } from '../data';
 
 import type { User } from 'src/features/users';
@@ -42,7 +42,7 @@ export const createQuestData = (title: string, description = ''): Quest => {
 
 export const createAchieveData = ({
   questId,
-  exp
+  exp,
 }: {
   questId: number;
   exp: number;
@@ -59,8 +59,7 @@ export const createAchieveData = ({
 export const updateQuestForAddAchieve = (quest: Quest): Quest => {
   const updatedQuest = { ...quest };
   const isStreak = Boolean(
-    quest.updated_at &&
-    diffBeforeToday(quest.updated_at) <= 1
+    quest.updated_at && diffBeforeToday(quest.updated_at) <= 1,
   );
 
   if (isStreak || quest.updated_at === 0) {

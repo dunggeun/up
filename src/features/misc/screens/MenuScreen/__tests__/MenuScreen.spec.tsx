@@ -1,5 +1,10 @@
 import React from 'react';
-import { render, screen, cleanup, fireEvent } from '@testing-library/react-native';
+import {
+  render,
+  screen,
+  cleanup,
+  fireEvent,
+} from '@testing-library/react-native';
 import { withDripsy } from 'tests/utils';
 import { t } from 'src/translations';
 
@@ -17,10 +22,10 @@ describe('screens/MenuScreen', () => {
     cleanup();
   });
 
-  describe('렌더링 되었을 때', () => {  
+  describe('렌더링 되었을 때', () => {
     it('스냅샷이 일치해야 한다', () => {
       const tree = render(
-        withDripsy(<MenuScreen {...getMockedProps()} />)
+        withDripsy(<MenuScreen {...getMockedProps()} />),
       ).toJSON();
       expect(tree).toMatchSnapshot();
     });
@@ -35,7 +40,9 @@ describe('screens/MenuScreen', () => {
     });
 
     it('삭제 확인 모달이 노출되어야 한다', () => {
-      const deleteConfirmModalContent = screen.getByTestId('delete-confirm-modal');
+      const deleteConfirmModalContent = screen.getByTestId(
+        'delete-confirm-modal',
+      );
       expect(deleteConfirmModalContent).not.toBeNull();
     });
   });

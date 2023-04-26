@@ -17,6 +17,6 @@ export const useQuestDetail = (
   return useQuery(
     ['quests', 'detail', id],
     () => fetchQuestDetailById({ questId: id }),
-    { suspense }
+    { suspense },
   );
 };

@@ -24,12 +24,14 @@ export class AppManager {
         await this.prefetchUserData();
       })(),
       delay(APP_MINIMUM_LOADING_DURATION),
-    ]).then(() => {
-      this.status = 'fulfilled';
-    }).catch((error) => {
-      this.error = error as Error;
-      this.status = 'error';
-    });
+    ])
+      .then(() => {
+        this.status = 'fulfilled';
+      })
+      .catch((error) => {
+        this.error = error as Error;
+        this.status = 'error';
+      });
   }
 
   public static getInstance(): AppManager {
@@ -46,9 +48,8 @@ export class AppManager {
   private async prefetchUserData(): Promise<void> {
     if (!(await this.authorize())) return;
 
-    await this.queryClient.prefetchQuery(
-      ['quests', 'list'],
-      () => this.storageManager.getQuestList(),
+    await this.queryClient.prefetchQuery(['quests', 'list'], () =>
+      this.storageManager.getQuestList(),
     );
   }
 

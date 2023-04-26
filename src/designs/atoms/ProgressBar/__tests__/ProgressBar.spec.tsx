@@ -1,5 +1,9 @@
 import React from 'react';
-import { render as testRender, screen, cleanup } from '@testing-library/react-native';
+import {
+  render as testRender,
+  screen,
+  cleanup,
+} from '@testing-library/react-native';
 import { faker } from '@faker-js/faker';
 import { withDripsy } from 'tests/utils';
 import { getColors } from 'src/themes/utils';
@@ -28,11 +32,9 @@ describe('atoms/ProgressBar', () => {
       color = faker.helpers.arrayElement<keyof typeof colors>(getColors());
       render({ value, max, color });
     });
-  
+
     it('a11y value 속성이 정상적으로 설정되어야 한다', () => {
-      const progressBar = screen.getByRole('progressbar', {
-        value: { min: MIN, max, now: value },
-      });
+      const progressBar = screen.getByA11yValue({ min: MIN, max, now: value });
       expect(progressBar).not.toBeNull();
     });
   });

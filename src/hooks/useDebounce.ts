@@ -2,7 +2,8 @@ import { useRef } from 'react';
 import { debounce } from 'src/utils';
 
 export function useDebounce<T>(
-  callback: (...args: T[]) => void, delay: number
+  callback: (...args: T[]) => void,
+  delay: number,
 ): { trigger: (...args: T[]) => void } {
   const debounceRef = useRef<(...args: T[]) => void>();
 

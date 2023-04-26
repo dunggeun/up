@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Platform } from 'react-native';
 import { useActor } from '@xstate/react';
@@ -15,7 +14,9 @@ import type { MainTabProps } from 'src/navigators/MainTab/types';
 
 type HomeScreenProps = MainTabProps<'Home'>;
 
-const UnsupportedToastContent = <Text variant="primary">{t('message.error.unsupported_platform')}</Text>;
+const UnsupportedToastContent = (
+  <Text variant="primary">{t('message.error.unsupported_platform')}</Text>
+);
 
 export function HomeScreen(_props: HomeScreenProps): JSX.Element | null {
   const [state] = useActor(AppManager.getInstance().getService());

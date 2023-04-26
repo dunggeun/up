@@ -3,7 +3,7 @@ import { View } from 'dripsy';
 import { getColors } from 'src/themes/utils';
 import { Button } from './Button';
 
-import type { ComponentMeta } from '@storybook/react';
+import type { Meta } from '@storybook/react';
 import type { ButtonProps } from './Button';
 
 export default {
@@ -28,7 +28,7 @@ export default {
       control: { type: 'boolean' },
     },
   },
-} as ComponentMeta<typeof Button>;
+} as Meta<typeof Button>;
 
 const Template = (args: ButtonProps) => (
   <View sx={{ flex: 1, padding: '$04' }}>
@@ -36,7 +36,9 @@ const Template = (args: ButtonProps) => (
   </View>
 );
 
-const DummyAdornment = () => (<View sx={{ width: 24, height: 24, backgroundColor: 'gray' } } />);
+const DummyAdornment = () => (
+  <View sx={{ width: 24, height: 24, backgroundColor: 'gray' }} />
+);
 
 export const $Default = Template.bind({});
 // @ts-ignore
@@ -55,14 +57,14 @@ export const $WithLeftAdornment = Template.bind({});
 // @ts-ignore
 $WithLeftAdornment.args = {
   children: 'Left',
-  leftAdornment: <DummyAdornment />
+  leftAdornment: <DummyAdornment />,
 };
 
 export const $WithRightAdornment = Template.bind({});
 // @ts-ignore
 $WithRightAdornment.args = {
   children: 'Right',
-  rightAdornment: <DummyAdornment />
+  rightAdornment: <DummyAdornment />,
 };
 
 export const $WithAdornments = Template.bind({});
@@ -70,5 +72,5 @@ export const $WithAdornments = Template.bind({});
 $WithAdornments.args = {
   children: 'Both',
   leftAdornment: <DummyAdornment />,
-  rightAdornment: <DummyAdornment />
+  rightAdornment: <DummyAdornment />,
 };

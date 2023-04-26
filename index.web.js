@@ -10,5 +10,5 @@ AppRegistry.runApplication(
   AppRegistry.registerComponent(appName, () => App),
   {
     rootTag: document.getElementById('root'),
-  }
+  },
 );
