@@ -36,7 +36,7 @@ const buttonContainerStyle = {
   height: 45,
 };
 
-export const BadgeSection = memo(function BadgeSection ({
+export const BadgeSection = memo(function BadgeSection({
   unlockedBadges,
   onPressBadge,
   onLongPressBadge,
@@ -70,8 +70,11 @@ export const BadgeSection = memo(function BadgeSection ({
     if (count <= 0) return null;
     return new Array(count)
       .fill(null)
-      // eslint-disable-next-line react/no-array-index-key
-      .map((_, index) => (<View key={`empty${index}`} sx={buttonContainerStyle} />));
+
+      .map((_, index) => (
+        // eslint-disable-next-line react/no-array-index-key
+        <View key={`empty${index}`} sx={buttonContainerStyle} />
+      ));
   };
 
   const isUnlocked = (id: number): boolean => {
@@ -105,4 +108,3 @@ export const BadgeSection = memo(function BadgeSection ({
     </Section>
   );
 });
-

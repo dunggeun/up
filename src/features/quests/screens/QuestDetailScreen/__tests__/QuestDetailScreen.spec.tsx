@@ -3,7 +3,7 @@ import {
   render as testRender,
   screen,
   cleanup,
-  fireEvent
+  fireEvent,
 } from '@testing-library/react-native';
 import { faker } from '@faker-js/faker';
 import { withReactQuery, withDripsy } from 'tests/utils';
@@ -13,7 +13,9 @@ import { useQuestDetail } from 'src/features/quests/hooks';
 import { QuestDetailScreen } from '../QuestDetailScreen';
 import type { Quest, Achieve } from 'src/features/quests/types';
 
-const render = (component: React.ReactElement): ReturnType<typeof testRender> => {
+const render = (
+  component: React.ReactElement,
+): ReturnType<typeof testRender> => {
   return testRender(withReactQuery(withDripsy(component)));
 };
 
@@ -52,12 +54,14 @@ describe('screens/QuestDetailScreen', () => {
       updated_at: faker.datatype.number(),
       finished_at: faker.datatype.number(),
     };
-    mockedAchieveList = [{
-      id: faker.datatype.number(),
-      qid: faker.datatype.number(),
-      exp: faker.datatype.number(),
-      created_at: faker.datatype.number(),
-    }];
+    mockedAchieveList = [
+      {
+        id: faker.datatype.number(),
+        qid: faker.datatype.number(),
+        exp: faker.datatype.number(),
+        created_at: faker.datatype.number(),
+      },
+    ];
 
     (useQuestDetail as jest.Mock).mockReturnValue({
       isLoading: false,

@@ -6,7 +6,9 @@ interface UseQuestConfig {
   suspense?: boolean;
 }
 
-export const useQuests = ({ suspense }: UseQuestConfig): UseQueryResult<Quest[]> => {
+export const useQuests = ({
+  suspense,
+}: UseQuestConfig): UseQueryResult<Quest[]> => {
   return useQuery(['quests', 'list'], fetchQuests, {
     suspense,
   });

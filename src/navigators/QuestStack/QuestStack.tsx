@@ -1,5 +1,8 @@
 import React from 'react';
-import { createStackNavigator, TransitionPresets } from '@react-navigation/stack';
+import {
+  createStackNavigator,
+  TransitionPresets,
+} from '@react-navigation/stack';
 import {
   QuestCreateScreen,
   QuestDetailScreen,
@@ -20,18 +23,9 @@ export function QuestStackNavigator(): JSX.Element {
         ...TransitionPresets.ModalSlideFromBottomIOS,
       }}
     >
-      <QuestStack.Screen
-        component={QuestCreateScreen}
-        name="QuestCreate"
-      />
-      <QuestStack.Screen
-        component={QuestDetailScreen}
-        name="QuestDetail"
-      />
-      <QuestStack.Screen
-        component={QuestFinishedScreen}
-        name="QuestFinished"
-      />
+      <QuestStack.Screen component={QuestCreateScreen} name="QuestCreate" />
+      <QuestStack.Screen component={QuestDetailScreen} name="QuestDetail" />
+      <QuestStack.Screen component={QuestFinishedScreen} name="QuestFinished" />
     </QuestStack.Navigator>
   );
 }

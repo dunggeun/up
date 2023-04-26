@@ -3,10 +3,7 @@ import { Modal as RNModal, TouchableOpacity } from 'react-native';
 import { styled, View } from 'dripsy';
 import { H2 } from 'src/designs';
 import { Close } from 'src/assets/icons';
-import {
-  CONTAINER_MAX_WIDTH,
-  TOUCHABLE_OPACITY_HIT_SLOP
-} from 'src/constants';
+import { CONTAINER_MAX_WIDTH, TOUCHABLE_OPACITY_HIT_SLOP } from 'src/constants';
 
 export interface ModalProps {
   title?: string;
@@ -47,20 +44,14 @@ const CloseButton = styled(TouchableOpacity)({
   justifyContent: 'center',
 });
 
-export const Modal = memo(function Modal (
-  {
-    children,
-    title,
-    visible = false,
-    onClose,
-  }: PropsWithChildren<ModalProps>
-): JSX.Element {
+export const Modal = memo(function Modal({
+  children,
+  title,
+  visible = false,
+  onClose,
+}: PropsWithChildren<ModalProps>): JSX.Element {
   return (
-    <RNModal
-      animationType="fade"
-      transparent
-      visible={visible}
-    >
+    <RNModal animationType="fade" transparent visible={visible}>
       <ModalBackground>
         <ModalContainer>
           <ModalHeader>

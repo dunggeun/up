@@ -10,7 +10,7 @@ export interface Quest {
 }
 
 export interface QuestDetail {
-  quest: Quest,
+  quest: Quest;
   achieveList: Achieve[];
 }
 

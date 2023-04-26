@@ -16,18 +16,21 @@ import type { QuestStackProps } from 'src/navigators/QuestStack/types';
 
 type QuestCreateScreenProps = QuestStackProps<'QuestCreate'>;
 
-const ErrorToastContent = <Text variant="primary">{t('message.error.common')}</Text>;
+const ErrorToastContent = (
+  <Text variant="primary">{t('message.error.common')}</Text>
+);
 
-export function QuestCreateScreen({ navigation }: QuestCreateScreenProps): JSX.Element {
+export function QuestCreateScreen({
+  navigation,
+}: QuestCreateScreenProps): JSX.Element {
   const userColor = useUserThemeColor();
   const [name, setName] = useState('');
   const [memo, setMemo] = useState('');
   const { phase, back, next, complete } = useQuestPhase();
   const { mutate, isSuccess } = useAddQuest();
 
-  const backPressHandler = phase === QuestFormPhase.EnterMemo
-    ? back
-    : undefined;
+  const backPressHandler =
+    phase === QuestFormPhase.EnterMemo ? back : undefined;
 
   const handlePressAcceptButton = (): void => {
     mutate({ title: name, description: memo });

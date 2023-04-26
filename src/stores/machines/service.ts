@@ -3,5 +3,4 @@ import { globalMachine } from './globalMachine';
 
 const service = interpret(globalMachine);
 
-export const getService = (): InterpreterFrom<typeof globalMachine>  => service;
-
+export const getService = (): InterpreterFrom<typeof globalMachine> => service;

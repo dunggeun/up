@@ -7,7 +7,7 @@ import type { StateFrom } from 'xstate';
 import type { basicColors } from 'src/themes/colors';
 
 const themeSelector = (
-  state: StateFrom<typeof globalMachine>
+  state: StateFrom<typeof globalMachine>,
 ): number | undefined => state.context.user?.theme;
 
 export const useUserThemeColor = (): keyof typeof basicColors => {

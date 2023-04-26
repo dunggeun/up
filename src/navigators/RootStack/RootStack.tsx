@@ -1,5 +1,8 @@
 import React from 'react';
-import { createStackNavigator, TransitionPresets } from '@react-navigation/stack';
+import {
+  createStackNavigator,
+  TransitionPresets,
+} from '@react-navigation/stack';
 import { AppManager } from 'src/modules';
 import { useIsAuthorized } from 'src/hooks';
 import { UserRegisterScreen } from 'src/features/users';
@@ -28,10 +31,7 @@ export function RootStackNavigator(): JSX.Element | null {
               name="Main"
               options={{ animationEnabled: false }}
             />
-            <RootStack.Screen
-              component={CommonStackNavigator}
-              name="Common"
-            />
+            <RootStack.Screen component={CommonStackNavigator} name="Common" />
             <RootStack.Screen
               component={QuestStackNavigator}
               name="Quest"
@@ -49,7 +49,7 @@ export function RootStackNavigator(): JSX.Element | null {
               name="Landing"
               options={{
                 title: t('title.landing'),
-                animationEnabled: false
+                animationEnabled: false,
               }}
             />
             <RootStack.Screen

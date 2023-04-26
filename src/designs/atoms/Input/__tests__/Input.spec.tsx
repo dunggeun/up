@@ -1,5 +1,10 @@
 import React from 'react';
-import { render as testRender, screen, fireEvent, cleanup } from '@testing-library/react-native';
+import {
+  render as testRender,
+  screen,
+  fireEvent,
+  cleanup,
+} from '@testing-library/react-native';
 import { faker } from '@faker-js/faker';
 import { withDripsy } from 'tests/utils';
 import { Input } from '../Input';
@@ -24,7 +29,7 @@ describe('atoms/Input', () => {
       render({ accessibilityHint: placeholder, onChange });
       fireEvent(screen.getByHintText(placeholder), 'change');
     });
-  
+
     it('onChange 이벤트 핸들러가 호출되어야 한다', () => {
       expect(onChange).toHaveBeenCalledTimes(1);
     });

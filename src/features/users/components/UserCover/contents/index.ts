@@ -3,7 +3,7 @@ import type { CoverGenerateConfig } from '../types';
 const IMAGE_SIZE = 512;
 
 export const getPageSource = (config: CoverGenerateConfig): string => {
-  const expPercent = config.user.currentExp / config.user.totalExp * 100;
+  const expPercent = (config.user.currentExp / config.user.totalExp) * 100;
   return `
     <!DOCTYPE html>
     <html>

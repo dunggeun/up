@@ -1,5 +1,3 @@
- 
- 
 import BoxDB, { type Box } from 'bxd';
 import { QuestSchema, AchieveSchema } from './schema';
 
@@ -14,51 +12,51 @@ export class WebDatabaseModule implements DatabaseModule<'quest' | 'achieve'> {
   private static DATABASE_NAME = 'up';
   private static DATABASE_VERSION = 1;
   private static ERROR_MESSAGES = {
-    not_initialized: 'database not initialized' 
+    not_initialized: 'database not initialized',
   };
   private database: BoxDB;
   private QuestModel: Box<typeof QuestSchema>;
   private AchieveModel: Box<typeof AchieveSchema>;
-  
-  constructor () {
+
+  constructor() {
     const database = new BoxDB(
       WebDatabaseModule.DATABASE_NAME,
-      WebDatabaseModule.DATABASE_VERSION
+      WebDatabaseModule.DATABASE_VERSION,
     );
     this.database = database;
     this.QuestModel = database.create('quest', QuestSchema);
     this.AchieveModel = database.create('achieve', AchieveSchema);
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private toPredicateFunction (conditions: WhereConditions): ((data: any) => boolean)[] {
-    return Object.entries(conditions)
-      .map(([column, { symbol, value }]) => {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        return (data: any): boolean => {
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
-          const target = data[column];
-          switch (symbol) {
-            case '<':
-              return Boolean(value && target < value);
-            
-            case '<=': 
-              return Boolean(value && target <= value);
-            
-            case '>': 
-              return Boolean(value && target > value);
-            
-            case '>=': 
-              return Boolean(value && target >= value);
+  private toPredicateFunction(
+    conditions: WhereConditions,
+  ): ((data: any) => boolean)[] {
+    return Object.entries(conditions).map(([column, { symbol, value }]) => {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      return (data: any): boolean => {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
+        const target = data[column];
+        switch (symbol) {
+          case '<':
+            return Boolean(value && target < value);
 
-            case '=': 
-              return target === value;
-          }
-        };
-      });
+          case '<=':
+            return Boolean(value && target <= value);
+
+          case '>':
+            return Boolean(value && target > value);
+
+          case '>=':
+            return Boolean(value && target >= value);
+
+          case '=':
+            return target === value;
+        }
+      };
+    });
   }
 
-  async initialize (): Promise<void> {
+  async initialize(): Promise<void> {
     if (this.database.ready) return;
     await this.database.open();
   }
@@ -76,21 +74,22 @@ export class WebDatabaseModule implements DatabaseModule<'quest' | 'achieve'> {
     const range = options?.order
       ? { index: options.order.target, value: undefined }
       : null;
-    const order = options?.order?.by === 'asc'
-      ? BoxDB.Order.ASC
-      : BoxDB.Order.DESC;
+    const order =
+      options?.order?.by === 'asc' ? BoxDB.Order.ASC : BoxDB.Order.DESC;
 
     switch (model) {
       case 'quest':
-        rows = await this.QuestModel
-          .find(range, ...predicates)
-          .get(order, options?.limit) as Data[];
+        rows = (await this.QuestModel.find(range, ...predicates).get(
+          order,
+          options?.limit,
+        )) as Data[];
         break;
 
       case 'achieve':
-        rows = await this.AchieveModel
-          .find(range, ...predicates)
-          .get(order, options?.limit) as Data[];
+        rows = (await this.AchieveModel.find(range, ...predicates).get(
+          order,
+          options?.limit,
+        )) as Data[];
         break;
     }
 
@@ -104,7 +103,7 @@ export class WebDatabaseModule implements DatabaseModule<'quest' | 'achieve'> {
     if (!this.database.ready) {
       throw new Error(WebDatabaseModule.ERROR_MESSAGES.not_initialized);
     }
-    
+
     switch (model) {
       case 'quest':
         await this.QuestModel.add(data);
@@ -128,15 +127,11 @@ export class WebDatabaseModule implements DatabaseModule<'quest' | 'achieve'> {
 
     switch (model) {
       case 'quest':
-        await this.QuestModel
-          .find(null, ...predicates)
-          .update(data);
+        await this.QuestModel.find(null, ...predicates).update(data);
         break;
 
       case 'achieve':
-        await this.AchieveModel
-          .find(null, ...predicates)
-          .update(data);
+        await this.AchieveModel.find(null, ...predicates).update(data);
         break;
     }
   }
@@ -152,20 +147,16 @@ export class WebDatabaseModule implements DatabaseModule<'quest' | 'achieve'> {
 
     switch (model) {
       case 'quest':
-        await this.QuestModel
-          .find(null, ...predicates)
-          .delete();
+        await this.QuestModel.find(null, ...predicates).delete();
         break;
 
       case 'achieve':
-        await this.AchieveModel
-          .find(null, ...predicates)
-          .delete();
+        await this.AchieveModel.find(null, ...predicates).delete();
         break;
     }
   }
 
-  async clear (model: 'quest' | 'achieve'): Promise<void> {
+  async clear(model: 'quest' | 'achieve'): Promise<void> {
     switch (model) {
       case 'quest':
         await this.QuestModel.clear();

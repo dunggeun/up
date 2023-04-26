@@ -1,9 +1,9 @@
 // eslint-disable-next-line eslint-comments/disable-enable-pair
 /* eslint-disable import/no-named-as-default-member */
- 
+
 import i18next, {
   type LanguageDetectorModule,
-  type InitOptions
+  type InitOptions,
 } from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import { noop, getCurrentLocale } from 'src/utils';
@@ -23,17 +23,13 @@ const options: InitOptions = {
   // @TODO: en translations
   resources: { ko, en: ko },
   ns: ['common'],
-  defaultNS:'common',
+  defaultNS: 'common',
   interpolation: {
     escapeValue: false,
   },
 } as const;
 
-i18next
-  .use(languageDetector)
-  .use(initReactI18next)
-  .init(options)
-  .catch(noop);
+i18next.use(languageDetector).use(initReactI18next).init(options).catch(noop);
 
 export const i18n = i18next;
 export const t = (key: string): string => i18next.t(key);

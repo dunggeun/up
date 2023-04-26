@@ -15,7 +15,7 @@ describe('atoms/Text', () => {
     cleanup();
   });
 
-  describe('렌더링 되었을 때', () => {  
+  describe('렌더링 되었을 때', () => {
     it('스냅샷이 일치해야 한다', () => {
       const tree = render({ children: LABEL }).toJSON();
       expect(tree).toMatchSnapshot();

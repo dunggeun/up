@@ -25,11 +25,11 @@ const WarningText = styled(Text, {
   textAlign: 'center',
 });
 
-export function EnterMemo ({
+export function EnterMemo({
   questName,
   userColor,
   onChangeMemo,
-  onPressAccept
+  onPressAccept,
 }: EnterMemoProps): JSX.Element {
   return (
     <>

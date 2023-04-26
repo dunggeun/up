@@ -51,6 +51,7 @@ module.exports = {
             ],
           },
         ],
+        'no-void': 'off',
         'no-bitwise': 'off',
         'array-bracket-spacing': 'off',
         'unicorn/filename-case': 'off',
@@ -86,7 +87,6 @@ module.exports = {
     },
     {
       files: ['**/?(*.)+(spec|test).ts?(x)'],
-      extends: [require.resolve('@vercel/style-guide/eslint/jest')],
       rules: {
         'testing-library/no-render-in-setup': 'off',
         '@typescript-eslint/no-unsafe-assignment': 'off',

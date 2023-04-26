@@ -3,7 +3,7 @@ import React, {
   useContext,
   useState,
   useEffect,
-  type PropsWithChildren
+  type PropsWithChildren,
 } from 'react';
 import { TouchableOpacity } from 'react-native';
 import { styled, View } from 'dripsy';
@@ -34,10 +34,10 @@ const defaultValue: SelectContextValue = {
 };
 const SelectContext = createContext<SelectContextValue>(defaultValue);
 
-const RootView = styled(View)(({
+const RootView = styled(View)({
   position: 'relative',
   height: SELECT_HEIGHT,
-}));
+});
 
 const TriggerView = styled(TouchableOpacity)({
   flexDirection: 'row',
@@ -76,7 +76,7 @@ export function Root({
 }: PropsWithChildren<SelectRootProps>): JSX.Element {
   const [value, setValue] = useState(initialValue ?? defaultValue.value);
   const [visibility, setVisibility] = useState(defaultValue.visibility);
-  
+
   const handleToggleVisibility = (): void => {
     setVisibility((currentVisibility) => !currentVisibility);
   };
@@ -114,10 +114,7 @@ export function Trigger(): JSX.Element {
   }, [rotate, value.visibility]);
 
   return (
-    <TriggerView
-      onPress={value.toggleVisibility} 
-      testID="select-trigger"
-    >
+    <TriggerView onPress={value.toggleVisibility} testID="select-trigger">
       <MotiView state={rotate} transition={{ type: 'timing', duration: 250 }}>
         <TriggerSymbol />
       </MotiView>
@@ -126,7 +123,11 @@ export function Trigger(): JSX.Element {
   );
 }
 
-export function Content({ children }: { children: React.ReactNode }): JSX.Element {
+export function Content({
+  children,
+}: {
+  children: React.ReactNode;
+}): JSX.Element {
   const value = useContext(SelectContext);
 
   return (

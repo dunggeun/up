@@ -5,7 +5,7 @@ import type { ComponentPropsWithRef } from 'react';
 import type { TextInput as RNTextInput } from 'react-native';
 
 type TextInputProps = ComponentPropsWithRef<typeof TextInput>;
- 
+
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface InputProps extends Partial<TextInputProps> {}
 export type InputRef = RNTextInput;
@@ -22,7 +22,10 @@ const StyledTextInput = styled(TextInput)({
   fontSize: '$h2',
 });
 
-export const Input = forwardRef<InputRef, InputProps>(function Input (props, ref): JSX.Element {
+export const Input = forwardRef<InputRef, InputProps>(function Input(
+  props,
+  ref,
+): JSX.Element {
   const { theme } = useDripsyTheme();
 
   return (

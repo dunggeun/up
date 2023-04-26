@@ -1,5 +1,10 @@
 import React from 'react';
-import { render as testRender, screen, fireEvent, cleanup } from '@testing-library/react-native';
+import {
+  render as testRender,
+  screen,
+  fireEvent,
+  cleanup,
+} from '@testing-library/react-native';
 import { faker } from '@faker-js/faker';
 import { withDripsy } from 'tests/utils';
 import { t } from 'src/translations';
@@ -7,9 +12,8 @@ import { AppBar } from '../AppBar';
 
 import type { AppBarProps } from '../AppBar';
 
-const render = (props: AppBarProps): ReturnType<typeof testRender> => (
-  testRender(withDripsy(<AppBar {...props} />))
-);
+const render = (props: AppBarProps): ReturnType<typeof testRender> =>
+  testRender(withDripsy(<AppBar {...props} />));
 
 describe('molecules/AppBar', () => {
   describe('앱바 제목을 지정했을 때', () => {

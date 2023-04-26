@@ -28,7 +28,7 @@ const buttonContainerStyle = {
   height: 45,
 };
 
-export const ThemeSection = memo(function ThemeSection ({
+export const ThemeSection = memo(function ThemeSection({
   onPressBadge,
 }: ThemeSectionProps): JSX.Element {
   const sx = useSx();
@@ -42,7 +42,7 @@ export const ThemeSection = memo(function ThemeSection ({
     let row: Theme[] = [];
     const colors: Theme[][] = [];
     const themeColors = AppHelpers.getThemes();
-  
+
     for (let i = 0; i < themeColors.length; i++) {
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       const currentTheme = themeColors[i]!;
@@ -61,8 +61,11 @@ export const ThemeSection = memo(function ThemeSection ({
     if (count <= 0) return null;
     return new Array(count)
       .fill(null)
-      // eslint-disable-next-line react/no-array-index-key
-      .map((_, index) => (<View key={`empty${index}`} sx={buttonContainerStyle} />));
+
+      .map((_, index) => (
+        // eslint-disable-next-line react/no-array-index-key
+        <View key={`empty${index}`} sx={buttonContainerStyle} />
+      ));
   };
 
   return (

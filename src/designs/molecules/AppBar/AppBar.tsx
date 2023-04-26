@@ -55,7 +55,7 @@ const SideButton = styled(Pressable)({
   alignItems: 'center',
 });
 
-export function AppBar ({
+export function AppBar({
   title = '',
   shadow = false,
   onBackPress,

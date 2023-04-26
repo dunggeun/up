@@ -1,5 +1,9 @@
 import React from 'react';
-import { render as testRender, screen, cleanup } from '@testing-library/react-native';
+import {
+  render as testRender,
+  screen,
+  cleanup,
+} from '@testing-library/react-native';
 import { faker } from '@faker-js/faker';
 import { withDripsy } from 'tests/utils';
 import { getColors } from 'src/themes/utils';

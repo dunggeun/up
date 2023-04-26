@@ -19,7 +19,7 @@ const Container = styled(TouchableOpacity)({
   paddingY: '$04',
 });
 
-export function ListItem ({
+export function ListItem({
   label,
   subLabel,
   animate,
@@ -48,7 +48,7 @@ export function ListItem ({
           {component}
         </MotiView>
       );
-    } 
+    }
     return component;
   };
 
@@ -57,7 +57,7 @@ export function ListItem ({
       <H2 variant="primary">{label}</H2>
       {typeof subLabel === 'string' ? (
         <Text variant="secondary">{subLabel}</Text>
-      ): null}
-    </Container>
+      ) : null}
+    </Container>,
   );
-};
+}

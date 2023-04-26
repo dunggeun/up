@@ -1,5 +1,10 @@
 import React, { type PropsWithChildren } from 'react';
-import { render as testRender, screen, fireEvent, cleanup } from '@testing-library/react-native';
+import {
+  render as testRender,
+  screen,
+  fireEvent,
+  cleanup,
+} from '@testing-library/react-native';
 import { faker } from '@faker-js/faker';
 import { withDripsy } from 'tests/utils';
 import { getColors } from 'src/themes/utils';
@@ -8,9 +13,10 @@ import { Button } from '../Button';
 import type { colors } from 'src/themes/colors';
 import type { ButtonProps } from '../Button';
 
-const render = (props: PropsWithChildren<ButtonProps>): ReturnType<typeof testRender> => (
-  testRender(withDripsy(<Button {...props} />))
-);
+const render = (
+  props: PropsWithChildren<ButtonProps>,
+): ReturnType<typeof testRender> =>
+  testRender(withDripsy(<Button {...props} />));
 
 describe('atoms/Button', () => {
   let label = '';
@@ -44,7 +50,7 @@ describe('atoms/Button', () => {
       fireEvent(screen.getByText(label), 'press');
     });
 
-    it('onPress 이벤트 핸들러가 호출되어야 한다', () => {  
+    it('onPress 이벤트 핸들러가 호출되어야 한다', () => {
       expect(onPress).toHaveBeenCalledTimes(1);
     });
   });

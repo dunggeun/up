@@ -15,7 +15,7 @@ const ToastContent = styled(Pressable)({
   backgroundColor: '$white',
 });
 
-export const Toast = memo(function Toast () {
+export const Toast = memo(function Toast() {
   const [content, setContent] = useState<React.ReactNode>(null);
   const { top } = useSafeAreaInsets();
   const sx = useSx();
@@ -52,9 +52,7 @@ export const Toast = memo(function Toast () {
           // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
           style={containerStyle}
         >
-          <ToastContent onPress={handlePressToast}>
-            {content}
-          </ToastContent>
+          <ToastContent onPress={handlePressToast}>{content}</ToastContent>
         </MotiView>
       ) : null}
     </AnimatePresence>

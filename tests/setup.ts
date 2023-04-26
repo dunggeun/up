@@ -9,7 +9,11 @@ import 'react-native-gesture-handler/jestSetup';
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 declare const self: any;
 
-const DummyComponent = ({ children }: { children: React.ReactNode }): React.ReactNode => children;
+const DummyComponent = ({
+  children,
+}: {
+  children: React.ReactNode;
+}): React.ReactNode => children;
 
 // @ts-expect-error
 RN.Animated.timing = (): RN.Animated.timing => ({
@@ -20,7 +24,9 @@ RN.Animated.timing = (): RN.Animated.timing => ({
 
 // eslint-disable-next-line @typescript-eslint/no-empty-function, @typescript-eslint/no-unsafe-member-access
 self.__reanimatedWorkletInit = (): void => {};
-jest.mock('react-native-reanimated', () => require('react-native-reanimated/mock'));
+jest.mock('react-native-reanimated', () =>
+  require('react-native-reanimated/mock'),
+);
 
 jest.mock('react-native-share', () => ({
   default: jest.fn(),
@@ -53,7 +59,7 @@ jest.mock('react-native-safe-area-context', () => ({
 
 jest.mock('react-native-localize', () => ({
   __esModule: true,
-  getLocales: (): ({ languageCode: string })[] => [{ languageCode: 'en' }],
+  getLocales: (): { languageCode: string }[] => [{ languageCode: 'en' }],
 }));
 
 beforeAll(() => {

@@ -11,9 +11,9 @@ interface TransitionGroup {
 
 const GroupContainer = styled(Animated.View)({ flex: 1 });
 
-export function TransitionGroup ({
+export function TransitionGroup({
   children,
-  renderIndex
+  renderIndex,
 }: PropsWithChildren<TransitionGroup>): JSX.Element {
   const isFirstRenderRef = useRef(true);
   const fadeAnimation = useRef(new Animated.Value(1)).current;

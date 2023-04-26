@@ -5,7 +5,7 @@ import {
   type KeyboardAvoidingViewProps as RNKeyboardAvoidingViewProps,
 } from 'react-native';
 
-export function KeyboardAvoidingView ({
+export function KeyboardAvoidingView({
   children,
   style,
   ...props

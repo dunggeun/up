@@ -59,11 +59,7 @@ export function LandingScreen({ navigation }: LandingScreenProps): JSX.Element {
         </LogoArea>
       </CommonLayout.Body>
       <CommonLayout.Footer>
-        <Button
-          color="$brand"
-          disableLongPress
-          onPress={handlePressNextButton}
-        >
+        <Button color="$brand" disableLongPress onPress={handlePressNextButton}>
           {t('label.start')}
         </Button>
       </CommonLayout.Footer>

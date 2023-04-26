@@ -37,13 +37,15 @@ const baseColors = {
   $border: '#2e2e2e',
 } as const;
 
-
 export const colors = {
-  ...Object.entries(baseColors).reduce((palette, [key, hex]) => ({
-    ...palette,
-    [key]: hex,
-    [`${key}_disabled`]: Color(hex).lighten(0.5).hex(),
-  }), {} as Colors),
+  ...Object.entries(baseColors).reduce(
+    (palette, [key, hex]) => ({
+      ...palette,
+      [key]: hex,
+      [`${key}_disabled`]: Color(hex).lighten(0.5).hex(),
+    }),
+    {} as Colors,
+  ),
   $text_primary_disabled: '#9a9a9a',
   $border_disabled: '#9a9a9a',
 };

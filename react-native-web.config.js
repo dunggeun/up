@@ -7,9 +7,7 @@ const { transformPackagesOnRspack } = require('./shares');
 
 const babelLoaderConfiguration = {
   test: /\.(ts|tsx|js|jsx)$/i,
-  include: [
-    new RegExp(`(${transformPackagesOnRspack.join('|')})`),
-  ],
+  include: [new RegExp(`(${transformPackagesOnRspack.join('|')})`)],
   use: {
     loader: 'babel-loader',
     options: {
@@ -23,7 +21,7 @@ const babelLoaderConfiguration = {
 const jsModuleConfiguration = {
   test: /\.mjs$/,
   include: /node_modules/,
-  type: 'javascript/auto'
+  type: 'javascript/auto',
 };
 
 const imageLoaderConfiguration = {
@@ -41,9 +39,7 @@ const svgLoaderConfiguration = {
 };
 
 module.exports = {
-  devtool: process.env.NODE_ENV === 'development'
-    ? 'eval-source-map'
-    : false,
+  devtool: process.env.NODE_ENV === 'development' ? 'eval-source-map' : false,
   devServer: {
     allowedHosts: 'all',
   },
@@ -73,17 +69,16 @@ module.exports = {
     ],
   },
   builtins: {
-    html: [{
-      template: './index.html',
-      favicon: './static/icons/favicon.ico',
-      publicPath: '',
-      minify: true,
-    }],
+    html: [
+      {
+        template: './index.html',
+        favicon: './static/icons/favicon.ico',
+        publicPath: '',
+        minify: true,
+      },
+    ],
     copy: {
-      patterns: [
-        './static/icons/logo.png',
-        './static/site.webmanifest',
-      ],
+      patterns: ['./static/icons/logo.png', './static/site.webmanifest'],
     },
     define: {
       __DEV__: JSON.stringify(true),
@@ -95,7 +90,7 @@ module.exports = {
   optimization: {
     sideEffects: false,
     moduleIds: 'named',
-    minimize: false
+    minimize: false,
   },
   // plugins: [
   //   new HtmlWebpackPlugin({

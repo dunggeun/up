@@ -2,14 +2,14 @@ import { useRef, useEffect, type ComponentProps } from 'react';
 import {
   Animated,
   PanResponder,
-  type PanResponderInstance
+  type PanResponderInstance,
 } from 'react-native';
 import { triggerHaptic } from 'src/utils';
 import { PRESSABLE_DEPTH } from 'src/constants';
 import {
   LONG_PRESS_DELAY,
   LONG_PRESS_DURATION,
-  RELEASE_DURATION
+  RELEASE_DURATION,
 } from '../constants';
 
 interface AnimatedStyleWithGestureConfig {
@@ -23,7 +23,7 @@ type AnimatedStyle = ComponentProps<typeof Animated.View>['style'];
 
 enum AnimateState {
   ACTIVE = 1,
-  INACTIVE = 0
+  INACTIVE = 0,
 }
 
 export const useAnimatedStyleWithGesture = ({
@@ -36,11 +36,16 @@ export const useAnimatedStyleWithGesture = ({
   capStyle: AnimatedStyle;
   dimStyle: AnimatedStyle;
 } => {
-  const timeoutRef = useRef<number>();
+  const timeoutRef = useRef<NodeJS.Timeout>();
   const isLongPressRef = useRef(false);
   const capPosition = useRef(new Animated.Value(0)).current;
   const dimSize = useRef(new Animated.Value(0)).current;
-  const optionsRef = useRef({ disableHaptic, disableLongPress, onPress, onLongPress });
+  const optionsRef = useRef({
+    disableHaptic,
+    disableLongPress,
+    onPress,
+    onLongPress,
+  });
 
   useEffect(() => {
     optionsRef.current = {
@@ -65,10 +70,7 @@ export const useAnimatedStyleWithGesture = ({
   };
 
   const releaseAnimations = (): void => {
-    if (timeoutRef.current !== undefined) {
-      clearTimeout(timeoutRef.current);
-    }
-
+    clearTimeout(timeoutRef.current);
     Animated.parallel([
       Animated.timing(capPosition, {
         useNativeDriver: false,
@@ -102,10 +104,7 @@ export const useAnimatedStyleWithGesture = ({
 
         if (disableLongPress) return;
 
-        if (timeoutRef.current !== undefined) {
-          clearTimeout(timeoutRef.current);
-        }
-
+        clearTimeout(timeoutRef.current);
         timeoutRef.current = setTimeout(() => {
           isLongPressRef.current = true;
           !disableHaptic && triggerHaptic('rigid');

@@ -14,10 +14,11 @@ type QuestDetailScreenProps = QuestStackProps<'QuestDetail'>;
 
 export function QuestDetailScreen({
   navigation,
-  route
+  route,
 }: QuestDetailScreenProps): JSX.Element {
   const { id } = route.params;
-  const [questDoneModalVisibility, setQuestDoneModalVisibility] = useState(false);
+  const [questDoneModalVisibility, setQuestDoneModalVisibility] =
+    useState(false);
   const userColor = useUserThemeColor();
   const { data: questDetail, isLoading } = useQuestDetail({ id });
   const { mutate } = useUpdateQuest({
@@ -47,11 +48,13 @@ export function QuestDetailScreen({
 
     mutate({
       questId: questDetail.quest.id,
-      data: { finished_at: Number(new Date()), },
+      data: { finished_at: Number(new Date()) },
     });
   };
 
-  return shouldShowLoadingIndicator ? <LoadingIndicator /> : (
+  return shouldShowLoadingIndicator ? (
+    <LoadingIndicator />
+  ) : (
     <>
       <CommonLayout>
         <CommonLayout.Header

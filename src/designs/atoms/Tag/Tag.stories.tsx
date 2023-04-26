@@ -3,7 +3,7 @@ import { View } from 'dripsy';
 import { getColors } from 'src/themes/utils';
 import { Tag } from './Tag';
 
-import type { ComponentMeta } from '@storybook/react';
+import type { Meta } from '@storybook/react';
 import type { TagProps } from './Tag';
 
 export default {
@@ -28,7 +28,7 @@ export default {
       control: { type: 'select' },
     },
   },
-} as ComponentMeta<typeof Tag>;
+} as Meta<typeof Tag>;
 
 const Template = (args: TagProps) => (
   <View sx={{ padding: '$04', flexDirection: 'row' }}>

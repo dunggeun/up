@@ -13,15 +13,15 @@ const SectionContainer = styled(View)({
 });
 
 const SectionTitle = styled(H2, {
-  defaultVariant: 'text.primary'
+  defaultVariant: 'text.primary',
 })({
   paddingY: '$04',
 });
 
-export function DetailSection ({
+export function DetailSection({
   children,
   title,
-  delay
+  delay,
 }: PropsWithChildren<DetailSectionProps>): JSX.Element {
   return (
     <MotiView

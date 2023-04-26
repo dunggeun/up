@@ -7,7 +7,7 @@ export type RootStackScreenParamList = {
   Quest: undefined;
   Landing: undefined;
   UserRegister: undefined;
-}
+};
 
 export type RootStackProps<RouteName extends keyof RootStackScreenParamList> =
   StackScreenProps<RootStackScreenParamList, RouteName>;

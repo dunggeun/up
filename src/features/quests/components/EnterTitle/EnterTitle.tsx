@@ -11,11 +11,11 @@ export interface EnterTitleProps {
   onPressNext: () => void;
 }
 
-export function EnterTitle ({
+export function EnterTitle({
   userColor,
   nextButtonDisabled,
   onChangeTitle,
-  onPressNext
+  onPressNext,
 }: EnterTitleProps): JSX.Element {
   return (
     <>

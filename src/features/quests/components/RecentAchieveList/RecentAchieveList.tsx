@@ -25,16 +25,20 @@ export function RecentAchieveList(): JSX.Element {
 
   const renderItems = (): JSX.Element | JSX.Element[] => {
     return achieves?.length ? (
-      achieves.map(({ id, quest_name: questName, created_at: createdAt }, index) => (
-        <ListItem
-          animate
-          animateDelay={DELAY * index}
-          key={id}
-          label={questName}
-          subLabel={dayjs(createdAt).format(t('format.date'))}
-        />
-      ))
-    ) : <EmptyView>{t('message.empty_achieve')}</EmptyView>;
+      achieves.map(
+        ({ id, quest_name: questName, created_at: createdAt }, index) => (
+          <ListItem
+            animate
+            animateDelay={DELAY * index}
+            key={id}
+            label={questName}
+            subLabel={dayjs(createdAt).format(t('format.date'))}
+          />
+        ),
+      )
+    ) : (
+      <EmptyView>{t('message.empty_achieve')}</EmptyView>
+    );
   };
 
   return <AchieveList>{renderItems()}</AchieveList>;

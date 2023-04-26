@@ -18,7 +18,7 @@ const UpRepositorySection = styled(View)({
 });
 
 export function OpenSourceProjectScreen({
-  navigation
+  navigation,
 }: OpenSourceProjectProps): JSX.Element {
   const userColor = useUserThemeColor();
 
@@ -36,7 +36,10 @@ export function OpenSourceProjectScreen({
 
   return (
     <CommonLayout>
-      <CommonLayout.Header onBackPress={handlePressBackButton} title={t('title.open_source')} />
+      <CommonLayout.Header
+        onBackPress={handlePressBackButton}
+        title={t('title.open_source')}
+      />
       <CommonLayout.Body>
         <UpRepositorySection>
           <Button

@@ -27,9 +27,10 @@ export const useDeleteQuest = ({
     onSuccess: (_data, { questId }) => {
       queryClient.setQueryData<Quest[]>(
         ['quests', 'list'],
-        (previousQuests = []) => previousQuests.filter(
-          (previousQuest) => previousQuest.id !== questId
-        ),
+        (previousQuests = []) =>
+          previousQuests.filter(
+            (previousQuest) => previousQuest.id !== questId,
+          ),
       );
 
       void queryClient.invalidateQueries(['quests', 'list'], {

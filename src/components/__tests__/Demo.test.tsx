@@ -6,9 +6,8 @@ import { Demo } from '../Demo';
 
 import type { DemoProps } from '../Demo';
 
-const render = (props: DemoProps): ReturnType<typeof testRender> => (
-  testRender(withDripsy(<Demo {...props} />))
-);
+const render = (props: DemoProps): ReturnType<typeof testRender> =>
+  testRender(withDripsy(<Demo {...props} />));
 
 describe('components/Demo', () => {
   let text: string;

@@ -35,9 +35,9 @@ const styles = StyleSheet.create({
 });
 
 const calculatePercent = (value: number, max: number): number =>
-  Math.min(Math.max(0, value / max * 100), 100);
+  Math.min(Math.max(0, (value / max) * 100), 100);
 
-export function ProgressBar ({
+export function ProgressBar({
   value,
   max,
   color,
@@ -67,7 +67,9 @@ export function ProgressBar ({
       accessibilityValue={{ min: 0, max, now: value }}
       {...restProps}
     >
-      <Animated.View style={[styles.barDefault, barColorStyle, animatedStyle]} />
+      <Animated.View
+        style={[styles.barDefault, barColorStyle, animatedStyle]}
+      />
     </Container>
   );
-};
+}

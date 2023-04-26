@@ -2,7 +2,7 @@ import React from 'react';
 import { View } from 'dripsy';
 import { AppBar } from './AppBar';
 
-import type { ComponentMeta } from '@storybook/react';
+import type { Meta } from '@storybook/react';
 import type { AppBarProps } from './AppBar';
 
 export default {
@@ -24,7 +24,7 @@ export default {
       control: { type: 'text' },
     },
   },
-} as ComponentMeta<typeof AppBar>;
+} as Meta<typeof AppBar>;
 
 const Template = (args: AppBarProps) => (
   <View sx={{ flex: 1, padding: '$04', backgroundColor: 'gray' }}>

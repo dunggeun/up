@@ -36,11 +36,9 @@ const Bubble = styled(MotiView)(({ color }: { color: string }) => ({
   backgroundColor: color,
 }));
 
-export function ExpEffectView (): JSX.Element {
-  const [
-    bubbleStartPosition,
-    setBubbleStartPosition,
-  ] = useState<BubblePosition>();
+export function ExpEffectView(): JSX.Element {
+  const [bubbleStartPosition, setBubbleStartPosition] =
+    useState<BubblePosition>();
   const userColor = useUserThemeColor();
   const { top } = useSafeAreaInsets();
   const [position, setPosition] = useRecoilState(questItemPosition);
@@ -52,10 +50,7 @@ export function ExpEffectView (): JSX.Element {
     const yBias = Math.random() * BUBBLE_SIZE * 2;
     setBubbleStartPosition({ x: position.x + xBias, y: position.y + yBias });
 
-    setTimeout(
-      () => setBubbleStartPosition(undefined),
-      EFFECT_DURATION * 2,
-    );
+    setTimeout(() => setBubbleStartPosition(undefined), EFFECT_DURATION * 2);
   }, [position, setPosition]);
 
   return (

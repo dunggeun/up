@@ -22,9 +22,9 @@ const TotalExpText = styled(H3, {
   textAlign: 'center',
 });
 
-export function QuestInformation ({
+export function QuestInformation({
   quest,
-  achieveList
+  achieveList,
 }: QuestInformationProps): JSX.Element | null {
   const userColor = useUserThemeColor();
   const isFinishedQuest = Boolean(quest.finished_at);
@@ -79,11 +79,14 @@ export function QuestInformation ({
 
   const renderEarnedExp = (): JSX.Element => {
     return (
-      <DetailSection delay={isFinishedQuest ? 200 : 800} title={t('title.quest_total_exp')}>
+      <DetailSection
+        delay={isFinishedQuest ? 200 : 800}
+        title={t('title.quest_total_exp')}
+      >
         <Text variant="secondary">
           {replacePlaceholder(
             t('message.quest_total_exp'),
-            dayjs(quest.created_at).format(t('format.date'))
+            dayjs(quest.created_at).format(t('format.date')),
           )}
         </Text>
         <TotalExpText>{totalExp} EXP</TotalExpText>

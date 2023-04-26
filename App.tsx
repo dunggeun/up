@@ -19,7 +19,9 @@ const gestureHandlerStyle = { flex: 1 } as const;
 
 const queryClient = AppManager.getInstance().getQueryClient();
 
-function AppProviders<T = unknown>({ children }: PropsWithChildren<T>): JSX.Element {
+function AppProviders<T = unknown>({
+  children,
+}: PropsWithChildren<T>): JSX.Element {
   return (
     <GestureHandlerRootView style={gestureHandlerStyle}>
       <SafeAreaProvider>

@@ -22,7 +22,10 @@ import { BUTTON_HEIGHT } from './constants';
 
 import type { colors } from 'src/themes/colors';
 
-type AccessibilityProps = Pick<ViewProps, 'accessibilityHint' | 'accessibilityLabel'>;
+type AccessibilityProps = Pick<
+  ViewProps,
+  'accessibilityHint' | 'accessibilityLabel'
+>;
 
 export interface ButtonProps extends AccessibilityProps {
   color: keyof typeof colors;
@@ -31,29 +34,31 @@ export interface ButtonProps extends AccessibilityProps {
   disableLongPress?: boolean;
   style?: ViewStyle;
   containerStyle?: ViewStyle;
-  leftAdornment?: React.ReactElement,
-  rightAdornment?: React.ReactElement,
+  leftAdornment?: React.ReactElement;
+  rightAdornment?: React.ReactElement;
   onPress?: () => void;
   onLongPress?: () => void;
 }
 
-const Container = styled(View)(({
+const Container = styled(View)({
   position: 'relative',
   height: BUTTON_HEIGHT,
-}));
+});
 
-const ContentWrapper = styled(View)(({
-  disabled,
-  hasAdornment,
-}: {
-  disabled: boolean;
-  hasAdornment: boolean;
-}) => ({
-  justifyContent: 'center',
-  width: hasAdornment ? 'auto' : '100%',
-  height: '100%',
-  opacity: disabled ? .5 : 1,
-}));
+const ContentWrapper = styled(View)(
+  ({
+    disabled,
+    hasAdornment,
+  }: {
+    disabled: boolean;
+    hasAdornment: boolean;
+  }) => ({
+    justifyContent: 'center',
+    width: hasAdornment ? 'auto' : '100%',
+    height: '100%',
+    opacity: disabled ? 0.5 : 1,
+  }),
+);
 
 const Shadow = styled(View)(presets.buttonShadow());
 
@@ -67,28 +72,31 @@ const DimContainer = styled(View)({
   overflow: 'hidden',
 });
 
-const Label = styled(Text, { 
+const Label = styled(Text, {
   defaultVariant: 'text.h2',
 })(({ isLightBackground }: { isLightBackground: boolean }) => ({
   color: isLightBackground ? '$text_primary' : '$white',
   textAlign: 'center',
 }));
 
-export const Button = forwardRef(function Button({
-  children,
-  color,
-  style,
-  containerStyle,
-  disabled = false,
-  disableHaptic = false,
-  disableLongPress = false,
-  leftAdornment,
-  rightAdornment,
-  accessibilityHint,
-  accessibilityLabel,
-  onPress,
-  onLongPress,
-}: PropsWithChildren<ButtonProps>, ref: ForwardedRef<RNView>): JSX.Element {
+export const Button = forwardRef(function Button(
+  {
+    children,
+    color,
+    style,
+    containerStyle,
+    disabled = false,
+    disableHaptic = false,
+    disableLongPress = false,
+    leftAdornment,
+    rightAdornment,
+    accessibilityHint,
+    accessibilityLabel,
+    onPress,
+    onLongPress,
+  }: PropsWithChildren<ButtonProps>,
+  ref: ForwardedRef<RNView>,
+): JSX.Element {
   const sx = useSx();
   const dripsyTheme = useDripsyTheme();
   const {
@@ -99,7 +107,7 @@ export const Button = forwardRef(function Button({
     disableHaptic,
     disableLongPress,
     onPress,
-    onLongPress
+    onLongPress,
   });
 
   const isLightBackground = useMemo(
@@ -108,9 +116,11 @@ export const Button = forwardRef(function Button({
   );
   const dimColor = isLightBackground ? '$black' : '$white';
 
-  const capStyle = sx(presets.buttonCap({
-    backgroundColor: color,
-  }));
+  const capStyle = sx(
+    presets.buttonCap({
+      backgroundColor: color,
+    }),
+  );
 
   const dimStyle = sx({
     position: 'absolute',
@@ -118,7 +128,7 @@ export const Button = forwardRef(function Button({
     height: '100%',
     borderRadius: '$md',
     backgroundColor: dimColor,
-    opacity: .2,
+    opacity: 0.2,
   });
 
   const disabledStyle = useMemo(() => {
@@ -127,16 +137,17 @@ export const Button = forwardRef(function Button({
         borderColor: '$border_disabled',
         backgroundColor: `${color}_disabled`,
       }),
-      shadow: sx({ backgroundColor: '$border_disabled' })
+      shadow: sx({ backgroundColor: '$border_disabled' }),
     };
   }, [sx, color]);
 
   const renderChildren = (): ReactNode => {
-    const content = typeof children === 'string' ? (
-      <Label isLightBackground={isLightBackground}>
-        {children}
-      </Label>
-    ) : children;
+    const content =
+      typeof children === 'string' ? (
+        <Label isLightBackground={isLightBackground}>{children}</Label>
+      ) : (
+        children
+      );
 
     return (
       <ContentWrapper
@@ -160,12 +171,14 @@ export const Button = forwardRef(function Button({
       {...(disabled ? null : responder.panHandlers)}
     >
       <Shadow style={disabled ? disabledStyle.shadow : undefined} />
-      <Animated.View style={[
-        capStyle,
-        animatedCapStyle,
-        style,
-        disabled ? disabledStyle.cap : undefined
-      ]}>
+      <Animated.View
+        style={[
+          capStyle,
+          animatedCapStyle,
+          style,
+          disabled ? disabledStyle.cap : undefined,
+        ]}
+      >
         {leftAdornment ? leftAdornment : null}
         {renderChildren()}
         {rightAdornment ? rightAdornment : null}

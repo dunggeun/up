@@ -5,7 +5,7 @@ export interface Badge {
   id: number;
   title: string;
   image: ImageSourcePropType | null;
-};
+}
 
 export interface Theme {
   id: number;

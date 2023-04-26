@@ -31,10 +31,8 @@ const DeleteTextButton = styled(TouchableOpacity)({
 
 export function MenuScreen(_props: MenuProps): JSX.Element {
   const { bottomInset } = useMainTabBarInset();
-  const [
-    deleteConfirmModalVisibility,
-    setDeleteConfirmModalVisibility
-  ] = useState(false);
+  const [deleteConfirmModalVisibility, setDeleteConfirmModalVisibility] =
+    useState(false);
   const [loading, setLoading] = useState(false);
   const [_, send] = useActor(AppManager.getInstance().getService());
 
@@ -86,18 +84,12 @@ export function MenuScreen(_props: MenuProps): JSX.Element {
         <CommonLayout.Header title={t('title.menu')} />
         <CommonLayout.Body>
           <Main>
-            <ListItem
-              label={t('label.version')}
-              subLabel={VERSION}
-            />
+            <ListItem label={t('label.version')} subLabel={VERSION} />
             <ListItem
               label={t('label.send_feedback')}
               onPress={handlePressSendFeedback}
             />
-            <ListItem
-              label={t('label.rating')}
-              onPress={handlePressRating}
-            />
+            <ListItem label={t('label.rating')} onPress={handlePressRating} />
             <ListItem
               label={t('label.open_source')}
               onPress={handlePressOpenSource}

@@ -14,12 +14,16 @@ export const globalMachine = createMachine(
     tsTypes: {} as import('./globalMachine.typegen').Typegen0,
     schema: {
       context: {} as { user: User | null },
-      events: {} as { type: 'AUTO_LOGIN' }
-                  | { type: 'LOGIN'; user: User }
-                  | { type: 'LOGOUT' }
-                  | { type: 'REFRESH' }
-                  | { type: 'EDIT_USER'; user: Partial<Pick<User, 'name' | 'badge' | 'theme'>> }
-                  | { type: 'REWARD'; exp: number },
+      events: {} as
+        | { type: 'AUTO_LOGIN' }
+        | { type: 'LOGIN'; user: User }
+        | { type: 'LOGOUT' }
+        | { type: 'REFRESH' }
+        | {
+            type: 'EDIT_USER';
+            user: Partial<Pick<User, 'name' | 'badge' | 'theme'>>;
+          }
+        | { type: 'REWARD'; exp: number },
       services: {} as {
         loadUser: { data: User };
         updateUser: { data: User };
@@ -73,7 +77,7 @@ export const globalMachine = createMachine(
                 target: 'idle',
                 actions: 'setUser',
               },
-              onError: '#unauthorized'
+              onError: '#unauthorized',
             },
           },
           updating: {
@@ -163,7 +167,7 @@ export const globalMachine = createMachine(
       },
       updateUser: async (context, event) => {
         if (!context.user) throw new Error('user not exist in context');
-    
+
         const modifiedUser = { ...context.user, ...event.user } as User;
         await AsyncStorage.setItem('user', JSON.stringify(modifiedUser));
         return modifiedUser;
@@ -177,7 +181,10 @@ export const globalMachine = createMachine(
 
         const earnedExp = event.exp;
         const targetExp = getExpByLevel(user.level);
-        const modifiedUser = { ...user, totalExp: user.totalExp + earnedExp } as User;
+        const modifiedUser = {
+          ...user,
+          totalExp: user.totalExp + earnedExp,
+        } as User;
 
         if (targetExp <= user.currentExp + earnedExp) {
           modifiedUser.currentExp = user.currentExp + earnedExp - targetExp;

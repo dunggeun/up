@@ -58,25 +58,26 @@ export class SQLBuilder {
     if (!(this._type && this._tableName)) {
       throw Error('invalid query type or table name');
     }
- 
-    const WHERE_CONDITION = this._condition && Object.entries(this._condition)
-      .map(([column, { symbol, value }]) => {
-        return `${column} ${symbol} ${this.stringify(value)}`;
-      })
-      .join(' AND ');
+
+    const WHERE_CONDITION =
+      this._condition &&
+      Object.entries(this._condition)
+        .map(([column, { symbol, value }]) => {
+          return `${column} ${symbol} ${this.stringify(value)}`;
+        })
+        .join(' AND ');
     const WHERE_STATEMENTS = WHERE_CONDITION ? `WHERE ${WHERE_CONDITION}` : '';
 
     switch (this._type) {
       case 'select':
         const shouldOrdering = this._orderTarget && this._by;
         const ORDER_BY_STATEMENTS = shouldOrdering
-          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-          ? `ORDER BY ${this._orderTarget!} ${this._by!}`
+          ? // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+            `ORDER BY ${this._orderTarget!} ${this._by!}`
           : '';
 
-        const LIMIT_CONSTRAINT = this._limit !== undefined
-          ? `LIMIT ${this._limit}`
-          : '';
+        const LIMIT_CONSTRAINT =
+          this._limit !== undefined ? `LIMIT ${this._limit}` : '';
 
         return `
           SELECT * FROM ${this._tableName}
@@ -87,8 +88,7 @@ export class SQLBuilder {
 
       case 'insert':
         const VALUE_COLUMNS = Object.keys(this._values ?? {}).join(',');
-        const VALUES = Object
-          .values(this._values ?? {})
+        const VALUES = Object.values(this._values ?? {})
           .map((value) => this.stringify(value))
           .join(',');
 
@@ -98,8 +98,7 @@ export class SQLBuilder {
         `;
 
       case 'update':
-        const SET_STATEMENTS = Object
-          .entries(this._values ?? {})
+        const SET_STATEMENTS = Object.entries(this._values ?? {})
           .map(([column, value]) => `${column} = ${this.stringify(value)}`)
           .join(',');
 

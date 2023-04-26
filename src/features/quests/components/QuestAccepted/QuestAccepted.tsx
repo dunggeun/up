@@ -12,7 +12,7 @@ export interface QuestAcceptedProps {
   onPressClose: () => void;
 }
 
-export function QuestAccepted ({
+export function QuestAccepted({
   questName,
   questMemo,
   userColor,
@@ -29,18 +29,10 @@ export function QuestAccepted ({
         </PageContent>
       </CommonLayout.Body>
       <CommonLayout.Footer>
-        <Button
-          color="$white"
-          disableLongPress
-          onPress={onPressShare}
-        >
+        <Button color="$white" disableLongPress onPress={onPressShare}>
           {t('label.share')}
         </Button>
-        <Button
-          color={userColor}
-          disableLongPress
-          onPress={onPressClose}
-        >
+        <Button color={userColor} disableLongPress onPress={onPressClose}>
           {t('label.ok')}
         </Button>
       </CommonLayout.Footer>

@@ -12,9 +12,9 @@ const SectionContainer = styled(View)({
   gap: '$03',
 });
 
-export function Section ({
+export function Section({
   children,
-  title
+  title,
 }: PropsWithChildren<SectionProps>): JSX.Element {
   return (
     <SectionContainer>

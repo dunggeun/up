@@ -4,7 +4,8 @@ import type { StackScreenProps } from '@react-navigation/stack';
 export type CommonStackScreenParamList = {
   OpenSourceProject: undefined;
   UserStatus: undefined;
-}
+};
 
-export type CommonStackProps<RouteName extends keyof CommonStackScreenParamList> =
-  StackScreenProps<CommonStackScreenParamList, RouteName>;
+export type CommonStackProps<
+  RouteName extends keyof CommonStackScreenParamList,
+> = StackScreenProps<CommonStackScreenParamList, RouteName>;

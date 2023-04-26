@@ -3,15 +3,15 @@ import { View } from 'dripsy';
 import { Text } from './Text';
 
 import type { ComponentProps } from 'react';
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 
 export default {
   title: 'components/Text',
   component: Text,
-} as ComponentMeta<typeof Text>;
+} as Meta<typeof Text>;
 
 type TextProps = ComponentProps<typeof Text>;
-type TextStory = ComponentStory<typeof Text>;
+type TextStory = StoryFn<typeof Text>;
 
 const Template = (args: TextProps) => (
   <View sx={{ flex: 1, padding: '$04' }}>

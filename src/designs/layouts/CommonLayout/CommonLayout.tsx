@@ -1,7 +1,10 @@
 import React, { Fragment, type PropsWithChildren } from 'react';
 import { Animated } from 'react-native';
 import { styled, Container as DripsyContainer, View } from 'dripsy';
-import { SafeAreaView, type SafeAreaViewProps } from 'src/components/SafeAreaView';
+import {
+  SafeAreaView,
+  type SafeAreaViewProps,
+} from 'src/components/SafeAreaView';
 import { KeyboardAvoidingView } from 'src/components/KeyboardAvoidingView';
 import { LinearGradient } from 'src/components/LinearGradient';
 import { AppBar, type AppBarProps } from 'src/designs/molecules/AppBar';
@@ -23,11 +26,13 @@ const BodyWrapper = styled(View)({
   gap: '$04',
 });
 
-const FooterWrapper = styled(View)(({ withPadding }: { withPadding: boolean }) => ({
-  position: 'relative',
-  gap: '$04',
-  paddingBottom: withPadding ? '$04' : 0,
-}));
+const FooterWrapper = styled(View)(
+  ({ withPadding }: { withPadding: boolean }) => ({
+    position: 'relative',
+    gap: '$04',
+    paddingBottom: withPadding ? '$04' : 0,
+  }),
+);
 
 const SHADOW_HEIGHT = 16;
 const FooterShadow = styled(LinearGradient)({
@@ -44,7 +49,7 @@ interface CommonLayoutProps extends SafeAreaViewProps {
   keyboardAvoiding?: boolean;
 }
 
-export function CommonLayout ({
+export function CommonLayout({
   children,
   keyboardAvoiding,
   ...props
@@ -53,15 +58,15 @@ export function CommonLayout ({
   return (
     <SafeAreaView {...props}>
       <AvoidingView>
-        <DripsyContainer>
-          {children}
-        </DripsyContainer>
+        <DripsyContainer>{children}</DripsyContainer>
       </AvoidingView>
     </SafeAreaView>
   );
 }
 
-CommonLayout.Header = function Header (props: Omit<AppBarProps, 'shadow'>): JSX.Element {
+CommonLayout.Header = function Header(
+  props: Omit<AppBarProps, 'shadow'>,
+): JSX.Element {
   return (
     <HeaderWrapper>
       <AppBar {...props} shadow />
@@ -73,23 +78,24 @@ interface BodyProps {
   scrollEnabled?: boolean;
 }
 
-CommonLayout.Body = function Body ({
+CommonLayout.Body = function Body({
   children,
-  scrollEnabled = true
+  scrollEnabled = true,
 }: PropsWithChildren<BodyProps>): JSX.Element {
   const Container = scrollEnabled ? ScrollView : View;
-  const additionalProps = scrollEnabled ? SHARED_CONFIG.scrollableViewProps : null;
+  const additionalProps = scrollEnabled
+    ? SHARED_CONFIG.scrollableViewProps
+    : null;
 
   return (
+    // eslint-disable-next-line react-native/no-inline-styles
     <Container {...additionalProps} style={{ flex: 1 }}>
-      <BodyWrapper>
-        {children}
-      </BodyWrapper>
+      <BodyWrapper>{children}</BodyWrapper>
     </Container>
   );
 };
 
-CommonLayout.Footer = function Footer ({
+CommonLayout.Footer = function Footer({
   children,
 }: PropsWithChildren<Record<string, unknown>>): JSX.Element {
   return (

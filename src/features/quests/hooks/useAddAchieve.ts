@@ -24,7 +24,7 @@ export const useAddAchieve = ({
   AddAchieveResult,
   Error,
   Parameters<typeof addAchieve>[0],
-  { previousQuest?: Quest, previousQuests?: Quest[] }
+  { previousQuest?: Quest; previousQuests?: Quest[] }
 > => {
   const [_, send] = useActor(service);
 
@@ -39,21 +39,20 @@ export const useAddAchieve = ({
       );
       queryClient.setQueryData<Quest[]>(
         ['quests', 'list'],
-        (previousQuests = []) => previousQuests.map(
-          (previousQuest) => previousQuest.id === quest.id ? quest : previousQuest
-        ),
+        (previousQuests = []) =>
+          previousQuests.map((previousQuest) =>
+            previousQuest.id === quest.id ? quest : previousQuest,
+          ),
       );
       queryClient.setQueryData<AchieveDetail[]>(
         ['achieves', 'list'],
-        (previousAchieves = []) => (
-          [
-            {
-              ...achieve,
-              quest_name: quest.title,
-            },
-            ...previousAchieves
-          ]
-        )
+        (previousAchieves = []) => [
+          {
+            ...achieve,
+            quest_name: quest.title,
+          },
+          ...previousAchieves,
+        ],
       );
       send({ type: 'REWARD', exp: achieve.exp });
 
