@@ -14,6 +14,7 @@ module.exports = {
     node: true,
   },
   extends: [
+    '@react-native',
     require.resolve('@vercel/style-guide/eslint/node'),
     require.resolve('@vercel/style-guide/eslint/react'),
     require.resolve('@vercel/style-guide/eslint/typescript'),

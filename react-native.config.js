@@ -10,7 +10,6 @@ module.exports = {
         android: {
           libraryName: null,
           componentDescriptors: null,
-          androidMkPath: null,
           cmakeListsPath: null,
         },
       },
@@ -26,10 +25,10 @@ module.exports = {
           sourceDir:
             '../node_modules/react-native-sqlite-storage/platforms/android-native',
           packageImportPath: 'import org.pgsqlite.SQLitePluginPackage;',
-          packageInstance: 'new SQLitePluginPackage()'
+          packageInstance: 'new SQLitePluginPackage()',
         },
       },
     },
   },
-  assets:['./assets/fonts/'],
+  assets: ['./assets/fonts/'],
 };

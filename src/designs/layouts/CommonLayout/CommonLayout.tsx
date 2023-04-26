@@ -5,16 +5,17 @@ import { SafeAreaView, type SafeAreaViewProps } from 'src/components/SafeAreaVie
 import { KeyboardAvoidingView } from 'src/components/KeyboardAvoidingView';
 import { LinearGradient } from 'src/components/LinearGradient';
 import { AppBar, type AppBarProps } from 'src/designs/molecules/AppBar';
+import { themeLight } from 'src/themes';
 import { SHARED_CONFIG } from 'src/constants';
 
 const HeaderWrapper = styled(View)({
-  marginX: '-$04',
+  marginX: -themeLight.space.$04,
   zIndex: 3,
 });
 
 const ScrollView = styled(Animated.ScrollView)({
-  marginX: '-$04',
-  paddingX: '$04',
+  marginX: -themeLight.space.$04,
+  paddingX: themeLight.space.$04,
 });
 
 const BodyWrapper = styled(View)({
@@ -88,8 +89,9 @@ CommonLayout.Body = function Body ({
   );
 };
 
-// eslint-disable-next-line @typescript-eslint/ban-types
-CommonLayout.Footer = function Footer ({ children }: PropsWithChildren<{}>): JSX.Element {
+CommonLayout.Footer = function Footer ({
+  children,
+}: PropsWithChildren<Record<string, unknown>>): JSX.Element {
   return (
     <FooterWrapper withPadding={Boolean(children)}>
       <FooterShadow color="white" direction="to-up" />

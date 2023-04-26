@@ -5,7 +5,7 @@ if ENV['VERCEL'] == '1'
   ruby '2.7.0'
 else
   # You may use http://rbenv.org/ or https://rvm.io/ to install and use this version
-  ruby File.read(File.join(__dir__, '.ruby-version')).strip
+  ruby ">= 2.6.10"
 end
 
-gem 'cocoapods', '~> 1.11', '>= 1.11.3'
+gem 'cocoapods', '>= 1.12'

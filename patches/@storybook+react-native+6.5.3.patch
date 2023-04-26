@@ -1,0 +1,13 @@
+diff --git a/node_modules/@storybook/react-native/scripts/loader.js b/node_modules/@storybook/react-native/scripts/loader.js
+index d83bdf0..c1f0a04 100644
+--- a/node_modules/@storybook/react-native/scripts/loader.js
++++ b/node_modules/@storybook/react-native/scripts/loader.js
+@@ -132,7 +132,7 @@ function writeRequires({ configPath, absolute = false }) {
+   // TODO: implement presets or something similar
+   if (main.addons.includes('@storybook/addon-ondevice-actions')) {
+     enhancersImport =
+-      'import { argsEnhancers } from "@storybook/addon-actions/dist/modern/preset/addArgs"';
++      'import { argsEnhancers } from "@storybook/addon-actions-legacy/dist/modern/preset/addArgs"';
+ 
+     // try/catch is a temporary fix for https://github.com/storybookjs/react-native/issues/327 until a fix is found
+     enhancers = `
