@@ -619,7 +619,7 @@ exports[`screens/QuestCreateScreen 렌더링 되었을 때 스냅샷이 일치�
                   "width": "100%",
                 },
                 {
-                  "backgroundColor": "#cccccc",
+                  "backgroundColor": "#9a9a9a",
                 },
                 {},
                 {},
@@ -631,8 +631,8 @@ exports[`screens/QuestCreateScreen 렌더링 되었을 때 스냅샷이 일치�
             style={
               {
                 "alignItems": "center",
-                "backgroundColor": "#2196f3",
-                "borderColor": "#cccccc",
+                "backgroundColor": "#A4D4FA",
+                "borderColor": "#9a9a9a",
                 "borderRadius": 8,
                 "borderWidth": 2,
                 "display": "flex",
@@ -664,7 +664,7 @@ exports[`screens/QuestCreateScreen 렌더링 되었을 때 스냅샷이 일치�
               }
             >
               <Text
-                isLightBackground={false}
+                isLightBackground={true}
                 style={
                   [
                     {
@@ -673,7 +673,7 @@ exports[`screens/QuestCreateScreen 렌더링 되었을 때 스냅샷이 일치�
                       "paddingBottom": 4,
                     },
                     {
-                      "color": "#ffffff",
+                      "color": "#2e2e2e",
                       "fontSize": 24,
                       "marginVertical": 0,
                       "paddingBottom": 4,
@@ -712,7 +712,7 @@ exports[`screens/QuestCreateScreen 렌더링 되었을 때 스냅샷이 일치�
               collapsable={false}
               style={
                 {
-                  "backgroundColor": "#ffffff",
+                  "backgroundColor": "#000000",
                   "borderRadius": 8,
                   "height": "100%",
                   "left": 0,

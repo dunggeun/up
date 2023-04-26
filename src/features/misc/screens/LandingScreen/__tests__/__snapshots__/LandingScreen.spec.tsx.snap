@@ -579,7 +579,7 @@ exports[`screens/LandingScreen 렌더링 되었을 때 스냅샷이 일치해야
             }
           >
             <Text
-              isLightBackground={false}
+              isLightBackground={true}
               style={
                 [
                   {
@@ -588,7 +588,7 @@ exports[`screens/LandingScreen 렌더링 되었을 때 스냅샷이 일치해야
                     "paddingBottom": 4,
                   },
                   {
-                    "color": "#ffffff",
+                    "color": "#2e2e2e",
                     "fontSize": 24,
                     "marginVertical": 0,
                     "paddingBottom": 4,
@@ -627,7 +627,7 @@ exports[`screens/LandingScreen 렌더링 되었을 때 스냅샷이 일치해야
             collapsable={false}
             style={
               {
-                "backgroundColor": "#ffffff",
+                "backgroundColor": "#000000",
                 "borderRadius": 8,
                 "height": "100%",
                 "left": 0,

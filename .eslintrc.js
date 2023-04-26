@@ -65,6 +65,7 @@ module.exports = {
             touchables: CUSTOM_TOUCHABLE_COMPONENTS,
           },
         ],
+        '@typescript-eslint/prefer-reduce-type-parameter': 'off',
       },
     },
     {
