@@ -477,7 +477,7 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
                   }
                 >
                   <Text
-                    isLightBackground={false}
+                    isLightBackground={true}
                     style={
                       [
                         {
@@ -486,7 +486,7 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
                           "paddingBottom": 4,
                         },
                         {
-                          "color": "#ffffff",
+                          "color": "#2e2e2e",
                           "fontSize": 24,
                           "marginVertical": 0,
                           "paddingBottom": 4,
@@ -525,7 +525,7 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
                   collapsable={false}
                   style={
                     {
-                      "backgroundColor": "#ffffff",
+                      "backgroundColor": "#000000",
                       "borderRadius": 8,
                       "height": "100%",
                       "left": 0,
@@ -1073,6 +1073,73 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
               }
             >
               bxd
+            </Text>
+          </View>
+          <View
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "justifyContent": "space-between",
+                "opacity": 1,
+                "paddingVertical": 16,
+              }
+            }
+          >
+            <Text
+              accessibilityRole="header"
+              style={
+                [
+                  {
+                    "fontSize": 48,
+                    "fontWeight": "bold",
+                    "marginVertical": 26.56,
+                  },
+                  [
+                    {
+                      "color": "#2e2e2e",
+                      "fontFamily": "BMJUA",
+                      "fontSize": 24,
+                      "marginVertical": 0,
+                      "paddingBottom": 4,
+                    },
+                    {
+                      "fontWeight": "normal",
+                    },
+                    undefined,
+                    {},
+                  ],
+                ]
+              }
+            >
+              color
             </Text>
           </View>
           <View

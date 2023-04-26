@@ -36,7 +36,7 @@ export const useAnimatedStyleWithGesture = ({
   capStyle: AnimatedStyle;
   dimStyle: AnimatedStyle;
 } => {
-  const timeoutRef = useRef<NodeJS.Timeout>();
+  const timeoutRef = useRef<number>();
   const isLongPressRef = useRef(false);
   const capPosition = useRef(new Animated.Value(0)).current;
   const dimSize = useRef(new Animated.Value(0)).current;
@@ -65,7 +65,10 @@ export const useAnimatedStyleWithGesture = ({
   };
 
   const releaseAnimations = (): void => {
-    clearTimeout(timeoutRef.current);
+    if (timeoutRef.current !== undefined) {
+      clearTimeout(timeoutRef.current);
+    }
+
     Animated.parallel([
       Animated.timing(capPosition, {
         useNativeDriver: false,
@@ -99,7 +102,10 @@ export const useAnimatedStyleWithGesture = ({
 
         if (disableLongPress) return;
 
-        clearTimeout(timeoutRef.current);
+        if (timeoutRef.current !== undefined) {
+          clearTimeout(timeoutRef.current);
+        }
+
         timeoutRef.current = setTimeout(() => {
           isLongPressRef.current = true;
           !disableHaptic && triggerHaptic('rigid');

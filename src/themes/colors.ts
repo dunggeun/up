@@ -1,3 +1,9 @@
+import Color from 'color';
+
+type ColorKey = keyof typeof baseColors | DisabledColorKey;
+type DisabledColorKey = `${keyof typeof baseColors}_disabled`;
+type Colors = Record<ColorKey, string>;
+
 export const basicColors = {
   // Basic colors
   $red: '#f44336',
@@ -12,7 +18,7 @@ export const basicColors = {
   $dark: '#424242',
 } as const;
 
-export const colors = {
+const baseColors = {
   $brand: '#2196f3',
   // Level colors
   $success: '#4caf50',
@@ -28,19 +34,16 @@ export const colors = {
   $text_primary: '#2e2e2e',
   $text_secondary: '#777777',
   $text_tertiary: '#cccccc',
+  $border: '#2e2e2e',
 } as const;
 
-export const LIGHT_COLORS: (keyof typeof colors)[] = [
-  '$warning',
-  '$white',
-  '$strawberry',
-  '$yellow',
-  '$mint',
-  '$sky',
-  '$secondary_1',
-  '$secondary_2',
-  '$text_tertiary',
-];
 
-export const DARK_COLORS = (Object.keys(colors) as (keyof typeof colors)[])
-  .filter((color) => !LIGHT_COLORS.includes(color));
+export const colors = {
+  ...Object.entries(baseColors).reduce((palette, [key, hex]) => ({
+    ...palette,
+    [key]: hex,
+    [`${key}_disabled`]: Color(hex).lighten(0.5).hex(),
+  }), {} as Colors),
+  $text_primary_disabled: '#9a9a9a',
+  $border_disabled: '#9a9a9a',
+};

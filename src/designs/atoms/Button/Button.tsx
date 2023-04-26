@@ -13,9 +13,9 @@ import {
   type ViewStyle,
   type ViewProps,
 } from 'react-native';
-import { styled, useSx, View, Text } from 'dripsy';
+import { styled, useSx, useDripsyTheme, View, Text } from 'dripsy';
+import Color from 'color';
 import { presets } from 'src/themes';
-import { isLight } from 'src/themes/utils';
 import { PRESSABLE_DEPTH } from 'src/constants';
 import { useAnimatedStyleWithGesture } from './hooks';
 import { BUTTON_HEIGHT } from './constants';
@@ -90,6 +90,7 @@ export const Button = forwardRef(function Button({
   onLongPress,
 }: PropsWithChildren<ButtonProps>, ref: ForwardedRef<RNView>): JSX.Element {
   const sx = useSx();
+  const dripsyTheme = useDripsyTheme();
   const {
     responder,
     capStyle: animatedCapStyle,
@@ -100,7 +101,11 @@ export const Button = forwardRef(function Button({
     onPress,
     onLongPress
   });
-  const isLightBackground = isLight(color);
+
+  const isLightBackground = useMemo(
+    () => Color(dripsyTheme.theme.colors[color]).isLight(),
+    [dripsyTheme, color],
+  );
   const dimColor = isLightBackground ? '$black' : '$white';
 
   const capStyle = sx(presets.buttonCap({
@@ -118,10 +123,13 @@ export const Button = forwardRef(function Button({
 
   const disabledStyle = useMemo(() => {
     return {
-      cap: sx({ borderColor: '$text_tertiary' }),
-      shadow: sx({ backgroundColor: '$text_tertiary' })
+      cap: sx({
+        borderColor: '$border_disabled',
+        backgroundColor: `${color}_disabled`,
+      }),
+      shadow: sx({ backgroundColor: '$border_disabled' })
     };
-  }, [sx]);
+  }, [sx, color]);
 
   const renderChildren = (): ReactNode => {
     const content = typeof children === 'string' ? (
