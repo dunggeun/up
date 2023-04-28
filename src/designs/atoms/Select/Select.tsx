@@ -56,7 +56,7 @@ const ContentView = styled(MotiView)({
   paddingX: '$02',
   borderRadius: '$md',
   borderWidth: BORDER_WIDTH,
-  borderColor: '$text_primary',
+  borderColor: '$border',
   backgroundColor: '$white',
 });
 

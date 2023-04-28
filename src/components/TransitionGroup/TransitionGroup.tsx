@@ -1,7 +1,12 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, {
+  useRef,
+  useState,
+  useEffect,
+  type PropsWithChildren,
+} from 'react';
 import { Animated } from 'react-native';
 import { styled } from 'dripsy';
-import type { PropsWithChildren } from 'react';
+import { USE_NATIVE_DRIVER } from 'src/constants';
 
 const ANIMATION_DURATION = 250;
 
@@ -29,7 +34,7 @@ export function TransitionGroup({
       Animated.timing(fadeAnimation, {
         toValue: 0,
         duration: ANIMATION_DURATION,
-        useNativeDriver: true,
+        useNativeDriver: USE_NATIVE_DRIVER,
       }).start(callback);
     };
 
@@ -37,7 +42,7 @@ export function TransitionGroup({
       Animated.timing(fadeAnimation, {
         toValue: 1,
         duration: ANIMATION_DURATION,
-        useNativeDriver: true,
+        useNativeDriver: USE_NATIVE_DRIVER,
       }).start();
     };
 

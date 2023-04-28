@@ -20,7 +20,7 @@ const Container = styled(View)({
   height: 16,
   borderRadius: '$full',
   borderWidth: BORDER_WIDTH,
-  borderColor: '$text_primary',
+  borderColor: '$border',
   backgroundColor: '$white',
   overflow: 'hidden',
 });

@@ -1,4 +1,4 @@
-import { Dimensions } from 'react-native';
+import { Dimensions, Platform } from 'react-native';
 import { version, dependencies } from '../../package.json';
 
 export const VERSION = version;
@@ -45,3 +45,6 @@ export const SHARED_CONFIG = {
     onMoveShouldSetResponderCapture: () => false,
   },
 } as const;
+
+export const USE_NATIVE_DRIVER =
+  Platform.OS === 'android' || Platform.OS === 'ios';

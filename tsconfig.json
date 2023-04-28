@@ -1,4 +1,3 @@
-// prettier-ignore
 {
   "extends": "@vercel/style-guide/typescript",
   "compilerOptions": {
@@ -8,8 +7,6 @@
     "types": [
       "react-native",
       "jest",
-      "./src/types/raw-loader.d.ts",
-      "./src/types/images.d.ts",
     ],
     "lib": [
       "es2019"

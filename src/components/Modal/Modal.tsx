@@ -28,7 +28,7 @@ const ModalContainer = styled(View)({
   padding: '$04',
   borderRadius: '$md',
   borderWidth: 2,
-  borderColor: '$text_primary',
+  borderColor: '$border',
   backgroundColor: '$white',
   gap: '$04',
 });

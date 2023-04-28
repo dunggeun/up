@@ -17,7 +17,7 @@ const StyledTextInput = styled(TextInput)({
   paddingY: '$03',
   borderRadius: '$input',
   borderWidth: BORDER_WIDTH,
-  borderColor: '$text_primary',
+  borderColor: '$border',
   color: '$text_primary',
   fontSize: '$h2',
 });

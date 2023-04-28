@@ -53,7 +53,7 @@ export function QuestCreateScreen({
   }, [isSuccess, complete]);
 
   return (
-    <CommonLayout>
+    <CommonLayout keyboardAvoiding>
       <CommonLayout.Header
         onBackPress={backPressHandler}
         onClosePress={handlePressCloseButton}
