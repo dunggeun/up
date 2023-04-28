@@ -34,7 +34,6 @@ export const Toast = memo(function Toast() {
   });
 
   useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/no-shadow
     ToastManager.getInstance().register((content) => {
       setContent(content);
     });

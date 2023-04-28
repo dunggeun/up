@@ -46,6 +46,7 @@ export const getPageSource = (config: CoverGenerateConfig): string => {
             padding: 40px;
             margin-bottom: 36px;
             background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(0,0,0,.3);
           }
           
           .canvas > .profile {

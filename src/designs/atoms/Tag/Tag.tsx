@@ -1,7 +1,7 @@
-import React, { useMemo } from 'react';
-import { styled, useDripsyTheme, View, Text } from 'dripsy';
+import React from 'react';
+import { styled, View, Text } from 'dripsy';
+import { isLight } from 'src/themes/utils';
 
-import Color from 'color';
 import type { ComponentPropsWithoutRef } from 'react';
 import type { colors } from 'src/themes/colors';
 
@@ -42,16 +42,9 @@ export function Tag({
   disabled = false,
   ...restProps
 }: TagProps): JSX.Element {
-  const dripsyTheme = useDripsyTheme();
-
-  const isLight = useMemo(
-    () => Color(dripsyTheme.theme.colors[color]).isLight(),
-    [dripsyTheme, color],
-  );
-
   return (
     <Container {...restProps} color={color} disabled={disabled}>
-      <TagLabel disabled={disabled} isLight={isLight}>
+      <TagLabel disabled={disabled} isLight={isLight(color)}>
         {label}
       </TagLabel>
     </Container>

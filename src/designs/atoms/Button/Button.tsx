@@ -14,9 +14,9 @@ import {
   type ViewProps,
 } from 'react-native';
 import { styled, useDripsyTheme, View, Text } from 'dripsy';
-import Color from 'color';
 import { triggerHaptic } from 'src/utils';
 import { presets } from 'src/themes';
+import { isLight } from 'src/themes/utils';
 import { PRESSABLE_DEPTH } from 'src/constants';
 import {
   BUTTON_HEIGHT,
@@ -210,10 +210,7 @@ export const Button = forwardRef(function Button(
     reset();
   };
 
-  const isLightBackground = useMemo(
-    () => Color(dripsyTheme.theme.colors[color]).isLight(),
-    [dripsyTheme, color],
-  );
+  const isLightBackground = useMemo(() => isLight(color), [color]);
 
   const renderChildren = (): ReactNode => {
     const hasAdornment =

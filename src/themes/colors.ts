@@ -50,3 +50,16 @@ export const colors = {
   $text_primary_disabled: '#9a9a9a',
   $border_disabled: '#9a9a9a',
 };
+
+export const LIGHT_COLORS: (keyof typeof colors)[] = [
+  '$warning',
+  '$white',
+  '$strawberry',
+  '$yellow',
+  '$mint',
+  '$sky',
+  '$secondary_1',
+  '$secondary_2',
+  '$text_tertiary',
+  '$border_secondary',
+];

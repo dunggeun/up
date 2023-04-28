@@ -8,7 +8,6 @@ export const delay = (duration: number): Promise<void> => {
 
 export const debounce = <T>(
   callback: (...args: T[]) => void,
-  // eslint-disable-next-line @typescript-eslint/no-shadow
   delay: number,
 ): ((...args: T[]) => void) => {
   let timer: NodeJS.Timeout;

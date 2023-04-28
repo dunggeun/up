@@ -68,6 +68,7 @@ module.exports = {
           },
         ],
         '@typescript-eslint/prefer-reduce-type-parameter': 'off',
+        '@typescript-eslint/no-shadow': 'off',
       },
     },
     {
