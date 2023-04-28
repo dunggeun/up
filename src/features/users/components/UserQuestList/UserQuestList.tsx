@@ -137,7 +137,6 @@ export function UserQuestList({ onCreate }: UserQuestListProps): JSX.Element {
           </>
         }
         data={filteredQuests}
-        extraData={filteredQuests}
         keyExtractor={keyExtractor}
         renderItem={renderItem}
         style={listStyle}
