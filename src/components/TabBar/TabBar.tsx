@@ -37,8 +37,8 @@ const Container = styled(View)({
   borderRadius: '$full',
   borderWidth: BORDER_WIDTH,
   borderTopWidth: BORDER_WIDTH,
-  borderColor: '$text_primary',
-  borderTopColor: '$text_primary',
+  borderColor: '$border',
+  borderTopColor: '$border',
   backgroundColor: '$white',
 });
 

@@ -35,6 +35,7 @@ const baseColors = {
   $text_secondary: '#777777',
   $text_tertiary: '#cccccc',
   $border: '#2e2e2e',
+  $border_secondary: '#cccccc',
 } as const;
 
 export const colors = {

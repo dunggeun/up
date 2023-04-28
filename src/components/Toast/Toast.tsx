@@ -11,7 +11,7 @@ const ToastContent = styled(Pressable)({
   padding: '$04',
   borderRadius: '$full',
   borderWidth: 2,
-  borderColor: '$text_primary',
+  borderColor: '$border',
   backgroundColor: '$white',
 });
 

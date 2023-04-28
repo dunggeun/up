@@ -391,36 +391,46 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
               accessibilityRole="button"
               accessibilityState={
                 {
+                  "busy": undefined,
+                  "checked": undefined,
                   "disabled": false,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
                 }
               }
               accessible={true}
-              onMoveShouldSetResponder={[Function]}
-              onMoveShouldSetResponderCapture={[Function]}
-              onResponderEnd={[Function]}
+              collapsable={false}
+              focusable={true}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
-              onResponderReject={[Function]}
               onResponderRelease={[Function]}
-              onResponderStart={[Function]}
               onResponderTerminate={[Function]}
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
-              onStartShouldSetResponderCapture={[Function]}
               style={
                 [
-                  {},
                   {
                     "height": 56,
                     "position": "relative",
                   },
                   undefined,
                   {},
-                  {},
                 ]
               }
             >
               <View
+                disabled={false}
                 style={
                   [
                     {},
@@ -441,6 +451,8 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
               />
               <View
                 collapsable={false}
+                color="$blue"
+                disabled={false}
                 style={
                   {
                     "alignItems": "center",
@@ -523,6 +535,7 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
               >
                 <View
                   collapsable={false}
+                  isLightBackground={true}
                   style={
                     {
                       "backgroundColor": "#000000",

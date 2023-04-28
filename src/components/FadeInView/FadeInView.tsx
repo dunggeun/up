@@ -1,10 +1,8 @@
-import { useRef, useCallback } from 'react';
-import { Animated } from 'react-native';
+import { useRef, useCallback, type PropsWithChildren } from 'react';
+import { Animated, type ViewStyle } from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
 import { styled } from 'dripsy';
-
-import type { PropsWithChildren } from 'react';
-import type { ViewStyle } from 'react-native';
+import { USE_NATIVE_DRIVER } from 'src/constants';
 
 interface FadeInViewProps {
   style?: ViewStyle;
@@ -25,14 +23,14 @@ export function FadeInView({
       Animated.timing(opacityAnimation, {
         toValue: 1,
         duration: FADE_DURATION,
-        useNativeDriver: true,
+        useNativeDriver: USE_NATIVE_DRIVER,
       }).start();
 
       return () => {
         Animated.timing(opacityAnimation, {
           toValue: 0,
           duration: FADE_DURATION,
-          useNativeDriver: true,
+          useNativeDriver: USE_NATIVE_DRIVER,
         }).start();
       };
     }, [opacityAnimation]),

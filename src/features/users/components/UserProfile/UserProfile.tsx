@@ -41,7 +41,7 @@ const Badge = styled(View)({
   padding: '$01',
   borderRadius: '$md',
   borderWidth: BADGE_BORDER_WIDTH,
-  borderColor: '$text_primary',
+  borderColor: '$border',
   backgroundColor: '$secondary_2',
 });
 

@@ -574,29 +574,51 @@ exports[`screens/UserRegisterScreen 렌더링 되었을 때 스냅샷이 일치�
           accessibilityRole="button"
           accessibilityState={
             {
+              "busy": undefined,
+              "checked": undefined,
               "disabled": true,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
             }
           }
           accessible={true}
+          collapsable={false}
+          focusable={true}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
           style={
             [
-              {},
               {
                 "height": 56,
                 "position": "relative",
               },
               undefined,
               {},
-              {},
             ]
           }
         >
           <View
+            disabled={true}
             style={
               [
                 {},
                 {
-                  "backgroundColor": "#2e2e2e",
+                  "backgroundColor": "#9a9a9a",
                   "borderRadius": 8,
                   "bottom": -5,
                   "height": "100%",
@@ -604,9 +626,7 @@ exports[`screens/UserRegisterScreen 렌더링 되었을 때 스냅샷이 일치�
                   "position": "absolute",
                   "width": "100%",
                 },
-                {
-                  "backgroundColor": "#9a9a9a",
-                },
+                undefined,
                 {},
                 {},
               ]
@@ -614,6 +634,8 @@ exports[`screens/UserRegisterScreen 렌더링 되었을 때 스냅샷이 일치�
           />
           <View
             collapsable={false}
+            color="$brand"
+            disabled={true}
             style={
               {
                 "alignItems": "center",
@@ -696,6 +718,7 @@ exports[`screens/UserRegisterScreen 렌더링 되었을 때 스냅샷이 일치�
           >
             <View
               collapsable={false}
+              isLightBackground={true}
               style={
                 {
                   "backgroundColor": "#000000",

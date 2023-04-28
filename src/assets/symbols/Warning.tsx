@@ -16,7 +16,7 @@ export function Warning(props: SvgProps): JSX.Element {
         <Path
           d="M25.299 9.25l15.589 27a1.5 1.5 0 01-1.3 2.25H8.413a1.5 1.5 0 01-1.3-2.25l15.589-27c.577-1 2.02-1 2.598 0z"
           fill={colors.$red}
-          stroke={colors.$text_primary}
+          stroke={colors.$border}
           strokeWidth={3}
         />
         <Path

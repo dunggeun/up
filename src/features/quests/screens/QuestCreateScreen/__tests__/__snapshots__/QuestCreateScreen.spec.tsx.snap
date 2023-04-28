@@ -21,32 +21,34 @@ exports[`screens/QuestCreateScreen 렌더링 되었을 때 스냅샷이 일치�
   }
 >
   <View
+    onLayout={[Function]}
     style={
       [
+        [
+          undefined,
+          {
+            "flex": 1,
+          },
+        ],
         {
-          "alignSelf": "center",
-          "backgroundColor": "#ffffff",
-          "flex": 1,
-          "marginHorizontal": "auto",
-          "maxWidth": 600,
-          "paddingHorizontal": 16,
-          "width": "100%",
+          "paddingBottom": 0,
         },
-        undefined,
-        {},
       ]
     }
   >
     <View
       style={
         [
-          {},
           {
-            "marginHorizontal": -16,
-            "zIndex": 3,
+            "alignSelf": "center",
+            "backgroundColor": "#ffffff",
+            "flex": 1,
+            "marginHorizontal": "auto",
+            "maxWidth": 600,
+            "paddingHorizontal": 16,
+            "width": "100%",
           },
           undefined,
-          {},
           {},
         ]
       }
@@ -56,13 +58,8 @@ exports[`screens/QuestCreateScreen 렌더링 되었을 때 스냅샷이 일치�
           [
             {},
             {
-              "alignItems": "center",
-              "backgroundColor": "#ffffff",
-              "flexDirection": "row",
-              "height": 56,
-              "justifyContent": "space-between",
-              "paddingHorizontal": 16,
-              "position": "relative",
+              "marginHorizontal": -16,
+              "zIndex": 3,
             },
             undefined,
             {},
@@ -73,155 +70,15 @@ exports[`screens/QuestCreateScreen 렌더링 되었을 때 스냅샷이 일치�
         <View
           style={
             [
-              {
-                "flex": 1,
-              },
-              {
-                "bottom": 0,
-                "elevation": 3,
-                "height": 16,
-                "left": 0,
-                "marginBottom": -16,
-                "position": "absolute",
-                "right": 0,
-                "zIndex": 3,
-              },
-              undefined,
-              {},
-              {},
-            ]
-          }
-        >
-          <RNSVGSvgView
-            align="none"
-            bbHeight="100%"
-            bbWidth="100%"
-            focusable={false}
-            meetOrSlice={0}
-            minX={0}
-            minY={0}
-            style={
-              [
-                {
-                  "backgroundColor": "transparent",
-                  "borderWidth": 0,
-                },
-                {
-                  "flex": 0,
-                  "height": "100%",
-                  "width": "100%",
-                },
-              ]
-            }
-            vbHeight={100}
-            vbWidth={100}
-          >
-            <RNSVGGroup
-              fill={
-                {
-                  "payload": 4278190080,
-                  "type": 0,
-                }
-              }
-            >
-              <RNSVGDefs>
-                <RNSVGLinearGradient
-                  gradient={
-                    [
-                      0,
-                      -1,
-                      1,
-                      16777215,
-                    ]
-                  }
-                  gradientTransform={
-                    [
-                      6.123233995736766e-17,
-                      1,
-                      -1,
-                      6.123233995736766e-17,
-                      0,
-                      0,
-                    ]
-                  }
-                  gradientUnits={1}
-                  name="g"
-                  x1="0"
-                  x2="100"
-                  y1="0"
-                  y2="0"
-                />
-              </RNSVGDefs>
-              <RNSVGRect
-                fill={
-                  {
-                    "brushRef": "g",
-                    "type": 1,
-                  }
-                }
-                height="100%"
-                propList={
-                  [
-                    "fill",
-                  ]
-                }
-                width="100%"
-                x="0"
-                y="0"
-              />
-            </RNSVGGroup>
-          </RNSVGSvgView>
-        </View>
-        <View
-          style={
-            [
               {},
               {
-                "height": 30,
-                "width": 30,
-              },
-              undefined,
-              {},
-              {},
-            ]
-          }
-        />
-        <Text
-          accessibilityHint="제목"
-          accessibilityLabel="비어있음"
-          accessibilityRole="header"
-          style={
-            [
-              {
-                "fontSize": 48,
-                "fontWeight": "bold",
-                "marginVertical": 26.56,
-              },
-              [
-                {
-                  "fontFamily": "BMJUA",
-                  "fontSize": 24,
-                  "marginVertical": 0,
-                  "paddingBottom": 4,
-                },
-                {
-                  "fontWeight": "normal",
-                },
-                undefined,
-                {
-                  "color": "#2e2e2e",
-                },
-              ],
-            ]
-          }
-        />
-        <View
-          style={
-            [
-              {},
-              {
-                "height": 30,
-                "width": 30,
+                "alignItems": "center",
+                "backgroundColor": "#ffffff",
+                "flexDirection": "row",
+                "height": 56,
+                "justifyContent": "space-between",
+                "paddingHorizontal": 16,
+                "position": "relative",
               },
               undefined,
               {},
@@ -230,13 +87,526 @@ exports[`screens/QuestCreateScreen 렌더링 되었을 때 스냅샷이 일치�
           }
         >
           <View
-            accessibilityHint="닫기"
-            accessibilityLabel="닫기"
+            style={
+              [
+                {
+                  "flex": 1,
+                },
+                {
+                  "bottom": 0,
+                  "elevation": 3,
+                  "height": 16,
+                  "left": 0,
+                  "marginBottom": -16,
+                  "position": "absolute",
+                  "right": 0,
+                  "zIndex": 3,
+                },
+                undefined,
+                {},
+                {},
+              ]
+            }
+          >
+            <RNSVGSvgView
+              align="none"
+              bbHeight="100%"
+              bbWidth="100%"
+              focusable={false}
+              meetOrSlice={0}
+              minX={0}
+              minY={0}
+              style={
+                [
+                  {
+                    "backgroundColor": "transparent",
+                    "borderWidth": 0,
+                  },
+                  {
+                    "flex": 0,
+                    "height": "100%",
+                    "width": "100%",
+                  },
+                ]
+              }
+              vbHeight={100}
+              vbWidth={100}
+            >
+              <RNSVGGroup
+                fill={
+                  {
+                    "payload": 4278190080,
+                    "type": 0,
+                  }
+                }
+              >
+                <RNSVGDefs>
+                  <RNSVGLinearGradient
+                    gradient={
+                      [
+                        0,
+                        -1,
+                        1,
+                        16777215,
+                      ]
+                    }
+                    gradientTransform={
+                      [
+                        6.123233995736766e-17,
+                        1,
+                        -1,
+                        6.123233995736766e-17,
+                        0,
+                        0,
+                      ]
+                    }
+                    gradientUnits={1}
+                    name="g"
+                    x1="0"
+                    x2="100"
+                    y1="0"
+                    y2="0"
+                  />
+                </RNSVGDefs>
+                <RNSVGRect
+                  fill={
+                    {
+                      "brushRef": "g",
+                      "type": 1,
+                    }
+                  }
+                  height="100%"
+                  propList={
+                    [
+                      "fill",
+                    ]
+                  }
+                  width="100%"
+                  x="0"
+                  y="0"
+                />
+              </RNSVGGroup>
+            </RNSVGSvgView>
+          </View>
+          <View
+            style={
+              [
+                {},
+                {
+                  "height": 30,
+                  "width": 30,
+                },
+                undefined,
+                {},
+                {},
+              ]
+            }
+          />
+          <Text
+            accessibilityHint="제목"
+            accessibilityLabel="비어있음"
+            accessibilityRole="header"
+            style={
+              [
+                {
+                  "fontSize": 48,
+                  "fontWeight": "bold",
+                  "marginVertical": 26.56,
+                },
+                [
+                  {
+                    "fontFamily": "BMJUA",
+                    "fontSize": 24,
+                    "marginVertical": 0,
+                    "paddingBottom": 4,
+                  },
+                  {
+                    "fontWeight": "normal",
+                  },
+                  undefined,
+                  {
+                    "color": "#2e2e2e",
+                  },
+                ],
+              ]
+            }
+          />
+          <View
+            style={
+              [
+                {},
+                {
+                  "height": 30,
+                  "width": 30,
+                },
+                undefined,
+                {},
+                {},
+              ]
+            }
+          >
+            <View
+              accessibilityHint="닫기"
+              accessibilityLabel="닫기"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              hitSlop={5}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              showCursor={true}
+              style={
+                [
+                  {},
+                  {
+                    "alignItems": "center",
+                    "height": "100%",
+                    "justifyContent": "center",
+                    "width": "100%",
+                  },
+                  undefined,
+                  {},
+                  {},
+                ]
+              }
+            >
+              <RNSVGSvgView
+                align="xMidYMid"
+                bbHeight="24"
+                bbWidth="24"
+                fill="none"
+                focusable={false}
+                height={24}
+                meetOrSlice={0}
+                minX={0}
+                minY={0}
+                style={
+                  [
+                    {
+                      "backgroundColor": "transparent",
+                      "borderWidth": 0,
+                    },
+                    {
+                      "flex": 0,
+                      "height": 24,
+                      "width": 24,
+                    },
+                  ]
+                }
+                vbHeight={24}
+                vbWidth={24}
+                width={24}
+              >
+                <RNSVGGroup
+                  fill={null}
+                  propList={
+                    [
+                      "fill",
+                    ]
+                  }
+                >
+                  <RNSVGPath
+                    d="M7 17l5-5 5 5M17 7l-5 5-5-5"
+                    fill={
+                      {
+                        "payload": 4278190080,
+                        "type": 0,
+                      }
+                    }
+                    propList={
+                      [
+                        "stroke",
+                        "strokeWidth",
+                        "strokeLinecap",
+                      ]
+                    }
+                    stroke={
+                      {
+                        "payload": 4281216558,
+                        "type": 0,
+                      }
+                    }
+                    strokeLinecap={1}
+                    strokeWidth="2"
+                  />
+                </RNSVGGroup>
+              </RNSVGSvgView>
+            </View>
+          </View>
+        </View>
+      </View>
+      <View
+        collapsable={false}
+        style={
+          {
+            "flex": 1,
+            "opacity": 1,
+          }
+        }
+      >
+        <RCTScrollView
+          collapsable={false}
+          onMoveShouldSetResponderCapture={[Function]}
+          onStartShouldSetResponderCapture={[Function]}
+          scrollEventThrottle={0.0001}
+          style={
+            {
+              "flex": 1,
+              "marginHorizontal": -16,
+              "paddingHorizontal": 16,
+            }
+          }
+        >
+          <View>
+            <View
+              style={
+                [
+                  {},
+                  {
+                    "flex": 1,
+                    "gap": 16,
+                  },
+                  undefined,
+                  {},
+                  {},
+                ]
+              }
+            >
+              <View
+                style={
+                  [
+                    {},
+                    {
+                      "paddingVertical": 16,
+                      "width": "100%",
+                    },
+                    undefined,
+                    {},
+                    {},
+                  ]
+                }
+              >
+                <Text
+                  accessibilityRole="header"
+                  style={
+                    [
+                      {
+                        "fontSize": 64,
+                        "fontWeight": "bold",
+                        "marginVertical": 21.44,
+                      },
+                      [
+                        {
+                          "color": "#2e2e2e",
+                          "fontFamily": "BMJUA",
+                          "fontSize": 32,
+                          "marginVertical": 0,
+                          "paddingBottom": 4,
+                        },
+                        {
+                          "fontWeight": "normal",
+                        },
+                        undefined,
+                        {},
+                      ],
+                    ]
+                  }
+                >
+                  새로운 퀘스트 제목을
+입력해주세요
+                </Text>
+              </View>
+              <View
+                style={
+                  [
+                    {},
+                    {
+                      "flex": 1,
+                      "gap": 16,
+                      "position": "relative",
+                    },
+                    undefined,
+                    {},
+                    {},
+                  ]
+                }
+              >
+                <TextInput
+                  onChangeText={[Function]}
+                  placeholder="이름을 입력해주세요"
+                  placeholderTextColor="#cccccc"
+                  style={
+                    [
+                      {
+                        "fontFamily": "BMJUA",
+                      },
+                      {
+                        "borderColor": "#2e2e2e",
+                        "borderRadius": 32,
+                        "borderWidth": 2,
+                        "color": "#2e2e2e",
+                        "fontSize": 24,
+                        "paddingHorizontal": 16,
+                        "paddingVertical": 12,
+                      },
+                      undefined,
+                      {},
+                      {},
+                    ]
+                  }
+                />
+              </View>
+            </View>
+          </View>
+        </RCTScrollView>
+        <View
+          style={
+            [
+              {},
+              {
+                "gap": 16,
+                "paddingBottom": 16,
+                "position": "relative",
+              },
+              undefined,
+              {},
+              {},
+            ]
+          }
+          withPadding={true}
+        >
+          <View
+            style={
+              [
+                {
+                  "flex": 1,
+                },
+                {
+                  "elevation": 3,
+                  "height": 16,
+                  "left": 0,
+                  "marginTop": -16,
+                  "position": "absolute",
+                  "right": 0,
+                  "zIndex": 3,
+                },
+                undefined,
+                {},
+                {},
+              ]
+            }
+          >
+            <RNSVGSvgView
+              align="none"
+              bbHeight="100%"
+              bbWidth="100%"
+              focusable={false}
+              meetOrSlice={0}
+              minX={0}
+              minY={0}
+              style={
+                [
+                  {
+                    "backgroundColor": "transparent",
+                    "borderWidth": 0,
+                  },
+                  {
+                    "flex": 0,
+                    "height": "100%",
+                    "width": "100%",
+                  },
+                ]
+              }
+              vbHeight={100}
+              vbWidth={100}
+            >
+              <RNSVGGroup
+                fill={
+                  {
+                    "payload": 4278190080,
+                    "type": 0,
+                  }
+                }
+              >
+                <RNSVGDefs>
+                  <RNSVGLinearGradient
+                    gradient={
+                      [
+                        0,
+                        16777215,
+                        1,
+                        -1,
+                      ]
+                    }
+                    gradientTransform={
+                      [
+                        6.123233995736766e-17,
+                        1,
+                        -1,
+                        6.123233995736766e-17,
+                        0,
+                        0,
+                      ]
+                    }
+                    gradientUnits={1}
+                    name="g"
+                    x1="0"
+                    x2="100"
+                    y1="0"
+                    y2="0"
+                  />
+                </RNSVGDefs>
+                <RNSVGRect
+                  fill={
+                    {
+                      "brushRef": "g",
+                      "type": 1,
+                    }
+                  }
+                  height="100%"
+                  propList={
+                    [
+                      "fill",
+                    ]
+                  }
+                  width="100%"
+                  x="0"
+                  y="0"
+                />
+              </RNSVGGroup>
+            </RNSVGSvgView>
+          </View>
+          <View
+            accessibilityRole="button"
             accessibilityState={
               {
                 "busy": undefined,
                 "checked": undefined,
-                "disabled": undefined,
+                "disabled": true,
                 "expanded": undefined,
                 "selected": undefined,
               }
@@ -252,7 +622,6 @@ exports[`screens/QuestCreateScreen 렌더링 되었을 때 스냅샷이 일치�
             accessible={true}
             collapsable={false}
             focusable={true}
-            hitSlop={5}
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -262,399 +631,29 @@ exports[`screens/QuestCreateScreen 렌더링 되었을 때 스냅샷이 일치�
             onResponderTerminate={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
-            showCursor={true}
             style={
               [
-                {},
                 {
-                  "alignItems": "center",
-                  "height": "100%",
-                  "justifyContent": "center",
-                  "width": "100%",
+                  "height": 56,
+                  "position": "relative",
                 },
                 undefined,
                 {},
-                {},
               ]
-            }
-          >
-            <RNSVGSvgView
-              align="xMidYMid"
-              bbHeight="24"
-              bbWidth="24"
-              fill="none"
-              focusable={false}
-              height={24}
-              meetOrSlice={0}
-              minX={0}
-              minY={0}
-              style={
-                [
-                  {
-                    "backgroundColor": "transparent",
-                    "borderWidth": 0,
-                  },
-                  {
-                    "flex": 0,
-                    "height": 24,
-                    "width": 24,
-                  },
-                ]
-              }
-              vbHeight={24}
-              vbWidth={24}
-              width={24}
-            >
-              <RNSVGGroup
-                fill={null}
-                propList={
-                  [
-                    "fill",
-                  ]
-                }
-              >
-                <RNSVGPath
-                  d="M7 17l5-5 5 5M17 7l-5 5-5-5"
-                  fill={
-                    {
-                      "payload": 4278190080,
-                      "type": 0,
-                    }
-                  }
-                  propList={
-                    [
-                      "stroke",
-                      "strokeWidth",
-                      "strokeLinecap",
-                    ]
-                  }
-                  stroke={
-                    {
-                      "payload": 4281216558,
-                      "type": 0,
-                    }
-                  }
-                  strokeLinecap={1}
-                  strokeWidth="2"
-                />
-              </RNSVGGroup>
-            </RNSVGSvgView>
-          </View>
-        </View>
-      </View>
-    </View>
-    <View
-      collapsable={false}
-      style={
-        {
-          "flex": 1,
-          "opacity": 1,
-        }
-      }
-    >
-      <RCTScrollView
-        collapsable={false}
-        onMoveShouldSetResponderCapture={[Function]}
-        onStartShouldSetResponderCapture={[Function]}
-        scrollEventThrottle={0.0001}
-        style={
-          {
-            "flex": 1,
-            "marginHorizontal": -16,
-            "paddingHorizontal": 16,
-          }
-        }
-      >
-        <View>
-          <View
-            style={
-              [
-                {},
-                {
-                  "flex": 1,
-                  "gap": 16,
-                },
-                undefined,
-                {},
-                {},
-              ]
-            }
-          >
-            <View
-              style={
-                [
-                  {},
-                  {
-                    "paddingVertical": 16,
-                    "width": "100%",
-                  },
-                  undefined,
-                  {},
-                  {},
-                ]
-              }
-            >
-              <Text
-                accessibilityRole="header"
-                style={
-                  [
-                    {
-                      "fontSize": 64,
-                      "fontWeight": "bold",
-                      "marginVertical": 21.44,
-                    },
-                    [
-                      {
-                        "color": "#2e2e2e",
-                        "fontFamily": "BMJUA",
-                        "fontSize": 32,
-                        "marginVertical": 0,
-                        "paddingBottom": 4,
-                      },
-                      {
-                        "fontWeight": "normal",
-                      },
-                      undefined,
-                      {},
-                    ],
-                  ]
-                }
-              >
-                새로운 퀘스트 제목을
-입력해주세요
-              </Text>
-            </View>
-            <View
-              style={
-                [
-                  {},
-                  {
-                    "flex": 1,
-                    "gap": 16,
-                    "position": "relative",
-                  },
-                  undefined,
-                  {},
-                  {},
-                ]
-              }
-            >
-              <TextInput
-                onChangeText={[Function]}
-                placeholder="이름을 입력해주세요"
-                placeholderTextColor="#cccccc"
-                style={
-                  [
-                    {
-                      "fontFamily": "BMJUA",
-                    },
-                    {
-                      "borderColor": "#2e2e2e",
-                      "borderRadius": 32,
-                      "borderWidth": 2,
-                      "color": "#2e2e2e",
-                      "fontSize": 24,
-                      "paddingHorizontal": 16,
-                      "paddingVertical": 12,
-                    },
-                    undefined,
-                    {},
-                    {},
-                  ]
-                }
-              />
-            </View>
-          </View>
-        </View>
-      </RCTScrollView>
-      <View
-        style={
-          [
-            {},
-            {
-              "gap": 16,
-              "paddingBottom": 16,
-              "position": "relative",
-            },
-            undefined,
-            {},
-            {},
-          ]
-        }
-        withPadding={true}
-      >
-        <View
-          style={
-            [
-              {
-                "flex": 1,
-              },
-              {
-                "elevation": 3,
-                "height": 16,
-                "left": 0,
-                "marginTop": -16,
-                "position": "absolute",
-                "right": 0,
-                "zIndex": 3,
-              },
-              undefined,
-              {},
-              {},
-            ]
-          }
-        >
-          <RNSVGSvgView
-            align="none"
-            bbHeight="100%"
-            bbWidth="100%"
-            focusable={false}
-            meetOrSlice={0}
-            minX={0}
-            minY={0}
-            style={
-              [
-                {
-                  "backgroundColor": "transparent",
-                  "borderWidth": 0,
-                },
-                {
-                  "flex": 0,
-                  "height": "100%",
-                  "width": "100%",
-                },
-              ]
-            }
-            vbHeight={100}
-            vbWidth={100}
-          >
-            <RNSVGGroup
-              fill={
-                {
-                  "payload": 4278190080,
-                  "type": 0,
-                }
-              }
-            >
-              <RNSVGDefs>
-                <RNSVGLinearGradient
-                  gradient={
-                    [
-                      0,
-                      16777215,
-                      1,
-                      -1,
-                    ]
-                  }
-                  gradientTransform={
-                    [
-                      6.123233995736766e-17,
-                      1,
-                      -1,
-                      6.123233995736766e-17,
-                      0,
-                      0,
-                    ]
-                  }
-                  gradientUnits={1}
-                  name="g"
-                  x1="0"
-                  x2="100"
-                  y1="0"
-                  y2="0"
-                />
-              </RNSVGDefs>
-              <RNSVGRect
-                fill={
-                  {
-                    "brushRef": "g",
-                    "type": 1,
-                  }
-                }
-                height="100%"
-                propList={
-                  [
-                    "fill",
-                  ]
-                }
-                width="100%"
-                x="0"
-                y="0"
-              />
-            </RNSVGGroup>
-          </RNSVGSvgView>
-        </View>
-        <View
-          accessibilityRole="button"
-          accessibilityState={
-            {
-              "disabled": true,
-            }
-          }
-          accessible={true}
-          style={
-            [
-              {},
-              {
-                "height": 56,
-                "position": "relative",
-              },
-              undefined,
-              {},
-              {},
-            ]
-          }
-        >
-          <View
-            style={
-              [
-                {},
-                {
-                  "backgroundColor": "#2e2e2e",
-                  "borderRadius": 8,
-                  "bottom": -5,
-                  "height": "100%",
-                  "left": 0,
-                  "position": "absolute",
-                  "width": "100%",
-                },
-                {
-                  "backgroundColor": "#9a9a9a",
-                },
-                {},
-                {},
-              ]
-            }
-          />
-          <View
-            collapsable={false}
-            style={
-              {
-                "alignItems": "center",
-                "backgroundColor": "#A4D4FA",
-                "borderColor": "#9a9a9a",
-                "borderRadius": 8,
-                "borderWidth": 2,
-                "display": "flex",
-                "flexDirection": "row",
-                "height": "100%",
-                "justifyContent": "space-between",
-                "marginTop": 0,
-                "paddingHorizontal": 16,
-                "width": "100%",
-              }
             }
           >
             <View
               disabled={true}
-              hasAdornment={false}
               style={
                 [
                   {},
                   {
+                    "backgroundColor": "#9a9a9a",
+                    "borderRadius": 8,
+                    "bottom": -5,
                     "height": "100%",
-                    "justifyContent": "center",
-                    "opacity": 0.5,
+                    "left": 0,
+                    "position": "absolute",
                     "width": "100%",
                   },
                   undefined,
@@ -662,22 +661,39 @@ exports[`screens/QuestCreateScreen 렌더링 되었을 때 스냅샷이 일치�
                   {},
                 ]
               }
+            />
+            <View
+              collapsable={false}
+              color="$blue"
+              disabled={true}
+              style={
+                {
+                  "alignItems": "center",
+                  "backgroundColor": "#A4D4FA",
+                  "borderColor": "#9a9a9a",
+                  "borderRadius": 8,
+                  "borderWidth": 2,
+                  "display": "flex",
+                  "flexDirection": "row",
+                  "height": "100%",
+                  "justifyContent": "space-between",
+                  "marginTop": 0,
+                  "paddingHorizontal": 16,
+                  "width": "100%",
+                }
+              }
             >
-              <Text
-                isLightBackground={true}
+              <View
+                disabled={true}
+                hasAdornment={false}
                 style={
                   [
+                    {},
                     {
-                      "fontFamily": "BMJUA",
-                      "fontSize": 16,
-                      "paddingBottom": 4,
-                    },
-                    {
-                      "color": "#2e2e2e",
-                      "fontSize": 24,
-                      "marginVertical": 0,
-                      "paddingBottom": 4,
-                      "textAlign": "center",
+                      "height": "100%",
+                      "justifyContent": "center",
+                      "opacity": 0.5,
+                      "width": "100%",
                     },
                     undefined,
                     {},
@@ -685,44 +701,68 @@ exports[`screens/QuestCreateScreen 렌더링 되었을 때 스냅샷이 일치�
                   ]
                 }
               >
-                다음으로
-              </Text>
+                <Text
+                  isLightBackground={true}
+                  style={
+                    [
+                      {
+                        "fontFamily": "BMJUA",
+                        "fontSize": 16,
+                        "paddingBottom": 4,
+                      },
+                      {
+                        "color": "#2e2e2e",
+                        "fontSize": 24,
+                        "marginVertical": 0,
+                        "paddingBottom": 4,
+                        "textAlign": "center",
+                      },
+                      undefined,
+                      {},
+                      {},
+                    ]
+                  }
+                >
+                  다음으로
+                </Text>
+              </View>
             </View>
-          </View>
-          <View
-            style={
-              [
-                {},
-                {
-                  "borderRadius": 8,
-                  "bottom": -5,
-                  "left": 0,
-                  "overflow": "hidden",
-                  "position": "absolute",
-                  "right": 0,
-                  "top": 0,
-                },
-                undefined,
-                {},
-                {},
-              ]
-            }
-          >
             <View
-              collapsable={false}
               style={
-                {
-                  "backgroundColor": "#000000",
-                  "borderRadius": 8,
-                  "height": "100%",
-                  "left": 0,
-                  "marginTop": 0,
-                  "opacity": 0.2,
-                  "position": "absolute",
-                  "width": "0%",
-                }
+                [
+                  {},
+                  {
+                    "borderRadius": 8,
+                    "bottom": -5,
+                    "left": 0,
+                    "overflow": "hidden",
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                  },
+                  undefined,
+                  {},
+                  {},
+                ]
               }
-            />
+            >
+              <View
+                collapsable={false}
+                isLightBackground={true}
+                style={
+                  {
+                    "backgroundColor": "#000000",
+                    "borderRadius": 8,
+                    "height": "100%",
+                    "left": 0,
+                    "marginTop": 0,
+                    "opacity": 0.2,
+                    "position": "absolute",
+                    "width": "0%",
+                  }
+                }
+              />
+            </View>
           </View>
         </View>
       </View>

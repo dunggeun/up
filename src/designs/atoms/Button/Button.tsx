@@ -1,24 +1,29 @@
-// eslint-disable-next-line eslint-comments/disable-enable-pair
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import React, {
   forwardRef,
+  useRef,
   useMemo,
   type PropsWithChildren,
   type ReactNode,
   type ForwardedRef,
 } from 'react';
 import {
+  Pressable,
   Animated,
   type View as RNView,
   type ViewStyle,
   type ViewProps,
 } from 'react-native';
-import { styled, useSx, useDripsyTheme, View, Text } from 'dripsy';
+import { styled, useDripsyTheme, View, Text } from 'dripsy';
 import Color from 'color';
+import { triggerHaptic } from 'src/utils';
 import { presets } from 'src/themes';
 import { PRESSABLE_DEPTH } from 'src/constants';
-import { useAnimatedStyleWithGesture } from './hooks';
-import { BUTTON_HEIGHT } from './constants';
+import {
+  BUTTON_HEIGHT,
+  LONG_PRESS_DURATION,
+  LONG_PRESS_DELAY,
+  RELEASE_DURATION,
+} from './constants';
 
 import type { colors } from 'src/themes/colors';
 
@@ -27,6 +32,11 @@ type AccessibilityProps = Pick<
   'accessibilityHint' | 'accessibilityLabel'
 >;
 
+enum ButtonAnimateState {
+  ACTIVE = 1,
+  INACTIVE = 0,
+}
+
 export interface ButtonProps extends AccessibilityProps {
   color: keyof typeof colors;
   disabled?: boolean;
@@ -34,13 +44,13 @@ export interface ButtonProps extends AccessibilityProps {
   disableLongPress?: boolean;
   style?: ViewStyle;
   containerStyle?: ViewStyle;
-  leftAdornment?: React.ReactElement;
-  rightAdornment?: React.ReactElement;
+  leftAdornment?: React.ReactElement | null;
+  rightAdornment?: React.ReactElement | null;
   onPress?: () => void;
   onLongPress?: () => void;
 }
 
-const Container = styled(View)({
+const Container = styled(Pressable)({
   position: 'relative',
   height: BUTTON_HEIGHT,
 });
@@ -60,9 +70,29 @@ const ContentWrapper = styled(View)(
   }),
 );
 
-const Shadow = styled(View)(presets.buttonShadow());
+const Shadow = styled(View)(({ disabled }: Pick<ButtonProps, 'disabled'>) =>
+  presets.buttonShadow(
+    disabled
+      ? {
+          backgroundColor: '$border_disabled',
+        }
+      : undefined,
+  ),
+);
 
-const DimContainer = styled(View)({
+const Cap = styled(Animated.View)(
+  ({ color, disabled }: Pick<ButtonProps, 'color' | 'disabled'>) =>
+    presets.buttonCap(
+      disabled
+        ? {
+            borderColor: '$border_disabled',
+            backgroundColor: `${color}_disabled`,
+          }
+        : { backgroundColor: color },
+    ),
+);
+
+const DimWrapper = styled(View)({
   position: 'absolute',
   top: 0,
   bottom: -PRESSABLE_DEPTH,
@@ -71,6 +101,17 @@ const DimContainer = styled(View)({
   borderRadius: '$md',
   overflow: 'hidden',
 });
+
+const Dim = styled(Animated.View)(
+  ({ isLightBackground }: { isLightBackground: boolean }) => ({
+    position: 'absolute',
+    left: 0,
+    height: '100%',
+    borderRadius: '$md',
+    backgroundColor: isLightBackground ? '$black' : '$white',
+    opacity: 0.2,
+  }),
+);
 
 const Label = styled(Text, {
   defaultVariant: 'text.h2',
@@ -97,66 +138,104 @@ export const Button = forwardRef(function Button(
   }: PropsWithChildren<ButtonProps>,
   ref: ForwardedRef<RNView>,
 ): JSX.Element {
-  const sx = useSx();
   const dripsyTheme = useDripsyTheme();
-  const {
-    responder,
-    capStyle: animatedCapStyle,
-    dimStyle: animatedDimStyle,
-  } = useAnimatedStyleWithGesture({
-    disableHaptic,
-    disableLongPress,
-    onPress,
-    onLongPress,
-  });
+  const isLongPress = useRef(false);
+  const longPressTimerRef = useRef<NodeJS.Timeout>();
+  const capPosition = useRef(new Animated.Value(0)).current;
+  const dimSize = useRef(new Animated.Value(0)).current;
+  const dimAnimationRef = useRef<Animated.CompositeAnimation | null>();
+
+  const initialize = (): void => {
+    dimAnimationRef.current = null;
+  };
+
+  const reset = (): void => {
+    clearTimeout(longPressTimerRef.current);
+    dimAnimationRef.current?.stop();
+
+    Animated.parallel([
+      Animated.timing(capPosition, {
+        toValue: ButtonAnimateState.INACTIVE,
+        useNativeDriver: false,
+        duration: RELEASE_DURATION,
+      }),
+      Animated.timing(dimSize, {
+        toValue: ButtonAnimateState.INACTIVE,
+        useNativeDriver: false,
+        duration: RELEASE_DURATION,
+      }),
+    ]).start();
+  };
+
+  const applyPressAnimation = (): void => {
+    capPosition.setValue(5);
+  };
+
+  const applyLongPressAnimation = (): void => {
+    const dimAnimation = Animated.timing(dimSize, {
+      toValue: ButtonAnimateState.ACTIVE,
+      useNativeDriver: false,
+      duration: LONG_PRESS_DURATION - LONG_PRESS_DELAY,
+    });
+    dimAnimation.start();
+    dimAnimationRef.current = dimAnimation;
+  };
+
+  const handlePress = (): void => {
+    if (isLongPress.current) return;
+    !disableHaptic && triggerHaptic('impactLight');
+    onPress?.();
+  };
+
+  const handleLongPress = (): void => {
+    if (disableLongPress) return;
+    !disableHaptic && triggerHaptic('rigid');
+    onLongPress?.();
+  };
+
+  const handlePressIn = (): void => {
+    initialize();
+    applyPressAnimation();
+
+    if (disableLongPress) return;
+
+    longPressTimerRef.current = setTimeout(() => {
+      isLongPress.current = true;
+      applyLongPressAnimation();
+    }, LONG_PRESS_DELAY);
+  };
+
+  const handlePressOut = (): void => {
+    reset();
+  };
 
   const isLightBackground = useMemo(
     () => Color(dripsyTheme.theme.colors[color]).isLight(),
     [dripsyTheme, color],
   );
-  const dimColor = isLightBackground ? '$black' : '$white';
-
-  const capStyle = sx(
-    presets.buttonCap({
-      backgroundColor: color,
-    }),
-  );
-
-  const dimStyle = sx({
-    position: 'absolute',
-    left: 0,
-    height: '100%',
-    borderRadius: '$md',
-    backgroundColor: dimColor,
-    opacity: 0.2,
-  });
-
-  const disabledStyle = useMemo(() => {
-    return {
-      cap: sx({
-        borderColor: '$border_disabled',
-        backgroundColor: `${color}_disabled`,
-      }),
-      shadow: sx({ backgroundColor: '$border_disabled' }),
-    };
-  }, [sx, color]);
 
   const renderChildren = (): ReactNode => {
-    const content =
-      typeof children === 'string' ? (
-        <Label isLightBackground={isLightBackground}>{children}</Label>
-      ) : (
-        children
-      );
+    const hasAdornment =
+      leftAdornment !== undefined || rightAdornment !== undefined;
 
     return (
-      <ContentWrapper
-        disabled={disabled}
-        hasAdornment={Boolean(leftAdornment || rightAdornment)}
-      >
-        {content}
+      <ContentWrapper disabled={disabled} hasAdornment={hasAdornment}>
+        {typeof children === 'string' ? (
+          <Label isLightBackground={isLightBackground}>{children}</Label>
+        ) : (
+          children
+        )}
       </ContentWrapper>
     );
+  };
+
+  const animatedCapStyle = { marginTop: capPosition };
+  const animatedDimStyle = {
+    marginTop: capPosition,
+    width: dimSize.interpolate({
+      inputRange: [ButtonAnimateState.INACTIVE, ButtonAnimateState.ACTIVE],
+      outputRange: ['0%', '100%'],
+    }),
   };
 
   return (
@@ -166,26 +245,24 @@ export const Button = forwardRef(function Button(
       accessibilityRole="button"
       accessibilityState={{ disabled }}
       accessible
+      delayLongPress={LONG_PRESS_DURATION}
+      disabled={disabled}
+      onLongPress={handleLongPress}
+      onPress={handlePress}
+      onPressIn={handlePressIn}
+      onPressOut={handlePressOut}
       ref={ref}
       style={containerStyle}
-      {...(disabled ? null : responder.panHandlers)}
     >
-      <Shadow style={disabled ? disabledStyle.shadow : undefined} />
-      <Animated.View
-        style={[
-          capStyle,
-          animatedCapStyle,
-          style,
-          disabled ? disabledStyle.cap : undefined,
-        ]}
-      >
-        {leftAdornment ? leftAdornment : null}
+      <Shadow disabled={disabled} />
+      <Cap color={color} disabled={disabled} style={[style, animatedCapStyle]}>
+        {leftAdornment}
         {renderChildren()}
-        {rightAdornment ? rightAdornment : null}
-      </Animated.View>
-      <DimContainer>
-        <Animated.View style={[dimStyle, animatedDimStyle]} />
-      </DimContainer>
+        {rightAdornment}
+      </Cap>
+      <DimWrapper>
+        <Dim isLightBackground={isLightBackground} style={animatedDimStyle} />
+      </DimWrapper>
     </Container>
   );
 });

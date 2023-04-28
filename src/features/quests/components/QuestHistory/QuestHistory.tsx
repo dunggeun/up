@@ -1,3 +1,5 @@
+// eslint-disable-next-line eslint-comments/disable-enable-pair
+/* eslint-disable react/no-array-index-key */
 import React, { memo, useRef, useEffect } from 'react';
 import { styled, Text, View } from 'dripsy';
 import { Animated } from 'react-native';
@@ -34,7 +36,7 @@ const AnimatedDay = styled(Animated.View)(
     width: DAY_CELL_SIZE,
     height: DAY_CELL_SIZE,
     borderWidth: 2,
-    borderColor: status === 'empty' ? '$text_tertiary' : '$text_primary',
+    borderColor: status === 'empty' ? '$border_secondary' : '$border',
     borderRadius: 4,
     backgroundColor: status === 'active' ? color : 'transparent',
   }),
@@ -106,7 +108,6 @@ export const QuestHistory = memo(function QuestHistory({
         <Text variant="primary">{t('label.weekday_6')}</Text>
       </Header>
       {getArrayForRender().map((daysInWeek, weekIndex) => (
-        // eslint-disable-next-line react/no-array-index-key
         <Week key={weekIndex}>
           {daysInWeek.map((_, dayIndex) => {
             const dayBefore =
@@ -115,7 +116,6 @@ export const QuestHistory = memo(function QuestHistory({
               <Day
                 color={color}
                 delay={(weekIndex + dayIndex) * 100}
-                // eslint-disable-next-line react/no-array-index-key
                 key={dayIndex}
                 status={getStatus(history.includes(dayBefore), dayBefore)}
               />

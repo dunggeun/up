@@ -35,10 +35,10 @@ const presets = {
       height: '100%',
       borderRadius: '$md',
       borderWidth: BORDER_WIDTH,
-      borderColor: '$text_primary',
+      borderColor: '$border',
       backgroundColor: '$white',
       ...style,
-    } as Sx),
+    } as unknown as Sx),
   buttonShadow: (style?: Sx) =>
     ({
       position: 'absolute',
@@ -46,10 +46,10 @@ const presets = {
       bottom: -PRESSABLE_DEPTH,
       width: '100%',
       height: '100%',
-      backgroundColor: '$text_primary',
+      backgroundColor: '$border',
       borderRadius: '$md',
       ...style,
-    } as Sx),
+    } as unknown as Sx),
 } as const;
 
 const themeLight = makeTheme({

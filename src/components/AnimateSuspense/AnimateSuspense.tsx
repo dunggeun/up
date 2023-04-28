@@ -6,7 +6,7 @@ export interface AnimateSuspenseProps {
   fallback?: React.ReactNode;
 }
 
-const AnimateWrapper = styled(MotiView)({ flex: 1 });
+const AnimateWrapper = styled(MotiView)({ flex: 1, backgroundColor: '$white' });
 
 export function AnimateSuspense({
   children,
