@@ -152,6 +152,7 @@ export const Button = forwardRef(function Button(
   const reset = (): void => {
     clearTimeout(longPressTimerRef.current);
     dimAnimationRef.current?.stop();
+    isLongPress.current = false;
 
     Animated.parallel([
       Animated.timing(capPosition, {
