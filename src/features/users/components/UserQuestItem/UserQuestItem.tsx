@@ -35,9 +35,7 @@ export function UserQuestItem({
   animate,
   tagColor,
 }: UserQuestItemProps): JSX.Element {
-  const animatedOpacity = useRef(new Animated.Value(0)).current;
-  const animatedPosition = useRef(new Animated.Value(20)).current;
-  const animatedScale = useRef(new Animated.Value(0.8)).current;
+  const animatedValue = useRef(new Animated.Value(0)).current;
   const { mutate } = useAddAchieve();
 
   const shouldShowBadge = useMemo(() => {
@@ -48,27 +46,13 @@ export function UserQuestItem({
   useEffect(() => {
     if (!animate) return;
     const delay = index * DELAY;
-    Animated.parallel([
-      Animated.timing(animatedOpacity, {
-        toValue: 1,
-        delay,
-        duration: ANIMATION_DURATION,
-        useNativeDriver: USE_NATIVE_DRIVER,
-      }),
-      Animated.timing(animatedPosition, {
-        toValue: 0,
-        delay,
-        duration: ANIMATION_DURATION,
-        useNativeDriver: USE_NATIVE_DRIVER,
-      }),
-      Animated.timing(animatedScale, {
-        toValue: 1,
-        delay,
-        duration: ANIMATION_DURATION,
-        useNativeDriver: USE_NATIVE_DRIVER,
-      }),
-    ]).start();
-  }, [animatedOpacity, animatedPosition, animatedScale, animate, index]);
+    Animated.timing(animatedValue, {
+      toValue: 1,
+      delay,
+      duration: ANIMATION_DURATION,
+      useNativeDriver: USE_NATIVE_DRIVER,
+    }).start();
+  }, [animatedValue, animate, index]);
 
   const handlePress = (): void => {
     const isFinished = data.finished_at;
@@ -108,11 +92,21 @@ export function UserQuestItem({
   return (
     <Animated.View
       style={[
-        { opacity: animatedOpacity },
+        { opacity: animatedValue },
         {
           transform: [
-            { translateY: animatedPosition },
-            { scale: animatedScale },
+            {
+              translateY: animatedValue.interpolate({
+                inputRange: [0, 1],
+                outputRange: [20, 0],
+              }),
+            },
+            {
+              scale: animatedValue.interpolate({
+                inputRange: [0, 1],
+                outputRange: [0.8, 1],
+              }),
+            },
           ],
         },
       ]}
