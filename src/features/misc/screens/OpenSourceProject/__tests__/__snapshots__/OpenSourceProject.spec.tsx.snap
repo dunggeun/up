@@ -489,7 +489,7 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
                   }
                 >
                   <Text
-                    isLightBackground={true}
+                    isLightBackground={false}
                     style={
                       [
                         {
@@ -498,7 +498,7 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
                           "paddingBottom": 4,
                         },
                         {
-                          "color": "#2e2e2e",
+                          "color": "#ffffff",
                           "fontSize": 24,
                           "marginVertical": 0,
                           "paddingBottom": 4,
@@ -535,10 +535,10 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
               >
                 <View
                   collapsable={false}
-                  isLightBackground={true}
+                  isLightBackground={false}
                   style={
                     {
-                      "backgroundColor": "#000000",
+                      "backgroundColor": "#ffffff",
                       "borderRadius": 8,
                       "height": "100%",
                       "left": 0,
