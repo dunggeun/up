@@ -13,7 +13,7 @@ import {
   type ViewStyle,
   type ViewProps,
 } from 'react-native';
-import { styled, useDripsyTheme, View, Text } from 'dripsy';
+import { styled, View, Text } from 'dripsy';
 import { triggerHaptic } from 'src/utils';
 import { presets } from 'src/themes';
 import { isLight } from 'src/themes/utils';
@@ -138,7 +138,6 @@ export const Button = forwardRef(function Button(
   }: PropsWithChildren<ButtonProps>,
   ref: ForwardedRef<RNView>,
 ): JSX.Element {
-  const dripsyTheme = useDripsyTheme();
   const isLongPress = useRef(false);
   const longPressTimerRef = useRef<NodeJS.Timeout>();
   const capPosition = useRef(new Animated.Value(0)).current;
