@@ -1,7 +1,6 @@
-// eslint-disable-next-line eslint-comments/disable-enable-pair
-/* eslint-disable no-console */
 import { createMachine, assign } from 'xstate';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Logger } from 'src/modules/logger';
 import { getExpByLevel } from 'src/modules/app/helpers';
 
 import type { User } from 'src/features/users';
@@ -134,25 +133,25 @@ export const globalMachine = createMachine(
       setUser: assign({ user: (_context, event) => event.data }),
       removeUser: assign({ user: (_context, _event) => null }),
       onIdle: () => {
-        console.log(TAG, 'onIdle');
+        Logger.debug(TAG, 'onIdle');
       },
       onLoading: () => {
-        console.log(TAG, 'onLoading');
+        Logger.debug(TAG, 'onLoading');
       },
       onAuthorized: (_context, event) => {
-        console.log(TAG, 'onAuthorized', event.data);
+        Logger.debug(TAG, 'onAuthorized', event.data);
       },
       onRefreshing: () => {
-        console.log(TAG, 'onRefreshing');
+        Logger.debug(TAG, 'onRefreshing');
       },
       onUpdateUser: (_context, event) => {
-        console.log(TAG, 'onUpdateUser', event.user);
+        Logger.debug(TAG, 'onRefreshing', event.user);
       },
       onCalculating: (_context, event) => {
-        console.log(TAG, 'onCalculating', event.exp);
+        Logger.debug(TAG, 'onCalculating', event.exp);
       },
       onUnauthorized: () => {
-        console.log(TAG, 'onUnauthorized');
+        Logger.debug(TAG, 'onUnauthorized');
       },
     },
     services: {
