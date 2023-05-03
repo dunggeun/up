@@ -1,4 +1,5 @@
 /* eslint-disable eslint-comments/disable-enable-pair */
+/* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 
@@ -8,6 +9,21 @@ import 'react-native-gesture-handler/jestSetup';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 declare const self: any;
+
+Object.defineProperties(self, {
+  _log: {
+    value: console.log,
+    configurable: false,
+  },
+  _warn: {
+    value: console.warn,
+    configurable: false,
+  },
+  _error: {
+    value: console.error,
+    configurable: false,
+  },
+});
 
 const DummyComponent = ({
   children,

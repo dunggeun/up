@@ -10208,7 +10208,7 @@ node-releases@^2.0.8:
   resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-2.0.10.tgz#c311ebae3b6a148c89b1813fd7c4d3c024ef537f"
   integrity sha512-5GFldHPXVG/YZmFzJvKK2zDSzPKhEp0+ZR5SVaoSag9fsL5YgHbUHDfnG5494ISANDcK4KwPXAx2xqVEydmd7w==
 
-node-self@^1.0.1:
+node-self@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/node-self/-/node-self-1.0.2.tgz#ffcdf37765b3380da1e4471ad17b5d898fd97b22"
   integrity sha512-7oanohlazOw8RygP1OPmzAvJTLucwXKoioP4FMrzqnE6xUMM58i8aF18HDU0Hx5oxdsRLbmklieyjdNmvj1jHA==
