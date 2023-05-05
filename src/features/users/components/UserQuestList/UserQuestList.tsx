@@ -52,7 +52,13 @@ const EmptyView = styled(H3, {
   textAlign: 'center',
 });
 
-const ListEmptyComponent = <EmptyView>{t('message.empty_quest')}</EmptyView>;
+const ActivateListEmptyComponent = (
+  <EmptyView>{t('message.empty_activate_quest')}</EmptyView>
+);
+const FinishedListEmptyComponent = (
+  <EmptyView>{t('message.empty_finished_quest')}</EmptyView>
+);
+
 const FILTER_ITEM = [
   { value: 'activate', label: t('label.activate_quests') },
   { value: 'finished', label: t('label.finished_quests') },
@@ -127,7 +133,11 @@ export function UserQuestList({ onCreate }: UserQuestListProps): JSX.Element {
       </ListTitleArea>
       <FlatList
         ItemSeparatorComponent={ItemSeparatorComponent}
-        ListEmptyComponent={ListEmptyComponent}
+        ListEmptyComponent={
+          filterValue === 'activate'
+            ? ActivateListEmptyComponent
+            : FinishedListEmptyComponent
+        }
         ListFooterComponent={View}
         ListFooterComponentStyle={{ height: bottomInset }}
         ListHeaderComponent={
