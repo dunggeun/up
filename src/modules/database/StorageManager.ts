@@ -84,6 +84,10 @@ export class StorageManager {
     );
   }
 
+  getAchieveCount(): Promise<number> {
+    return this.database.count('achieve');
+  }
+
   addAchieve(data: Achieve): Promise<void> {
     return this.database.insert('achieve', data);
   }

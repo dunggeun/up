@@ -36,6 +36,8 @@ const buttonContainerStyle = {
   height: 45,
 };
 
+const TOTAL_BADGES = AppHelpers.getBadges();
+
 export const BadgeSection = memo(function BadgeSection({
   unlockedBadges,
   onPressBadge,
@@ -50,9 +52,8 @@ export const BadgeSection = memo(function BadgeSection({
   const getBadges = (): Badge[][] => {
     let row: Badge[] = [];
     const badges: Badge[][] = [];
-    const totalBadges = AppHelpers.getBadges();
 
-    for (let i = 0; i < totalBadges.length; i++) {
+    for (let i = 0; i < TOTAL_BADGES.length; i++) {
       const currentBadge = AppHelpers.getBadge(i);
       if (i % BADGES_PER_COUNT === 0) {
         row = [currentBadge];
@@ -67,21 +68,22 @@ export const BadgeSection = memo(function BadgeSection({
 
   const fillEmpty = (count: number): JSX.Element[] | null => {
     if (count <= 0) return null;
-    return new Array(count)
-      .fill(null)
-
-      .map((_, index) => (
-        // eslint-disable-next-line react/no-array-index-key
-        <View key={`empty${index}`} sx={buttonContainerStyle} />
-      ));
+    return new Array(count).fill(null).map((_, index) => (
+      // eslint-disable-next-line react/no-array-index-key
+      <View key={`empty${index}`} sx={buttonContainerStyle} />
+    ));
   };
 
   const isUnlocked = (id: number): boolean => {
     return Boolean(id === 0 || unlockedBadges[id]);
   };
 
+  const subTitle = `(${Object.keys(unlockedBadges).length}/${
+    TOTAL_BADGES.length - 1 // 빈 뱃지를 갯수에서 제외하기 위함
+  })`;
+
   return (
-    <Section title={t('label.badge')}>
+    <Section subTitle={subTitle} title={t('label.badge')}>
       <Rows>
         {getBadges().map((badgeRow, index) => (
           // eslint-disable-next-line react/no-array-index-key

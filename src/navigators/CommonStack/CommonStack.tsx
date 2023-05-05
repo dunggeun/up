@@ -1,7 +1,6 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { OpenSourceProjectScreen } from 'src/features/misc';
-import { UserStatusScreen } from 'src/features/users';
 import { SHARED_CONFIG } from 'src/constants';
 
 import type { CommonStackScreenParamList } from './types';
@@ -20,7 +19,6 @@ export function CommonStackNavigator(): JSX.Element {
         component={OpenSourceProjectScreen}
         name="OpenSourceProject"
       />
-      <CommonStack.Screen component={UserStatusScreen} name="UserStatus" />
     </CommonStack.Navigator>
   );
 }

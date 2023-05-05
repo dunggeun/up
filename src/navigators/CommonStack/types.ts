@@ -3,7 +3,6 @@ import type { StackScreenProps } from '@react-navigation/stack';
 // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
 export type CommonStackScreenParamList = {
   OpenSourceProject: undefined;
-  UserStatus: undefined;
 };
 
 export type CommonStackProps<

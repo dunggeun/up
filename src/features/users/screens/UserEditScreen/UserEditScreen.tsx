@@ -1,0 +1,69 @@
+import React, { useCallback, useState } from 'react';
+import { useActor } from '@xstate/react';
+import { CommonLayout, Input, Text } from 'src/designs';
+import { Section } from 'src/components';
+import { useDebounce } from 'src/hooks';
+import { globalMachineService } from 'src/stores/machines';
+import { AppManager } from 'src/modules/app';
+import { t } from 'src/translations';
+import { useUser } from '../../hooks';
+
+import type { User } from '../../types';
+import type { UserStackProps } from 'src/navigators/UserStack/types';
+
+type UserEditScreenProps = UserStackProps<'UserEdit'>;
+
+const EditedToastContent = (
+  <Text variant="primary">{t('message.user_edited')}</Text>
+);
+
+export function UserEditScreen({
+  navigation,
+}: UserEditScreenProps): JSX.Element {
+  const [_, send] = useActor(globalMachineService);
+  const user = useUser();
+  const [userName, setUserName] = useState(user.name);
+
+  const handlePressBackButton = (): void => {
+    navigation.goBack();
+  };
+
+  const handleEditUser = useCallback(
+    (modifyData: Partial<Pick<User, 'name' | 'badge' | 'theme'>>) => {
+      send({ type: 'EDIT_USER', user: modifyData });
+    },
+    [send],
+  );
+
+  const { trigger: lazyEditUser } = useDebounce(
+    (value: Partial<Pick<User, 'theme' | 'name' | 'badge'>>) => {
+      handleEditUser(value);
+      AppManager.showToast(EditedToastContent);
+    },
+    500,
+  );
+
+  const handleChangeUserName = (value: string): void => {
+    lazyEditUser({ name: value });
+    setUserName(value);
+  };
+
+  return (
+    <CommonLayout keyboardAvoiding>
+      <CommonLayout.Header
+        onBackPress={handlePressBackButton}
+        title={t('title.edit_profile')}
+      />
+      <CommonLayout.Body>
+        <Section title={t('label.name')}>
+          <Input
+            onChangeText={handleChangeUserName}
+            placeholder={t('placeholder.enter_name')}
+            value={userName}
+          />
+        </Section>
+      </CommonLayout.Body>
+      <CommonLayout.Footer />
+    </CommonLayout>
+  );
+}

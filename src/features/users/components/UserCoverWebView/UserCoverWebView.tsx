@@ -1,19 +1,19 @@
 import React, { memo } from 'react';
-import { styled, useSx } from 'dripsy';
 // eslint-disable-next-line import/no-named-as-default
 import WebView, { type WebViewMessageEvent } from 'react-native-webview';
-import { t } from 'src/translations';
-import { useRecentAchieves } from 'src/features/quests/hooks';
+import { styled, useSx } from 'dripsy';
+import dayjs from 'dayjs';
 import { getExpByLevel } from 'src/modules/app/helpers';
 import { AppManager } from 'src/modules/app';
 import { Text } from 'src/designs';
+import { t } from 'src/translations';
 import { useUserThemeColor } from '../../hooks';
 import { getPageSource } from './contents';
 
 import type { User } from '../../types';
 import type { CoverGenerateConfig, WebViewMessage } from './types';
 
-interface UserCoverProps {
+interface UserCoverWebViewProps {
   user: User;
   onGenerated?: (dataUrl: string) => void;
 }
@@ -32,15 +32,13 @@ const ErrorToastContent = (
   <Text variant="primary">{t('message.error.common')}</Text>
 );
 
-export const UserCover = memo(function UserCover({
+export const UserCoverWebView = memo(function UserCover({
   user,
   onGenerated,
-}: UserCoverProps): JSX.Element | null {
-  const { data } = useRecentAchieves({ suspense: true });
-  const userColor = useUserThemeColor();
+}: UserCoverWebViewProps): JSX.Element | null {
   const sx = useSx();
+  const userColor = useUserThemeColor();
   const { color } = sx({ color: userColor }) as { color: string };
-  const recentQuestTitle = (data ?? [])[0]?.quest_name ?? '-';
 
   const handleMessage = (event: WebViewMessageEvent): void => {
     try {
@@ -68,7 +66,7 @@ export const UserCover = memo(function UserCover({
             ...user,
             totalExp: getExpByLevel(user.level),
           },
-          recentQuestTitle,
+          date: dayjs().format(t('format.date')),
           labels: {
             recentAchieve: t('template.share_status.recent_achieve'),
           },

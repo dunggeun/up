@@ -1,3 +1,4 @@
+export * from './AnimatedNumber';
 export * from './AnimateSuspense';
 export * from './DetailSection';
 export * from './FadeInView';

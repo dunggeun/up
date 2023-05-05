@@ -11,6 +11,7 @@ import { t } from 'src/translations';
 import { SHARED_CONFIG } from 'src/constants';
 import { MainTabNavigator } from '../MainTab';
 import { CommonStackNavigator } from '../CommonStack';
+import { UserStackNavigator } from '../UserStack';
 import { QuestStackNavigator } from '../QuestStack';
 
 import type { RootStackScreenParamList } from './types';
@@ -32,6 +33,7 @@ export function RootStackNavigator(): JSX.Element | null {
               options={{ animationEnabled: false }}
             />
             <RootStack.Screen component={CommonStackNavigator} name="Common" />
+            <RootStack.Screen component={UserStackNavigator} name="User" />
             <RootStack.Screen
               component={QuestStackNavigator}
               name="Quest"

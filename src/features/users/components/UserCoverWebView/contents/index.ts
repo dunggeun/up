@@ -25,8 +25,8 @@ export const getPageSource = (config: CoverGenerateConfig): string => {
           }
 
           html, body {
-            width: 100%;
-            height: 100%;
+            width: ${IMAGE_SIZE}px;
+            height: ${IMAGE_SIZE}px;
             padding: 0;
             margin: 0;
           }
@@ -88,7 +88,7 @@ export const getPageSource = (config: CoverGenerateConfig): string => {
             text-align: right;
           }
           
-          .canvas > .recent {
+          .canvas > .date {
             display: flex;
             flex: 1;
             flex-direction: column;
@@ -98,16 +98,10 @@ export const getPageSource = (config: CoverGenerateConfig): string => {
             padding-top: 24px;
           }
           
-          .recent > h2 {
+          .date > h2 {
             margin: 0;
             font-size: 40px;
             color: #2e2e2e;
-          }
-          
-          .recent > p {
-            margin: 0;
-            font-size: 36px;
-            color: #777777;
           }
 
         </style>
@@ -133,13 +127,10 @@ export const getPageSource = (config: CoverGenerateConfig): string => {
               (${config.user.currentExp}/${config.user.totalExp})
             </div>
           </div>
-          <div class="recent">
+          <div class="date">
             <h2>
-              ${config.labels.recentAchieve}
+              ${config.date}
             </h2>
-            <p>
-              ${config.recentQuestTitle}
-            </p>
           </div>
         </main>
         <script>

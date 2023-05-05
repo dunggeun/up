@@ -5,7 +5,7 @@ export interface CoverGenerateConfig {
   user: Pick<User, 'name' | 'level' | 'currentExp'> & {
     totalExp: number;
   };
-  recentQuestTitle: string;
+  date: string;
   labels: {
     recentAchieve: string;
   };
