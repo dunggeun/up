@@ -3,7 +3,7 @@ import {
   createStackNavigator,
   TransitionPresets,
 } from '@react-navigation/stack';
-import { AppManager } from 'src/modules';
+import { AppManager } from 'src/modules/app';
 import { useIsAuthorized } from 'src/hooks';
 import { UserRegisterScreen } from 'src/features/users';
 import { LandingScreen } from 'src/features/misc';

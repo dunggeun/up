@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { useActor } from '@xstate/react';
 import { styled, View } from 'dripsy';
 import { CommonLayout, Button, Input, H1 } from 'src/designs';
-import { AppManager } from 'src/modules';
 import * as AppHelpers from 'src/modules/app/helpers';
+import { globalMachineService } from 'src/stores/machines';
 import { t } from 'src/translations';
 
 import type { RootStackProps } from 'src/navigators/RootStack/types';
@@ -17,7 +17,7 @@ const PageTitleArea = styled(View)({
 export function UserRegisterScreen({
   navigation,
 }: UserRegisterScreenProps): JSX.Element {
-  const [_, send] = useActor(AppManager.getInstance().getService());
+  const [_, send] = useActor(globalMachineService);
   const [userName, setUserName] = useState('');
 
   const handlePressBackButton = (): void => {

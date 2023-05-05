@@ -1,16 +1,14 @@
 import { createElement } from 'react';
 import { useActor } from '@xstate/react';
 import { useMutation, type UseMutationResult } from 'react-query';
-import { Text } from 'src/designs';
-import { AppManager } from 'src/modules';
+import { AppManager } from 'src/modules/app';
+import { globalMachineService } from 'src/stores/machines';
+import { queryClient } from 'src/stores/reactQuery';
 import { addAchieve, type AddAchieveResult } from 'src/data';
+import { Text } from 'src/designs';
 import { t } from 'src/translations';
 
 import type { Quest, QuestDetail, AchieveDetail } from '../types';
-
-const manager = AppManager.getInstance();
-const queryClient = manager.getQueryClient();
-const service = manager.getService();
 
 const ErrorToastContent = createElement(Text, null, t('message.error.common'));
 
@@ -20,7 +18,7 @@ export const useAddAchieve = (): UseMutationResult<
   Parameters<typeof addAchieve>[0],
   { previousQuest?: Quest; previousQuests?: Quest[] }
 > => {
-  const [_, send] = useActor(service);
+  const [_, send] = useActor(globalMachineService);
 
   return useMutation(addAchieve, {
     onSuccess: ({ quest, achieve }, { questId }) => {

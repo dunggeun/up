@@ -2,7 +2,7 @@ import React, { useRef, useMemo, useEffect } from 'react';
 import { MotiView } from 'moti';
 import { Animated } from 'react-native';
 import { Button, Tag, Text } from 'src/designs';
-import { AppManager } from 'src/modules';
+import { AppManager } from 'src/modules/app';
 import { useAddAchieve } from 'src/features/quests/hooks';
 import { navigate } from 'src/navigators/helpers';
 import { diffBeforeToday } from 'src/utils';

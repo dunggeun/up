@@ -1,12 +1,12 @@
 import React from 'react';
 import { Platform } from 'react-native';
-import { useActor } from '@xstate/react';
 import { CommonLayout, Text } from 'src/designs';
 import { AnimateSuspense, FadeInView, LoadingIndicator } from 'src/components';
 import { navigate } from 'src/navigators/helpers';
-import { AppManager } from 'src/modules';
+import { AppManager } from 'src/modules/app';
 import { t } from 'src/translations';
 
+import { useUser } from '../../hooks';
 import { UserProfile } from '../../components/UserProfile';
 import { UserQuestList } from '../../components/UserQuestList';
 
@@ -19,8 +19,7 @@ const UnsupportedToastContent = (
 );
 
 export function HomeScreen(_props: HomeScreenProps): JSX.Element | null {
-  const [state] = useActor(AppManager.getInstance().getService());
-  const user = state.context.user;
+  const user = useUser();
 
   const handlePressProfile = (): void => {
     if (Platform.OS === 'ios' || Platform.OS === 'android') {
@@ -33,10 +32,6 @@ export function HomeScreen(_props: HomeScreenProps): JSX.Element | null {
   const handlePressCreateQuest = (): void => {
     navigate('Quest', 'QuestCreate');
   };
-
-  if (!user) {
-    return null;
-  }
 
   return (
     <FadeInView>

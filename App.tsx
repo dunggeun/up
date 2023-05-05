@@ -6,18 +6,16 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { DripsyProvider } from 'dripsy';
-import { AnimateSuspense, Toast } from 'src/components';
+import { queryClient } from 'src/stores/reactQuery';
 import { navigationRef } from 'src/navigators/helpers';
 import { titleFormatter } from 'src/utils';
 import { themeLight } from 'src/themes';
-import { AppManager } from 'src/modules';
+import { AnimateSuspense, Toast } from 'src/components';
 
 // eslint-disable-next-line import/no-named-as-default-member
 const Navigator = React.lazy(() => import('src/navigators'));
 
 const gestureHandlerStyle = { flex: 1 } as const;
-
-const queryClient = AppManager.getInstance().getQueryClient();
 
 function AppProviders<T = unknown>({
   children,

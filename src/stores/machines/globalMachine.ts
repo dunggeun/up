@@ -2,6 +2,8 @@ import { createMachine, assign } from 'xstate';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Logger } from 'src/modules/logger';
 import { getExpByLevel } from 'src/modules/app/helpers';
+import { StorageManager } from 'src/modules/database';
+import { queryClient } from '../reactQuery';
 
 import type { User } from 'src/features/users';
 
@@ -195,7 +197,11 @@ export const globalMachine = createMachine(
         await AsyncStorage.setItem('user', JSON.stringify(modifiedUser));
         return modifiedUser;
       },
-      cleanup: () => AsyncStorage.clear(),
+      cleanup: async () => {
+        queryClient.clear();
+        await StorageManager.getInstance().clear();
+        await AsyncStorage.clear();
+      },
     },
     delays: {
       DEFAULT_TIMEOUT: 3 * 1000,

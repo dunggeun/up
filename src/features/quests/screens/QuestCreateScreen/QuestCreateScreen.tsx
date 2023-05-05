@@ -2,7 +2,7 @@ import React, { useState, useCallback, useLayoutEffect } from 'react';
 import { Share } from 'react-native';
 import { CommonLayout, Text } from 'src/designs';
 import { TransitionGroup } from 'src/components';
-import { AppManager } from 'src/modules';
+import { AppManager } from 'src/modules/app';
 import { useUserThemeColor } from 'src/features/users';
 import { replacePlaceholder } from 'src/utils';
 import { t } from 'src/translations';

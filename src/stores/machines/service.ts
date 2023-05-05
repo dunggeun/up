@@ -1,6 +1,4 @@
-import { interpret, type InterpreterFrom } from 'xstate';
+import { interpret } from 'xstate';
 import { globalMachine } from './globalMachine';
 
-const service = interpret(globalMachine);
-
-export const getService = (): InterpreterFrom<typeof globalMachine> => service;
+export const globalMachineService = interpret(globalMachine);
