@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import { useActor } from '@xstate/react';
-import { CommonLayout, Input, Text } from 'src/designs';
+import { CommonLayout, Input } from 'src/designs';
 import { Section } from 'src/components';
 import { useDebounce } from 'src/hooks';
 import { globalMachineService } from 'src/stores/machines';
@@ -12,10 +12,6 @@ import type { User } from '../../types';
 import type { UserStackProps } from 'src/navigators/UserStack/types';
 
 type UserEditScreenProps = UserStackProps<'UserEdit'>;
-
-const EditedToastContent = (
-  <Text variant="primary">{t('message.user_edited')}</Text>
-);
 
 export function UserEditScreen({
   navigation,
@@ -38,7 +34,7 @@ export function UserEditScreen({
   const { trigger: lazyEditUser } = useDebounce(
     (value: Partial<Pick<User, 'theme' | 'name' | 'badge'>>) => {
       handleEditUser(value);
-      AppManager.showToast(EditedToastContent);
+      AppManager.showToast(t('message.user_edited'));
     },
     500,
   );

@@ -1,6 +1,4 @@
-import { createElement } from 'react';
 import { useMutation, type UseMutationResult } from 'react-query';
-import { Text } from 'src/designs';
 import { AppManager } from 'src/modules/app';
 import { queryClient } from 'src/stores/reactQuery';
 import { updateQuest } from 'src/data';
@@ -12,8 +10,6 @@ interface UseUpdateQuestParams {
   onSuccess?: () => void;
 }
 
-const ErrorToastContent = createElement(Text, null, t('message.error.common'));
-
 export const useUpdateQuest = ({
   onSuccess,
 }: UseUpdateQuestParams): UseMutationResult<
@@ -23,7 +19,7 @@ export const useUpdateQuest = ({
 > => {
   return useMutation(updateQuest, {
     onError: (_error) => {
-      AppManager.showToast(ErrorToastContent);
+      AppManager.showToast(t('message.error.common'));
     },
     onSuccess: (data, { questId }) => {
       const oldQuestDetail = queryClient.getQueryData<QuestDetail>([

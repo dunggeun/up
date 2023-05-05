@@ -1,6 +1,6 @@
 import React, { useState, useCallback, useLayoutEffect } from 'react';
 import { Share } from 'react-native';
-import { CommonLayout, Text } from 'src/designs';
+import { CommonLayout } from 'src/designs';
 import { TransitionGroup } from 'src/components';
 import { AppManager } from 'src/modules/app';
 import { useUserThemeColor } from 'src/features/users';
@@ -15,10 +15,6 @@ import { QuestAccepted } from '../../components/QuestAccepted';
 import type { QuestStackProps } from 'src/navigators/QuestStack/types';
 
 type QuestCreateScreenProps = QuestStackProps<'QuestCreate'>;
-
-const ErrorToastContent = (
-  <Text variant="primary">{t('message.error.common')}</Text>
-);
 
 export function QuestCreateScreen({
   navigation,
@@ -44,7 +40,7 @@ export function QuestCreateScreen({
     Share.share({
       message: replacePlaceholder(t('template.share_new_quest.body'), name),
     }).catch(() => {
-      AppManager.showToast(ErrorToastContent);
+      AppManager.showToast(t('message.error.common'));
     });
   }, [name]);
 

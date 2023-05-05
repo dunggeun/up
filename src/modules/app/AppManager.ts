@@ -1,3 +1,5 @@
+import React from 'react';
+import { Text } from 'src/designs';
 import { ToastManager } from 'src/components/Toast/ToastManager';
 import { delay } from 'src/utils';
 import { APP_MINIMUM_LOADING_DURATION } from 'src/constants';
@@ -36,8 +38,11 @@ export class AppManager {
     return AppManager.instance;
   }
 
-  public static showToast(element: React.ReactNode): void {
-    ToastManager.getInstance().show(element);
+  public static showToast(message: string): void {
+    ToastManager.getInstance().show(
+      // eslint-disable-next-line import/no-named-as-default-member
+      React.createElement(Text, { variant: 'primary' }, message),
+    );
   }
 
   private async prefetchUserData(): Promise<void> {
