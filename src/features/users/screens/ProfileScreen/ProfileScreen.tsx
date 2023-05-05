@@ -73,22 +73,20 @@ export function ProfileScreen(_props: ProfileScreenProps): JSX.Element | null {
       <CommonLayout insetBottom={false}>
         <CommonLayout.Header title={t('title.profile')} />
         <CommonLayout.Body>
-          <Main>
-            <Section title={t('label.name')}>
-              <Input
-                onChangeText={handleChangeUserName}
-                placeholder={t('placeholder.enter_name')}
-                value={userName}
-              />
-            </Section>
-            <BadgeSection
-              onLongPressBadge={handleLongPressBadge}
-              onPressBadge={handlePressBadge}
-              unlockedBadges={user.unlockedBadges}
+          <Section title={t('label.name')}>
+            <Input
+              onChangeText={handleChangeUserName}
+              placeholder={t('placeholder.enter_name')}
+              value={userName}
             />
-            <ThemeSection onPressBadge={handlePressTheme} />
-            <View sx={{ height: bottomInset }} />
-          </Main>
+          </Section>
+          <BadgeSection
+            onLongPressBadge={handleLongPressBadge}
+            onPressBadge={handlePressBadge}
+            unlockedBadges={user.unlockedBadges}
+          />
+          <ThemeSection onPressBadge={handlePressTheme} />
+          <View sx={{ height: bottomInset }} />
         </CommonLayout.Body>
       </CommonLayout>
     </FadeInView>
