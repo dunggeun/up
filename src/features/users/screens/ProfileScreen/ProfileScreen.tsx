@@ -3,7 +3,7 @@ import Share from 'react-native-share';
 import { useActor } from '@xstate/react';
 import { View } from 'dripsy';
 import { Platform } from 'react-native';
-import { Button, CommonLayout, Text } from 'src/designs';
+import { CommonLayout, Button } from 'src/designs';
 import { AnimateSuspense, FadeInView } from 'src/components';
 import { useMainTabBarInset } from 'src/hooks';
 import { globalMachineService } from 'src/stores/machines';
@@ -21,10 +21,6 @@ import type { User } from 'src/features/users';
 import type { MainTabProps } from 'src/navigators/MainTab/types';
 
 type ProfileScreenProps = MainTabProps<'Profile'>;
-
-const UnsupportedToastContent = (
-  <Text variant="primary">{t('message.error.unsupported_platform')}</Text>
-);
 
 export function ProfileScreen(_props: ProfileScreenProps): JSX.Element | null {
   const user = useUser();
@@ -47,7 +43,7 @@ export function ProfileScreen(_props: ProfileScreenProps): JSX.Element | null {
     if (Platform.OS === 'ios' || Platform.OS === 'android') {
       setShareModalVisibility(true);
     } else {
-      AppManager.showToast(UnsupportedToastContent);
+      AppManager.showToast(t('message.error.unsupported_platform'));
     }
   };
 

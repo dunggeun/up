@@ -1,16 +1,12 @@
-import { createElement } from 'react';
 import { useActor } from '@xstate/react';
 import { useMutation, type UseMutationResult } from 'react-query';
 import { AppManager } from 'src/modules/app';
 import { globalMachineService } from 'src/stores/machines';
 import { queryClient } from 'src/stores/reactQuery';
 import { addAchieve, type AddAchieveResult } from 'src/data';
-import { Text } from 'src/designs';
 import { t } from 'src/translations';
 
 import type { Quest, QuestDetail } from '../types';
-
-const ErrorToastContent = createElement(Text, null, t('message.error.common'));
 
 export const useAddAchieve = (): UseMutationResult<
   AddAchieveResult,
@@ -50,7 +46,7 @@ export const useAddAchieve = (): UseMutationResult<
       });
     },
     onError: (_error) => {
-      AppManager.showToast(ErrorToastContent);
+      AppManager.showToast(t('message.error.common'));
     },
   });
 };

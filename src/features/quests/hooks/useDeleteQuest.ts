@@ -1,6 +1,4 @@
-import { createElement } from 'react';
 import { useMutation, type UseMutationResult } from 'react-query';
-import { Text } from 'src/designs';
 import { AppManager } from 'src/modules/app';
 import { queryClient } from 'src/stores/reactQuery';
 import { deleteQuest } from 'src/data';
@@ -11,8 +9,6 @@ import type { Quest } from '../types';
 interface UseDeleteQuestParams {
   onSuccess?: () => void;
 }
-
-const ErrorToastContent = createElement(Text, null, t('message.error.common'));
 
 export const useDeleteQuest = ({
   onSuccess,
@@ -38,7 +34,7 @@ export const useDeleteQuest = ({
       onSuccess?.();
     },
     onError: (_error) => {
-      AppManager.showToast(ErrorToastContent);
+      AppManager.showToast(t('message.error.common'));
     },
   });
 };

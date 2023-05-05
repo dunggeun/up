@@ -5,7 +5,6 @@ import { styled, useSx } from 'dripsy';
 import dayjs from 'dayjs';
 import { getExpByLevel } from 'src/modules/app/helpers';
 import { AppManager } from 'src/modules/app';
-import { Text } from 'src/designs';
 import { t } from 'src/translations';
 import { useUserThemeColor } from '../../hooks';
 import { getPageSource } from './contents';
@@ -28,10 +27,6 @@ const StyledWebView = styled(WebView)({
   height: 1,
 });
 
-const ErrorToastContent = (
-  <Text variant="primary">{t('message.error.common')}</Text>
-);
-
 export const UserCoverWebView = memo(function UserCover({
   user,
   onGenerated,
@@ -49,7 +44,7 @@ export const UserCoverWebView = memo(function UserCover({
         throw new Error(response.data || 'unknown');
       }
     } catch (_error) {
-      AppManager.showToast(ErrorToastContent);
+      AppManager.showToast(t('message.error.common'));
     }
   };
 

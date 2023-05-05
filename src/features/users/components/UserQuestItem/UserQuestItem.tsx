@@ -1,7 +1,7 @@
 import React, { useRef, useMemo, useEffect } from 'react';
 import { MotiView } from 'moti';
 import { Animated } from 'react-native';
-import { Button, Tag, Text } from 'src/designs';
+import { Button, Tag } from 'src/designs';
 import { AppManager } from 'src/modules/app';
 import { useAddAchieve } from 'src/features/quests/hooks';
 import { navigate } from 'src/navigators/helpers';
@@ -21,13 +21,6 @@ export interface UserQuestItemProps {
 
 const ANIMATION_DURATION = 300;
 const DELAY = 80;
-
-const FinishedQuestToastContent = (
-  <Text variant="primary">{t('message.finished_quest')}</Text>
-);
-const AlreadyCompletedToastContent = (
-  <Text variant="primary">{t('message.already_completed')}</Text>
-);
 
 export function UserQuestItem({
   data,
@@ -67,11 +60,11 @@ export function UserQuestItem({
 
     switch (true) {
       case isFinishedQuest:
-        AppManager.showToast(FinishedQuestToastContent);
+        AppManager.showToast(t('message.finished_quest'));
         return;
 
       case alreadyCompletedToday:
-        AppManager.showToast(AlreadyCompletedToastContent);
+        AppManager.showToast(t('message.already_completed'));
         return;
 
       default:
