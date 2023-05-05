@@ -17,8 +17,6 @@ import type { MainTabProps } from 'src/navigators/MainTab/types';
 
 type MenuProps = MainTabProps<'Menu'>;
 
-const Main = styled(View)();
-
 const DeleteTextButton = styled(TouchableOpacity)({
   justifyContent: 'center',
   alignItems: 'center',
@@ -64,24 +62,22 @@ export function MenuScreen(_props: MenuProps): JSX.Element {
       <CommonLayout insetBottom={false}>
         <CommonLayout.Header title={t('title.menu')} />
         <CommonLayout.Body>
-          <Main>
-            <ListItem label={t('label.version')} subLabel={VERSION} />
-            <ListItem
-              label={t('label.send_feedback')}
-              onPress={handlePressSendFeedback}
-            />
-            <ListItem label={t('label.rating')} onPress={handlePressRating} />
-            <ListItem
-              label={t('label.open_source')}
-              onPress={handlePressOpenSource}
-            />
-            <DeleteTextButton onPress={handlePressReset}>
-              <Text sx={{ color: '$text_tertiary' }}>
-                {t('label.reset_data')}
-              </Text>
-            </DeleteTextButton>
-            <View sx={{ height: bottomInset }} />
-          </Main>
+          <ListItem label={t('label.version')} subLabel={VERSION} />
+          <ListItem
+            label={t('label.send_feedback')}
+            onPress={handlePressSendFeedback}
+          />
+          <ListItem label={t('label.rating')} onPress={handlePressRating} />
+          <ListItem
+            label={t('label.open_source')}
+            onPress={handlePressOpenSource}
+          />
+          <DeleteTextButton onPress={handlePressReset}>
+            <Text sx={{ color: '$text_tertiary' }}>
+              {t('label.reset_data')}
+            </Text>
+          </DeleteTextButton>
+          <View sx={{ height: bottomInset }} />
         </CommonLayout.Body>
       </CommonLayout>
       <DeleteConfirmModal
