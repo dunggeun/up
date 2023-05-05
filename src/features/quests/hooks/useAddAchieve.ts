@@ -8,7 +8,7 @@ import { addAchieve, type AddAchieveResult } from 'src/data';
 import { Text } from 'src/designs';
 import { t } from 'src/translations';
 
-import type { Quest, QuestDetail, AchieveDetail } from '../types';
+import type { Quest, QuestDetail } from '../types';
 
 const ErrorToastContent = createElement(Text, null, t('message.error.common'));
 
@@ -22,6 +22,10 @@ export const useAddAchieve = (): UseMutationResult<
 
   return useMutation(addAchieve, {
     onSuccess: ({ quest, achieve }, { questId }) => {
+      queryClient.setQueryData<number>(
+        ['achieve', 'count'],
+        (count) => (count ?? 0) + 1,
+      );
       queryClient.setQueryData<QuestDetail>(
         ['quests', 'detail', questId],
         (questDetail) => ({
@@ -36,25 +40,12 @@ export const useAddAchieve = (): UseMutationResult<
             previousQuest.id === quest.id ? quest : previousQuest,
           ),
       );
-      queryClient.setQueryData<AchieveDetail[]>(
-        ['achieves', 'list'],
-        (previousAchieves = []) => [
-          {
-            ...achieve,
-            quest_name: quest.title,
-          },
-          ...previousAchieves,
-        ],
-      );
       send({ type: 'REWARD', exp: achieve.exp });
 
       void queryClient.invalidateQueries(['quests', 'detail', questId], {
         refetchActive: false,
       });
       void queryClient.invalidateQueries(['quests', 'list'], {
-        refetchActive: false,
-      });
-      void queryClient.invalidateQueries(['achieves', 'list'], {
         refetchActive: false,
       });
     },

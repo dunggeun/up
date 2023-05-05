@@ -23,6 +23,8 @@ const BottomFixedArea = styled(View)({
   bottom: 0,
   left: 0,
   width: '100%',
+  elevation: 1,
+  zIndex: 1,
 });
 
 const Container = styled(View)({

@@ -66,6 +66,28 @@ export class NativeDatabaseModule
     return rows;
   }
 
+  async count(model: 'quest' | 'achieve'): Promise<number> {
+    if (!this.database) {
+      throw new Error(NativeDatabaseModule.ERROR_MESSAGES.not_initialized);
+    }
+
+    let count = 0;
+    const builder = new SQLBuilder().type('count').table(model);
+
+    await this.database.transaction((tx) => {
+      tx.executeSql(builder.build())
+        .then(([_, result]) => {
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+          count = result.rows.item(0).count as number;
+        })
+        .catch((error) => {
+          throw error;
+        });
+    });
+
+    return count;
+  }
+
   async insert<Data extends DatabaseRecord>(
     model: 'quest' | 'achieve',
     data: Data,

@@ -88,6 +88,13 @@ module.exports = {
       },
     },
     {
+      files: ['src/web/**/*.ts'],
+      rules: {
+        'no-console': 'off',
+        'import/no-default-export': 'off',
+      },
+    },
+    {
       files: ['**/?(*.)+(spec|test).ts?(x)'],
       rules: {
         'testing-library/no-render-in-setup': 'off',

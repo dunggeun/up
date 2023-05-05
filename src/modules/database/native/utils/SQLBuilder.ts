@@ -2,7 +2,7 @@
 /* eslint-disable no-case-declarations */
 import type { DatabaseRecord, Value, WhereConditions } from '../../types';
 
-type QueryType = 'select' | 'insert' | 'update' | 'delete';
+type QueryType = 'select' | 'count' | 'insert' | 'update' | 'delete';
 
 export class SQLBuilder {
   private _tableName?: string;
@@ -85,6 +85,9 @@ export class SQLBuilder {
           ${ORDER_BY_STATEMENTS}
           ${LIMIT_CONSTRAINT};
         `;
+
+      case 'count':
+        return `SELECT count(*) as count FROM ${this._tableName};`;
 
       case 'insert':
         const VALUE_COLUMNS = Object.keys(this._values ?? {}).join(',');

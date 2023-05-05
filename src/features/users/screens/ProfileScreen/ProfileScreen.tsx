@@ -1,34 +1,36 @@
 import React, { useState, useCallback } from 'react';
-import { ScrollView } from 'react-native';
+import Share from 'react-native-share';
 import { useActor } from '@xstate/react';
-import { styled, View } from 'dripsy';
-import { CommonLayout, Input, Text } from 'src/designs';
-import { FadeInView, Section } from 'src/components';
-import { AppManager } from 'src/modules/app';
+import { View } from 'dripsy';
+import { Platform } from 'react-native';
+import { Button, CommonLayout, Text } from 'src/designs';
+import { AnimateSuspense, FadeInView } from 'src/components';
+import { useMainTabBarInset } from 'src/hooks';
 import { globalMachineService } from 'src/stores/machines';
-import { useDebounce, useMainTabBarInset } from 'src/hooks';
+import { AppManager } from 'src/modules/app';
+import { Logger } from 'src/modules/logger';
+import { navigate } from 'src/navigators/helpers';
 import { t } from 'src/translations';
-
 import { useUser } from '../../hooks';
 import { BadgeSection } from '../../components/BadgeSection';
 import { ThemeSection } from '../../components/ThemeSection';
+import { UserSection } from '../../components/UserSection';
+import { ShareModal } from '../../components/ShareModal';
 
 import type { User } from 'src/features/users';
 import type { MainTabProps } from 'src/navigators/MainTab/types';
 
 type ProfileScreenProps = MainTabProps<'Profile'>;
 
-const Main = styled(ScrollView)({
-  gap: '$02',
-});
-
-const EditedToastContent = <Text>{t('message.user_edited')}</Text>;
+const UnsupportedToastContent = (
+  <Text variant="primary">{t('message.error.unsupported_platform')}</Text>
+);
 
 export function ProfileScreen(_props: ProfileScreenProps): JSX.Element | null {
+  const user = useUser();
   const { bottomInset } = useMainTabBarInset();
   const [_, send] = useActor(globalMachineService);
-  const [userName, setUserName] = useState('');
-  const user = useUser();
+  const [shareModalVisibility, setShareModalVisibility] = useState(false);
 
   const handleEditUser = useCallback(
     (modifyData: Partial<Pick<User, 'name' | 'badge' | 'theme'>>) => {
@@ -37,18 +39,29 @@ export function ProfileScreen(_props: ProfileScreenProps): JSX.Element | null {
     [send],
   );
 
-  const { trigger: lazyEditUser } = useDebounce(
-    (value: Partial<Pick<User, 'theme' | 'name' | 'badge'>>) => {
-      handleEditUser(value);
-      AppManager.showToast(EditedToastContent);
-    },
-    500,
-  );
-
-  const handleChangeUserName = (value: string): void => {
-    lazyEditUser({ name: value });
-    setUserName(value);
+  const handlePressEdit = (): void => {
+    navigate('User', 'UserEdit');
   };
+
+  const handlePressShare = (): void => {
+    if (Platform.OS === 'ios' || Platform.OS === 'android') {
+      setShareModalVisibility(true);
+    } else {
+      AppManager.showToast(UnsupportedToastContent);
+    }
+  };
+
+  const handlePressClose = useCallback((): void => {
+    setShareModalVisibility(false);
+  }, []);
+
+  const handleReadyToShare = useCallback((imageData: string): void => {
+    Share.open({ url: imageData })
+      .catch((error: Error) => {
+        Logger.warn('ProfileScreen :: handleReadyToShare -', error.message);
+      })
+      .finally(() => setShareModalVisibility(false));
+  }, []);
 
   const handlePressBadge = useCallback(
     (id: number): void => {
@@ -73,13 +86,12 @@ export function ProfileScreen(_props: ProfileScreenProps): JSX.Element | null {
       <CommonLayout insetBottom={false}>
         <CommonLayout.Header title={t('title.profile')} />
         <CommonLayout.Body>
-          <Section title={t('label.name')}>
-            <Input
-              onChangeText={handleChangeUserName}
-              placeholder={t('placeholder.enter_name')}
-              value={userName}
-            />
-          </Section>
+          <AnimateSuspense>
+            <UserSection onPressEdit={handlePressEdit} user={user} />
+          </AnimateSuspense>
+          <Button color="$white" disableLongPress onPress={handlePressShare}>
+            {t('label.share')}
+          </Button>
           <BadgeSection
             onLongPressBadge={handleLongPressBadge}
             onPressBadge={handlePressBadge}
@@ -89,6 +101,12 @@ export function ProfileScreen(_props: ProfileScreenProps): JSX.Element | null {
           <View sx={{ height: bottomInset }} />
         </CommonLayout.Body>
       </CommonLayout>
+      <ShareModal
+        onClose={handlePressClose}
+        onReady={handleReadyToShare}
+        user={user}
+        visible={shareModalVisibility}
+      />
     </FadeInView>
   );
 }

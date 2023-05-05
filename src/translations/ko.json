@@ -34,12 +34,16 @@
       "weekday_5": "금",
       "weekday_6": "토",
       "activate_quests": "진행중인 퀘스트",
-      "finished_quests": "완료한 퀘스트"
+      "finished_quests": "완료한 퀘스트",
+      "total_achieve": "누적 퀘스트 달성",
+      "total_exp": "누적 경험치",
+      "joined_date": "가입일"
     },
     "title": {
       "landing": "환영합니다",
       "register_user": "도전자 등록하기",
       "profile": "프로필 정보",
+      "edit_profile": "프로필 수정",
       "home": "홈",
       "menu": "메뉴",
       "reset_data": "UP 데이터 초기화",
@@ -52,9 +56,7 @@
       "quest_history_in_4_week": "최근 4주 퀘스트 기록",
       "quest_total_exp": "누적 경험치",
       "done_quest": "퀘스트 완료하기",
-      "delete_quest": "퀘스트 삭제하기",
-      "my_status": "퀘스트 진행 상태",
-      "recent_achieved": "퀘스트 달성 기록 (최근 %@ 건)"
+      "delete_quest": "퀘스트 삭제하기"
     },
     "placeholder": {
       "enter_name": "이름을 입력해주세요",
@@ -63,7 +65,7 @@
     "message": {
       "error": {
         "common": "문제가 발생했어요",
-        "unsupported_platform": "현재 플랫폼에서 지원하지 않아요"
+        "unsupported_platform": "현재 플랫폼에서 지원하지 않는 기능이에요"
       },
       "greeting": "환영합니다!\n업 챌린지에 도전해보세요",
       "enter_name": "업 도전자님의\n이름을 알려주세요",
@@ -82,7 +84,8 @@
       "finished_quest": "완료 처리한 퀘스트는 진행할 수 없어요",
       "delete_quest": "퀘스트를 삭제하면 지금까지의\n기록을 더 이상 확인할 수 없어요",
       "delete_quest_guide": "종료 하시려면 버튼을 길게 눌러주세요",
-      "empty_achieve": "퀘스트 달성 기록이 없어요"
+      "empty_achieve": "퀘스트 달성 기록이 없어요",
+      "image_generating": "잠시만 기다려주세요\n공유용 이미지를 만들고 있어요"
     },
     "badge": {
       "0": "",

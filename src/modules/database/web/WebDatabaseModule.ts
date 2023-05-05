@@ -1,3 +1,5 @@
+// eslint-disable-next-line eslint-comments/disable-enable-pair
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import BoxDB, { type Box } from 'bxd';
 import { QuestSchema, AchieveSchema } from './schema';
 
@@ -32,7 +34,6 @@ export class WebDatabaseModule implements DatabaseModule<'quest' | 'achieve'> {
     conditions: WhereConditions,
   ): ((data: any) => boolean)[] {
     return Object.entries(conditions).map(([column, { symbol, value }]) => {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       return (data: any): boolean => {
         // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
         const target = data[column];
@@ -94,6 +95,25 @@ export class WebDatabaseModule implements DatabaseModule<'quest' | 'achieve'> {
     }
 
     return rows;
+  }
+
+  async count(model: 'quest' | 'achieve'): Promise<number> {
+    if (!this.database.ready) {
+      throw new Error(WebDatabaseModule.ERROR_MESSAGES.not_initialized);
+    }
+    let count = 0;
+
+    switch (model) {
+      case 'quest':
+        count = await this.QuestModel.count();
+        break;
+
+      case 'achieve':
+        count = await this.AchieveModel.count();
+        break;
+    }
+
+    return count;
   }
 
   async insert<Data extends DatabaseRecord>(

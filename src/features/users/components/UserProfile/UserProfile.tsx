@@ -1,5 +1,4 @@
 import React, { memo, useState, useMemo, useLayoutEffect } from 'react';
-import { TouchableOpacity } from 'react-native';
 import { styled, View, Image } from 'dripsy';
 import { H1, Text, ProgressBar } from 'src/designs';
 import * as AppHelpers from 'src/modules/app/helpers';
@@ -10,12 +9,11 @@ import type { User } from 'src/features/users';
 
 interface UserProfileProps {
   user: User;
-  onPress?: () => void;
 }
 
 const BADGE_BORDER_WIDTH = 2;
 
-const Container = styled(TouchableOpacity)({
+const Container = styled(View)({
   width: '100%',
   flexDirection: 'column',
   gap: '$02',
@@ -56,7 +54,6 @@ const LevelProgress = styled(ProgressBar)({
 
 export const UserProfile = memo(function UserProfile({
   user,
-  onPress,
 }: UserProfileProps): JSX.Element {
   const userColor = useUserThemeColor();
   const [requiredExp, setRequiredExp] = useState(0);
@@ -74,7 +71,7 @@ export const UserProfile = memo(function UserProfile({
   );
 
   return (
-    <Container onPress={onPress}>
+    <Container>
       <InformationSection>
         <Badge>{badgeImage ? <BadgeImage source={badgeImage} /> : null}</Badge>
         <H1 variant="primary">

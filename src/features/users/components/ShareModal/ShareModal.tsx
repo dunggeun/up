@@ -1,0 +1,41 @@
+import React from 'react';
+import { styled, View } from 'dripsy';
+import { LoadingIndicator, Modal } from 'src/components';
+import { Text } from 'src/designs';
+import { t } from 'src/translations';
+import { UserCoverWebView } from '../UserCoverWebView/UserCoverWebView';
+
+import type { ModalProps } from 'src/components';
+import type { User } from '../../types';
+
+export interface ShareModalProps extends Omit<ModalProps, 'title'> {
+  user: User;
+  onReady: (imageData: string) => void;
+}
+
+const Content = styled(View)({
+  gap: '$04',
+});
+
+const Message = styled(Text)({
+  textAlign: 'center',
+});
+
+export function ShareModal({
+  user,
+  visible,
+  onClose,
+  onReady,
+}: ShareModalProps): JSX.Element {
+  return (
+    <Modal onClose={onClose} title={t('label.share')} visible={visible}>
+      <Content testID="share-modal">
+        <LoadingIndicator />
+        <Message variant="text.primary">
+          {t('message.image_generating')}
+        </Message>
+      </Content>
+      <UserCoverWebView onGenerated={onReady} user={user} />
+    </Modal>
+  );
+}

@@ -139,7 +139,7 @@ export const Button = forwardRef(function Button(
   ref: ForwardedRef<RNView>,
 ): JSX.Element {
   const isLongPress = useRef(false);
-  const longPressTimerRef = useRef<NodeJS.Timeout>();
+  const longPressTimerRef = useRef<number>();
   const capPosition = useRef(new Animated.Value(0)).current;
   const dimSize = useRef(new Animated.Value(0)).current;
   const dimAnimationRef = useRef<Animated.CompositeAnimation | null>();
@@ -149,7 +149,9 @@ export const Button = forwardRef(function Button(
   };
 
   const reset = (): void => {
-    clearTimeout(longPressTimerRef.current);
+    if (longPressTimerRef.current !== undefined) {
+      clearTimeout(longPressTimerRef.current);
+    }
     dimAnimationRef.current?.stop();
     isLongPress.current = false;
 
