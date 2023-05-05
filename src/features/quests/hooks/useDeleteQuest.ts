@@ -1,7 +1,8 @@
 import { createElement } from 'react';
 import { useMutation, type UseMutationResult } from 'react-query';
 import { Text } from 'src/designs';
-import { AppManager } from 'src/modules';
+import { AppManager } from 'src/modules/app';
+import { queryClient } from 'src/stores/reactQuery';
 import { deleteQuest } from 'src/data';
 import { t } from 'src/translations';
 
@@ -10,9 +11,6 @@ import type { Quest } from '../types';
 interface UseDeleteQuestParams {
   onSuccess?: () => void;
 }
-
-const manager = AppManager.getInstance();
-const queryClient = manager.getQueryClient();
 
 const ErrorToastContent = createElement(Text, null, t('message.error.common'));
 

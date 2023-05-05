@@ -1,4 +1,4 @@
-import { StorageManager } from 'src/modules';
+import { StorageManager } from 'src/modules/database';
 import {
   createAchieveData,
   createQuestData,

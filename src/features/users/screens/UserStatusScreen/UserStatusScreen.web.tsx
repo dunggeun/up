@@ -1,13 +1,11 @@
 import React, { useState, useCallback } from 'react';
-import { useActor } from '@xstate/react';
 import { CommonLayout, Button } from 'src/designs';
 import { DetailSection } from 'src/components';
 import { RecentAchieveList } from 'src/features/quests/components/RecentAchieveList';
-import { AppManager } from 'src/modules';
 import { replacePlaceholder } from 'src/utils';
 import { RECENT_ACHIEVE_LIMIT } from 'src/constants';
 import { t } from 'src/translations';
-import { useUserThemeColor } from '../../hooks';
+import { useUser, useUserThemeColor } from '../../hooks';
 import { UserProfile } from '../../components/UserProfile';
 import { UserCover } from '../../components/UserCover';
 
@@ -20,8 +18,7 @@ export function UserStatusScreen({
 }: UserStatusProps): JSX.Element | null {
   const [imageData, setImageData] = useState('');
   const userColor = useUserThemeColor();
-  const [state] = useActor(AppManager.getInstance().getService());
-  const user = state.context.user;
+  const user = useUser();
 
   const handlePressCloseButton = (): void => {
     navigation.goBack();
@@ -35,7 +32,7 @@ export function UserStatusScreen({
     // TODO
   }, []);
 
-  return user ? (
+  return (
     <CommonLayout>
       <CommonLayout.Header
         onClosePress={handlePressCloseButton}
@@ -64,5 +61,5 @@ export function UserStatusScreen({
         </Button>
       </CommonLayout.Footer>
     </CommonLayout>
-  ) : null;
+  );
 }

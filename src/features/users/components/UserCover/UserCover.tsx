@@ -5,7 +5,7 @@ import WebView, { type WebViewMessageEvent } from 'react-native-webview';
 import { t } from 'src/translations';
 import { useRecentAchieves } from 'src/features/quests/hooks';
 import { getExpByLevel } from 'src/modules/app/helpers';
-import { AppManager } from 'src/modules';
+import { AppManager } from 'src/modules/app';
 import { Text } from 'src/designs';
 import { useUserThemeColor } from '../../hooks';
 import { getPageSource } from './contents';

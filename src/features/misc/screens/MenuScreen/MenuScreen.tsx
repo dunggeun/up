@@ -4,16 +4,12 @@ import { useActor } from '@xstate/react';
 import { styled, View } from 'dripsy';
 import { CommonLayout, Text } from 'src/designs';
 import { FadeInView, ListItem } from 'src/components';
-import { AppManager } from 'src/modules';
+import { globalMachineService } from 'src/stores/machines';
 import { navigate } from 'src/navigators/helpers';
 import { useMainTabBarInset } from 'src/hooks';
-import { delay, openMail } from 'src/utils';
+import { openMail } from 'src/utils';
 import { t } from 'src/translations';
-import {
-  APP_MINIMUM_LOADING_DURATION,
-  DEVELOPER_EMAIL,
-  VERSION,
-} from 'src/constants';
+import { DEVELOPER_EMAIL, VERSION } from 'src/constants';
 
 import { DeleteConfirmModal } from '../../components/DeleteConfirmModal';
 
@@ -33,8 +29,7 @@ export function MenuScreen(_props: MenuProps): JSX.Element {
   const { bottomInset } = useMainTabBarInset();
   const [deleteConfirmModalVisibility, setDeleteConfirmModalVisibility] =
     useState(false);
-  const [loading, setLoading] = useState(false);
-  const [_, send] = useActor(AppManager.getInstance().getService());
+  const [_, send] = useActor(globalMachineService);
 
   const handlePressSendFeedback = (): void => {
     openMail(DEVELOPER_EMAIL, {
@@ -59,23 +54,9 @@ export function MenuScreen(_props: MenuProps): JSX.Element {
     setDeleteConfirmModalVisibility(false);
   };
 
-  const handleDelete = async (): Promise<void> => {
-    if (loading) return;
-
-    setLoading(true);
-
-    try {
-      await Promise.all([
-        AppManager.getInstance().reset(),
-        delay(APP_MINIMUM_LOADING_DURATION),
-      ]);
-      setDeleteConfirmModalVisibility(false);
-      send({ type: 'REFRESH' });
-    } catch (error) {
-      // @todo: error handing
-    } finally {
-      setLoading(false);
-    }
+  const handleDelete = (): void => {
+    setDeleteConfirmModalVisibility(false);
+    send({ type: 'LOGOUT' });
   };
 
   return (
@@ -104,9 +85,8 @@ export function MenuScreen(_props: MenuProps): JSX.Element {
         </CommonLayout.Body>
       </CommonLayout>
       <DeleteConfirmModal
-        isLoading={loading}
         onClose={handleCloseDeleteConfirmModal}
-        onDelete={(): void => void handleDelete()}
+        onDelete={handleDelete}
         visible={deleteConfirmModalVisibility}
       />
     </FadeInView>

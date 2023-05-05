@@ -1,8 +1,8 @@
 import { useActor } from '@xstate/react';
-import { AppManager } from 'src/modules';
+import { globalMachineService } from 'src/stores/machines';
 
 export const useIsAuthorized = (): { authorized: boolean } => {
-  const [state] = useActor(AppManager.getInstance().getService());
+  const [state] = useActor(globalMachineService);
 
   return { authorized: state.matches('authorized') };
 };
