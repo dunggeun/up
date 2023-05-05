@@ -20,7 +20,6 @@ export const Toast = memo(function Toast() {
   const { top } = useSafeAreaInsets();
   const sx = useSx();
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const containerStyle = sx({
     position: 'absolute',
     top: 0,
@@ -48,7 +47,6 @@ export const Toast = memo(function Toast() {
           animate={{ translateY: 0 }}
           exit={{ translateY: TOAST_ANIMATE_HEIGHT - top }}
           from={{ translateY: TOAST_ANIMATE_HEIGHT - top }}
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
           style={containerStyle}
         >
           <ToastContent onPress={handlePressToast}>{content}</ToastContent>

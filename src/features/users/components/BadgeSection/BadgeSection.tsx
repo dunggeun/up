@@ -42,7 +42,6 @@ export const BadgeSection = memo(function BadgeSection({
   onLongPressBadge,
 }: BadgeSectionProps): JSX.Element {
   const sx = useSx();
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const overridingButtonStyle = sx({
     paddingX: '$01',
     paddingY: '$01',
@@ -95,7 +94,6 @@ export const BadgeSection = memo(function BadgeSection({
                 key={badge.id}
                 onLongPress={(): void => onLongPressBadge(badge.id)}
                 onPress={(): void => onPressBadge(badge.id)}
-                // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
                 style={overridingButtonStyle}
               >
                 {badge.image ? <BadgeImage source={badge.image} /> : null}

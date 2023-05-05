@@ -32,7 +32,7 @@ export const ThemeSection = memo(function ThemeSection({
   onPressBadge,
 }: ThemeSectionProps): JSX.Element {
   const sx = useSx();
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+
   const overridingButtonStyle = sx({
     paddingX: '$01',
     paddingY: '$01',
@@ -81,7 +81,6 @@ export const ThemeSection = memo(function ThemeSection({
                 disableLongPress
                 key={theme.id}
                 onPress={(): void => onPressBadge(theme.id)}
-                // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
                 style={overridingButtonStyle}
               />
             ))}
