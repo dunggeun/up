@@ -1,10 +1,13 @@
 import { useMutation, type UseMutationResult } from 'react-query';
-import { AppManager } from 'src/modules/app';
-import { queryClient } from 'src/stores/reactQuery';
 import { addQuest } from 'src/data';
+import { queryClient } from 'src/stores/reactQuery';
+import { AppManager } from 'src/modules/app';
+import { Logger } from 'src/modules/logger';
 import { t } from 'src/translations';
 
 import type { Quest } from '../types';
+
+const TAG = 'useAddQuest';
 
 export const useAddQuest = (): UseMutationResult<
   Quest,
@@ -22,7 +25,8 @@ export const useAddQuest = (): UseMutationResult<
         refetchActive: false,
       });
     },
-    onError: (_error) => {
+    onError: (error) => {
+      Logger.error(TAG, error.message);
       AppManager.showToast(t('message.error.common'));
     },
   });

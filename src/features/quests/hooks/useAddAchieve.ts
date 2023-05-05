@@ -1,12 +1,15 @@
 import { useActor } from '@xstate/react';
 import { useMutation, type UseMutationResult } from 'react-query';
+import { addAchieve, type AddAchieveResult } from 'src/data';
 import { AppManager } from 'src/modules/app';
+import { Logger } from 'src/modules/logger';
 import { globalMachineService } from 'src/stores/machines';
 import { queryClient } from 'src/stores/reactQuery';
-import { addAchieve, type AddAchieveResult } from 'src/data';
 import { t } from 'src/translations';
 
 import type { Quest, QuestDetail } from '../types';
+
+const TAG = 'useAddAchieve';
 
 export const useAddAchieve = (): UseMutationResult<
   AddAchieveResult,
@@ -45,7 +48,8 @@ export const useAddAchieve = (): UseMutationResult<
         refetchActive: false,
       });
     },
-    onError: (_error) => {
+    onError: (error) => {
+      Logger.error(TAG, error.message);
       AppManager.showToast(t('message.error.common'));
     },
   });

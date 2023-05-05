@@ -6,6 +6,9 @@ import { APP_MINIMUM_LOADING_DURATION } from 'src/constants';
 import { globalMachineService } from 'src/stores/machines/service';
 import { queryClient } from 'src/stores/reactQuery';
 import { StorageManager } from '../database';
+import { Logger } from '../logger';
+
+const TAG = 'AppManager';
 
 export class AppManager {
   private static instance: AppManager | null = null;
@@ -14,6 +17,7 @@ export class AppManager {
   private error: Error | null = null;
 
   private constructor() {
+    Logger.info(TAG, 'instance created and initializing...');
     globalMachineService.start();
     this.task = Promise.all([
       (async (): Promise<void> => {
@@ -24,10 +28,12 @@ export class AppManager {
     ])
       .then(() => {
         this.status = 'fulfilled';
+        Logger.success(TAG, 'successfully initialized');
       })
-      .catch((error) => {
-        this.error = error as Error;
+      .catch((error: Error) => {
+        this.error = error;
         this.status = 'error';
+        Logger.error(TAG, error.message);
       });
   }
 
@@ -39,6 +45,7 @@ export class AppManager {
   }
 
   public static showToast(message: string): void {
+    Logger.debug(TAG, `showToast - ${message}`);
     ToastManager.getInstance().show(
       // eslint-disable-next-line import/no-named-as-default-member
       React.createElement(Text, { variant: 'primary' }, message),
@@ -48,6 +55,7 @@ export class AppManager {
   private async prefetchUserData(): Promise<void> {
     if (!(await this.authorize())) return;
 
+    Logger.info(TAG, 'prefetching user data');
     await queryClient.prefetchQuery(['quests', 'list'], () =>
       StorageManager.getInstance().getQuestList(),
     );

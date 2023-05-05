@@ -22,6 +22,8 @@ import type { MainTabProps } from 'src/navigators/MainTab/types';
 
 type ProfileScreenProps = MainTabProps<'Profile'>;
 
+const TAG = 'ProfileScreen';
+
 export function ProfileScreen(_props: ProfileScreenProps): JSX.Element | null {
   const user = useUser();
   const { bottomInset } = useMainTabBarInset();
@@ -54,7 +56,7 @@ export function ProfileScreen(_props: ProfileScreenProps): JSX.Element | null {
   const handleReadyToShare = useCallback((imageData: string): void => {
     Share.open({ url: imageData })
       .catch((error: Error) => {
-        Logger.warn('ProfileScreen :: handleReadyToShare -', error.message);
+        Logger.warn(TAG, `handleReadyToShare - ${error.message}`);
       })
       .finally(() => setShareModalVisibility(false));
   }, []);

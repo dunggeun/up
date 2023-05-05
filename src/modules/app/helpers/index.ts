@@ -1,4 +1,5 @@
 import { diffBeforeToday } from 'src/utils';
+import { Logger } from 'src/modules/logger';
 import {
   BASE_EXP,
   BADGE_SET,
@@ -71,6 +72,11 @@ export const updateQuestForAddAchieve = (quest: Quest): Quest => {
   } else {
     updatedQuest.current_streak = 1;
   }
+
+  Logger.info(
+    'updateQuestForAddAchieve',
+    `${updatedQuest.title}'s streak: ${updatedQuest.current_streak}`,
+  );
 
   updatedQuest.updated_at = Number(new Date());
 

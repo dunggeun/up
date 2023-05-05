@@ -2,9 +2,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 /* eslint-disable @typescript-eslint/no-extraneous-class */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
 
-import dayjs from 'dayjs';
 import { Platform } from 'react-native';
+import { setLogger } from 'react-query';
+import dayjs from 'dayjs';
 
 const RESET = '\x1b[0m';
 const LEVEL_COLORS = {
@@ -19,7 +21,7 @@ const LEVEL_COLORS = {
 const MAX_TAG_LENGTH = 7; // 'success'.length + ' '.length = 7
 
 export class Logger {
-  private static getTag(level: keyof typeof LEVEL_COLORS): string {
+  private static getLevel(level: keyof typeof LEVEL_COLORS): string {
     const LEVEL_TAG = level.toUpperCase().padStart(MAX_TAG_LENGTH, ' ');
     const isNative = Platform.OS === 'android' || Platform.OS === 'ios';
     return __DEV__ && isNative
@@ -31,28 +33,67 @@ export class Logger {
     return `${dayjs().format('YYYY/MM/DD HH:mm:ss.SSS')} -`;
   }
 
-  static debug(...params: any[]): void {
+  static debug(tag: string, ...params: any[]): void {
     if (!__DEV__) return;
-    self._log(Logger.getTag('debug'), Logger.getTimestamp(), ...params);
+    self._log(
+      Logger.getLevel('debug'),
+      Logger.getTimestamp(),
+      tag,
+      ...(params.length ? ['::', ...params] : params),
+    );
   }
 
-  static log(...params: any[]): void {
-    self._log(Logger.getTag('log'), Logger.getTimestamp(), ...params);
+  static log(tag: string, ...params: any[]): void {
+    self._log(
+      Logger.getLevel('log'),
+      Logger.getTimestamp(),
+      tag,
+      ...(params.length ? ['::', ...params] : params),
+    );
   }
 
-  static info(...params: any[]): void {
-    self._log(Logger.getTag('info'), Logger.getTimestamp(), ...params);
+  static info(tag: string, ...params: any[]): void {
+    self._log(
+      Logger.getLevel('info'),
+      Logger.getTimestamp(),
+      tag,
+      ...(params.length ? ['::', ...params] : params),
+    );
   }
 
-  static success(...params: any[]): void {
-    self._log(Logger.getTag('success'), Logger.getTimestamp(), ...params);
+  static success(tag: string, ...params: any[]): void {
+    self._log(
+      Logger.getLevel('success'),
+      Logger.getTimestamp(),
+      tag,
+      ...(params.length ? ['::', ...params] : params),
+    );
   }
 
-  static warn(...params: any[]): void {
-    self._warn(Logger.getTag('warn'), Logger.getTimestamp(), ...params);
+  static warn(tag: string, ...params: any[]): void {
+    self._warn(
+      Logger.getLevel('warn'),
+      Logger.getTimestamp(),
+      tag,
+      ...(params.length ? ['::', ...params] : params),
+    );
   }
 
-  static error(...params: any[]): void {
-    self._error(Logger.getTag('error'), Logger.getTimestamp(), ...params);
+  static error(tag: string, ...params: any[]): void {
+    self._error(
+      Logger.getLevel('error'),
+      Logger.getTimestamp(),
+      tag,
+      ...(params.length ? ['::', ...params] : params),
+    );
   }
 }
+
+((): void => {
+  const TAG = 'ReactQuery';
+  setLogger({
+    log: (...args) => Logger.log(TAG, ...args),
+    warn: (...args) => Logger.warn(TAG, ...args),
+    error: (...args) => Logger.error(TAG, ...args),
+  });
+})();

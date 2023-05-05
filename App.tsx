@@ -11,6 +11,7 @@ import { navigationRef } from 'src/navigators/helpers';
 import { titleFormatter } from 'src/utils';
 import { themeLight } from 'src/themes';
 import { AnimateSuspense, Toast } from 'src/components';
+import { Logger } from 'src/modules/logger';
 
 // eslint-disable-next-line import/no-named-as-default-member
 const Navigator = React.lazy(() => import('src/navigators'));
@@ -28,6 +29,9 @@ function AppProviders<T = unknown>({
             <RecoilRoot>
               <NavigationContainer
                 documentTitle={{ formatter: titleFormatter }}
+                onReady={(): void => {
+                  Logger.info('NavigationContainer', 'onReady');
+                }}
                 ref={navigationRef}
               >
                 {children}

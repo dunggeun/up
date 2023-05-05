@@ -1,10 +1,13 @@
 import { Linking } from 'react-native';
-import { noop } from './common';
+import { Logger } from 'src/modules/logger';
 
 /* istanbul ignore next */
 export const openMail = (
   to: string,
   { subject, body }: { subject: string; body: string },
 ): void => {
-  Linking.openURL(`mailto:${to}?subject=${subject}&body=${body}`).catch(noop);
+  const url = `mailto:${to}?subject=${subject}&body=${body}`;
+  Linking.canOpenURL(url)
+    .then(() => Linking.openURL(url))
+    .catch((error: Error) => Logger.error('utils.openMail', error.message));
 };

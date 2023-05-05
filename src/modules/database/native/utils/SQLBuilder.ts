@@ -1,8 +1,12 @@
 /* eslint-disable eslint-comments/disable-enable-pair */
 /* eslint-disable no-case-declarations */
+import dedent from 'dedent';
+import { Logger } from 'src/modules/logger';
 import type { DatabaseRecord, Value, WhereConditions } from '../../types';
 
 type QueryType = 'select' | 'count' | 'insert' | 'update' | 'delete';
+
+const TAG = 'SQLBuilder';
 
 export class SQLBuilder {
   private _tableName?: string;
@@ -59,6 +63,7 @@ export class SQLBuilder {
       throw Error('invalid query type or table name');
     }
 
+    let query: string;
     const WHERE_CONDITION =
       this._condition &&
       Object.entries(this._condition)
@@ -79,15 +84,17 @@ export class SQLBuilder {
         const LIMIT_CONSTRAINT =
           this._limit !== undefined ? `LIMIT ${this._limit}` : '';
 
-        return `
+        query = dedent`
           SELECT * FROM ${this._tableName}
           ${WHERE_STATEMENTS}
           ${ORDER_BY_STATEMENTS}
           ${LIMIT_CONSTRAINT};
         `;
+        break;
 
       case 'count':
-        return `SELECT count(*) as count FROM ${this._tableName};`;
+        query = dedent`SELECT count(*) as count FROM ${this._tableName};`;
+        break;
 
       case 'insert':
         const VALUE_COLUMNS = Object.keys(this._values ?? {}).join(',');
@@ -95,27 +102,35 @@ export class SQLBuilder {
           .map((value) => this.stringify(value))
           .join(',');
 
-        return `
+        query = dedent`
           INSERT INTO ${this._tableName} (${VALUE_COLUMNS})
           VALUES (${VALUES});
         `;
+        break;
 
       case 'update':
         const SET_STATEMENTS = Object.entries(this._values ?? {})
           .map(([column, value]) => `${column} = ${this.stringify(value)}`)
           .join(',');
 
-        return `
+        query = dedent`
           UPDATE ${this._tableName}
           SET ${SET_STATEMENTS}
-          ${WHERE_STATEMENTS}
+          ${WHERE_STATEMENTS};
         `;
+        break;
 
       case 'delete':
-        return `
+        query = dedent`
           DELETE FROM ${this._tableName}
-          ${WHERE_STATEMENTS}
+          ${WHERE_STATEMENTS};
         `;
+        break;
     }
+
+    query = query.replace(/[\r\n]/g, ' ');
+    Logger.debug(TAG, query);
+
+    return query;
   }
 }
