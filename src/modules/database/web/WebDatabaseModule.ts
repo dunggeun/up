@@ -34,7 +34,7 @@ export class WebDatabaseModule implements DatabaseModule<'quest' | 'achieve'> {
     return Object.entries(conditions).map(([column, { symbol, value }]) => {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       return (data: any): boolean => {
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
         const target = data[column];
         switch (symbol) {
           case '<':
