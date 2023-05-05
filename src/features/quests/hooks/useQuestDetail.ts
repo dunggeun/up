@@ -1,5 +1,6 @@
 import { useQuery, type UseQueryResult } from 'react-query';
 import { fetchQuestDetailById } from 'src/data';
+import { Logger } from 'src/modules/logger';
 import type { QuestDetail } from '../types';
 
 interface UseQuestDetailParams {
@@ -10,6 +11,8 @@ interface UseQuestDetailConfig {
   suspense?: boolean;
 }
 
+const TAG = 'useQuestDetail';
+
 export const useQuestDetail = (
   { id }: UseQuestDetailParams,
   { suspense }: UseQuestDetailConfig = {},
@@ -17,6 +20,11 @@ export const useQuestDetail = (
   return useQuery(
     ['quests', 'detail', id],
     () => fetchQuestDetailById({ questId: id }),
-    { suspense },
+    {
+      suspense,
+      onError: (error) => {
+        Logger.error(TAG, (error as Error).message);
+      },
+    },
   );
 };

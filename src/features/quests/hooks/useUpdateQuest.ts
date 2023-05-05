@@ -1,7 +1,8 @@
 import { useMutation, type UseMutationResult } from 'react-query';
-import { AppManager } from 'src/modules/app';
-import { queryClient } from 'src/stores/reactQuery';
 import { updateQuest } from 'src/data';
+import { AppManager } from 'src/modules/app';
+import { Logger } from 'src/modules/logger';
+import { queryClient } from 'src/stores/reactQuery';
 import { t } from 'src/translations';
 
 import type { Quest, QuestDetail } from '../types';
@@ -9,6 +10,8 @@ import type { Quest, QuestDetail } from '../types';
 interface UseUpdateQuestParams {
   onSuccess?: () => void;
 }
+
+const TAG = 'useUpdateQuest';
 
 export const useUpdateQuest = ({
   onSuccess,
@@ -18,9 +21,6 @@ export const useUpdateQuest = ({
   Parameters<typeof updateQuest>[0]
 > => {
   return useMutation(updateQuest, {
-    onError: (_error) => {
-      AppManager.showToast(t('message.error.common'));
-    },
     onSuccess: (data, { questId }) => {
       const oldQuestDetail = queryClient.getQueryData<QuestDetail>([
         'quests',
@@ -51,6 +51,10 @@ export const useUpdateQuest = ({
       }
 
       onSuccess?.();
+    },
+    onError: (error) => {
+      Logger.error(TAG, error.message);
+      AppManager.showToast(t('message.error.common'));
     },
   });
 };

@@ -135,29 +135,31 @@ export const globalMachine = createMachine(
       setUser: assign({ user: (_context, event) => event.data }),
       removeUser: assign({ user: (_context, _event) => null }),
       onIdle: () => {
-        Logger.debug(TAG, 'onIdle');
+        Logger.debug(TAG, 'actions.onIdle');
       },
       onLoading: () => {
-        Logger.debug(TAG, 'onLoading');
+        Logger.debug(TAG, 'actions.onLoading');
       },
       onAuthorized: (_context, event) => {
-        Logger.debug(TAG, 'onAuthorized', event.data);
+        Logger.debug(TAG, 'actions.onAuthorized', event.data);
+        Logger.info(TAG, `user found - ${event.data.name}`);
       },
       onRefreshing: () => {
-        Logger.debug(TAG, 'onRefreshing');
+        Logger.debug(TAG, 'actions.onRefreshing');
       },
       onUpdateUser: (_context, event) => {
-        Logger.debug(TAG, 'onRefreshing', event.user);
+        Logger.debug(TAG, 'actions.onRefreshing', event.user);
       },
       onCalculating: (_context, event) => {
-        Logger.debug(TAG, 'onCalculating', event.exp);
+        Logger.debug(TAG, 'actions.onCalculating', event.exp);
       },
       onUnauthorized: () => {
-        Logger.debug(TAG, 'onUnauthorized');
+        Logger.debug(TAG, 'actions.onUnauthorized');
       },
     },
     services: {
       loadUser: async () => {
+        Logger.info(TAG, 'services.loadUser');
         const stringifiedUser = await AsyncStorage.getItem('user');
 
         if (!stringifiedUser) {
@@ -167,6 +169,7 @@ export const globalMachine = createMachine(
         return JSON.parse(stringifiedUser) as User;
       },
       updateUser: async (context, event) => {
+        Logger.debug(TAG, 'services.updateUser');
         if (!context.user) throw new Error('user not exist in context');
 
         const modifiedUser = { ...context.user, ...event.user } as User;
@@ -174,9 +177,11 @@ export const globalMachine = createMachine(
         return modifiedUser;
       },
       saveUser: async (_context, event) => {
+        Logger.debug(TAG, 'services.saveUser');
         await AsyncStorage.setItem('user', JSON.stringify(event.user));
       },
       calculateLevel: async (context, event) => {
+        Logger.debug(TAG, 'services.calculateLevel');
         const user = context.user;
         if (!user) throw new Error('user not exist in context');
 
@@ -187,7 +192,21 @@ export const globalMachine = createMachine(
           totalExp: user.totalExp + earnedExp,
         } as User;
 
+        Logger.info(
+          TAG,
+          `total exp: ${user.totalExp}, current exp: ${user.currentExp}`,
+        );
+        Logger.info(
+          TAG,
+          `target exp based on user level: ${targetExp}(level: ${user.level})`,
+        );
+        Logger.info(TAG, `earned exp: ${earnedExp}`);
         if (targetExp <= user.currentExp + earnedExp) {
+          Logger.info(
+            TAG,
+            'calculated exp is greater than or equal to the target exp',
+          );
+          Logger.info(TAG, `level up (${user.level} -> ${user.level + 1})`);
           modifiedUser.currentExp = user.currentExp + earnedExp - targetExp;
           modifiedUser.level = user.level + 1;
         } else {
@@ -198,6 +217,7 @@ export const globalMachine = createMachine(
         return modifiedUser;
       },
       cleanup: async () => {
+        Logger.debug(TAG, 'services.cleanup');
         queryClient.clear();
         await StorageManager.getInstance().clear();
         await AsyncStorage.clear();

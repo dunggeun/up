@@ -1,7 +1,8 @@
 import { useMutation, type UseMutationResult } from 'react-query';
-import { AppManager } from 'src/modules/app';
-import { queryClient } from 'src/stores/reactQuery';
 import { deleteQuest } from 'src/data';
+import { AppManager } from 'src/modules/app';
+import { Logger } from 'src/modules/logger';
+import { queryClient } from 'src/stores/reactQuery';
 import { t } from 'src/translations';
 
 import type { Quest } from '../types';
@@ -9,6 +10,8 @@ import type { Quest } from '../types';
 interface UseDeleteQuestParams {
   onSuccess?: () => void;
 }
+
+const TAG = 'useDeleteQuest';
 
 export const useDeleteQuest = ({
   onSuccess,
@@ -33,7 +36,8 @@ export const useDeleteQuest = ({
 
       onSuccess?.();
     },
-    onError: (_error) => {
+    onError: (error) => {
+      Logger.error(TAG, error.message);
       AppManager.showToast(t('message.error.common'));
     },
   });

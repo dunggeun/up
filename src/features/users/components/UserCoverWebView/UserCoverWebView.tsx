@@ -6,6 +6,7 @@ import dayjs from 'dayjs';
 import { getExpByLevel } from 'src/modules/app/helpers';
 import { AppManager } from 'src/modules/app';
 import { t } from 'src/translations';
+import { Logger } from 'src/modules/logger';
 import { useUserThemeColor } from '../../hooks';
 import { getPageSource } from './contents';
 
@@ -20,6 +21,8 @@ interface UserCoverWebViewProps {
 export interface UserCoverRef {
   requestCoverImage: (config: CoverGenerateConfig) => void;
 }
+
+const TAG = 'UserCoverWebView';
 
 // 정사각형 이미지 생성을 위해 같은 크기로 지정
 const StyledWebView = styled(WebView)({
@@ -37,14 +40,17 @@ export const UserCoverWebView = memo(function UserCover({
 
   const handleMessage = (event: WebViewMessageEvent): void => {
     try {
+      Logger.info(TAG, 'handleMessage');
       const response = JSON.parse(event.nativeEvent.data) as WebViewMessage;
       if (response.type === 'success') {
         onGenerated?.(response.data);
+        Logger.success(TAG, 'generated!');
       } else {
         throw new Error(response.data || 'unknown');
       }
-    } catch (_error) {
+    } catch (error) {
       AppManager.showToast(t('message.error.common'));
+      Logger.error(TAG, `handleMessage - ${(error as Error).message}`);
     }
   };
 

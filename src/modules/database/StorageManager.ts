@@ -1,13 +1,16 @@
+import { Logger } from '../logger';
 import { DatabaseModule } from './module';
 
 import type { Quest, Achieve } from 'src/features/quests';
+
+const TAG = 'StorageManager';
 
 export class StorageManager {
   private static instance: StorageManager | null = null;
   private database = new DatabaseModule();
 
   private constructor() {
-    // empty constructor
+    Logger.info(TAG, 'instance created');
   }
 
   public static getInstance(): StorageManager {
@@ -18,7 +21,10 @@ export class StorageManager {
   }
 
   initialize(): Promise<void> {
-    return this.database.initialize();
+    Logger.info(TAG, 'initializing...');
+    return this.database.initialize().then(() => {
+      Logger.success(TAG, 'successfully initialized');
+    });
   }
 
   getQuestList(): Promise<Quest[]> {
