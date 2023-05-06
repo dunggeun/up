@@ -1,5 +1,6 @@
 import { createMachine, assign } from 'xstate';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { AppEventChannel } from 'src/modules/event';
 import { Logger } from 'src/modules/logger';
 import { getExpByLevel } from 'src/modules/app/helpers';
 import { StorageManager } from 'src/modules/database';
@@ -206,7 +207,10 @@ export const globalMachine = createMachine(
           `target exp based on user level: ${targetExp}(level: ${user.level})`,
         );
         Logger.info(TAG, `earned exp: ${earnedExp}`);
-        if (targetExp <= user.currentExp + earnedExp) {
+
+        const shouldLevelUp = targetExp <= user.currentExp + earnedExp;
+
+        if (shouldLevelUp) {
           Logger.info(
             TAG,
             'calculated exp is greater than or equal to the target exp',
@@ -219,6 +223,13 @@ export const globalMachine = createMachine(
         }
 
         await AsyncStorage.setItem('user', JSON.stringify(modifiedUser));
+
+        if (shouldLevelUp) {
+          AppEventChannel.getInstance().dispatch('levelup', {
+            level: modifiedUser.level,
+          });
+        }
+
         return modifiedUser;
       },
       cleanup: async () => {

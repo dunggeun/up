@@ -12,6 +12,7 @@ import { titleFormatter } from 'src/utils';
 import { themeLight } from 'src/themes';
 import { AnimateSuspense, Toast } from 'src/components';
 import { Logger } from 'src/modules/logger';
+import { LevelUpModal } from './src/features/users/components/LevelUpModal';
 
 // eslint-disable-next-line import/no-named-as-default-member
 const Navigator = React.lazy(() => import('src/navigators'));
@@ -39,6 +40,7 @@ function AppProviders<T = unknown>({
             </RecoilRoot>
           </QueryClientProvider>
           <Toast />
+          <LevelUpModal />
         </DripsyProvider>
       </SafeAreaProvider>
     </GestureHandlerRootView>
