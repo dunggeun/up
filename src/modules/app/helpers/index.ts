@@ -12,6 +12,11 @@ import type { User } from 'src/features/users';
 import type { Quest, Achieve } from 'src/features/quests';
 import type { Badge, Theme } from '../types';
 
+export const getId = (): number => {
+  const currentTimestamp = Number(new Date());
+  return Math.floor(currentTimestamp * 1000 + Math.random() * 10000);
+};
+
 export const createUserData = (name: string): User => {
   const currentTimestamp = Number(new Date());
   return {
@@ -30,7 +35,7 @@ export const createUserData = (name: string): User => {
 export const createQuestData = (title: string, description = ''): Quest => {
   const currentTimestamp = Number(new Date());
   return {
-    id: currentTimestamp,
+    id: getId(),
     title,
     description,
     current_streak: 0,
@@ -50,7 +55,7 @@ export const createAchieveData = ({
 }): Achieve => {
   const currentTimestamp = Number(new Date());
   return {
-    id: currentTimestamp,
+    id: getId(),
     qid: questId,
     exp,
     created_at: currentTimestamp,
