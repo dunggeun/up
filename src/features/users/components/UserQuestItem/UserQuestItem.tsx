@@ -61,17 +61,15 @@ export function UserQuestItem({
     switch (true) {
       case isFinishedQuest:
         AppManager.showToast(t('message.finished_quest'));
-        return;
+        break;
 
       case alreadyCompletedToday:
         AppManager.showToast(t('message.already_completed'));
-        return;
+        break;
 
       default:
-        break;
+        mutate({ questId: data.id });
     }
-
-    mutate({ questId: data.id });
   };
 
   const renderBadge = (): JSX.Element | null => {

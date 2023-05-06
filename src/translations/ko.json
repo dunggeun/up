@@ -37,7 +37,8 @@
       "finished_quests": "완료한 퀘스트",
       "total_achieve": "누적 퀘스트 달성",
       "total_exp": "누적 경험치",
-      "joined_date": "가입일"
+      "joined_date": "가입일",
+      "level_up": "레벨업!"
     },
     "title": {
       "landing": "환영합니다",
@@ -66,6 +67,11 @@
       "error": {
         "common": "문제가 발생했어요",
         "unsupported_platform": "현재 플랫폼에서 지원하지 않는 기능이에요"
+      },
+      "congrats": {
+        "0": "꾸준한 습관을 만들어 나를 키워보아요",
+        "1": "지금처럼 열심히 달려가 보아요",
+        "2": "노력한 만큼 보상으로 돌아올 거예요"
       },
       "greeting": "환영합니다!\n업 챌린지에 도전해보세요",
       "enter_name": "업 도전자님의\n이름을 알려주세요",
