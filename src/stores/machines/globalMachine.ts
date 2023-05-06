@@ -172,7 +172,12 @@ export const globalMachine = createMachine(
         Logger.debug(TAG, 'services.updateUser');
         if (!context.user) throw new Error('user not exist in context');
 
-        const modifiedUser = { ...context.user, ...event.user } as User;
+        const modifiedUser = {
+          ...context.user,
+          ...event.user,
+          updatedAt: Number(new Date()),
+        } as User;
+
         await AsyncStorage.setItem('user', JSON.stringify(modifiedUser));
         return modifiedUser;
       },
