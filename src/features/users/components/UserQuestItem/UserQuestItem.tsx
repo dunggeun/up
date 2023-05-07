@@ -9,6 +9,7 @@ import { diffBeforeToday } from 'src/utils';
 import { t } from 'src/translations';
 import { USE_NATIVE_DRIVER } from 'src/constants';
 
+import { RELEASE_DURATION } from 'src/designs/atoms/Button/constants';
 import type { Quest } from 'src/features/quests';
 import type { basicColors } from 'src/themes/colors';
 
@@ -68,7 +69,11 @@ export function UserQuestItem({
         break;
 
       default:
-        mutate({ questId: data.id });
+        // 버튼 release 애니메이션과 곂칠 경우 퍼포먼스 문제가 발생
+        // 이를 회피하기 위해 버튼 release 애니메이션이 끝난 뒤 액션 처리하도록 함
+        setTimeout(() => {
+          mutate({ questId: data.id });
+        }, RELEASE_DURATION);
     }
   };
 

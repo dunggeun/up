@@ -204,7 +204,7 @@ export const globalMachine = createMachine(
         );
         Logger.info(
           TAG,
-          `target exp based on user level: ${targetExp}(level: ${user.level})`,
+          `target exp based on user level: ${targetExp} (level: ${user.level})`,
         );
         Logger.info(TAG, `earned exp: ${earnedExp}`);
 
@@ -225,9 +225,11 @@ export const globalMachine = createMachine(
         await AsyncStorage.setItem('user', JSON.stringify(modifiedUser));
 
         if (shouldLevelUp) {
-          AppEventChannel.getInstance().dispatch('levelup', {
-            level: modifiedUser.level,
-          });
+          setTimeout(() => {
+            AppEventChannel.getInstance().dispatch('levelup', {
+              level: modifiedUser.level,
+            });
+          }, 500);
         }
 
         return modifiedUser;

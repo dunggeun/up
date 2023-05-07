@@ -48,6 +48,7 @@ export interface ButtonProps extends AccessibilityProps {
   rightAdornment?: React.ReactElement | null;
   onPress?: () => void;
   onLongPress?: () => void;
+  onRelease?: () => void;
 }
 
 const Container = styled(Pressable)({
@@ -135,6 +136,7 @@ export const Button = forwardRef(function Button(
     accessibilityLabel,
     onPress,
     onLongPress,
+    onRelease,
   }: PropsWithChildren<ButtonProps>,
   ref: ForwardedRef<RNView>,
 ): JSX.Element {
@@ -143,6 +145,7 @@ export const Button = forwardRef(function Button(
   const capPosition = useRef(new Animated.Value(0)).current;
   const dimSize = useRef(new Animated.Value(0)).current;
   const dimAnimationRef = useRef<Animated.CompositeAnimation | null>();
+  const releaseAnimationRef = useRef<Animated.CompositeAnimation | null>();
 
   const initialize = (): void => {
     dimAnimationRef.current = null;
@@ -155,7 +158,9 @@ export const Button = forwardRef(function Button(
     dimAnimationRef.current?.stop();
     isLongPress.current = false;
 
-    Animated.parallel([
+    if (releaseAnimationRef.current) return;
+
+    releaseAnimationRef.current = Animated.parallel([
       Animated.timing(capPosition, {
         toValue: ButtonAnimateState.INACTIVE,
         useNativeDriver: false,
@@ -166,7 +171,12 @@ export const Button = forwardRef(function Button(
         useNativeDriver: false,
         duration: RELEASE_DURATION,
       }),
-    ]).start();
+    ]);
+
+    releaseAnimationRef.current.start(() => {
+      releaseAnimationRef.current = null;
+      onRelease?.();
+    });
   };
 
   const applyPressAnimation = (): void => {
@@ -192,6 +202,7 @@ export const Button = forwardRef(function Button(
   const handleLongPress = (): void => {
     if (disableLongPress) return;
     !disableHaptic && triggerHaptic('rigid');
+    reset();
     onLongPress?.();
   };
 
