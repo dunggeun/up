@@ -1,6 +1,9 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import { OpenSourceProjectScreen } from 'src/features/misc';
+import {
+  OpenSourceProjectScreen,
+  DataManagementScreen,
+} from 'src/features/misc';
 import { SHARED_CONFIG } from 'src/constants';
 
 import type { CommonStackScreenParamList } from './types';
@@ -18,6 +21,10 @@ export function CommonStackNavigator(): JSX.Element {
       <CommonStack.Screen
         component={OpenSourceProjectScreen}
         name="OpenSourceProject"
+      />
+      <CommonStack.Screen
+        component={DataManagementScreen}
+        name="DataManagement"
       />
     </CommonStack.Navigator>
   );

@@ -46,3 +46,5 @@ export const SHARED_CONFIG = {
 
 export const USE_NATIVE_DRIVER =
   Platform.OS === 'android' || Platform.OS === 'ios';
+
+export const BACKUP_FILE_NAME = 'up.bak';

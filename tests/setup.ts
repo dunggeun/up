@@ -48,6 +48,21 @@ jest.mock('react-native-share', () => ({
   default: jest.fn(),
 }));
 
+jest.mock('react-native-fs', () => ({
+  default: {
+    DownloadDirectoryPath: '',
+    DocumentDirectoryPath: '',
+    writeFile: jest.fn().mockImplementation(() => Promise.resolve()),
+    readFile: jest.fn().mockImplementation(() => Promise.resolve()),
+  },
+}));
+
+jest.mock('react-native-document-picker', () => ({
+  default: {
+    pickSingle: jest.fn().mockImplementation(() => Promise.resolve()),
+  },
+}));
+
 jest.mock('react-native-webview', () => ({
   default: DummyComponent,
 }));

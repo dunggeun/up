@@ -1,3 +1,5 @@
+import type { Achieve, Quest } from 'src/features/quests';
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type Value = any;
 
@@ -16,6 +18,11 @@ export type WhereConditions = Record<
     value: Value;
   }
 >;
+
+export interface DumpData {
+  quests: Quest[];
+  achieves: Achieve[];
+}
 
 export type DatabaseRecord = Record<string, Value>;
 

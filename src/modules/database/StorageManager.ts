@@ -1,7 +1,9 @@
+import { noop } from 'src/utils';
 import { Logger } from '../logger';
 import { DatabaseModule } from './module';
 
 import type { Quest, Achieve } from 'src/features/quests';
+import type { DumpData } from './types';
 
 const TAG = 'StorageManager';
 
@@ -69,7 +71,11 @@ export class StorageManager {
     });
   }
 
-  getAchieveList(params?: Pick<Achieve, 'qid'>): Promise<Achieve[]> {
+  getAchieveList(): Promise<Achieve[]> {
+    return this.database.select('achieve');
+  }
+
+  getAchieveListByQid(params?: Pick<Achieve, 'qid'>): Promise<Achieve[]> {
     return this.database.select(
       'achieve',
       params
@@ -105,6 +111,21 @@ export class StorageManager {
         value: qid,
       },
     });
+  }
+
+  dump(): Promise<DumpData> {
+    return Promise.all([this.getQuestList(), this.getAchieveList()]).then(
+      ([quests, achieves]) => ({ quests, achieves }),
+    );
+  }
+
+  load(data: DumpData): Promise<void> {
+    return Promise.all([
+      ...data.quests.map((quest) => this.database.insert('quest', quest)),
+      ...data.achieves.map((achieve) =>
+        this.database.insert('achieve', achieve),
+      ),
+    ]).then(noop);
   }
 
   async clear(): Promise<void> {

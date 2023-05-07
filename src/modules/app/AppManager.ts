@@ -1,12 +1,19 @@
 import React from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import CryptoJS from 'crypto-js';
 import { Text } from 'src/designs';
 import { ToastManager } from 'src/components/Toast/ToastManager';
 import { delay } from 'src/utils';
-import { APP_MINIMUM_LOADING_DURATION } from 'src/constants';
+import { APP_MINIMUM_LOADING_DURATION, BACKUP_FILE_NAME } from 'src/constants';
 import { globalMachineService } from 'src/stores/machines/service';
 import { queryClient } from 'src/stores/reactQuery';
+import { readFile, writeFile } from 'src/utils/fs';
+import { t } from 'src/translations';
 import { StorageManager } from '../database';
 import { Logger } from '../logger';
+
+import type { User } from 'src/features/users';
+import type { DumpData } from '../database/types';
 
 const TAG = 'AppManager';
 
@@ -86,5 +93,56 @@ export class AppManager {
       case 'error':
         throw this.error ?? new Error();
     }
+  }
+
+  async export(key: string): Promise<void> {
+    Logger.debug(TAG, 'export');
+    return Promise.all([
+      AsyncStorage.getItem('user'),
+      StorageManager.getInstance().dump(),
+    ]).then(([user, database]) => {
+      const encryptedData = CryptoJS.AES.encrypt(
+        JSON.stringify({ user, database }),
+        key,
+      ).toString();
+      return writeFile(encryptedData, BACKUP_FILE_NAME);
+    });
+  }
+
+  async import(filepath: string, key: string): Promise<void> {
+    Logger.debug(TAG, `import (filepath: ${filepath})`);
+
+    let data: {
+      user: User;
+      database: DumpData;
+    };
+    const encryptedData = await readFile(filepath);
+
+    try {
+      data = JSON.parse(
+        CryptoJS.AES.decrypt(encryptedData, key).toString(CryptoJS.enc.Utf8),
+      );
+    } catch (error) {
+      Logger.error(TAG, 'decrypt error', (error as Error).message);
+      AppManager.showToast(t('message.error.decrypt_failed'));
+      return;
+    }
+
+    if (!(typeof data.user === 'string' && typeof data.database === 'object')) {
+      throw new Error('invalid backup data');
+    }
+
+    const storage = StorageManager.getInstance();
+
+    Logger.info(TAG, 'wipe all data');
+    queryClient.clear();
+    await storage.clear();
+    Logger.info(TAG, 'load records from backup data');
+    await storage.load(data.database);
+    Logger.info(TAG, 'override user from backup data');
+    await AsyncStorage.setItem('user', data.user);
+
+    Logger.success(TAG, 'successfully restored');
+    globalMachineService.send({ type: 'REFRESH' });
   }
 }

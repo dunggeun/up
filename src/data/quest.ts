@@ -39,7 +39,7 @@ export const fetchAchievesByQuestId = ({
   questId,
 }: QuestIdParam): Promise<Achieve[]> => {
   Logger.debug('fetchAchievesByQuestId', { questId });
-  return StorageManager.getInstance().getAchieveList({ qid: questId });
+  return StorageManager.getInstance().getAchieveListByQid({ qid: questId });
 };
 
 export const fetchQuestDetailById = ({
