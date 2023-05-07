@@ -26,13 +26,7 @@ export function FadeInView({
         useNativeDriver: USE_NATIVE_DRIVER,
       }).start();
 
-      return () => {
-        Animated.timing(opacityAnimation, {
-          toValue: 0,
-          duration: FADE_DURATION,
-          useNativeDriver: USE_NATIVE_DRIVER,
-        }).start();
-      };
+      return () => opacityAnimation.setValue(0);
     }, [opacityAnimation]),
   );
 
