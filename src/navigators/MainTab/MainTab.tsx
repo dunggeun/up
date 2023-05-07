@@ -26,6 +26,7 @@ export function MainTabNavigator(): JSX.Element {
       title: '',
       headerShown: false,
       unmountOnBlur: false,
+      freezeOnBlur: true,
       tabBarShowLabel: false,
       tabBarActiveTintColor: theme.colors[userColor],
       tabBarInactiveTintColor: theme.colors.$text_tertiary,

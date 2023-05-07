@@ -1,6 +1,6 @@
 /* eslint-disable eslint-comments/disable-enable-pair */
 /* eslint-disable react/no-array-index-key */
-import React, { memo, useRef, useEffect } from 'react';
+import React, { memo, useState, useEffect, useLayoutEffect } from 'react';
 import { Animated, Platform } from 'react-native';
 import { styled, View } from 'dripsy';
 import { H1, H2 } from 'src/designs';
@@ -31,21 +31,37 @@ export const AnimatedNumber = memo(function AnimatedNumber({
   size = 'md',
   variant = 'primary',
 }: AnimatedNumberProps): JSX.Element {
-  const numbers = Array.from(value.toString(), Number);
-  const animations = useRef(
-    new Array<Animated.Value>(numbers.length)
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-expect-error
-      .fill(null)
-      .map(() => new Animated.Value(0)),
-  ).current;
+  const [numbers, setNumbers] = useState<number[]>();
+  const [animationValues, setAnimationValues] = useState<Animated.Value[]>([]);
 
   const height = (size === 'md' ? 24 : 32) + (Platform.OS === 'web' ? 8 : 0);
   const TextComponent = size === 'md' ? H2 : H1;
 
+  useLayoutEffect(() => {
+    const numbers = Array.from(value.toString(), Number);
+    setNumbers(numbers);
+    setAnimationValues((values): Animated.Value[] => {
+      const diff = numbers.length - values.length;
+      if (values.length === numbers.length) {
+        return [...values];
+      }
+
+      return [
+        ...values,
+        ...(diff > 0
+          ? new Array<Animated.Value>(diff)
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              // @ts-expect-error
+              .fill(null)
+              .map(() => new Animated.Value(0))
+          : []),
+      ].slice(0, numbers.length);
+    });
+  }, [value]);
+
   useEffect(() => {
-    animations.forEach((animation, index): void => {
-      const targetNumber = numbers[index];
+    animationValues.forEach((animation, index): void => {
+      const targetNumber = numbers?.[index];
       if (targetNumber === undefined) return;
       Animated.timing(animation, {
         toValue: -(height * targetNumber),
@@ -54,11 +70,11 @@ export const AnimatedNumber = memo(function AnimatedNumber({
         delay,
       }).start();
     });
-  }, [animations, numbers, height, delay]);
+  }, [animationValues, numbers, height, delay]);
 
   return (
     <NumberContainer>
-      {animations.map((animation, index) => (
+      {animationValues.map((animation, index) => (
         <NumberWrapper height={height} key={index}>
           <Animated.View
             style={{
