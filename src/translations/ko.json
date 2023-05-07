@@ -38,7 +38,11 @@
       "total_achieve": "누적 퀘스트 달성",
       "total_exp": "누적 경험치",
       "joined_date": "가입일",
-      "level_up": "레벨업!"
+      "level_up": "레벨업!",
+      "data_management": "데이터 관리",
+      "backup": "백업하기",
+      "restore": "복원하기",
+      "pick_backup_and_restore": "백업 파일 선택하고 복원하기",
     },
     "title": {
       "landing": "환영합니다",
@@ -57,16 +61,21 @@
       "quest_history_in_4_week": "최근 4주 퀘스트 기록",
       "quest_total_exp": "누적 경험치",
       "done_quest": "퀘스트 완료하기",
-      "delete_quest": "퀘스트 삭제하기"
+      "delete_quest": "퀘스트 삭제하기",
+      "data_management": "데이터 관리",
+      "restore": "복원하기",
+      "password": "암호 입력"
     },
     "placeholder": {
       "enter_name": "이름을 입력해주세요",
-      "enter_memo": "메모를 남겨보세요 (선택)"
+      "enter_memo": "메모를 남겨보세요 (선택)",
+      "enter_password": "암호를 입력해주세요"
     },
     "message": {
       "error": {
         "common": "문제가 발생했어요",
-        "unsupported_platform": "현재 플랫폼에서 지원하지 않는 기능이에요"
+        "unsupported_platform": "현재 플랫폼에서 지원하지 않는 기능이에요",
+        "decrypt_failed": "암호를 다시 확인해주세요"
       },
       "congrats": {
         "0": "꾸준한 습관을 만들어 나를 키워보아요",
@@ -92,7 +101,12 @@
       "delete_quest": "퀘스트를 삭제하면 지금까지의\n기록을 더 이상 확인할 수 없어요",
       "delete_quest_guide": "종료 하시려면 버튼을 길게 눌러주세요",
       "empty_achieve": "퀘스트 달성 기록이 없어요",
-      "image_generating": "잠시만 기다려주세요\n공유용 이미지를 만들고 있어요"
+      "image_generating": "잠시만 기다려주세요\n공유용 이미지를 만들고 있어요",
+      "restore": "복원에 성공하면 현재 데이터가 초기화되고\n백업 데이터로 변경되어요",
+      "restore_guide": "복원하시려면 버튼을 길게 눌러주세요",
+      "backup_success": "백업 파일을 잘 만들어두었어요",
+      "restore_success": "데이터가 성공적으로 복원되었어요",
+      "check_password": "비밀번호는 5자리 이상이어야 해요"
     },
     "badge": {
       "0": "",
