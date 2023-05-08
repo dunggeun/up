@@ -109,14 +109,14 @@ export class AppManager {
     });
   }
 
-  async import(filepath: string, key: string): Promise<void> {
-    Logger.debug(TAG, `import (filepath: ${filepath})`);
+  async import(file: string | File, key: string): Promise<boolean> {
+    Logger.debug(TAG, `import (file: ${file.toString()})`);
 
     let data: {
       user: User;
       database: DumpData;
     };
-    const encryptedData = await readFile(filepath);
+    const encryptedData = await readFile(file);
 
     try {
       data = JSON.parse(
@@ -125,7 +125,7 @@ export class AppManager {
     } catch (error) {
       Logger.error(TAG, 'decrypt error', (error as Error).message);
       AppManager.showToast(t('message.error.decrypt_failed'));
-      return;
+      return false;
     }
 
     if (!(typeof data.user === 'string' && typeof data.database === 'object')) {
@@ -144,5 +144,7 @@ export class AppManager {
 
     Logger.success(TAG, 'successfully restored');
     globalMachineService.send({ type: 'REFRESH' });
+
+    return true;
   }
 }

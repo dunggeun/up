@@ -42,7 +42,7 @@
       "data_management": "데이터 관리",
       "backup": "백업하기",
       "restore": "복원하기",
-      "pick_backup_and_restore": "백업 파일 선택하고 복원하기",
+      "pick_backup_and_restore": "백업 파일 선택하고 복원하기"
     },
     "title": {
       "landing": "환영합니다",

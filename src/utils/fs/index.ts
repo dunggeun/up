@@ -31,7 +31,11 @@ export const writeFile: WriteFile = (data: string, filename: string) => {
     });
 };
 
-export const readFile: ReadFile = (filepath: string) => {
+export const readFile: ReadFile = (filepath: string | File) => {
+  if (typeof filepath !== 'string') {
+    return Promise.reject(new Error('invalid payload'));
+  }
+
   Logger.debug(TAG, `readFile :: read file from ${filepath}`);
 
   return RNFS.readFile(filepath);
