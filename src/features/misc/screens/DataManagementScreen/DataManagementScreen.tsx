@@ -51,7 +51,7 @@ export function DataManagementScreen({
 }: DataManagementScreenProps): JSX.Element {
   const [_, send] = useActor(globalMachineService);
   const selectedActionRef = useRef<'backup' | 'restore'>();
-  const backupFilePathRef = useRef('');
+  const backupFileRef = useRef<string | File>();
   const [loading, setLoading] = useState(false);
   const [enterPasswordModalVisibility, setEnterPasswordModalVisibility] =
     useState(false);
@@ -66,7 +66,7 @@ export function DataManagementScreen({
 
   const initialize = (): void => {
     selectedActionRef.current = undefined;
-    backupFilePathRef.current = '';
+    backupFileRef.current = '';
   };
 
   const handlePressBackup = (): void => {
@@ -88,34 +88,35 @@ export function DataManagementScreen({
     setEnterPasswordModalVisibility(false);
     setLoading(true);
 
-    const task = async (): Promise<void> => {
+    (async (): Promise<void> => {
       switch (selectedActionRef.current) {
         case 'backup':
-          await AppManager.getInstance().export(password);
-          AppManager.showToast(t('message.backup_success'));
+          await Promise.all([
+            AppManager.getInstance().export(password),
+            delay(APP_MINIMUM_LOADING_DURATION),
+          ]).then(() => {
+            AppManager.showToast(t('message.backup_success'));
+          });
           break;
 
         case 'restore':
-          await AppManager.getInstance().import(
-            backupFilePathRef.current,
-            password,
-          );
+          if (backupFileRef.current) {
+            await Promise.all([
+              AppManager.getInstance().import(backupFileRef.current, password),
+              delay(APP_MINIMUM_LOADING_DURATION),
+            ]).then(([success]) => {
+              if (success) {
+                AppManager.showToast(t('message.restore_success'));
+              }
+            });
+          }
           break;
 
         case undefined: {
           throw new Error();
         }
       }
-    };
-
-    Promise.all([task(), delay(APP_MINIMUM_LOADING_DURATION)])
-      .then(() => {
-        if (selectedActionRef.current === 'backup') {
-          AppManager.showToast(t('message.backup_success'));
-        } else if (selectedActionRef.current === 'restore') {
-          AppManager.showToast(t('message.restore_success'));
-        }
-      })
+    })()
       .catch((error) => {
         Logger.error(TAG, (error as Error).message);
         AppManager.showToast(t('message.error.common'));
@@ -129,9 +130,9 @@ export function DataManagementScreen({
     // 모달이 완전히 닫힌 후 picker 를 열어야 정상 동작함
     setTimeout(() => {
       selectFile()
-        .then((path) => {
+        .then((pathOrFile) => {
           selectedActionRef.current = 'restore';
-          backupFilePathRef.current = path;
+          backupFileRef.current = pathOrFile;
           setEnterPasswordModalVisibility(true);
         })
         .catch((error) => {
