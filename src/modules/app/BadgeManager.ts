@@ -30,36 +30,6 @@ export class BadgeManager {
     const eventChannel = AppEventChannel.getInstance();
     const tasks: Promise<void>[] = [];
 
-    badgeRules.forEach((rule) => {
-      eventChannel.addEventListener(rule.eventType, (event) => {
-        const user = globalMachineService.getSnapshot().context.user;
-        const targetBadgeId = rule.targetBadgeId;
-
-        if (!user) {
-          Logger.warn(TAG, 'user is empty');
-          return;
-        }
-
-        const context = { user } as const;
-        tasks.push(
-          Promise.resolve(rule.evaluation(context, event)).then(
-            (shouldUnlock) => {
-              if (!shouldUnlock) return;
-              Logger.info(
-                TAG,
-                `unlock ${targetBadgeId} badge (${rule.description})`,
-              );
-              this.tempBadgeIds.push(targetBadgeId);
-            },
-          ),
-        );
-      });
-    });
-
-    Promise.all(tasks)
-      .then(() => this.unlockBadges())
-      .catch((error) => Logger.error(TAG, (error as Error).message));
-
     /**
      * 상태머신의 값이 authorized.idle 가 아닐때
      * EDIT_USER 트랜지션이 불가하기에 authorized.idle 인지 체크 필요함
@@ -73,6 +43,33 @@ export class BadgeManager {
       }
       this.isIdle = state.matches('authorized.idle');
       this.isIdle && this.unlockBadges();
+    });
+
+    badgeRules.forEach((rule) => {
+      eventChannel.addEventListener(rule.eventType, (event) => {
+        const user = globalMachineService.getSnapshot().context.user;
+        const targetBadgeId = rule.targetBadgeId;
+
+        if (!user) {
+          Logger.warn(TAG, 'user is empty');
+          return;
+        }
+
+        const context = { user } as const;
+        tasks.push(
+          Promise.resolve(rule.evaluation(context, event))
+            .then((shouldUnlock) => {
+              if (!shouldUnlock) return;
+              Logger.info(
+                TAG,
+                `unlock ${targetBadgeId} badge (${rule.description})`,
+              );
+              this.tempBadgeIds.push(targetBadgeId);
+              this.unlockBadges();
+            })
+            .catch((error) => Logger.error(TAG, (error as Error).message)),
+        );
+      });
     });
 
     this.initialized = true;

@@ -12,11 +12,13 @@ import { AppEventChannel } from 'src/modules/event';
 import { Logger } from 'src/modules/logger';
 import { navigate } from 'src/navigators/helpers';
 import { t } from 'src/translations';
+import * as AppHelpers from 'src/modules/app/helpers';
 import { useUser } from '../../hooks';
 import { BadgeSection } from '../../components/BadgeSection';
 import { ThemeSection } from '../../components/ThemeSection';
 import { UserSection } from '../../components/UserSection';
 import { ShareModal } from '../../components/ShareModal';
+import { BadgeModal } from '../../components/BadgeModal';
 
 import type { User } from 'src/features/users';
 import type { MainTabProps } from 'src/navigators/MainTab/types';
@@ -30,6 +32,8 @@ export function ProfileScreen(_props: ProfileScreenProps): JSX.Element | null {
   const { bottomInset } = useMainTabBarInset();
   const [_, send] = useActor(globalMachineService);
   const [shareModalVisibility, setShareModalVisibility] = useState(false);
+  const [badgeModalVisibility, setBadgeModalVisibility] = useState(false);
+  const [badgeId, setBadgeId] = useState(0);
 
   const handleEditUser = useCallback(
     (modifyData: Partial<Pick<User, 'name' | 'badge' | 'theme'>>) => {
@@ -52,6 +56,7 @@ export function ProfileScreen(_props: ProfileScreenProps): JSX.Element | null {
 
   const handlePressClose = useCallback((): void => {
     setShareModalVisibility(false);
+    setBadgeModalVisibility(false);
   }, []);
 
   const handleReadyToShare = useCallback((imageData: string): void => {
@@ -76,8 +81,9 @@ export function ProfileScreen(_props: ProfileScreenProps): JSX.Element | null {
     [handleEditUser],
   );
 
-  const handleLongPressBadge = useCallback((_id: number): void => {
-    // @todo
+  const handleLongPressBadge = useCallback((id: number): void => {
+    setBadgeId(id);
+    setBadgeModalVisibility(true);
   }, []);
 
   const handlePressTheme = useCallback(
@@ -115,6 +121,11 @@ export function ProfileScreen(_props: ProfileScreenProps): JSX.Element | null {
         onReady={handleReadyToShare}
         user={user}
         visible={shareModalVisibility}
+      />
+      <BadgeModal
+        badge={AppHelpers.getBadge(badgeId)}
+        onClose={handlePressClose}
+        visible={badgeModalVisibility}
       />
     </FadeInView>
   );

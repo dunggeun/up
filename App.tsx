@@ -11,6 +11,7 @@ import { titleFormatter } from 'src/utils';
 import { themeLight } from 'src/themes';
 import { AnimateSuspense, Toast } from 'src/components';
 import { Logger } from 'src/modules/logger';
+import { EventBasedBadgeModal } from 'src/features/users/components/BadgeModal';
 import { LevelUpModal } from './src/features/users/components/LevelUpModal';
 
 // eslint-disable-next-line import/no-named-as-default-member
@@ -38,6 +39,7 @@ function AppProviders<T = unknown>({
           </QueryClientProvider>
           <Toast />
           <LevelUpModal />
+          <EventBasedBadgeModal />
         </DripsyProvider>
       </SafeAreaProvider>
     </GestureHandlerRootView>
