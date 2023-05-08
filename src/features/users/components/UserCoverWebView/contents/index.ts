@@ -95,13 +95,48 @@ export const getPageSource = (config: CoverGenerateConfig): string => {
             justify-content: center;
             align-items: center;
             gap: 12px;
-            padding-top: 24px;
+            padding-bottom: 12px;
           }
           
           .date > h2 {
             margin: 0;
             font-size: 40px;
+            color: #777777;
+          }
+
+          .button {
+            position: relative;
+            height: 112px;
+            margin-bottom: 16px;
+          }
+    
+          .button > .cap {
+            position: absolute;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            padding: 0 12px;
+            border: 10px solid #2e2e2e;
+            border-radius: 16px;
+            background-color: white;
+            font-size: 40px;
+            text-align: center;
             color: #2e2e2e;
+            z-index: 1;
+          }
+    
+          .button > .shadow {
+            position: absolute;
+            left: 0;
+            bottom: -20px;
+            width: 100%;
+            height: 100%;
+            background-color: #2e2e2e;
+            border-radius: 16px;
+            z-index: 0;
           }
 
         </style>
@@ -131,6 +166,10 @@ export const getPageSource = (config: CoverGenerateConfig): string => {
             <h2>
               ${config.date}
             </h2>
+          </div>
+          <div class="button">
+            <div class="cap">UP 하기</div>
+            <div class="shadow"></div>
           </div>
         </main>
         <script>
