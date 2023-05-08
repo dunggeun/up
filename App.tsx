@@ -1,7 +1,6 @@
 import React, { type PropsWithChildren } from 'react';
 import { StatusBar } from 'react-native';
 import { QueryClientProvider } from 'react-query';
-import { RecoilRoot } from 'recoil';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
@@ -27,17 +26,15 @@ function AppProviders<T = unknown>({
       <SafeAreaProvider>
         <DripsyProvider theme={themeLight}>
           <QueryClientProvider client={queryClient}>
-            <RecoilRoot>
-              <NavigationContainer
-                documentTitle={{ formatter: titleFormatter }}
-                onReady={(): void => {
-                  Logger.info('NavigationContainer', 'onReady');
-                }}
-                ref={navigationRef}
-              >
-                {children}
-              </NavigationContainer>
-            </RecoilRoot>
+            <NavigationContainer
+              documentTitle={{ formatter: titleFormatter }}
+              onReady={(): void => {
+                Logger.info('NavigationContainer', 'onReady');
+              }}
+              ref={navigationRef}
+            >
+              {children}
+            </NavigationContainer>
           </QueryClientProvider>
           <Toast />
           <LevelUpModal />
