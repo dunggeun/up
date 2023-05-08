@@ -61,7 +61,7 @@ describe('screens/UserRegisterScreen', () => {
     });
   });
 
-  describe('퀘스트 이름이 2글자 이상일 때', () => {
+  describe('임무 이름이 2글자 이상일 때', () => {
     beforeEach(() => {
       const titlePlaceholder = screen.getByPlaceholderText(
         t('placeholder.enter_name'),
