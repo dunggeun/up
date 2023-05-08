@@ -49,6 +49,10 @@ export class StorageManager {
       .then((rows) => rows[0] ?? null);
   }
 
+  getQuestCount(): Promise<number> {
+    return this.database.count('quest');
+  }
+
   addQuest(data: Quest): Promise<void> {
     return this.database.insert('quest', data);
   }

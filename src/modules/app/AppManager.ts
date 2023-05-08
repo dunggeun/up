@@ -11,6 +11,7 @@ import { readFile, writeFile } from 'src/utils/fs';
 import { t } from 'src/translations';
 import { StorageManager } from '../database';
 import { Logger } from '../logger';
+import { BadgeManager } from './BadgeManager';
 
 import type { User } from 'src/features/users';
 import type { DumpData } from '../database/types';
@@ -28,6 +29,7 @@ export class AppManager {
     globalMachineService.start();
     this.task = Promise.all([
       (async (): Promise<void> => {
+        BadgeManager.getInstance().initialize();
         await StorageManager.getInstance().initialize();
         await this.prefetchUserData();
       })(),

@@ -70,6 +70,7 @@ module.exports = {
         '@typescript-eslint/prefer-reduce-type-parameter': 'off',
         '@typescript-eslint/no-shadow': 'off',
         '@typescript-eslint/no-unsafe-assignment': 'off',
+        '@typescript-eslint/no-unsafe-argument': 'off',
       },
     },
     {

@@ -98,8 +98,8 @@ export const getExpByLevel = (level: number): number => {
 
 export const getBadge = (id: number): Badge => {
   const badge = BADGE_SET[id];
-  const [title, image] = badge ?? FALLBACK_BADGE;
-  return { id, title, image };
+  const [title, description, image] = badge ?? FALLBACK_BADGE;
+  return { id, title, description, image };
 };
 
 export const getBadges = (): typeof BADGE_SET => {

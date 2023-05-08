@@ -1,23 +1,16 @@
-type EventType = keyof AppEventPayload;
+import { Logger } from '../logger';
+import type {
+  AppEventType,
+  AppEventPayload,
+  AppEventSubscription,
+  EventHandler,
+} from './types';
 
-// eslint-disable-next-line @typescript-eslint/consistent-type-definitions
-type AppEventPayload = {
-  levelup: {
-    level: number;
-  };
-};
-
-export type EventHandler<Type extends EventType> = (
-  event: AppEventPayload[Type],
-) => void;
-
-interface EventSubscription {
-  remove: () => void;
-}
+const TAG = 'AppEventChannel';
 
 export class AppEventChannel {
   private static instance: AppEventChannel | null = null;
-  private listeners = new Map<EventType, Set<EventHandler<EventType>>>();
+  private listeners = new Map<AppEventType, Set<EventHandler<AppEventType>>>();
 
   private constructor() {
     // empty constructor
@@ -30,26 +23,29 @@ export class AppEventChannel {
     return AppEventChannel.instance;
   }
 
-  dispatch<Type extends EventType>(
+  dispatch<Type extends AppEventType>(
     type: Type,
     payload: AppEventPayload[Type],
   ): void {
+    Logger.info(TAG, `dispatching ${type} event`, { payload });
     this.listeners.get(type)?.forEach((handler) => {
       handler(payload);
     });
   }
 
-  addEventListener<Type extends EventType>(
+  addEventListener<Type extends AppEventType>(
     type: Type,
     handler: EventHandler<Type>,
-  ): EventSubscription {
+  ): AppEventSubscription {
+    Logger.info(TAG, `add ${type} event listener`);
     const handlers = this.listeners.get(type) ?? new Set();
-    handlers.add(handler as EventHandler<EventType>);
+    handlers.add(handler as EventHandler<AppEventType>);
     this.listeners.set(type, handlers);
 
     return {
       remove: (): void => {
-        handlers.delete(handler as EventHandler<EventType>);
+        Logger.info(TAG, `remove ${type} event listener`);
+        handlers.delete(handler as EventHandler<AppEventType>);
       },
     };
   }
