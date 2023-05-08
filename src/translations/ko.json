@@ -64,7 +64,8 @@
       "delete_quest": "임무 삭제하기",
       "data_management": "데이터 관리",
       "restore": "복원하기",
-      "password": "암호 입력"
+      "password": "암호 입력",
+      "badge_unlocked": "뱃지 잠금 해제"
     },
     "placeholder": {
       "enter_name": "이름을 입력해주세요",

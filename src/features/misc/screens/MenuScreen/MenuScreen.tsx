@@ -33,7 +33,11 @@ export function MenuScreen(_props: MenuProps): JSX.Element {
 
   const handlePressOpenSource = (): void => {
     navigate('Common', 'OpenSourceProject');
-    AppEventChannel.getInstance().dispatch('enterOpenSource', undefined);
+
+    // 화면 전환 이후 이벤트 발행
+    setTimeout(() => {
+      AppEventChannel.getInstance().dispatch('enterOpenSource', undefined);
+    }, 200);
   };
 
   return (
