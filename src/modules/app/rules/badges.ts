@@ -43,7 +43,7 @@ const levelReachedAt100: BadgeUnlockRule<'levelup'> = {
   eventType: 'levelup',
   targetBadgeId: 4,
   evaluation(_context, event) {
-    return Promise.resolve(event.level === 100);
+    return event.level === 100;
   },
 };
 
@@ -78,7 +78,9 @@ const firstQuestDone: BadgeUnlockRule<'doneQuest'> = {
     const alreadyExist = Boolean(
       context.user.unlockedBadges[this.targetBadgeId],
     );
-    return !alreadyExist;
+    return StorageManager.getInstance()
+      .getAchieveCount()
+      .then((count) => !alreadyExist && count === 1);
   },
 };
 
@@ -91,7 +93,9 @@ const questDoneCountReactedAt10: BadgeUnlockRule<'doneQuest'> = {
     const alreadyExist = Boolean(
       context.user.unlockedBadges[this.targetBadgeId],
     );
-    return !alreadyExist;
+    return StorageManager.getInstance()
+      .getAchieveCount()
+      .then((count) => !alreadyExist && count === 10);
   },
 };
 
@@ -104,7 +108,9 @@ const questDoneCountReactedAt50: BadgeUnlockRule<'doneQuest'> = {
     const alreadyExist = Boolean(
       context.user.unlockedBadges[this.targetBadgeId],
     );
-    return !alreadyExist;
+    return StorageManager.getInstance()
+      .getAchieveCount()
+      .then((count) => !alreadyExist && count === 50);
   },
 };
 
@@ -117,7 +123,9 @@ const questDoneCountReactedAt100: BadgeUnlockRule<'doneQuest'> = {
     const alreadyExist = Boolean(
       context.user.unlockedBadges[this.targetBadgeId],
     );
-    return !alreadyExist;
+    return StorageManager.getInstance()
+      .getAchieveCount()
+      .then((count) => !alreadyExist && count === 100);
   },
 };
 
