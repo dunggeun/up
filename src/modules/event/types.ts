@@ -14,7 +14,9 @@ export type AppEventPayload = {
     achieve: Achieve;
   };
   createQuest: Quest;
-  doneQuest: Quest;
+  doneQuest: {
+    questId: number;
+  };
   deleteQuest: any;
   unlockBadge: {
     badgeId: number;

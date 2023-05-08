@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Button, CommonLayout } from 'src/designs';
 import { LoadingIndicator } from 'src/components';
-import { t } from 'src/translations';
 import { useUserThemeColor } from 'src/features/users';
+import { AppEventChannel } from 'src/modules/event';
+import { t } from 'src/translations';
 
 import { useUpdateQuest, useQuestDetail } from '../../hooks';
 import { QuestInformation } from '../../components/QuestInformation';
@@ -46,10 +47,9 @@ export function QuestDetailScreen({
   const handleDone = (): void => {
     if (!questDetail?.quest) return;
 
-    mutate({
-      questId: questDetail.quest.id,
-      data: { finished_at: Number(new Date()) },
-    });
+    const questId = questDetail.quest.id;
+    mutate({ questId, data: { finished_at: Number(new Date()) } });
+    AppEventChannel.getInstance().dispatch('doneQuest', { questId });
   };
 
   return shouldShowLoadingIndicator ? (
