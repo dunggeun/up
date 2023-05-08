@@ -45,7 +45,6 @@ const PressableRow = styled(TouchableOpacity)({
 const Badge = styled(View)({
   width: 30,
   height: 30,
-  padding: '$01',
   borderRadius: '$md',
   borderWidth: BORDER_WIDTH,
   borderColor: '$border',

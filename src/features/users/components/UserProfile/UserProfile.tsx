@@ -36,7 +36,6 @@ const ProgressSection = styled(View)({
 const Badge = styled(View)({
   width: 30,
   height: 30,
-  padding: '$01',
   borderRadius: '$md',
   borderWidth: BADGE_BORDER_WIDTH,
   borderColor: '$border',
