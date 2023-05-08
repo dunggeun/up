@@ -1,13 +1,14 @@
 import React, { useState, useCallback } from 'react';
-import Share from 'react-native-share';
-import { useActor } from '@xstate/react';
-import { View } from 'dripsy';
 import { Platform } from 'react-native';
+import Share from 'react-native-share';
+import { View } from 'dripsy';
+import { useActor } from '@xstate/react';
 import { CommonLayout, Button } from 'src/designs';
 import { AnimateSuspense, FadeInView } from 'src/components';
 import { useMainTabBarInset } from 'src/hooks';
 import { globalMachineService } from 'src/stores/machines';
 import { AppManager } from 'src/modules/app';
+import { AppEventChannel } from 'src/modules/event';
 import { Logger } from 'src/modules/logger';
 import { navigate } from 'src/navigators/helpers';
 import { t } from 'src/translations';
@@ -58,7 +59,14 @@ export function ProfileScreen(_props: ProfileScreenProps): JSX.Element | null {
       .catch((error: Error) => {
         Logger.warn(TAG, `handleReadyToShare - ${error.message}`);
       })
-      .finally(() => setShareModalVisibility(false));
+      .finally(() => {
+        setShareModalVisibility(false);
+
+        // 공유하기 모달이 닫힌 후 이벤트 발행
+        setTimeout(() => {
+          AppEventChannel.getInstance().dispatch('shareProfile', undefined);
+        }, 250);
+      });
   }, []);
 
   const handlePressBadge = useCallback(
@@ -75,6 +83,9 @@ export function ProfileScreen(_props: ProfileScreenProps): JSX.Element | null {
   const handlePressTheme = useCallback(
     (id: number): void => {
       handleEditUser({ theme: id });
+      AppEventChannel.getInstance().dispatch('changeTheme', {
+        themeId: id,
+      });
     },
     [handleEditUser],
   );

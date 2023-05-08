@@ -1,7 +1,13 @@
-import React, { memo } from 'react';
+import React, {
+  memo,
+  useRef,
+  useState,
+  useEffect,
+  useLayoutEffect,
+} from 'react';
+import { Animated, TouchableOpacity } from 'react-native';
 import dayjs from 'dayjs';
 import { styled, View, Image } from 'dripsy';
-import { TouchableOpacity } from 'react-native';
 import { AnimatedNumber, Section } from 'src/components';
 import { H1, H2 } from 'src/designs';
 import { useAchieveCount } from 'src/features/quests/hooks';
@@ -18,6 +24,7 @@ export interface UserSectionProps {
 }
 
 const ANIMATED_NUMBER_DELAY = 250;
+const BADGE_TITLE_ANIMATION_DURATION = 200;
 
 const Row = styled(View)({
   flexDirection: 'row',
@@ -25,6 +32,8 @@ const Row = styled(View)({
   alignItems: 'center',
   gap: '$03',
 });
+
+const AnimatedRow = styled(Animated.View)();
 
 const PressableRow = styled(TouchableOpacity)({
   flexDirection: 'row',
@@ -56,8 +65,24 @@ export const UserSection = memo(function UserSection({
   user,
   onPressEdit,
 }: UserSectionProps): JSX.Element {
+  const animatedBadgeTitleHeight = useRef(new Animated.Value(0)).current;
+  const [badgeTitle, setBadgeTitle] = useState('');
   const { data: totalAchieveCount = 0 } = useAchieveCount({ suspense: true });
   const badge = AppHelpers.getBadge(user.badge);
+
+  useLayoutEffect(() => {
+    if (badge.title) {
+      setBadgeTitle(badge.title);
+    }
+  }, [badge.title]);
+
+  useEffect(() => {
+    Animated.timing(animatedBadgeTitleHeight, {
+      toValue: badge.title ? 30 : 0,
+      duration: BADGE_TITLE_ANIMATION_DURATION,
+      useNativeDriver: false,
+    }).start(() => setBadgeTitle(badge.title));
+  }, [animatedBadgeTitleHeight, badge.title]);
 
   return (
     <Section center>
@@ -70,11 +95,9 @@ export const UserSection = memo(function UserSection({
         </H1>
         <EditIcon />
       </PressableRow>
-      {badge.title ? (
-        <Row>
-          <H2 variant="secondary">{`(${badge.title})`}</H2>
-        </Row>
-      ) : null}
+      <AnimatedRow style={{ height: animatedBadgeTitleHeight }}>
+        <H2 variant="secondary">{badgeTitle ? `(${badgeTitle})` : ''}</H2>
+      </AnimatedRow>
       <Row sx={{ marginTop: '$05' }}>
         <H2 variant="primary">{t('label.total_achieve')}</H2>
         <AnimatedNumber

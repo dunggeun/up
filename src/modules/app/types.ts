@@ -4,6 +4,7 @@ import type { ImageSourcePropType } from 'react-native';
 export interface Badge {
   id: number;
   title: string;
+  description: string;
   image: ImageSourcePropType | null;
 }
 

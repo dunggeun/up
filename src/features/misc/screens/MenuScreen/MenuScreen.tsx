@@ -2,8 +2,9 @@ import React from 'react';
 import { View } from 'dripsy';
 import { CommonLayout } from 'src/designs';
 import { FadeInView, ListItem } from 'src/components';
-import { navigate } from 'src/navigators/helpers';
 import { useMainTabBarInset } from 'src/hooks';
+import { AppEventChannel } from 'src/modules/event';
+import { navigate } from 'src/navigators/helpers';
 import { openMail } from 'src/utils';
 import { t } from 'src/translations';
 import { DEVELOPER_EMAIL, VERSION } from 'src/constants';
@@ -32,6 +33,7 @@ export function MenuScreen(_props: MenuProps): JSX.Element {
 
   const handlePressOpenSource = (): void => {
     navigate('Common', 'OpenSourceProject');
+    AppEventChannel.getInstance().dispatch('enterOpenSource', undefined);
   };
 
   return (
