@@ -42,13 +42,13 @@ describe('screens/QuestCreateScreen', () => {
       expect(tree).toMatchSnapshot();
     });
 
-    it('퀘스트 이름 입력 화면이 렌더링 되어야 한다', () => {
+    it('임무 이름 입력 화면이 렌더링 되어야 한다', () => {
       const title = screen.getByText(t('title.new_quest_title'));
       expect(title).not.toBeNull();
     });
   });
 
-  describe('퀘스트 이름이 2글자 미만일 때', () => {
+  describe('임무 이름이 2글자 미만일 때', () => {
     beforeEach(() => {
       const titlePlaceholder = screen.getByPlaceholderText(
         t('placeholder.enter_name'),
@@ -65,7 +65,7 @@ describe('screens/QuestCreateScreen', () => {
     });
   });
 
-  describe('퀘스트 이름이 2글자 이상일 때', () => {
+  describe('임무 이름이 2글자 이상일 때', () => {
     beforeEach(() => {
       const titlePlaceholder = screen.getByPlaceholderText(
         t('placeholder.enter_name'),
@@ -80,25 +80,25 @@ describe('screens/QuestCreateScreen', () => {
       });
     });
 
-    describe('퀘스트 이름 입력 화면에서 다음 버튼을 누르면', () => {
+    describe('임무 이름 입력 화면에서 다음 버튼을 누르면', () => {
       beforeEach(() => {
         const nextButton = screen.getByText(t('label.next'));
         fireEvent(nextButton, 'press');
       });
 
-      it('퀘스트 메모 화면이 렌더링 되어야 한다', () => {
+      it('임무 메모 화면이 렌더링 되어야 한다', () => {
         const title = screen.getByText(t('title.new_quest_memo'));
         expect(title).not.toBeNull();
       });
 
       // eslint-disable-next-line jest/no-disabled-tests
-      describe.skip('퀘스트 메모 화면에서 수락하기 버튼을 길게 누르면', () => {
+      describe.skip('임무 메모 화면에서 수락하기 버튼을 길게 누르면', () => {
         beforeEach(() => {
           const nextButton = screen.getByText(t('label.accept_quest'));
           fireEvent(nextButton, 'longPress');
         });
 
-        it('퀘스트 수락 화면이 렌더링 되어야 한다', () => {
+        it('임무 수락 화면이 렌더링 되어야 한다', () => {
           // TODO
         });
       });

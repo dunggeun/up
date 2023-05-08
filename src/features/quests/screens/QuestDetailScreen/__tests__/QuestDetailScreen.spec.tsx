@@ -78,25 +78,25 @@ describe('screens/QuestDetailScreen', () => {
     cleanup();
   });
 
-  describe('퀘스트 정보가 존재할 때', () => {
-    it('퀘스트 제목이 렌더링 되어야 한다', () => {
+  describe('임무 정보가 존재할 때', () => {
+    it('임무 제목이 렌더링 되어야 한다', () => {
       const title = screen.getByText(mockedQuest.title);
       expect(title).not.toBeNull();
     });
 
-    it('퀘스트 메모가 렌더링 되어야 한다', () => {
+    it('임무 메모가 렌더링 되어야 한다', () => {
       const description = screen.getByText(mockedQuest.description);
       expect(description).not.toBeNull();
     });
   });
 
-  describe('퀘스트 완료 버튼을 눌렀을 때', () => {
+  describe('임무 완료 버튼을 눌렀을 때', () => {
     beforeEach(() => {
       const doneButton = screen.getByText(t('label.quest_done'));
       fireEvent(doneButton, 'press');
     });
 
-    it('퀘스트 완료 안내 모달이 노출되어야 한다', () => {
+    it('임무 완료 안내 모달이 노출되어야 한다', () => {
       const questDoneModalContent = screen.getByTestId('quest-done-modal');
       expect(questDoneModalContent).not.toBeNull();
     });

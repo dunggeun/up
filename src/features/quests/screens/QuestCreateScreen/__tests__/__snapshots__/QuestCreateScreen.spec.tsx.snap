@@ -436,7 +436,7 @@ exports[`screens/QuestCreateScreen 렌더링 되었을 때 스냅샷이 일치�
                     ]
                   }
                 >
-                  새로운 퀘스트 제목을
+                  새로운 임무 제목을
 입력해주세요
                 </Text>
               </View>
