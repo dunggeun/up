@@ -9,7 +9,6 @@ import {
   QuestFinishedScreen,
 } from 'src/features/quests';
 import { SHARED_CONFIG } from 'src/constants';
-
 import type { QuestStackScreenParamList } from './types';
 
 const QuestStack = createStackNavigator<QuestStackScreenParamList>();

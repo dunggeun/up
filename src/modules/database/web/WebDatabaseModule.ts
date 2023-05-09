@@ -1,8 +1,6 @@
-// eslint-disable-next-line eslint-comments/disable-enable-pair
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import BoxDB, { type Box } from 'bxd';
 import { QuestSchema, AchieveSchema } from './schema';
-
 import type {
   DatabaseModule,
   DatabaseRecord,

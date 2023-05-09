@@ -1,10 +1,9 @@
-/* eslint-disable eslint-comments/disable-enable-pair */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-extraneous-class */
 
 import { Platform } from 'react-native';
-import { setLogger } from 'react-query';
 import dayjs from 'dayjs';
+import { setLogger } from 'react-query';
 
 const RESET = '\x1b[0m';
 const LEVEL_COLORS = {

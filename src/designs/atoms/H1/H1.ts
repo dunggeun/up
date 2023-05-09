@@ -1,8 +1,7 @@
 import { createElement } from 'react';
+import type { ComponentPropsWithoutRef } from 'react';
 import { H1 as DripsyH1 } from 'dripsy';
 import { overrideHeadingStyle } from 'src/themes';
-
-import type { ComponentPropsWithoutRef } from 'react';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface H1Props extends ComponentPropsWithoutRef<typeof DripsyH1> {}

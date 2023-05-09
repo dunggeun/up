@@ -1,7 +1,5 @@
-// eslint-disable-next-line eslint-comments/disable-enable-pair
 /* eslint-disable prefer-named-capture-group */
 const path = require('node:path');
-
 const { presets, plugins } = require('./babel.config.js');
 const { transformPackagesOnRspack } = require('./shares');
 

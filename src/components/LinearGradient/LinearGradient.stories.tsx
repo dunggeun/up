@@ -1,9 +1,8 @@
 import React from 'react';
+import type { ComponentProps } from 'react';
 import { View } from 'react-native';
 import { Text } from 'src/designs';
 import { LinearGradient } from './LinearGradient';
-
-import type { ComponentProps } from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 
 export default {

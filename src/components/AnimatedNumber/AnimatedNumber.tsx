@@ -1,4 +1,3 @@
-/* eslint-disable eslint-comments/disable-enable-pair */
 /* eslint-disable react/no-array-index-key */
 import React, { memo, useState, useEffect, useLayoutEffect } from 'react';
 import { Animated, Platform } from 'react-native';

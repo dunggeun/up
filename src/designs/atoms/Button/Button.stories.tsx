@@ -2,9 +2,8 @@ import React from 'react';
 import { View } from 'dripsy';
 import { getColors } from 'src/themes/utils';
 import { Button } from './Button';
-
-import type { Meta } from '@storybook/react';
 import type { ButtonProps } from './Button';
+import type { Meta } from '@storybook/react';
 
 export default {
   title: 'atoms/Button',

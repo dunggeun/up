@@ -6,7 +6,6 @@ import { Logger } from 'src/modules/logger';
 import { globalMachineService } from 'src/stores/machines';
 import { queryClient } from 'src/stores/reactQuery';
 import { t } from 'src/translations';
-
 import type { Quest, QuestDetail } from '../types';
 
 const TAG = 'useAddAchieve';

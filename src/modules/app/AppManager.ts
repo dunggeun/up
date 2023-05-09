@@ -1,20 +1,19 @@
 import React from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import CryptoJS from 'crypto-js';
-import { Text } from 'src/designs';
 import { ToastManager } from 'src/components/Toast/ToastManager';
-import { delay } from 'src/utils';
-import { APP_MINIMUM_LOADING_DURATION, BACKUP_FILE_NAME } from 'src/constants';
 import { globalMachineService } from 'src/stores/machines/service';
 import { queryClient } from 'src/stores/reactQuery';
 import { readFile, writeFile } from 'src/utils/fs';
+import { delay } from 'src/utils';
+import { APP_MINIMUM_LOADING_DURATION, BACKUP_FILE_NAME } from 'src/constants';
+import { Text } from 'src/designs';
 import { t } from 'src/translations';
 import { StorageManager } from '../database';
 import { Logger } from '../logger';
 import { BadgeManager } from './BadgeManager';
-
-import type { User } from 'src/features/users';
 import type { DumpData } from '../database/types';
+import type { User } from 'src/features/users';
 
 const TAG = 'AppManager';
 

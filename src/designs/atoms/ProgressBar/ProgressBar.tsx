@@ -1,8 +1,7 @@
 import React, { useEffect, useRef } from 'react';
+import type { ComponentPropsWithoutRef } from 'react';
 import { StyleSheet, Animated } from 'react-native';
 import { styled, useDripsyTheme, View } from 'dripsy';
-
-import type { ComponentPropsWithoutRef } from 'react';
 import type { colors } from 'src/themes/colors';
 
 type ViewProps = ComponentPropsWithoutRef<typeof View>;

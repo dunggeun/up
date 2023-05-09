@@ -2,7 +2,6 @@ import React from 'react';
 import { render as testRender, cleanup } from '@testing-library/react-native';
 import { withDripsy } from 'tests/utils';
 import { H1 } from '../H1';
-
 import type { H1Props } from '../H1';
 
 const render = (props: H1Props): ReturnType<typeof testRender> =>

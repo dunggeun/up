@@ -3,9 +3,9 @@ import { styled, View, Pressable } from 'dripsy';
 // Require cycle 이슈 방지를 위해 전체 경로로 참조
 import { LinearGradient } from 'src/components/LinearGradient';
 import { H2 } from 'src/designs/atoms';
+import { APP_BAR_HEIGHT, HIT_SLOP } from 'src/constants';
 import { Icons } from 'src/assets';
 import { t } from 'src/translations';
-import { APP_BAR_HEIGHT, HIT_SLOP } from 'src/constants';
 
 export interface AppBarProps {
   title?: string;

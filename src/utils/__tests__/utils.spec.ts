@@ -1,8 +1,7 @@
-import { faker } from '@faker-js/faker';
-import dayjs from 'dayjs';
 import { Platform } from 'react-native';
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
-
+import { faker } from '@faker-js/faker';
+import dayjs from 'dayjs';
 import { delay } from '../async';
 import { triggerHaptic } from '../common';
 import { diffBeforeToday } from '../date';

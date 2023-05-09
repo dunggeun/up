@@ -2,11 +2,9 @@ import React, { useState } from 'react';
 import { Button, CommonLayout } from 'src/designs';
 import { LoadingIndicator } from 'src/components';
 import { t } from 'src/translations';
-
-import { useDeleteQuest, useQuestDetail } from '../../hooks';
-import { QuestInformation } from '../../components/QuestInformation';
 import { QuestDeleteModal } from '../../components/QuestDeleteModal';
-
+import { QuestInformation } from '../../components/QuestInformation';
+import { useDeleteQuest, useQuestDetail } from '../../hooks';
 import type { QuestStackProps } from 'src/navigators/QuestStack/types';
 
 type QuestFinishedScreenProps = QuestStackProps<'QuestFinished'>;

@@ -1,11 +1,10 @@
 import React from 'react';
 import { styled, View } from 'dripsy';
-import { Modal } from 'src/components';
-import { Button, Text } from 'src/designs';
-import { t } from 'src/translations';
-
 import { useUserThemeColor } from 'src/features/users';
+import { Button, Text } from 'src/designs';
+import { Modal } from 'src/components';
 import type { ModalProps } from 'src/components';
+import { t } from 'src/translations';
 
 export interface RestoreConfirmModalProps extends Omit<ModalProps, 'title'> {
   onConfirm: () => void;

@@ -1,10 +1,8 @@
-// eslint-disable-next-line eslint-comments/disable-enable-pair
 /* eslint-disable import/no-named-as-default-member */
+import { Platform } from 'react-native';
 import Picker from 'react-native-document-picker';
 import RNFS from 'react-native-fs';
-import { Platform } from 'react-native';
 import { Logger } from 'src/modules/logger';
-
 import type { SelectFile, WriteFile, ReadFile } from './types';
 
 const TAG = 'utils.fs';

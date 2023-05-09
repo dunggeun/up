@@ -1,17 +1,16 @@
 import React, { memo } from 'react';
 // eslint-disable-next-line import/no-named-as-default
 import WebView, { type WebViewMessageEvent } from 'react-native-webview';
-import { styled, useSx } from 'dripsy';
 import dayjs from 'dayjs';
-import { getExpByLevel } from 'src/modules/app/helpers';
+import { styled, useSx } from 'dripsy';
 import { AppManager } from 'src/modules/app';
-import { t } from 'src/translations';
+import { getExpByLevel } from 'src/modules/app/helpers';
 import { Logger } from 'src/modules/logger';
+import { t } from 'src/translations';
 import { useUserThemeColor } from '../../hooks';
 import { getPageSource } from './contents';
-
-import type { User } from '../../types';
 import type { CoverGenerateConfig, WebViewMessage } from './types';
+import type { User } from '../../types';
 
 interface UserCoverWebViewProps {
   user: User;

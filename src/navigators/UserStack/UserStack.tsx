@@ -5,7 +5,6 @@ import {
 } from '@react-navigation/stack';
 import { UserEditScreen } from 'src/features/users/screens';
 import { SHARED_CONFIG } from 'src/constants';
-
 import type { UserStackScreenParamList } from './types';
 
 const UserStack = createStackNavigator<UserStackScreenParamList>();

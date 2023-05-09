@@ -1,9 +1,8 @@
 import React from 'react';
 import { View } from 'dripsy';
 import { AppBar } from './AppBar';
-
-import type { Meta } from '@storybook/react';
 import type { AppBarProps } from './AppBar';
+import type { Meta } from '@storybook/react';
 
 export default {
   title: 'molecules/AppBar',

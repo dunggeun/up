@@ -1,13 +1,12 @@
 import React, { useCallback, useState } from 'react';
 import { useActor } from '@xstate/react';
+import { AppManager } from 'src/modules/app';
+import { globalMachineService } from 'src/stores/machines';
+import { useDebounce } from 'src/hooks';
 import { CommonLayout, Input } from 'src/designs';
 import { Section } from 'src/components';
-import { useDebounce } from 'src/hooks';
-import { globalMachineService } from 'src/stores/machines';
-import { AppManager } from 'src/modules/app';
 import { t } from 'src/translations';
 import { useUser } from '../../hooks';
-
 import type { User } from '../../types';
 import type { UserStackProps } from 'src/navigators/UserStack/types';
 

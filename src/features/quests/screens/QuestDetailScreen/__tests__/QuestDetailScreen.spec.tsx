@@ -1,15 +1,14 @@
 import React from 'react';
+import { faker } from '@faker-js/faker';
 import {
   render as testRender,
   screen,
   cleanup,
   fireEvent,
 } from '@testing-library/react-native';
-import { faker } from '@faker-js/faker';
+import { useQuestDetail } from 'src/features/quests/hooks';
 import { withReactQuery, withDripsy } from 'tests/utils';
 import { t } from 'src/translations';
-
-import { useQuestDetail } from 'src/features/quests/hooks';
 import { QuestDetailScreen } from '../QuestDetailScreen';
 import type { Quest, Achieve } from 'src/features/quests/types';
 

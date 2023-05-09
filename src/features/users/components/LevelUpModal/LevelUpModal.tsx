@@ -1,11 +1,11 @@
 import React, { memo, useState, useCallback, useEffect } from 'react';
 import { styled, View } from 'dripsy';
 import { MotiView } from 'moti';
-import { AnimatedNumber, Modal } from 'src/components';
-import { H2, Text } from 'src/designs';
-import { AppEventChannel } from 'src/modules/event';
-import { t } from 'src/translations';
 import { Star } from 'src/assets/symbols';
+import { AppEventChannel } from 'src/modules/event';
+import { H2, Text } from 'src/designs';
+import { AnimatedNumber, Modal } from 'src/components';
+import { t } from 'src/translations';
 
 const CONGRATS_MESSAGE_COUNT = 3;
 const LEVEL_ANIMATE_DELAY = 250;

@@ -2,7 +2,6 @@ import { globalMachineService } from 'src/stores/machines';
 import { AppEventChannel } from '../event';
 import { Logger } from '../logger';
 import { badgeRules } from './rules';
-
 import type { Badge } from './types';
 
 const TAG = 'BadgeManager';
@@ -30,13 +29,11 @@ export class BadgeManager {
     const eventChannel = AppEventChannel.getInstance();
     const tasks: Promise<void>[] = [];
 
-    /**
-     * 상태머신의 값이 authorized.idle 가 아닐때
-     * EDIT_USER 트랜지션이 불가하기에 authorized.idle 인지 체크 필요함
-     *
-     * 만약 이전 트랜지션으로 인해 authorized.updating 등의 상태라면 작업을 잠시 대기하고
-     * authorized.idle 상태로 전환되었을때 이어서 작업을 처리함
-     */
+    // 상태머신의 값이 authorized.idle 가 아닐때
+    // EDIT_USER 트랜지션이 불가하기에 authorized.idle 인지 체크 필요함
+    //
+    // 만약 이전 트랜지션으로 인해 authorized.updating 등의 상태라면 작업을 잠시 대기하고
+    // authorized.idle 상태로 전환되었을때 이어서 작업을 처리함
     globalMachineService.onTransition((state) => {
       if (state.matches('unauthorized')) {
         this.tempBadgeIds = [];

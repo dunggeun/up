@@ -1,7 +1,7 @@
 import { useLayoutEffect } from 'react';
 import { useActor } from '@xstate/react';
-import { globalMachineService } from 'src/stores/machines';
 import { Logger } from 'src/modules/logger';
+import { globalMachineService } from 'src/stores/machines';
 import type { User } from '../types';
 
 const TAG = 'useUser';

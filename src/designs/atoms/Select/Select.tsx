@@ -8,9 +8,9 @@ import React, {
 import { TouchableOpacity } from 'react-native';
 import { styled, View } from 'dripsy';
 import { useAnimationState, AnimatePresence, MotiView } from 'moti';
-import { Icons } from 'src/assets';
 import { noop } from 'src/utils';
 import { BORDER_WIDTH } from 'src/constants';
+import { Icons } from 'src/assets';
 import { H2 } from '../H2';
 
 interface SelectContextValue {

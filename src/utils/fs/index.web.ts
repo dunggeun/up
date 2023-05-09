@@ -1,5 +1,4 @@
 import { Logger } from 'src/modules/logger';
-
 import type { SelectFile, WriteFile, ReadFile } from './types';
 
 const TAG = 'utils.fs';

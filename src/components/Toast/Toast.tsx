@@ -1,7 +1,7 @@
 import React, { memo, useState, useEffect } from 'react';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { styled, useSx, Pressable } from 'dripsy';
 import { AnimatePresence, MotiView } from 'moti';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { ToastManager } from './ToastManager';
 
 const TOAST_ANIMATE_HEIGHT = -100;

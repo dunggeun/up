@@ -2,19 +2,18 @@ import React, { useRef, useState } from 'react';
 import { TouchableOpacity } from 'react-native';
 import { useActor } from '@xstate/react';
 import { View, styled } from 'dripsy';
-import { CommonLayout, Text } from 'src/designs';
-import { ListItem, LoadingIndicator } from 'src/components';
 import { AppManager } from 'src/modules/app';
 import { Logger } from 'src/modules/logger';
 import { globalMachineService } from 'src/stores/machines';
 import { selectFile } from 'src/utils/fs';
-import { t } from 'src/translations';
 import { delay } from 'src/utils';
 import { APP_MINIMUM_LOADING_DURATION } from 'src/constants';
-import { RestoreConfirmModal } from '../../components/RestoreConfirmModal';
-import { EnterPasswordModal } from '../../components/EnterPasswordModal';
-
+import { CommonLayout, Text } from 'src/designs';
+import { ListItem, LoadingIndicator } from 'src/components';
+import { t } from 'src/translations';
 import { DeleteConfirmModal } from '../../components/DeleteConfirmModal';
+import { EnterPasswordModal } from '../../components/EnterPasswordModal';
+import { RestoreConfirmModal } from '../../components/RestoreConfirmModal';
 import type { CommonStackProps } from 'src/navigators/CommonStack/types';
 
 type DataManagementScreenProps = CommonStackProps<'DataManagement'>;

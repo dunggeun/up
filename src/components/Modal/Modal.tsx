@@ -1,9 +1,9 @@
 import React, { memo, type PropsWithChildren } from 'react';
 import { Modal as RNModal, TouchableOpacity } from 'react-native';
 import { styled, View } from 'dripsy';
-import { H2 } from 'src/designs';
 import { Close } from 'src/assets/icons';
 import { CONTAINER_MAX_WIDTH, TOUCHABLE_OPACITY_HIT_SLOP } from 'src/constants';
+import { H2 } from 'src/designs';
 
 export interface ModalProps {
   title?: string;

@@ -1,4 +1,3 @@
-/* eslint-disable eslint-comments/disable-enable-pair */
 /* eslint-disable no-var */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 declare namespace globalThis {

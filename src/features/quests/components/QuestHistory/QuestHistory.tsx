@@ -1,10 +1,8 @@
-// eslint-disable-next-line eslint-comments/disable-enable-pair
 /* eslint-disable react/no-array-index-key */
 import React, { memo, useRef, useEffect } from 'react';
-import { styled, Text, View } from 'dripsy';
 import { Animated } from 'react-native';
+import { styled, Text, View } from 'dripsy';
 import { t } from 'src/translations';
-
 import type { basicColors } from 'src/themes/colors';
 
 type Status = 'active' | 'inactive' | 'empty';

@@ -4,7 +4,6 @@ import { AppManager } from 'src/modules/app';
 import { Logger } from 'src/modules/logger';
 import { queryClient } from 'src/stores/reactQuery';
 import { t } from 'src/translations';
-
 import type { Quest } from '../types';
 
 interface UseDeleteQuestParams {

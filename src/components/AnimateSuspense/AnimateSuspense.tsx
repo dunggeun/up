@@ -1,6 +1,6 @@
-import { AnimatePresence, MotiView } from 'moti';
 import React, { Suspense, type PropsWithChildren } from 'react';
 import { styled } from 'dripsy';
+import { AnimatePresence, MotiView } from 'moti';
 
 export interface AnimateSuspenseProps {
   fallback?: React.ReactNode;
