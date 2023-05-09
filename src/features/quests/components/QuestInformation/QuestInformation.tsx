@@ -4,7 +4,7 @@ import { styled } from 'dripsy';
 import { H3, Text } from 'src/designs';
 import { DetailSection } from 'src/components';
 import { useUserThemeColor } from 'src/features/users';
-import { replacePlaceholder } from 'src/utils';
+import { diffBeforeToday, replacePlaceholder } from 'src/utils';
 import { t } from 'src/translations';
 
 import { QuestHistory } from '../QuestHistory';
@@ -31,10 +31,9 @@ export function QuestInformation({
 
   const { history, totalExp } = useMemo(() => {
     let earnedExp = 0;
-    const today = dayjs();
     const historyToDiffDays = achieveList.map((achieve) => {
       earnedExp += achieve.exp;
-      return today.diff(dayjs(achieve.created_at), 'days');
+      return diffBeforeToday(achieve.created_at);
     });
     return { history: historyToDiffDays, totalExp: earnedExp };
   }, [achieveList]);
