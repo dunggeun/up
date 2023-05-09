@@ -1,10 +1,9 @@
 import React, { memo } from 'react';
 import { styled, useSx, View, Image } from 'dripsy';
-import { Section } from 'src/components';
-import { Button } from 'src/designs';
 import * as AppHelpers from 'src/modules/app/helpers';
+import { Button } from 'src/designs';
+import { Section } from 'src/components';
 import { t } from 'src/translations';
-
 import type { User } from '../../types';
 import type { Badge } from 'src/modules/app/types';
 

@@ -1,17 +1,16 @@
 import { useMemo } from 'react';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useDripsyTheme } from 'dripsy';
 import { Home, Menu, Profile } from 'src/assets/icons';
-import { TabBar } from 'src/components';
+import { MenuScreen } from 'src/features/misc';
 import {
   useUserThemeColor,
   HomeScreen,
   ProfileScreen,
 } from 'src/features/users';
-import { MenuScreen } from 'src/features/misc';
+import { TabBar } from 'src/components';
 import { t } from 'src/translations';
-
 import type { MainTabScreenParamList } from './types';
 
 const MainTab = createBottomTabNavigator<MainTabScreenParamList>();

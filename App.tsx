@@ -1,17 +1,17 @@
 import React, { type PropsWithChildren } from 'react';
 import { StatusBar } from 'react-native';
-import { QueryClientProvider } from 'react-query';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import { NavigationContainer } from '@react-navigation/native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { NavigationContainer } from '@react-navigation/native';
 import { DripsyProvider } from 'dripsy';
-import { queryClient } from 'src/stores/reactQuery';
-import { navigationRef } from 'src/navigators/helpers';
-import { titleFormatter } from 'src/utils';
-import { themeLight } from 'src/themes';
-import { AnimateSuspense, Toast } from 'src/components';
-import { Logger } from 'src/modules/logger';
+import { QueryClientProvider } from 'react-query';
 import { EventBasedBadgeModal } from 'src/features/users/components/BadgeModal';
+import { Logger } from 'src/modules/logger';
+import { navigationRef } from 'src/navigators/helpers';
+import { queryClient } from 'src/stores/reactQuery';
+import { themeLight } from 'src/themes';
+import { titleFormatter } from 'src/utils';
+import { AnimateSuspense, Toast } from 'src/components';
 import { LevelUpModal } from './src/features/users/components/LevelUpModal';
 
 // eslint-disable-next-line import/no-named-as-default-member

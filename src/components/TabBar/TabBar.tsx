@@ -1,11 +1,10 @@
 import React, { createElement } from 'react';
+import type { FunctionComponent } from 'react';
 import { TouchableOpacity } from 'react-native';
+import type { StyleProp, ViewStyle, TextStyle } from 'react-native';
 import { styled, View } from 'dripsy';
 import { triggerHaptic } from 'src/utils';
 import { CONTAINER_MAX_WIDTH } from 'src/constants';
-
-import type { FunctionComponent } from 'react';
-import type { StyleProp, ViewStyle, TextStyle } from 'react-native';
 import type { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 
 export const TAB_BAR_HEIGHT = 70;

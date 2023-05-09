@@ -1,5 +1,9 @@
-import { t } from 'src/translations';
 import badge1 from 'src/assets/badges/badge-1.png';
+import badge10 from 'src/assets/badges/badge-10.png';
+import badge11 from 'src/assets/badges/badge-11.png';
+import badge12 from 'src/assets/badges/badge-12.png';
+import badge13 from 'src/assets/badges/badge-13.png';
+import badge14 from 'src/assets/badges/badge-14.png';
 import badge2 from 'src/assets/badges/badge-2.png';
 import badge3 from 'src/assets/badges/badge-3.png';
 import badge4 from 'src/assets/badges/badge-4.png';
@@ -8,12 +12,7 @@ import badge6 from 'src/assets/badges/badge-6.png';
 import badge7 from 'src/assets/badges/badge-7.png';
 import badge8 from 'src/assets/badges/badge-8.png';
 import badge9 from 'src/assets/badges/badge-9.png';
-import badge10 from 'src/assets/badges/badge-10.png';
-import badge11 from 'src/assets/badges/badge-11.png';
-import badge12 from 'src/assets/badges/badge-12.png';
-import badge13 from 'src/assets/badges/badge-13.png';
-import badge14 from 'src/assets/badges/badge-14.png';
-
+import { t } from 'src/translations';
 import type { Theme } from './types';
 
 export const BASE_EXP = 3;

@@ -1,8 +1,7 @@
 import React, { useMemo, type PropsWithChildren } from 'react';
+import type { ViewProps } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { styled, View } from 'dripsy';
-
-import type { ViewProps } from 'react-native';
 
 export interface SafeAreaViewProps extends ViewProps {
   insetTop?: boolean;

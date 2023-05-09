@@ -3,9 +3,8 @@ import { TextInput } from 'react-native';
 import { View } from 'dripsy';
 import { getColors } from 'src/themes/utils';
 import { ProgressBar } from './ProgressBar';
-
-import type { Meta } from '@storybook/react';
 import type { ProgressBarProps } from './ProgressBar';
+import type { Meta } from '@storybook/react';
 
 export default {
   title: 'atoms/ProgressBar',

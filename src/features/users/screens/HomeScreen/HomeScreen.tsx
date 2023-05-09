@@ -1,11 +1,10 @@
 import React from 'react';
+import { navigate } from 'src/navigators/helpers';
 import { CommonLayout } from 'src/designs';
 import { AnimateSuspense, FadeInView, LoadingIndicator } from 'src/components';
-import { navigate } from 'src/navigators/helpers';
-import { useUser } from '../../hooks';
 import { UserProfile } from '../../components/UserProfile';
 import { UserQuestList } from '../../components/UserQuestList';
-
+import { useUser } from '../../hooks';
 import type { MainTabProps } from 'src/navigators/MainTab/types';
 
 type HomeScreenProps = MainTabProps<'Home'>;

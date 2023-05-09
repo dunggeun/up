@@ -1,10 +1,8 @@
 import React, { memo, useState, useMemo, useLayoutEffect } from 'react';
 import { styled, View, Image } from 'dripsy';
-import { H1, Text, ProgressBar } from 'src/designs';
 import * as AppHelpers from 'src/modules/app/helpers';
-
+import { H1, Text, ProgressBar } from 'src/designs';
 import { useUserThemeColor } from '../../hooks';
-
 import type { User } from 'src/features/users';
 
 interface UserProfileProps {

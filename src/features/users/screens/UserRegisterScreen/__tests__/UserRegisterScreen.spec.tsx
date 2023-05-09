@@ -1,15 +1,14 @@
 import React from 'react';
+import { faker } from '@faker-js/faker';
 import {
   render as testRender,
   screen,
   cleanup,
   fireEvent,
 } from '@testing-library/react-native';
-import { faker } from '@faker-js/faker';
-import { withReactQuery, withDripsy } from 'tests/utils';
 import * as AppHelpers from 'src/modules/app/helpers';
+import { withReactQuery, withDripsy } from 'tests/utils';
 import { t } from 'src/translations';
-
 import { UserRegisterScreen } from '../UserRegisterScreen';
 
 const render = (

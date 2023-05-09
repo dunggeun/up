@@ -1,4 +1,3 @@
-// eslint-disable-next-line eslint-comments/disable-enable-pair
 /* eslint-disable import/no-named-as-default-member */
 
 import i18next, {
@@ -7,7 +6,6 @@ import i18next, {
 } from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import { noop, getCurrentLocale } from 'src/utils';
-
 import ko from './ko.json';
 
 const languageDetector: LanguageDetectorModule = {

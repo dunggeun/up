@@ -1,17 +1,16 @@
 import React, { type PropsWithChildren } from 'react';
+import { faker } from '@faker-js/faker';
 import {
   render as testRender,
   screen,
   fireEvent,
   cleanup,
 } from '@testing-library/react-native';
-import { faker } from '@faker-js/faker';
-import { withDripsy } from 'tests/utils';
 import { getColors } from 'src/themes/utils';
+import { withDripsy } from 'tests/utils';
 import { Button } from '../Button';
-
-import type { colors } from 'src/themes/colors';
 import type { ButtonProps } from '../Button';
+import type { colors } from 'src/themes/colors';
 
 const render = (
   props: PropsWithChildren<ButtonProps>,

@@ -1,14 +1,13 @@
 import React from 'react';
+import { faker } from '@faker-js/faker';
 import {
   render as testRender,
   screen,
   fireEvent,
   cleanup,
 } from '@testing-library/react-native';
-import { faker } from '@faker-js/faker';
 import { withDripsy } from 'tests/utils';
 import { Input } from '../Input';
-
 import type { InputProps } from '../Input';
 
 const render = (props: InputProps): ReturnType<typeof testRender> =>

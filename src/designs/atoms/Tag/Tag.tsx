@@ -1,8 +1,7 @@
 import React from 'react';
+import type { ComponentPropsWithoutRef } from 'react';
 import { styled, View, Text } from 'dripsy';
 import { isLight } from 'src/themes/utils';
-
-import type { ComponentPropsWithoutRef } from 'react';
 import type { colors } from 'src/themes/colors';
 
 type ViewProps = ComponentPropsWithoutRef<typeof View>;

@@ -7,7 +7,6 @@ import {
 } from '@testing-library/react-native';
 import { withDripsy } from 'tests/utils';
 import { t } from 'src/translations';
-
 import { DataManagementScreen } from '../DataManagementScreen';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

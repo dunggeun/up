@@ -1,10 +1,9 @@
 import { useSelector } from '@xstate/react';
-import { globalMachineService } from 'src/stores/machines';
 import * as AppHelpers from 'src/modules/app/helpers';
-
+import { globalMachineService } from 'src/stores/machines';
 import type { globalMachine } from 'src/stores/machines';
-import type { StateFrom } from 'xstate';
 import type { basicColors } from 'src/themes/colors';
+import type { StateFrom } from 'xstate';
 
 const themeSelector = (
   state: StateFrom<typeof globalMachine>,

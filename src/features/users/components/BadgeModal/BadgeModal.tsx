@@ -1,15 +1,14 @@
 import React, { memo, useState, useEffect } from 'react';
 import { styled, View, Image } from 'dripsy';
 import { MotiView } from 'moti';
-import { Modal } from 'src/components';
-import { H2, Text } from 'src/designs';
-import { AppEventChannel } from 'src/modules/event';
 import * as AppHelpers from 'src/modules/app/helpers';
-import { t } from 'src/translations';
+import { AppEventChannel } from 'src/modules/event';
 import { BORDER_WIDTH } from 'src/constants';
-
-import type { Badge } from 'src/modules/app/types';
+import { H2, Text } from 'src/designs';
+import { Modal } from 'src/components';
 import type { ModalProps } from 'src/components';
+import { t } from 'src/translations';
+import type { Badge } from 'src/modules/app/types';
 
 interface BadgeModalProps extends Pick<ModalProps, 'visible' | 'onClose'> {
   badge: Badge;

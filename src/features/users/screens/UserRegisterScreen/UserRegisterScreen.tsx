@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import { useActor } from '@xstate/react';
 import { styled, View } from 'dripsy';
-import { CommonLayout, Button, Input, H1 } from 'src/designs';
 import * as AppHelpers from 'src/modules/app/helpers';
 import { globalMachineService } from 'src/stores/machines';
+import { CommonLayout, Button, Input, H1 } from 'src/designs';
 import { t } from 'src/translations';
-
 import type { RootStackProps } from 'src/navigators/RootStack/types';
 
 type UserRegisterScreenProps = RootStackProps<'UserRegister'>;

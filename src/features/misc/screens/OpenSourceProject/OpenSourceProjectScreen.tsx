@@ -1,13 +1,12 @@
 import React from 'react';
 import { Linking } from 'react-native';
 import { styled, View } from 'dripsy';
-import { Button, CommonLayout } from 'src/designs';
-import { ListItem } from 'src/components';
 import { useUserThemeColor } from 'src/features/users';
 import { noop } from 'src/utils';
 import { UP_REPOSITORY_URL, DEPENDENCIES } from 'src/constants';
+import { Button, CommonLayout } from 'src/designs';
+import { ListItem } from 'src/components';
 import { t } from 'src/translations';
-
 import type { CommonStackProps } from 'src/navigators/CommonStack/types';
 
 export type OpenSourceProjectProps = CommonStackProps<'OpenSourceProject'>;

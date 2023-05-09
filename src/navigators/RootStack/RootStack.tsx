@@ -3,17 +3,16 @@ import {
   createStackNavigator,
   TransitionPresets,
 } from '@react-navigation/stack';
+import { LandingScreen } from 'src/features/misc';
+import { UserRegisterScreen } from 'src/features/users';
 import { AppManager } from 'src/modules/app';
 import { useIsAuthorized } from 'src/hooks';
-import { UserRegisterScreen } from 'src/features/users';
-import { LandingScreen } from 'src/features/misc';
-import { t } from 'src/translations';
 import { SHARED_CONFIG } from 'src/constants';
-import { MainTabNavigator } from '../MainTab';
+import { t } from 'src/translations';
 import { CommonStackNavigator } from '../CommonStack';
-import { UserStackNavigator } from '../UserStack';
+import { MainTabNavigator } from '../MainTab';
 import { QuestStackNavigator } from '../QuestStack';
-
+import { UserStackNavigator } from '../UserStack';
 import type { RootStackScreenParamList } from './types';
 
 const RootStack = createStackNavigator<RootStackScreenParamList>();

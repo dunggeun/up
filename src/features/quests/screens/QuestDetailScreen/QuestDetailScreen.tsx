@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
-import { Button, CommonLayout } from 'src/designs';
-import { LoadingIndicator } from 'src/components';
 import { useUserThemeColor } from 'src/features/users';
 import { AppEventChannel } from 'src/modules/event';
+import { Button, CommonLayout } from 'src/designs';
+import { LoadingIndicator } from 'src/components';
 import { t } from 'src/translations';
-
-import { useUpdateQuest, useQuestDetail } from '../../hooks';
-import { QuestInformation } from '../../components/QuestInformation';
 import { QuestDoneModal } from '../../components/QuestDoneModal';
-
+import { QuestInformation } from '../../components/QuestInformation';
+import { useUpdateQuest, useQuestDetail } from '../../hooks';
 import type { QuestStackProps } from 'src/navigators/QuestStack/types';
 
 type QuestDetailScreenProps = QuestStackProps<'QuestDetail'>;

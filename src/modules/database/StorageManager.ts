@@ -1,9 +1,8 @@
 import { noop } from 'src/utils';
 import { Logger } from '../logger';
 import { DatabaseModule } from './module';
-
-import type { Quest, Achieve } from 'src/features/quests';
 import type { DumpData } from './types';
+import type { Quest, Achieve } from 'src/features/quests';
 
 const TAG = 'StorageManager';
 

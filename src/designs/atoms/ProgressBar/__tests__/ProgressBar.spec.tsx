@@ -1,14 +1,13 @@
 import React from 'react';
+import { faker } from '@faker-js/faker';
 import {
   render as testRender,
   screen,
   cleanup,
 } from '@testing-library/react-native';
-import { faker } from '@faker-js/faker';
-import { withDripsy } from 'tests/utils';
 import { getColors } from 'src/themes/utils';
+import { withDripsy } from 'tests/utils';
 import { ProgressBar } from '../ProgressBar';
-
 import type { ProgressBarProps } from '../ProgressBar';
 import type { colors } from 'src/themes/colors';
 

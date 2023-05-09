@@ -1,11 +1,10 @@
 import React from 'react';
 import { styled, View, Image } from 'dripsy';
 import { MotiView } from 'moti';
-import { CommonLayout, Button, H1 } from 'src/designs';
-import { LANDING_LOGO_SIZE, LANDING_LOGO_MARGIN } from 'src/constants';
-import { t } from 'src/translations';
 import Logo from 'src/assets/images/logo.png';
-
+import { LANDING_LOGO_SIZE, LANDING_LOGO_MARGIN } from 'src/constants';
+import { CommonLayout, Button, H1 } from 'src/designs';
+import { t } from 'src/translations';
 import type { RootStackProps } from 'src/navigators/RootStack/types';
 
 type LandingScreenProps = RootStackProps<'Landing'>;

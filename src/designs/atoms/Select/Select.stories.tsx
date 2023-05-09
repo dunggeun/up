@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { View } from 'dripsy';
 import { Text } from '../Text';
 import { Select } from './Select';
-
 import type { Meta } from '@storybook/react';
 
 export default {

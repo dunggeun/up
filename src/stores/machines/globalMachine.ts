@@ -1,11 +1,11 @@
-import { createMachine, assign } from 'xstate';
+import { InteractionManager } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { AppEventChannel } from 'src/modules/event';
-import { Logger } from 'src/modules/logger';
+import { createMachine, assign } from 'xstate';
 import { getExpByLevel } from 'src/modules/app/helpers';
 import { StorageManager } from 'src/modules/database';
+import { AppEventChannel } from 'src/modules/event';
+import { Logger } from 'src/modules/logger';
 import { queryClient } from '../reactQuery';
-
 import type { User } from 'src/features/users';
 
 const TAG = 'GlobalMachine';
@@ -225,11 +225,11 @@ export const globalMachine = createMachine(
         await AsyncStorage.setItem('user', JSON.stringify(modifiedUser));
 
         if (shouldLevelUp) {
-          setTimeout(() => {
+          InteractionManager.runAfterInteractions(() => {
             AppEventChannel.getInstance().dispatch('levelup', {
               level: modifiedUser.level,
             });
-          }, 500);
+          });
         }
 
         return modifiedUser;

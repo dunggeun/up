@@ -1,5 +1,5 @@
-import type { basicColors } from 'src/themes/colors';
 import type { ImageSourcePropType } from 'react-native';
+import type { basicColors } from 'src/themes/colors';
 
 export interface Badge {
   id: number;

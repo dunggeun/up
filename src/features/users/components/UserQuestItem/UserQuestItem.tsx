@@ -1,15 +1,13 @@
 import React, { useRef, useMemo, useEffect } from 'react';
+import { Animated, InteractionManager } from 'react-native';
 import { MotiView } from 'moti';
-import { Animated } from 'react-native';
-import { Button, Tag } from 'src/designs';
-import { AppManager } from 'src/modules/app';
 import { useAddAchieve } from 'src/features/quests/hooks';
+import { AppManager } from 'src/modules/app';
 import { navigate } from 'src/navigators/helpers';
 import { diffBeforeToday } from 'src/utils';
-import { t } from 'src/translations';
 import { USE_NATIVE_DRIVER } from 'src/constants';
-
-import { RELEASE_DURATION } from 'src/designs/atoms/Button/constants';
+import { Button, Tag } from 'src/designs';
+import { t } from 'src/translations';
 import type { Quest } from 'src/features/quests';
 import type { basicColors } from 'src/themes/colors';
 
@@ -56,25 +54,26 @@ export function UserQuestItem({
   };
 
   const handleLongPress = (): void => {
-    const isFinishedQuest = Boolean(data.finished_at);
-    const alreadyCompletedToday = diffBeforeToday(data.updated_at) === 0;
+    // 버튼 release 애니메이션과 곂칠 경우 퍼포먼스 문제가 발생
+    // 이를 해결하기 위해 인터랙션이 끝난 후 액션 처리하도록 함
+    InteractionManager.runAfterInteractions(() => {
+      const isFinishedQuest = Boolean(data.finished_at);
+      const alreadyCompletedToday = diffBeforeToday(data.updated_at) === 0;
 
-    switch (true) {
-      case isFinishedQuest:
-        AppManager.showToast(t('message.finished_quest'));
-        break;
+      switch (true) {
+        case isFinishedQuest:
+          AppManager.showToast(t('message.finished_quest'));
+          break;
 
-      case alreadyCompletedToday:
-        AppManager.showToast(t('message.already_completed'));
-        break;
+        case alreadyCompletedToday:
+          AppManager.showToast(t('message.already_completed'));
+          break;
 
-      default:
-        // 버튼 release 애니메이션과 곂칠 경우 퍼포먼스 문제가 발생
-        // 이를 회피하기 위해 버튼 release 애니메이션이 끝난 뒤 액션 처리하도록 함
-        setTimeout(() => {
+        default:
           mutate({ questId: data.id });
-        }, RELEASE_DURATION);
-    }
+          break;
+      }
+    });
   };
 
   const renderBadge = (): JSX.Element | null => {

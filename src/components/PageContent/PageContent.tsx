@@ -1,6 +1,6 @@
 import React, { type PropsWithChildren } from 'react';
-import { styled, View } from 'dripsy';
 import type { ViewProps } from 'react-native';
+import { styled, View } from 'dripsy';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface PageContentProps extends ViewProps {}

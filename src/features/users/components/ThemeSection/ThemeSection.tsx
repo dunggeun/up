@@ -1,10 +1,9 @@
 import React, { memo } from 'react';
 import { styled, useSx, View } from 'dripsy';
-import { Section } from 'src/components';
-import { Button } from 'src/designs';
 import * as AppHelpers from 'src/modules/app/helpers';
+import { Button } from 'src/designs';
+import { Section } from 'src/components';
 import { t } from 'src/translations';
-
 import type { Theme } from 'src/modules/app/types';
 
 export interface ThemeSectionProps {

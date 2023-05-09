@@ -1,4 +1,3 @@
-/* eslint-disable eslint-comments/disable-enable-pair */
 /* eslint-disable no-case-declarations */
 import dedent from 'dedent';
 import { Logger } from 'src/modules/logger';

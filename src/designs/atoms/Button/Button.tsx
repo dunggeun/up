@@ -14,9 +14,9 @@ import {
   type ViewProps,
 } from 'react-native';
 import { styled, View, Text } from 'dripsy';
-import { triggerHaptic } from 'src/utils';
 import { presets } from 'src/themes';
 import { isLight } from 'src/themes/utils';
+import { triggerHaptic } from 'src/utils';
 import { PRESSABLE_DEPTH } from 'src/constants';
 import {
   BUTTON_HEIGHT,
@@ -24,7 +24,6 @@ import {
   LONG_PRESS_DELAY,
   RELEASE_DURATION,
 } from './constants';
-
 import type { colors } from 'src/themes/colors';
 
 type AccessibilityProps = Pick<
@@ -141,7 +140,7 @@ export const Button = forwardRef(function Button(
   ref: ForwardedRef<RNView>,
 ): JSX.Element {
   const isLongPress = useRef(false);
-  const longPressTimerRef = useRef<number>();
+  const longPressTimerRef = useRef<NodeJS.Timer>();
   const capPosition = useRef(new Animated.Value(0)).current;
   const dimSize = useRef(new Animated.Value(0)).current;
   const dimAnimationRef = useRef<Animated.CompositeAnimation | null>();
@@ -152,9 +151,7 @@ export const Button = forwardRef(function Button(
   };
 
   const reset = (): void => {
-    if (longPressTimerRef.current !== undefined) {
-      clearTimeout(longPressTimerRef.current);
-    }
+    clearTimeout(longPressTimerRef.current);
     dimAnimationRef.current?.stop();
     isLongPress.current = false;
 

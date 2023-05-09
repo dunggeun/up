@@ -1,15 +1,14 @@
 import React from 'react';
+import { faker } from '@faker-js/faker';
 import {
   render as testRender,
   screen,
   fireEvent,
   cleanup,
 } from '@testing-library/react-native';
-import { faker } from '@faker-js/faker';
 import { withDripsy } from 'tests/utils';
 import { t } from 'src/translations';
 import { AppBar } from '../AppBar';
-
 import type { AppBarProps } from '../AppBar';
 
 const render = (props: AppBarProps): ReturnType<typeof testRender> =>

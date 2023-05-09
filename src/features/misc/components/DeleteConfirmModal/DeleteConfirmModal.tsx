@@ -1,11 +1,10 @@
 import React from 'react';
 import { styled, View } from 'dripsy';
-import { Modal } from 'src/components';
-import { Button, Text } from 'src/designs';
 import { Warning } from 'src/assets/symbols';
-import { t } from 'src/translations';
-
+import { Button, Text } from 'src/designs';
+import { Modal } from 'src/components';
 import type { ModalProps } from 'src/components';
+import { t } from 'src/translations';
 
 export interface DeleteConfirmModalProps extends Omit<ModalProps, 'title'> {
   onDelete: () => void;

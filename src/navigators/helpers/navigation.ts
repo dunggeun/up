@@ -1,10 +1,9 @@
 import { createRef } from 'react';
-
+import type { NavigatorScreens } from '../types';
 import type {
   NavigationContainerRef,
   ParamListBase,
 } from '@react-navigation/native';
-import type { NavigatorScreens } from '../types';
 
 export const navigationRef = createRef<NavigationContainerRef<ParamListBase>>();
 

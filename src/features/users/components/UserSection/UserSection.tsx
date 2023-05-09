@@ -8,14 +8,13 @@ import React, {
 import { Animated, TouchableOpacity } from 'react-native';
 import dayjs from 'dayjs';
 import { styled, View, Image } from 'dripsy';
-import { AnimatedNumber, Section } from 'src/components';
-import { H1, H2 } from 'src/designs';
+import { Edit } from 'src/assets/icons';
 import { useAchieveCount } from 'src/features/quests/hooks';
 import * as AppHelpers from 'src/modules/app/helpers';
 import { BORDER_WIDTH } from 'src/constants';
+import { H1, H2 } from 'src/designs';
+import { AnimatedNumber, Section } from 'src/components';
 import { t } from 'src/translations';
-import { Edit } from 'src/assets/icons';
-
 import type { User } from '../../types';
 
 export interface UserSectionProps {

@@ -1,7 +1,6 @@
 import React from 'react';
 import { render, cleanup } from '@testing-library/react-native';
 import { withDripsy } from 'tests/utils';
-
 import { LandingScreen } from '../LandingScreen';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

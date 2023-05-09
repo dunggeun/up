@@ -1,5 +1,4 @@
 import { name as appName } from '../../app.json';
-
 import type { DocumentTitleOptions } from '@react-navigation/native';
 
 /* istanbul ignore next */

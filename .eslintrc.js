@@ -46,15 +46,93 @@ module.exports = {
               'internal',
               'parent',
               'sibling',
-              'index',
               'type',
             ],
+            pathGroups: [
+              {
+                pattern: 'react',
+                group: 'builtin',
+                position: 'after',
+              },
+              {
+                pattern: 'react-native',
+                group: 'builtin',
+                position: 'after',
+              },
+              {
+                pattern: 'react-native*',
+                group: 'builtin',
+                position: 'after',
+              },
+              {
+                pattern: 'src/modules*',
+                group: 'internal',
+                position: 'after',
+              },
+              {
+                pattern: 'src/navigators*',
+                group: 'internal',
+                position: 'after',
+              },
+              {
+                pattern: 'src/features*',
+                group: 'internal',
+                position: 'after',
+              },
+              {
+                pattern: 'src/stores*',
+                group: 'internal',
+                position: 'after',
+              },
+              {
+                pattern: 'src/hooks*',
+                group: 'internal',
+                position: 'after',
+              },
+              {
+                pattern: 'src/utils*',
+                group: 'internal',
+                position: 'after',
+              },
+              {
+                pattern: 'src/constants*',
+                group: 'internal',
+                position: 'after',
+              },
+              {
+                pattern: 'src/designs*',
+                group: 'internal',
+                position: 'after',
+              },
+              {
+                pattern: 'src/components*',
+                group: 'internal',
+                position: 'after',
+              },
+              {
+                pattern: 'src/assets*',
+                group: 'internal',
+                position: 'after',
+              },
+              {
+                pattern: 'src/translations*',
+                group: 'internal',
+                position: 'after',
+              },
+            ],
+            alphabetize: {
+              order: 'asc',
+              caseInsensitive: true,
+            },
+            pathGroupsExcludedImportTypes: [],
+            'newlines-between': 'never',
           },
         ],
         'no-void': 'off',
         'no-bitwise': 'off',
         'array-bracket-spacing': 'off',
         'unicorn/filename-case': 'off',
+        'eslint-comments/disable-enable-pair': 'off',
         'react-native-a11y/has-accessibility-props': [
           'error',
           {
@@ -71,6 +149,7 @@ module.exports = {
         '@typescript-eslint/no-shadow': 'off',
         '@typescript-eslint/no-unsafe-assignment': 'off',
         '@typescript-eslint/no-unsafe-argument': 'off',
+        '@typescript-eslint/no-floating-promises': 'off',
       },
     },
     {

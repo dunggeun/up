@@ -1,16 +1,15 @@
 import React from 'react';
+import { faker } from '@faker-js/faker';
 import {
   render as testRender,
   screen,
   cleanup,
 } from '@testing-library/react-native';
-import { faker } from '@faker-js/faker';
-import { withDripsy } from 'tests/utils';
 import { getColors } from 'src/themes/utils';
+import { withDripsy } from 'tests/utils';
 import { Tag } from '../Tag';
-
-import type { colors } from 'src/themes/colors';
 import type { TagProps } from '../Tag';
+import type { colors } from 'src/themes/colors';
 
 const render = (props: TagProps): ReturnType<typeof testRender> =>
   testRender(withDripsy(<Tag {...props} />));

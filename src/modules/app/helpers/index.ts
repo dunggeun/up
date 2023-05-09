@@ -1,5 +1,5 @@
-import { diffBeforeToday } from 'src/utils';
 import { Logger } from 'src/modules/logger';
+import { diffBeforeToday } from 'src/utils';
 import {
   BASE_EXP,
   BADGE_SET,
@@ -7,10 +7,9 @@ import {
   THEMES,
   FALLBACK_THEME,
 } from '../data';
-
-import type { User } from 'src/features/users';
-import type { Quest, Achieve } from 'src/features/quests';
 import type { Badge, Theme } from '../types';
+import type { Quest, Achieve } from 'src/features/quests';
+import type { User } from 'src/features/users';
 
 export const getId = (): number => {
   const currentTimestamp = Number(new Date());

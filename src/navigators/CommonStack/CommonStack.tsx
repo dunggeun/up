@@ -5,7 +5,6 @@ import {
   DataManagementScreen,
 } from 'src/features/misc';
 import { SHARED_CONFIG } from 'src/constants';
-
 import type { CommonStackScreenParamList } from './types';
 
 const CommonStack = createStackNavigator<CommonStackScreenParamList>();

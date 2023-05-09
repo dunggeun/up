@@ -1,14 +1,12 @@
 import React, { useMemo } from 'react';
 import dayjs from 'dayjs';
 import { styled } from 'dripsy';
-import { H3, Text } from 'src/designs';
-import { DetailSection } from 'src/components';
 import { useUserThemeColor } from 'src/features/users';
 import { diffBeforeToday, replacePlaceholder } from 'src/utils';
+import { H3, Text } from 'src/designs';
+import { DetailSection } from 'src/components';
 import { t } from 'src/translations';
-
 import { QuestHistory } from '../QuestHistory';
-
 import type { Quest, Achieve } from '../../types';
 
 export interface QuestInformationProps {

@@ -1,13 +1,13 @@
+/* eslint-disable import/no-named-as-default */
 import React from 'react';
 import { View } from 'react-native';
-import { styled } from 'dripsy';
-// eslint-disable-next-line import/no-named-as-default
 import Svg, {
   Rect,
   LinearGradient as SVGLinearGradient,
   Defs,
   Stop,
 } from 'react-native-svg';
+import { styled } from 'dripsy';
 import type { LinearGradientProps } from './types';
 
 const Container = styled(View)({ flex: 1 });

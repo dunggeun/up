@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import { styled, View } from 'dripsy';
-import { Modal } from 'src/components';
-import { Button, Input } from 'src/designs';
 import { useUserThemeColor } from 'src/features/users';
-import { t } from 'src/translations';
-
+import { Button, Input } from 'src/designs';
+import { Modal } from 'src/components';
 import type { ModalProps } from 'src/components';
+import { t } from 'src/translations';
 
 export interface EnterPasswordModalProps extends Omit<ModalProps, 'title'> {
   onConfirm: (password: string) => void;

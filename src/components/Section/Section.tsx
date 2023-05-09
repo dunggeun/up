@@ -1,5 +1,5 @@
-import { styled, View } from 'dripsy';
 import React, { type PropsWithChildren } from 'react';
+import { styled, View } from 'dripsy';
 import { H2, H3 } from 'src/designs';
 
 export interface SectionProps {

@@ -1,12 +1,12 @@
 import React, { Fragment, type PropsWithChildren } from 'react';
 import { Animated } from 'react-native';
 import { styled, Container as DripsyContainer, View } from 'dripsy';
+import { KeyboardAvoidingView } from 'src/components/KeyboardAvoidingView';
+import { LinearGradient } from 'src/components/LinearGradient';
 import {
   SafeAreaView,
   type SafeAreaViewProps,
 } from 'src/components/SafeAreaView';
-import { KeyboardAvoidingView } from 'src/components/KeyboardAvoidingView';
-import { LinearGradient } from 'src/components/LinearGradient';
 import { AppBar, type AppBarProps } from 'src/designs/molecules/AppBar';
 import { themeLight } from 'src/themes';
 import { SHARED_CONFIG } from 'src/constants';

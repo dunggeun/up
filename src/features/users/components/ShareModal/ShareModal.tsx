@@ -1,11 +1,10 @@
 import React from 'react';
 import { styled, View } from 'dripsy';
-import { LoadingIndicator, Modal } from 'src/components';
 import { Text } from 'src/designs';
+import { LoadingIndicator, Modal } from 'src/components';
+import type { ModalProps } from 'src/components';
 import { t } from 'src/translations';
 import { UserCoverWebView } from '../UserCoverWebView/UserCoverWebView';
-
-import type { ModalProps } from 'src/components';
 import type { User } from '../../types';
 
 export interface ShareModalProps extends Omit<ModalProps, 'title'> {
