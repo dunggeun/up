@@ -1,0 +1,9 @@
+apple_id(ENV["APPLE_ID"])
+app_identifier("dev.geundung.up")
+package_name("dev.geundung.up")
+
+# Path to the json secret file - Follow https://docs.fastlane.tools/actions/supply/#setup to get one
+json_key_file("fastlane/android_service_account_key.json")
+
+# For more information about the Appfile, see:
+#     https://docs.fastlane.tools/advanced/#appfile
