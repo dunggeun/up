@@ -8,6 +8,14 @@
 apply plugin: "com.android.application"
 apply plugin: "com.facebook.react"
 
+/**
+ * @sentry/react-native
+ */
+project.ext.sentryCli = [
+    logLevel: "debug"
+]
+apply from: "../../node_modules/@sentry/react-native/sentry.gradle"
+
 import com.android.build.OutputFile
 
 /**
@@ -173,6 +181,9 @@ dependencies {
 
     // react-native-sqlite-storage
     implementation project(':react-native-sqlite-storage')
+
+    // @sentry/react-native
+    implementation project(':@sentry_react-native')
 }
 
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)

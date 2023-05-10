@@ -44,7 +44,11 @@ export const SHARED_CONFIG = {
   },
 } as const;
 
-export const USE_NATIVE_DRIVER =
-  Platform.OS === 'android' || Platform.OS === 'ios';
+export const IS_NATIVE = Platform.OS === 'android' || Platform.OS === 'ios';
+export const IS_WEB = Platform.OS === 'web';
+export const USE_NATIVE_DRIVER = IS_NATIVE;
 
 export const BACKUP_FILE_NAME = 'up.bak';
+
+export const SENTRY_RELEASE = `up@${VERSION}${__DEV__ ? '-dev' : ''}`;
+export const SENTRY_SAMPLE_RATE = __DEV__ ? 1.0 : 0.25;

@@ -1,3 +1,4 @@
+const path = require('node:path');
 const transformIgnorePackages = require('../shares').transformIgnorePackages;
 
 const fixedBabelLoaderRule = {
@@ -28,6 +29,13 @@ module.exports = {
     options: {},
   },
   webpackFinal: (config) => {
+    const dummySentry = path.resolve(__dirname, '../src/web/sentry');
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      '@sentry/react-native': dummySentry,
+      '@sentry/react': dummySentry,
+    };
+
     config.module.rules = config.module.rules.map((rule) => {
       if (rule.loader === 'babel-loader') {
         return fixedBabelLoaderRule;
@@ -44,4 +52,8 @@ module.exports = {
 
     return config;
   },
+  env: (config) => ({
+    ...config,
+    WEB_SENTRY_DSN: '',
+  }),
 };

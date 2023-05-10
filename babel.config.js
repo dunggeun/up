@@ -17,6 +17,12 @@ module.exports = (api) => {
           },
         },
       ],
+      [
+        'module:react-native-dotenv',
+        {
+          moduleName: 'react-native-dotenv',
+        },
+      ],
       '@babel/plugin-proposal-export-namespace-from',
       'react-native-reanimated/plugin',
     ],

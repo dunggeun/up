@@ -885,6 +885,14 @@ PODS:
     - React-Codegen
     - React-RCTFabric
     - ReactCommon/turbomodule/core
+  - RNSentry (5.4.2):
+    - RCT-Folly
+    - RCTRequired
+    - RCTTypeSafety
+    - React-Codegen
+    - React-Core
+    - ReactCommon/turbomodule/core
+    - Sentry/HybridSDK (= 8.6.0)
   - RNShare (8.2.2):
     - React-Core
   - RNSVG (13.9.0):
@@ -904,6 +912,9 @@ PODS:
     - React-Codegen
     - React-RCTFabric
     - ReactCommon/turbomodule/core
+  - Sentry/HybridSDK (8.6.0):
+    - SentryPrivate (= 8.6.0)
+  - SentryPrivate (8.6.0)
   - SocketRocket (0.6.0)
   - Yoga (1.14.0)
   - YogaKit (1.18.1):
@@ -987,6 +998,7 @@ DEPENDENCIES:
   - RNReactNativeHapticFeedback (from `../node_modules/react-native-haptic-feedback`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
+  - "RNSentry (from `../node_modules/@sentry/react-native`)"
   - RNShare (from `../node_modules/react-native-share`)
   - RNSVG (from `../node_modules/react-native-svg`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
@@ -1005,6 +1017,8 @@ SPEC REPOS:
     - fmt
     - libevent
     - OpenSSL-Universal
+    - Sentry
+    - SentryPrivate
     - SocketRocket
     - YogaKit
 
@@ -1114,6 +1128,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-reanimated"
   RNScreens:
     :path: "../node_modules/react-native-screens"
+  RNSentry:
+    :path: "../node_modules/@sentry/react-native"
   RNShare:
     :path: "../node_modules/react-native-share"
   RNSVG:
@@ -1186,8 +1202,11 @@ SPEC CHECKSUMS:
   RNReactNativeHapticFeedback: 2ea699b897d31911fcc5a3234fe903161d576f97
   RNReanimated: 001b6da3b1ed0be4282f060cc723ff8138510e3a
   RNScreens: 4666ca0a74ee229b2332c5d22d2a8b81ba9202be
+  RNSentry: e2a41c2be29e4a3a4383b193f1c096bb7fa31a75
   RNShare: d82e10f6b7677f4b0048c23709bd04098d5aee6c
   RNSVG: a9204714b832d82b483b0cbaee9e675646426b8d
+  Sentry: d80553ff85ea72def75b792aaa5a71c158e51595
+  SentryPrivate: ef1c5b3dfe44ec0c70e2eb343a5be2689164c021
   SocketRocket: fccef3f9c5cedea1353a9ef6ada904fde10d6608
   Yoga: f897063e0fb34a84a79afebc24d2434085ebbb9e
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
