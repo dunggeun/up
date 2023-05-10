@@ -1,0 +1,139 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:ios)
+
+package = read_json(json_path: "package.json")
+
+VERSION = package[:version]
+VERSION_MATCH = VERSION.match /^(?<major>\d+)\.(?<minor>\d+)\.(?<patch>\d+)*/
+VERSION_NUMBER = "#{VERSION_MATCH[:major]}.#{VERSION_MATCH[:minor]}.#{VERSION_MATCH[:patch]}"
+BUILD_NUMBER = Time.now.getlocal("+09:00").strftime("%y%m%d%H")
+
+XCODE_PROJECT = "./ios/Up.xcodeproj"
+XCODE_WORKSPACE = "./ios/Up.xcworkspace"
+ANDROID_APP_GRADLE = "../android/app/build.gradle"
+
+def update_version_ios()
+  increment_build_number(
+    xcodeproj: XCODE_PROJECT,
+    build_number: BUILD_NUMBER
+  )
+  increment_version_number_in_plist(
+    xcodeproj: XCODE_PROJECT,
+    version_number: "1.0.0",
+    target: "Up"
+  )
+end
+
+def update_version_android()
+  versionCodeRegExp = /versionCode\s+(\d+)/
+  versionNameRegExp = /versionName\s+("\d+.\d+.\d+")/
+
+  gradle_file = File.read(ANDROID_APP_GRADLE)
+  gradle_file[versionNameRegExp, 1] = "\"#{VERSION_NUMBER}\""
+  gradle_file[versionCodeRegExp, 1] = BUILD_NUMBER
+
+  modified_file = File.new(ANDROID_APP_GRADLE, "w")
+  modified_file.write(gradle_file)
+  modified_file.close
+end
+
+def check_before_release()
+  ensure_git_branch(branch: "release/#{VERSION}")
+  commit = last_git_commit
+  is_release_commit = commit[:message] =~ /^(release:)/
+  if !is_release_commit
+    raise "invalid commit"
+  end
+end
+
+desc "Preparing for build and deploy"
+lane :prepare do
+  ensure_git_branch(branch: "release/#{VERSION}")
+  update_version_ios
+  update_version_android
+  git_commit(
+    path: "*",
+    message: "release: v#{VERSION}+#{BUILD_NUMBER}",
+    skip_git_hooks: true
+  )
+  add_git_tag(tag: "v#{VERSION}")
+  push_to_git_remote(no_verify: true)
+end
+
+platform :ios do
+  desc "Deploy to TestFlight"
+  lane :beta do
+    check_before_release
+    scheme = "UpRelease"
+    output_directory = "fastlane/archive/#{BUILD_NUMBER}"
+    output_name = "UpRelease.ipa"
+    ENV["FASTLANE_PASSWORD"]
+    build_ios_app(
+      scheme: "UpRelease",
+      configuration: "Release",
+      workspace: "./ios/Up.xcworkspace",
+      silent: true,
+      export_options: {
+        teamID: ENV["APPLE_TEAM_ID"],
+        method: "app-store",
+        iCloudContainerEnvironment: "Production",
+        signingCertificate: "Apple Distribution",
+        signingStyle: "manual",
+        destination: "export",
+        provisioningProfiles: {
+          "dev.geundung.up": "match AppStore dev.geundung.up"
+        },
+        stripSwiftSymbols: true,
+        compileBitcode: true
+      },
+      output_directory: output_directory,
+      output_name: output_name,
+      include_bitcode: false
+    )
+    app_store_connect_api_key(
+      key_id: ENV["APPSTORE_CONNECT_API_KEY_ID"],
+      issuer_id: ENV["APPSTORE_CONNECT_ISUSER_ID"],
+      key_filepath: ENV["APPSTORE_CONNECT_API_KEYFILE_PATH"],
+      duration: 1200
+    )
+    upload_to_testflight(
+      app_identifier: "dev.geundung.up",
+      app_version: VERSION,
+      ipa: "#{output_directory}/#{output_name}",
+      skip_waiting_for_build_processing: true
+    )
+  end
+end
+
+platform :android do
+  desc "Deploy to Google Play Console"
+  lane :alpha do
+    check_before_release
+    gradle(
+      project_dir: "./android",
+      task: "clean bundleRelease"
+    )
+    upload_to_play_store(
+      track: "alpha",
+      skip_upload_metadata: true,
+      skip_upload_changelogs: true,
+      skip_upload_screenshots: true,
+      skip_upload_images: true,
+      skip_upload_apk: true,
+    )
+  end
+end
