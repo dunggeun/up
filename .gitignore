@@ -71,3 +71,9 @@ dist/
 
 # Jest
 coverage/
+
+# Sentry
+sentry.properties
+
+# Others
+.env

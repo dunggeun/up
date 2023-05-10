@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable @typescript-eslint/no-unsafe-return */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 
 import 'node-self';
 import * as RN from 'react-native';
@@ -8,6 +9,8 @@ import 'react-native-gesture-handler/jestSetup';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 declare const self: any;
+
+self.WEB_SENTRY_DSN = '';
 
 Object.defineProperties(self, {
   _log: {
@@ -37,7 +40,7 @@ RN.Animated.timing = (): RN.Animated.timing => ({
   },
 });
 
-// eslint-disable-next-line @typescript-eslint/no-empty-function, @typescript-eslint/no-unsafe-member-access
+// eslint-disable-next-line @typescript-eslint/no-empty-function
 self.__reanimatedWorkletInit = (): void => {};
 jest.mock('react-native-reanimated', () =>
   require('react-native-reanimated/mock'),
@@ -90,6 +93,17 @@ jest.mock('react-native-safe-area-context', () => ({
 jest.mock('react-native-localize', () => ({
   __esModule: true,
   getLocales: (): { languageCode: string }[] => [{ languageCode: 'en' }],
+}));
+
+jest.mock('@sentry/react', () => ({
+  init: jest.fn(),
+  captureException: jest.fn(),
+  BrowserTracing: jest.fn(),
+}));
+
+jest.mock('@sentry/react-native', () => ({
+  init: jest.fn(),
+  captureException: jest.fn(),
 }));
 
 beforeAll(() => {

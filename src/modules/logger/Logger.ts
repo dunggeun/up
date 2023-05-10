@@ -1,9 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-extraneous-class */
 
-import { Platform } from 'react-native';
 import dayjs from 'dayjs';
 import { setLogger } from 'react-query';
+import { captureSentryException } from 'src/vendors/sentry/index.web';
+import { IS_NATIVE } from 'src/constants';
 
 const RESET = '\x1b[0m';
 const LEVEL_COLORS = {
@@ -20,8 +21,7 @@ const MAX_TAG_LENGTH = 7; // 'success'.length + ' '.length = 7
 export class Logger {
   private static getLevel(level: keyof typeof LEVEL_COLORS): string {
     const LEVEL_TAG = level.toUpperCase().padStart(MAX_TAG_LENGTH, ' ');
-    const isNative = Platform.OS === 'android' || Platform.OS === 'ios';
-    return __DEV__ && isNative
+    return __DEV__ && IS_NATIVE
       ? `\r\x1b[${LEVEL_COLORS[level]}m${LEVEL_TAG}${RESET}`
       : LEVEL_TAG;
   }
@@ -83,6 +83,7 @@ export class Logger {
       tag,
       ...(params.length ? ['::', ...params] : params),
     );
+    captureSentryException(params.join(' '));
   }
 }
 

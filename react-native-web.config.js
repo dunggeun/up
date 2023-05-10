@@ -1,7 +1,10 @@
 /* eslint-disable prefer-named-capture-group */
 const path = require('node:path');
+const dotenv = require('dotenv');
 const { presets, plugins } = require('./babel.config.js');
 const { transformPackagesOnRspack } = require('./shares');
+
+dotenv.config('.env');
 
 const babelLoaderConfiguration = {
   test: /\.(ts|tsx|js|jsx)$/i,
@@ -53,7 +56,7 @@ module.exports = {
     extensions: ['.web.tsx', '.web.ts', '.tsx', '.ts', '.web.js', '.js'],
     alias: {
       'react-native': 'react-native-web',
-      'react-native-share': './dummy',
+      'react-native-share': './src/web/react-native-share',
       '@/App': './App',
       src: './src',
       tests: './tests',
@@ -81,6 +84,7 @@ module.exports = {
     },
     define: {
       __DEV__: JSON.stringify(true),
+      WEB_SENTRY_DSN: JSON.stringify(process.env.WEB_SENTRY_DSN) || '',
       process: {
         env: {},
       },
