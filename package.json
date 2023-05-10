@@ -1,6 +1,6 @@
 {
   "name": "up",
-  "version": "99.9.9",
+  "version": "1.0.0-alpha.1",
   "private": true,
   "scripts": {
     "prepare": "husky install",
@@ -13,15 +13,17 @@
     "start:storybook:native": "STORYBOOK=1 yarn start",
     "start:storybook:web": "storybook dev --port 6006",
     "build:android": "react-native run-android",
-    "build:ios": "react-native run-ios --scheme Debug",
+    "build:ios": "react-native run-ios --scheme UpDebug",
     "build:web": "rspack --config react-native-web.config.js",
     "build:storybook:web": "storybook build --output-dir public",
+    "release": "./scripts/release.sh",
     "pod:install": "cd ios && pod install",
     "gradle:clean": "cd android && ./gradlew clean",
     "test": "jest",
     "lint": "eslint .",
     "update-stories": "sb-rn-get-stories --config-path .ondevice",
-    "storybook-watcher": "sb-rn-watcher --config-path .ondevice"
+    "storybook-watcher": "sb-rn-watcher --config-path .ondevice",
+    "purge-git-release": "./scripts/purge-git-release.sh"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.18.1",

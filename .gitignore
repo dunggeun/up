@@ -31,6 +31,7 @@ local.properties
 *.iml
 *.hprof
 .cxx/
+mdoules.json
 
 # node.js
 #
@@ -47,11 +48,15 @@ yarn-error.log
 # screenshots whenever they are needed.
 # For more information about the recommended setup visit:
 # https://docs.fastlane.tools/best-practices/source-control/
-
 **/fastlane/report.xml
 **/fastlane/Preview.html
 **/fastlane/screenshots
 **/fastlane/test_output
+**/fastlane/archive
+**/fastlane/.env*
+**/fastlane/*.p8
+android_service_account_key.json
+
 
 # Bundle artifact
 *.jsbundle
