@@ -4,7 +4,7 @@ import { View } from 'dripsy';
 import { AppEventChannel } from 'src/modules/event';
 import { navigate } from 'src/navigators/helpers';
 import { useMainTabBarInset } from 'src/hooks';
-import { openMail } from 'src/utils';
+import { openMail, openUrl } from 'src/utils';
 import { DEVELOPER_EMAIL, VERSION } from 'src/constants';
 import { CommonLayout } from 'src/designs';
 import { FadeInView, ListItem } from 'src/components';
@@ -15,6 +15,10 @@ type MenuProps = MainTabProps<'Menu'>;
 
 export function MenuScreen(_props: MenuProps): JSX.Element {
   const { bottomInset } = useMainTabBarInset();
+
+  const handlePressGuide = (): void => {
+    openUrl(t('url.guide'));
+  };
 
   const handlePressDataManagement = (): void => {
     navigate('Common', 'DataManagement');
@@ -44,7 +48,7 @@ export function MenuScreen(_props: MenuProps): JSX.Element {
       <CommonLayout insetBottom={false}>
         <CommonLayout.Header title={t('title.menu')} />
         <CommonLayout.Body>
-          <ListItem label={t('label.version')} subLabel={VERSION} />
+          <ListItem label={t('label.guide')} onPress={handlePressGuide} />
           <ListItem
             label={t('label.data_management')}
             onPress={handlePressDataManagement}
@@ -54,10 +58,12 @@ export function MenuScreen(_props: MenuProps): JSX.Element {
             onPress={handlePressSendFeedback}
           />
           <ListItem label={t('label.rating')} onPress={handlePressRating} />
+
           <ListItem
             label={t('label.open_source')}
             onPress={handlePressOpenSource}
           />
+          <ListItem label={t('label.version')} subLabel={VERSION} />
           <View sx={{ height: bottomInset }} />
         </CommonLayout.Body>
       </CommonLayout>

@@ -289,7 +289,7 @@ exports[`screens/MenuScreen 렌더링 되었을 때 스냅샷이 일치해야 �
               }
               accessible={true}
               collapsable={false}
-              focusable={false}
+              focusable={true}
               onClick={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
@@ -333,23 +333,7 @@ exports[`screens/MenuScreen 렌더링 되었을 때 스냅샷이 일치해야 �
                   ]
                 }
               >
-                버전
-              </Text>
-              <Text
-                style={
-                  [
-                    {
-                      "color": "#777777",
-                      "fontFamily": "BMJUA",
-                      "fontSize": 16,
-                      "paddingBottom": 4,
-                    },
-                    undefined,
-                    {},
-                  ]
-                }
-              >
-                99.9.9
+                이용 가이드
               </Text>
             </View>
             <View
@@ -618,6 +602,89 @@ exports[`screens/MenuScreen 렌더링 되었을 때 스냅샷이 일치해야 �
                 }
               >
                 오픈소스 프로젝트
+              </Text>
+            </View>
+            <View
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              focusable={false}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "justifyContent": "space-between",
+                  "opacity": 1,
+                  "paddingVertical": 16,
+                }
+              }
+            >
+              <Text
+                accessibilityRole="header"
+                style={
+                  [
+                    {
+                      "fontSize": 48,
+                      "fontWeight": "bold",
+                      "marginVertical": 26.56,
+                    },
+                    [
+                      {
+                        "color": "#2e2e2e",
+                        "fontFamily": "BMJUA",
+                        "fontSize": 24,
+                        "marginVertical": 0,
+                        "paddingBottom": 4,
+                      },
+                      {
+                        "fontWeight": "normal",
+                      },
+                      undefined,
+                      {},
+                    ],
+                  ]
+                }
+              >
+                버전
+              </Text>
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#777777",
+                      "fontFamily": "BMJUA",
+                      "fontSize": 16,
+                      "paddingBottom": 4,
+                    },
+                    undefined,
+                    {},
+                  ]
+                }
+              >
+                99.9.9
               </Text>
             </View>
             <View
