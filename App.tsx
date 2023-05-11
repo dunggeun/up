@@ -10,6 +10,7 @@ import { Logger } from 'src/modules/logger';
 import { navigationRef } from 'src/navigators/helpers';
 import { queryClient } from 'src/stores/reactQuery';
 import { themeLight } from 'src/themes';
+import { colors } from 'src/themes/colors';
 import { titleFormatter } from 'src/utils';
 import { AnimateSuspense, Toast } from 'src/components';
 import { LevelUpModal } from './src/features/users/components/LevelUpModal';
@@ -49,7 +50,7 @@ function AppProviders<T = unknown>({
 export function App(): JSX.Element {
   return (
     <AppProviders>
-      <StatusBar barStyle="dark-content" />
+      <StatusBar backgroundColor={colors.$white} barStyle="dark-content" />
       <AnimateSuspense fallback={null}>
         <Navigator />
       </AnimateSuspense>
