@@ -187,8 +187,8 @@ exports[`screens/LandingScreen 렌더링 되었을 때 스냅샷이 일치해야
           }
         />
         <Text
-          accessibilityHint="제목"
-          accessibilityLabel="비어있음"
+          accessibilityHint="Title"
+          accessibilityLabel="Empty"
           accessibilityRole="header"
           style={
             [
@@ -295,8 +295,8 @@ exports[`screens/LandingScreen 렌더링 되었을 때 스냅샷이 일치해야
               ]
             }
           >
-            환영합니다!
-업 챌린지에 도전해보세요
+            Welcome!
+Take the Up Challenge
           </Text>
         </View>
         <View
@@ -490,8 +490,8 @@ exports[`screens/LandingScreen 렌더링 되었을 때 스냅샷이 일치해야
         </RNSVGSvgView>
       </View>
       <View
-        accessibilityHint="시작하기"
-        accessibilityLabel="시작하기"
+        accessibilityHint="Start"
+        accessibilityLabel="Start"
         accessibilityRole="button"
         accessibilityState={
           {
@@ -614,7 +614,7 @@ exports[`screens/LandingScreen 렌더링 되었을 때 스냅샷이 일치해야
                 ]
               }
             >
-              시작하기
+              Start
             </Text>
           </View>
         </View>

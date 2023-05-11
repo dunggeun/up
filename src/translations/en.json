@@ -24,6 +24,7 @@
       "accept_mission": "Long press to accept",
       "share": "Share",
       "ok": "Ok",
+      "cancel": "Cancel",
       "mission_done": "Complete the mission",
       "mission_delete": "Delete mission",
       "weekday_0": "S",
@@ -45,7 +46,8 @@
       "pick_backup_and_restore": "Select a backup file",
       "guide": "Guide",
       "select": "Select",
-      "item": "Item"
+      "item": "Item",
+      "ask_me_later": "다음에 볼게요"
     },
     "title": {
       "landing": "Welcome",
@@ -110,7 +112,9 @@
       "restore_guide": "Please press and hold the button to restore",
       "backup_success": "You have made a good backup file",
       "restore_success": "Your data has been successfully restored",
-      "check_password": "Password must be at least 5 digits"
+      "check_password": "Password must be at least 5 digits",
+      "read_permission_for_restore": "Up needs storage read permissions to retrieve backup data",
+      "write_permission_for_backup": "Up needs storage write permissions to archive backup data"
     },
     "badge": {
       "1": {

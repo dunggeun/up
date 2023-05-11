@@ -11,7 +11,7 @@ import { SHARED_CONFIG } from 'src/constants';
 import { t } from 'src/translations';
 import { CommonStackNavigator } from '../CommonStack';
 import { MainTabNavigator } from '../MainTab';
-import { QuestStackNavigator } from '../QuestStack';
+import { MissionStackNavigator } from '../MissionStack';
 import { UserStackNavigator } from '../UserStack';
 import type { RootStackScreenParamList } from './types';
 
@@ -34,8 +34,8 @@ export function RootStackNavigator(): JSX.Element | null {
             <RootStack.Screen component={CommonStackNavigator} name="Common" />
             <RootStack.Screen component={UserStackNavigator} name="User" />
             <RootStack.Screen
-              component={QuestStackNavigator}
-              name="Quest"
+              component={MissionStackNavigator}
+              name="Mission"
               options={TransitionPresets.ModalSlideFromBottomIOS}
             />
           </>

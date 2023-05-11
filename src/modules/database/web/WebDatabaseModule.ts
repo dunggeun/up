@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import BoxDB, { type Box } from 'bxd';
-import { QuestSchema, AchieveSchema } from './schema';
+import { MissionSchema, AchieveSchema } from './schema';
 import type {
   DatabaseModule,
   DatabaseRecord,
@@ -8,14 +8,16 @@ import type {
   SelectOptions,
 } from '../types';
 
-export class WebDatabaseModule implements DatabaseModule<'quest' | 'achieve'> {
+export class WebDatabaseModule
+  implements DatabaseModule<'mission' | 'achieve'>
+{
   private static DATABASE_NAME = 'up';
   private static DATABASE_VERSION = 1;
   private static ERROR_MESSAGES = {
     not_initialized: 'database not initialized',
   };
   private database: BoxDB;
-  private QuestModel: Box<typeof QuestSchema>;
+  private MissionModel: Box<typeof MissionSchema>;
   private AchieveModel: Box<typeof AchieveSchema>;
 
   constructor() {
@@ -24,7 +26,7 @@ export class WebDatabaseModule implements DatabaseModule<'quest' | 'achieve'> {
       WebDatabaseModule.DATABASE_VERSION,
     );
     this.database = database;
-    this.QuestModel = database.create('quest', QuestSchema);
+    this.MissionModel = database.create('mission', MissionSchema);
     this.AchieveModel = database.create('achieve', AchieveSchema);
   }
 
@@ -61,7 +63,7 @@ export class WebDatabaseModule implements DatabaseModule<'quest' | 'achieve'> {
   }
 
   async select<Data>(
-    model: 'quest' | 'achieve',
+    model: 'mission' | 'achieve',
     conditions?: WhereConditions,
     options?: SelectOptions,
   ): Promise<Data[]> {
@@ -77,8 +79,8 @@ export class WebDatabaseModule implements DatabaseModule<'quest' | 'achieve'> {
       options?.order?.by === 'asc' ? BoxDB.Order.ASC : BoxDB.Order.DESC;
 
     switch (model) {
-      case 'quest':
-        rows = (await this.QuestModel.find(range, ...predicates).get(
+      case 'mission':
+        rows = (await this.MissionModel.find(range, ...predicates).get(
           order,
           options?.limit,
         )) as Data[];
@@ -95,15 +97,15 @@ export class WebDatabaseModule implements DatabaseModule<'quest' | 'achieve'> {
     return rows;
   }
 
-  async count(model: 'quest' | 'achieve'): Promise<number> {
+  async count(model: 'mission' | 'achieve'): Promise<number> {
     if (!this.database.ready) {
       throw new Error(WebDatabaseModule.ERROR_MESSAGES.not_initialized);
     }
     let count = 0;
 
     switch (model) {
-      case 'quest':
-        count = await this.QuestModel.count();
+      case 'mission':
+        count = await this.MissionModel.count();
         break;
 
       case 'achieve':
@@ -115,7 +117,7 @@ export class WebDatabaseModule implements DatabaseModule<'quest' | 'achieve'> {
   }
 
   async insert<Data extends DatabaseRecord>(
-    model: 'quest' | 'achieve',
+    model: 'mission' | 'achieve',
     data: Data,
   ): Promise<void> {
     if (!this.database.ready) {
@@ -123,8 +125,8 @@ export class WebDatabaseModule implements DatabaseModule<'quest' | 'achieve'> {
     }
 
     switch (model) {
-      case 'quest':
-        await this.QuestModel.add(data);
+      case 'mission':
+        await this.MissionModel.add(data);
         break;
 
       case 'achieve':
@@ -134,7 +136,7 @@ export class WebDatabaseModule implements DatabaseModule<'quest' | 'achieve'> {
   }
 
   async update<Data extends DatabaseRecord>(
-    model: 'quest' | 'achieve',
+    model: 'mission' | 'achieve',
     data: Partial<Data>,
     conditions?: WhereConditions,
   ): Promise<void> {
@@ -144,8 +146,8 @@ export class WebDatabaseModule implements DatabaseModule<'quest' | 'achieve'> {
     const predicates = conditions ? this.toPredicateFunction(conditions) : [];
 
     switch (model) {
-      case 'quest':
-        await this.QuestModel.find(null, ...predicates).update(data);
+      case 'mission':
+        await this.MissionModel.find(null, ...predicates).update(data);
         break;
 
       case 'achieve':
@@ -155,7 +157,7 @@ export class WebDatabaseModule implements DatabaseModule<'quest' | 'achieve'> {
   }
 
   async delete(
-    model: 'quest' | 'achieve',
+    model: 'mission' | 'achieve',
     conditions?: WhereConditions,
   ): Promise<void> {
     if (!this.database.ready) {
@@ -164,8 +166,8 @@ export class WebDatabaseModule implements DatabaseModule<'quest' | 'achieve'> {
     const predicates = conditions ? this.toPredicateFunction(conditions) : [];
 
     switch (model) {
-      case 'quest':
-        await this.QuestModel.find(null, ...predicates).delete();
+      case 'mission':
+        await this.MissionModel.find(null, ...predicates).delete();
         break;
 
       case 'achieve':
@@ -174,10 +176,10 @@ export class WebDatabaseModule implements DatabaseModule<'quest' | 'achieve'> {
     }
   }
 
-  async clear(model: 'quest' | 'achieve'): Promise<void> {
+  async clear(model: 'mission' | 'achieve'): Promise<void> {
     switch (model) {
-      case 'quest':
-        await this.QuestModel.clear();
+      case 'mission':
+        await this.MissionModel.clear();
         break;
 
       case 'achieve':

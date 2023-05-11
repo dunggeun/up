@@ -24,6 +24,7 @@
       "accept_mission": "길게 눌러 임무 수락하기",
       "share": "공유하기",
       "ok": "확인",
+      "cancel": "취소",
       "mission_done": "임무 완료하기",
       "mission_delete": "임무 삭제하기",
       "weekday_0": "일",
@@ -45,7 +46,8 @@
       "pick_backup_and_restore": "백업 파일 선택하고 복원하기",
       "guide": "이용 가이드",
       "select": "선택",
-      "item": "항목"
+      "item": "항목",
+      "ask_me_later": "다음에 볼게요"
     },
     "title": {
       "landing": "환영합니다",
@@ -68,7 +70,9 @@
       "data_management": "데이터 관리",
       "restore": "복원하기",
       "password": "암호 입력",
-      "badge_unlocked": "뱃지 잠금 해제"
+      "badge_unlocked": "뱃지 잠금 해제",
+      "read_permission": "UP 저장소 읽기 권한",
+      "write_permission": "UP 저장소 쓰기 권한"
     },
     "placeholder": {
       "enter_name": "이름을 입력해주세요",
@@ -110,7 +114,9 @@
       "restore_guide": "복원하시려면 버튼을 길게 눌러주세요",
       "backup_success": "백업 파일을 잘 만들어두었어요",
       "restore_success": "데이터가 성공적으로 복원되었어요",
-      "check_password": "비밀번호는 5자리 이상이어야 해요"
+      "check_password": "비밀번호는 5자리 이상이어야 해요",
+      "read_permission_for_restore": "백업 데이터를 불러오기 위해 저장소 읽기 권한이 필요해요",
+      "write_permission_for_backup": "백업 데이터를 보관하기 위해 저장소 쓰기 권한이 필요해요"
     },
     "badge": {
       "1": {
