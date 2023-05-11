@@ -12,7 +12,7 @@ export const APP_BAR_HEIGHT = 56;
 export const LANDING_LOGO_SIZE = 180;
 export const LANDING_LOGO_MARGIN = 100;
 
-export const HIT_SLOP = 5;
+export const HIT_SLOP = 10;
 export const TOUCHABLE_OPACITY_HIT_SLOP = {
   top: HIT_SLOP,
   bottom: HIT_SLOP,

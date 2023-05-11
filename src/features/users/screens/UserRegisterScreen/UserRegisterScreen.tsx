@@ -9,6 +9,10 @@ import type { RootStackProps } from 'src/navigators/RootStack/types';
 
 type UserRegisterScreenProps = RootStackProps<'UserRegister'>;
 
+const ACCESSIBILITY = {
+  start: t('label.start'),
+};
+
 const PageTitleArea = styled(View)({
   paddingY: '$04',
 });
@@ -48,6 +52,8 @@ export function UserRegisterScreen({
       </CommonLayout.Body>
       <CommonLayout.Footer>
         <Button
+          accessibilityHint={ACCESSIBILITY.start}
+          accessibilityLabel={ACCESSIBILITY.start}
           color="$brand"
           disableLongPress
           disabled={userName.length < 2}

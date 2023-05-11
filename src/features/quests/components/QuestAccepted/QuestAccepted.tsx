@@ -12,6 +12,11 @@ export interface QuestAcceptedProps {
   onPressClose: () => void;
 }
 
+const ACCESSIBILITY = {
+  share: t('label.share'),
+  ok: t('label.ok'),
+};
+
 export function QuestAccepted({
   questName,
   questMemo,
@@ -29,10 +34,22 @@ export function QuestAccepted({
         </PageContent>
       </CommonLayout.Body>
       <CommonLayout.Footer>
-        <Button color="$white" disableLongPress onPress={onPressShare}>
+        <Button
+          accessibilityHint={ACCESSIBILITY.share}
+          accessibilityLabel={ACCESSIBILITY.share}
+          color="$white"
+          disableLongPress
+          onPress={onPressShare}
+        >
           {t('label.share')}
         </Button>
-        <Button color={userColor} disableLongPress onPress={onPressClose}>
+        <Button
+          accessibilityHint={ACCESSIBILITY.ok}
+          accessibilityLabel={ACCESSIBILITY.ok}
+          color={userColor}
+          disableLongPress
+          onPress={onPressClose}
+        >
           {t('label.ok')}
         </Button>
       </CommonLayout.Footer>

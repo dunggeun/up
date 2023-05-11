@@ -10,6 +10,10 @@ export interface RestoreConfirmModalProps extends Omit<ModalProps, 'title'> {
   onConfirm: () => void;
 }
 
+const ACCESSIBILITY = {
+  restore: t('label.restore'),
+};
+
 const Content = styled(View)({
   gap: '$04',
 });
@@ -29,7 +33,13 @@ export function RestoreConfirmModal({
     <Modal onClose={onClose} title={t('title.restore')} visible={visible}>
       <Content testID="restore-confirm-modal">
         <Message variant="text.primary">{t('message.restore')}</Message>
-        <Button color={userColor} disableLongPress onPress={onConfirm}>
+        <Button
+          accessibilityHint={ACCESSIBILITY.restore}
+          accessibilityLabel={ACCESSIBILITY.restore}
+          color={userColor}
+          disableLongPress
+          onPress={onConfirm}
+        >
           {t('label.pick_backup_and_restore')}
         </Button>
       </Content>

@@ -10,6 +10,10 @@ export interface EnterPasswordModalProps extends Omit<ModalProps, 'title'> {
   onConfirm: (password: string) => void;
 }
 
+const ACCESSIBILITY = {
+  ok: t('label.ok'),
+};
+
 const Content = styled(View)({
   gap: '$04',
 });
@@ -37,6 +41,8 @@ export function EnterPasswordModal({
           value={password}
         />
         <Button
+          accessibilityHint={ACCESSIBILITY.ok}
+          accessibilityLabel={ACCESSIBILITY.ok}
           color={userColor}
           disableLongPress
           disabled={password.length < 5}

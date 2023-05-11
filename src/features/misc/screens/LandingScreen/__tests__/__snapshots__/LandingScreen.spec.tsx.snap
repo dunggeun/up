@@ -490,6 +490,8 @@ exports[`screens/LandingScreen 렌더링 되었을 때 스냅샷이 일치해야
         </RNSVGSvgView>
       </View>
       <View
+        accessibilityHint="시작하기"
+        accessibilityLabel="시작하기"
         accessibilityRole="button"
         accessibilityState={
           {

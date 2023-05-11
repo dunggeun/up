@@ -225,7 +225,7 @@ exports[`screens/UserRegisterScreen 렌더링 되었을 때 스냅샷이 일치�
               accessible={true}
               collapsable={false}
               focusable={true}
-              hitSlop={5}
+              hitSlop={10}
               onBlur={[Function]}
               onClick={[Function]}
               onFocus={[Function]}
@@ -571,6 +571,8 @@ exports[`screens/UserRegisterScreen 렌더링 되었을 때 스냅샷이 일치�
           </RNSVGSvgView>
         </View>
         <View
+          accessibilityHint="시작하기"
+          accessibilityLabel="시작하기"
           accessibilityRole="button"
           accessibilityState={
             {

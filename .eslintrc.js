@@ -2,10 +2,7 @@ const { resolve } = require('node:path');
 
 const project = resolve(__dirname, 'tsconfig.json');
 
-/**
- * @todo 추후 커스텀 touchable 컴포넌트 구현시 해당 컴포넌트 이름으로 설정
- */
-const CUSTOM_TOUCHABLE_COMPONENTS = ['CustomButton'];
+const CUSTOM_TOUCHABLE_COMPONENTS = ['Button'];
 
 module.exports = {
   root: true,

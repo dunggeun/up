@@ -11,6 +11,10 @@ import type { CommonStackProps } from 'src/navigators/CommonStack/types';
 
 export type OpenSourceProjectProps = CommonStackProps<'OpenSourceProject'>;
 
+const ACCESSIBILITY = {
+  repository: t('label.up_repository'),
+};
+
 const UpRepositorySection = styled(View)({
   flex: 1,
   paddingY: '$04',
@@ -42,6 +46,8 @@ export function OpenSourceProjectScreen({
       <CommonLayout.Body>
         <UpRepositorySection>
           <Button
+            accessibilityHint={ACCESSIBILITY.repository}
+            accessibilityLabel={ACCESSIBILITY.repository}
             color={userColor}
             disableLongPress
             onPress={handlePressUpRepository}

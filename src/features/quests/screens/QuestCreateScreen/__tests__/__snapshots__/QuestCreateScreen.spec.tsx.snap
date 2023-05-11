@@ -268,7 +268,7 @@ exports[`screens/QuestCreateScreen 렌더링 되었을 때 스냅샷이 일치�
               accessible={true}
               collapsable={false}
               focusable={true}
-              hitSlop={5}
+              hitSlop={10}
               onBlur={[Function]}
               onClick={[Function]}
               onFocus={[Function]}
@@ -601,6 +601,8 @@ exports[`screens/QuestCreateScreen 렌더링 되었을 때 스냅샷이 일치�
             </RNSVGSvgView>
           </View>
           <View
+            accessibilityHint="다음으로"
+            accessibilityLabel="다음으로"
             accessibilityRole="button"
             accessibilityState={
               {

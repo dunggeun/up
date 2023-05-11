@@ -43,7 +43,9 @@
       "backup": "백업하기",
       "restore": "복원하기",
       "pick_backup_and_restore": "백업 파일 선택하고 복원하기",
-      "guide": "이용 가이드"
+      "guide": "이용 가이드",
+      "select": "선택",
+      "item": "항목"
     },
     "title": {
       "landing": "환영합니다",

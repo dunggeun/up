@@ -11,7 +11,7 @@ import { styled, View, Image } from 'dripsy';
 import { Edit } from 'src/assets/icons';
 import { useAchieveCount } from 'src/features/quests/hooks';
 import * as AppHelpers from 'src/modules/app/helpers';
-import { BORDER_WIDTH } from 'src/constants';
+import { BORDER_WIDTH, HIT_SLOP } from 'src/constants';
 import { H1, H2 } from 'src/designs';
 import { AnimatedNumber, Section } from 'src/components';
 import { t } from 'src/translations';
@@ -84,7 +84,11 @@ export const UserSection = memo(function UserSection({
 
   return (
     <Section center>
-      <PressableRow accessibilityRole="button" onPress={onPressEdit}>
+      <PressableRow
+        accessibilityRole="button"
+        hitSlop={HIT_SLOP}
+        onPress={onPressEdit}
+      >
         <Badge>
           {badge.image ? <BadgeImage source={badge.image} /> : null}
         </Badge>

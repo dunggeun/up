@@ -11,6 +11,10 @@ import type { QuestStackProps } from 'src/navigators/QuestStack/types';
 
 type QuestDetailScreenProps = QuestStackProps<'QuestDetail'>;
 
+const ACCESSIBILITY = {
+  doneQuest: t('title.done_quest'),
+};
+
 export function QuestDetailScreen({
   navigation,
   route,
@@ -67,6 +71,8 @@ export function QuestDetailScreen({
         </CommonLayout.Body>
         <CommonLayout.Footer>
           <Button
+            accessibilityHint={ACCESSIBILITY.doneQuest}
+            accessibilityLabel={ACCESSIBILITY.doneQuest}
             color={userColor}
             disableLongPress
             onPress={handlePressDoneButton}
