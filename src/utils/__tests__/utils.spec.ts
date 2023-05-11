@@ -1,5 +1,5 @@
 import { Platform } from 'react-native';
-import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
+import * as ReactNativeHapticFeedback from 'react-native-haptic-feedback';
 import { faker } from '@faker-js/faker';
 import dayjs from 'dayjs';
 import { delay } from '../async';
@@ -10,6 +10,8 @@ import { replacePlaceholder } from '../string';
 jest.mock('react-native-haptic-feedback', () => ({
   __esModule: true,
   default: { trigger: jest.fn() },
+  trigger: jest.fn(),
+  HapticFeedbackTypes: {},
 }));
 
 describe('utils', () => {

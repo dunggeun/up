@@ -1,7 +1,11 @@
-import React, { createElement } from 'react';
-import type { FunctionComponent } from 'react';
-import { TouchableOpacity } from 'react-native';
-import type { StyleProp, ViewStyle, TextStyle } from 'react-native';
+import React, { createElement, type FunctionComponent } from 'react';
+import {
+  TouchableOpacity,
+  type StyleProp,
+  type ViewStyle,
+  type TextStyle,
+} from 'react-native';
+import { HapticFeedbackTypes } from 'react-native-haptic-feedback';
 import { styled, View } from 'dripsy';
 import { triggerHaptic } from 'src/utils';
 import { CONTAINER_MAX_WIDTH } from 'src/constants';
@@ -70,7 +74,7 @@ export function TabBar({
             : options.tabBarInactiveTintColor;
 
           const onPress = (): void => {
-            triggerHaptic('selection');
+            triggerHaptic(HapticFeedbackTypes.selection);
 
             const event = navigation.emit({
               type: 'tabPress',
@@ -94,10 +98,13 @@ export function TabBar({
             });
           };
 
+          const accessibilityLabel =
+            options.tabBarAccessibilityLabel ?? options.title;
+
           return (
             <TabItem
-              accessibilityHint={options.tabBarAccessibilityLabel}
-              accessibilityLabel={options.tabBarAccessibilityLabel}
+              accessibilityHint={accessibilityLabel}
+              accessibilityLabel={accessibilityLabel}
               accessibilityRole="button"
               accessibilityState={isFocused ? { selected: true } : {}}
               hitSlop={TAB_HIT_SLOP}

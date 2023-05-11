@@ -10,6 +10,10 @@ export interface ThemeSectionProps {
   onPressBadge: (themeId: number) => void;
 }
 
+const ACCESSIBILITY = {
+  theme: t('label.theme'),
+};
+
 const THEMES_PER_COUNT = 5;
 
 const Rows = styled(View)({
@@ -75,6 +79,8 @@ export const ThemeSection = memo(function ThemeSection({
           <Row key={index}>
             {themeRow.map((theme) => (
               <Button
+                accessibilityHint={ACCESSIBILITY.theme}
+                accessibilityLabel={ACCESSIBILITY.theme}
                 color={theme.key}
                 containerStyle={buttonContainerStyle}
                 disableLongPress

@@ -9,6 +9,10 @@ import type { QuestStackProps } from 'src/navigators/QuestStack/types';
 
 type QuestFinishedScreenProps = QuestStackProps<'QuestFinished'>;
 
+const ACCESSIBILITY = {
+  delete: t('label.delete'),
+};
+
 export function QuestFinishedScreen({
   navigation,
   route,
@@ -54,6 +58,8 @@ export function QuestFinishedScreen({
         </CommonLayout.Body>
         <CommonLayout.Footer>
           <Button
+            accessibilityHint={ACCESSIBILITY.delete}
+            accessibilityLabel={ACCESSIBILITY.delete}
             color="$red"
             disableLongPress
             onPress={(): void => setQuestDeleteModalVisibility(true)}

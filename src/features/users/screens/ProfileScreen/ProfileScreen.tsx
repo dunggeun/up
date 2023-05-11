@@ -26,6 +26,10 @@ type ProfileScreenProps = MainTabProps<'Profile'>;
 
 const TAG = 'ProfileScreen';
 
+const ACCESSIBILITY = {
+  share: t('label.share'),
+};
+
 export function ProfileScreen(_props: ProfileScreenProps): JSX.Element | null {
   const user = useUser();
   const { bottomInset } = useMainTabBarInset();
@@ -104,7 +108,13 @@ export function ProfileScreen(_props: ProfileScreenProps): JSX.Element | null {
           <AnimateSuspense>
             <UserSection onPressEdit={handlePressEdit} user={user} />
           </AnimateSuspense>
-          <Button color="$white" disableLongPress onPress={handlePressShare}>
+          <Button
+            accessibilityHint={ACCESSIBILITY.share}
+            accessibilityLabel={ACCESSIBILITY.share}
+            color="$white"
+            disableLongPress
+            onPress={handlePressShare}
+          >
             {t('label.share')}
           </Button>
           <BadgeSection

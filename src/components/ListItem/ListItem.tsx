@@ -53,7 +53,13 @@ export function ListItem({
   };
 
   return animatable(
-    <Container onPress={onPress}>
+    <Container
+      accessibilityHint={label}
+      accessibilityLabel={label}
+      accessibilityValue={{ text: subLabel }}
+      disabled={!onPress}
+      onPress={onPress}
+    >
       <H2 variant="primary">{label}</H2>
       {typeof subLabel === 'string' ? (
         <Text variant="secondary">{subLabel}</Text>

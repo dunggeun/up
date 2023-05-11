@@ -9,8 +9,9 @@ import { TouchableOpacity } from 'react-native';
 import { styled, View } from 'dripsy';
 import { useAnimationState, AnimatePresence, MotiView } from 'moti';
 import { noop } from 'src/utils';
-import { BORDER_WIDTH } from 'src/constants';
+import { BORDER_WIDTH, HIT_SLOP } from 'src/constants';
 import { Icons } from 'src/assets';
+import { t } from 'src/translations';
 import { H2 } from '../H2';
 
 interface SelectContextValue {
@@ -32,6 +33,12 @@ const defaultValue: SelectContextValue = {
   toggleVisibility: noop,
   setValue: noop,
 };
+
+const ACCESSIBILITY = {
+  select: t('label.select'),
+  item: t('label.item'),
+};
+
 const SelectContext = createContext<SelectContextValue>(defaultValue);
 
 const RootView = styled(View)({
@@ -114,7 +121,13 @@ export function Trigger(): JSX.Element {
   }, [rotate, value.visibility]);
 
   return (
-    <TriggerView onPress={value.toggleVisibility} testID="select-trigger">
+    <TriggerView
+      accessibilityHint={ACCESSIBILITY.select}
+      accessibilityLabel={ACCESSIBILITY.select}
+      hitSlop={HIT_SLOP}
+      onPress={value.toggleVisibility}
+      testID="select-trigger"
+    >
       <MotiView state={rotate} transition={{ type: 'timing', duration: 250 }}>
         <TriggerSymbol />
       </MotiView>
@@ -172,6 +185,9 @@ export function Item(item: SelectItemProps): JSX.Element {
 
   return (
     <ItemView
+      accessibilityHint={ACCESSIBILITY.item}
+      accessibilityLabel={item.label}
+      hitSlop={HIT_SLOP}
       key={item.value}
       onPress={handlePressItem}
       testID={`select-item-${item.value}`}

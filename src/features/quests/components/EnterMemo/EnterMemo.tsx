@@ -5,14 +5,17 @@ import { PageTitle, PageContent } from 'src/components';
 import { t } from 'src/translations';
 import type { colors } from 'src/themes/colors';
 
-const MEMO_INPUT_HEIGHT = 200;
-
 export interface EnterMemoProps {
   questName: string;
   userColor: keyof typeof colors;
   onChangeMemo: (text: string) => void;
   onPressAccept: () => void;
 }
+
+const MEMO_INPUT_HEIGHT = 200;
+const ACCESSIBILITY = {
+  ok: t('label.ok'),
+};
 
 const MemoInput = styled(Input)({
   height: MEMO_INPUT_HEIGHT,
@@ -46,7 +49,12 @@ export function EnterMemo({
       </CommonLayout.Body>
       <CommonLayout.Footer>
         <WarningText>{t('message.quest_warning')}</WarningText>
-        <Button color={userColor} onLongPress={onPressAccept}>
+        <Button
+          accessibilityHint={ACCESSIBILITY.ok}
+          accessibilityLabel={ACCESSIBILITY.ok}
+          color={userColor}
+          onLongPress={onPressAccept}
+        >
           {t('label.accept_quest')}
         </Button>
       </CommonLayout.Footer>

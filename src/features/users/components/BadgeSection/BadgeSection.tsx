@@ -13,6 +13,10 @@ export interface BadgeSectionProps {
   onLongPressBadge: (badgeId: number) => void;
 }
 
+const ACCESSIBILITY = {
+  badge: t('label.badge'),
+};
+
 const BADGES_PER_COUNT = 5;
 
 const Rows = styled(View)({
@@ -89,6 +93,8 @@ export const BadgeSection = memo(function BadgeSection({
           <Row key={index}>
             {badgeRow.map((badge) => (
               <Button
+                accessibilityHint={ACCESSIBILITY.badge}
+                accessibilityLabel={badge.title}
                 color="$white"
                 containerStyle={buttonContainerStyle}
                 disabled={!isUnlocked(badge.id)}

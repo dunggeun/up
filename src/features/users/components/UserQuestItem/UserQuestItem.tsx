@@ -107,6 +107,8 @@ export function UserQuestItem({
       ]}
     >
       <Button
+        accessibilityHint={data.title}
+        accessibilityLabel={data.title}
         color="$white"
         onLongPress={handleLongPress}
         onPress={handlePress}

@@ -9,6 +9,10 @@ import type { RootStackProps } from 'src/navigators/RootStack/types';
 
 type LandingScreenProps = RootStackProps<'Landing'>;
 
+const ACCESSIBILITY = {
+  start: t('label.start'),
+};
+
 const PageTitleArea = styled(View)({
   paddingY: '$04',
 });
@@ -58,7 +62,13 @@ export function LandingScreen({ navigation }: LandingScreenProps): JSX.Element {
         </LogoArea>
       </CommonLayout.Body>
       <CommonLayout.Footer>
-        <Button color="$brand" disableLongPress onPress={handlePressNextButton}>
+        <Button
+          accessibilityHint={ACCESSIBILITY.start}
+          accessibilityLabel={ACCESSIBILITY.start}
+          color="$brand"
+          disableLongPress
+          onPress={handlePressNextButton}
+        >
           {t('label.start')}
         </Button>
       </CommonLayout.Footer>

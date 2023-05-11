@@ -209,7 +209,7 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             accessible={true}
             collapsable={false}
             focusable={true}
-            hitSlop={5}
+            hitSlop={10}
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -388,6 +388,8 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             }
           >
             <View
+              accessibilityHint="Up 소스코드 저장소"
+              accessibilityLabel="Up 소스코드 저장소"
               accessibilityRole="button"
               accessibilityState={
                 {
@@ -553,11 +555,13 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             </View>
           </View>
           <View
+            accessibilityHint="@react-native-async-storage/async-storage"
+            accessibilityLabel="@react-native-async-storage/async-storage"
             accessibilityState={
               {
                 "busy": undefined,
                 "checked": undefined,
-                "disabled": undefined,
+                "disabled": false,
                 "expanded": undefined,
                 "selected": undefined,
               }
@@ -620,11 +624,13 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             </Text>
           </View>
           <View
+            accessibilityHint="@react-native-community/datetimepicker"
+            accessibilityLabel="@react-native-community/datetimepicker"
             accessibilityState={
               {
                 "busy": undefined,
                 "checked": undefined,
-                "disabled": undefined,
+                "disabled": false,
                 "expanded": undefined,
                 "selected": undefined,
               }
@@ -687,11 +693,13 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             </Text>
           </View>
           <View
+            accessibilityHint="@react-native-community/slider"
+            accessibilityLabel="@react-native-community/slider"
             accessibilityState={
               {
                 "busy": undefined,
                 "checked": undefined,
-                "disabled": undefined,
+                "disabled": false,
                 "expanded": undefined,
                 "selected": undefined,
               }
@@ -754,11 +762,13 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             </Text>
           </View>
           <View
+            accessibilityHint="@react-navigation/bottom-tabs"
+            accessibilityLabel="@react-navigation/bottom-tabs"
             accessibilityState={
               {
                 "busy": undefined,
                 "checked": undefined,
-                "disabled": undefined,
+                "disabled": false,
                 "expanded": undefined,
                 "selected": undefined,
               }
@@ -821,11 +831,13 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             </Text>
           </View>
           <View
+            accessibilityHint="@react-navigation/native"
+            accessibilityLabel="@react-navigation/native"
             accessibilityState={
               {
                 "busy": undefined,
                 "checked": undefined,
-                "disabled": undefined,
+                "disabled": false,
                 "expanded": undefined,
                 "selected": undefined,
               }
@@ -888,11 +900,13 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             </Text>
           </View>
           <View
+            accessibilityHint="@react-navigation/stack"
+            accessibilityLabel="@react-navigation/stack"
             accessibilityState={
               {
                 "busy": undefined,
                 "checked": undefined,
-                "disabled": undefined,
+                "disabled": false,
                 "expanded": undefined,
                 "selected": undefined,
               }
@@ -955,11 +969,13 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             </Text>
           </View>
           <View
+            accessibilityHint="@sentry/react"
+            accessibilityLabel="@sentry/react"
             accessibilityState={
               {
                 "busy": undefined,
                 "checked": undefined,
-                "disabled": undefined,
+                "disabled": false,
                 "expanded": undefined,
                 "selected": undefined,
               }
@@ -1022,11 +1038,13 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             </Text>
           </View>
           <View
+            accessibilityHint="@sentry/react-native"
+            accessibilityLabel="@sentry/react-native"
             accessibilityState={
               {
                 "busy": undefined,
                 "checked": undefined,
-                "disabled": undefined,
+                "disabled": false,
                 "expanded": undefined,
                 "selected": undefined,
               }
@@ -1089,11 +1107,13 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             </Text>
           </View>
           <View
+            accessibilityHint="@xstate/react"
+            accessibilityLabel="@xstate/react"
             accessibilityState={
               {
                 "busy": undefined,
                 "checked": undefined,
-                "disabled": undefined,
+                "disabled": false,
                 "expanded": undefined,
                 "selected": undefined,
               }
@@ -1156,11 +1176,13 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             </Text>
           </View>
           <View
+            accessibilityHint="bxd"
+            accessibilityLabel="bxd"
             accessibilityState={
               {
                 "busy": undefined,
                 "checked": undefined,
-                "disabled": undefined,
+                "disabled": false,
                 "expanded": undefined,
                 "selected": undefined,
               }
@@ -1223,11 +1245,13 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             </Text>
           </View>
           <View
+            accessibilityHint="color"
+            accessibilityLabel="color"
             accessibilityState={
               {
                 "busy": undefined,
                 "checked": undefined,
-                "disabled": undefined,
+                "disabled": false,
                 "expanded": undefined,
                 "selected": undefined,
               }
@@ -1290,11 +1314,13 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             </Text>
           </View>
           <View
+            accessibilityHint="crypto-js"
+            accessibilityLabel="crypto-js"
             accessibilityState={
               {
                 "busy": undefined,
                 "checked": undefined,
-                "disabled": undefined,
+                "disabled": false,
                 "expanded": undefined,
                 "selected": undefined,
               }
@@ -1357,11 +1383,13 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             </Text>
           </View>
           <View
+            accessibilityHint="dayjs"
+            accessibilityLabel="dayjs"
             accessibilityState={
               {
                 "busy": undefined,
                 "checked": undefined,
-                "disabled": undefined,
+                "disabled": false,
                 "expanded": undefined,
                 "selected": undefined,
               }
@@ -1424,11 +1452,13 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             </Text>
           </View>
           <View
+            accessibilityHint="dedent"
+            accessibilityLabel="dedent"
             accessibilityState={
               {
                 "busy": undefined,
                 "checked": undefined,
-                "disabled": undefined,
+                "disabled": false,
                 "expanded": undefined,
                 "selected": undefined,
               }
@@ -1491,11 +1521,13 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             </Text>
           </View>
           <View
+            accessibilityHint="dripsy"
+            accessibilityLabel="dripsy"
             accessibilityState={
               {
                 "busy": undefined,
                 "checked": undefined,
-                "disabled": undefined,
+                "disabled": false,
                 "expanded": undefined,
                 "selected": undefined,
               }
@@ -1558,11 +1590,13 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             </Text>
           </View>
           <View
+            accessibilityHint="i18next"
+            accessibilityLabel="i18next"
             accessibilityState={
               {
                 "busy": undefined,
                 "checked": undefined,
-                "disabled": undefined,
+                "disabled": false,
                 "expanded": undefined,
                 "selected": undefined,
               }
@@ -1625,11 +1659,13 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             </Text>
           </View>
           <View
+            accessibilityHint="moti"
+            accessibilityLabel="moti"
             accessibilityState={
               {
                 "busy": undefined,
                 "checked": undefined,
-                "disabled": undefined,
+                "disabled": false,
                 "expanded": undefined,
                 "selected": undefined,
               }
@@ -1692,11 +1728,13 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             </Text>
           </View>
           <View
+            accessibilityHint="node-self"
+            accessibilityLabel="node-self"
             accessibilityState={
               {
                 "busy": undefined,
                 "checked": undefined,
-                "disabled": undefined,
+                "disabled": false,
                 "expanded": undefined,
                 "selected": undefined,
               }
@@ -1759,11 +1797,13 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             </Text>
           </View>
           <View
+            accessibilityHint="react"
+            accessibilityLabel="react"
             accessibilityState={
               {
                 "busy": undefined,
                 "checked": undefined,
-                "disabled": undefined,
+                "disabled": false,
                 "expanded": undefined,
                 "selected": undefined,
               }
@@ -1826,11 +1866,13 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             </Text>
           </View>
           <View
+            accessibilityHint="react-dom"
+            accessibilityLabel="react-dom"
             accessibilityState={
               {
                 "busy": undefined,
                 "checked": undefined,
-                "disabled": undefined,
+                "disabled": false,
                 "expanded": undefined,
                 "selected": undefined,
               }
@@ -1893,11 +1935,13 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             </Text>
           </View>
           <View
+            accessibilityHint="react-i18next"
+            accessibilityLabel="react-i18next"
             accessibilityState={
               {
                 "busy": undefined,
                 "checked": undefined,
-                "disabled": undefined,
+                "disabled": false,
                 "expanded": undefined,
                 "selected": undefined,
               }
@@ -1960,11 +2004,13 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             </Text>
           </View>
           <View
+            accessibilityHint="react-native"
+            accessibilityLabel="react-native"
             accessibilityState={
               {
                 "busy": undefined,
                 "checked": undefined,
-                "disabled": undefined,
+                "disabled": false,
                 "expanded": undefined,
                 "selected": undefined,
               }
@@ -2027,11 +2073,13 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             </Text>
           </View>
           <View
+            accessibilityHint="react-native-document-picker"
+            accessibilityLabel="react-native-document-picker"
             accessibilityState={
               {
                 "busy": undefined,
                 "checked": undefined,
-                "disabled": undefined,
+                "disabled": false,
                 "expanded": undefined,
                 "selected": undefined,
               }
@@ -2094,11 +2142,13 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             </Text>
           </View>
           <View
+            accessibilityHint="react-native-fs"
+            accessibilityLabel="react-native-fs"
             accessibilityState={
               {
                 "busy": undefined,
                 "checked": undefined,
-                "disabled": undefined,
+                "disabled": false,
                 "expanded": undefined,
                 "selected": undefined,
               }
@@ -2161,11 +2211,13 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             </Text>
           </View>
           <View
+            accessibilityHint="react-native-gesture-handler"
+            accessibilityLabel="react-native-gesture-handler"
             accessibilityState={
               {
                 "busy": undefined,
                 "checked": undefined,
-                "disabled": undefined,
+                "disabled": false,
                 "expanded": undefined,
                 "selected": undefined,
               }
@@ -2228,11 +2280,13 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             </Text>
           </View>
           <View
+            accessibilityHint="react-native-get-random-values"
+            accessibilityLabel="react-native-get-random-values"
             accessibilityState={
               {
                 "busy": undefined,
                 "checked": undefined,
-                "disabled": undefined,
+                "disabled": false,
                 "expanded": undefined,
                 "selected": undefined,
               }
@@ -2295,11 +2349,13 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             </Text>
           </View>
           <View
+            accessibilityHint="react-native-haptic-feedback"
+            accessibilityLabel="react-native-haptic-feedback"
             accessibilityState={
               {
                 "busy": undefined,
                 "checked": undefined,
-                "disabled": undefined,
+                "disabled": false,
                 "expanded": undefined,
                 "selected": undefined,
               }
@@ -2362,11 +2418,13 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             </Text>
           </View>
           <View
+            accessibilityHint="react-native-localize"
+            accessibilityLabel="react-native-localize"
             accessibilityState={
               {
                 "busy": undefined,
                 "checked": undefined,
-                "disabled": undefined,
+                "disabled": false,
                 "expanded": undefined,
                 "selected": undefined,
               }
@@ -2429,11 +2487,13 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             </Text>
           </View>
           <View
+            accessibilityHint="react-native-reanimated"
+            accessibilityLabel="react-native-reanimated"
             accessibilityState={
               {
                 "busy": undefined,
                 "checked": undefined,
-                "disabled": undefined,
+                "disabled": false,
                 "expanded": undefined,
                 "selected": undefined,
               }
@@ -2496,11 +2556,13 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             </Text>
           </View>
           <View
+            accessibilityHint="react-native-safe-area-context"
+            accessibilityLabel="react-native-safe-area-context"
             accessibilityState={
               {
                 "busy": undefined,
                 "checked": undefined,
-                "disabled": undefined,
+                "disabled": false,
                 "expanded": undefined,
                 "selected": undefined,
               }
@@ -2563,11 +2625,13 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             </Text>
           </View>
           <View
+            accessibilityHint="react-native-screens"
+            accessibilityLabel="react-native-screens"
             accessibilityState={
               {
                 "busy": undefined,
                 "checked": undefined,
-                "disabled": undefined,
+                "disabled": false,
                 "expanded": undefined,
                 "selected": undefined,
               }
@@ -2630,11 +2694,13 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             </Text>
           </View>
           <View
+            accessibilityHint="react-native-share"
+            accessibilityLabel="react-native-share"
             accessibilityState={
               {
                 "busy": undefined,
                 "checked": undefined,
-                "disabled": undefined,
+                "disabled": false,
                 "expanded": undefined,
                 "selected": undefined,
               }
@@ -2697,11 +2763,13 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             </Text>
           </View>
           <View
+            accessibilityHint="react-native-sqlite-storage"
+            accessibilityLabel="react-native-sqlite-storage"
             accessibilityState={
               {
                 "busy": undefined,
                 "checked": undefined,
-                "disabled": undefined,
+                "disabled": false,
                 "expanded": undefined,
                 "selected": undefined,
               }
@@ -2764,11 +2832,13 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             </Text>
           </View>
           <View
+            accessibilityHint="react-native-svg"
+            accessibilityLabel="react-native-svg"
             accessibilityState={
               {
                 "busy": undefined,
                 "checked": undefined,
-                "disabled": undefined,
+                "disabled": false,
                 "expanded": undefined,
                 "selected": undefined,
               }
@@ -2831,11 +2901,13 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             </Text>
           </View>
           <View
+            accessibilityHint="react-native-web"
+            accessibilityLabel="react-native-web"
             accessibilityState={
               {
                 "busy": undefined,
                 "checked": undefined,
-                "disabled": undefined,
+                "disabled": false,
                 "expanded": undefined,
                 "selected": undefined,
               }
@@ -2898,11 +2970,13 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             </Text>
           </View>
           <View
+            accessibilityHint="react-native-webview"
+            accessibilityLabel="react-native-webview"
             accessibilityState={
               {
                 "busy": undefined,
                 "checked": undefined,
-                "disabled": undefined,
+                "disabled": false,
                 "expanded": undefined,
                 "selected": undefined,
               }
@@ -2965,11 +3039,13 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             </Text>
           </View>
           <View
+            accessibilityHint="react-query"
+            accessibilityLabel="react-query"
             accessibilityState={
               {
                 "busy": undefined,
                 "checked": undefined,
-                "disabled": undefined,
+                "disabled": false,
                 "expanded": undefined,
                 "selected": undefined,
               }
@@ -3032,11 +3108,13 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             </Text>
           </View>
           <View
+            accessibilityHint="setimmediate"
+            accessibilityLabel="setimmediate"
             accessibilityState={
               {
                 "busy": undefined,
                 "checked": undefined,
-                "disabled": undefined,
+                "disabled": false,
                 "expanded": undefined,
                 "selected": undefined,
               }
@@ -3099,11 +3177,13 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             </Text>
           </View>
           <View
+            accessibilityHint="xstate"
+            accessibilityLabel="xstate"
             accessibilityState={
               {
                 "busy": undefined,
                 "checked": undefined,
-                "disabled": undefined,
+                "disabled": false,
                 "expanded": undefined,
                 "selected": undefined,
               }

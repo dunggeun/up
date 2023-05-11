@@ -10,6 +10,10 @@ export interface QuestDoneModalProps extends Omit<ModalProps, 'title'> {
   onDone: () => void;
 }
 
+const ACCESSIBILITY = {
+  ok: t('label.ok'),
+};
+
 const Content = styled(View)({
   gap: '$04',
 });
@@ -32,7 +36,12 @@ export function QuestDoneModal({
         <Message variant="text.secondary">
           {`(${t('message.done_quest_guide')})`}
         </Message>
-        <Button color={userColor} onLongPress={onDone}>
+        <Button
+          accessibilityHint={ACCESSIBILITY.ok}
+          accessibilityLabel={ACCESSIBILITY.ok}
+          color={userColor}
+          onLongPress={onDone}
+        >
           {t('label.done_confirm')}
         </Button>
       </Content>

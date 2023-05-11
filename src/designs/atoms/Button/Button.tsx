@@ -13,6 +13,7 @@ import {
   type ViewStyle,
   type ViewProps,
 } from 'react-native';
+import { HapticFeedbackTypes } from 'react-native-haptic-feedback';
 import { styled, View, Text } from 'dripsy';
 import { presets } from 'src/themes';
 import { isLight } from 'src/themes/utils';
@@ -192,13 +193,13 @@ export const Button = forwardRef(function Button(
 
   const handlePress = (): void => {
     if (isLongPress.current) return;
-    !disableHaptic && triggerHaptic('impactLight');
+    !disableHaptic && triggerHaptic(HapticFeedbackTypes.impactLight);
     onPress?.();
   };
 
   const handleLongPress = (): void => {
     if (disableLongPress) return;
-    !disableHaptic && triggerHaptic('rigid');
+    !disableHaptic && triggerHaptic(HapticFeedbackTypes.rigid);
     reset();
     onLongPress?.();
   };

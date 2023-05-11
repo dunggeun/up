@@ -16,6 +16,10 @@ export interface UserQuestListProps {
   onCreate: () => void;
 }
 
+const ACCESSIBILITY = {
+  addQuest: t('label.add_new_quest'),
+};
+
 const SHADOW_HEIGHT = 16;
 const LAST_ANIMATABLE_ITEM_INDEX =
   Math.floor((WINDOW_HEIGHT - 110) / BUTTON_HEIGHT) - 1;
@@ -67,7 +71,13 @@ function CreateQuestButton({
   onPress,
 }: Pick<ButtonProps, 'onPress'>): JSX.Element {
   return (
-    <Button color="$white" disableLongPress onPress={onPress}>
+    <Button
+      accessibilityHint={ACCESSIBILITY.addQuest}
+      accessibilityLabel={ACCESSIBILITY.addQuest}
+      color="$white"
+      disableLongPress
+      onPress={onPress}
+    >
       {`+ ${t('label.add_new_quest')}`}
     </Button>
   );

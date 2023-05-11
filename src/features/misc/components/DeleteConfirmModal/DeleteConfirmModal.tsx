@@ -10,6 +10,10 @@ export interface DeleteConfirmModalProps extends Omit<ModalProps, 'title'> {
   onDelete: () => void;
 }
 
+const ACCESSIBILITY = {
+  delete: t('label.delete'),
+};
+
 const Content = styled(View)({
   gap: '$04',
 });
@@ -38,7 +42,12 @@ export function DeleteConfirmModal({
         <Message variant="text.secondary">
           {`(${t('message.reset_data_guide')})`}
         </Message>
-        <Button color="$red" onLongPress={onDelete}>
+        <Button
+          accessibilityHint={ACCESSIBILITY.delete}
+          accessibilityLabel={ACCESSIBILITY.delete}
+          color="$red"
+          onLongPress={onDelete}
+        >
           {t('label.reset_confirm')}
         </Button>
       </Content>

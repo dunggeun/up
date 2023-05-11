@@ -4,12 +4,17 @@ import { styled, View } from 'dripsy';
 import { Close } from 'src/assets/icons';
 import { CONTAINER_MAX_WIDTH, TOUCHABLE_OPACITY_HIT_SLOP } from 'src/constants';
 import { H2 } from 'src/designs';
+import { t } from 'src/translations';
 
 export interface ModalProps {
   title?: string;
   visible?: boolean;
   onClose: () => void;
 }
+
+const ACCESSIBILITY = {
+  close: t('label.close'),
+};
 
 const ModalBackground = styled(View)({
   position: 'relative',
@@ -51,12 +56,28 @@ export const Modal = memo(function Modal({
   onClose,
 }: PropsWithChildren<ModalProps>): JSX.Element {
   return (
-    <RNModal animationType="fade" transparent visible={visible}>
+    <RNModal
+      animationType="fade"
+      supportedOrientations={[
+        'portrait',
+        'portrait-upside-down',
+        'landscape',
+        'landscape-left',
+        'landscape-right',
+      ]}
+      transparent
+      visible={visible}
+    >
       <ModalBackground>
         <ModalContainer>
           <ModalHeader>
             <H2>{title}</H2>
-            <CloseButton hitSlop={TOUCHABLE_OPACITY_HIT_SLOP} onPress={onClose}>
+            <CloseButton
+              accessibilityHint={ACCESSIBILITY.close}
+              accessibilityLabel={ACCESSIBILITY.close}
+              hitSlop={TOUCHABLE_OPACITY_HIT_SLOP}
+              onPress={onClose}
+            >
               <Close />
             </CloseButton>
           </ModalHeader>

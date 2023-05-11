@@ -11,6 +11,10 @@ export interface EnterTitleProps {
   onPressNext: () => void;
 }
 
+const ACCESSIBILITY = {
+  next: t('label.next'),
+};
+
 export function EnterTitle({
   userColor,
   nextButtonDisabled,
@@ -30,6 +34,8 @@ export function EnterTitle({
       </CommonLayout.Body>
       <CommonLayout.Footer>
         <Button
+          accessibilityHint={ACCESSIBILITY.next}
+          accessibilityLabel={ACCESSIBILITY.next}
           color={userColor}
           disableLongPress
           disabled={nextButtonDisabled}
