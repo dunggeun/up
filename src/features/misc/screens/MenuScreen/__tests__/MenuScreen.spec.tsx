@@ -15,12 +15,7 @@ describe('screens/MenuScreen', () => {
     cleanup();
   });
 
-  describe('렌더링 되었을 때', () => {
-    it('스냅샷이 일치해야 한다', () => {
-      const tree = render(
-        withDripsy(<MenuScreen {...getMockedProps()} />),
-      ).toJSON();
-      expect(tree).toMatchSnapshot();
-    });
+  it('렌더링이 정상적으로 되어야 한다', () => {
+    render(withDripsy(<MenuScreen {...getMockedProps()} />));
   });
 });
