@@ -17,7 +17,7 @@ export interface UserQuestListProps {
 }
 
 const ACCESSIBILITY = {
-  addQuest: t('label.add_new_quest'),
+  addQuest: t('label.add_new_mission'),
 };
 
 const SHADOW_HEIGHT = 16;
@@ -56,15 +56,15 @@ const EmptyView = styled(H3, {
 });
 
 const ActivateListEmptyComponent = (
-  <EmptyView>{t('message.empty_activate_quest')}</EmptyView>
+  <EmptyView>{t('message.empty_activate_mission')}</EmptyView>
 );
 const FinishedListEmptyComponent = (
-  <EmptyView>{t('message.empty_finished_quest')}</EmptyView>
+  <EmptyView>{t('message.empty_finished_mission')}</EmptyView>
 );
 
 const FILTER_ITEM = [
-  { value: 'activate', label: t('label.activate_quests') },
-  { value: 'finished', label: t('label.finished_quests') },
+  { value: 'activate', label: t('label.activate_missions') },
+  { value: 'finished', label: t('label.finished_missions') },
 ] as const;
 
 function CreateQuestButton({
@@ -78,7 +78,7 @@ function CreateQuestButton({
       disableLongPress
       onPress={onPress}
     >
-      {`+ ${t('label.add_new_quest')}`}
+      {`+ ${t('label.add_new_mission')}`}
     </Button>
   );
 }

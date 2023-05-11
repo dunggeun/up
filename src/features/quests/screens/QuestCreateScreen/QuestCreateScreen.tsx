@@ -36,7 +36,7 @@ export function QuestCreateScreen({
 
   const handlePressShareButton = useCallback((): void => {
     Share.share({
-      message: replacePlaceholder(t('template.share_new_quest.body'), name),
+      message: replacePlaceholder(t('template.share_new_mission.body'), name),
     }).catch(() => {
       AppManager.showToast(t('message.error.common'));
     });

@@ -91,13 +91,13 @@ describe('screens/QuestDetailScreen', () => {
 
   describe('임무 완료 버튼을 눌렀을 때', () => {
     beforeEach(() => {
-      const doneButton = screen.getByText(t('label.quest_done'));
+      const doneButton = screen.getByText(t('label.mission_done'));
       fireEvent(doneButton, 'press');
     });
 
     it('임무 완료 안내 모달이 노출되어야 한다', () => {
-      const questDoneModalContent = screen.getByTestId('quest-done-modal');
-      expect(questDoneModalContent).not.toBeNull();
+      const missionDoneModalContent = screen.getByTestId('mission-done-modal');
+      expect(missionDoneModalContent).not.toBeNull();
     });
   });
 

@@ -37,7 +37,7 @@ export function EnterMemo({
   return (
     <>
       <CommonLayout.Body>
-        <PageTitle title={t('title.new_quest_memo')} />
+        <PageTitle title={t('title.new_mission_memo')} />
         <PageContent>
           <H2 variant="primary">{questName}</H2>
           <MemoInput
@@ -48,14 +48,14 @@ export function EnterMemo({
         </PageContent>
       </CommonLayout.Body>
       <CommonLayout.Footer>
-        <WarningText>{t('message.quest_warning')}</WarningText>
+        <WarningText>{t('message.mission_warning')}</WarningText>
         <Button
           accessibilityHint={ACCESSIBILITY.ok}
           accessibilityLabel={ACCESSIBILITY.ok}
           color={userColor}
           onLongPress={onPressAccept}
         >
-          {t('label.accept_quest')}
+          {t('label.accept_mission')}
         </Button>
       </CommonLayout.Footer>
     </>

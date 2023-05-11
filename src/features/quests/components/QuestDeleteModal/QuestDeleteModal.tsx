@@ -1,8 +1,7 @@
 import React from 'react';
 import { styled, View } from 'dripsy';
 import { Button, Text } from 'src/designs';
-import { Modal } from 'src/components';
-import type { ModalProps } from 'src/components';
+import { Modal, type ModalProps } from 'src/components';
 import { t } from 'src/translations';
 
 export interface QuestDeleteModalProps extends Omit<ModalProps, 'title'> {
@@ -27,11 +26,15 @@ export function QuestDeleteModal({
   onDelete,
 }: QuestDeleteModalProps): JSX.Element {
   return (
-    <Modal onClose={onClose} title={t('title.delete_quest')} visible={visible}>
-      <Content testID="quest-delete-modal">
-        <Message variant="text.primary">{t('message.delete_quest')}</Message>
+    <Modal
+      onClose={onClose}
+      title={t('title.delete_mission')}
+      visible={visible}
+    >
+      <Content testID="mission-delete-modal">
+        <Message variant="text.primary">{t('message.delete_mission')}</Message>
         <Message variant="text.secondary">
-          {`(${t('message.delete_quest_guide')})`}
+          {`(${t('message.delete_mission_guide')})`}
         </Message>
         <Button
           accessibilityHint={ACCESSIBILITY.delete}

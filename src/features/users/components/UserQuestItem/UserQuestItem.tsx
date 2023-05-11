@@ -62,7 +62,7 @@ export function UserQuestItem({
 
       switch (true) {
         case isFinishedQuest:
-          AppManager.showToast(t('message.finished_quest'));
+          AppManager.showToast(t('message.finished_mission'));
           break;
 
         case alreadyCompletedToday:

@@ -30,11 +30,11 @@ export function QuestDoneModal({
   const userColor = useUserThemeColor();
 
   return (
-    <Modal onClose={onClose} title={t('title.done_quest')} visible={visible}>
-      <Content testID="quest-done-modal">
-        <Message variant="text.primary">{t('message.done_quest')}</Message>
+    <Modal onClose={onClose} title={t('title.done_mission')} visible={visible}>
+      <Content testID="mission-done-modal">
+        <Message variant="text.primary">{t('message.done_mission')}</Message>
         <Message variant="text.secondary">
-          {`(${t('message.done_quest_guide')})`}
+          {`(${t('message.done_mission_guide')})`}
         </Message>
         <Button
           accessibilityHint={ACCESSIBILITY.ok}
