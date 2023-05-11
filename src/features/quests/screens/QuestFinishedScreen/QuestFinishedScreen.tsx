@@ -64,7 +64,7 @@ export function QuestFinishedScreen({
             disableLongPress
             onPress={(): void => setQuestDeleteModalVisibility(true)}
           >
-            {t('label.quest_delete')}
+            {t('label.mission_delete')}
           </Button>
         </CommonLayout.Footer>
       </CommonLayout>

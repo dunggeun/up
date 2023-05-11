@@ -24,7 +24,7 @@ export function EnterTitle({
   return (
     <>
       <CommonLayout.Body>
-        <PageTitle title={t('title.new_quest_title')} />
+        <PageTitle title={t('title.new_mission_title')} />
         <PageContent>
           <Input
             onChangeText={onChangeTitle}

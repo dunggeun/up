@@ -6,6 +6,7 @@ import i18next, {
 } from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import { noop, getCurrentLocale } from 'src/utils';
+import en from './en.json';
 import ko from './ko.json';
 
 const languageDetector: LanguageDetectorModule = {
@@ -18,8 +19,7 @@ const languageDetector: LanguageDetectorModule = {
 const options: InitOptions = {
   compatibilityJSON: 'v3',
   fallbackLng: 'en',
-  // @TODO: en translations
-  resources: { ko, en: ko },
+  resources: { ko, en },
   ns: ['common'],
   defaultNS: 'common',
   interpolation: {

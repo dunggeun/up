@@ -27,7 +27,7 @@ export function QuestAccepted({
   return (
     <>
       <CommonLayout.Body>
-        <PageTitle title={t('title.new_quest_accepted')} />
+        <PageTitle title={t('title.new_mission_accepted')} />
         <PageContent>
           <H2 variant="primary">{questName}</H2>
           <Text variant="secondary">{questMemo}</Text>

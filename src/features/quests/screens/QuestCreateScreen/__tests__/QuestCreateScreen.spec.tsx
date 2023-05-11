@@ -42,7 +42,7 @@ describe('screens/QuestCreateScreen', () => {
     });
 
     it('임무 이름 입력 화면이 렌더링 되어야 한다', () => {
-      const title = screen.getByText(t('title.new_quest_title'));
+      const title = screen.getByText(t('title.new_mission_title'));
       expect(title).not.toBeNull();
     });
   });
@@ -86,14 +86,14 @@ describe('screens/QuestCreateScreen', () => {
       });
 
       it('임무 메모 화면이 렌더링 되어야 한다', () => {
-        const title = screen.getByText(t('title.new_quest_memo'));
+        const title = screen.getByText(t('title.new_mission_memo'));
         expect(title).not.toBeNull();
       });
 
       // eslint-disable-next-line jest/no-disabled-tests
       describe.skip('임무 메모 화면에서 수락하기 버튼을 길게 누르면', () => {
         beforeEach(() => {
-          const nextButton = screen.getByText(t('label.accept_quest'));
+          const nextButton = screen.getByText(t('label.accept_mission'));
           fireEvent(nextButton, 'longPress');
         });
 

@@ -46,18 +46,18 @@ export function QuestInformation({
 
   const renderQuestInfo = (): JSX.Element => {
     return (
-      <DetailSection delay={100} title={t('title.quest_info')}>
+      <DetailSection delay={100} title={t('title.mission_info')}>
         {isFinishedQuest ? (
           <Text variant="secondary">
             {replacePlaceholder(
-              t('message.quest_finished_description'),
+              t('message.mission_finished_description'),
               dayjs(quest.finished_at).format(t('format.date')),
             )}
           </Text>
         ) : null}
         <Text variant="secondary">
           {replacePlaceholder(
-            t('message.quest_description'),
+            t('message.mission_description'),
             achieveList.length.toString(),
             quest.max_streak.toString(),
           )}
@@ -68,7 +68,7 @@ export function QuestInformation({
 
   const renderQuestHistory = (): JSX.Element | null => {
     return isFinishedQuest ? null : (
-      <DetailSection delay={200} title={t('title.quest_history_in_4_week')}>
+      <DetailSection delay={200} title={t('title.mission_history_in_4_week')}>
         <QuestHistory color={userColor} history={history} />
       </DetailSection>
     );
@@ -78,11 +78,11 @@ export function QuestInformation({
     return (
       <DetailSection
         delay={isFinishedQuest ? 200 : 800}
-        title={t('title.quest_total_exp')}
+        title={t('title.mission_total_exp')}
       >
         <Text variant="secondary">
           {replacePlaceholder(
-            t('message.quest_total_exp'),
+            t('message.mission_total_exp'),
             dayjs(quest.created_at).format(t('format.date')),
           )}
         </Text>

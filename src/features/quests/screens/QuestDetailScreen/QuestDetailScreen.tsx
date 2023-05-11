@@ -12,7 +12,7 @@ import type { QuestStackProps } from 'src/navigators/QuestStack/types';
 type QuestDetailScreenProps = QuestStackProps<'QuestDetail'>;
 
 const ACCESSIBILITY = {
-  doneQuest: t('title.done_quest'),
+  doneQuest: t('title.done_mission'),
 };
 
 export function QuestDetailScreen({
@@ -77,7 +77,7 @@ export function QuestDetailScreen({
             disableLongPress
             onPress={handlePressDoneButton}
           >
-            {t('label.quest_done')}
+            {t('label.mission_done')}
           </Button>
         </CommonLayout.Footer>
       </CommonLayout>
