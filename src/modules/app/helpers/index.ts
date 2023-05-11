@@ -8,7 +8,7 @@ import {
   FALLBACK_THEME,
 } from '../data';
 import type { Badge, Theme } from '../types';
-import type { Quest, Achieve } from 'src/features/quests';
+import type { Mission, Achieve } from 'src/features/missions';
 import type { User } from 'src/features/users';
 
 export const getId = (): number => {
@@ -31,7 +31,7 @@ export const createUserData = (name: string): User => {
   };
 };
 
-export const createQuestData = (title: string, description = ''): Quest => {
+export const createMissionData = (title: string, description = ''): Mission => {
   const currentTimestamp = Number(new Date());
   return {
     id: getId(),
@@ -46,45 +46,45 @@ export const createQuestData = (title: string, description = ''): Quest => {
 };
 
 export const createAchieveData = ({
-  questId,
+  missionId,
   exp,
 }: {
-  questId: number;
+  missionId: number;
   exp: number;
 }): Achieve => {
   const currentTimestamp = Number(new Date());
   return {
     id: getId(),
-    qid: questId,
+    mid: missionId,
     exp,
     created_at: currentTimestamp,
   };
 };
 
-export const updateQuestForAddAchieve = (quest: Quest): Quest => {
-  const updatedQuest = { ...quest };
+export const updateMissionForAddAchieve = (mission: Mission): Mission => {
+  const updatedMission = { ...mission };
   const isStreak = Boolean(
-    quest.updated_at && diffBeforeToday(quest.updated_at) <= 1,
+    mission.updated_at && diffBeforeToday(mission.updated_at) <= 1,
   );
 
-  if (isStreak || quest.updated_at === 0) {
-    updatedQuest.current_streak++;
-    updatedQuest.max_streak = Math.max(
-      updatedQuest.max_streak,
-      updatedQuest.current_streak,
+  if (isStreak || mission.updated_at === 0) {
+    updatedMission.current_streak++;
+    updatedMission.max_streak = Math.max(
+      updatedMission.max_streak,
+      updatedMission.current_streak,
     );
   } else {
-    updatedQuest.current_streak = 1;
+    updatedMission.current_streak = 1;
   }
 
   Logger.info(
-    'updateQuestForAddAchieve',
-    `${updatedQuest.title}'s streak: ${updatedQuest.current_streak}`,
+    'updateMissionForAddAchieve',
+    `${updatedMission.title}'s streak: ${updatedMission.current_streak}`,
   );
 
-  updatedQuest.updated_at = Number(new Date());
+  updatedMission.updated_at = Number(new Date());
 
-  return updatedQuest;
+  return updatedMission;
 };
 
 export const getAchieveExpByStreak = (currentStreak: number): number => {

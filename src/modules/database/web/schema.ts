@@ -1,6 +1,6 @@
 import BoxDB, { type BoxSchema } from 'bxd';
 
-export const QuestSchema: BoxSchema = {
+export const MissionSchema: BoxSchema = {
   id: {
     type: BoxDB.Types.NUMBER,
     key: true,
@@ -31,7 +31,7 @@ export const AchieveSchema: BoxSchema = {
     type: BoxDB.Types.NUMBER,
     key: true,
   },
-  qid: {
+  mid: {
     type: BoxDB.Types.NUMBER,
     index: true,
   },

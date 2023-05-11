@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import type { Achieve, Quest } from 'src/features/quests';
+import type { Mission, Achieve } from 'src/features/missions';
 
 export type AppEventType = keyof AppEventPayload;
 
@@ -9,14 +9,14 @@ export type AppEventPayload = {
     level: number;
   };
   createAchieve: {
-    quest: Quest;
+    mission: Mission;
     achieve: Achieve;
   };
-  createQuest: Quest;
-  doneQuest: {
-    questId: number;
+  createMission: Mission;
+  doneMission: {
+    missionId: number;
   };
-  deleteQuest: any;
+  deleteMission: any;
   unlockBadge: {
     badgeId: number;
   };

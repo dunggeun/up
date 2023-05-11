@@ -9,7 +9,7 @@ import type {
 } from '../types';
 
 export class NativeDatabaseModule
-  implements DatabaseModule<'quest' | 'achieve'>
+  implements DatabaseModule<'mission' | 'achieve'>
 {
   private static DATABASE_NAME = 'up_v1.db';
   private static ERROR_MESSAGES = {
@@ -28,7 +28,7 @@ export class NativeDatabaseModule
   }
 
   async select<Data>(
-    model: 'quest' | 'achieve',
+    model: 'mission' | 'achieve',
     conditions?: WhereConditions,
     options?: SelectOptions,
   ): Promise<Data[]> {
@@ -64,7 +64,7 @@ export class NativeDatabaseModule
     return rows;
   }
 
-  async count(model: 'quest' | 'achieve'): Promise<number> {
+  async count(model: 'mission' | 'achieve'): Promise<number> {
     if (!this.database) {
       throw new Error(NativeDatabaseModule.ERROR_MESSAGES.not_initialized);
     }
@@ -87,7 +87,7 @@ export class NativeDatabaseModule
   }
 
   async insert<Data extends DatabaseRecord>(
-    model: 'quest' | 'achieve',
+    model: 'mission' | 'achieve',
     data: Data,
   ): Promise<void> {
     if (!this.database) {
@@ -108,7 +108,7 @@ export class NativeDatabaseModule
   }
 
   async update<Data extends DatabaseRecord>(
-    model: 'quest' | 'achieve',
+    model: 'mission' | 'achieve',
     data: Partial<Data>,
     conditions?: WhereConditions,
   ): Promise<void> {
@@ -130,7 +130,7 @@ export class NativeDatabaseModule
   }
 
   async delete(
-    model: 'quest' | 'achieve',
+    model: 'mission' | 'achieve',
     conditions?: WhereConditions,
   ): Promise<void> {
     if (!this.database) {
@@ -150,7 +150,7 @@ export class NativeDatabaseModule
     });
   }
 
-  clear(model: 'quest' | 'achieve'): Promise<void> {
+  clear(model: 'mission' | 'achieve'): Promise<void> {
     return this.delete(model);
   }
 }

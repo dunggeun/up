@@ -1,4 +1,4 @@
-import type { Achieve, Quest } from 'src/features/quests';
+import type { Mission, Achieve } from 'src/features/missions';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type Value = any;
@@ -20,7 +20,7 @@ export type WhereConditions = Record<
 >;
 
 export interface DumpData {
-  quests: Quest[];
+  missions: Mission[];
   achieves: Achieve[];
 }
 

@@ -187,8 +187,8 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
           }
         >
           <View
-            accessibilityHint="뒤로가기"
-            accessibilityLabel="뒤로가기"
+            accessibilityHint="Go back"
+            accessibilityLabel="Go back"
             accessibilityState={
               {
                 "busy": undefined,
@@ -299,8 +299,8 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
           </View>
         </View>
         <Text
-          accessibilityHint="제목"
-          accessibilityLabel="오픈소스 프로젝트"
+          accessibilityHint="Title"
+          accessibilityLabel="Open source project"
           accessibilityRole="header"
           style={
             [
@@ -327,7 +327,7 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             ]
           }
         >
-          오픈소스 프로젝트
+          Open source project
         </Text>
         <View
           style={
@@ -388,8 +388,8 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             }
           >
             <View
-              accessibilityHint="Up 소스코드 저장소"
-              accessibilityLabel="Up 소스코드 저장소"
+              accessibilityHint="Up source code repository"
+              accessibilityLabel="Up source code repository"
               accessibilityRole="button"
               accessibilityState={
                 {
@@ -512,7 +512,7 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
                       ]
                     }
                   >
-                    Up 소스코드 저장소
+                    Up source code repository
                   </Text>
                 </View>
               </View>

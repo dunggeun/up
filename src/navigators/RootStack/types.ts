@@ -6,7 +6,7 @@ export type RootStackScreenParamList = {
   Main: undefined;
   Common: undefined;
   User: undefined;
-  Quest: undefined;
+  Mission: undefined;
   // unauthorized
   Landing: undefined;
   UserRegister: undefined;

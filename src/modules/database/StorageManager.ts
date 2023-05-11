@@ -2,7 +2,7 @@ import { noop } from 'src/utils';
 import { Logger } from '../logger';
 import { DatabaseModule } from './module';
 import type { DumpData } from './types';
-import type { Quest, Achieve } from 'src/features/quests';
+import type { Mission, Achieve } from 'src/features/missions';
 
 const TAG = 'StorageManager';
 
@@ -28,8 +28,8 @@ export class StorageManager {
     });
   }
 
-  getQuestList(): Promise<Quest[]> {
-    return this.database.select('quest', undefined, {
+  getMissionList(): Promise<Mission[]> {
+    return this.database.select('mission', undefined, {
       order: {
         target: 'created_at',
         by: 'desc',
@@ -37,9 +37,9 @@ export class StorageManager {
     });
   }
 
-  getQuest(id: number): Promise<Quest | null> {
+  getMission(id: number): Promise<Mission | null> {
     return this.database
-      .select<Quest>('quest', {
+      .select<Mission>('mission', {
         id: {
           symbol: '=',
           value: id,
@@ -48,16 +48,16 @@ export class StorageManager {
       .then((rows) => rows[0] ?? null);
   }
 
-  getQuestCount(): Promise<number> {
-    return this.database.count('quest');
+  getMissionCount(): Promise<number> {
+    return this.database.count('mission');
   }
 
-  addQuest(data: Quest): Promise<void> {
-    return this.database.insert('quest', data);
+  addMission(data: Mission): Promise<void> {
+    return this.database.insert('mission', data);
   }
 
-  updateQuest(id: number, data: Partial<Quest>): Promise<void> {
-    return this.database.update('quest', data, {
+  updateMission(id: number, data: Partial<Mission>): Promise<void> {
+    return this.database.update('mission', data, {
       id: {
         symbol: '=',
         value: id,
@@ -65,8 +65,8 @@ export class StorageManager {
     });
   }
 
-  deleteQuest(id: number): Promise<void> {
-    return this.database.delete('quest', {
+  deleteMission(id: number): Promise<void> {
+    return this.database.delete('mission', {
       id: {
         symbol: '=',
         value: id,
@@ -78,14 +78,14 @@ export class StorageManager {
     return this.database.select('achieve');
   }
 
-  getAchieveListByQid(params?: Pick<Achieve, 'qid'>): Promise<Achieve[]> {
+  getAchieveListByMid(params?: Pick<Achieve, 'mid'>): Promise<Achieve[]> {
     return this.database.select(
       'achieve',
       params
         ? {
-            qid: {
+            mid: {
               symbol: '=',
-              value: params.qid,
+              value: params.mid,
             },
           }
         : undefined,
@@ -107,24 +107,26 @@ export class StorageManager {
     return this.database.insert('achieve', data);
   }
 
-  deleteAchieve({ qid }: Pick<Achieve, 'qid'>): Promise<void> {
+  deleteAchieve({ mid }: Pick<Achieve, 'mid'>): Promise<void> {
     return this.database.delete('achieve', {
-      qid: {
+      mid: {
         symbol: '=',
-        value: qid,
+        value: mid,
       },
     });
   }
 
   dump(): Promise<DumpData> {
-    return Promise.all([this.getQuestList(), this.getAchieveList()]).then(
-      ([quests, achieves]) => ({ quests, achieves }),
+    return Promise.all([this.getMissionList(), this.getAchieveList()]).then(
+      ([missions, achieves]) => ({ missions, achieves }),
     );
   }
 
   load(data: DumpData): Promise<void> {
     return Promise.all([
-      ...data.quests.map((quest) => this.database.insert('quest', quest)),
+      ...data.missions.map((mission) =>
+        this.database.insert('mission', mission),
+      ),
       ...data.achieves.map((achieve) =>
         this.database.insert('achieve', achieve),
       ),
@@ -133,7 +135,7 @@ export class StorageManager {
 
   async clear(): Promise<void> {
     await Promise.all([
-      this.database.clear('quest'),
+      this.database.clear('mission'),
       this.database.clear('achieve'),
     ]);
   }

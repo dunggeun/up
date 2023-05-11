@@ -1,1 +1,1 @@
-export * from './quest';
+export * from './missions';

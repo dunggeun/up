@@ -203,8 +203,8 @@ exports[`screens/UserRegisterScreen 렌더링 되었을 때 스냅샷이 일치�
             }
           >
             <View
-              accessibilityHint="뒤로가기"
-              accessibilityLabel="뒤로가기"
+              accessibilityHint="Go back"
+              accessibilityLabel="Go back"
               accessibilityState={
                 {
                   "busy": undefined,
@@ -315,8 +315,8 @@ exports[`screens/UserRegisterScreen 렌더링 되었을 때 스냅샷이 일치�
             </View>
           </View>
           <Text
-            accessibilityHint="제목"
-            accessibilityLabel="비어있음"
+            accessibilityHint="Title"
+            accessibilityLabel="Empty"
             accessibilityRole="header"
             style={
               [
@@ -423,13 +423,13 @@ exports[`screens/UserRegisterScreen 렌더링 되었을 때 스냅샷이 일치�
                 ]
               }
             >
-              업 도전자님의
-이름을 알려주세요
+              Please provide your
+name for the up challenge
             </Text>
           </View>
           <TextInput
             onChangeText={[Function]}
-            placeholder="이름을 입력해주세요"
+            placeholder="Please enter your name"
             placeholderTextColor="#cccccc"
             style={
               [
@@ -571,8 +571,8 @@ exports[`screens/UserRegisterScreen 렌더링 되었을 때 스냅샷이 일치�
           </RNSVGSvgView>
         </View>
         <View
-          accessibilityHint="시작하기"
-          accessibilityLabel="시작하기"
+          accessibilityHint="Start"
+          accessibilityLabel="Start"
           accessibilityRole="button"
           accessibilityState={
             {
@@ -695,7 +695,7 @@ exports[`screens/UserRegisterScreen 렌더링 되었을 때 스냅샷이 일치�
                   ]
                 }
               >
-                레벨업 하러 가기
+                Go to level up
               </Text>
             </View>
           </View>

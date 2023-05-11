@@ -48,31 +48,31 @@ const levelReachedAt100: BadgeUnlockRule<'levelup'> = {
 };
 
 // 임무 5개 생성
-const questCountReachedAt5: BadgeUnlockRule<'createQuest'> = {
-  description: 'created quest count reached at 5',
-  eventType: 'createQuest',
+const missionCountReachedAt5: BadgeUnlockRule<'createMission'> = {
+  description: 'created mission count reached at 5',
+  eventType: 'createMission',
   targetBadgeId: 5,
   async evaluation() {
-    const count = await StorageManager.getInstance().getQuestCount();
+    const count = await StorageManager.getInstance().getMissionCount();
     return count === 5;
   },
 };
 
 // 임무 20개 생성
-const questCountReachedAt20: BadgeUnlockRule<'createQuest'> = {
-  description: 'created quest count reached at 20',
-  eventType: 'createQuest',
+const missionCountReachedAt20: BadgeUnlockRule<'createMission'> = {
+  description: 'created mission count reached at 20',
+  eventType: 'createMission',
   targetBadgeId: 6,
   evaluation: async () => {
-    const count = await StorageManager.getInstance().getQuestCount();
+    const count = await StorageManager.getInstance().getMissionCount();
     return count === 20;
   },
 };
 
 // 최초 임무 완료
-const firstQuestDone: BadgeUnlockRule<'doneQuest'> = {
-  description: 'first done quest',
-  eventType: 'doneQuest',
+const firstMissionDone: BadgeUnlockRule<'doneMission'> = {
+  description: 'first done mission',
+  eventType: 'doneMission',
   targetBadgeId: 7,
   evaluation(context) {
     const alreadyExist = Boolean(
@@ -85,9 +85,9 @@ const firstQuestDone: BadgeUnlockRule<'doneQuest'> = {
 };
 
 // 임무 완료 횟수 10 달성
-const questDoneCountReactedAt10: BadgeUnlockRule<'doneQuest'> = {
-  description: 'quest done count reached at 10',
-  eventType: 'doneQuest',
+const missionDoneCountReactedAt10: BadgeUnlockRule<'doneMission'> = {
+  description: 'mission done count reached at 10',
+  eventType: 'doneMission',
   targetBadgeId: 8,
   evaluation(context) {
     const alreadyExist = Boolean(
@@ -100,9 +100,9 @@ const questDoneCountReactedAt10: BadgeUnlockRule<'doneQuest'> = {
 };
 
 // 임무 완료 횟수 50 달성
-const questDoneCountReactedAt50: BadgeUnlockRule<'doneQuest'> = {
-  description: 'quest done count reached at 50',
-  eventType: 'doneQuest',
+const missionDoneCountReactedAt50: BadgeUnlockRule<'doneMission'> = {
+  description: 'mission done count reached at 50',
+  eventType: 'doneMission',
   targetBadgeId: 9,
   evaluation(context) {
     const alreadyExist = Boolean(
@@ -115,9 +115,9 @@ const questDoneCountReactedAt50: BadgeUnlockRule<'doneQuest'> = {
 };
 
 // 임무 완료 횟수 100 달성
-const questDoneCountReactedAt100: BadgeUnlockRule<'doneQuest'> = {
-  description: 'quest done count reached at 100',
-  eventType: 'doneQuest',
+const missionDoneCountReactedAt100: BadgeUnlockRule<'doneMission'> = {
+  description: 'mission done count reached at 100',
+  eventType: 'doneMission',
   targetBadgeId: 10,
   evaluation(context) {
     const alreadyExist = Boolean(
@@ -130,9 +130,9 @@ const questDoneCountReactedAt100: BadgeUnlockRule<'doneQuest'> = {
 };
 
 // 임무 최초 삭제
-const firstDeleteQuest: BadgeUnlockRule<'deleteQuest'> = {
-  description: 'first delete quest',
-  eventType: 'deleteQuest',
+const firstDeleteMission: BadgeUnlockRule<'deleteMission'> = {
+  description: 'first delete mission',
+  eventType: 'deleteMission',
   targetBadgeId: 11,
   evaluation(context) {
     const alreadyExist = Boolean(
@@ -186,13 +186,13 @@ export const badgeRules = [
   levelReachedAt10,
   levelReachedAt50,
   levelReachedAt100,
-  questCountReachedAt5,
-  questCountReachedAt20,
-  firstQuestDone,
-  questDoneCountReactedAt10,
-  questDoneCountReactedAt50,
-  questDoneCountReactedAt100,
-  firstDeleteQuest,
+  missionCountReachedAt5,
+  missionCountReachedAt20,
+  firstMissionDone,
+  missionDoneCountReactedAt10,
+  missionDoneCountReactedAt50,
+  missionDoneCountReactedAt100,
+  firstDeleteMission,
   firstShareProfile,
   firstEnterOpenSource,
   firstChangeThemeColor,
