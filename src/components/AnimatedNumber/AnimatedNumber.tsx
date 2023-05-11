@@ -17,6 +17,7 @@ const DURATION = 1000;
 const NumberContainer = styled(View)({
   position: 'relative',
   flexDirection: 'row',
+  alignSelf: 'baseline',
 });
 
 const NumberWrapper = styled(View)(({ height }: { height: number }) => ({
@@ -86,7 +87,9 @@ export const AnimatedNumber = memo(function AnimatedNumber({
           >
             {NUMBERS.map((number, index) => (
               <NumberWrapper height={height} key={index}>
-                <TextComponent variant={variant}>{number}</TextComponent>
+                <TextComponent sx={{ paddingBottom: 0 }} variant={variant}>
+                  {number}
+                </TextComponent>
               </NumberWrapper>
             ))}
           </Animated.View>
