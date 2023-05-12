@@ -31,7 +31,10 @@ export function FadeInView({
   );
 
   return (
-    <StyledAnimatedView style={[{ opacity: opacityAnimation }, style]}>
+    <StyledAnimatedView
+      needsOffscreenAlphaCompositing
+      style={[{ opacity: opacityAnimation }, style]}
+    >
       {children}
     </StyledAnimatedView>
   );
