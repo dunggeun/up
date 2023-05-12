@@ -14,11 +14,6 @@ module.exports = {
         },
       },
     },
-    'react-native-haptic-feedback': {
-      platforms: {
-        android: null,
-      },
-    },
     'react-native-sqlite-storage': {
       platforms: {
         android: {

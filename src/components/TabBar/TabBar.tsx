@@ -5,7 +5,6 @@ import {
   type ViewStyle,
   type TextStyle,
 } from 'react-native';
-import { HapticFeedbackTypes } from 'react-native-haptic-feedback';
 import { styled, View } from 'dripsy';
 import { triggerHaptic } from 'src/utils';
 import { CONTAINER_MAX_WIDTH } from 'src/constants';
@@ -74,7 +73,7 @@ export function TabBar({
             : options.tabBarInactiveTintColor;
 
           const onPress = (): void => {
-            triggerHaptic(HapticFeedbackTypes.selection);
+            triggerHaptic('press');
 
             const event = navigation.emit({
               type: 'tabPress',

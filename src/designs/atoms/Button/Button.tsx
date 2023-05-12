@@ -13,12 +13,11 @@ import {
   type ViewStyle,
   type ViewProps,
 } from 'react-native';
-import { HapticFeedbackTypes } from 'react-native-haptic-feedback';
 import { styled, View, Text } from 'dripsy';
 import { presets } from 'src/themes';
 import { isLight } from 'src/themes/utils';
-import { triggerHaptic } from 'src/utils';
-import { PRESSABLE_DEPTH } from 'src/constants';
+import { HIT_SLOP, PRESSABLE_DEPTH } from 'src/constants';
+import { HapticFeedback, type HapticFeedbackProps } from 'src/components';
 import {
   BUTTON_HEIGHT,
   LONG_PRESS_DURATION,
@@ -37,18 +36,19 @@ enum ButtonAnimateState {
   INACTIVE = 0,
 }
 
-export interface ButtonProps extends AccessibilityProps {
+export interface ButtonProps
+  extends Pick<HapticFeedbackProps, 'disableHaptic'>,
+    AccessibilityProps {
   color: keyof typeof colors;
   disabled?: boolean;
-  disableHaptic?: boolean;
   disableLongPress?: boolean;
   style?: ViewStyle;
   containerStyle?: ViewStyle;
   leftAdornment?: React.ReactElement | null;
   rightAdornment?: React.ReactElement | null;
+  onPressIn?: () => void;
   onPress?: () => void;
   onLongPress?: () => void;
-  onRelease?: () => void;
 }
 
 const Container = styled(Pressable)({
@@ -128,15 +128,15 @@ export const Button = forwardRef(function Button(
     style,
     containerStyle,
     disabled = false,
-    disableHaptic = false,
     disableLongPress = false,
+    disableHaptic = false,
     leftAdornment,
     rightAdornment,
     accessibilityHint,
     accessibilityLabel,
     onPress,
+    onPressIn,
     onLongPress,
-    onRelease,
   }: PropsWithChildren<ButtonProps>,
   ref: ForwardedRef<RNView>,
 ): JSX.Element {
@@ -173,7 +173,6 @@ export const Button = forwardRef(function Button(
 
     releaseAnimationRef.current.start(() => {
       releaseAnimationRef.current = null;
-      onRelease?.();
     });
   };
 
@@ -193,13 +192,11 @@ export const Button = forwardRef(function Button(
 
   const handlePress = (): void => {
     if (isLongPress.current) return;
-    !disableHaptic && triggerHaptic(HapticFeedbackTypes.impactLight);
     onPress?.();
   };
 
   const handleLongPress = (): void => {
     if (disableLongPress) return;
-    !disableHaptic && triggerHaptic(HapticFeedbackTypes.rigid);
     reset();
     onLongPress?.();
   };
@@ -207,6 +204,7 @@ export const Button = forwardRef(function Button(
   const handlePressIn = (): void => {
     initialize();
     applyPressAnimation();
+    onPressIn?.();
 
     if (disableLongPress) return;
 
@@ -247,30 +245,40 @@ export const Button = forwardRef(function Button(
   };
 
   return (
-    <Container
-      accessibilityHint={accessibilityHint ?? accessibilityLabel}
-      accessibilityLabel={accessibilityLabel}
-      accessibilityRole="button"
-      accessibilityState={{ disabled }}
-      accessible
-      delayLongPress={LONG_PRESS_DURATION}
-      disabled={disabled}
-      onLongPress={handleLongPress}
-      onPress={handlePress}
-      onPressIn={handlePressIn}
-      onPressOut={handlePressOut}
-      ref={ref}
-      style={containerStyle}
+    <HapticFeedback
+      disableHaptic={disableHaptic}
+      pressFeedbackType="buttonPress"
     >
-      <Shadow disabled={disabled} />
-      <Cap color={color} disabled={disabled} style={[style, animatedCapStyle]}>
-        {leftAdornment}
-        {renderChildren()}
-        {rightAdornment}
-      </Cap>
-      <DimWrapper>
-        <Dim isLightBackground={isLightBackground} style={animatedDimStyle} />
-      </DimWrapper>
-    </Container>
+      <Container
+        accessibilityHint={accessibilityHint ?? accessibilityLabel}
+        accessibilityLabel={accessibilityLabel}
+        accessibilityRole="button"
+        accessibilityState={{ disabled }}
+        accessible
+        delayLongPress={LONG_PRESS_DURATION}
+        disabled={disabled}
+        hitSlop={HIT_SLOP}
+        onLongPress={handleLongPress}
+        onPress={handlePress}
+        onPressIn={handlePressIn}
+        onPressOut={handlePressOut}
+        ref={ref}
+        style={containerStyle}
+      >
+        <Shadow disabled={disabled} />
+        <Cap
+          color={color}
+          disabled={disabled}
+          style={[style, animatedCapStyle]}
+        >
+          {leftAdornment}
+          {renderChildren()}
+          {rightAdornment}
+        </Cap>
+        <DimWrapper>
+          <Dim isLightBackground={isLightBackground} style={animatedDimStyle} />
+        </DimWrapper>
+      </Container>
+    </HapticFeedback>
   );
 });

@@ -2,7 +2,8 @@
 import React, { memo, useState, useEffect, useLayoutEffect } from 'react';
 import { Animated, Platform } from 'react-native';
 import { styled, View } from 'dripsy';
-import { H1, H2 } from 'src/designs';
+import { H1 } from '../../designs/atoms/H1';
+import { H2 } from '../../designs/atoms/H2';
 
 interface AnimatedNumberProps {
   value: number;
