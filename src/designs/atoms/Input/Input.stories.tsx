@@ -1,7 +1,6 @@
 import React from 'react';
 import { View } from 'dripsy';
-import { Input } from './Input';
-import type { InputProps } from './Input';
+import { Input, type InputProps } from './Input';
 import type { Meta } from '@storybook/react';
 
 export default {

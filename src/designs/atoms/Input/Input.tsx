@@ -1,5 +1,4 @@
-import React, { forwardRef } from 'react';
-import type { ComponentPropsWithRef } from 'react';
+import React, { forwardRef, type ComponentPropsWithRef } from 'react';
 import type { TextInput as RNTextInput } from 'react-native';
 import { styled, useDripsyTheme, TextInput } from 'dripsy';
 

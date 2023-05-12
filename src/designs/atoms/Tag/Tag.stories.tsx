@@ -1,8 +1,7 @@
 import React from 'react';
 import { View } from 'dripsy';
 import { getColors } from 'src/themes/utils';
-import { Tag } from './Tag';
-import type { TagProps } from './Tag';
+import { Tag, type TagProps } from './Tag';
 import type { Meta } from '@storybook/react';
 
 export default {

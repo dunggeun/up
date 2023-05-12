@@ -5,8 +5,7 @@ import * as AppHelpers from 'src/modules/app/helpers';
 import { AppEventChannel } from 'src/modules/event';
 import { BORDER_WIDTH } from 'src/constants';
 import { H2, Text } from 'src/designs';
-import { Modal } from 'src/components';
-import type { ModalProps } from 'src/components';
+import { Modal, type ModalProps } from 'src/components';
 import { t } from 'src/translations';
 import type { Badge } from 'src/modules/app/types';
 

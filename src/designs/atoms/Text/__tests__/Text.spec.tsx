@@ -1,8 +1,7 @@
 import React from 'react';
 import { render as testRender, cleanup } from '@testing-library/react-native';
 import { withDripsy } from 'tests/utils';
-import { Text } from '../Text';
-import type { TextProps } from '../Text';
+import { Text, type TextProps } from '../Text';
 
 const render = (props: TextProps): ReturnType<typeof testRender> =>
   testRender(withDripsy(<Text {...props} />));

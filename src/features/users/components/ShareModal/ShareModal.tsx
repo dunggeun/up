@@ -1,8 +1,7 @@
 import React from 'react';
 import { styled, View } from 'dripsy';
 import { Text } from 'src/designs';
-import { LoadingIndicator, Modal } from 'src/components';
-import type { ModalProps } from 'src/components';
+import { LoadingIndicator, Modal, type ModalProps } from 'src/components';
 import { t } from 'src/translations';
 import { UserCoverWebView } from '../UserCoverWebView/UserCoverWebView';
 import type { User } from '../../types';

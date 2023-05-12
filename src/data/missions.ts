@@ -11,7 +11,7 @@ import type { Mission, MissionDetail, Achieve } from 'src/features/missions';
 
 const TAG = 'data.mission';
 
-interface MissionIdParam {
+export interface MissionIdParam {
   missionId: Mission['id'];
 }
 

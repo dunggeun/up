@@ -1,5 +1,4 @@
-import { createElement } from 'react';
-import type { ComponentPropsWithoutRef } from 'react';
+import { createElement, type ComponentPropsWithoutRef } from 'react';
 import { H1 as DripsyH1 } from 'dripsy';
 import { overrideHeadingStyle } from 'src/themes';
 

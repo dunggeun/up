@@ -1,5 +1,4 @@
-import React from 'react';
-import type { ComponentPropsWithoutRef } from 'react';
+import React, { type ComponentPropsWithoutRef } from 'react';
 import { styled, View, Text } from 'dripsy';
 import { isLight } from 'src/themes/utils';
 import type { colors } from 'src/themes/colors';

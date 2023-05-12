@@ -1,7 +1,6 @@
 import { useSelector } from '@xstate/react';
 import * as AppHelpers from 'src/modules/app/helpers';
-import { globalMachineService } from 'src/stores/machines';
-import type { globalMachine } from 'src/stores/machines';
+import { globalMachineService, type globalMachine } from 'src/stores/machines';
 import type { basicColors } from 'src/themes/colors';
 import type { StateFrom } from 'xstate';
 

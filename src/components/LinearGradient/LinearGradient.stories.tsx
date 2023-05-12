@@ -1,5 +1,4 @@
-import React from 'react';
-import type { ComponentProps } from 'react';
+import React, { type ComponentProps } from 'react';
 import { View } from 'react-native';
 import { Text } from 'src/designs';
 import { LinearGradient } from './LinearGradient';

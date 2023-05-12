@@ -1,8 +1,7 @@
 import React from 'react';
 import { View } from 'dripsy';
 import { getColors } from 'src/themes/utils';
-import { Button } from './Button';
-import type { ButtonProps } from './Button';
+import { Button, type ButtonProps } from './Button';
 import type { Meta } from '@storybook/react';
 
 export default {

@@ -7,8 +7,7 @@ import {
 } from '@testing-library/react-native';
 import { getColors } from 'src/themes/utils';
 import { withDripsy } from 'tests/utils';
-import { Tag } from '../Tag';
-import type { TagProps } from '../Tag';
+import { Tag, type TagProps } from '../Tag';
 import type { colors } from 'src/themes/colors';
 
 const render = (props: TagProps): ReturnType<typeof testRender> =>

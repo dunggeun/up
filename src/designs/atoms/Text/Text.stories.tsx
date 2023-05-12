@@ -1,5 +1,4 @@
-import React from 'react';
-import type { ComponentProps } from 'react';
+import React, { type ComponentProps } from 'react';
 import { View } from 'dripsy';
 import { Text } from './Text';
 import type { Meta, StoryFn } from '@storybook/react';

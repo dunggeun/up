@@ -2,8 +2,7 @@ import React from 'react';
 import { styled, View } from 'dripsy';
 import { Warning } from 'src/assets/symbols';
 import { Button, Text } from 'src/designs';
-import { Modal } from 'src/components';
-import type { ModalProps } from 'src/components';
+import { Modal, type ModalProps } from 'src/components';
 import { t } from 'src/translations';
 
 export interface DeleteConfirmModalProps extends Omit<ModalProps, 'title'> {

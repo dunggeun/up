@@ -7,8 +7,7 @@ import {
 } from '@testing-library/react-native';
 import { getColors } from 'src/themes/utils';
 import { withDripsy } from 'tests/utils';
-import { ProgressBar } from '../ProgressBar';
-import type { ProgressBarProps } from '../ProgressBar';
+import { ProgressBar, type ProgressBarProps } from '../ProgressBar';
 import type { colors } from 'src/themes/colors';
 
 const render = (props: ProgressBarProps): ReturnType<typeof testRender> =>

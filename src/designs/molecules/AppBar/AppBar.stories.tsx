@@ -1,7 +1,6 @@
 import React from 'react';
 import { View } from 'dripsy';
-import { AppBar } from './AppBar';
-import type { AppBarProps } from './AppBar';
+import { AppBar, type AppBarProps } from './AppBar';
 import type { Meta } from '@storybook/react';
 
 export default {

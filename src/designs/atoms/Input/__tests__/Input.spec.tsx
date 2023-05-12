@@ -7,8 +7,7 @@ import {
   cleanup,
 } from '@testing-library/react-native';
 import { withDripsy } from 'tests/utils';
-import { Input } from '../Input';
-import type { InputProps } from '../Input';
+import { Input, type InputProps } from '../Input';
 
 const render = (props: InputProps): ReturnType<typeof testRender> =>
   testRender(withDripsy(<Input {...props} />));

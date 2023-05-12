@@ -8,8 +8,7 @@ import {
 } from '@testing-library/react-native';
 import { withDripsy } from 'tests/utils';
 import { t } from 'src/translations';
-import { AppBar } from '../AppBar';
-import type { AppBarProps } from '../AppBar';
+import { AppBar, type AppBarProps } from '../AppBar';
 
 const render = (props: AppBarProps): ReturnType<typeof testRender> =>
   testRender(withDripsy(<AppBar {...props} />));
