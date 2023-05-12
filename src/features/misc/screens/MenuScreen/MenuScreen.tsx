@@ -31,10 +31,6 @@ export function MenuScreen(_props: MenuProps): JSX.Element {
     });
   };
 
-  const handlePressRating = (): void => {
-    // @todo
-  };
-
   const handlePressOpenSource = (): void => {
     navigate('Common', 'OpenSourceProject');
     // 화면 전환 이후 이벤트 전파
@@ -57,8 +53,6 @@ export function MenuScreen(_props: MenuProps): JSX.Element {
             label={t('label.send_feedback')}
             onPress={handlePressSendFeedback}
           />
-          <ListItem label={t('label.rating')} onPress={handlePressRating} />
-
           <ListItem
             label={t('label.open_source')}
             onPress={handlePressOpenSource}
