@@ -224,6 +224,7 @@ exports[`screens/UserRegisterScreen 렌더링 되었을 때 스냅샷이 일치�
               }
               accessible={true}
               collapsable={false}
+              disableHaptic={false}
               focusable={true}
               hitSlop={10}
               onBlur={[Function]}
@@ -593,7 +594,9 @@ name for the up challenge
           }
           accessible={true}
           collapsable={false}
+          disableHaptic={false}
           focusable={true}
+          hitSlop={10}
           onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}

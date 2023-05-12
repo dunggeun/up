@@ -5,6 +5,7 @@ import { Close } from 'src/assets/icons';
 import { CONTAINER_MAX_WIDTH, TOUCHABLE_OPACITY_HIT_SLOP } from 'src/constants';
 import { t } from 'src/translations';
 import { H2 } from '../../designs/atoms/H2';
+import { HapticFeedback } from '../HapticFeedback';
 
 export interface ModalProps {
   title?: string;
@@ -72,14 +73,16 @@ export const Modal = memo(function Modal({
         <ModalContainer>
           <ModalHeader>
             <H2>{title}</H2>
-            <CloseButton
-              accessibilityHint={ACCESSIBILITY.close}
-              accessibilityLabel={ACCESSIBILITY.close}
-              hitSlop={TOUCHABLE_OPACITY_HIT_SLOP}
-              onPress={onClose}
-            >
-              <Close />
-            </CloseButton>
+            <HapticFeedback>
+              <CloseButton
+                accessibilityHint={ACCESSIBILITY.close}
+                accessibilityLabel={ACCESSIBILITY.close}
+                hitSlop={TOUCHABLE_OPACITY_HIT_SLOP}
+                onPress={onClose}
+              >
+                <Close />
+              </CloseButton>
+            </HapticFeedback>
           </ModalHeader>
           {children}
         </ModalContainer>

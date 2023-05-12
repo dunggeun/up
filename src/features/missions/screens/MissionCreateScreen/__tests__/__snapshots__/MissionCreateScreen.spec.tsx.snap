@@ -267,6 +267,7 @@ exports[`screens/MissionCreateScreen 렌더링 되었을 때 스냅샷이 일치
               }
               accessible={true}
               collapsable={false}
+              disableHaptic={false}
               focusable={true}
               hitSlop={10}
               onBlur={[Function]}
@@ -623,7 +624,9 @@ a new mission title
             }
             accessible={true}
             collapsable={false}
+            disableHaptic={false}
             focusable={true}
+            hitSlop={10}
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}

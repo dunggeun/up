@@ -6,8 +6,8 @@ import {
   type TextStyle,
 } from 'react-native';
 import { styled, View } from 'dripsy';
-import { triggerHaptic } from 'src/utils';
 import { CONTAINER_MAX_WIDTH } from 'src/constants';
+import { HapticFeedback } from '../HapticFeedback';
 import type { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 
 export const TAB_BAR_HEIGHT = 70;
@@ -73,8 +73,6 @@ export function TabBar({
             : options.tabBarInactiveTintColor;
 
           const onPress = (): void => {
-            triggerHaptic('press');
-
             const event = navigation.emit({
               type: 'tabPress',
               target: route.key,
@@ -101,35 +99,37 @@ export function TabBar({
             options.tabBarAccessibilityLabel ?? options.title;
 
           return (
-            <TabItem
-              accessibilityHint={accessibilityLabel}
-              accessibilityLabel={accessibilityLabel}
-              accessibilityRole="button"
-              accessibilityState={isFocused ? { selected: true } : {}}
-              hitSlop={TAB_HIT_SLOP}
-              key={route.name}
-              onLongPress={onLongPress}
-              onPress={onPress}
-              testID={options.tabBarTestID}
-            >
-              {options.tabBarIcon
-                ? createElement(
-                    options.tabBarIcon as FunctionComponent<{
-                      focused: boolean;
-                      color: string;
-                      size: number;
-                      style?: StyleProp<TextStyle>;
-                    }>,
-                    {
-                      style: options.tabBarIconStyle,
-                      focused: isFocused,
-                      color: iconTintColor ?? '',
-                      size: 0,
-                    },
-                    null,
-                  )
-                : null}
-            </TabItem>
+            <HapticFeedback key={route.key}>
+              <TabItem
+                accessibilityHint={accessibilityLabel}
+                accessibilityLabel={accessibilityLabel}
+                accessibilityRole="button"
+                accessibilityState={isFocused ? { selected: true } : {}}
+                hitSlop={TAB_HIT_SLOP}
+                key={route.name}
+                onLongPress={onLongPress}
+                onPress={onPress}
+                testID={options.tabBarTestID}
+              >
+                {options.tabBarIcon
+                  ? createElement(
+                      options.tabBarIcon as FunctionComponent<{
+                        focused: boolean;
+                        color: string;
+                        size: number;
+                        style?: StyleProp<TextStyle>;
+                      }>,
+                      {
+                        style: options.tabBarIconStyle,
+                        focused: isFocused,
+                        color: iconTintColor ?? '',
+                        size: 0,
+                      },
+                      null,
+                    )
+                  : null}
+              </TabItem>
+            </HapticFeedback>
           );
         })}
       </Container>

@@ -4,6 +4,7 @@ import { styled } from 'dripsy';
 import { MotiView } from 'moti';
 import { H2 } from '../../designs/atoms/H2';
 import { Text } from '../../designs/atoms/Text';
+import { HapticFeedback } from '../HapticFeedback';
 
 export interface ListItemProps {
   label: string;
@@ -54,17 +55,19 @@ export function ListItem({
   };
 
   return animatable(
-    <Container
-      accessibilityHint={label}
-      accessibilityLabel={label}
-      accessibilityValue={{ text: subLabel }}
-      disabled={!onPress}
-      onPress={onPress}
-    >
-      <H2 variant="primary">{label}</H2>
-      {typeof subLabel === 'string' ? (
-        <Text variant="secondary">{subLabel}</Text>
-      ) : null}
-    </Container>,
+    <HapticFeedback>
+      <Container
+        accessibilityHint={label}
+        accessibilityLabel={label}
+        accessibilityValue={{ text: subLabel }}
+        disabled={!onPress}
+        onPress={onPress}
+      >
+        <H2 variant="primary">{label}</H2>
+        {typeof subLabel === 'string' ? (
+          <Text variant="secondary">{subLabel}</Text>
+        ) : null}
+      </Container>
+    </HapticFeedback>,
   );
 }
