@@ -546,10 +546,8 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
                       "backgroundColor": "#ffffff",
                       "borderRadius": 8,
                       "height": "100%",
-                      "left": 0,
                       "marginTop": 0,
                       "opacity": 0.2,
-                      "position": "absolute",
                       "width": "0%",
                     }
                   }
