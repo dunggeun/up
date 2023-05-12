@@ -13,7 +13,7 @@ import { useAchieveCount } from 'src/features/missions/hooks';
 import * as AppHelpers from 'src/modules/app/helpers';
 import { BORDER_WIDTH, HIT_SLOP } from 'src/constants';
 import { H1, H2 } from 'src/designs';
-import { AnimatedNumber, Section } from 'src/components';
+import { AnimatedNumber, HapticFeedback, Section } from 'src/components';
 import { t } from 'src/translations';
 import type { User } from '../../types';
 
@@ -84,19 +84,21 @@ export const UserSection = memo(function UserSection({
 
   return (
     <Section center>
-      <PressableRow
-        accessibilityRole="button"
-        hitSlop={HIT_SLOP}
-        onPress={onPressEdit}
-      >
-        <Badge>
-          {badge.image ? <BadgeImage source={badge.image} /> : null}
-        </Badge>
-        <H1 variant="primary">
-          Lv.{user.level} {user.name}
-        </H1>
-        <EditIcon />
-      </PressableRow>
+      <HapticFeedback>
+        <PressableRow
+          accessibilityRole="button"
+          hitSlop={HIT_SLOP}
+          onPress={onPressEdit}
+        >
+          <Badge>
+            {badge.image ? <BadgeImage source={badge.image} /> : null}
+          </Badge>
+          <H1 variant="primary">
+            Lv.{user.level} {user.name}
+          </H1>
+          <EditIcon />
+        </PressableRow>
+      </HapticFeedback>
       <AnimatedRow style={{ height: animatedBadgeTitleHeight }}>
         <H2 variant="secondary">{badgeTitle ? `(${badgeTitle})` : ''}</H2>
       </AnimatedRow>

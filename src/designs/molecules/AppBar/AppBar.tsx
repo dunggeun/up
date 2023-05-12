@@ -4,6 +4,7 @@ import { styled, View, Pressable } from 'dripsy';
 import { LinearGradient } from 'src/components/LinearGradient';
 import { H2 } from 'src/designs/atoms';
 import { APP_BAR_HEIGHT, HIT_SLOP } from 'src/constants';
+import { HapticFeedback } from 'src/components';
 import { Icons } from 'src/assets';
 import { t } from 'src/translations';
 
@@ -66,14 +67,16 @@ export function AppBar({
       {shadow ? <AppBarShadow color="white" direction="to-down" /> : null}
       <SideButtonArea>
         {onBackPress ? (
-          <SideButton
-            accessibilityHint={ACCESSIBILITY.back}
-            accessibilityLabel={ACCESSIBILITY.back}
-            hitSlop={HIT_SLOP}
-            onPress={onBackPress}
-          >
-            <Icons.ArrowLeft />
-          </SideButton>
+          <HapticFeedback>
+            <SideButton
+              accessibilityHint={ACCESSIBILITY.back}
+              accessibilityLabel={ACCESSIBILITY.back}
+              hitSlop={HIT_SLOP}
+              onPress={onBackPress}
+            >
+              <Icons.ArrowLeft />
+            </SideButton>
+          </HapticFeedback>
         ) : null}
       </SideButtonArea>
       <H2
@@ -85,14 +88,16 @@ export function AppBar({
       </H2>
       <SideButtonArea>
         {onClosePress ? (
-          <SideButton
-            accessibilityHint={ACCESSIBILITY.close}
-            accessibilityLabel={ACCESSIBILITY.close}
-            hitSlop={HIT_SLOP}
-            onPress={onClosePress}
-          >
-            <Icons.Close />
-          </SideButton>
+          <HapticFeedback>
+            <SideButton
+              accessibilityHint={ACCESSIBILITY.close}
+              accessibilityLabel={ACCESSIBILITY.close}
+              hitSlop={HIT_SLOP}
+              onPress={onClosePress}
+            >
+              <Icons.Close />
+            </SideButton>
+          </HapticFeedback>
         ) : null}
       </SideButtonArea>
     </Container>

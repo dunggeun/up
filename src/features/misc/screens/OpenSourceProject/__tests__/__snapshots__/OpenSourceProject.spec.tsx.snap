@@ -208,6 +208,7 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             }
             accessible={true}
             collapsable={false}
+            disableHaptic={false}
             focusable={true}
             hitSlop={10}
             onBlur={[Function]}
@@ -410,7 +411,9 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
               }
               accessible={true}
               collapsable={false}
+              disableHaptic={false}
               focusable={true}
+              hitSlop={10}
               onBlur={[Function]}
               onClick={[Function]}
               onFocus={[Function]}

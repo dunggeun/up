@@ -10,6 +10,7 @@ import { styled, View } from 'dripsy';
 import { useAnimationState, AnimatePresence, MotiView } from 'moti';
 import { noop } from 'src/utils';
 import { BORDER_WIDTH, HIT_SLOP } from 'src/constants';
+import { HapticFeedback } from 'src/components';
 import { Icons } from 'src/assets';
 import { t } from 'src/translations';
 import { H2 } from '../H2';
@@ -121,18 +122,20 @@ export function Trigger(): JSX.Element {
   }, [rotate, value.visibility]);
 
   return (
-    <TriggerView
-      accessibilityHint={ACCESSIBILITY.select}
-      accessibilityLabel={ACCESSIBILITY.select}
-      hitSlop={HIT_SLOP}
-      onPress={value.toggleVisibility}
-      testID="select-trigger"
-    >
-      <MotiView state={rotate} transition={{ type: 'timing', duration: 250 }}>
-        <TriggerSymbol />
-      </MotiView>
-      <H2 variant="primary">{value.value?.label ?? ''}</H2>
-    </TriggerView>
+    <HapticFeedback>
+      <TriggerView
+        accessibilityHint={ACCESSIBILITY.select}
+        accessibilityLabel={ACCESSIBILITY.select}
+        hitSlop={HIT_SLOP}
+        onPress={value.toggleVisibility}
+        testID="select-trigger"
+      >
+        <MotiView state={rotate} transition={{ type: 'timing', duration: 250 }}>
+          <TriggerSymbol />
+        </MotiView>
+        <H2 variant="primary">{value.value?.label ?? ''}</H2>
+      </TriggerView>
+    </HapticFeedback>
   );
 }
 
@@ -184,16 +187,18 @@ export function Item(item: SelectItemProps): JSX.Element {
   };
 
   return (
-    <ItemView
-      accessibilityHint={ACCESSIBILITY.item}
-      accessibilityLabel={item.label}
-      hitSlop={HIT_SLOP}
-      key={item.value}
-      onPress={handlePressItem}
-      testID={`select-item-${item.value}`}
-    >
-      <H2 variant="primary">{item.label}</H2>
-    </ItemView>
+    <HapticFeedback>
+      <ItemView
+        accessibilityHint={ACCESSIBILITY.item}
+        accessibilityLabel={item.label}
+        hitSlop={HIT_SLOP}
+        key={item.value}
+        onPress={handlePressItem}
+        testID={`select-item-${item.value}`}
+      >
+        <H2 variant="primary">{item.label}</H2>
+      </ItemView>
+    </HapticFeedback>
   );
 }
 

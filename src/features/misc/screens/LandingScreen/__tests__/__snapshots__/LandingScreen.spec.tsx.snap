@@ -512,7 +512,9 @@ Take the Up Challenge
         }
         accessible={true}
         collapsable={false}
+        disableHaptic={false}
         focusable={true}
+        hitSlop={10}
         onBlur={[Function]}
         onClick={[Function]}
         onFocus={[Function]}
