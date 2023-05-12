@@ -18,7 +18,6 @@ export function HapticFeedback<
   disableHaptic = false,
   pressFeedbackType = 'press',
   longPressFeedbackType = 'buttonLongPress',
-  ...restProps
 }: HapticFeedbackProps & {
   children: React.ReactElement<Props>;
 }): JSX.Element {
@@ -35,7 +34,6 @@ export function HapticFeedback<
   };
 
   return React.cloneElement(child as React.ReactElement, {
-    ...restProps,
     disableHaptic,
     onPressIn: handlePressIn,
     onLongPress: handleLongPress,
