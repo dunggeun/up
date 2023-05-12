@@ -2,6 +2,7 @@ export * from './AnimatedNumber';
 export * from './AnimateSuspense';
 export * from './DetailSection';
 export * from './FadeInView';
+export * from './HapticFeedback';
 export * from './KeyboardAvoidingView';
 export * from './SafeAreaView';
 export * from './Modal';

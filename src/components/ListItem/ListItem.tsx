@@ -2,7 +2,8 @@ import React from 'react';
 import { TouchableOpacity } from 'react-native';
 import { styled } from 'dripsy';
 import { MotiView } from 'moti';
-import { H2, Text } from 'src/designs';
+import { H2 } from '../../designs/atoms/H2';
+import { Text } from '../../designs/atoms/Text';
 
 export interface ListItemProps {
   label: string;

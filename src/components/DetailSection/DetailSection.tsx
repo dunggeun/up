@@ -1,7 +1,7 @@
 import React, { type PropsWithChildren } from 'react';
 import { styled, View } from 'dripsy';
 import { MotiView } from 'moti';
-import { H2 } from 'src/designs';
+import { H2 } from 'src/designs/atoms/H2';
 
 export interface DetailSectionProps {
   title: string;
