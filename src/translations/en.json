@@ -88,7 +88,7 @@
         "2": "Your hard work will be rewarded."
       },
       "greeting": "Welcome!\nTake the Up Challenge",
-      "enter_name": "Please provide your\nname for the up challenge",
+      "enter_name": "Please enter your\nname for the Up challenge",
       "reset_data": "All data recorded so far will be lost and can't be reverted back to before.\n\nSure you want to delete it?",
       "reset_data_guide": "Please press and hold the button to delete",
       "mission_warning": "Once you accept the mission,\nthe title and notes will be can't change so please check carefully",

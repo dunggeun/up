@@ -97,6 +97,7 @@ export const BadgeSection = memo(function BadgeSection({
                 accessibilityLabel={badge.title}
                 color="$white"
                 containerStyle={buttonContainerStyle}
+                disableLongPress={badge.id === 0}
                 disabled={!isUnlocked(badge.id)}
                 key={badge.id}
                 onLongPress={(): void => onLongPressBadge(badge.id)}

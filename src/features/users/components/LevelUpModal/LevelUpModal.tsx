@@ -17,6 +17,11 @@ const Content = styled(View)({
 
 const StarSymbolArea = styled(MotiView)();
 
+const LevelArea = styled(View)({
+  alignItems: 'center',
+  justifyContent: 'center',
+});
+
 const Message = styled(Text)({
   textAlign: 'center',
 });
@@ -51,7 +56,9 @@ export const LevelUpModal = memo(function LevelUpModal(): JSX.Element {
         >
           <Star />
         </StarSymbolArea>
-        <AnimatedNumber delay={LEVEL_ANIMATE_DELAY} size="lg" value={level} />
+        <LevelArea>
+          <AnimatedNumber delay={LEVEL_ANIMATE_DELAY} size="lg" value={level} />
+        </LevelArea>
         <H2>{t('label.level_up')}</H2>
         <Message variant="text.primary">
           {t(

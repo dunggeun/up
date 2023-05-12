@@ -32,11 +32,10 @@ type AccessibilityProps = Pick<
 >;
 
 export interface ButtonProps
-  extends Pick<HapticFeedbackProps, 'disableHaptic'>,
+  extends Pick<HapticFeedbackProps, 'disableLongPress' | 'disableHaptic'>,
     AccessibilityProps {
   color: keyof typeof colors;
   disabled?: boolean;
-  disableLongPress?: boolean;
   style?: ViewStyle;
   containerStyle?: ViewStyle;
   leftAdornment?: React.ReactElement | null;
@@ -100,8 +99,6 @@ const DimWrapper = styled(View)({
 
 const Dim = styled(Animated.View)(
   ({ isLightBackground }: { isLightBackground: boolean }) => ({
-    position: 'absolute',
-    left: 0,
     height: '100%',
     borderRadius: '$md',
     backgroundColor: isLightBackground ? '$black' : '$white',
@@ -192,6 +189,8 @@ export const Button = forwardRef(function Button(
   return (
     <HapticFeedback
       disableHaptic={disableHaptic}
+      disableLongPress={disableLongPress}
+      mode="press-in"
       pressFeedbackType="buttonPress"
     >
       <Container

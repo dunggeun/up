@@ -1,6 +1,6 @@
 import React, { Suspense, type PropsWithChildren } from 'react';
 import { styled } from 'dripsy';
-import { AnimatePresence, MotiView } from 'moti';
+import { MotiView } from 'moti';
 
 export interface AnimateSuspenseProps {
   fallback?: React.ReactNode;
@@ -13,18 +13,16 @@ export function AnimateSuspense({
   fallback,
 }: PropsWithChildren<AnimateSuspenseProps>): JSX.Element {
   return (
-    <AnimatePresence exitBeforeEnter>
-      <Suspense fallback={fallback}>
-        <AnimateWrapper
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0 }}
-          exitTransition={{ type: 'timing' }}
-          from={{ opacity: 0, scale: 0.8 }}
-          transition={{ type: 'timing' }}
-        >
-          {children}
-        </AnimateWrapper>
-      </Suspense>
-    </AnimatePresence>
+    <Suspense fallback={fallback}>
+      <AnimateWrapper
+        animate={{ opacity: 1, scale: 1 }}
+        exit={{ opacity: 0 }}
+        exitTransition={{ type: 'timing' }}
+        from={{ opacity: 0, scale: 0.8 }}
+        transition={{ type: 'timing' }}
+      >
+        {children}
+      </AnimateWrapper>
+    </Suspense>
   );
 }

@@ -9,7 +9,7 @@ import { selectFile } from 'src/utils/fs';
 import { delay } from 'src/utils';
 import { APP_MINIMUM_LOADING_DURATION } from 'src/constants';
 import { CommonLayout, Text } from 'src/designs';
-import { ListItem, LoadingIndicator } from 'src/components';
+import { HapticFeedback, ListItem, LoadingIndicator } from 'src/components';
 import { t } from 'src/translations';
 import { DeleteConfirmModal } from '../../components/DeleteConfirmModal';
 import { EnterPasswordModal } from '../../components/EnterPasswordModal';
@@ -158,11 +158,13 @@ export function DataManagementScreen({
         <CommonLayout.Body>
           <ListItem label={t('label.backup')} onPress={handlePressBackup} />
           <ListItem label={t('label.restore')} onPress={handlePressRestore} />
-          <DeleteTextButton onPress={handlePressReset}>
-            <Text sx={{ color: '$text_tertiary' }}>
-              {t('label.reset_data')}
-            </Text>
-          </DeleteTextButton>
+          <HapticFeedback>
+            <DeleteTextButton onPress={handlePressReset}>
+              <Text sx={{ color: '$text_tertiary' }}>
+                {t('label.reset_data')}
+              </Text>
+            </DeleteTextButton>
+          </HapticFeedback>
         </CommonLayout.Body>
         <CommonLayout.Footer />
       </CommonLayout>

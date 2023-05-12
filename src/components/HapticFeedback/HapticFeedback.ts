@@ -3,6 +3,8 @@ import React from 'react';
 import { triggerHaptic, type HapticFeedbackTypes } from 'src/utils';
 
 export interface HapticFeedbackProps {
+  mode?: 'press-in' | 'press';
+  disableLongPress?: boolean;
   disableHaptic?: boolean;
   pressFeedbackType?: HapticFeedbackTypes;
   longPressFeedbackType?: HapticFeedbackTypes;
@@ -10,12 +12,15 @@ export interface HapticFeedbackProps {
 
 export function HapticFeedback<
   Props extends {
+    onPress?: () => void;
     onPressIn?: () => void;
     onLongPress?: () => void;
   },
 >({
   children,
+  mode = 'press',
   disableHaptic = false,
+  disableLongPress = true,
   pressFeedbackType = 'press',
   longPressFeedbackType = 'buttonLongPress',
 }: HapticFeedbackProps & {
@@ -23,18 +28,30 @@ export function HapticFeedback<
 }): JSX.Element {
   const child = React.Children.only(children);
 
+  const handlePress = (): void => {
+    if (mode === 'press' && !disableHaptic) {
+      triggerHaptic(pressFeedbackType);
+    }
+    child.props.onPress?.();
+  };
+
   const handlePressIn = (): void => {
-    !disableHaptic && triggerHaptic(pressFeedbackType);
+    if (mode === 'press-in' && !disableHaptic) {
+      triggerHaptic(pressFeedbackType);
+    }
     child.props.onPressIn?.();
   };
 
   const handleLongPress = (): void => {
-    !disableHaptic && triggerHaptic(longPressFeedbackType);
+    if (!(disableLongPress || disableHaptic)) {
+      triggerHaptic(longPressFeedbackType);
+    }
     child.props.onLongPress?.();
   };
 
   return React.cloneElement(child as React.ReactElement, {
     disableHaptic,
+    onPress: handlePress,
     onPressIn: handlePressIn,
     onLongPress: handleLongPress,
   });
