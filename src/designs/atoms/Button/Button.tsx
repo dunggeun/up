@@ -22,19 +22,14 @@ import {
   BUTTON_HEIGHT,
   LONG_PRESS_DURATION,
   LONG_PRESS_DELAY,
-  RELEASE_DURATION,
 } from './constants';
+import { useButtonAnimation } from './hooks';
 import type { colors } from 'src/themes/colors';
 
 type AccessibilityProps = Pick<
   ViewProps,
   'accessibilityHint' | 'accessibilityLabel'
 >;
-
-enum ButtonAnimateState {
-  ACTIVE = 1,
-  INACTIVE = 0,
-}
 
 export interface ButtonProps
   extends Pick<HapticFeedbackProps, 'disableHaptic'>,
@@ -142,52 +137,12 @@ export const Button = forwardRef(function Button(
 ): JSX.Element {
   const isLongPress = useRef(false);
   const longPressTimerRef = useRef<NodeJS.Timer>();
-  const capPosition = useRef(new Animated.Value(0)).current;
-  const dimSize = useRef(new Animated.Value(0)).current;
-  const dimAnimationRef = useRef<Animated.CompositeAnimation | null>();
-  const releaseAnimationRef = useRef<Animated.CompositeAnimation | null>();
-
-  const initialize = (): void => {
-    dimAnimationRef.current = null;
-  };
+  const { capStyle, dimStyle, ...animationControls } = useButtonAnimation();
 
   const reset = (): void => {
     clearTimeout(longPressTimerRef.current);
-    dimAnimationRef.current?.stop();
     isLongPress.current = false;
-
-    if (releaseAnimationRef.current) return;
-
-    releaseAnimationRef.current = Animated.parallel([
-      Animated.timing(capPosition, {
-        toValue: ButtonAnimateState.INACTIVE,
-        useNativeDriver: false,
-        duration: RELEASE_DURATION,
-      }),
-      Animated.timing(dimSize, {
-        toValue: ButtonAnimateState.INACTIVE,
-        useNativeDriver: false,
-        duration: RELEASE_DURATION,
-      }),
-    ]);
-
-    releaseAnimationRef.current.start(() => {
-      releaseAnimationRef.current = null;
-    });
-  };
-
-  const applyPressAnimation = (): void => {
-    capPosition.setValue(5);
-  };
-
-  const applyLongPressAnimation = (): void => {
-    const dimAnimation = Animated.timing(dimSize, {
-      toValue: ButtonAnimateState.ACTIVE,
-      useNativeDriver: false,
-      duration: LONG_PRESS_DURATION - LONG_PRESS_DELAY,
-    });
-    dimAnimation.start();
-    dimAnimationRef.current = dimAnimation;
+    animationControls.reset();
   };
 
   const handlePress = (): void => {
@@ -202,15 +157,14 @@ export const Button = forwardRef(function Button(
   };
 
   const handlePressIn = (): void => {
-    initialize();
-    applyPressAnimation();
+    animationControls.press();
     onPressIn?.();
 
     if (disableLongPress) return;
 
     longPressTimerRef.current = setTimeout(() => {
       isLongPress.current = true;
-      applyLongPressAnimation();
+      animationControls.longPress();
     }, LONG_PRESS_DELAY);
   };
 
@@ -235,15 +189,6 @@ export const Button = forwardRef(function Button(
     );
   };
 
-  const animatedCapStyle = { marginTop: capPosition };
-  const animatedDimStyle = {
-    marginTop: capPosition,
-    width: dimSize.interpolate({
-      inputRange: [ButtonAnimateState.INACTIVE, ButtonAnimateState.ACTIVE],
-      outputRange: ['0%', '100%'],
-    }),
-  };
-
   return (
     <HapticFeedback
       disableHaptic={disableHaptic}
@@ -266,17 +211,13 @@ export const Button = forwardRef(function Button(
         style={containerStyle}
       >
         <Shadow disabled={disabled} />
-        <Cap
-          color={color}
-          disabled={disabled}
-          style={[style, animatedCapStyle]}
-        >
+        <Cap color={color} disabled={disabled} style={[style, capStyle]}>
           {leftAdornment}
           {renderChildren()}
           {rightAdornment}
         </Cap>
         <DimWrapper>
-          <Dim isLightBackground={isLightBackground} style={animatedDimStyle} />
+          <Dim isLightBackground={isLightBackground} style={dimStyle} />
         </DimWrapper>
       </Container>
     </HapticFeedback>
