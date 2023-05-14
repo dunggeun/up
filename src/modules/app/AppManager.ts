@@ -64,8 +64,14 @@ export class AppManager {
     if (!(await this.authorize())) return;
 
     Logger.info(TAG, 'prefetching user data');
-    await queryClient.prefetchQuery(['missions', 'list'], () =>
-      StorageManager.getInstance().getMissionList(),
+    const storageManager = StorageManager.getInstance();
+    await queryClient.prefetchQuery(
+      ['missions', 'list'],
+      storageManager.getMissionList.bind(storageManager),
+    );
+    await queryClient.prefetchQuery(
+      ['achieve', 'count'],
+      storageManager.getAchieveCount.bind(storageManager),
     );
   }
 

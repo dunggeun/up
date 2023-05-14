@@ -1,9 +1,9 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useMemo } from 'react';
 import { Platform } from 'react-native';
 import Animated, { FadeInDown } from 'react-native-reanimated';
 import Share from 'react-native-share';
 import { useActor } from '@xstate/react';
-import { styled, View } from 'dripsy';
+import { View } from 'dripsy';
 import { AppManager } from 'src/modules/app';
 import * as AppHelpers from 'src/modules/app/helpers';
 import { AppEventChannel } from 'src/modules/event';
@@ -11,8 +11,9 @@ import { Logger } from 'src/modules/logger';
 import { navigate } from 'src/navigators/helpers';
 import { globalMachineService } from 'src/stores/machines';
 import { useMainTabBarInset } from 'src/hooks';
+import { runAfterModalDismissed } from 'src/utils';
 import { CommonLayout, Button } from 'src/designs';
-import { AnimateSuspense, FadeInView } from 'src/components';
+import { FadeInView } from 'src/components';
 import { t } from 'src/translations';
 import { BadgeModal } from '../../components/BadgeModal';
 import { BadgeSection } from '../../components/BadgeSection';
@@ -31,8 +32,6 @@ const ACCESSIBILITY = {
   share: t('label.share'),
 };
 
-const Gap = styled(View)({ height: 16 });
-
 export function ProfileScreen(_props: ProfileScreenProps): JSX.Element | null {
   const user = useUser();
   const { bottomInset } = useMainTabBarInset();
@@ -41,6 +40,8 @@ export function ProfileScreen(_props: ProfileScreenProps): JSX.Element | null {
   const [badgeModalVisibility, setBadgeModalVisibility] = useState(false);
   const [badgeId, setBadgeId] = useState(0);
 
+  const selectedBadge = useMemo(() => AppHelpers.getBadge(badgeId), [badgeId]);
+
   const handleEditUser = useCallback(
     (modifyData: Partial<Pick<User, 'name' | 'badge' | 'theme'>>) => {
       send({ type: 'EDIT_USER', user: modifyData });
@@ -48,9 +49,9 @@ export function ProfileScreen(_props: ProfileScreenProps): JSX.Element | null {
     [send],
   );
 
-  const handlePressEdit = (): void => {
+  const handlePressEdit = useCallback((): void => {
     navigate('User', 'UserEdit');
-  };
+  }, []);
 
   const handlePressShare = (): void => {
     if (Platform.OS === 'ios' || Platform.OS === 'android') {
@@ -72,12 +73,9 @@ export function ProfileScreen(_props: ProfileScreenProps): JSX.Element | null {
       })
       .finally(() => {
         setShareModalVisibility(false);
-
-        // 공유하기 모달이 닫힌 후 이벤트 발행
-        // InteractionManager 로 처리 불가하여 setTimeout 으로 대응
-        setTimeout(() => {
+        runAfterModalDismissed(() => {
           AppEventChannel.getInstance().dispatch('shareProfile', undefined);
-        }, 250);
+        });
       });
   }, []);
 
@@ -108,30 +106,26 @@ export function ProfileScreen(_props: ProfileScreenProps): JSX.Element | null {
       <CommonLayout insetBottom={false}>
         <CommonLayout.Header title={t('title.profile')} />
         <CommonLayout.Body>
-          <AnimateSuspense>
-            <UserSection onPressEdit={handlePressEdit} user={user} />
-            <Gap />
-            <Button
-              accessibilityHint={ACCESSIBILITY.share}
-              accessibilityLabel={ACCESSIBILITY.share}
-              color="$white"
-              disableLongPress
-              onPress={handlePressShare}
-            >
-              {t('label.share')}
-            </Button>
-            <Gap />
-            <Animated.View entering={FadeInDown}>
-              <BadgeSection
-                onLongPressBadge={handleLongPressBadge}
-                onPressBadge={handlePressBadge}
-                unlockedBadges={user.unlockedBadges}
-              />
-            </Animated.View>
-            <Animated.View entering={FadeInDown.delay(200)}>
-              <ThemeSection onPressBadge={handlePressTheme} />
-            </Animated.View>
-          </AnimateSuspense>
+          <UserSection onPressEdit={handlePressEdit} user={user} />
+          <Button
+            accessibilityHint={ACCESSIBILITY.share}
+            accessibilityLabel={ACCESSIBILITY.share}
+            color="$white"
+            disableLongPress
+            onPress={handlePressShare}
+          >
+            {t('label.share')}
+          </Button>
+          <Animated.View entering={FadeInDown}>
+            <BadgeSection
+              onLongPressBadge={handleLongPressBadge}
+              onPressBadge={handlePressBadge}
+              unlockedBadges={user.unlockedBadges}
+            />
+          </Animated.View>
+          <Animated.View entering={FadeInDown.delay(200)}>
+            <ThemeSection onPressBadge={handlePressTheme} />
+          </Animated.View>
           <View sx={{ height: bottomInset }} />
         </CommonLayout.Body>
       </CommonLayout>
@@ -142,7 +136,7 @@ export function ProfileScreen(_props: ProfileScreenProps): JSX.Element | null {
         visible={shareModalVisibility}
       />
       <BadgeModal
-        badge={AppHelpers.getBadge(badgeId)}
+        badge={selectedBadge}
         onClose={handlePressClose}
         visible={badgeModalVisibility}
       />

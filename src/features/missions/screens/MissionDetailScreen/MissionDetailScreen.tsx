@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useUserThemeColor } from 'src/features/users';
 import { AppEventChannel } from 'src/modules/event';
+import { runAfterModalDismissed } from 'src/utils';
 import { Button, CommonLayout } from 'src/designs';
 import { LoadingIndicator } from 'src/components';
 import { t } from 'src/translations';
@@ -25,9 +26,15 @@ export function MissionDetailScreen({
   const userColor = useUserThemeColor();
   const { data: missionDetail, isLoading } = useMissionDetail({ id });
   const { mutate } = useUpdateMission({
-    onSuccess: () => {
+    invalidateMode: 'listOnly',
+    onSuccess: ({ id }) => {
       setMissionDoneModalVisibility(false);
-      requestAnimationFrame(() => {
+      runAfterModalDismissed(() => {
+        if (id !== undefined) {
+          AppEventChannel.getInstance().dispatch('doneMission', {
+            missionId: id,
+          });
+        }
         navigation.goBack();
       });
     },
@@ -51,7 +58,6 @@ export function MissionDetailScreen({
 
     const missionId = missionDetail.mission.id;
     mutate({ missionId, data: { finished_at: Number(new Date()) } });
-    AppEventChannel.getInstance().dispatch('doneMission', { missionId });
   };
 
   return shouldShowLoadingIndicator ? (

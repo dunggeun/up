@@ -1,4 +1,4 @@
-import React, { memo, useState, useEffect } from 'react';
+import React, { memo, useState, useMemo, useCallback, useEffect } from 'react';
 import { styled, View, Image } from 'dripsy';
 import { MotiView } from 'moti';
 import * as AppHelpers from 'src/modules/app/helpers';
@@ -37,7 +37,7 @@ const Message = styled(Text)({
   textAlign: 'center',
 });
 
-export function BadgeModal({
+export const BadgeModal = memo(function BadgeModal({
   badge,
   visible,
   showUnlockedTitle = false,
@@ -62,16 +62,16 @@ export function BadgeModal({
       </Content>
     </Modal>
   );
-}
+});
 
 export const EventBasedBadgeModal = memo(function EventBasedBadgeModal() {
   const [badgeId, setBadgeId] = useState(0);
   const [visibility, setVisibility] = useState(false);
-  const badge = AppHelpers.getBadge(badgeId);
+  const badge = useMemo(() => AppHelpers.getBadge(badgeId), [badgeId]);
 
-  const handleClose = (): void => {
+  const handleClose = useCallback((): void => {
     setVisibility(false);
-  };
+  }, []);
 
   useEffect(() => {
     const subscription = AppEventChannel.getInstance().addEventListener(

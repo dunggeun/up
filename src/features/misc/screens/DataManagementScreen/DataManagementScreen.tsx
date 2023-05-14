@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import { TouchableOpacity } from 'react-native';
 import { useActor } from '@xstate/react';
 import { View, styled } from 'dripsy';
@@ -6,7 +6,7 @@ import { AppManager } from 'src/modules/app';
 import { Logger } from 'src/modules/logger';
 import { globalMachineService } from 'src/stores/machines';
 import { selectFile } from 'src/utils/fs';
-import { delay } from 'src/utils';
+import { delay, runAfterModalDismissed } from 'src/utils';
 import { APP_MINIMUM_LOADING_DURATION } from 'src/constants';
 import { CommonLayout, Text } from 'src/designs';
 import { HapticFeedback, ListItem, LoadingIndicator } from 'src/components';
@@ -83,7 +83,7 @@ export function DataManagementScreen({
     setDeleteConfirmModalVisibility(true);
   };
 
-  const handleConfirmPassword = (password: string): void => {
+  const handleConfirmPassword = useCallback((password: string) => {
     setEnterPasswordModalVisibility(false);
     setLoading(true);
 
@@ -121,13 +121,11 @@ export function DataManagementScreen({
         AppManager.showToast(t('message.error.common'));
       })
       .finally(() => setLoading(false));
-  };
+  }, []);
 
-  const selectFileAndRestore = (): void => {
+  const selectFileAndRestore = useCallback(() => {
     setRestoreConfirmModalVisibility(false);
-
-    // 모달이 완전히 닫힌 후 picker 를 열어야 정상 동작함
-    setTimeout(() => {
+    runAfterModalDismissed(() => {
       selectFile()
         .then((pathOrFile) => {
           selectedActionRef.current = 'restore';
@@ -140,13 +138,25 @@ export function DataManagementScreen({
             AppManager.showToast(t('message.error.common'));
           }
         });
-    }, 500);
-  };
+    });
+  }, []);
 
-  const deleteAndLogout = (): void => {
+  const deleteAndLogout = useCallback((): void => {
     setDeleteConfirmModalVisibility(false);
     send({ type: 'LOGOUT' });
-  };
+  }, [send]);
+
+  const handleCloseEnterPasswordModal = useCallback(() => {
+    setEnterPasswordModalVisibility(false);
+  }, []);
+
+  const handleCloseRestoreConfirmModal = useCallback(() => {
+    setRestoreConfirmModalVisibility(false);
+  }, []);
+
+  const handleCloseDeleteConfirmModal = useCallback(() => {
+    setDeleteConfirmModalVisibility(false);
+  }, []);
 
   return (
     <>
@@ -169,23 +179,17 @@ export function DataManagementScreen({
         <CommonLayout.Footer />
       </CommonLayout>
       <EnterPasswordModal
-        onClose={(): void => {
-          setEnterPasswordModalVisibility(false);
-        }}
+        onClose={handleCloseEnterPasswordModal}
         onConfirm={handleConfirmPassword}
         visible={enterPasswordModalVisibility}
       />
       <RestoreConfirmModal
-        onClose={(): void => {
-          setRestoreConfirmModalVisibility(false);
-        }}
+        onClose={handleCloseRestoreConfirmModal}
         onConfirm={selectFileAndRestore}
         visible={restoreConfirmModalVisibility}
       />
       <DeleteConfirmModal
-        onClose={(): void => {
-          setDeleteConfirmModalVisibility(false);
-        }}
+        onClose={handleCloseDeleteConfirmModal}
         onDelete={deleteAndLogout}
         visible={deleteConfirmModalVisibility}
       />

@@ -1,4 +1,4 @@
-import React, { memo, type PropsWithChildren } from 'react';
+import React, { type PropsWithChildren } from 'react';
 import { Modal as RNModal, TouchableOpacity } from 'react-native';
 import { styled, View } from 'dripsy';
 import { Close } from 'src/assets/icons';
@@ -50,7 +50,7 @@ const CloseButton = styled(TouchableOpacity)({
   justifyContent: 'center',
 });
 
-export const Modal = memo(function Modal({
+export function Modal({
   children,
   title,
   visible = false,
@@ -89,4 +89,4 @@ export const Modal = memo(function Modal({
       </ModalBackground>
     </RNModal>
   );
-});
+}

@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useLayoutEffect } from 'react';
+import React, { useState } from 'react';
 import { Share } from 'react-native';
 import { useUserThemeColor } from 'src/features/users';
 import { AppManager } from 'src/modules/app';
@@ -21,7 +21,9 @@ export function MissionCreateScreen({
   const [name, setName] = useState('');
   const [memo, setMemo] = useState('');
   const { phase, back, next, complete } = useMissionPhase();
-  const { mutate, isSuccess } = useAddMission();
+  const { mutate } = useAddMission({
+    onSuccess: () => complete(),
+  });
 
   const backPressHandler =
     phase === MissionFormPhase.EnterMemo ? back : undefined;
@@ -30,21 +32,17 @@ export function MissionCreateScreen({
     mutate({ title: name, description: memo });
   };
 
-  const handlePressCloseButton = useCallback((): void => {
+  const handlePressCloseButton = (): void => {
     navigation.goBack();
-  }, [navigation]);
+  };
 
-  const handlePressShareButton = useCallback((): void => {
+  const handlePressShareButton = (): void => {
     Share.share({
       message: replacePlaceholder(t('template.share_new_mission.body'), name),
     }).catch(() => {
       AppManager.showToast(t('message.error.common'));
     });
-  }, [name]);
-
-  useLayoutEffect(() => {
-    isSuccess && complete();
-  }, [isSuccess, complete]);
+  };
 
   return (
     <CommonLayout keyboardAvoiding>

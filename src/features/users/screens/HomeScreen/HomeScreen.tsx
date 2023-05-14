@@ -1,5 +1,4 @@
 import React from 'react';
-import { navigate } from 'src/navigators/helpers';
 import { CommonLayout } from 'src/designs';
 import { AnimateSuspense, FadeInView, LoadingIndicator } from 'src/components';
 import { UserMissionList } from '../../components/UserMissionList';
@@ -12,17 +11,13 @@ type HomeScreenProps = MainTabProps<'Home'>;
 export function HomeScreen(_props: HomeScreenProps): JSX.Element | null {
   const user = useUser();
 
-  const handlePressCreateMission = (): void => {
-    navigate('Mission', 'MissionCreate');
-  };
-
   return (
     <FadeInView>
       <CommonLayout insetBottom={false}>
         <CommonLayout.Body scrollEnabled={false}>
           <UserProfile user={user} />
           <AnimateSuspense fallback={<LoadingIndicator full={false} />}>
-            <UserMissionList onCreate={handlePressCreateMission} />
+            <UserMissionList />
           </AnimateSuspense>
         </CommonLayout.Body>
       </CommonLayout>

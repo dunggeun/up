@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { styled, View } from 'dripsy';
 import { Warning } from 'src/assets/symbols';
 import { Button, Text } from 'src/designs';
@@ -26,7 +26,7 @@ const Message = styled(Text)({
   textAlign: 'center',
 });
 
-export function DeleteConfirmModal({
+export const DeleteConfirmModal = memo(function DeleteConfirmModal({
   visible,
   onClose,
   onDelete,
@@ -52,4 +52,4 @@ export function DeleteConfirmModal({
       </Content>
     </Modal>
   );
-}
+});

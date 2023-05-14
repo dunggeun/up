@@ -1,4 +1,4 @@
-import { Platform } from 'react-native';
+import { InteractionManager, Platform } from 'react-native';
 import {
   trigger,
   HapticFeedbackTypes as RNHapticFeedbackTypes,
@@ -28,4 +28,11 @@ export function noop(): void {}
 export function triggerHaptic(type: HapticFeedbackTypes = 'press'): void {
   const feedbackType = HAPTIC_FEEDBACK_TYPES[type];
   feedbackType && trigger(feedbackType);
+}
+
+export function runAfterModalDismissed(task: () => void): void {
+  setTimeout(() => {
+    InteractionManager.runAfterInteractions(task);
+    // 약 500ms 뒤 모달이 닫힌 후 작업 처리
+  }, 500);
 }

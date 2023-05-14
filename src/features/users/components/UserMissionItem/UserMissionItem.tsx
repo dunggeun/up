@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { memo, useMemo } from 'react';
 import { InteractionManager } from 'react-native';
 import Animated, {
   ZoomIn,
@@ -6,34 +6,41 @@ import Animated, {
   ZoomOutEasyDown,
 } from 'react-native-reanimated';
 import { useAddAchieve } from 'src/features/missions/hooks';
+import { useUserThemeColor } from 'src/features/users/hooks';
 import { AppManager } from 'src/modules/app';
 import { navigate } from 'src/navigators/helpers';
 import { diffBeforeToday } from 'src/utils';
 import { Button, Tag } from 'src/designs';
 import { t } from 'src/translations';
 import type { Mission } from 'src/features/missions';
-import type { basicColors } from 'src/themes/colors';
 
 export interface UserMissionItemProps {
   data: Mission;
   index: number;
   animateEnabled: boolean;
-  tagColor: keyof typeof basicColors;
 }
 const DELAY = 80;
 
-export function UserMissionItem({
+export const UserMissionItem = memo(function UserMissionItem({
   data,
   index,
   animateEnabled,
-  tagColor,
 }: UserMissionItemProps): JSX.Element {
   const { mutate } = useAddAchieve();
+  const userColor = useUserThemeColor();
 
   const shouldShowBadge = useMemo(() => {
     if (data.finished_at) return false;
     return data.current_streak > 0 && diffBeforeToday(data.updated_at) <= 1;
   }, [data]);
+
+  const MemoizedBadge = useMemo(() => {
+    return shouldShowBadge ? (
+      <Animated.View entering={ZoomIn}>
+        <Tag color={userColor} label={`x${data.current_streak}`} />
+      </Animated.View>
+    ) : null;
+  }, [shouldShowBadge, userColor, data.current_streak]);
 
   const handlePress = (): void => {
     const isFinished = data.finished_at;
@@ -65,14 +72,6 @@ export function UserMissionItem({
     });
   };
 
-  const renderBadge = (): JSX.Element | null => {
-    return shouldShowBadge ? (
-      <Animated.View entering={ZoomIn}>
-        <Tag color={tagColor} label={`x${data.current_streak}`} />
-      </Animated.View>
-    ) : null;
-  };
-
   const animate = (child: React.ReactElement): React.ReactElement => {
     return animateEnabled ? (
       <Animated.View
@@ -93,9 +92,9 @@ export function UserMissionItem({
       color="$white"
       onLongPress={handleLongPress}
       onPress={handlePress}
-      rightAdornment={renderBadge()}
+      rightAdornment={MemoizedBadge}
     >
       {data.title}
     </Button>,
   );
-}
+});

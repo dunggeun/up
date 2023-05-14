@@ -9,17 +9,13 @@ import { styled, useDripsyTheme, View } from 'dripsy';
 import { LinearGradient } from 'src/components/LinearGradient';
 import { BUTTON_HEIGHT } from 'src/designs/atoms/Button/constants';
 import { useMissions } from 'src/features/missions/hooks';
+import { navigate } from 'src/navigators/helpers';
 import { useMainTabBarInset } from 'src/hooks';
 import { SHARED_CONFIG, WINDOW_HEIGHT } from 'src/constants';
-import { Button, H3, Select, type ButtonProps } from 'src/designs';
+import { Button, H3, Select } from 'src/designs';
 import { t } from 'src/translations';
-import { useUserThemeColor } from '../../hooks';
 import { UserMissionItem } from '../UserMissionItem';
 import type { Mission } from 'src/features/missions';
-
-export interface UserMissionListProps {
-  onCreate: () => void;
-}
 
 const ACCESSIBILITY = {
   addMission: t('label.add_new_mission'),
@@ -81,30 +77,29 @@ const FILTER_ITEM = [
   { value: 'finished', label: t('label.finished_missions') },
 ] as const;
 
-function CreateMissionButton({
-  onPress,
-}: Pick<ButtonProps, 'onPress'>): JSX.Element {
+function CreateMissionButton(): JSX.Element {
+  const handlePressCreateMission = (): void => {
+    navigate('Mission', 'MissionCreate');
+  };
+
   return (
     <Button
       accessibilityHint={ACCESSIBILITY.addMission}
       accessibilityLabel={ACCESSIBILITY.addMission}
       color="$white"
       disableLongPress
-      onPress={onPress}
+      onPress={handlePressCreateMission}
     >
       {`+ ${t('label.add_new_mission')}`}
     </Button>
   );
 }
 
-export function UserMissionList({
-  onCreate,
-}: UserMissionListProps): JSX.Element {
+export function UserMissionList(): JSX.Element {
   const { data: missions } = useMissions({ suspense: true });
   const [filterValue, setFilterValue] = useState<string>(FILTER_ITEM[0].value);
   const { bottomInset } = useMainTabBarInset();
   const { theme } = useDripsyTheme();
-  const userColor = useUserThemeColor();
   const listStyle = useMemo(
     () => ({
       paddingTop: theme.space.$04,
@@ -129,7 +124,6 @@ export function UserMissionList({
       animateEnabled={LAST_ANIMATABLE_ITEM_INDEX > data.index}
       data={data.item}
       index={data.index + 1}
-      tagColor={userColor}
     />
   );
 
@@ -164,7 +158,7 @@ export function UserMissionList({
         ListHeaderComponent={
           filterValue === 'activate' ? (
             <Animated.View entering={FadeInUp} exiting={ZoomOutEasyDown}>
-              <CreateMissionButton onPress={onCreate} />
+              <CreateMissionButton />
               <ItemSeparatorComponent />
             </Animated.View>
           ) : null

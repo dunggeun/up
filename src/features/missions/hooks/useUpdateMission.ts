@@ -7,12 +7,14 @@ import { t } from 'src/translations';
 import type { Mission, MissionDetail } from '../types';
 
 interface UseUpdateMissionParams {
-  onSuccess?: () => void;
+  invalidateMode?: 'listOnly' | 'both';
+  onSuccess?: (data: Partial<Mission>) => void;
 }
 
 const TAG = 'useUpdateMission';
 
 export const useUpdateMission = ({
+  invalidateMode = 'both',
   onSuccess,
 }: UseUpdateMissionParams): UseMutationResult<
   Partial<Mission>,
@@ -30,13 +32,14 @@ export const useUpdateMission = ({
       if (oldMissionDetail) {
         const updatedMission = { ...oldMissionDetail.mission, ...data };
 
-        queryClient.setQueryData<MissionDetail>(
-          ['missions', 'detail', missionId],
-          {
-            ...oldMissionDetail,
-            mission: updatedMission,
-          },
-        );
+        invalidateMode === 'both' &&
+          queryClient.setQueryData<MissionDetail>(
+            ['missions', 'detail', missionId],
+            {
+              ...oldMissionDetail,
+              mission: updatedMission,
+            },
+          );
 
         queryClient.setQueryData<Mission[]>(
           ['missions', 'list'],
@@ -48,11 +51,12 @@ export const useUpdateMission = ({
             ),
         );
 
-        void queryClient.invalidateQueries(['missions', 'detail', missionId]);
+        invalidateMode === 'both' &&
+          void queryClient.invalidateQueries(['missions', 'detail', missionId]);
         void queryClient.invalidateQueries(['missions', 'list']);
       }
 
-      onSuccess?.();
+      onSuccess?.(data);
     },
     onError: (error) => {
       Logger.error(TAG, error.message);

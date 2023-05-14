@@ -65,7 +65,7 @@ export const UserSection = memo(function UserSection({
 }: UserSectionProps): JSX.Element {
   const animatedBadgeTitleHeight = useRef(new Animated.Value(0)).current;
   const [badgeTitle, setBadgeTitle] = useState('');
-  const { data: totalAchieveCount = 0 } = useAchieveCount({ suspense: true });
+  const { data: totalAchieveCount = 0 } = useAchieveCount({});
   const badge = AppHelpers.getBadge(user.badge);
 
   useLayoutEffect(() => {

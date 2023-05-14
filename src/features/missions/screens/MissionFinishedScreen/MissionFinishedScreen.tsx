@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { runAfterModalDismissed } from 'src/utils';
 import { Button, CommonLayout } from 'src/designs';
 import { LoadingIndicator } from 'src/components';
 import { t } from 'src/translations';
@@ -24,9 +25,7 @@ export function MissionFinishedScreen({
   const { mutate } = useDeleteMission({
     onSuccess: () => {
       setMissionDeleteModalVisibility(false);
-      requestAnimationFrame(() => {
-        navigation.goBack();
-      });
+      runAfterModalDismissed(() => navigation.goBack());
     },
   });
   const shouldShowLoadingIndicator = isLoading || !missionDetail;

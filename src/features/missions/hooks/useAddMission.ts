@@ -8,7 +8,13 @@ import type { Mission } from '../types';
 
 const TAG = 'useAddMission';
 
-export const useAddMission = (): UseMutationResult<
+interface UseAddMissionConfig {
+  onSuccess?: () => void;
+}
+
+export const useAddMission = ({
+  onSuccess,
+}: UseAddMissionConfig): UseMutationResult<
   Mission,
   Error,
   Parameters<typeof addMission>[0]
@@ -23,6 +29,8 @@ export const useAddMission = (): UseMutationResult<
       void queryClient.invalidateQueries(['missions', 'list'], {
         refetchActive: false,
       });
+
+      onSuccess?.();
     },
     onError: (error) => {
       Logger.error(TAG, error.message);

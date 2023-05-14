@@ -77,7 +77,7 @@ export function MissionInformation({
   const renderEarnedExp = (): JSX.Element => {
     return (
       <DetailSection
-        delay={isFinishedMission ? 200 : 800}
+        delay={isFinishedMission ? 200 : 600}
         title={t('title.mission_total_exp')}
       >
         <Text variant="secondary">
