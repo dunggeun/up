@@ -12,6 +12,8 @@ export const openMail = (
   to: string,
   { subject, body }: { subject: string; body: string },
 ): void => {
-  const url = `mailto:${to}?subject=${subject}&body=${body}`;
+  const url = `mailto:${to}?subject=${encodeURIComponent(
+    subject,
+  )}&body=${encodeURIComponent(body)}`;
   openUrl(url);
 };
