@@ -83,7 +83,7 @@ module.exports = {
       patterns: ['./static/icons/logo.png', './static/site.webmanifest'],
     },
     define: {
-      __DEV__: JSON.stringify(true),
+      __DEV__: JSON.stringify(process.env.NODE_ENV !== 'production'),
       WEB_SENTRY_DSN: JSON.stringify(process.env.WEB_SENTRY_DSN) || 'empty',
       process: {
         env: {},
