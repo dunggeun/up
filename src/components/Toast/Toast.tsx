@@ -47,9 +47,12 @@ export const Toast = memo(function Toast() {
           animate={{ translateY: 0 }}
           exit={{ translateY: TOAST_ANIMATE_HEIGHT - top }}
           from={{ translateY: TOAST_ANIMATE_HEIGHT - top }}
+          pointerEvents="none"
           style={containerStyle}
         >
-          <ToastContent onPress={handlePressToast}>{content}</ToastContent>
+          <ToastContent onPress={handlePressToast} pointerEvents="auto">
+            {content}
+          </ToastContent>
         </MotiView>
       ) : null}
     </AnimatePresence>
