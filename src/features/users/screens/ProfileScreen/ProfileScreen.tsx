@@ -32,7 +32,7 @@ const ACCESSIBILITY = {
   share: t('label.share'),
 };
 
-export function ProfileScreen(_props: ProfileScreenProps): JSX.Element | null {
+export function ProfileScreen(_props: ProfileScreenProps): React.ReactElement {
   const user = useUser();
   const { bottomInset } = useMainTabBarInset();
   const [_, send] = useActor(globalMachineService);

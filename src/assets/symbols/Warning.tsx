@@ -9,7 +9,7 @@ import Svg, {
 } from 'react-native-svg';
 import { colors } from 'src/themes/colors';
 
-export function Warning(props: SvgProps): JSX.Element {
+export function Warning(props: SvgProps): React.ReactElement {
   return (
     <Svg fill="none" height={48} viewBox="0 0 48 48" width={48} {...props}>
       <G clipPath="url(#clip)">

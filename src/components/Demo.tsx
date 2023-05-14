@@ -7,7 +7,7 @@ export interface DemoProps {
   text: string;
 }
 
-export function Demo({ text }: DemoProps): JSX.Element {
+export function Demo({ text }: DemoProps): React.ReactElement {
   return (
     <ScrollView>
       <H1>Heading 1</H1>

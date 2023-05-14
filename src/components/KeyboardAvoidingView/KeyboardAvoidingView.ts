@@ -9,7 +9,7 @@ export function KeyboardAvoidingView({
   children,
   style,
   ...props
-}: RNKeyboardAvoidingViewProps): JSX.Element {
+}: RNKeyboardAvoidingViewProps): React.ReactElement {
   return createElement(
     RNKeyboardAvoidingView,
     {

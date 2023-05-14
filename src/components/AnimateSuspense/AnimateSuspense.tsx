@@ -14,7 +14,7 @@ const AnimateWrapper = styled(MotiView)({
 export function AnimateSuspense({
   children,
   fallback,
-}: PropsWithChildren<AnimateSuspenseProps>): JSX.Element {
+}: PropsWithChildren<AnimateSuspenseProps>): React.ReactElement {
   return (
     <Suspense fallback={fallback}>
       <AnimateWrapper

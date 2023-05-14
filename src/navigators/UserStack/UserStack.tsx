@@ -9,7 +9,7 @@ import type { UserStackScreenParamList } from './types';
 
 const UserStack = createStackNavigator<UserStackScreenParamList>();
 
-export function UserStackNavigator(): JSX.Element {
+export function UserStackNavigator(): React.ReactElement {
   return (
     <UserStack.Navigator
       screenOptions={{

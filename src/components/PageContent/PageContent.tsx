@@ -13,6 +13,6 @@ const StyledView = styled(View)({
 
 export function PageContent({
   children,
-}: PropsWithChildren<PageContentProps>): JSX.Element {
+}: PropsWithChildren<PageContentProps>): React.ReactElement {
   return <StyledView>{children}</StyledView>;
 }

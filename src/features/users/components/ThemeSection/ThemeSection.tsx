@@ -33,7 +33,7 @@ const buttonContainerStyle = {
 
 export const ThemeSection = memo(function ThemeSection({
   onPressBadge,
-}: ThemeSectionProps): JSX.Element {
+}: ThemeSectionProps): React.ReactElement {
   const sx = useSx();
 
   const overridingButtonStyle = sx({
@@ -60,7 +60,7 @@ export const ThemeSection = memo(function ThemeSection({
     return colors;
   };
 
-  const fillEmpty = (count: number): JSX.Element[] | null => {
+  const fillEmpty = (count: number): React.ReactElement[] | null => {
     if (count <= 0) return null;
     return new Array(count)
       .fill(null)

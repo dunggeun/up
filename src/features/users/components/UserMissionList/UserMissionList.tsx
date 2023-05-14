@@ -77,7 +77,7 @@ const FILTER_ITEM = [
   { value: 'finished', label: t('label.finished_missions') },
 ] as const;
 
-function CreateMissionButton(): JSX.Element {
+function CreateMissionButton(): React.ReactElement {
   const handlePressCreateMission = (): void => {
     navigate('Mission', 'MissionCreate');
   };
@@ -95,7 +95,7 @@ function CreateMissionButton(): JSX.Element {
   );
 }
 
-export function UserMissionList(): JSX.Element {
+export function UserMissionList(): React.ReactElement {
   const { data: missions } = useMissions({ suspense: true });
   const [filterValue, setFilterValue] = useState<string>(FILTER_ITEM[0].value);
   const { bottomInset } = useMainTabBarInset();
@@ -119,7 +119,9 @@ export function UserMissionList(): JSX.Element {
     );
   }, [missions, filterValue]);
 
-  const renderItem = (data: ListRenderItemInfo<Mission>): JSX.Element => (
+  const renderItem = (
+    data: ListRenderItemInfo<Mission>,
+  ): React.ReactElement => (
     <UserMissionItem
       animateEnabled={LAST_ANIMATABLE_ITEM_INDEX > data.index}
       data={data.item}

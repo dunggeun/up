@@ -25,7 +25,7 @@ export function MissionDoneModal({
   visible,
   onClose,
   onDone,
-}: MissionDoneModalProps): JSX.Element {
+}: MissionDoneModalProps): React.ReactElement {
   const userColor = useUserThemeColor();
 
   return (

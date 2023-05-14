@@ -39,7 +39,7 @@ export function Tag({
   color,
   disabled = false,
   ...restProps
-}: TagProps): JSX.Element {
+}: TagProps): React.ReactElement {
   return (
     <Container {...restProps} color={color} disabled={disabled}>
       <TagLabel disabled={disabled} isLight={isLight(color)}>

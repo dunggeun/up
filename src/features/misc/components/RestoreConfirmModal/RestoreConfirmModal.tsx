@@ -25,7 +25,7 @@ export function RestoreConfirmModal({
   visible,
   onClose,
   onConfirm,
-}: RestoreConfirmModalProps): JSX.Element {
+}: RestoreConfirmModalProps): React.ReactElement {
   const userColor = useUserThemeColor();
 
   return (

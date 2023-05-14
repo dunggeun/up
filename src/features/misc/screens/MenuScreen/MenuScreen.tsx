@@ -13,7 +13,7 @@ import type { MainTabProps } from 'src/navigators/MainTab/types';
 
 type MenuProps = MainTabProps<'Menu'>;
 
-export function MenuScreen(_props: MenuProps): JSX.Element {
+export function MenuScreen(_props: MenuProps): React.ReactElement {
   const { bottomInset } = useMainTabBarInset();
 
   const handlePressGuide = (): void => {

@@ -22,7 +22,7 @@ const UpRepositorySection = styled(View)({
 
 export function OpenSourceProjectScreen({
   navigation,
-}: OpenSourceProjectProps): JSX.Element {
+}: OpenSourceProjectProps): React.ReactElement {
   const userColor = useUserThemeColor();
 
   const handlePressBackButton = (): void => {

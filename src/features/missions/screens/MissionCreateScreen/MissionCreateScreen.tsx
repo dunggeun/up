@@ -16,7 +16,7 @@ type MissionCreateScreenProps = MissionStackProps<'MissionCreate'>;
 
 export function MissionCreateScreen({
   navigation,
-}: MissionCreateScreenProps): JSX.Element {
+}: MissionCreateScreenProps): React.ReactElement {
   const userColor = useUserThemeColor();
   const [name, setName] = useState('');
   const [memo, setMemo] = useState('');

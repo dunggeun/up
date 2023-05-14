@@ -14,7 +14,7 @@ type UserEditScreenProps = UserStackProps<'UserEdit'>;
 
 export function UserEditScreen({
   navigation,
-}: UserEditScreenProps): JSX.Element {
+}: UserEditScreenProps): React.ReactElement {
   const [_, send] = useActor(globalMachineService);
   const user = useUser();
   const [userName, setUserName] = useState(user.name);

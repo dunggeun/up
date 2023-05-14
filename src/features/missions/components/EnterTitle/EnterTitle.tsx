@@ -20,7 +20,7 @@ export function EnterTitle({
   nextButtonDisabled,
   onChangeTitle,
   onPressNext,
-}: EnterTitleProps): JSX.Element {
+}: EnterTitleProps): React.ReactElement {
   return (
     <>
       <CommonLayout.Body>

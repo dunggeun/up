@@ -51,7 +51,7 @@ const LevelProgress = styled(ProgressBar)({
 
 export const UserProfile = memo(function UserProfile({
   user,
-}: UserProfileProps): JSX.Element {
+}: UserProfileProps): React.ReactElement {
   const userColor = useUserThemeColor();
   const [requiredExp, setRequiredExp] = useState(0);
   const { title: badgeTitle, image: badgeImage } = AppHelpers.getBadge(

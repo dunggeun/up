@@ -9,7 +9,7 @@ import type { CommonStackScreenParamList } from './types';
 
 const CommonStack = createStackNavigator<CommonStackScreenParamList>();
 
-export function CommonStackNavigator(): JSX.Element {
+export function CommonStackNavigator(): React.ReactElement {
   return (
     <CommonStack.Navigator
       screenOptions={{

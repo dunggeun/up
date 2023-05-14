@@ -45,7 +45,7 @@ export const BadgeSection = memo(function BadgeSection({
   unlockedBadges,
   onPressBadge,
   onLongPressBadge,
-}: BadgeSectionProps): JSX.Element {
+}: BadgeSectionProps): React.ReactElement {
   const sx = useSx();
   const overridingButtonStyle = sx({
     paddingX: '$01',
@@ -69,7 +69,7 @@ export const BadgeSection = memo(function BadgeSection({
     return badges;
   };
 
-  const fillEmpty = (count: number): JSX.Element[] | null => {
+  const fillEmpty = (count: number): React.ReactElement[] | null => {
     if (count <= 0) return null;
     return new Array(count).fill(null).map((_, index) => (
       // eslint-disable-next-line react/no-array-index-key

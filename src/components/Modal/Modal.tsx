@@ -55,7 +55,7 @@ export function Modal({
   title,
   visible = false,
   onClose,
-}: PropsWithChildren<ModalProps>): JSX.Element {
+}: PropsWithChildren<ModalProps>): React.ReactElement {
   return (
     <RNModal
       animationType="fade"

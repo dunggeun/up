@@ -11,7 +11,7 @@ const StyledView = styled(View)({
   paddingY: '$04',
 });
 
-export function PageTitle({ title }: PageTitleProps): JSX.Element {
+export function PageTitle({ title }: PageTitleProps): React.ReactElement {
   return (
     <StyledView>
       <H1 variant="primary">{title}</H1>

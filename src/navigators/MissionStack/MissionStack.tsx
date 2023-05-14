@@ -13,7 +13,7 @@ import type { MissionStackScreenParamList } from './types';
 
 const MissionStack = createStackNavigator<MissionStackScreenParamList>();
 
-export function MissionStackNavigator(): JSX.Element {
+export function MissionStackNavigator(): React.ReactElement {
   return (
     <MissionStack.Navigator
       screenOptions={{

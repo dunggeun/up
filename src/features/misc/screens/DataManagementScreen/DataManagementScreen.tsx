@@ -37,7 +37,7 @@ const DeleteTextButton = styled(TouchableOpacity)({
   paddingY: '$04',
 });
 
-function LoadingOverlay(): JSX.Element {
+function LoadingOverlay(): React.ReactElement {
   return (
     <OverlayContainer>
       <LoadingIndicator full />
@@ -47,7 +47,7 @@ function LoadingOverlay(): JSX.Element {
 
 export function DataManagementScreen({
   navigation,
-}: DataManagementScreenProps): JSX.Element {
+}: DataManagementScreenProps): React.ReactElement {
   const [_, send] = useActor(globalMachineService);
   const selectedActionRef = useRef<'backup' | 'restore'>();
   const backupFileRef = useRef<string | File>();

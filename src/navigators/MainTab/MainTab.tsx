@@ -15,7 +15,7 @@ import type { MainTabScreenParamList } from './types';
 
 const MainTab = createBottomTabNavigator<MainTabScreenParamList>();
 
-export function MainTabNavigator(): JSX.Element {
+export function MainTabNavigator(): React.ReactElement {
   const { theme } = useDripsyTheme();
   const { bottom } = useSafeAreaInsets();
   const userColor = useUserThemeColor();

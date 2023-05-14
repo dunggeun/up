@@ -23,7 +23,7 @@ export function MissionAccepted({
   userColor,
   onPressShare,
   onPressClose,
-}: MissionAcceptedProps): JSX.Element {
+}: MissionAcceptedProps): React.ReactElement {
   return (
     <>
       <CommonLayout.Body>

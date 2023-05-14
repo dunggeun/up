@@ -33,9 +33,9 @@ export function Section({
   title,
   subTitle,
   center = false,
-}: PropsWithChildren<SectionProps>): JSX.Element {
-  const renderTitle = (): JSX.Element | null => {
-    const renderSubTitle = (): JSX.Element | null =>
+}: PropsWithChildren<SectionProps>): React.ReactElement {
+  const renderTitle = (): React.ReactElement | null => {
+    const renderSubTitle = (): React.ReactElement | null =>
       subTitle ? <SubTitle>{` ${subTitle}`}</SubTitle> : null;
 
     return title ? (

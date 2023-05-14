@@ -22,7 +22,7 @@ export function DetailSection({
   children,
   title,
   delay = 0,
-}: PropsWithChildren<DetailSectionProps>): JSX.Element {
+}: PropsWithChildren<DetailSectionProps>): React.ReactElement {
   return (
     <Animated.View entering={FadeIn.delay(delay)}>
       <SectionContainer>

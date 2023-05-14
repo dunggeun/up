@@ -22,7 +22,7 @@ export function EnterPasswordModal({
   visible,
   onClose,
   onConfirm,
-}: EnterPasswordModalProps): JSX.Element {
+}: EnterPasswordModalProps): React.ReactElement {
   const userColor = useUserThemeColor();
   const [password, setPassword] = useState('');
 

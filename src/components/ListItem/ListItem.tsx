@@ -27,8 +27,8 @@ export function ListItem({
   animate,
   animateDelay = 0,
   onPress,
-}: ListItemProps): JSX.Element {
-  const animatable = (component: JSX.Element): JSX.Element => {
+}: ListItemProps): React.ReactElement {
+  const animatable = (component: React.ReactElement): React.ReactElement => {
     if (animate) {
       return (
         <MotiView

@@ -37,7 +37,9 @@ const scaleLogoViewStyle = {
   height: LANDING_LOGO_SIZE,
 } as const;
 
-export function LandingScreen({ navigation }: LandingScreenProps): JSX.Element {
+export function LandingScreen({
+  navigation,
+}: LandingScreenProps): React.ReactElement {
   const handlePressNextButton = (): void => {
     navigation.navigate('UserRegister');
   };

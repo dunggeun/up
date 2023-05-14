@@ -19,7 +19,7 @@ export function SafeAreaView({
   insetLeft = true,
   insetRight = true,
   ...props
-}: PropsWithChildren<SafeAreaViewProps>): JSX.Element {
+}: PropsWithChildren<SafeAreaViewProps>): React.ReactElement {
   const insets = useSafeAreaInsets();
   const safeAreaStyle = useMemo(
     () => ({

@@ -19,7 +19,7 @@ const GroupContainer = styled(Animated.View)({ flex: 1 });
 export function TransitionGroup({
   children,
   renderIndex,
-}: PropsWithChildren<TransitionGroup>): JSX.Element {
+}: PropsWithChildren<TransitionGroup>): React.ReactElement {
   const isFirstRenderRef = useRef(true);
   const fadeAnimation = useRef(new Animated.Value(1)).current;
   const [currentViewIndex, setCurrentViewIndex] = useState(renderIndex);

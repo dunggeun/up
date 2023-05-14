@@ -42,7 +42,7 @@ export const BadgeModal = memo(function BadgeModal({
   visible,
   showUnlockedTitle = false,
   onClose,
-}: BadgeModalProps): JSX.Element {
+}: BadgeModalProps): React.ReactElement {
   return (
     <Modal
       onClose={onClose}

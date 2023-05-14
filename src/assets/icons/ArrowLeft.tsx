@@ -1,7 +1,7 @@
 import React from 'react';
 import Svg, { Path, type SvgProps } from 'react-native-svg';
 
-export function ArrowLeft(props: SvgProps): JSX.Element {
+export function ArrowLeft(props: SvgProps): React.ReactElement {
   return (
     <Svg fill="none" height={24} viewBox="0 0 24 24" width={24} {...props}>
       <Path

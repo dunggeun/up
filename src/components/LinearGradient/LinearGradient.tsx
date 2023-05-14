@@ -16,7 +16,7 @@ export function LinearGradient({
   color,
   direction,
   style,
-}: LinearGradientProps): JSX.Element {
+}: LinearGradientProps): React.ReactElement {
   return (
     <Container style={style}>
       <Svg preserveAspectRatio="none" viewBox="0 0 100 100">

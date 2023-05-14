@@ -25,7 +25,7 @@ export const UserMissionItem = memo(function UserMissionItem({
   data,
   index,
   animateEnabled,
-}: UserMissionItemProps): JSX.Element {
+}: UserMissionItemProps): React.ReactElement {
   const { mutate } = useAddAchieve();
   const userColor = useUserThemeColor();
 

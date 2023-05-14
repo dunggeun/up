@@ -53,7 +53,7 @@ export function CommonLayout({
   children,
   keyboardAvoiding,
   ...props
-}: PropsWithChildren<CommonLayoutProps>): JSX.Element {
+}: PropsWithChildren<CommonLayoutProps>): React.ReactElement {
   const AvoidingView = keyboardAvoiding ? KeyboardAvoidingView : Fragment;
   return (
     <SafeAreaView {...props}>
@@ -66,7 +66,7 @@ export function CommonLayout({
 
 CommonLayout.Header = function Header(
   props: Omit<AppBarProps, 'shadow'>,
-): JSX.Element {
+): React.ReactElement {
   return (
     <HeaderWrapper>
       <AppBar {...props} shadow />
@@ -81,7 +81,7 @@ interface BodyProps {
 CommonLayout.Body = function Body({
   children,
   scrollEnabled = true,
-}: PropsWithChildren<BodyProps>): JSX.Element {
+}: PropsWithChildren<BodyProps>): React.ReactElement {
   const Container = scrollEnabled ? ScrollView : View;
   const additionalProps = scrollEnabled
     ? SHARED_CONFIG.scrollableViewProps
@@ -97,7 +97,7 @@ CommonLayout.Body = function Body({
 
 CommonLayout.Footer = function Footer({
   children,
-}: PropsWithChildren<Record<string, unknown>>): JSX.Element {
+}: PropsWithChildren<Record<string, unknown>>): React.ReactElement {
   return (
     <FooterWrapper withPadding={Boolean(children)}>
       <FooterShadow color="white" direction="to-up" />

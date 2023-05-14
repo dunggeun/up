@@ -33,7 +33,7 @@ export function EnterMemo({
   userColor,
   onChangeMemo,
   onPressAccept,
-}: EnterMemoProps): JSX.Element {
+}: EnterMemoProps): React.ReactElement {
   return (
     <>
       <CommonLayout.Body>

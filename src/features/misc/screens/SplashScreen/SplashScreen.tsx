@@ -15,7 +15,7 @@ const LogoImage = styled(Image)({
   height: LANDING_LOGO_SIZE,
 });
 
-export function SplashScreen(): JSX.Element {
+export function SplashScreen(): React.ReactElement {
   return (
     <CommonLayout>
       <CommonLayout.Body scrollEnabled={false}>

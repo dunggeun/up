@@ -32,7 +32,7 @@ const StyledWebView = styled(WebView)({
 export const UserCoverWebView = memo(function UserCover({
   user,
   onGenerated,
-}: UserCoverWebViewProps): JSX.Element | null {
+}: UserCoverWebViewProps): React.ReactElement | null {
   const sx = useSx();
   const userColor = useUserThemeColor();
   const { color } = sx({ color: userColor }) as { color: string };

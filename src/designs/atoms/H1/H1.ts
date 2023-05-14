@@ -5,7 +5,11 @@ import { overrideHeadingStyle } from 'src/themes';
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface H1Props extends ComponentPropsWithoutRef<typeof DripsyH1> {}
 
-export function H1({ children, style, ...restProps }: H1Props): JSX.Element {
+export function H1({
+  children,
+  style,
+  ...restProps
+}: H1Props): React.ReactElement {
   return createElement(
     DripsyH1,
     {

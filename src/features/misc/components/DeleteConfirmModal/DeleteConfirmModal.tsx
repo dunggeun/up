@@ -30,7 +30,7 @@ export const DeleteConfirmModal = memo(function DeleteConfirmModal({
   visible,
   onClose,
   onDelete,
-}: DeleteConfirmModalProps): JSX.Element {
+}: DeleteConfirmModalProps): React.ReactElement {
   return (
     <Modal onClose={onClose} title={t('title.reset_data')} visible={visible}>
       <Content testID="delete-confirm-modal">

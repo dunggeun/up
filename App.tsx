@@ -22,7 +22,7 @@ const gestureHandlerStyle = { flex: 1 } as const;
 
 function AppProviders<T = unknown>({
   children,
-}: PropsWithChildren<T>): JSX.Element {
+}: PropsWithChildren<T>): React.ReactElement {
   return (
     <GestureHandlerRootView style={gestureHandlerStyle}>
       <SafeAreaProvider>
@@ -47,7 +47,7 @@ function AppProviders<T = unknown>({
   );
 }
 
-export function App(): JSX.Element {
+export function App(): React.ReactElement {
   return (
     <AppProviders>
       <StatusBar backgroundColor={colors.$white} barStyle="dark-content" />

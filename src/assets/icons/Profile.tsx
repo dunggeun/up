@@ -1,7 +1,7 @@
 import React from 'react';
 import Svg, { Path, Circle, type SvgProps } from 'react-native-svg';
 
-export function Profile(props: SvgProps): JSX.Element {
+export function Profile(props: SvgProps): React.ReactElement {
   return (
     <Svg fill="none" height={28} viewBox="0 0 28 28" width={28} {...props}>
       <Circle cx={14} cy={10} r={4} stroke="currentColor" strokeWidth={1.4} />

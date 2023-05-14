@@ -19,7 +19,7 @@ const ACCESSIBILITY = {
 export function MissionDetailScreen({
   navigation,
   route,
-}: MissionDetailScreenProps): JSX.Element {
+}: MissionDetailScreenProps): React.ReactElement {
   const { id } = route.params;
   const [missionDoneModalVisibility, setMissionDoneModalVisibility] =
     useState(false);

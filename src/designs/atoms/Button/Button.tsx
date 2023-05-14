@@ -131,7 +131,7 @@ export const Button = forwardRef(function Button(
     onLongPress,
   }: PropsWithChildren<ButtonProps>,
   ref: ForwardedRef<RNView>,
-): JSX.Element {
+): React.ReactElement {
   const isLongPress = useRef(false);
   const longPressTimerRef = useRef<NodeJS.Timer>();
   const { capStyle, dimStyle, ...animationControls } = useButtonAnimation();

@@ -23,7 +23,7 @@ const TotalExpText = styled(H3, {
 export function MissionInformation({
   mission,
   achieveList,
-}: MissionInformationProps): JSX.Element | null {
+}: MissionInformationProps): React.ReactElement | null {
   const userColor = useUserThemeColor();
   const isFinishedMission = Boolean(mission.finished_at);
 
@@ -36,7 +36,7 @@ export function MissionInformation({
     return { history: historyToDiffDays, totalExp: earnedExp };
   }, [achieveList]);
 
-  const renderMissionDescription = (): JSX.Element | null => {
+  const renderMissionDescription = (): React.ReactElement | null => {
     return mission.description ? (
       <DetailSection title={t('title.memo')}>
         <Text variant="secondary">{mission.description}</Text>
@@ -44,7 +44,7 @@ export function MissionInformation({
     ) : null;
   };
 
-  const renderMissionInfo = (): JSX.Element => {
+  const renderMissionInfo = (): React.ReactElement => {
     return (
       <DetailSection delay={100} title={t('title.mission_info')}>
         {isFinishedMission ? (
@@ -66,7 +66,7 @@ export function MissionInformation({
     );
   };
 
-  const renderMissionHistory = (): JSX.Element | null => {
+  const renderMissionHistory = (): React.ReactElement | null => {
     return isFinishedMission ? null : (
       <DetailSection delay={200} title={t('title.mission_history_in_4_week')}>
         <MissionHistory color={userColor} history={history} />
@@ -74,7 +74,7 @@ export function MissionInformation({
     );
   };
 
-  const renderEarnedExp = (): JSX.Element => {
+  const renderEarnedExp = (): React.ReactElement => {
     return (
       <DetailSection
         delay={isFinishedMission ? 200 : 600}

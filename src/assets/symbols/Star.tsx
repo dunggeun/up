@@ -1,7 +1,7 @@
 import React from 'react';
 import Svg, { G, Path, Defs, ClipPath, type SvgProps } from 'react-native-svg';
 
-export function Star(props: SvgProps): JSX.Element {
+export function Star(props: SvgProps): React.ReactElement {
   return (
     <Svg fill="none" height={48} viewBox="0 0 48 48" width={48} {...props}>
       <G clipPath="url(#clip0_1010_591)">

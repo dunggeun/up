@@ -17,11 +17,11 @@ import type { RootStackScreenParamList } from './types';
 
 const RootStack = createStackNavigator<RootStackScreenParamList>();
 
-export function RootStackNavigator(): JSX.Element | null {
+export function RootStackNavigator(): React.ReactElement | null {
   AppManager.getInstance().initialize();
   const { authorized } = useIsAuthorized();
 
-  const renderScreens = (): JSX.Element => {
+  const renderScreens = (): React.ReactElement => {
     switch (authorized) {
       case true:
         return (

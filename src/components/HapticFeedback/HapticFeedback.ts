@@ -25,7 +25,7 @@ export function HapticFeedback<
   longPressFeedbackType = 'buttonLongPress',
 }: HapticFeedbackProps & {
   children: React.ReactElement<Props>;
-}): JSX.Element {
+}): React.ReactElement {
   const child = React.Children.only(children);
 
   const handlePress = (): void => {

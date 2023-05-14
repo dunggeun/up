@@ -17,7 +17,7 @@ const Container = styled(View)(
 
 export function LoadingIndicator({
   full = true,
-}: LoadingIndicatorProps): JSX.Element {
+}: LoadingIndicatorProps): React.ReactElement {
   return (
     <Container full={full}>
       <ActivityIndicator />

@@ -26,7 +26,7 @@ const Message = styled(Text)({
   textAlign: 'center',
 });
 
-export const LevelUpModal = memo(function LevelUpModal(): JSX.Element {
+export const LevelUpModal = memo(function LevelUpModal(): React.ReactElement {
   const [level, setLevel] = useState(1);
   const [visibility, setVisibility] = useState(false);
 

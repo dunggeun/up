@@ -17,7 +17,7 @@ export function LinearGradient({
   color,
   direction,
   style,
-}: LinearGradientProps): JSX.Element {
+}: LinearGradientProps): React.ReactElement {
   return (
     <Container
       style={[

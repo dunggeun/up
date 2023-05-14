@@ -40,7 +40,7 @@ export function ProgressBar({
   max,
   color,
   ...restProps
-}: ProgressBarProps): JSX.Element {
+}: ProgressBarProps): React.ReactElement {
   const { theme } = useDripsyTheme();
   const widthAnimation = useRef(new Animated.Value(0)).current;
   const barColorStyle = { backgroundColor: theme.colors[color] };

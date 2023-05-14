@@ -56,7 +56,7 @@ const getStatus = (hasHistory: boolean, dayBefore: number): Status => {
   return hasHistory ? 'active' : 'inactive';
 };
 
-function Day({ color, status, delay }: DayProps): JSX.Element {
+function Day({ color, status, delay }: DayProps): React.ReactElement {
   const fadeAnimation = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
@@ -91,7 +91,7 @@ const getArrayForRender = (): null[][] => {
 export const MissionHistory = memo(function MissionHistory({
   color,
   history,
-}: MissionHistoryProps): JSX.Element {
+}: MissionHistoryProps): React.ReactElement {
   const weekDay = new Date().getDay();
 
   return (

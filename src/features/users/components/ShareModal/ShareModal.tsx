@@ -24,7 +24,7 @@ export function ShareModal({
   visible,
   onClose,
   onReady,
-}: ShareModalProps): JSX.Element {
+}: ShareModalProps): React.ReactElement {
   return (
     <Modal onClose={onClose} title={t('label.share')} visible={visible}>
       <Content testID="share-modal">

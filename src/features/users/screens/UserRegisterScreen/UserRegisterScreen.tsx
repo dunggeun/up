@@ -19,7 +19,7 @@ const PageTitleArea = styled(View)({
 
 export function UserRegisterScreen({
   navigation,
-}: UserRegisterScreenProps): JSX.Element {
+}: UserRegisterScreenProps): React.ReactElement {
   const [_, send] = useActor(globalMachineService);
   const [userName, setUserName] = useState('');
 

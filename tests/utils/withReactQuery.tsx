@@ -9,6 +9,8 @@ const queryClient = new QueryClient({
   },
 });
 
-export const withReactQuery = (component: React.ReactElement): JSX.Element => (
+export const withReactQuery = (
+  component: React.ReactElement,
+): React.ReactElement => (
   <QueryClientProvider client={queryClient}>{component}</QueryClientProvider>
 );

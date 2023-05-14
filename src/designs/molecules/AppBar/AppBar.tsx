@@ -61,7 +61,7 @@ export function AppBar({
   shadow = false,
   onBackPress,
   onClosePress,
-}: AppBarProps): JSX.Element {
+}: AppBarProps): React.ReactElement {
   return (
     <Container>
       {shadow ? <AppBarShadow color="white" direction="to-down" /> : null}

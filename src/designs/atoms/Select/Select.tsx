@@ -81,7 +81,7 @@ export function Root({
   children,
   initialValue,
   onChange,
-}: PropsWithChildren<SelectRootProps>): JSX.Element {
+}: PropsWithChildren<SelectRootProps>): React.ReactElement {
   const [value, setValue] = useState(initialValue ?? defaultValue.value);
   const [visibility, setVisibility] = useState(defaultValue.visibility);
 
@@ -109,7 +109,7 @@ export function Root({
   );
 }
 
-export function Trigger(): JSX.Element {
+export function Trigger(): React.ReactElement {
   const value = useContext(SelectContext);
 
   const rotate = useAnimationState({
@@ -143,7 +143,7 @@ export function Content({
   children,
 }: {
   children: React.ReactNode;
-}): JSX.Element {
+}): React.ReactElement {
   const value = useContext(SelectContext);
 
   return (
@@ -178,7 +178,7 @@ export function Content({
 
 export type SelectItemProps = SelectItem;
 
-export function Item(item: SelectItemProps): JSX.Element {
+export function Item(item: SelectItemProps): React.ReactElement {
   const context = useContext(SelectContext);
 
   const handlePressItem = (): void => {

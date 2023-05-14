@@ -62,7 +62,7 @@ const EditIcon = styled(Edit)({
 export const UserSection = memo(function UserSection({
   user,
   onPressEdit,
-}: UserSectionProps): JSX.Element {
+}: UserSectionProps): React.ReactElement {
   const animatedBadgeTitleHeight = useRef(new Animated.Value(0)).current;
   const [badgeTitle, setBadgeTitle] = useState('');
   const { data: totalAchieveCount = 0 } = useAchieveCount({});

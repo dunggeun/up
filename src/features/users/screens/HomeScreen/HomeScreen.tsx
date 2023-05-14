@@ -8,7 +8,7 @@ import type { MainTabProps } from 'src/navigators/MainTab/types';
 
 type HomeScreenProps = MainTabProps<'Home'>;
 
-export function HomeScreen(_props: HomeScreenProps): JSX.Element | null {
+export function HomeScreen(_props: HomeScreenProps): React.ReactElement | null {
   const user = useUser();
 
   return (

@@ -23,7 +23,7 @@ const StyledTextInput = styled(TextInput)({
 export const Input = forwardRef<InputRef, InputProps>(function Input(
   props,
   ref,
-): JSX.Element {
+): React.ReactElement {
   const { theme } = useDripsyTheme();
 
   return (

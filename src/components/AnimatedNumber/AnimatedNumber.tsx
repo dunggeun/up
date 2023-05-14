@@ -31,7 +31,7 @@ export const AnimatedNumber = memo(function AnimatedNumber({
   delay,
   size = 'md',
   variant = 'primary',
-}: AnimatedNumberProps): JSX.Element {
+}: AnimatedNumberProps): React.ReactElement {
   const [numbers, setNumbers] = useState<number[]>();
   const [animationValues, setAnimationValues] = useState<Animated.Value[]>([]);
 

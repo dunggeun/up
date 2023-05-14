@@ -24,7 +24,7 @@ export function MissionDeleteModal({
   visible,
   onClose,
   onDelete,
-}: MissionDeleteModalProps): JSX.Element {
+}: MissionDeleteModalProps): React.ReactElement {
   return (
     <Modal
       onClose={onClose}

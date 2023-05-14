@@ -17,7 +17,7 @@ const ACCESSIBILITY = {
 export function MissionFinishedScreen({
   navigation,
   route,
-}: MissionFinishedScreenProps): JSX.Element {
+}: MissionFinishedScreenProps): React.ReactElement {
   const { id } = route.params;
   const [missionDeleteModalVisibility, setMissionDeleteModalVisibility] =
     useState(false);

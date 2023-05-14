@@ -1,7 +1,7 @@
 import React from 'react';
 import Svg, { Path, type SvgProps } from 'react-native-svg';
 
-export function Home(props: SvgProps): JSX.Element {
+export function Home(props: SvgProps): React.ReactElement {
   return (
     <Svg fill="none" height={24} viewBox="0 0 25 24" width={25} {...props}>
       <Path

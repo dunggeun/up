@@ -56,7 +56,7 @@ export function TabBar({
   state,
   descriptors,
   navigation,
-}: BottomTabBarProps): JSX.Element {
+}: BottomTabBarProps): React.ReactElement {
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const tabDescriptor = descriptors[state.routes[0]?.key ?? '']!;
   const tabBarStyle = tabDescriptor.options.tabBarStyle as ViewStyle;

@@ -15,7 +15,7 @@ const StyledAnimatedView = styled(Animated.View)({ flex: 1 });
 export function FadeInView({
   children,
   style,
-}: PropsWithChildren<FadeInViewProps>): JSX.Element {
+}: PropsWithChildren<FadeInViewProps>): React.ReactElement {
   const opacityAnimation = useRef(new Animated.Value(0)).current;
 
   useFocusEffect(
