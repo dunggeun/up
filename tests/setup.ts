@@ -42,9 +42,12 @@ RN.Animated.timing = (): RN.Animated.timing => ({
 
 // eslint-disable-next-line @typescript-eslint/no-empty-function
 self.__reanimatedWorkletInit = (): void => {};
-jest.mock('react-native-reanimated', () =>
-  require('react-native-reanimated/mock'),
-);
+jest.mock('react-native-reanimated', () => ({
+  ...require('react-native-reanimated/mock'),
+  ZoomIn: {
+    delay: jest.fn(),
+  },
+}));
 
 jest.mock('react-native-share', () => ({
   default: jest.fn(),

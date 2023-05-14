@@ -1,5 +1,10 @@
 import React, { useState, useMemo } from 'react';
 import { FlatList, type ListRenderItemInfo } from 'react-native';
+import Animated, {
+  FadeInUp,
+  FadeOutDown,
+  ZoomOutEasyDown,
+} from 'react-native-reanimated';
 import { styled, useDripsyTheme, View } from 'dripsy';
 import { LinearGradient } from 'src/components/LinearGradient';
 import { BUTTON_HEIGHT } from 'src/designs/atoms/Button/constants';
@@ -56,10 +61,19 @@ const EmptyView = styled(H3, {
 });
 
 const ActivateListEmptyComponent = (
-  <EmptyView>{t('message.empty_activate_mission')}</EmptyView>
+  <Animated.View
+    entering={FadeInUp}
+    exiting={FadeOutDown}
+    key="activated-empty"
+  >
+    <EmptyView>{t('message.empty_activate_mission')}</EmptyView>
+  </Animated.View>
 );
+
 const FinishedListEmptyComponent = (
-  <EmptyView>{t('message.empty_finished_mission')}</EmptyView>
+  <Animated.View entering={FadeInUp} exiting={FadeOutDown} key="finished-empty">
+    <EmptyView>{t('message.empty_finished_mission')}</EmptyView>
+  </Animated.View>
 );
 
 const FILTER_ITEM = [
@@ -110,20 +124,16 @@ export function UserMissionList({
     );
   }, [missions, filterValue]);
 
-  const renderItem = (data: ListRenderItemInfo<Mission>): JSX.Element => {
-    return (
-      <UserMissionItem
-        animate={LAST_ANIMATABLE_ITEM_INDEX > data.index}
-        data={data.item}
-        index={data.index}
-        tagColor={userColor}
-      />
-    );
-  };
+  const renderItem = (data: ListRenderItemInfo<Mission>): JSX.Element => (
+    <UserMissionItem
+      animateEnabled={LAST_ANIMATABLE_ITEM_INDEX > data.index}
+      data={data.item}
+      index={data.index + 1}
+      tagColor={userColor}
+    />
+  );
 
-  const keyExtractor = (data: Mission): string => {
-    return data.id.toString();
-  };
+  const keyExtractor = (data: Mission): string => data.id.toString();
 
   return (
     <ListContainer>
@@ -152,10 +162,12 @@ export function UserMissionList({
         ListFooterComponent={View}
         ListFooterComponentStyle={{ height: bottomInset }}
         ListHeaderComponent={
-          <>
-            <CreateMissionButton onPress={onCreate} />
-            <ItemSeparatorComponent />
-          </>
+          filterValue === 'activate' ? (
+            <Animated.View entering={FadeInUp} exiting={ZoomOutEasyDown}>
+              <CreateMissionButton onPress={onCreate} />
+              <ItemSeparatorComponent />
+            </Animated.View>
+          ) : null
         }
         data={filteredMissions}
         keyExtractor={keyExtractor}

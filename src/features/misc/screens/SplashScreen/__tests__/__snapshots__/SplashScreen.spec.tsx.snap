@@ -42,37 +42,62 @@ exports[`screens/SplashScreen 렌더링 되었을 때 스냅샷이 일치해야 
         [
           {},
           {
-            "alignItems": "center",
             "flex": 1,
-            "justifyContent": "center",
-            "paddingBottom": 100,
-            "paddingTop": 56,
           },
-          undefined,
-          {},
           {},
         ]
       }
     >
-      <Image
-        source={
-          {
-            "testUri": "../../../src/assets/images/logo.png",
-          }
-        }
+      <View
         style={
           [
             {},
             {
-              "height": 180,
-              "width": 180,
+              "flex": 1,
+              "gap": 16,
             },
             undefined,
             {},
             {},
           ]
         }
-      />
+      >
+        <View
+          style={
+            [
+              {},
+              {
+                "alignItems": "center",
+                "flex": 1,
+                "justifyContent": "center",
+              },
+              undefined,
+              {},
+              {},
+            ]
+          }
+        >
+          <Image
+            source={
+              {
+                "testUri": "../../../src/assets/images/logo.png",
+              }
+            }
+            style={
+              [
+                {},
+                {
+                  "height": 180,
+                  "width": 180,
+                },
+                undefined,
+                {},
+                {},
+              ]
+            }
+          />
+        </View>
+      </View>
     </View>
   </View>
 </View>
