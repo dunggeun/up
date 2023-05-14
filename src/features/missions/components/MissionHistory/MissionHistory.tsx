@@ -2,6 +2,7 @@
 import React, { memo, useRef, useEffect } from 'react';
 import { Animated } from 'react-native';
 import { styled, Text, View } from 'dripsy';
+import { USE_NATIVE_DRIVER } from 'src/constants';
 import { t } from 'src/translations';
 import type { basicColors } from 'src/themes/colors';
 
@@ -63,7 +64,7 @@ function Day({ color, status, delay }: DayProps): React.ReactElement {
     Animated.timing(fadeAnimation, {
       toValue: 1,
       delay,
-      useNativeDriver: true,
+      useNativeDriver: USE_NATIVE_DRIVER,
     }).start();
   }, [fadeAnimation, delay]);
 

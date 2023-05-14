@@ -2,6 +2,7 @@
 import React, { memo, useState, useEffect, useLayoutEffect } from 'react';
 import { Animated, Platform } from 'react-native';
 import { styled, View } from 'dripsy';
+import { USE_NATIVE_DRIVER } from 'src/constants';
 import { H1 } from '../../designs/atoms/H1';
 import { H2 } from '../../designs/atoms/H2';
 
@@ -67,7 +68,7 @@ export const AnimatedNumber = memo(function AnimatedNumber({
       Animated.timing(animation, {
         toValue: -(height * targetNumber),
         duration: DURATION,
-        useNativeDriver: true,
+        useNativeDriver: USE_NATIVE_DRIVER,
         delay,
       }).start();
     });
