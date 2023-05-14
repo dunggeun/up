@@ -82,7 +82,8 @@
       "error": {
         "common": "문제가 발생했어요",
         "unsupported_platform": "현재 플랫폼에서 지원하지 않는 기능이에요",
-        "decrypt_failed": "암호를 다시 확인해주세요"
+        "decrypt_failed": "암호를 다시 확인해주세요",
+        "name_too_short": "이름은 최소 2글자 이상이어야 해요"
       },
       "congrats": {
         "0": "꾸준한 습관을 만들어 나를 키워보아요",

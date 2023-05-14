@@ -3,6 +3,7 @@ import { Share } from 'react-native';
 import { useUserThemeColor } from 'src/features/users';
 import { AppManager } from 'src/modules/app';
 import { replacePlaceholder } from 'src/utils';
+import { MINIMUM_USER_NAME_LENGTH } from 'src/constants';
 import { CommonLayout } from 'src/designs';
 import { TransitionGroup } from 'src/components';
 import { t } from 'src/translations';
@@ -52,7 +53,7 @@ export function MissionCreateScreen({
       />
       <TransitionGroup renderIndex={phase}>
         <EnterTitle
-          nextButtonDisabled={name.length < 2}
+          nextButtonDisabled={name.length < MINIMUM_USER_NAME_LENGTH}
           onChangeTitle={setName}
           onPressNext={next}
           userColor={userColor}

@@ -3,6 +3,7 @@ import { useActor } from '@xstate/react';
 import { styled, View } from 'dripsy';
 import * as AppHelpers from 'src/modules/app/helpers';
 import { globalMachineService } from 'src/stores/machines';
+import { MINIMUM_USER_NAME_LENGTH } from 'src/constants';
 import { CommonLayout, Button, Input, H1 } from 'src/designs';
 import { t } from 'src/translations';
 import type { RootStackProps } from 'src/navigators/RootStack/types';
@@ -56,7 +57,7 @@ export function UserRegisterScreen({
           accessibilityLabel={ACCESSIBILITY.start}
           color="$brand"
           disableLongPress
-          disabled={userName.length < 2}
+          disabled={userName.length < MINIMUM_USER_NAME_LENGTH}
           onPress={handlePressStartButton}
         >
           {t('label.go_level_up')}
