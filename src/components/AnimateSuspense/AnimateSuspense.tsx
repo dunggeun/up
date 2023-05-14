@@ -6,7 +6,11 @@ export interface AnimateSuspenseProps {
   fallback?: React.ReactNode;
 }
 
-const AnimateWrapper = styled(MotiView)({ flex: 1, backgroundColor: '$white' });
+const AnimateWrapper = styled(MotiView)({
+  flex: 1,
+  backgroundColor: '$white',
+  gap: '$04',
+});
 
 export function AnimateSuspense({
   children,
@@ -16,9 +20,7 @@ export function AnimateSuspense({
     <Suspense fallback={fallback}>
       <AnimateWrapper
         animate={{ opacity: 1, scale: 1 }}
-        exit={{ opacity: 0 }}
-        exitTransition={{ type: 'timing' }}
-        from={{ opacity: 0, scale: 0.8 }}
+        from={{ opacity: 0.5, scale: 0.8 }}
         transition={{ type: 'timing' }}
       >
         {children}

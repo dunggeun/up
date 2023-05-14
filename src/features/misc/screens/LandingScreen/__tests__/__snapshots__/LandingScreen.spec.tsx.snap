@@ -257,14 +257,29 @@ exports[`screens/LandingScreen 렌더링 되었을 때 스냅샷이 일치해야
         }
       >
         <View
+          entering={
+            {
+              "delay": [MockFunction] {
+                "calls": [
+                  [
+                    600,
+                  ],
+                ],
+                "results": [
+                  {
+                    "type": "return",
+                    "value": undefined,
+                  },
+                ],
+              },
+            }
+          }
           style={
             [
-              {},
               {
                 "paddingVertical": 16,
               },
               undefined,
-              {},
               {},
             ]
           }
@@ -321,6 +336,7 @@ Take the Up Challenge
                 "scale": 1.5,
               }
             }
+            delay={500}
             from={
               {
                 "scale": 1,
@@ -340,13 +356,6 @@ Take the Up Challenge
                   ],
                 },
               ]
-            }
-            transition={
-              {
-                "damping": 2.5,
-                "stiffness": 120,
-                "type": "spring",
-              }
             }
           >
             <Image
@@ -490,102 +499,72 @@ Take the Up Challenge
         </RNSVGSvgView>
       </View>
       <View
-        accessibilityHint="Start"
-        accessibilityLabel="Start"
-        accessibilityRole="button"
-        accessibilityState={
-          {
-            "busy": undefined,
-            "checked": undefined,
-            "disabled": false,
-            "expanded": undefined,
-            "selected": undefined,
-          }
-        }
-        accessibilityValue={
-          {
-            "max": undefined,
-            "min": undefined,
-            "now": undefined,
-            "text": undefined,
-          }
-        }
-        accessible={true}
-        collapsable={false}
-        disableHaptic={false}
-        focusable={true}
-        hitSlop={10}
-        onBlur={[Function]}
-        onClick={[Function]}
-        onFocus={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
         style={
           [
-            {
-              "height": 56,
-              "position": "relative",
-            },
+            {},
             undefined,
             {},
           ]
         }
       >
         <View
-          disabled={false}
+          accessibilityHint="Start"
+          accessibilityLabel="Start"
+          accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": false,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          disableHaptic={false}
+          focusable={true}
+          hitSlop={10}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
           style={
             [
-              {},
               {
-                "backgroundColor": "#2e2e2e",
-                "borderRadius": 8,
-                "bottom": -5,
-                "height": "100%",
-                "left": 0,
-                "position": "absolute",
-                "width": "100%",
+                "height": 56,
+                "position": "relative",
               },
               undefined,
               {},
-              {},
             ]
-          }
-        />
-        <View
-          collapsable={false}
-          color="$brand"
-          disabled={false}
-          style={
-            {
-              "alignItems": "center",
-              "backgroundColor": "#2196f3",
-              "borderColor": "#2e2e2e",
-              "borderRadius": 8,
-              "borderWidth": 2,
-              "display": "flex",
-              "flexDirection": "row",
-              "height": "100%",
-              "justifyContent": "space-between",
-              "marginTop": 0,
-              "paddingHorizontal": 16,
-              "width": "100%",
-            }
           }
         >
           <View
             disabled={false}
-            hasAdornment={false}
             style={
               [
                 {},
                 {
+                  "backgroundColor": "#2e2e2e",
+                  "borderRadius": 8,
+                  "bottom": -5,
                   "height": "100%",
-                  "justifyContent": "center",
-                  "opacity": 1,
+                  "left": 0,
+                  "position": "absolute",
                   "width": "100%",
                 },
                 undefined,
@@ -593,22 +572,39 @@ Take the Up Challenge
                 {},
               ]
             }
+          />
+          <View
+            collapsable={false}
+            color="$brand"
+            disabled={false}
+            style={
+              {
+                "alignItems": "center",
+                "backgroundColor": "#2196f3",
+                "borderColor": "#2e2e2e",
+                "borderRadius": 8,
+                "borderWidth": 2,
+                "display": "flex",
+                "flexDirection": "row",
+                "height": "100%",
+                "justifyContent": "space-between",
+                "marginTop": 0,
+                "paddingHorizontal": 16,
+                "width": "100%",
+              }
+            }
           >
-            <Text
-              isLightBackground={false}
+            <View
+              disabled={false}
+              hasAdornment={false}
               style={
                 [
+                  {},
                   {
-                    "fontFamily": "BMJUA",
-                    "fontSize": 16,
-                    "paddingBottom": 4,
-                  },
-                  {
-                    "color": "#ffffff",
-                    "fontSize": 24,
-                    "marginVertical": 0,
-                    "paddingBottom": 4,
-                    "textAlign": "center",
+                    "height": "100%",
+                    "justifyContent": "center",
+                    "opacity": 1,
+                    "width": "100%",
                   },
                   undefined,
                   {},
@@ -616,43 +612,66 @@ Take the Up Challenge
                 ]
               }
             >
-              Start
-            </Text>
+              <Text
+                isLightBackground={false}
+                style={
+                  [
+                    {
+                      "fontFamily": "BMJUA",
+                      "fontSize": 16,
+                      "paddingBottom": 4,
+                    },
+                    {
+                      "color": "#ffffff",
+                      "fontSize": 24,
+                      "marginVertical": 0,
+                      "paddingBottom": 4,
+                      "textAlign": "center",
+                    },
+                    undefined,
+                    {},
+                    {},
+                  ]
+                }
+              >
+                Start
+              </Text>
+            </View>
           </View>
-        </View>
-        <View
-          style={
-            [
-              {},
-              {
-                "borderRadius": 8,
-                "bottom": -5,
-                "left": 0,
-                "overflow": "hidden",
-                "position": "absolute",
-                "right": 0,
-                "top": 0,
-              },
-              undefined,
-              {},
-              {},
-            ]
-          }
-        >
           <View
-            collapsable={false}
-            isLightBackground={false}
             style={
-              {
-                "backgroundColor": "#ffffff",
-                "borderRadius": 8,
-                "height": "100%",
-                "marginTop": 0,
-                "opacity": 0.2,
-                "width": "0%",
-              }
+              [
+                {},
+                {
+                  "borderRadius": 8,
+                  "bottom": -5,
+                  "left": 0,
+                  "overflow": "hidden",
+                  "position": "absolute",
+                  "right": 0,
+                  "top": 0,
+                },
+                undefined,
+                {},
+                {},
+              ]
             }
-          />
+          >
+            <View
+              collapsable={false}
+              isLightBackground={false}
+              style={
+                {
+                  "backgroundColor": "#ffffff",
+                  "borderRadius": 8,
+                  "height": "100%",
+                  "marginTop": 0,
+                  "opacity": 0.2,
+                  "width": "0%",
+                }
+              }
+            />
+          </View>
         </View>
       </View>
     </View>

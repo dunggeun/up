@@ -1,4 +1,5 @@
 import React from 'react';
+import Animated, { ZoomIn } from 'react-native-reanimated';
 import { styled, View, Image } from 'dripsy';
 import { MotiView } from 'moti';
 import Logo from 'src/assets/images/logo.png';
@@ -13,7 +14,7 @@ const ACCESSIBILITY = {
   start: t('label.start'),
 };
 
-const PageTitleArea = styled(View)({
+const PageTitleArea = styled(Animated.View)({
   paddingY: '$04',
 });
 
@@ -29,6 +30,8 @@ const LogoImage = styled(Image)({
   height: '100%',
 });
 
+const FooterButtonSection = styled(Animated.View)();
+
 const scaleLogoViewStyle = {
   width: LANDING_LOGO_SIZE,
   height: LANDING_LOGO_SIZE,
@@ -43,34 +46,32 @@ export function LandingScreen({ navigation }: LandingScreenProps): JSX.Element {
     <CommonLayout>
       <CommonLayout.Header />
       <CommonLayout.Body scrollEnabled={false}>
-        <PageTitleArea>
+        <PageTitleArea entering={ZoomIn}>
           <H1 variant="primary">{t('message.greeting')}</H1>
         </PageTitleArea>
         <LogoArea>
           <MotiView
             animate={{ scale: 1.5 }}
+            delay={500}
             from={{ scale: 1 }}
             style={scaleLogoViewStyle}
-            transition={{
-              type: 'spring',
-              damping: 2.5,
-              stiffness: 120,
-            }}
           >
             <LogoImage source={Logo} />
           </MotiView>
         </LogoArea>
       </CommonLayout.Body>
       <CommonLayout.Footer>
-        <Button
-          accessibilityHint={ACCESSIBILITY.start}
-          accessibilityLabel={ACCESSIBILITY.start}
-          color="$brand"
-          disableLongPress
-          onPress={handlePressNextButton}
-        >
-          {t('label.start')}
-        </Button>
+        <FooterButtonSection entering={ZoomIn.delay(600)}>
+          <Button
+            accessibilityHint={ACCESSIBILITY.start}
+            accessibilityLabel={ACCESSIBILITY.start}
+            color="$brand"
+            disableLongPress
+            onPress={handlePressNextButton}
+          >
+            {t('label.start')}
+          </Button>
+        </FooterButtonSection>
       </CommonLayout.Footer>
     </CommonLayout>
   );

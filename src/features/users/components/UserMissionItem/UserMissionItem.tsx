@@ -1,11 +1,14 @@
-import React, { useRef, useMemo, useEffect } from 'react';
-import { Animated, InteractionManager } from 'react-native';
-import { MotiView } from 'moti';
+import React, { useMemo } from 'react';
+import { InteractionManager } from 'react-native';
+import Animated, {
+  ZoomIn,
+  FadeInUp,
+  ZoomOutEasyDown,
+} from 'react-native-reanimated';
 import { useAddAchieve } from 'src/features/missions/hooks';
 import { AppManager } from 'src/modules/app';
 import { navigate } from 'src/navigators/helpers';
 import { diffBeforeToday } from 'src/utils';
-import { USE_NATIVE_DRIVER } from 'src/constants';
 import { Button, Tag } from 'src/designs';
 import { t } from 'src/translations';
 import type { Mission } from 'src/features/missions';
@@ -14,37 +17,23 @@ import type { basicColors } from 'src/themes/colors';
 export interface UserMissionItemProps {
   data: Mission;
   index: number;
-  animate: boolean;
+  animateEnabled: boolean;
   tagColor: keyof typeof basicColors;
 }
-
-const ANIMATION_DURATION = 300;
 const DELAY = 80;
 
 export function UserMissionItem({
   data,
   index,
-  animate,
+  animateEnabled,
   tagColor,
 }: UserMissionItemProps): JSX.Element {
-  const animatedValue = useRef(new Animated.Value(0)).current;
   const { mutate } = useAddAchieve();
 
   const shouldShowBadge = useMemo(() => {
     if (data.finished_at) return false;
     return data.current_streak > 0 && diffBeforeToday(data.updated_at) <= 1;
   }, [data]);
-
-  useEffect(() => {
-    if (!animate) return;
-    const delay = index * DELAY;
-    Animated.timing(animatedValue, {
-      toValue: 1,
-      delay,
-      duration: ANIMATION_DURATION,
-      useNativeDriver: USE_NATIVE_DRIVER,
-    }).start();
-  }, [animatedValue, animate, index]);
 
   const handlePress = (): void => {
     const isFinished = data.finished_at;
@@ -78,44 +67,35 @@ export function UserMissionItem({
 
   const renderBadge = (): JSX.Element | null => {
     return shouldShowBadge ? (
-      <MotiView animate={{ scale: 1 }} from={{ scale: 0 }}>
+      <Animated.View entering={ZoomIn}>
         <Tag color={tagColor} label={`x${data.current_streak}`} />
-      </MotiView>
+      </Animated.View>
     ) : null;
   };
 
-  return (
-    <Animated.View
-      style={[
-        { opacity: animatedValue },
-        {
-          transform: [
-            {
-              translateY: animatedValue.interpolate({
-                inputRange: [0, 1],
-                outputRange: [20, 0],
-              }),
-            },
-            {
-              scale: animatedValue.interpolate({
-                inputRange: [0, 1],
-                outputRange: [0.8, 1],
-              }),
-            },
-          ],
-        },
-      ]}
-    >
-      <Button
-        accessibilityHint={data.title}
-        accessibilityLabel={data.title}
-        color="$white"
-        onLongPress={handleLongPress}
-        onPress={handlePress}
-        rightAdornment={renderBadge()}
+  const animate = (child: React.ReactElement): React.ReactElement => {
+    return animateEnabled ? (
+      <Animated.View
+        entering={FadeInUp.delay(index * DELAY)}
+        exiting={ZoomOutEasyDown.delay(index * DELAY)}
       >
-        {data.title}
-      </Button>
-    </Animated.View>
+        {child}
+      </Animated.View>
+    ) : (
+      child
+    );
+  };
+
+  return animate(
+    <Button
+      accessibilityHint={data.title}
+      accessibilityLabel={data.title}
+      color="$white"
+      onLongPress={handleLongPress}
+      onPress={handlePress}
+      rightAdornment={renderBadge()}
+    >
+      {data.title}
+    </Button>,
   );
 }
