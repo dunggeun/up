@@ -84,7 +84,7 @@ module.exports = {
     },
     define: {
       __DEV__: JSON.stringify(true),
-      WEB_SENTRY_DSN: JSON.stringify(process.env.WEB_SENTRY_DSN) || '',
+      WEB_SENTRY_DSN: JSON.stringify(process.env.WEB_SENTRY_DSN) || 'empty',
       process: {
         env: {},
       },
@@ -95,14 +95,4 @@ module.exports = {
     moduleIds: 'named',
     minimize: false,
   },
-  // plugins: [
-  //   new HtmlWebpackPlugin({
-  //     template: path.join(__dirname, 'index.html'),
-  //     favicon: path.join(__dirname, 'static/icons/favicon.ico'),
-  //   }),
-  //   new FaviconsWebpackPlugin({
-  //     logo: path.join(__dirname, 'static/icons/logo.png'),
-  //     manifest: path.join(__dirname, 'static/site.webmanifest'),
-  //   }),
-  // ],
 };
