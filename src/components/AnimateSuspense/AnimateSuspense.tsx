@@ -9,7 +9,6 @@ export interface AnimateSuspenseProps {
 const AnimateWrapper = styled(MotiView)({
   flex: 1,
   backgroundColor: '$white',
-  gap: '$04',
 });
 
 export function AnimateSuspense({

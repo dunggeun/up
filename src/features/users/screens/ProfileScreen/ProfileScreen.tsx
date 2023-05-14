@@ -3,7 +3,7 @@ import { Platform } from 'react-native';
 import Animated, { FadeInDown } from 'react-native-reanimated';
 import Share from 'react-native-share';
 import { useActor } from '@xstate/react';
-import { View } from 'dripsy';
+import { styled, View } from 'dripsy';
 import { AppManager } from 'src/modules/app';
 import * as AppHelpers from 'src/modules/app/helpers';
 import { AppEventChannel } from 'src/modules/event';
@@ -30,6 +30,8 @@ const TAG = 'ProfileScreen';
 const ACCESSIBILITY = {
   share: t('label.share'),
 };
+
+const Gap = styled(View)({ height: 16 });
 
 export function ProfileScreen(_props: ProfileScreenProps): JSX.Element | null {
   const user = useUser();
@@ -108,6 +110,7 @@ export function ProfileScreen(_props: ProfileScreenProps): JSX.Element | null {
         <CommonLayout.Body>
           <AnimateSuspense>
             <UserSection onPressEdit={handlePressEdit} user={user} />
+            <Gap />
             <Button
               accessibilityHint={ACCESSIBILITY.share}
               accessibilityLabel={ACCESSIBILITY.share}
@@ -117,6 +120,7 @@ export function ProfileScreen(_props: ProfileScreenProps): JSX.Element | null {
             >
               {t('label.share')}
             </Button>
+            <Gap />
             <Animated.View entering={FadeInDown}>
               <BadgeSection
                 onLongPressBadge={handleLongPressBadge}
