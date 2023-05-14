@@ -168,7 +168,7 @@ export const getPageSource = (config: CoverGenerateConfig): string => {
             </h2>
           </div>
           <div class="button">
-            <div class="cap">UP 하기</div>
+            <div class="cap">UP!</div>
             <div class="shadow"></div>
           </div>
         </main>

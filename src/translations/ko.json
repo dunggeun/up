@@ -182,9 +182,6 @@
       },
       "share_new_mission": {
         "body": "새로운 '%@' 임무를 수락했어요"
-      },
-      "share_status": {
-        "recent_achieve": "최근 달성"
       }
     },
     "format": {

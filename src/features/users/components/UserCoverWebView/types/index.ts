@@ -6,9 +6,6 @@ export interface CoverGenerateConfig {
     totalExp: number;
   };
   date: string;
-  labels: {
-    recentAchieve: string;
-  };
 }
 
 export interface WebViewMessage {

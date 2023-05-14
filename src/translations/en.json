@@ -20,7 +20,7 @@
       "delete_confirm": "Yes, I'll delete",
       "up_repository": "Up source code repository",
       "next": "Next",
-      "accept_mission": "Long press to accept",
+      "accept_mission": "Press and hold to accept",
       "share": "Share",
       "ok": "Ok",
       "cancel": "Cancel",
@@ -46,7 +46,7 @@
       "guide": "Guide",
       "select": "Select",
       "item": "Item",
-      "ask_me_later": "다음에 볼게요"
+      "ask_me_later": "Ask me later"
     },
     "title": {
       "landing": "Welcome",
@@ -73,19 +73,19 @@
     },
     "placeholder": {
       "enter_name": "Please enter your name",
-      "enter_memo": "Please leave a note (optional)",
+      "enter_memo": "Please enter a note (optional)",
       "enter_password": "Please enter your password"
     },
     "message": {
       "error": {
         "common": "Something went wrong",
-        "unsupported_platform": "This feature is not supported by the current platform",
-        "decrypt_failed": "Please reconfirm your password."
+        "unsupported_platform": "This feature is not supported on this platform",
+        "decrypt_failed": "Please check your password."
       },
       "congrats": {
         "0": "Nurture yourself by creating consistent habits",
         "1": "Run as hard as you do now",
-        "2": "Your hard work will be rewarded."
+        "2": "Your hard work will be rewarded"
       },
       "greeting": "Welcome!\nTake the Up Challenge",
       "enter_name": "Please enter your\nname for the Up challenge",
@@ -118,51 +118,51 @@
     "badge": {
       "1": {
         "label": "Newbie",
-        "description": "First level up, it's just the beginning."
+        "description": "First level up, it's just the beginning"
       },
       "2": {
         "label": "Heavy Water",
-        "description": "Level 10, achieved through hard work, keep running."
+        "description": "Level 10, achieved through hard work, keep running"
       },
       "3": {
         "label": "Sticky",
-        "description": "You are an Adept because you have consistently run to level 50."
+        "description": "You are an Adept because you have consistently run to level 50"
       },
       "4": {
         "label": "Superuser",
-        "description": "You have reached level 100 and are a true superuser."
+        "description": "You have reached level 100 and are a true superuser"
       },
       "5": {
         "label": "Newbie Collector",
-        "description": "You have accepted 5 missions."
+        "description": "You have accepted 5 missions"
       },
       "6": {
         "label": "Master Collector",
-        "description": "Accepted 20 missions."
+        "description": "Accepted 20 missions"
       },
       "7": {
         "label": "Training Unit",
-        "description": "Completed a mission for the first time."
+        "description": "Completed a mission for the first time"
       },
       "8": {
         "label": "Beginner Unit",
-        "description": "Completed 10 missions."
+        "description": "Completed 10 missions"
       },
       "9": {
         "label": "Intermediate Unit",
-        "description": "Completed 50 missions."
+        "description": "Completed 50 missions"
       },
       "10": {
         "label": "Master Unit",
-        "description": "Completed 100 missions."
+        "description": "Completed 100 missions"
       },
       "11": {
         "label": "Scavenger",
-        "description": "Cleaning up unused missions before they gather dust."
+        "description": "Cleaning up unused missions before they gather dust"
       },
       "12": {
         "label": "Popular Stars",
-        "description": "Share me and show off."
+        "description": "Share me and show off"
       },
       "13": {
         "label": "Developer",
@@ -170,7 +170,7 @@
       },
       "14": {
         "label": "Fashionista",
-        "description": "Change the theme to your favorite color."
+        "description": "Change the theme to your favorite color"
       }
     },
     "template": {
@@ -180,9 +180,6 @@
       },
       "share_new_mission": {
         "body": "I've accepted a new '%@' mission"
-      },
-      "share_status": {
-        "recent_achieve": "Recent achievement"
       }
     },
     "format": {

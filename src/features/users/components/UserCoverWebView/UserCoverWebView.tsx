@@ -67,9 +67,6 @@ export const UserCoverWebView = memo(function UserCover({
             totalExp: getExpByLevel(user.level),
           },
           date: dayjs().format(t('format.date')),
-          labels: {
-            recentAchieve: t('template.share_status.recent_achieve'),
-          },
         }),
       }}
     />
