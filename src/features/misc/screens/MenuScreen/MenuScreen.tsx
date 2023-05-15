@@ -8,7 +8,7 @@ import { navigate } from 'src/navigators/helpers';
 import { globalMachineService } from 'src/stores/machines';
 import { useMainTabBarInset } from 'src/hooks';
 import { openMail, openUrl } from 'src/utils';
-import { DEVELOPER_EMAIL, VERSION } from 'src/constants';
+import { DEVELOPER_EMAIL, IS_NATIVE, VERSION } from 'src/constants';
 import { CommonLayout, H2, Toggle } from 'src/designs';
 import { FadeInView, ListItem } from 'src/components';
 import { t } from 'src/translations';
@@ -80,14 +80,16 @@ export function MenuScreen(_props: MenuProps): React.ReactElement {
             label={t('label.open_source')}
             onPress={handlePressOpenSource}
           />
-          <Option>
-            <H2 variant="primary">{t('label.haptic_feedback')}</H2>
-            <Toggle
-              color={userColor}
-              initialValue={hapticEnabled}
-              onChange={handleChangeHapticFeedbackToggle}
-            />
-          </Option>
+          {IS_NATIVE ? (
+            <Option>
+              <H2 variant="primary">{t('label.haptic_feedback')}</H2>
+              <Toggle
+                color={userColor}
+                initialValue={hapticEnabled}
+                onChange={handleChangeHapticFeedbackToggle}
+              />
+            </Option>
+          ) : null}
           <View sx={{ height: bottomInset }} />
         </CommonLayout.Body>
       </CommonLayout>
