@@ -32,7 +32,7 @@ export const WINDOW_HEIGHT = window.height;
 
 export const MINIMUM_USER_NAME_LENGTH = 2;
 
-export const DEVELOPER_EMAIL = 'dev.ghlee@gmail.com';
+export const DEVELOPER_EMAIL = 'support@geundung.dev';
 export const UP_REPOSITORY_URL = 'https://github.com/dunggeun/up';
 
 export const SHARED_CONFIG = {
