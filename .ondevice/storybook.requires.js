@@ -60,6 +60,7 @@ const getStories = () => {
     "./src/designs/atoms/Select/Select.stories.tsx": require("../src/designs/atoms/Select/Select.stories.tsx"),
     "./src/designs/atoms/Tag/Tag.stories.tsx": require("../src/designs/atoms/Tag/Tag.stories.tsx"),
     "./src/designs/atoms/Text/Text.stories.tsx": require("../src/designs/atoms/Text/Text.stories.tsx"),
+    "./src/designs/atoms/Toggle/Toggle.stories.tsx": require("../src/designs/atoms/Toggle/Toggle.stories.tsx"),
     "./src/designs/molecules/AppBar/AppBar.stories.tsx": require("../src/designs/molecules/AppBar/AppBar.stories.tsx"),
   };
 };
