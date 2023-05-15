@@ -6,6 +6,9 @@ export interface User {
   badge: number;
   unlockedBadges: Record<string, number>;
   theme: number;
+  settings: {
+    enableHaptic: boolean;
+  };
   createdAt: number;
   updatedAt: number;
 }

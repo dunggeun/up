@@ -5,8 +5,8 @@ import dayjs from 'dayjs';
 import { ToastManager } from 'src/components/Toast/ToastManager';
 import { globalMachineService } from 'src/stores/machines/service';
 import { queryClient } from 'src/stores/reactQuery';
+import { delay } from 'src/utils/async';
 import { readFile, writeFile } from 'src/utils/fs';
-import { delay } from 'src/utils';
 import { APP_MINIMUM_LOADING_DURATION } from 'src/constants';
 import { Text } from 'src/designs';
 import { t } from 'src/translations';
@@ -66,14 +66,16 @@ export class AppManager {
 
     Logger.info(TAG, 'prefetching user data');
     const storageManager = StorageManager.getInstance();
-    await queryClient.prefetchQuery(
-      ['missions', 'list'],
-      storageManager.getMissionList.bind(storageManager),
-    );
-    await queryClient.prefetchQuery(
-      ['achieve', 'count'],
-      storageManager.getAchieveCount.bind(storageManager),
-    );
+    await Promise.all([
+      queryClient.prefetchQuery(
+        ['missions', 'list'],
+        storageManager.getMissionList.bind(storageManager),
+      ),
+      queryClient.prefetchQuery(
+        ['achieve', 'count'],
+        storageManager.getAchieveCount.bind(storageManager),
+      ),
+    ]);
   }
 
   private authorize(): Promise<boolean> {

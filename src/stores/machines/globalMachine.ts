@@ -1,7 +1,7 @@
 import { InteractionManager } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { createMachine, assign } from 'xstate';
-import { getExpByLevel } from 'src/modules/app/helpers';
+import * as AppHelpers from 'src/modules/app/helpers';
 import { StorageManager } from 'src/modules/database';
 import { AppEventChannel } from 'src/modules/event';
 import { Logger } from 'src/modules/logger';
@@ -192,7 +192,7 @@ export const globalMachine = createMachine(
         if (!user) throw new Error('user not exist in context');
 
         const earnedExp = event.exp;
-        const targetExp = getExpByLevel(user.level);
+        const targetExp = AppHelpers.getExpByLevel(user.level);
         const modifiedUser = {
           ...user,
           totalExp: user.totalExp + earnedExp,

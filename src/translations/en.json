@@ -46,7 +46,8 @@
       "guide": "Guide",
       "select": "Select",
       "item": "Item",
-      "ask_me_later": "Ask me later"
+      "ask_me_later": "Ask me later",
+      "haptic_feedback": "Haptic feedback"
     },
     "title": {
       "landing": "Welcome",
