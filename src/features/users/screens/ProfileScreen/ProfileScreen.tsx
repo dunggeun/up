@@ -1,6 +1,5 @@
 import React, { useState, useCallback, useMemo } from 'react';
 import { Platform } from 'react-native';
-import Animated, { FadeInDown } from 'react-native-reanimated';
 import Share from 'react-native-share';
 import { useActor } from '@xstate/react';
 import { View } from 'dripsy';
@@ -116,16 +115,12 @@ export function ProfileScreen(_props: ProfileScreenProps): React.ReactElement {
           >
             {t('label.share')}
           </Button>
-          <Animated.View entering={FadeInDown}>
-            <BadgeSection
-              onLongPressBadge={handleLongPressBadge}
-              onPressBadge={handlePressBadge}
-              unlockedBadges={user.unlockedBadges}
-            />
-          </Animated.View>
-          <Animated.View entering={FadeInDown.delay(200)}>
-            <ThemeSection onPressBadge={handlePressTheme} />
-          </Animated.View>
+          <BadgeSection
+            onLongPressBadge={handleLongPressBadge}
+            onPressBadge={handlePressBadge}
+            unlockedBadges={user.unlockedBadges}
+          />
+          <ThemeSection onPressBadge={handlePressTheme} />
           <View sx={{ height: bottomInset }} />
         </CommonLayout.Body>
       </CommonLayout>
