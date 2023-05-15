@@ -1,12 +1,13 @@
 import React from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import CryptoJS from 'crypto-js';
+import dayjs from 'dayjs';
 import { ToastManager } from 'src/components/Toast/ToastManager';
 import { globalMachineService } from 'src/stores/machines/service';
 import { queryClient } from 'src/stores/reactQuery';
 import { readFile, writeFile } from 'src/utils/fs';
 import { delay } from 'src/utils';
-import { APP_MINIMUM_LOADING_DURATION, BACKUP_FILE_NAME } from 'src/constants';
+import { APP_MINIMUM_LOADING_DURATION } from 'src/constants';
 import { Text } from 'src/designs';
 import { t } from 'src/translations';
 import { StorageManager } from '../database';
@@ -112,7 +113,7 @@ export class AppManager {
         JSON.stringify({ user, database }),
         key,
       ).toString();
-      return writeFile(encryptedData, BACKUP_FILE_NAME);
+      return writeFile(encryptedData, `up_${dayjs().format('YYYYMMDD')}.bak`);
     });
   }
 

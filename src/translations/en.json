@@ -81,7 +81,8 @@
         "common": "Something went wrong",
         "unsupported_platform": "This feature is not supported on this platform",
         "decrypt_failed": "Please check your password",
-        "name_too_short": "Name must be at least two letters long"
+        "name_too_short": "Name must be at least two letters long",
+        "permission_required": "Permission required"
       },
       "congrats": {
         "0": "Nurture yourself by creating consistent habits",

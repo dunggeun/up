@@ -6,6 +6,7 @@ import { AppManager } from 'src/modules/app';
 import { Logger } from 'src/modules/logger';
 import { globalMachineService } from 'src/stores/machines';
 import { selectFile } from 'src/utils/fs';
+import { requestStoragePermission } from 'src/utils/permission';
 import { delay, runAfterModalDismissed } from 'src/utils';
 import { APP_MINIMUM_LOADING_DURATION } from 'src/constants';
 import { CommonLayout, Text } from 'src/designs';
@@ -63,20 +64,29 @@ export function DataManagementScreen({
     navigation.goBack();
   };
 
-  const initialize = (): void => {
+  const initialize = async (): Promise<boolean> => {
     selectedActionRef.current = undefined;
     backupFileRef.current = '';
+    const hasPermission = await requestStoragePermission();
+    if (!hasPermission) {
+      AppManager.showToast(t('message.error.permission_required'));
+    }
+    return hasPermission;
   };
 
   const handlePressBackup = (): void => {
-    initialize();
-    selectedActionRef.current = 'backup';
-    setEnterPasswordModalVisibility(true);
+    initialize().then((hasPermission) => {
+      if (!hasPermission) return;
+      selectedActionRef.current = 'backup';
+      setEnterPasswordModalVisibility(true);
+    });
   };
 
   const handlePressRestore = (): void => {
-    initialize();
-    setRestoreConfirmModalVisibility(true);
+    initialize().then((hasPermission) => {
+      if (!hasPermission) return;
+      setRestoreConfirmModalVisibility(true);
+    });
   };
 
   const handlePressReset = (): void => {
