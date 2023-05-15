@@ -1,5 +1,7 @@
 /* eslint-disable import/no-named-as-default-member */
 import React from 'react';
+import { useActor } from '@xstate/react';
+import { globalMachineService } from 'src/stores/machines';
 import { triggerHaptic, type HapticFeedbackTypes } from 'src/utils';
 
 export interface HapticFeedbackProps {
@@ -27,16 +29,19 @@ export function HapticFeedback<
   children: React.ReactElement<Props>;
 }): React.ReactElement {
   const child = React.Children.only(children);
+  const [state] = useActor(globalMachineService);
+  const user = state.context.user;
+  const hapticEnabled = !disableHaptic && (user?.settings.enableHaptic ?? true);
 
   const handlePress = (): void => {
-    if (mode === 'press' && !disableHaptic) {
+    if (mode === 'press' && hapticEnabled) {
       triggerHaptic(pressFeedbackType);
     }
     child.props.onPress?.();
   };
 
   const handlePressIn = (): void => {
-    if (mode === 'press-in' && !disableHaptic) {
+    if (mode === 'press-in' && hapticEnabled) {
       triggerHaptic(pressFeedbackType);
     }
     child.props.onPressIn?.();

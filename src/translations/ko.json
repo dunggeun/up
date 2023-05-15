@@ -46,7 +46,8 @@
       "guide": "이용 가이드",
       "select": "선택",
       "item": "항목",
-      "ask_me_later": "다음에 볼게요"
+      "ask_me_later": "다음에 볼게요",
+      "haptic_feedback": "햅틱 피드백"
     },
     "title": {
       "landing": "환영합니다",
