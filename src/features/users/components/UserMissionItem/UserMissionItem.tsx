@@ -1,10 +1,6 @@
 import React, { memo, useMemo } from 'react';
 import { InteractionManager } from 'react-native';
-import Animated, {
-  ZoomIn,
-  FadeInUp,
-  ZoomOutEasyDown,
-} from 'react-native-reanimated';
+import Animated, { ZoomIn, ZoomOutEasyDown } from 'react-native-reanimated';
 import { useAddAchieve } from 'src/features/missions/hooks';
 import { useUserThemeColor } from 'src/features/users/hooks';
 import { AppManager } from 'src/modules/app';
@@ -19,7 +15,7 @@ export interface UserMissionItemProps {
   index: number;
   animateEnabled: boolean;
 }
-const DELAY = 80;
+const DELAY = 50;
 
 export const UserMissionItem = memo(function UserMissionItem({
   data,
@@ -75,8 +71,8 @@ export const UserMissionItem = memo(function UserMissionItem({
   const animate = (child: React.ReactElement): React.ReactElement => {
     return animateEnabled ? (
       <Animated.View
-        entering={FadeInUp.delay(index * DELAY)}
-        exiting={ZoomOutEasyDown.delay(index * DELAY)}
+        entering={ZoomIn.delay(index * DELAY).duration(200)}
+        exiting={ZoomOutEasyDown.delay(index * DELAY).duration(200)}
       >
         {child}
       </Animated.View>

@@ -56,7 +56,10 @@ export function TransitionGroup({
   const currentView = React.Children.toArray(children)[currentViewIndex];
 
   return (
-    <GroupContainer style={{ opacity: fadeAnimation }}>
+    <GroupContainer
+      needsOffscreenAlphaCompositing
+      style={{ opacity: fadeAnimation }}
+    >
       {currentView}
     </GroupContainer>
   );

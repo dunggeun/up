@@ -3,6 +3,7 @@ import { FlatList, type ListRenderItemInfo } from 'react-native';
 import Animated, {
   FadeInUp,
   FadeOutDown,
+  ZoomIn,
   ZoomOutEasyDown,
 } from 'react-native-reanimated';
 import { styled, useDripsyTheme, View } from 'dripsy';
@@ -159,7 +160,10 @@ export function UserMissionList(): React.ReactElement {
         ListFooterComponentStyle={{ height: bottomInset }}
         ListHeaderComponent={
           filterValue === 'activate' ? (
-            <Animated.View entering={FadeInUp} exiting={ZoomOutEasyDown}>
+            <Animated.View
+              entering={ZoomIn.duration(200)}
+              exiting={ZoomOutEasyDown.duration(200)}
+            >
               <CreateMissionButton />
               <ItemSeparatorComponent />
             </Animated.View>

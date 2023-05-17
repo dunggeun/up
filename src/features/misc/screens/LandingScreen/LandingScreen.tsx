@@ -53,10 +53,16 @@ export function LandingScreen({
         </PageTitleArea>
         <LogoArea>
           <MotiView
-            animate={{ scale: 1.5 }}
+            animate={{ scale: 1.2 }}
             delay={500}
             from={{ scale: 1 }}
             style={scaleLogoViewStyle}
+            transition={{
+              loop: true,
+              type: 'timing',
+              duration: 1000,
+              delay: 100,
+            }}
           >
             <LogoImage source={Logo} />
           </MotiView>
