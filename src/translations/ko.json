@@ -47,7 +47,9 @@
       "select": "선택",
       "item": "항목",
       "ask_me_later": "다음에 볼게요",
-      "haptic_feedback": "햅틱 피드백"
+      "haptic_feedback": "햅틱 피드백",
+      "notification": "알림",
+      "reminder_time": "매일 %@"
     },
     "title": {
       "landing": "환영합니다",
@@ -91,6 +93,9 @@
         "0": "꾸준한 습관을 만들어 나를 키워보아요",
         "1": "지금처럼 열심히 달려가 보아요",
         "2": "노력한 만큼 보상으로 돌아올 거예요"
+      },
+      "notification": {
+        "reminder": "오늘의 임무를 수행하세요!"
       },
       "greeting": "환영합니다!\n업 챌린지에 도전해보세요",
       "enter_name": "업 도전자님의\n이름을 알려주세요",

@@ -68,6 +68,24 @@ jest.mock('react-native-document-picker', () => ({
   },
 }));
 
+jest.mock('react-native-push-notification', () => ({
+  configure: jest.fn(),
+  onRegister: jest.fn(),
+  onNotification: jest.fn(),
+  addEventListener: jest.fn(),
+  requestPermissions: jest.fn(),
+}));
+
+jest.mock('@react-native-community/push-notification-ios', () => ({
+  requestPermissions: jest.fn().mockReturnValue(
+    Promise.resolve({
+      alert: true,
+      badge: true,
+      sound: true,
+    }),
+  ),
+}));
+
 jest.mock('react-native-webview', () => ({
   default: DummyComponent,
 }));
