@@ -48,7 +48,7 @@ export function HapticFeedback<
   };
 
   const handleLongPress = (): void => {
-    if (!(disableLongPress || disableHaptic)) {
+    if (!disableLongPress && hapticEnabled) {
       triggerHaptic(longPressFeedbackType);
     }
     child.props.onLongPress?.();
