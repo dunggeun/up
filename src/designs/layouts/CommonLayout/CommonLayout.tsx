@@ -1,4 +1,4 @@
-import React, { Fragment, type PropsWithChildren } from 'react';
+import React, { type PropsWithChildren } from 'react';
 import { Animated } from 'react-native';
 import { styled, Container as DripsyContainer, View } from 'dripsy';
 import { KeyboardAvoidingView } from 'src/components/KeyboardAvoidingView';
@@ -54,12 +54,11 @@ export function CommonLayout({
   keyboardAvoiding,
   ...props
 }: PropsWithChildren<CommonLayoutProps>): React.ReactElement {
-  const AvoidingView = keyboardAvoiding ? KeyboardAvoidingView : Fragment;
   return (
     <SafeAreaView {...props}>
-      <AvoidingView>
+      <KeyboardAvoidingView enabled={keyboardAvoiding}>
         <DripsyContainer>{children}</DripsyContainer>
-      </AvoidingView>
+      </KeyboardAvoidingView>
     </SafeAreaView>
   );
 }
