@@ -1,6 +1,6 @@
 {
   "name": "up",
-  "version": "99.9.9",
+  "version": "1.0.0-beta.2",
   "private": true,
   "scripts": {
     "prepare": "husky install",
