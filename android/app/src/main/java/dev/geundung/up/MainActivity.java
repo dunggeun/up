@@ -1,5 +1,6 @@
 package dev.geundung.up;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.core.splashscreen.SplashScreen;
@@ -39,5 +40,10 @@ public class MainActivity extends ReactActivity {
   protected void onCreate(Bundle savedInstanceState) {
     SplashScreen.installSplashScreen(this);
     super.onCreate(null);
+  }
+
+  @Override
+  public void onNewIntent(Intent intent) {
+    super.onNewIntent(intent);
   }
 }
