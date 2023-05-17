@@ -48,7 +48,7 @@
       "item": "Item",
       "ask_me_later": "Ask me later",
       "haptic_feedback": "Haptic feedback",
-      "enable_reminder": "Notification",
+      "notification": "Notification",
       "reminder_time": "Every %@"
     },
     "title": {

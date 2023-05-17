@@ -48,7 +48,7 @@
       "item": "항목",
       "ask_me_later": "다음에 볼게요",
       "haptic_feedback": "햅틱 피드백",
-      "enable_reminder": "임무 알림 켜기",
+      "notification": "알림",
       "reminder_time": "매일 %@"
     },
     "title": {

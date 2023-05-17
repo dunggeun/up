@@ -6,7 +6,7 @@ import { StorageManager } from 'src/modules/database';
 import { AppEventChannel } from 'src/modules/event';
 import { Logger } from 'src/modules/logger';
 import {
-  clearAllScheduledLocalNotification,
+  cancelAllScheduledNotifications,
   scheduleLocalNotification,
 } from 'src/modules/notifications';
 import { t } from 'src/translations';
@@ -192,7 +192,7 @@ export const globalMachine = createMachine(
                 changes.remindAt,
                 t('message.notification.reminder'),
               )
-            : clearAllScheduledLocalNotification();
+            : cancelAllScheduledNotifications();
         }
 
         await AsyncStorage.setItem('user', JSON.stringify(modifiedUser));

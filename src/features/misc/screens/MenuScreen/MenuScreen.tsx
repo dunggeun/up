@@ -123,7 +123,7 @@ export function MenuScreen(_props: MenuProps): React.ReactElement {
 
     const reminderEnabledLabel = remindAt
       ? replacePlaceholder(t('label.reminder_time'), remindAt)
-      : t('label.enable_reminder');
+      : t('label.notification');
 
     return (
       <>
