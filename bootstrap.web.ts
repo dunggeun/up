@@ -1,6 +1,11 @@
+/* eslint-disable import/no-named-as-default-member */
 /* eslint-disable no-console */
 import 'setimmediate';
 import 'react-native-reanimated';
+import dayjs from 'dayjs';
+import customParseFormat from 'dayjs/plugin/customParseFormat';
+
+dayjs.extend(customParseFormat);
 
 Object.defineProperties(self, {
   _log: {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, cleanup } from '@testing-library/react-native';
-import { withDripsy } from 'tests/utils';
+import { withProviders } from 'tests/utils';
 import { MenuScreen } from '../MenuScreen';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -16,6 +16,6 @@ describe('screens/MenuScreen', () => {
   });
 
   it('렌더링이 정상적으로 되어야 한다', () => {
-    render(withDripsy(<MenuScreen {...getMockedProps()} />));
+    render(withProviders(<MenuScreen {...getMockedProps()} />));
   });
 });

@@ -9,6 +9,7 @@ export interface User {
   settings: {
     enableHaptic: boolean;
   };
+  remindAt: string | null;
   createdAt: number;
   updatedAt: number;
 }

@@ -5,10 +5,12 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { NavigationContainer } from '@react-navigation/native';
 import { DripsyProvider } from 'dripsy';
 import { QueryClientProvider } from 'react-query';
+import { RecoilRoot } from 'recoil';
 import { EventBasedBadgeModal } from 'src/features/users/components/BadgeModal';
 import { Logger } from 'src/modules/logger';
 import { navigationRef } from 'src/navigators/helpers';
 import { queryClient } from 'src/stores/reactQuery';
+import { RecoilExternalPortal } from 'src/stores/recoil';
 import { themeLight } from 'src/themes';
 import { colors } from 'src/themes/colors';
 import { titleFormatter } from 'src/utils';
@@ -28,15 +30,18 @@ function AppProviders<T = unknown>({
       <SafeAreaProvider>
         <DripsyProvider theme={themeLight}>
           <QueryClientProvider client={queryClient}>
-            <NavigationContainer
-              documentTitle={{ formatter: titleFormatter }}
-              onReady={(): void => {
-                Logger.info('NavigationContainer', 'onReady');
-              }}
-              ref={navigationRef}
-            >
-              {children}
-            </NavigationContainer>
+            <RecoilRoot>
+              <RecoilExternalPortal />
+              <NavigationContainer
+                documentTitle={{ formatter: titleFormatter }}
+                onReady={(): void => {
+                  Logger.info('NavigationContainer', 'onReady');
+                }}
+                ref={navigationRef}
+              >
+                {children}
+              </NavigationContainer>
+            </RecoilRoot>
           </QueryClientProvider>
           <Toast />
           <LevelUpModal />

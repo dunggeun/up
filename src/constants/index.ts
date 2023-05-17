@@ -32,6 +32,9 @@ export const WINDOW_HEIGHT = window.height;
 
 export const MINIMUM_USER_NAME_LENGTH = 2;
 
+export const REMINDER_TIME_FORMAT = 'HH:mm';
+export const DEFAULT_REMINDER_TIME = '09:30';
+
 export const DEVELOPER_EMAIL = 'support@geundung.dev';
 export const UP_REPOSITORY_URL = 'https://github.com/dunggeun/up';
 
@@ -52,3 +55,5 @@ export const USE_NATIVE_DRIVER = IS_NATIVE;
 
 export const SENTRY_RELEASE = `up@${VERSION}${__DEV__ ? '-dev' : ''}`;
 export const SENTRY_SAMPLE_RATE = __DEV__ ? 1.0 : 0.25;
+
+export const ANDROID_NOTIFICATION_CHANNEL_ID = 'up-reminder';

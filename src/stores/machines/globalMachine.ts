@@ -5,6 +5,11 @@ import * as AppHelpers from 'src/modules/app/helpers';
 import { StorageManager } from 'src/modules/database';
 import { AppEventChannel } from 'src/modules/event';
 import { Logger } from 'src/modules/logger';
+import {
+  clearAllScheduledLocalNotification,
+  scheduleLocalNotification,
+} from 'src/modules/notifications';
+import { t } from 'src/translations';
 import { queryClient } from '../reactQuery';
 import type { User } from 'src/features/users';
 
@@ -23,7 +28,7 @@ export const globalMachine = createMachine(
         | { type: 'REFRESH' }
         | {
             type: 'EDIT_USER';
-            user: Partial<Pick<User, 'name' | 'badge' | 'theme'>>;
+            user: Partial<User>;
           }
         | { type: 'REWARD'; exp: number },
       services: {} as {
@@ -173,11 +178,22 @@ export const globalMachine = createMachine(
         Logger.debug(TAG, 'services.updateUser');
         if (!context.user) throw new Error('user not exist in context');
 
+        const changes = event.user;
         const modifiedUser = {
           ...context.user,
-          ...event.user,
+          ...changes,
           updatedAt: Number(new Date()),
         } as User;
+
+        if (changes.remindAt !== undefined) {
+          // remind 알림 설정을 변경한 경우 값에 따라 알림 등록 or 스케줄링
+          changes.remindAt
+            ? scheduleLocalNotification(
+                changes.remindAt,
+                t('message.notification.reminder'),
+              )
+            : clearAllScheduledLocalNotification();
+        }
 
         await AsyncStorage.setItem('user', JSON.stringify(modifiedUser));
         return modifiedUser;

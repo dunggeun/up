@@ -47,7 +47,9 @@
       "select": "Select",
       "item": "Item",
       "ask_me_later": "Ask me later",
-      "haptic_feedback": "Haptic feedback"
+      "haptic_feedback": "Haptic feedback",
+      "enable_reminder": "Notification",
+      "reminder_time": "Every %@"
     },
     "title": {
       "landing": "Welcome",
@@ -89,6 +91,9 @@
         "0": "Nurture yourself by creating consistent habits",
         "1": "Run as hard as you do now",
         "2": "Your hard work will be rewarded"
+      },
+      "notification": {
+        "reminder": "Go on mission!"
       },
       "greeting": "Welcome!\nTake the Up Challenge",
       "enter_name": "Please enter your\nname for the Up challenge",
