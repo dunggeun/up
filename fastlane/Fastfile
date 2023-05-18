@@ -60,8 +60,15 @@ def check_before_release()
   end
 end
 
+def reinstall_dependencies()
+  UI.message "Removing node_modules..."
+  system "rm -r ../node_modules"
+  system "yarn --frozen-lockfile"
+end
+
 desc "Preparing for build and deploy"
-lane :prepare do
+lane :prepare do |options|
+  force_install = options[:force_install] == '1'
   ensure_git_branch(branch: "release/#{VERSION}")
   update_version_ios
   update_version_android
@@ -72,6 +79,14 @@ lane :prepare do
   )
   add_git_tag(tag: "v#{VERSION}")
   push_to_git_remote(no_verify: true)
+  if force_install
+    reinstall_dependencies
+  end
+end
+
+desc "Remove node_modules and re-intsall dependencies"
+lane :force_intsall do
+  reinstall_dependencies
 end
 
 platform :ios do

@@ -21,6 +21,14 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 Preparing for build and deploy
 
+### force_intsall
+
+```sh
+[bundle exec] fastlane force_intsall
+```
+
+Remove node_modules and re-intsall dependencies
+
 ----
 
 
