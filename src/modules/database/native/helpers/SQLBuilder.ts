@@ -16,7 +16,7 @@ export class SQLBuilder {
   private _by?: 'desc' | 'asc';
   private _condition?: WhereConditions;
 
-  private stringify(value: Value): string {
+  static stringify(value: Value): string {
     if (typeof value === 'string') {
       return `"${value}"`;
     } else if (value === null) {
@@ -24,6 +24,14 @@ export class SQLBuilder {
     }
     // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
     return `${value}`;
+  }
+
+  static whereToString(condition: WhereConditions): string {
+    return Object.entries(condition)
+      .map(([column, { symbol, value }]) => {
+        return `${column.trim()} ${symbol} ${SQLBuilder.stringify(value)}`;
+      })
+      .join(' AND ');
   }
 
   table(tableName: string): this {
@@ -63,13 +71,9 @@ export class SQLBuilder {
     }
 
     let query: string;
-    const WHERE_CONDITION =
-      this._condition &&
-      Object.entries(this._condition)
-        .map(([column, { symbol, value }]) => {
-          return `${column} ${symbol} ${this.stringify(value)}`;
-        })
-        .join(' AND ');
+    const WHERE_CONDITION = this._condition
+      ? SQLBuilder.whereToString(this._condition)
+      : null;
     const WHERE_STATEMENTS = WHERE_CONDITION ? `WHERE ${WHERE_CONDITION}` : '';
 
     switch (this._type) {
@@ -98,7 +102,7 @@ export class SQLBuilder {
       case 'insert':
         const VALUE_COLUMNS = Object.keys(this._values ?? {}).join(',');
         const VALUES = Object.values(this._values ?? {})
-          .map((value) => this.stringify(value))
+          .map((value) => SQLBuilder.stringify(value))
           .join(',');
 
         query = dedent`
@@ -109,7 +113,9 @@ export class SQLBuilder {
 
       case 'update':
         const SET_STATEMENTS = Object.entries(this._values ?? {})
-          .map(([column, value]) => `${column} = ${this.stringify(value)}`)
+          .map(
+            ([column, value]) => `${column} = ${SQLBuilder.stringify(value)}`,
+          )
           .join(',');
 
         query = dedent`

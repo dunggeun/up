@@ -36,7 +36,7 @@ export class WebDatabaseModule
     return Object.entries(conditions).map(([column, { symbol, value }]) => {
       return (data: any): boolean => {
         // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-        const target = data[column];
+        const target = data[column.trim()];
         switch (symbol) {
           case '<':
             return Boolean(value && target < value);

@@ -14,6 +14,8 @@ import type { User } from '../../types';
 
 interface UserCoverWebViewProps {
   user: User;
+  missions: string[];
+  expEarned: number;
   onGenerated?: (dataUrl: string) => void;
 }
 
@@ -31,6 +33,8 @@ const StyledWebView = styled(WebView)({
 
 export const UserCoverWebView = memo(function UserCover({
   user,
+  missions,
+  expEarned,
   onGenerated,
 }: UserCoverWebViewProps): React.ReactElement | null {
   const sx = useSx();
@@ -61,12 +65,14 @@ export const UserCoverWebView = memo(function UserCover({
       originWhitelist={['*']}
       source={{
         html: getPageSource({
-          color,
-          user: {
-            ...user,
-            totalExp: getExpByLevel(user.level),
-          },
-          date: dayjs().format(t('format.date')),
+          userColor: color,
+          name: user.name,
+          level: user.level,
+          currentExp: user.currentExp,
+          targetExp: getExpByLevel(user.level),
+          earnedExp: expEarned,
+          missions,
+          formattedDate: dayjs().format(t('format.date')),
         }),
       }}
     />

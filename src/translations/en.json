@@ -49,7 +49,9 @@
       "ask_me_later": "Ask me later",
       "haptic_feedback": "Haptic feedback",
       "notification": "Notification",
-      "reminder_time": "Every %@"
+      "reminder_time": "Every %@",
+      "mission": "Missions",
+      "and_more": "%@ others"
     },
     "title": {
       "landing": "Welcome",

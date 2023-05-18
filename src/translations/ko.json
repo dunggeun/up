@@ -49,7 +49,9 @@
       "ask_me_later": "다음에 볼게요",
       "haptic_feedback": "햅틱 피드백",
       "notification": "알림",
-      "reminder_time": "매일 %@"
+      "reminder_time": "매일 %@",
+      "mission": "임무",
+      "and_more": "외 %@개"
     },
     "title": {
       "landing": "환영합니다",
@@ -123,7 +125,8 @@
       "restore_success": "데이터가 성공적으로 복원되었어요",
       "check_password": "비밀번호는 5자리 이상이어야 해요",
       "read_permission_for_restore": "백업 데이터를 불러오기 위해 저장소 읽기 권한이 필요해요",
-      "write_permission_for_backup": "백업 데이터를 보관하기 위해 저장소 쓰기 권한이 필요해요"
+      "write_permission_for_backup": "백업 데이터를 보관하기 위해 저장소 쓰기 권한이 필요해요",
+      "no_mission": "아직 수행한 임무가 없어요"
     },
     "badge": {
       "1": {
