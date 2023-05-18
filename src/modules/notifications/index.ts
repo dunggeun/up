@@ -92,7 +92,6 @@ export const scheduleLocalNotification = (
 
   PushNotification.localNotificationSchedule({
     message,
-    title: 'test',
     channelId: ANDROID_NOTIFICATION_CHANNEL_ID,
     ignoreInForeground: true,
     date: targetDate.toDate(),
