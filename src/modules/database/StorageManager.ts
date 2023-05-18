@@ -1,3 +1,4 @@
+import dayjs from 'dayjs';
 import { noop } from 'src/utils';
 import { Logger } from '../logger';
 import { DatabaseModule } from './module';
@@ -78,17 +79,15 @@ export class StorageManager {
     return this.database.select('achieve');
   }
 
-  getAchieveListByMid(params?: Pick<Achieve, 'mid'>): Promise<Achieve[]> {
+  getAchieveListByMid(params: Pick<Achieve, 'mid'>): Promise<Achieve[]> {
     return this.database.select(
       'achieve',
-      params
-        ? {
-            mid: {
-              symbol: '=',
-              value: params.mid,
-            },
-          }
-        : undefined,
+      {
+        mid: {
+          symbol: '=',
+          value: params.mid,
+        },
+      },
       {
         order: {
           target: 'created_at',
@@ -97,6 +96,25 @@ export class StorageManager {
         limit: 28,
       },
     );
+  }
+
+  getArchiveListByDate(params: { date: Date }): Promise<Achieve[]> {
+    const targetDate = dayjs(params.date);
+    const gte = targetDate.startOf('day').toDate().getTime();
+    const lte = targetDate.endOf('day').toDate().getTime();
+
+    return this.database.select('achieve', {
+      // 키를 조건 필드명(SQLite) 혹은 프로퍼티(IndexedDB)명으로 사용하는데 trim 처리를 하고 있음
+      // 동일한 이름에 대한 and 조건 처리를 위해 키 중복을 피하고자 빈 공백을 추가함.
+      'created_at ': {
+        symbol: '<=',
+        value: lte,
+      },
+      ' created_at': {
+        symbol: '>=',
+        value: gte,
+      },
+    });
   }
 
   getAchieveCount(): Promise<number> {

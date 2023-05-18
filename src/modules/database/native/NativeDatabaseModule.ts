@@ -1,6 +1,6 @@
 /* eslint-disable import/no-named-as-default-member */
 import SQLite, { type SQLiteDatabase } from 'react-native-sqlite-storage';
-import { SQLBuilder } from './utils';
+import { SQLBuilder } from './helpers';
 import type {
   DatabaseModule,
   DatabaseRecord,

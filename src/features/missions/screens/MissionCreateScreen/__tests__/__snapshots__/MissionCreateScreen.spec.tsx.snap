@@ -362,6 +362,7 @@ exports[`screens/MissionCreateScreen 렌더링 되었을 때 스냅샷이 일치
       </View>
       <View
         collapsable={false}
+        needsOffscreenAlphaCompositing={true}
         style={
           {
             "flex": 1,

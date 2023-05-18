@@ -46,6 +46,42 @@ export const fetchAchievesByMissionId = ({
   return StorageManager.getInstance().getAchieveListByMid({ mid: missionId });
 };
 
+export const fetchAchievesByDate = ({
+  date,
+}: {
+  date: Date;
+}): Promise<Achieve[]> => {
+  Logger.debug(TAG, 'fetchAchievesByDate', { date });
+  return StorageManager.getInstance().getArchiveListByDate({ date });
+};
+
+export const fetchAchievesWithTitleByDate = async ({
+  date,
+}: {
+  date: Date;
+}): Promise<(Achieve & { title: string })[]> => {
+  Logger.debug(TAG, 'fetchAchievesWithTitleByDate', { date });
+  const achievesMap = new Map<number, Achieve & { title: string }>();
+  const achieves = await StorageManager.getInstance().getArchiveListByDate({
+    date,
+  });
+
+  const missions = await Promise.all(
+    achieves.map((archive) => {
+      achievesMap.set(archive.mid, { ...archive, title: '' });
+      return fetchMissionById({ missionId: archive.mid });
+    }),
+  );
+
+  missions.forEach((mission) => {
+    const archive = achievesMap.get(mission.id);
+    archive &&
+      achievesMap.set(mission.id, { ...archive, title: mission.title });
+  });
+
+  return Array.from(achievesMap.values());
+};
+
 export const fetchMissionDetailById = ({
   missionId,
 }: MissionIdParam): Promise<MissionDetail> => {

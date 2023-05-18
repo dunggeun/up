@@ -1,9 +1,17 @@
+import { ROOT_FONT_SIZE } from 'src/themes';
+import { colors } from 'src/themes/colors';
+import { replacePlaceholder } from 'src/utils';
+import { t } from 'src/translations';
 import type { CoverGenerateConfig } from '../types';
 
 const IMAGE_SIZE = 512;
+const MAX_LIST_ITEM_COUNT = 3;
 
 export const getPageSource = (config: CoverGenerateConfig): string => {
-  const expPercent = (config.user.currentExp / config.user.totalExp) * 100;
+  const expPercent = ((config.currentExp / config.targetExp) * 100).toFixed(1);
+  const isEmpty = config.missions.length === 0;
+  const isOver = config.missions.length > MAX_LIST_ITEM_COUNT;
+  const overCount = config.missions.length - MAX_LIST_ITEM_COUNT;
   return `
     <!DOCTYPE html>
     <html>
@@ -16,101 +24,78 @@ export const getPageSource = (config: CoverGenerateConfig): string => {
           crossorigin="anonymous"
         >
         <style>
-
+    
           * {
             font-family: Jua, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, Inter-serif;
             font-weight: normal;
             box-sizing: border-box;
-            font-size: 16px;
+            font-size: ${ROOT_FONT_SIZE}px;
           }
-
+    
           html, body {
             width: ${IMAGE_SIZE}px;
             height: ${IMAGE_SIZE}px;
             padding: 0;
             margin: 0;
           }
-
+    
           body {
             display: flex;
             justify-content: center;
             align-items: center;
           }
-
+    
+          h1 {
+            margin: 0;
+            font-size: 2rem;
+          }
+      
+          h2 {
+            margin: 0;
+            font-size: 1.5rem;
+            color: ${colors.$text_secondary};
+          }
+    
+          section {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            gap: .25rem;
+            width: 100%;
+          }
+    
           .canvas {
             display: flex;
             flex-direction: column;
-            align-content: stratch;
-            width: ${IMAGE_SIZE}px;
-            height: ${IMAGE_SIZE}px;
-            padding: 40px;
-            margin-bottom: 36px;
+            align-content: space-evenly;
+            width: 500px;
+            height: 500px;
+            padding: 1.5rem;
             background-color: #ffffff;
-            box-shadow: 0 0 10px rgba(0,0,0,.3);
           }
-          
-          .canvas > .profile {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-          }
-          
-          .canvas > .profile > h1 {
-            margin: 0;
-            font-size: 60px;
-            color: #2e2e2e;
-            overflow: hidden;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-            word-break: break-all;
-          }
-          
-          .progressbar {
-            height: 72px;
+    
+          div.progressbar {
+            height: 2rem;
             width: 100%;
-            border: 10px solid #2e2e2e;
+            border: 4px solid ${colors.$border};
             border-radius: 9999px;
             overflow: hidden;
           }
           
-          .progressbar > .value {
+          div.progressbar > .value {
             height: 100%;
-            background-color: ${config.color};
-          }
-          
-          .percent {
-            bottom: 100%;
-            left: 12px;
-            margin: 0;
-            color: #cccccc;
-            font-size: 24px;
-            width: 100%;
-            text-align: right;
-          }
-          
-          .canvas > .date {
-            display: flex;
-            flex: 1;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            gap: 12px;
-            padding-bottom: 12px;
-          }
-          
-          .date > h2 {
-            margin: 0;
-            font-size: 40px;
-            color: #777777;
-          }
-
-          .button {
-            position: relative;
-            height: 112px;
-            margin-bottom: 16px;
+            background-color: ${config.userColor};
           }
     
-          .button > .cap {
+          div.button {
+            position: relative;
+            width: 100%;
+            height: 3rem;
+            margin-bottom: 0.75rem;
+          }
+    
+          div.button > .cap {
             position: absolute;
             display: flex;
             flex-direction: row;
@@ -118,27 +103,79 @@ export const getPageSource = (config: CoverGenerateConfig): string => {
             align-items: center;
             width: 100%;
             height: 100%;
-            padding: 0 12px;
-            border: 10px solid #2e2e2e;
-            border-radius: 16px;
+            padding: .5rem;
+            border: .25rem solid ${colors.$border};
+            border-radius: 0.75rem;
             background-color: white;
-            font-size: 40px;
+            font-size: 1.5rem;
             text-align: center;
-            color: #2e2e2e;
+            color: ${colors.$border};
             z-index: 1;
           }
     
-          .button > .shadow {
+          div.button > .shadow {
             position: absolute;
             left: 0;
-            bottom: -20px;
+            bottom: -.5rem;
             width: 100%;
             height: 100%;
-            background-color: #2e2e2e;
-            border-radius: 16px;
+            background-color: ${colors.$border};
+            border-radius: 0.75rem;
             z-index: 0;
           }
+          
+          section.profile > h1 {
+            width: 100%;
+            color: ${colors.$border};
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            word-break: break-all;
+            text-align: left;
+            overflow: hidden;
+          }
+    
+          section.profile > .percent {
+            width: 100%;
+            margin: 0;
+            color: ${colors.$text_tertiary};
+            font-size: 1rem;
+            text-align: right;
+          }
+    
+          section.mission-list {
+            flex-grow: 1;
+            gap: .5rem;
+          }
+    
+          section.mission-list.no-mission {
+            justify-content: center;
+          }
+    
+          section.mission-list > h2 {
+            padding: .25rem 0;
+          }
+    
+          section.date {
+            padding-top: .25rem;
+            padding-bottom: .5rem;
+          }
+    
+          section.date > h2,
+          section.mission-list > h2,
+          section.summary > h1 {
+            width: 100%;
+            text-align: center;
+          }
 
+          section.summary {
+            text-align: center;
+          }
+    
+          section.summary b {
+            color: ${config.userColor};
+            font-size: 2rem;
+          }
+    
         </style>
         <script
           src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"
@@ -147,9 +184,9 @@ export const getPageSource = (config: CoverGenerateConfig): string => {
       </head>
       <body>
         <main id="canvas" class="canvas">
-          <div class="profile">
+          <section class="profile">
             <h1>
-              Lv.${config.user.level} ${config.user.name}
+              Lv.${config.level} ${config.name}
             </h1>
             <div class="progressbar">
               <div
@@ -158,19 +195,38 @@ export const getPageSource = (config: CoverGenerateConfig): string => {
               ></div>
             </div>
             <div class="percent">
-              ${expPercent.toFixed(1)}%
-              (${config.user.currentExp}/${config.user.totalExp})
+              ${expPercent}%
+              (${config.currentExp}/${config.targetExp})
             </div>
-          </div>
-          <div class="date">
-            <h2>
-              ${config.date}
-            </h2>
-          </div>
-          <div class="button">
-            <div class="cap">UP!</div>
-            <div class="shadow"></div>
-          </div>
+          </section>
+          <section class="date">
+            <h2>${config.formattedDate} ${t('label.mission')}</h2>
+          </section>
+          <section class="mission-list ${isEmpty ? 'no-mission' : ''}">
+            ${config.missions
+              .slice(0, MAX_LIST_ITEM_COUNT)
+              .map(
+                (title) => `
+                <div class="button">
+                  <div class="cap">${title}</div>
+                  <div class="shadow"></div>
+                </div>
+              `,
+              )
+              .join('')}
+            ${isEmpty ? `<h2>${t('message.no_mission')}</h2>` : ''}
+            ${
+              isOver
+                ? `<h2>${replacePlaceholder(
+                    t('label.and_more'),
+                    overCount.toString(),
+                  )}</h2>`
+                : ''
+            }
+          </section>
+          <section class="summary">
+            <h1>EXP <b>+${config.earnedExp}</b></h1>
+          </section>
         </main>
         <script>
           function postMessage(type, data) {
@@ -178,17 +234,15 @@ export const getPageSource = (config: CoverGenerateConfig): string => {
             const event = { type, data };
             window.ReactNativeWebView.postMessage(JSON.stringify(event));
           }
-
+    
           function generate() {
             domtoimage
               .toJpeg(document.getElementById('canvas'), { quality: 0.95 })
               .then((dataUrl) => postMessage('success', dataUrl))
               .catch((error) => postMessage('error', error.message || 'unknown error'));
           }
-
-          window.onload = () => {
-            setTimeout(generate, 500);
-          };
+    
+          window.onload = generate;
         </script>
       </body>
     </html>

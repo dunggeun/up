@@ -116,6 +116,11 @@ jest.mock('react-native-localize', () => ({
   getLocales: (): { languageCode: string }[] => [{ languageCode: 'en' }],
 }));
 
+jest.mock('react-native-haptic-feedback', () => ({
+  trigger: jest.fn(),
+  HapticFeedbackTypes: {},
+}));
+
 jest.mock('@sentry/react', () => ({
   init: jest.fn(),
   captureException: jest.fn(),
