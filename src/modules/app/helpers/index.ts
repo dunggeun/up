@@ -11,9 +11,14 @@ import type { Badge, Theme } from '../types';
 import type { Mission, Achieve } from 'src/features/missions';
 import type { User } from 'src/features/users';
 
-export const getId = (): number => {
+export const getId = (randNum?: number): number => {
   const currentTimestamp = Number(new Date());
-  return Math.floor(currentTimestamp * 1000 + Math.random() * 10000);
+  // eslint-disable-next-line no-param-reassign
+  randNum ??= Math.floor(Math.random() * 10000);
+  return parseInt(
+    `${currentTimestamp}${randNum.toString().padStart(4, '0')}`,
+    10,
+  );
 };
 
 export const createUserData = (name: string): User => {
