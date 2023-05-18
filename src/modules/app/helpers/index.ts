@@ -27,6 +27,7 @@ export const createUserData = (name: string): User => {
     theme: 0,
     unlockedBadges: {},
     settings: { enableHaptic: true },
+    remindAt: null,
     createdAt: currentTimestamp,
     updatedAt: currentTimestamp,
   };
