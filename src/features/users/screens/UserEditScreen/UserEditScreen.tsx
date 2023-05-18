@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { useActor } from '@xstate/react';
-import { AppManager } from 'src/modules/app';
+import { ToastController } from 'src/components/Toast/ToastController';
 import { globalMachineService } from 'src/stores/machines';
 import { useDebounce } from 'src/hooks';
 import { MINIMUM_USER_NAME_LENGTH } from 'src/constants';
@@ -34,11 +34,11 @@ export function UserEditScreen({
   const { trigger: lazyEditUser } = useDebounce(
     (value: Partial<Pick<User, 'theme' | 'name' | 'badge'>>) => {
       if (!value.name || value.name.length < MINIMUM_USER_NAME_LENGTH) {
-        AppManager.showToast(t('message.error.name_too_short'));
+        ToastController.show(t('message.error.name_too_short'));
         return;
       }
       handleEditUser(value);
-      AppManager.showToast(t('message.user_edited'));
+      ToastController.show(t('message.user_edited'));
     },
     500,
   );

@@ -1,14 +1,12 @@
-import React from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import CryptoJS from 'crypto-js';
 import dayjs from 'dayjs';
-import { ToastManager } from 'src/components/Toast/ToastManager';
+import { ToastController } from 'src/components/Toast/ToastController';
 import { globalMachineService } from 'src/stores/machines/service';
 import { queryClient } from 'src/stores/reactQuery';
 import { delay } from 'src/utils/async';
 import { readFile, writeFile } from 'src/utils/fs';
 import { APP_MINIMUM_LOADING_DURATION } from 'src/constants';
-import { Text } from 'src/designs';
 import { t } from 'src/translations';
 import { StorageManager } from '../database';
 import { Logger } from '../logger';
@@ -53,14 +51,6 @@ export class AppManager {
       AppManager.instance = new AppManager();
     }
     return AppManager.instance;
-  }
-
-  public static showToast(message: string): void {
-    Logger.debug(TAG, `showToast - ${message}`);
-    ToastManager.getInstance().show(
-      // eslint-disable-next-line import/no-named-as-default-member
-      React.createElement(Text, { variant: 'primary' }, message),
-    );
   }
 
   private async prefetchUserData(): Promise<void> {
@@ -136,7 +126,7 @@ export class AppManager {
       );
     } catch (error) {
       Logger.error(TAG, 'decrypt error', (error as Error).message);
-      AppManager.showToast(t('message.error.decrypt_failed'));
+      ToastController.show(t('message.error.decrypt_failed'));
       return false;
     }
 

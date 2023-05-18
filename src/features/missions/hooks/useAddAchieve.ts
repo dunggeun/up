@@ -1,7 +1,7 @@
 import { useActor } from '@xstate/react';
 import { useMutation, type UseMutationResult } from 'react-query';
+import { ToastController } from 'src/components/Toast/ToastController';
 import { addAchieve, type AddAchieveResult } from 'src/data';
-import { AppManager } from 'src/modules/app';
 import { Logger } from 'src/modules/logger';
 import { globalMachineService } from 'src/stores/machines';
 import { queryClient } from 'src/stores/reactQuery';
@@ -49,7 +49,7 @@ export const useAddAchieve = (): UseMutationResult<
     },
     onError: (error) => {
       Logger.error(TAG, error.message);
-      AppManager.showToast(t('message.error.common'));
+      ToastController.show(t('message.error.common'));
     },
   });
 };

@@ -33,6 +33,7 @@ export interface DatabaseModule<Model = string> {
     condition?: WhereConditions,
     options?: SelectOptions,
   ) => Promise<Data[]>;
+  count: (model: Model) => Promise<number>;
   insert: <Data extends DatabaseRecord>(
     model: Model,
     data: Data,

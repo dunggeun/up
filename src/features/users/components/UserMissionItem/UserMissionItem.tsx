@@ -1,9 +1,9 @@
 import React, { memo, useMemo } from 'react';
 import { InteractionManager } from 'react-native';
 import Animated, { ZoomIn, ZoomOutEasyDown } from 'react-native-reanimated';
+import { ToastController } from 'src/components/Toast/ToastController';
 import { useAddAchieve } from 'src/features/missions/hooks';
 import { useUserThemeColor } from 'src/features/users/hooks';
-import { AppManager } from 'src/modules/app';
 import { navigate } from 'src/navigators/helpers';
 import { diffBeforeToday } from 'src/utils';
 import { Button, Tag } from 'src/designs';
@@ -54,11 +54,11 @@ export const UserMissionItem = memo(function UserMissionItem({
 
       switch (true) {
         case isFinishedMission:
-          AppManager.showToast(t('message.finished_mission'));
+          ToastController.show(t('message.finished_mission'));
           break;
 
         case alreadyCompletedToday:
-          AppManager.showToast(t('message.already_completed'));
+          ToastController.show(t('message.already_completed'));
           break;
 
         default:

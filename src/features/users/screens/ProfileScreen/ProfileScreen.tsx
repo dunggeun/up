@@ -3,7 +3,7 @@ import { Platform } from 'react-native';
 import Share from 'react-native-share';
 import { useActor } from '@xstate/react';
 import { View } from 'dripsy';
-import { AppManager } from 'src/modules/app';
+import { ToastController } from 'src/components/Toast/ToastController';
 import * as AppHelpers from 'src/modules/app/helpers';
 import { AppEventChannel } from 'src/modules/event';
 import { Logger } from 'src/modules/logger';
@@ -56,7 +56,7 @@ export function ProfileScreen(_props: ProfileScreenProps): React.ReactElement {
     if (Platform.OS === 'ios' || Platform.OS === 'android') {
       setShareModalVisibility(true);
     } else {
-      AppManager.showToast(t('message.error.unsupported_platform'));
+      ToastController.show(t('message.error.unsupported_platform'));
     }
   };
 

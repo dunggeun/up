@@ -1,6 +1,6 @@
 import { useMutation, type UseMutationResult } from 'react-query';
+import { ToastController } from 'src/components/Toast/ToastController';
 import { updateMission } from 'src/data';
-import { AppManager } from 'src/modules/app';
 import { Logger } from 'src/modules/logger';
 import { queryClient } from 'src/stores/reactQuery';
 import { t } from 'src/translations';
@@ -60,7 +60,7 @@ export const useUpdateMission = ({
     },
     onError: (error) => {
       Logger.error(TAG, error.message);
-      AppManager.showToast(t('message.error.common'));
+      ToastController.show(t('message.error.common'));
     },
   });
 };

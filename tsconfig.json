@@ -5,7 +5,6 @@
     "target": "esnext",
     "module": "commonjs",
     "types": [
-      "node",
       "react-native",
       "jest",
     ],
@@ -38,6 +37,7 @@
   },
   "exclude": [
     "node_modules",
+    "dist",
     "babel.config.js",
     "metro.config.js",
     "jest.config.js"

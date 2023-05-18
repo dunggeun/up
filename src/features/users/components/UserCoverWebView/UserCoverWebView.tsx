@@ -3,7 +3,7 @@ import React, { memo } from 'react';
 import WebView, { type WebViewMessageEvent } from 'react-native-webview';
 import dayjs from 'dayjs';
 import { styled, useSx } from 'dripsy';
-import { AppManager } from 'src/modules/app';
+import { ToastController } from 'src/components/Toast/ToastController';
 import { getExpByLevel } from 'src/modules/app/helpers';
 import { Logger } from 'src/modules/logger';
 import { t } from 'src/translations';
@@ -48,7 +48,7 @@ export const UserCoverWebView = memo(function UserCover({
         throw new Error(response.data || 'unknown');
       }
     } catch (error) {
-      AppManager.showToast(t('message.error.common'));
+      ToastController.show(t('message.error.common'));
       Logger.error(TAG, `handleMessage - ${(error as Error).message}`);
     }
   };

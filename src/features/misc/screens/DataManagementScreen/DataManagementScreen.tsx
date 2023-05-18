@@ -2,6 +2,7 @@ import React, { useCallback, useRef, useState } from 'react';
 import { TouchableOpacity } from 'react-native';
 import { useActor } from '@xstate/react';
 import { View, styled } from 'dripsy';
+import { ToastController } from 'src/components/Toast/ToastController';
 import { AppManager } from 'src/modules/app';
 import { Logger } from 'src/modules/logger';
 import { globalMachineService } from 'src/stores/machines';
@@ -69,7 +70,7 @@ export function DataManagementScreen({
     backupFileRef.current = '';
     const hasPermission = await requestStoragePermission();
     if (!hasPermission) {
-      AppManager.showToast(t('message.error.permission_required'));
+      ToastController.show(t('message.error.permission_required'));
     }
     return hasPermission;
   };
@@ -104,7 +105,7 @@ export function DataManagementScreen({
             AppManager.getInstance().export(password),
             delay(APP_MINIMUM_LOADING_DURATION),
           ]).then(() => {
-            AppManager.showToast(t('message.backup_success'));
+            ToastController.show(t('message.backup_success'));
           });
           break;
 
@@ -115,7 +116,7 @@ export function DataManagementScreen({
               delay(APP_MINIMUM_LOADING_DURATION),
             ]).then(([success]) => {
               if (success) {
-                AppManager.showToast(t('message.restore_success'));
+                ToastController.show(t('message.restore_success'));
               }
             });
           }
@@ -128,7 +129,7 @@ export function DataManagementScreen({
     })()
       .catch((error) => {
         Logger.error(TAG, (error as Error).message);
-        AppManager.showToast(t('message.error.common'));
+        ToastController.show(t('message.error.common'));
       })
       .finally(() => setLoading(false));
   }, []);
@@ -145,7 +146,7 @@ export function DataManagementScreen({
         .catch((error) => {
           Logger.error(TAG, `selectFile :: ${(error as Error).message}`);
           if (!(error as Error).message.includes('cancel')) {
-            AppManager.showToast(t('message.error.common'));
+            ToastController.show(t('message.error.common'));
           }
         });
     });

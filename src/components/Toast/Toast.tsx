@@ -2,7 +2,7 @@ import React, { memo, useState, useEffect } from 'react';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { styled, useSx, Pressable } from 'dripsy';
 import { AnimatePresence, MotiView } from 'moti';
-import { ToastManager } from './ToastManager';
+import { ToastController } from './ToastController';
 
 const TOAST_ANIMATE_HEIGHT = -100;
 
@@ -33,7 +33,7 @@ export const Toast = memo(function Toast() {
   });
 
   useEffect(() => {
-    ToastManager.getInstance().register((content) => {
+    ToastController.register((content) => {
       setContent(content);
     });
   }, []);
