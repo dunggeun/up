@@ -11,7 +11,7 @@ import { t } from 'src/translations';
 import { StorageManager } from '../database';
 import { Logger } from '../logger';
 import { checkNotificationPermission } from '../notifications';
-import { BadgeManager } from './BadgeManager';
+import { BadgeController } from './BadgeController';
 import type { DumpData } from '../database/types';
 import type { User } from 'src/features/users';
 
@@ -29,7 +29,7 @@ export class AppManager {
     this.task = Promise.all([
       (async (): Promise<void> => {
         checkNotificationPermission();
-        BadgeManager.getInstance().initialize();
+        new BadgeController().initialize();
         await StorageManager.getInstance().initialize();
         await this.prefetchUserData();
       })(),

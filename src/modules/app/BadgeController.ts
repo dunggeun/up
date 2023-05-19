@@ -4,24 +4,12 @@ import { Logger } from '../logger';
 import { badgeRules } from './rules';
 import type { Badge } from './types';
 
-const TAG = 'BadgeManager';
+const TAG = 'BadgeController';
 
-export class BadgeManager {
-  private static instance: BadgeManager | null = null;
+export class BadgeController {
   private tempBadgeIds: Badge['id'][] = [];
   private isIdle = false;
   private initialized = false;
-
-  private constructor() {
-    // empty constructor
-  }
-
-  public static getInstance(): BadgeManager {
-    if (BadgeManager.instance === null) {
-      BadgeManager.instance = new BadgeManager();
-    }
-    return BadgeManager.instance;
-  }
 
   initialize(): void {
     if (this.initialized) return;
