@@ -4,7 +4,7 @@ import { replacePlaceholder } from 'src/utils';
 import { t } from 'src/translations';
 import type { CoverGenerateConfig } from '../types';
 
-const IMAGE_SIZE = 512;
+const IMAGE_SIZE = 1080;
 const MAX_LIST_ITEM_COUNT = 3;
 
 export const getPageSource = (config: CoverGenerateConfig): string => {
@@ -29,7 +29,7 @@ export const getPageSource = (config: CoverGenerateConfig): string => {
             font-family: Jua, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, Inter-serif;
             font-weight: normal;
             box-sizing: border-box;
-            font-size: ${ROOT_FONT_SIZE}px;
+            font-size: ${ROOT_FONT_SIZE * 2}px;
           }
     
           html, body {
@@ -69,16 +69,16 @@ export const getPageSource = (config: CoverGenerateConfig): string => {
             display: flex;
             flex-direction: column;
             align-content: space-evenly;
-            width: 500px;
-            height: 500px;
-            padding: 1.5rem;
+            width: ${IMAGE_SIZE}px;
+            height: ${IMAGE_SIZE}px;
+            padding: 2.25rem;
             background-color: #ffffff;
           }
     
           div.progressbar {
             height: 2rem;
             width: 100%;
-            border: 4px solid ${colors.$border};
+            border: .25rem solid ${colors.$border};
             border-radius: 9999px;
             overflow: hidden;
           }
@@ -91,7 +91,7 @@ export const getPageSource = (config: CoverGenerateConfig): string => {
           div.button {
             position: relative;
             width: 100%;
-            height: 3rem;
+            height: 3.5rem;
             margin-bottom: 0.75rem;
           }
     
