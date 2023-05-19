@@ -4,10 +4,11 @@ import { SENTRY_RELEASE, SENTRY_SAMPLE_RATE } from 'src/constants';
 import type { CaptureException } from './types';
 
 const isApplication = STORYBOOK !== '1';
+const enabled = isApplication && !__DEV__;
 
 Sentry.init({
-  enabled: isApplication,
-  enableNative: isApplication,
+  enabled,
+  enableNative: enabled,
   environment: __DEV__ ? 'development' : 'production',
   release: SENTRY_RELEASE,
   dsn: REACT_NATIVE_SENTRY_DSN,
