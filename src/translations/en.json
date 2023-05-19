@@ -123,7 +123,10 @@
       "restore_success": "Your data has been successfully restored",
       "check_password": "Password must be at least 5 digits",
       "read_permission_for_restore": "Up needs storage read permissions to retrieve backup data",
-      "write_permission_for_backup": "Up needs storage write permissions to archive backup data"
+      "write_permission_for_backup": "Up needs storage write permissions to archive backup data",
+      "no_mission": "No missions have been completed yet",
+      "reminder_enabled": "Send you reminder at %@ every day",
+      "reminder_disabled": "Notification disabled"
     },
     "badge": {
       "1": {
