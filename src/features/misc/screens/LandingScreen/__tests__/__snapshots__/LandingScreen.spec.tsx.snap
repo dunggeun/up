@@ -21,34 +21,32 @@ exports[`screens/LandingScreen 렌더링 되었을 때 스냅샷이 일치해야
   }
 >
   <View
-    onLayout={[Function]}
     style={
       [
-        [
-          undefined,
-          {
-            "flex": 1,
-          },
-        ],
         {
-          "paddingBottom": 0,
+          "alignSelf": "center",
+          "backgroundColor": "#ffffff",
+          "flex": 1,
+          "marginHorizontal": "auto",
+          "maxWidth": 600,
+          "paddingHorizontal": 16,
+          "width": "100%",
         },
+        undefined,
+        {},
       ]
     }
   >
     <View
       style={
         [
+          {},
           {
-            "alignSelf": "center",
-            "backgroundColor": "#ffffff",
-            "flex": 1,
-            "marginHorizontal": "auto",
-            "maxWidth": 600,
-            "paddingHorizontal": 16,
-            "width": "100%",
+            "marginHorizontal": -16,
+            "zIndex": 3,
           },
           undefined,
+          {},
           {},
         ]
       }
@@ -58,360 +56,12 @@ exports[`screens/LandingScreen 렌더링 되었을 때 스냅샷이 일치해야
           [
             {},
             {
-              "marginHorizontal": -16,
-              "zIndex": 3,
-            },
-            undefined,
-            {},
-            {},
-          ]
-        }
-      >
-        <View
-          style={
-            [
-              {},
-              {
-                "alignItems": "center",
-                "backgroundColor": "#ffffff",
-                "flexDirection": "row",
-                "height": 56,
-                "justifyContent": "space-between",
-                "paddingHorizontal": 16,
-                "position": "relative",
-              },
-              undefined,
-              {},
-              {},
-            ]
-          }
-        >
-          <View
-            style={
-              [
-                {
-                  "flex": 1,
-                },
-                {
-                  "bottom": 0,
-                  "elevation": 3,
-                  "height": 16,
-                  "left": 0,
-                  "marginBottom": -16,
-                  "position": "absolute",
-                  "right": 0,
-                  "zIndex": 3,
-                },
-                undefined,
-                {},
-                {},
-              ]
-            }
-          >
-            <RNSVGSvgView
-              align="none"
-              bbHeight="100%"
-              bbWidth="100%"
-              focusable={false}
-              meetOrSlice={0}
-              minX={0}
-              minY={0}
-              style={
-                [
-                  {
-                    "backgroundColor": "transparent",
-                    "borderWidth": 0,
-                  },
-                  {
-                    "flex": 0,
-                    "height": "100%",
-                    "width": "100%",
-                  },
-                ]
-              }
-              vbHeight={100}
-              vbWidth={100}
-            >
-              <RNSVGGroup
-                fill={
-                  {
-                    "payload": 4278190080,
-                    "type": 0,
-                  }
-                }
-              >
-                <RNSVGDefs>
-                  <RNSVGLinearGradient
-                    gradient={
-                      [
-                        0,
-                        -1,
-                        1,
-                        16777215,
-                      ]
-                    }
-                    gradientTransform={
-                      [
-                        6.123233995736766e-17,
-                        1,
-                        -1,
-                        6.123233995736766e-17,
-                        0,
-                        0,
-                      ]
-                    }
-                    gradientUnits={1}
-                    name="g"
-                    x1="0"
-                    x2="100"
-                    y1="0"
-                    y2="0"
-                  />
-                </RNSVGDefs>
-                <RNSVGRect
-                  fill={
-                    {
-                      "brushRef": "g",
-                      "type": 1,
-                    }
-                  }
-                  height="100%"
-                  propList={
-                    [
-                      "fill",
-                    ]
-                  }
-                  width="100%"
-                  x="0"
-                  y="0"
-                />
-              </RNSVGGroup>
-            </RNSVGSvgView>
-          </View>
-          <View
-            style={
-              [
-                {},
-                {
-                  "height": 30,
-                  "width": 30,
-                },
-                undefined,
-                {},
-                {},
-              ]
-            }
-          />
-          <Text
-            accessibilityHint="Title"
-            accessibilityLabel="Empty"
-            accessibilityRole="header"
-            style={
-              [
-                {
-                  "fontSize": 48,
-                  "fontWeight": "bold",
-                  "marginVertical": 26.56,
-                },
-                [
-                  {
-                    "fontFamily": "BMJUA",
-                    "fontSize": 24,
-                    "marginVertical": 0,
-                    "paddingBottom": 4,
-                  },
-                  {
-                    "fontWeight": "normal",
-                  },
-                  undefined,
-                  {
-                    "color": "#2e2e2e",
-                  },
-                ],
-              ]
-            }
-          />
-          <View
-            style={
-              [
-                {},
-                {
-                  "height": 30,
-                  "width": 30,
-                },
-                undefined,
-                {},
-                {},
-              ]
-            }
-          />
-        </View>
-      </View>
-      <View
-        style={
-          [
-            {},
-            {
-              "flex": 1,
-            },
-            {},
-          ]
-        }
-      >
-        <View
-          style={
-            [
-              {},
-              {
-                "flex": 1,
-                "gap": 16,
-              },
-              undefined,
-              {},
-              {},
-            ]
-          }
-        >
-          <View
-            entering={
-              {
-                "delay": [MockFunction] {
-                  "calls": [
-                    [
-                      600,
-                    ],
-                  ],
-                  "results": [
-                    {
-                      "type": "return",
-                      "value": undefined,
-                    },
-                  ],
-                },
-              }
-            }
-            style={
-              [
-                {
-                  "paddingVertical": 16,
-                },
-                undefined,
-                {},
-              ]
-            }
-          >
-            <Text
-              accessibilityRole="header"
-              style={
-                [
-                  {
-                    "fontSize": 64,
-                    "fontWeight": "bold",
-                    "marginVertical": 21.44,
-                  },
-                  [
-                    {
-                      "color": "#2e2e2e",
-                      "fontFamily": "BMJUA",
-                      "fontSize": 32,
-                      "marginVertical": 0,
-                      "paddingBottom": 4,
-                    },
-                    {
-                      "fontWeight": "normal",
-                    },
-                    undefined,
-                    {},
-                  ],
-                ]
-              }
-            >
-              Welcome!
-Take the Up Challenge
-            </Text>
-          </View>
-          <View
-            style={
-              [
-                {},
-                {
-                  "alignItems": "center",
-                  "flex": 1,
-                  "justifyContent": "center",
-                  "paddingBottom": 100,
-                },
-                undefined,
-                {},
-                {},
-              ]
-            }
-          >
-            <View
-              animate={
-                {
-                  "scale": 1.2,
-                }
-              }
-              delay={500}
-              from={
-                {
-                  "scale": 1,
-                }
-              }
-              style={
-                [
-                  {
-                    "height": 180,
-                    "width": 180,
-                  },
-                  {
-                    "transform": [
-                      {
-                        "scale": 1,
-                      },
-                    ],
-                  },
-                ]
-              }
-              transition={
-                {
-                  "delay": 100,
-                  "duration": 1000,
-                  "loop": true,
-                  "type": "timing",
-                }
-              }
-            >
-              <Image
-                source={
-                  {
-                    "testUri": "../../../src/assets/images/logo.png",
-                  }
-                }
-                style={
-                  [
-                    {},
-                    {
-                      "height": "100%",
-                      "width": "100%",
-                    },
-                    undefined,
-                    {},
-                    {},
-                  ]
-                }
-              />
-            </View>
-          </View>
-        </View>
-      </View>
-      <View
-        style={
-          [
-            {},
-            {
-              "gap": 16,
-              "paddingBottom": 16,
+              "alignItems": "center",
+              "backgroundColor": "#ffffff",
+              "flexDirection": "row",
+              "height": 56,
+              "justifyContent": "space-between",
+              "paddingHorizontal": 16,
               "position": "relative",
             },
             undefined,
@@ -419,7 +69,6 @@ Take the Up Challenge
             {},
           ]
         }
-        withPadding={true}
       >
         <View
           style={
@@ -428,10 +77,11 @@ Take the Up Challenge
                 "flex": 1,
               },
               {
+                "bottom": 0,
                 "elevation": 3,
                 "height": 16,
                 "left": 0,
-                "marginTop": -16,
+                "marginBottom": -16,
                 "position": "absolute",
                 "right": 0,
                 "zIndex": 3,
@@ -479,9 +129,9 @@ Take the Up Challenge
                   gradient={
                     [
                       0,
-                      16777215,
-                      1,
                       -1,
+                      1,
+                      16777215,
                     ]
                   }
                   gradientTransform={
@@ -526,69 +176,207 @@ Take the Up Challenge
           style={
             [
               {},
+              {
+                "height": 30,
+                "width": 30,
+              },
+              undefined,
+              {},
+              {},
+            ]
+          }
+        />
+        <Text
+          accessibilityHint="Title"
+          accessibilityLabel="Empty"
+          accessibilityRole="header"
+          style={
+            [
+              {
+                "fontSize": 48,
+                "fontWeight": "bold",
+                "marginVertical": 26.56,
+              },
+              [
+                {
+                  "fontFamily": "BMJUA",
+                  "fontSize": 24,
+                  "marginVertical": 0,
+                  "paddingBottom": 4,
+                },
+                {
+                  "fontWeight": "normal",
+                },
+                undefined,
+                {
+                  "color": "#2e2e2e",
+                },
+              ],
+            ]
+          }
+        />
+        <View
+          style={
+            [
+              {},
+              {
+                "height": 30,
+                "width": 30,
+              },
+              undefined,
+              {},
+              {},
+            ]
+          }
+        />
+      </View>
+    </View>
+    <View
+      style={
+        [
+          {},
+          {
+            "flex": 1,
+          },
+          {},
+        ]
+      }
+    >
+      <View
+        style={
+          [
+            {},
+            {
+              "flex": 1,
+              "gap": 16,
+            },
+            undefined,
+            {},
+            {},
+          ]
+        }
+      >
+        <View
+          entering={
+            {
+              "delay": [MockFunction] {
+                "calls": [
+                  [
+                    600,
+                  ],
+                ],
+                "results": [
+                  {
+                    "type": "return",
+                    "value": undefined,
+                  },
+                ],
+              },
+            }
+          }
+          style={
+            [
+              {
+                "paddingVertical": 16,
+              },
               undefined,
               {},
             ]
           }
         >
-          <View
-            accessibilityHint="Start"
-            accessibilityLabel="Start"
-            accessibilityRole="button"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": false,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            collapsable={false}
-            disableHaptic={false}
-            focusable={true}
-            hitSlop={10}
-            onBlur={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
+          <Text
+            accessibilityRole="header"
             style={
               [
                 {
-                  "height": 56,
-                  "position": "relative",
+                  "fontSize": 64,
+                  "fontWeight": "bold",
+                  "marginVertical": 21.44,
                 },
-                undefined,
-                {},
+                [
+                  {
+                    "color": "#2e2e2e",
+                    "fontFamily": "BMJUA",
+                    "fontSize": 32,
+                    "marginVertical": 0,
+                    "paddingBottom": 4,
+                  },
+                  {
+                    "fontWeight": "normal",
+                  },
+                  undefined,
+                  {},
+                ],
               ]
             }
           >
-            <View
-              disabled={false}
+            Welcome!
+Take the Up Challenge
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {},
+              {
+                "alignItems": "center",
+                "flex": 1,
+                "justifyContent": "center",
+                "paddingBottom": 100,
+              },
+              undefined,
+              {},
+              {},
+            ]
+          }
+        >
+          <View
+            animate={
+              {
+                "scale": 1.2,
+              }
+            }
+            delay={500}
+            from={
+              {
+                "scale": 1,
+              }
+            }
+            style={
+              [
+                {
+                  "height": 180,
+                  "width": 180,
+                },
+                {
+                  "transform": [
+                    {
+                      "scale": 1,
+                    },
+                  ],
+                },
+              ]
+            }
+            transition={
+              {
+                "delay": 100,
+                "duration": 1000,
+                "loop": true,
+                "type": "timing",
+              }
+            }
+          >
+            <Image
+              source={
+                {
+                  "testUri": "../../../src/assets/images/logo.png",
+                }
+              }
               style={
                 [
                   {},
                   {
-                    "backgroundColor": "#2e2e2e",
-                    "borderRadius": 8,
-                    "bottom": -5,
                     "height": "100%",
-                    "left": 0,
-                    "position": "absolute",
                     "width": "100%",
                   },
                   undefined,
@@ -597,83 +385,234 @@ Take the Up Challenge
                 ]
               }
             />
-            <View
-              collapsable={false}
-              color="$brand"
-              disabled={false}
-              style={
-                {
-                  "alignItems": "center",
-                  "backgroundColor": "#2196f3",
-                  "borderColor": "#2e2e2e",
-                  "borderRadius": 8,
-                  "borderWidth": 2,
-                  "display": "flex",
-                  "flexDirection": "row",
-                  "height": "100%",
-                  "justifyContent": "space-between",
-                  "marginTop": 0,
-                  "paddingHorizontal": 16,
-                  "width": "100%",
-                }
+          </View>
+        </View>
+      </View>
+    </View>
+    <View
+      style={
+        [
+          {},
+          {
+            "gap": 16,
+            "paddingBottom": 16,
+            "position": "relative",
+          },
+          undefined,
+          {},
+          {},
+        ]
+      }
+      withPadding={true}
+    >
+      <View
+        style={
+          [
+            {
+              "flex": 1,
+            },
+            {
+              "elevation": 3,
+              "height": 16,
+              "left": 0,
+              "marginTop": -16,
+              "position": "absolute",
+              "right": 0,
+              "zIndex": 3,
+            },
+            undefined,
+            {},
+            {},
+          ]
+        }
+      >
+        <RNSVGSvgView
+          align="none"
+          bbHeight="100%"
+          bbWidth="100%"
+          focusable={false}
+          meetOrSlice={0}
+          minX={0}
+          minY={0}
+          style={
+            [
+              {
+                "backgroundColor": "transparent",
+                "borderWidth": 0,
+              },
+              {
+                "flex": 0,
+                "height": "100%",
+                "width": "100%",
+              },
+            ]
+          }
+          vbHeight={100}
+          vbWidth={100}
+        >
+          <RNSVGGroup
+            fill={
+              {
+                "payload": 4278190080,
+                "type": 0,
               }
-            >
-              <View
-                disabled={false}
-                hasAdornment={false}
-                style={
+            }
+          >
+            <RNSVGDefs>
+              <RNSVGLinearGradient
+                gradient={
                   [
-                    {},
-                    {
-                      "height": "100%",
-                      "justifyContent": "center",
-                      "opacity": 1,
-                      "width": "100%",
-                    },
-                    undefined,
-                    {},
-                    {},
+                    0,
+                    16777215,
+                    1,
+                    -1,
                   ]
                 }
-              >
-                <Text
-                  isLightBackground={false}
-                  style={
-                    [
-                      {
-                        "fontFamily": "BMJUA",
-                        "fontSize": 16,
-                        "paddingBottom": 4,
-                      },
-                      {
-                        "color": "#ffffff",
-                        "fontSize": 24,
-                        "marginVertical": 0,
-                        "paddingBottom": 4,
-                        "textAlign": "center",
-                      },
-                      undefined,
-                      {},
-                      {},
-                    ]
-                  }
-                >
-                  Start
-                </Text>
-              </View>
-            </View>
+                gradientTransform={
+                  [
+                    6.123233995736766e-17,
+                    1,
+                    -1,
+                    6.123233995736766e-17,
+                    0,
+                    0,
+                  ]
+                }
+                gradientUnits={1}
+                name="g"
+                x1="0"
+                x2="100"
+                y1="0"
+                y2="0"
+              />
+            </RNSVGDefs>
+            <RNSVGRect
+              fill={
+                {
+                  "brushRef": "g",
+                  "type": 1,
+                }
+              }
+              height="100%"
+              propList={
+                [
+                  "fill",
+                ]
+              }
+              width="100%"
+              x="0"
+              y="0"
+            />
+          </RNSVGGroup>
+        </RNSVGSvgView>
+      </View>
+      <View
+        style={
+          [
+            {},
+            undefined,
+            {},
+          ]
+        }
+      >
+        <View
+          accessibilityHint="Start"
+          accessibilityLabel="Start"
+          accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": false,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          disableHaptic={false}
+          focusable={true}
+          hitSlop={10}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            [
+              {
+                "height": 56,
+                "position": "relative",
+              },
+              undefined,
+              {},
+            ]
+          }
+        >
+          <View
+            disabled={false}
+            style={
+              [
+                {},
+                {
+                  "backgroundColor": "#2e2e2e",
+                  "borderRadius": 8,
+                  "bottom": -5,
+                  "height": "100%",
+                  "left": 0,
+                  "position": "absolute",
+                  "width": "100%",
+                },
+                undefined,
+                {},
+                {},
+              ]
+            }
+          />
+          <View
+            collapsable={false}
+            color="$brand"
+            disabled={false}
+            style={
+              {
+                "alignItems": "center",
+                "backgroundColor": "#2196f3",
+                "borderColor": "#2e2e2e",
+                "borderRadius": 8,
+                "borderWidth": 2,
+                "display": "flex",
+                "flexDirection": "row",
+                "height": "100%",
+                "justifyContent": "space-between",
+                "marginTop": 0,
+                "paddingHorizontal": 16,
+                "width": "100%",
+              }
+            }
+          >
             <View
+              disabled={false}
+              hasAdornment={false}
               style={
                 [
                   {},
                   {
-                    "borderRadius": 8,
-                    "bottom": -5,
-                    "left": 0,
-                    "overflow": "hidden",
-                    "position": "absolute",
-                    "right": 0,
-                    "top": 0,
+                    "height": "100%",
+                    "justifyContent": "center",
+                    "opacity": 1,
+                    "width": "100%",
                   },
                   undefined,
                   {},
@@ -681,21 +620,65 @@ Take the Up Challenge
                 ]
               }
             >
-              <View
-                collapsable={false}
+              <Text
                 isLightBackground={false}
                 style={
-                  {
-                    "backgroundColor": "#ffffff",
-                    "borderRadius": 8,
-                    "height": "100%",
-                    "marginTop": 0,
-                    "opacity": 0.2,
-                    "width": "0%",
-                  }
+                  [
+                    {
+                      "fontFamily": "BMJUA",
+                      "fontSize": 16,
+                      "paddingBottom": 4,
+                    },
+                    {
+                      "color": "#ffffff",
+                      "fontSize": 24,
+                      "marginVertical": 0,
+                      "paddingBottom": 4,
+                      "textAlign": "center",
+                    },
+                    undefined,
+                    {},
+                    {},
+                  ]
                 }
-              />
+              >
+                Start
+              </Text>
             </View>
+          </View>
+          <View
+            style={
+              [
+                {},
+                {
+                  "borderRadius": 8,
+                  "bottom": -5,
+                  "left": 0,
+                  "overflow": "hidden",
+                  "position": "absolute",
+                  "right": 0,
+                  "top": 0,
+                },
+                undefined,
+                {},
+                {},
+              ]
+            }
+          >
+            <View
+              collapsable={false}
+              isLightBackground={false}
+              style={
+                {
+                  "backgroundColor": "#ffffff",
+                  "borderRadius": 8,
+                  "height": "100%",
+                  "marginTop": 0,
+                  "opacity": 0.2,
+                  "width": "0%",
+                }
+              }
+            />
           </View>
         </View>
       </View>
