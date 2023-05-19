@@ -127,7 +127,10 @@ export function MenuScreen(_props: MenuProps): React.ReactElement {
 
     return (
       <>
-        <Option onPress={(): void => setTimePickerVisibility(true)}>
+        <Option
+          disabled={!(canUseReminder && remindAt)}
+          onPress={(): void => setTimePickerVisibility(true)}
+        >
           <H2 variant="primary">
             {canUseReminder
               ? reminderEnabledLabel

@@ -126,7 +126,9 @@
       "check_password": "비밀번호는 5자리 이상이어야 해요",
       "read_permission_for_restore": "백업 데이터를 불러오기 위해 저장소 읽기 권한이 필요해요",
       "write_permission_for_backup": "백업 데이터를 보관하기 위해 저장소 쓰기 권한이 필요해요",
-      "no_mission": "아직 수행한 임무가 없어요"
+      "no_mission": "아직 수행한 임무가 없어요",
+      "reminder_enabled": "매일 %@에 알림을 보내드릴게요",
+      "reminder_disabled": "알림이 비활성화 되었어요"
     },
     "badge": {
       "1": {

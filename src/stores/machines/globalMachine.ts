@@ -1,6 +1,7 @@
 import { InteractionManager } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { createMachine, assign } from 'xstate';
+import { ToastController } from 'src/components/Toast/ToastController';
 import * as AppHelpers from 'src/modules/app/helpers';
 import { StorageManager } from 'src/modules/database';
 import { AppEventChannel } from 'src/modules/event';
@@ -10,6 +11,7 @@ import {
   scheduleLocalNotification,
 } from 'src/modules/notifications';
 import { t } from 'src/translations';
+import { replacePlaceholder } from '../../utils/string';
 import { queryClient } from '../reactQuery';
 import type { User } from 'src/features/users';
 
@@ -185,14 +187,22 @@ export const globalMachine = createMachine(
           updatedAt: Number(new Date()),
         } as User;
 
-        if (changes.remindAt !== undefined) {
+        const { remindAt } = changes;
+        if (remindAt !== undefined) {
           // remind 알림 설정을 변경한 경우 값에 따라 알림 등록 or 스케줄링
-          changes.remindAt
+          const reminderEnabled = remindAt !== null;
+          reminderEnabled
             ? scheduleLocalNotification(
-                changes.remindAt,
+                remindAt,
                 t('message.notification.reminder'),
               )
             : cancelAllScheduledNotifications();
+
+          ToastController.show(
+            reminderEnabled
+              ? replacePlaceholder(t('message.reminder_enabled'), remindAt)
+              : t('message.reminder_disabled'),
+          );
         }
 
         await AsyncStorage.setItem('user', JSON.stringify(modifiedUser));
