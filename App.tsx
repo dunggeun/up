@@ -6,7 +6,6 @@ import { NavigationContainer } from '@react-navigation/native';
 import { DripsyProvider } from 'dripsy';
 import { QueryClientProvider } from 'react-query';
 import { RecoilRoot } from 'recoil';
-import { EventBasedBadgeModal } from 'src/features/users/components/BadgeModal';
 import { Logger } from 'src/modules/logger';
 import { navigationRef } from 'src/navigators/helpers';
 import { queryClient } from 'src/stores/reactQuery';
@@ -15,7 +14,7 @@ import { themeLight } from 'src/themes';
 import { colors } from 'src/themes/colors';
 import { titleFormatter } from 'src/utils';
 import { AnimateSuspense, Toast } from 'src/components';
-import { LevelUpModal } from './src/features/users/components/LevelUpModal';
+import { Modals } from './Modals';
 
 // eslint-disable-next-line import/no-named-as-default-member
 const Navigator = React.lazy(() => import('src/navigators'));
@@ -41,11 +40,10 @@ function AppProviders<T = unknown>({
               >
                 {children}
               </NavigationContainer>
+              <Toast />
+              <Modals />
             </RecoilRoot>
           </QueryClientProvider>
-          <Toast />
-          <LevelUpModal />
-          <EventBasedBadgeModal />
         </DripsyProvider>
       </SafeAreaProvider>
     </GestureHandlerRootView>

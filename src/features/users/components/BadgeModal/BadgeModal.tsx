@@ -1,4 +1,4 @@
-import React, { memo, useState, useMemo, useCallback, useEffect } from 'react';
+import React, { memo, useState, useMemo, useEffect } from 'react';
 import { styled, View, Image } from 'dripsy';
 import { MotiView } from 'moti';
 import * as AppHelpers from 'src/modules/app/helpers';
@@ -37,7 +37,7 @@ const Message = styled(Text)({
   textAlign: 'center',
 });
 
-export const BadgeModal = memo(function BadgeModal({
+export const PlainBadgeModal = memo(function BadgeModal({
   badge,
   visible,
   showUnlockedTitle = false,
@@ -64,33 +64,28 @@ export const BadgeModal = memo(function BadgeModal({
   );
 });
 
-export const EventBasedBadgeModal = memo(function EventBasedBadgeModal() {
+export function BadgeModal({
+  visible,
+  onClose,
+}: Pick<ModalProps, 'visible' | 'onClose'>): React.ReactElement {
   const [badgeId, setBadgeId] = useState(0);
-  const [visibility, setVisibility] = useState(false);
   const badge = useMemo(() => AppHelpers.getBadge(badgeId), [badgeId]);
 
-  const handleClose = useCallback((): void => {
-    setVisibility(false);
-  }, []);
-
   useEffect(() => {
-    const subscription = AppEventChannel.getInstance().addEventListener(
-      'unlockBadge',
-      (event) => {
-        setBadgeId(event.badgeId);
-        setVisibility(true);
-      },
-    );
+    const channel = AppEventChannel.getInstance();
+    const subscription = channel.addEventListener('unlockBadge', (event) => {
+      setBadgeId(event.badgeId);
+    });
 
     return (): void => subscription.remove();
   }, []);
 
   return (
-    <BadgeModal
+    <PlainBadgeModal
       badge={badge}
-      onClose={handleClose}
+      onClose={onClose}
       showUnlockedTitle
-      visible={visibility}
+      visible={visible}
     />
   );
-});
+}

@@ -1,9 +1,10 @@
-import React, { memo, useState, useCallback, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { styled, View } from 'dripsy';
 import { MotiView } from 'moti';
 import { Star } from 'src/assets/symbols';
 import { AppEventChannel } from 'src/modules/event';
 import { H2, Text } from 'src/designs';
+import type { ModalProps } from 'src/components';
 import { AnimatedNumber, Modal } from 'src/components';
 import { t } from 'src/translations';
 
@@ -26,28 +27,23 @@ const Message = styled(Text)({
   textAlign: 'center',
 });
 
-export const LevelUpModal = memo(function LevelUpModal(): React.ReactElement {
+export function LevelUpModal({
+  onClose,
+  visible,
+}: Pick<ModalProps, 'visible' | 'onClose'>): React.ReactElement {
   const [level, setLevel] = useState(1);
-  const [visibility, setVisibility] = useState(false);
 
   useEffect(() => {
-    const subscription = AppEventChannel.getInstance().addEventListener(
-      'levelup',
-      (event) => {
-        setLevel(event.level);
-        setVisibility(true);
-      },
-    );
+    const channel = AppEventChannel.getInstance();
+    const subscription = channel.addEventListener('levelup', (event) => {
+      setLevel(event.level);
+    });
 
     return () => subscription.remove();
   }, []);
 
-  const handleClose = useCallback(() => {
-    setVisibility(false);
-  }, []);
-
   return (
-    <Modal onClose={handleClose} visible={visibility}>
+    <Modal onClose={onClose} visible={visible}>
       <Content testID="level-up-modal">
         <StarSymbolArea
           animate={{ scale: 1.5 }}
@@ -70,4 +66,4 @@ export const LevelUpModal = memo(function LevelUpModal(): React.ReactElement {
       </Content>
     </Modal>
   );
-});
+}

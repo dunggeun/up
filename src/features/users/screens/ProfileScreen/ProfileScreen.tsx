@@ -14,7 +14,7 @@ import { runAfterModalDismissed } from 'src/utils';
 import { CommonLayout, Button } from 'src/designs';
 import { FadeInView } from 'src/components';
 import { t } from 'src/translations';
-import { BadgeModal } from '../../components/BadgeModal';
+import { PlainBadgeModal } from '../../components/BadgeModal';
 import { BadgeSection } from '../../components/BadgeSection';
 import { ShareModal } from '../../components/ShareModal';
 import { ThemeSection } from '../../components/ThemeSection';
@@ -130,7 +130,7 @@ export function ProfileScreen(_props: ProfileScreenProps): React.ReactElement {
         user={user}
         visible={shareModalVisibility}
       />
-      <BadgeModal
+      <PlainBadgeModal
         badge={selectedBadge}
         onClose={handlePressClose}
         visible={badgeModalVisibility}
