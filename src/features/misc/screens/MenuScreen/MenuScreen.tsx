@@ -48,8 +48,7 @@ export function MenuScreen(_props: MenuProps): React.ReactElement {
     [remindAt],
   );
   const hapticEnabled = state.context.user?.settings.enableHaptic ?? false;
-  const canUseReminder =
-    notificationStatus.error === null && notificationStatus.granted;
+  const canUseReminder = notificationStatus.granted;
 
   useEffect(() => {
     if (notificationStatus.granted) return;
