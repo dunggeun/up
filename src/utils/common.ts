@@ -6,16 +6,16 @@ import {
 
 const HAPTIC_FEEDBACK_TYPES = {
   press: Platform.select<RNHapticFeedbackTypes>({
-    ios: RNHapticFeedbackTypes.impactLight,
+    ios: RNHapticFeedbackTypes.selection,
     android: RNHapticFeedbackTypes.virtualKey,
   }),
   buttonPress: Platform.select<RNHapticFeedbackTypes>({
-    ios: RNHapticFeedbackTypes.impactMedium,
+    ios: RNHapticFeedbackTypes.impactLight,
     android: RNHapticFeedbackTypes.effectClick,
   }),
   buttonLongPress: Platform.select<RNHapticFeedbackTypes>({
-    ios: RNHapticFeedbackTypes.impactHeavy,
-    android: RNHapticFeedbackTypes.effectHeavyClick,
+    ios: RNHapticFeedbackTypes.impactMedium,
+    android: RNHapticFeedbackTypes.longPress,
   }),
 } as const;
 
