@@ -85,13 +85,16 @@ export function ReminderOption({
             {t('label.notification')}
           </Label>
         ))
-        .with({ permissionGranted: true, remindTime: P.select() }, (res) => (
-          <Panel onPress={onPressTimePicker}>
-            <Label sx={{ paddingX: '$02', paddingY: '$02' }}>
-              {replacePlaceholder(t('label.reminder_time'), res ?? '')}
-            </Label>
-          </Panel>
-        ))
+        .with(
+          { permissionGranted: true, remindTime: P.select(P.string) },
+          (res) => (
+            <Panel onPress={onPressTimePicker}>
+              <Label sx={{ paddingX: '$02', paddingY: '$02' }}>
+                {replacePlaceholder(t('label.reminder_time'), res)}
+              </Label>
+            </Panel>
+          ),
+        )
         .exhaustive()}
       <Toggle
         color={userColor}
