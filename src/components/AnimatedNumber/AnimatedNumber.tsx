@@ -1,6 +1,6 @@
 /* eslint-disable react/no-array-index-key */
 import React, { memo, useState, useEffect, useLayoutEffect } from 'react';
-import { Animated, Platform } from 'react-native';
+import { Animated, type LayoutChangeEvent } from 'react-native';
 import { styled, View } from 'dripsy';
 import { USE_NATIVE_DRIVER } from 'src/constants';
 import { H1 } from '../../designs/atoms/H1';
@@ -34,10 +34,14 @@ export const AnimatedNumber = memo(function AnimatedNumber({
   variant = 'primary',
 }: AnimatedNumberProps): React.ReactElement {
   const [numbers, setNumbers] = useState<number[]>();
+  const [height, setHeight] = useState(0);
   const [animationValues, setAnimationValues] = useState<Animated.Value[]>([]);
 
-  const height = (size === 'md' ? 24 : 32) + (Platform.OS === 'web' ? 8 : 0);
   const TextComponent = size === 'md' ? H2 : H1;
+
+  const handleLayout = (event: LayoutChangeEvent): void => {
+    setHeight(event.nativeEvent.layout.height);
+  };
 
   useLayoutEffect(() => {
     const numbers = Array.from(value.toString(), Number);
@@ -97,6 +101,7 @@ export const AnimatedNumber = memo(function AnimatedNumber({
           </Animated.View>
         </NumberWrapper>
       ))}
+      <TextComponent onLayout={handleLayout}> </TextComponent>
     </NumberContainer>
   );
 });

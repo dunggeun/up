@@ -30,7 +30,10 @@ const TagLabel = styled(Text)(
     disabled,
   }: { isLight: boolean } & Pick<TagProps, 'disabled'>) => {
     const labelColor = isLight ? '$text_primary' : '$white';
-    return { color: disabled ? `${labelColor}_disabled` : labelColor };
+    return {
+      color: disabled ? `${labelColor}_disabled` : labelColor,
+      fontWeight: 'bold',
+    };
   },
 );
 

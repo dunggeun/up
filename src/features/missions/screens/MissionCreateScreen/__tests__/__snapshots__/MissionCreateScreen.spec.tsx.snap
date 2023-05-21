@@ -205,29 +205,17 @@ exports[`screens/MissionCreateScreen 렌더링 되었을 때 스냅샷이 일치
           <Text
             accessibilityHint="Title"
             accessibilityLabel="Empty"
-            accessibilityRole="header"
             style={
               [
                 {
-                  "fontSize": 48,
-                  "fontWeight": "bold",
-                  "marginVertical": 26.56,
+                  "fontFamily": "TmoneyRoundWind-ExtraBold",
+                  "fontSize": 24,
+                  "marginVertical": 0,
                 },
-                [
-                  {
-                    "fontFamily": "BMJUA",
-                    "fontSize": 24,
-                    "marginVertical": 0,
-                    "paddingBottom": 4,
-                  },
-                  {
-                    "fontWeight": "normal",
-                  },
-                  undefined,
-                  {
-                    "color": "#2e2e2e",
-                  },
-                ],
+                undefined,
+                {
+                  "color": "#2e2e2e",
+                },
               ]
             }
           />
@@ -413,28 +401,16 @@ exports[`screens/MissionCreateScreen 렌더링 되었을 때 스냅샷이 일치
                 }
               >
                 <Text
-                  accessibilityRole="header"
                   style={
                     [
                       {
-                        "fontSize": 64,
-                        "fontWeight": "bold",
-                        "marginVertical": 21.44,
+                        "color": "#2e2e2e",
+                        "fontFamily": "TmoneyRoundWind-ExtraBold",
+                        "fontSize": 32,
+                        "marginVertical": 0,
                       },
-                      [
-                        {
-                          "color": "#2e2e2e",
-                          "fontFamily": "BMJUA",
-                          "fontSize": 32,
-                          "marginVertical": 0,
-                          "paddingBottom": 4,
-                        },
-                        {
-                          "fontWeight": "normal",
-                        },
-                        undefined,
-                        {},
-                      ],
+                      undefined,
+                      {},
                     ]
                   }
                 >
@@ -458,13 +434,14 @@ a new mission title
                 }
               >
                 <TextInput
+                  computedHeight={60}
                   onChangeText={[Function]}
                   placeholder="Please enter your name"
                   placeholderTextColor="#cccccc"
                   style={
                     [
                       {
-                        "fontFamily": "BMJUA",
+                        "fontFamily": "TmoneyRoundWind-Regular",
                       },
                       {
                         "borderColor": "#2e2e2e",
@@ -472,14 +449,16 @@ a new mission title
                         "borderWidth": 2,
                         "color": "#2e2e2e",
                         "fontSize": 24,
+                        "paddingBottom": 8,
                         "paddingHorizontal": 16,
-                        "paddingVertical": 12,
+                        "paddingTop": 12,
                       },
                       undefined,
                       {},
                       {},
                     ]
                   }
+                  textAlignVertical="center"
                 />
               </View>
             </View>
@@ -712,15 +691,14 @@ a new mission title
                   style={
                     [
                       {
-                        "fontFamily": "BMJUA",
+                        "fontFamily": "TmoneyRoundWind-Regular",
                         "fontSize": 16,
-                        "paddingBottom": 4,
                       },
                       {
                         "color": "#ffffff",
+                        "fontFamily": "TmoneyRoundWind-ExtraBold",
                         "fontSize": 24,
                         "marginVertical": 0,
-                        "paddingBottom": 4,
                         "textAlign": "center",
                       },
                       undefined,

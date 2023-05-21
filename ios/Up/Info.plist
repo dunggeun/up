@@ -40,10 +40,11 @@
 		</dict>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string/>
 	<key>UIAppFonts</key>
 	<array>
-		<string>BMJUA.ttf</string>
+		<string>TmoneyRoundWindExtraBold.ttf</string>
+		<string>TmoneyRoundWindRegular.ttf</string>
 	</array>
 	<key>UIBackgroundModes</key>
 	<array>

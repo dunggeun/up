@@ -2,8 +2,12 @@
   "migIndex": 1,
   "data": [
     {
-      "path": "assets/fonts/BMJUA.ttf",
-      "sha1": "e9ae3ad795aea36d4b271599072fe6761edefd5a"
+      "path": "assets/fonts/TmoneyRoundWindExtraBold.ttf",
+      "sha1": "239f22590abed8a518ba99d9093e4c26fdbfe677"
+    },
+    {
+      "path": "assets/fonts/TmoneyRoundWindRegular.ttf",
+      "sha1": "ad5e22eef228daed167e1f6ee87617c7ad8de554"
     }
   ]
 }

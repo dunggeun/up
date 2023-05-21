@@ -18,11 +18,15 @@ declare module 'dripsy' {
 export const ROOT_FONT_SIZE = 16;
 
 const FONT_NAME = Platform.select({
-  web: 'Jua',
-  default: 'BMJUA',
+  ios: 'TmoneyRoundWind-Regular',
+  default: 'TmoneyRoundWindRegular',
 });
 
-const overrideHeadingStyle = { fontWeight: 'normal' } as const;
+const BOLD_FONT_NAME = Platform.select({
+  ios: 'TmoneyRoundWind-ExtraBold',
+  default: 'TmoneyRoundWindExtraBold',
+});
+
 const presets = {
   buttonCap: (style?: Sx) =>
     ({
@@ -56,7 +60,7 @@ const themeLight = makeTheme({
   colors,
   customFonts: {
     [FONT_NAME]: {
-      bold: webFont(FONT_NAME),
+      bold: webFont(BOLD_FONT_NAME),
       default: webFont(FONT_NAME),
       normal: webFont(FONT_NAME),
     },
@@ -75,26 +79,24 @@ const themeLight = makeTheme({
     // Default text style
     body: {
       fontSize: ROOT_FONT_SIZE,
-      paddingBottom: '$01',
     },
     h1: {
       marginVertical: 0,
-      paddingBottom: '$01',
       fontSize: '$h1',
+      fontWeight: 'bold',
     },
     h2: {
       marginVertical: 0,
-      paddingBottom: '$01',
       fontSize: '$h2',
+      fontWeight: 'bold',
     },
     h3: {
       marginVertical: 0,
-      paddingBottom: '$01',
       fontSize: '$h3',
+      fontWeight: 'bold',
     },
     p: {
       marginVertical: 0,
-      paddingBottom: '$01',
       fontSize: '$text',
     },
     primary: {
@@ -159,4 +161,4 @@ const themeDark: Theme = {
   ...themeLight,
 };
 
-export { themeLight, themeDark, overrideHeadingStyle, presets };
+export { themeLight, themeDark, presets };
