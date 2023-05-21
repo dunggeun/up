@@ -3,7 +3,7 @@ import { InteractionManager } from 'react-native';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import { useActor } from '@xstate/react';
 import dayjs from 'dayjs';
-import { Pressable, styled, useDripsyTheme, View } from 'dripsy';
+import { useDripsyTheme, View } from 'dripsy';
 import { useRecoilValue } from 'recoil';
 import { useUserThemeColor, type User } from 'src/features/users';
 import { AppEventChannel } from 'src/modules/event';
@@ -20,20 +20,14 @@ import {
   REMINDER_TIME_FORMAT,
   VERSION,
 } from 'src/constants';
-import { CommonLayout, H2, Toggle } from 'src/designs';
+import { CommonLayout } from 'src/designs';
 import { FadeInView, ListItem } from 'src/components';
 import { t } from 'src/translations';
-import { replacePlaceholder } from '../../../../utils/string';
+import { ReminderOption } from './components';
+import { HapticFeedbackOption } from './components/HapticFeedbackOption';
 import type { MainTabProps } from 'src/navigators/MainTab/types';
 
 type MenuProps = MainTabProps<'Menu'>;
-
-const Option = styled(Pressable)({
-  flexDirection: 'row',
-  justifyContent: 'space-between',
-  alignItems: 'center',
-  paddingY: '$04',
-});
 
 export function MenuScreen(_props: MenuProps): React.ReactElement {
   const [timePickerVisibility, setTimePickerVisibility] = useState(false);
@@ -48,7 +42,6 @@ export function MenuScreen(_props: MenuProps): React.ReactElement {
     [remindAt],
   );
   const hapticEnabled = state.context.user?.settings.enableHaptic ?? false;
-  const canUseReminder = notificationStatus.granted;
 
   useEffect(() => {
     if (notificationStatus.granted) return;
@@ -120,36 +113,18 @@ export function MenuScreen(_props: MenuProps): React.ReactElement {
   const renderNativeOptions = (): React.ReactElement | null => {
     if (!IS_NATIVE) return null;
 
-    const reminderEnabledLabel = remindAt
-      ? replacePlaceholder(t('label.reminder_time'), remindAt)
-      : t('label.notification');
-
     return (
       <>
-        <Option
-          disabled={!(canUseReminder && remindAt)}
-          onPress={(): void => setTimePickerVisibility(true)}
-        >
-          <H2 variant="primary">
-            {canUseReminder
-              ? reminderEnabledLabel
-              : t('message.error.permission_required')}
-          </H2>
-          <Toggle
-            color={userColor}
-            disabled={!canUseReminder}
-            initialValue={Boolean(remindAt)}
-            onChange={handleChangeReminderToggle}
-          />
-        </Option>
-        <Option disabled>
-          <H2 variant="primary">{t('label.haptic_feedback')}</H2>
-          <Toggle
-            color={userColor}
-            initialValue={hapticEnabled}
-            onChange={handleChangeHapticFeedbackToggle}
-          />
-        </Option>
+        <ReminderOption
+          onChangeToggle={handleChangeReminderToggle}
+          onPressTimePicker={(): void => setTimePickerVisibility(true)}
+          permissionGranted={notificationStatus.granted}
+          remindTime={remindAt ?? null}
+        />
+        <HapticFeedbackOption
+          hapticEnabled={hapticEnabled}
+          onChangeToggle={handleChangeHapticFeedbackToggle}
+        />
       </>
     );
   };

@@ -1,3 +1,5 @@
+export type RemindTime = `${number}:${number}`;
+
 export interface User {
   name: string;
   level: number;
@@ -9,7 +11,7 @@ export interface User {
   settings: {
     enableHaptic: boolean;
   };
-  remindAt: string | null;
+  remindAt: RemindTime | null;
   createdAt: number;
   updatedAt: number;
 }
