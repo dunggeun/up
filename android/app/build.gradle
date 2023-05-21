@@ -112,7 +112,7 @@ android {
         applicationId "dev.geundung.up"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
+        versionCode 23052202
         versionName "1.0.0"
     }
 
