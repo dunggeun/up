@@ -81,18 +81,20 @@ export function ProfileScreen(_props: ProfileScreenProps): React.ReactElement {
   const handlePressBadge = useCallback(
     (id: number): void => {
       handleEditUser({ badge: id });
+
+      // 빈 뱃지인 경우 모달 노출하지 않음
+      if (id !== 0) {
+        setBadgeId(id);
+        setBadgeModalVisibility(true);
+      }
     },
     [handleEditUser],
   );
 
-  const handleLongPressBadge = useCallback((id: number): void => {
-    setBadgeId(id);
-    setBadgeModalVisibility(true);
-  }, []);
-
   const handlePressTheme = useCallback(
     (id: number): void => {
       handleEditUser({ theme: id });
+      ToastController.show(t('message.theme_changed'));
       AppEventChannel.getInstance().dispatch('changeTheme', {
         themeId: id,
       });
@@ -116,7 +118,6 @@ export function ProfileScreen(_props: ProfileScreenProps): React.ReactElement {
             {t('label.share')}
           </Button>
           <BadgeSection
-            onLongPressBadge={handleLongPressBadge}
             onPressBadge={handlePressBadge}
             unlockedBadges={user.unlockedBadges}
           />

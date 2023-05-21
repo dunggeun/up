@@ -10,7 +10,6 @@ import type { Badge } from 'src/modules/app/types';
 export interface BadgeSectionProps {
   unlockedBadges: User['unlockedBadges'];
   onPressBadge: (badgeId: number) => void;
-  onLongPressBadge: (badgeId: number) => void;
 }
 
 const ACCESSIBILITY = {
@@ -44,7 +43,6 @@ const TOTAL_BADGES = AppHelpers.getBadges();
 export const BadgeSection = memo(function BadgeSection({
   unlockedBadges,
   onPressBadge,
-  onLongPressBadge,
 }: BadgeSectionProps): React.ReactElement {
   const sx = useSx();
   const overridingButtonStyle = sx({
@@ -97,10 +95,9 @@ export const BadgeSection = memo(function BadgeSection({
                 accessibilityLabel={badge.title}
                 color="$white"
                 containerStyle={buttonContainerStyle}
-                disableLongPress={badge.id === 0}
+                disableLongPress
                 disabled={!isUnlocked(badge.id)}
                 key={badge.id}
-                onLongPress={(): void => onLongPressBadge(badge.id)}
                 onPress={(): void => onPressBadge(badge.id)}
                 style={overridingButtonStyle}
               >

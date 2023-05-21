@@ -54,6 +54,7 @@ export function DataManagementScreen({
   const selectedActionRef = useRef<'backup' | 'restore'>();
   const backupFileRef = useRef<string | File>();
   const [loading, setLoading] = useState(false);
+  const [resetLoading, setResetLoading] = useState(false);
   const [enterPasswordModalVisibility, setEnterPasswordModalVisibility] =
     useState(false);
   const [restoreConfirmModalVisibility, setRestoreConfirmModalVisibility] =
@@ -144,8 +145,8 @@ export function DataManagementScreen({
           setEnterPasswordModalVisibility(true);
         })
         .catch((error) => {
-          Logger.error(TAG, `selectFile :: ${(error as Error).message}`);
           if (!(error as Error).message.includes('cancel')) {
+            Logger.error(TAG, `selectFile :: ${(error as Error).message}`);
             ToastController.show(t('message.error.common'));
           }
         });
@@ -153,8 +154,13 @@ export function DataManagementScreen({
   }, []);
 
   const deleteAndLogout = useCallback((): void => {
-    setDeleteConfirmModalVisibility(false);
-    send({ type: 'LOGOUT' });
+    setResetLoading(true);
+    delay(APP_MINIMUM_LOADING_DURATION)
+      .then(() => send({ type: 'LOGOUT' }))
+      .finally(() => {
+        setResetLoading(false);
+        setDeleteConfirmModalVisibility(false);
+      });
   }, [send]);
 
   const handleCloseEnterPasswordModal = useCallback(() => {
@@ -200,6 +206,7 @@ export function DataManagementScreen({
         visible={restoreConfirmModalVisibility}
       />
       <DeleteConfirmModal
+        isLoading={resetLoading}
         onClose={handleCloseDeleteConfirmModal}
         onDelete={deleteAndLogout}
         visible={deleteConfirmModalVisibility}
