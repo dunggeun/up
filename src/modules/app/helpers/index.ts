@@ -6,6 +6,7 @@ import {
   FALLBACK_BADGE,
   THEMES,
   FALLBACK_THEME,
+  BASE_USER,
 } from '../data';
 import type { Badge, Theme } from '../types';
 import type { Mission, Achieve } from 'src/features/missions';
@@ -24,15 +25,8 @@ export const getId = (randNum?: number): number => {
 export const createUserData = (name: string): User => {
   const currentTimestamp = Number(new Date());
   return {
+    ...BASE_USER,
     name,
-    level: 1,
-    currentExp: 0,
-    totalExp: 0,
-    badge: 0,
-    theme: 0,
-    unlockedBadges: {},
-    settings: { enableHaptic: true },
-    remindAt: null,
     createdAt: currentTimestamp,
     updatedAt: currentTimestamp,
   };

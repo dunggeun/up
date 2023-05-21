@@ -1,5 +1,6 @@
 import React, { type PropsWithChildren } from 'react';
 import { styled, View } from 'dripsy';
+import { match, P } from 'ts-pattern';
 import { H2 } from '../../designs/atoms/H2';
 import { H3 } from '../../designs/atoms/H3';
 
@@ -30,25 +31,23 @@ const SubTitle = styled(H3, {
 
 export function Section({
   children,
-  title,
-  subTitle,
   center = false,
+  ...restProps
 }: PropsWithChildren<SectionProps>): React.ReactElement {
-  const renderTitle = (): React.ReactElement | null => {
-    const renderSubTitle = (): React.ReactElement | null =>
-      subTitle ? <SubTitle>{` ${subTitle}`}</SubTitle> : null;
-
-    return title ? (
-      <Title>
-        {title}
-        {renderSubTitle()}
-      </Title>
-    ) : null;
-  };
-
   return (
     <SectionContainer>
-      {renderTitle()}
+      {match(restProps)
+        .with(
+          { title: P.string, subTitle: P.string },
+          ({ title, subTitle }) => (
+            <Title>
+              {title}
+              <SubTitle>{` ${subTitle}`}</SubTitle>
+            </Title>
+          ),
+        )
+        .with({ title: P.select(P.string) }, (title) => <Title>{title}</Title>)
+        .otherwise(() => null)}
       <ContentWrapper center={center}>{children}</ContentWrapper>
     </SectionContainer>
   );

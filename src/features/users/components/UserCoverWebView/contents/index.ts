@@ -1,3 +1,4 @@
+import { match } from 'ts-pattern';
 import { ROOT_FONT_SIZE } from 'src/themes';
 import { colors } from 'src/themes/colors';
 import { replacePlaceholder } from 'src/utils';
@@ -214,15 +215,22 @@ export const getPageSource = (config: CoverGenerateConfig): string => {
               `,
               )
               .join('')}
-            ${isEmpty ? `<h2>${t('message.no_mission')}</h2>` : ''}
-            ${
-              isOver
-                ? `<h2>${replacePlaceholder(
+
+
+            ${match({ isEmpty, isOver })
+              .with(
+                { isEmpty: true },
+                () => `<h2>${t('message.no_mission')}</h2>`,
+              )
+              .with(
+                { isOver: true },
+                () =>
+                  `<h2>${replacePlaceholder(
                     t('label.and_more'),
                     overCount.toString(),
-                  )}</h2>`
-                : ''
-            }
+                  )}</h2>`,
+              )
+              .otherwise(() => '')}
           </section>
           <section class="summary">
             <h1>EXP <b>+${config.earnedExp}</b></h1>

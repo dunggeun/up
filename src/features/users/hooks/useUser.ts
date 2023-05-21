@@ -1,5 +1,6 @@
 import { useLayoutEffect } from 'react';
 import { useActor } from '@xstate/react';
+import { BASE_USER } from 'src/modules/app/data';
 import { Logger } from 'src/modules/logger';
 import { globalMachineService } from 'src/stores/machines';
 import type { User } from '../types';
@@ -7,13 +8,8 @@ import type { User } from '../types';
 const TAG = 'useUser';
 
 const EMPTY_USER: User = {
+  ...BASE_USER,
   name: '',
-  level: 0,
-  totalExp: 0,
-  currentExp: 0,
-  badge: 0,
-  unlockedBadges: {},
-  theme: 0,
   createdAt: 0,
   updatedAt: 0,
 };

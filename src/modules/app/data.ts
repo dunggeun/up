@@ -14,8 +14,20 @@ import badge8 from 'src/assets/badges/badge-8.png';
 import badge9 from 'src/assets/badges/badge-9.png';
 import { t } from 'src/translations';
 import type { Theme } from './types';
+import type { User } from 'src/features/users';
 
 export const BASE_EXP = 3;
+
+export const BASE_USER: Omit<User, 'name' | 'createdAt' | 'updatedAt'> = {
+  level: 1,
+  currentExp: 0,
+  totalExp: 0,
+  badge: 0,
+  theme: 0,
+  unlockedBadges: {},
+  settings: { enableHaptic: true },
+  remindAt: null,
+};
 
 export const BADGE_SET = [
   ['', '', null],
