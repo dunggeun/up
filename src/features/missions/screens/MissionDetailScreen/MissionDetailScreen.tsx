@@ -13,7 +13,7 @@ import type { MissionStackProps } from 'src/navigators/MissionStack/types';
 type MissionDetailScreenProps = MissionStackProps<'MissionDetail'>;
 
 const ACCESSIBILITY = {
-  doneMission: t('title.done_mission'),
+  doneMission: t('title.end_mission'),
 };
 
 export function MissionDetailScreen({

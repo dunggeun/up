@@ -1,5 +1,6 @@
-import React, { type PropsWithChildren } from 'react';
+import React, { useRef, useEffect, type PropsWithChildren } from 'react';
 import { styled, View, Pressable } from 'dripsy';
+import { AnimatePresence, MotiView } from 'moti';
 import { match, P } from 'ts-pattern';
 import { useUserThemeColor } from 'src/features/users';
 import { presets } from 'src/themes';
@@ -16,6 +17,7 @@ interface ReminderOptionProps {
 }
 
 const PANEL_HEIGHT = 2;
+const ANIMATE_DURATION = 200;
 
 const Container = styled(View)({
   flexDirection: 'row',
@@ -24,7 +26,7 @@ const Container = styled(View)({
   paddingY: '$02',
 });
 
-const Label = styled(H2, { defaultVariant: 'primary' })({
+const Label = styled(H2, { defaultVariant: 'text.primary' })({
   borderColor: 'transparent',
 });
 
@@ -64,38 +66,76 @@ export function Panel({
   );
 }
 
+const withAnimate = (
+  element: React.ReactElement,
+  { key, disabled }: { key: string; disabled: boolean },
+): React.ReactElement => (
+  <MotiView
+    animate={{ scale: 1 }}
+    exit={{ scale: 0 }}
+    exitTransition={{
+      type: 'timing',
+      duration: ANIMATE_DURATION,
+    }}
+    from={{ scale: 0.5 }}
+    key={key}
+    transition={{
+      type: 'timing',
+      duration: disabled ? 0 : ANIMATE_DURATION,
+    }}
+  >
+    {element}
+  </MotiView>
+);
+
 export function ReminderOption({
   onPressTimePicker,
   onChangeToggle,
   ...restProps
 }: ReminderOptionProps): React.ReactElement {
+  const isFirstRenderRef = useRef(true);
   const userColor = useUserThemeColor();
   const disabled = !restProps.permissionGranted;
 
+  useEffect(() => {
+    // 첫 메뉴화면 진입 시 애니메이션이 동작되는 것을 방지하기 위한 flag
+    isFirstRenderRef.current = false;
+  }, []);
+
   return (
     <Container>
-      {match(restProps)
-        .with({ permissionGranted: false }, () => (
-          <Label sx={{ borderWidth: 3, borderLeftWidth: 0 }}>
-            {t('message.error.permission_required')}
-          </Label>
-        ))
-        .with({ permissionGranted: true, remindTime: null }, () => (
-          <Label sx={{ borderWidth: 3, borderLeftWidth: 0 }}>
-            {t('label.notification')}
-          </Label>
-        ))
-        .with(
-          { permissionGranted: true, remindTime: P.select(P.string) },
-          (res) => (
-            <Panel onPress={onPressTimePicker}>
-              <Label sx={{ paddingX: '$02', paddingY: '$02' }}>
-                {replacePlaceholder(t('label.reminder_time'), res)}
-              </Label>
-            </Panel>
-          ),
-        )
-        .exhaustive()}
+      <AnimatePresence exitBeforeEnter>
+        {match(restProps)
+          .with({ permissionGranted: false }, () =>
+            withAnimate(
+              <Label sx={{ borderWidth: 3, borderLeftWidth: 0 }}>
+                {t('message.error.permission_required')}
+              </Label>,
+              { key: 'no_permission', disabled: isFirstRenderRef.current },
+            ),
+          )
+          .with({ permissionGranted: true, remindTime: null }, () =>
+            withAnimate(
+              <Label sx={{ borderWidth: 3, borderLeftWidth: 0 }}>
+                {t('label.notification')}
+              </Label>,
+              { key: 'reminder_disabled', disabled: isFirstRenderRef.current },
+            ),
+          )
+          .with(
+            { permissionGranted: true, remindTime: P.select(P.string) },
+            (res) =>
+              withAnimate(
+                <Panel onPress={onPressTimePicker}>
+                  <Label sx={{ paddingX: '$02', paddingY: '$02' }}>
+                    {replacePlaceholder(t('label.reminder_time'), res)}
+                  </Label>
+                </Panel>,
+                { key: 'reminder_enabled', disabled: isFirstRenderRef.current },
+              ),
+          )
+          .exhaustive()}
+      </AnimatePresence>
       <Toggle
         color={userColor}
         disabled={disabled}

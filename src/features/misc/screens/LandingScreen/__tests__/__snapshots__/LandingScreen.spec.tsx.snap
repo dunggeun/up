@@ -607,7 +607,7 @@ Take the Up Challenge
                     {
                       "color": "#ffffff",
                       "fontFamily": "TmoneyRoundWind-ExtraBold",
-                      "fontSize": 24,
+                      "fontSize": 20,
                       "marginVertical": 0,
                       "textAlign": "center",
                     },

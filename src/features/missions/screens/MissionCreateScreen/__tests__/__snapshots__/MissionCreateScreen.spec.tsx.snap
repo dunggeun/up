@@ -460,6 +460,31 @@ a new mission title
                   }
                   textAlignVertical="center"
                 />
+                <Text
+                  style={
+                    [
+                      {
+                        "fontFamily": "TmoneyRoundWind-Regular",
+                        "fontSize": 16,
+                      },
+                      {
+                        "color": "#777777",
+                        "textAlign": "center",
+                      },
+                      undefined,
+                      {},
+                      {},
+                    ]
+                  }
+                >
+                  What you need to do to achieve your goals is your mission
+
+Enter it a simple name
+
+(Example)
+Side projects 2h
+Solve 30 math problems
+                </Text>
               </View>
             </View>
           </View>
@@ -697,7 +722,7 @@ a new mission title
                       {
                         "color": "#ffffff",
                         "fontFamily": "TmoneyRoundWind-ExtraBold",
-                        "fontSize": 24,
+                        "fontSize": 20,
                         "marginVertical": 0,
                         "textAlign": "center",
                       },

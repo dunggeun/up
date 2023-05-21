@@ -3,7 +3,7 @@ import dayjs from 'dayjs';
 import { styled } from 'dripsy';
 import { useUserThemeColor } from 'src/features/users';
 import { diffBeforeToday, replacePlaceholder } from 'src/utils';
-import { H3, Text } from 'src/designs';
+import { Text } from 'src/designs';
 import { DetailSection } from 'src/components';
 import { t } from 'src/translations';
 import { MissionHistory } from '../MissionHistory';
@@ -14,11 +14,13 @@ export interface MissionInformationProps {
   achieveList: Achieve[];
 }
 
-const TotalExpText = styled(H3, {
-  defaultVariant: 'text.primary',
-})({
-  textAlign: 'center',
-});
+const TotalExpText = styled(Text, {
+  defaultVariant: 'text.h3',
+})({ textAlign: 'center' });
+
+const TotalExpValueText = styled(Text, {
+  defaultVariant: 'text.h3',
+})();
 
 export function MissionInformation({
   mission,
@@ -86,7 +88,12 @@ export function MissionInformation({
             dayjs(mission.created_at).format(t('format.date')),
           )}
         </Text>
-        <TotalExpText>{totalExp} EXP</TotalExpText>
+        <TotalExpText variant="text.primary">
+          <TotalExpValueText sx={{ color: userColor }}>
+            {totalExp}
+          </TotalExpValueText>
+          {' EXP'}
+        </TotalExpText>
       </DetailSection>
     );
   };

@@ -13,7 +13,7 @@ import { useMissions } from 'src/features/missions/hooks';
 import { navigate } from 'src/navigators/helpers';
 import { useMainTabBarInset } from 'src/hooks';
 import { SHARED_CONFIG, WINDOW_HEIGHT } from 'src/constants';
-import { Button, H3, Select } from 'src/designs';
+import { Button, Text, Select } from 'src/designs';
 import { t } from 'src/translations';
 import { UserMissionItem } from '../UserMissionItem';
 import type { Mission } from 'src/features/missions';
@@ -49,7 +49,7 @@ const ItemSeparatorComponent = styled(View)({
   marginBottom: '$04',
 });
 
-const EmptyView = styled(H3, {
+const EmptyView = styled(Text, {
   defaultVariant: 'text.secondary',
 })({
   width: '100%',

@@ -29,11 +29,11 @@ export function MissionDoneModal({
   const userColor = useUserThemeColor();
 
   return (
-    <Modal onClose={onClose} title={t('title.done_mission')} visible={visible}>
+    <Modal onClose={onClose} title={t('title.end_mission')} visible={visible}>
       <Content testID="mission-done-modal">
-        <Message variant="text.primary">{t('message.done_mission')}</Message>
+        <Message variant="text.primary">{t('message.end_mission')}</Message>
         <Message variant="text.secondary">
-          {`(${t('message.done_mission_guide')})`}
+          {`(${t('message.end_mission_guide')})`}
         </Message>
         <Button
           accessibilityHint={ACCESSIBILITY.ok}
@@ -41,7 +41,7 @@ export function MissionDoneModal({
           color={userColor}
           onLongPress={onDone}
         >
-          {t('label.done_confirm')}
+          {t('label.end_confirm')}
         </Button>
       </Content>
     </Modal>

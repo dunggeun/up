@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { styled, View } from 'dripsy';
 import { useUserThemeColor } from 'src/features/users';
-import { Button, Input } from 'src/designs';
+import { Button, Input, Text } from 'src/designs';
 import { Modal } from 'src/components';
 import type { ModalProps } from 'src/components';
 import { t } from 'src/translations';
@@ -17,6 +17,10 @@ const ACCESSIBILITY = {
 const Content = styled(View)({
   gap: '$04',
 });
+
+const Description = styled(Text, {
+  defaultVariant: 'text.secondary',
+})({ textAlign: 'center' });
 
 export function EnterPasswordModal({
   visible,
@@ -40,6 +44,7 @@ export function EnterPasswordModal({
           secureTextEntry
           value={password}
         />
+        <Description>{t('message.enter_password')}</Description>
         <Button
           accessibilityHint={ACCESSIBILITY.ok}
           accessibilityLabel={ACCESSIBILITY.ok}

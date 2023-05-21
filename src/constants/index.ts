@@ -31,6 +31,9 @@ export const WINDOW_WIDTH = window.width;
 export const WINDOW_HEIGHT = window.height;
 
 export const MINIMUM_USER_NAME_LENGTH = 2;
+export const MINIMUM_MISSION_NAME_LENGTH = 2;
+export const MAXIMUM_MISSION_NAME_LENGTH = 25;
+export const MAXIMUM_MISSION_MEMO_LENGTH = 120;
 
 export const REMINDER_TIME_FORMAT = 'HH:mm';
 export const DEFAULT_REMINDER_TIME = '09:30';

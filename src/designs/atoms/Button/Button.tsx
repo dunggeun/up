@@ -107,7 +107,7 @@ const Dim = styled(Animated.View)(
 );
 
 const Label = styled(Text, {
-  defaultVariant: 'text.h2',
+  defaultVariant: 'text.h3',
 })(({ isLightBackground }: { isLightBackground: boolean }) => ({
   color: isLightBackground ? '$text_primary' : '$white',
   textAlign: 'center',

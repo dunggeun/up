@@ -1,5 +1,6 @@
 import React from 'react';
 import { styled } from 'dripsy';
+import { MAXIMUM_MISSION_MEMO_LENGTH } from 'src/constants';
 import { CommonLayout, Button, Input, H2, Text } from 'src/designs';
 import { PageTitle, PageContent } from 'src/components';
 import { t } from 'src/translations';
@@ -41,6 +42,7 @@ export function EnterMemo({
         <PageContent>
           <H2 variant="primary">{missionName}</H2>
           <MemoInput
+            maxLength={MAXIMUM_MISSION_MEMO_LENGTH}
             multiline
             onChangeText={onChangeMemo}
             placeholder={t('placeholder.enter_memo')}
