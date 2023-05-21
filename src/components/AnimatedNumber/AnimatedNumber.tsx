@@ -3,8 +3,7 @@ import React, { memo, useState, useEffect, useLayoutEffect } from 'react';
 import { Animated, type LayoutChangeEvent } from 'react-native';
 import { styled, View } from 'dripsy';
 import { USE_NATIVE_DRIVER } from 'src/constants';
-import { H1 } from '../../designs/atoms/H1';
-import { H2 } from '../../designs/atoms/H2';
+import { Text } from '../../designs/atoms/Text';
 
 interface AnimatedNumberProps {
   value: number;
@@ -36,8 +35,6 @@ export const AnimatedNumber = memo(function AnimatedNumber({
   const [numbers, setNumbers] = useState<number[]>();
   const [height, setHeight] = useState(0);
   const [animationValues, setAnimationValues] = useState<Animated.Value[]>([]);
-
-  const TextComponent = size === 'md' ? H2 : H1;
 
   const handleLayout = (event: LayoutChangeEvent): void => {
     setHeight(event.nativeEvent.layout.height);
@@ -93,15 +90,20 @@ export const AnimatedNumber = memo(function AnimatedNumber({
           >
             {NUMBERS.map((number, index) => (
               <NumberWrapper height={height} key={index}>
-                <TextComponent sx={{ paddingBottom: 0 }} variant={variant}>
+                <Text
+                  sx={{ paddingBottom: 0 }}
+                  variants={[size === 'md' ? 'h2' : 'h1', variant]}
+                >
                   {number}
-                </TextComponent>
+                </Text>
               </NumberWrapper>
             ))}
           </Animated.View>
         </NumberWrapper>
       ))}
-      <TextComponent onLayout={handleLayout}> </TextComponent>
+      <Text onLayout={handleLayout} variant={size === 'md' ? 'h2' : 'h1'}>
+        {' '}
+      </Text>
     </NumberContainer>
   );
 });
