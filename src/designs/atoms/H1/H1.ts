@@ -1,20 +1,24 @@
 import { createElement, type ComponentPropsWithoutRef } from 'react';
-import { H1 as DripsyH1 } from 'dripsy';
-import { overrideHeadingStyle } from 'src/themes';
+import { Text } from 'dripsy';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface H1Props extends ComponentPropsWithoutRef<typeof DripsyH1> {}
+export interface H1Props extends ComponentPropsWithoutRef<typeof Text> {}
 
 export function H1({
   children,
-  style,
+  variant,
+  variants,
   ...restProps
 }: H1Props): React.ReactElement {
   return createElement(
-    DripsyH1,
+    Text,
     {
       ...restProps,
-      style: [overrideHeadingStyle, style],
+      variants: [
+        'h1',
+        ...(variant ? [variant] : []),
+        ...(variants ? variants : []),
+      ],
     },
     children,
   );

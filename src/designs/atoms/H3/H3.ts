@@ -1,20 +1,24 @@
 import { createElement, type ComponentPropsWithoutRef } from 'react';
-import { H3 as DripsyH3 } from 'dripsy';
-import { overrideHeadingStyle } from 'src/themes';
+import { Text } from 'dripsy';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface H3Props extends ComponentPropsWithoutRef<typeof DripsyH3> {}
+export interface H3Props extends ComponentPropsWithoutRef<typeof Text> {}
 
 export function H3({
   children,
-  style,
+  variant,
+  variants,
   ...restProps
 }: H3Props): React.ReactElement {
   return createElement(
-    DripsyH3,
+    Text,
     {
       ...restProps,
-      style: [overrideHeadingStyle, style],
+      variants: [
+        'h3',
+        ...(variant ? [variant] : []),
+        ...(variants ? variants : []),
+      ],
     },
     children,
   );

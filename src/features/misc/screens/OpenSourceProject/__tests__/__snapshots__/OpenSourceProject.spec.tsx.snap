@@ -302,29 +302,17 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
         <Text
           accessibilityHint="Title"
           accessibilityLabel="Open source project"
-          accessibilityRole="header"
           style={
             [
               {
-                "fontSize": 48,
-                "fontWeight": "bold",
-                "marginVertical": 26.56,
+                "fontFamily": "TmoneyRoundWind-ExtraBold",
+                "fontSize": 24,
+                "marginVertical": 0,
               },
-              [
-                {
-                  "fontFamily": "BMJUA",
-                  "fontSize": 24,
-                  "marginVertical": 0,
-                  "paddingBottom": 4,
-                },
-                {
-                  "fontWeight": "normal",
-                },
-                undefined,
-                {
-                  "color": "#2e2e2e",
-                },
-              ],
+              undefined,
+              {
+                "color": "#2e2e2e",
+              },
             ]
           }
         >
@@ -498,15 +486,14 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
                     style={
                       [
                         {
-                          "fontFamily": "BMJUA",
+                          "fontFamily": "TmoneyRoundWind-Regular",
                           "fontSize": 16,
-                          "paddingBottom": 4,
                         },
                         {
                           "color": "#ffffff",
+                          "fontFamily": "TmoneyRoundWind-ExtraBold",
                           "fontSize": 24,
                           "marginVertical": 0,
-                          "paddingBottom": 4,
                           "textAlign": "center",
                         },
                         undefined,
@@ -596,28 +583,16 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             }
           >
             <Text
-              accessibilityRole="header"
               style={
                 [
                   {
-                    "fontSize": 48,
-                    "fontWeight": "bold",
-                    "marginVertical": 26.56,
+                    "color": "#2e2e2e",
+                    "fontFamily": "TmoneyRoundWind-ExtraBold",
+                    "fontSize": 24,
+                    "marginVertical": 0,
                   },
-                  [
-                    {
-                      "color": "#2e2e2e",
-                      "fontFamily": "BMJUA",
-                      "fontSize": 24,
-                      "marginVertical": 0,
-                      "paddingBottom": 4,
-                    },
-                    {
-                      "fontWeight": "normal",
-                    },
-                    undefined,
-                    {},
-                  ],
+                  undefined,
+                  {},
                 ]
               }
             >
@@ -665,28 +640,16 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             }
           >
             <Text
-              accessibilityRole="header"
               style={
                 [
                   {
-                    "fontSize": 48,
-                    "fontWeight": "bold",
-                    "marginVertical": 26.56,
+                    "color": "#2e2e2e",
+                    "fontFamily": "TmoneyRoundWind-ExtraBold",
+                    "fontSize": 24,
+                    "marginVertical": 0,
                   },
-                  [
-                    {
-                      "color": "#2e2e2e",
-                      "fontFamily": "BMJUA",
-                      "fontSize": 24,
-                      "marginVertical": 0,
-                      "paddingBottom": 4,
-                    },
-                    {
-                      "fontWeight": "normal",
-                    },
-                    undefined,
-                    {},
-                  ],
+                  undefined,
+                  {},
                 ]
               }
             >
@@ -734,28 +697,16 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             }
           >
             <Text
-              accessibilityRole="header"
               style={
                 [
                   {
-                    "fontSize": 48,
-                    "fontWeight": "bold",
-                    "marginVertical": 26.56,
+                    "color": "#2e2e2e",
+                    "fontFamily": "TmoneyRoundWind-ExtraBold",
+                    "fontSize": 24,
+                    "marginVertical": 0,
                   },
-                  [
-                    {
-                      "color": "#2e2e2e",
-                      "fontFamily": "BMJUA",
-                      "fontSize": 24,
-                      "marginVertical": 0,
-                      "paddingBottom": 4,
-                    },
-                    {
-                      "fontWeight": "normal",
-                    },
-                    undefined,
-                    {},
-                  ],
+                  undefined,
+                  {},
                 ]
               }
             >
@@ -803,28 +754,16 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             }
           >
             <Text
-              accessibilityRole="header"
               style={
                 [
                   {
-                    "fontSize": 48,
-                    "fontWeight": "bold",
-                    "marginVertical": 26.56,
+                    "color": "#2e2e2e",
+                    "fontFamily": "TmoneyRoundWind-ExtraBold",
+                    "fontSize": 24,
+                    "marginVertical": 0,
                   },
-                  [
-                    {
-                      "color": "#2e2e2e",
-                      "fontFamily": "BMJUA",
-                      "fontSize": 24,
-                      "marginVertical": 0,
-                      "paddingBottom": 4,
-                    },
-                    {
-                      "fontWeight": "normal",
-                    },
-                    undefined,
-                    {},
-                  ],
+                  undefined,
+                  {},
                 ]
               }
             >
@@ -872,28 +811,16 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             }
           >
             <Text
-              accessibilityRole="header"
               style={
                 [
                   {
-                    "fontSize": 48,
-                    "fontWeight": "bold",
-                    "marginVertical": 26.56,
+                    "color": "#2e2e2e",
+                    "fontFamily": "TmoneyRoundWind-ExtraBold",
+                    "fontSize": 24,
+                    "marginVertical": 0,
                   },
-                  [
-                    {
-                      "color": "#2e2e2e",
-                      "fontFamily": "BMJUA",
-                      "fontSize": 24,
-                      "marginVertical": 0,
-                      "paddingBottom": 4,
-                    },
-                    {
-                      "fontWeight": "normal",
-                    },
-                    undefined,
-                    {},
-                  ],
+                  undefined,
+                  {},
                 ]
               }
             >
@@ -941,28 +868,16 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             }
           >
             <Text
-              accessibilityRole="header"
               style={
                 [
                   {
-                    "fontSize": 48,
-                    "fontWeight": "bold",
-                    "marginVertical": 26.56,
+                    "color": "#2e2e2e",
+                    "fontFamily": "TmoneyRoundWind-ExtraBold",
+                    "fontSize": 24,
+                    "marginVertical": 0,
                   },
-                  [
-                    {
-                      "color": "#2e2e2e",
-                      "fontFamily": "BMJUA",
-                      "fontSize": 24,
-                      "marginVertical": 0,
-                      "paddingBottom": 4,
-                    },
-                    {
-                      "fontWeight": "normal",
-                    },
-                    undefined,
-                    {},
-                  ],
+                  undefined,
+                  {},
                 ]
               }
             >
@@ -1010,28 +925,16 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             }
           >
             <Text
-              accessibilityRole="header"
               style={
                 [
                   {
-                    "fontSize": 48,
-                    "fontWeight": "bold",
-                    "marginVertical": 26.56,
+                    "color": "#2e2e2e",
+                    "fontFamily": "TmoneyRoundWind-ExtraBold",
+                    "fontSize": 24,
+                    "marginVertical": 0,
                   },
-                  [
-                    {
-                      "color": "#2e2e2e",
-                      "fontFamily": "BMJUA",
-                      "fontSize": 24,
-                      "marginVertical": 0,
-                      "paddingBottom": 4,
-                    },
-                    {
-                      "fontWeight": "normal",
-                    },
-                    undefined,
-                    {},
-                  ],
+                  undefined,
+                  {},
                 ]
               }
             >
@@ -1079,28 +982,16 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             }
           >
             <Text
-              accessibilityRole="header"
               style={
                 [
                   {
-                    "fontSize": 48,
-                    "fontWeight": "bold",
-                    "marginVertical": 26.56,
+                    "color": "#2e2e2e",
+                    "fontFamily": "TmoneyRoundWind-ExtraBold",
+                    "fontSize": 24,
+                    "marginVertical": 0,
                   },
-                  [
-                    {
-                      "color": "#2e2e2e",
-                      "fontFamily": "BMJUA",
-                      "fontSize": 24,
-                      "marginVertical": 0,
-                      "paddingBottom": 4,
-                    },
-                    {
-                      "fontWeight": "normal",
-                    },
-                    undefined,
-                    {},
-                  ],
+                  undefined,
+                  {},
                 ]
               }
             >
@@ -1148,28 +1039,16 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             }
           >
             <Text
-              accessibilityRole="header"
               style={
                 [
                   {
-                    "fontSize": 48,
-                    "fontWeight": "bold",
-                    "marginVertical": 26.56,
+                    "color": "#2e2e2e",
+                    "fontFamily": "TmoneyRoundWind-ExtraBold",
+                    "fontSize": 24,
+                    "marginVertical": 0,
                   },
-                  [
-                    {
-                      "color": "#2e2e2e",
-                      "fontFamily": "BMJUA",
-                      "fontSize": 24,
-                      "marginVertical": 0,
-                      "paddingBottom": 4,
-                    },
-                    {
-                      "fontWeight": "normal",
-                    },
-                    undefined,
-                    {},
-                  ],
+                  undefined,
+                  {},
                 ]
               }
             >
@@ -1217,28 +1096,16 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             }
           >
             <Text
-              accessibilityRole="header"
               style={
                 [
                   {
-                    "fontSize": 48,
-                    "fontWeight": "bold",
-                    "marginVertical": 26.56,
+                    "color": "#2e2e2e",
+                    "fontFamily": "TmoneyRoundWind-ExtraBold",
+                    "fontSize": 24,
+                    "marginVertical": 0,
                   },
-                  [
-                    {
-                      "color": "#2e2e2e",
-                      "fontFamily": "BMJUA",
-                      "fontSize": 24,
-                      "marginVertical": 0,
-                      "paddingBottom": 4,
-                    },
-                    {
-                      "fontWeight": "normal",
-                    },
-                    undefined,
-                    {},
-                  ],
+                  undefined,
+                  {},
                 ]
               }
             >
@@ -1286,28 +1153,16 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             }
           >
             <Text
-              accessibilityRole="header"
               style={
                 [
                   {
-                    "fontSize": 48,
-                    "fontWeight": "bold",
-                    "marginVertical": 26.56,
+                    "color": "#2e2e2e",
+                    "fontFamily": "TmoneyRoundWind-ExtraBold",
+                    "fontSize": 24,
+                    "marginVertical": 0,
                   },
-                  [
-                    {
-                      "color": "#2e2e2e",
-                      "fontFamily": "BMJUA",
-                      "fontSize": 24,
-                      "marginVertical": 0,
-                      "paddingBottom": 4,
-                    },
-                    {
-                      "fontWeight": "normal",
-                    },
-                    undefined,
-                    {},
-                  ],
+                  undefined,
+                  {},
                 ]
               }
             >
@@ -1355,28 +1210,16 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             }
           >
             <Text
-              accessibilityRole="header"
               style={
                 [
                   {
-                    "fontSize": 48,
-                    "fontWeight": "bold",
-                    "marginVertical": 26.56,
+                    "color": "#2e2e2e",
+                    "fontFamily": "TmoneyRoundWind-ExtraBold",
+                    "fontSize": 24,
+                    "marginVertical": 0,
                   },
-                  [
-                    {
-                      "color": "#2e2e2e",
-                      "fontFamily": "BMJUA",
-                      "fontSize": 24,
-                      "marginVertical": 0,
-                      "paddingBottom": 4,
-                    },
-                    {
-                      "fontWeight": "normal",
-                    },
-                    undefined,
-                    {},
-                  ],
+                  undefined,
+                  {},
                 ]
               }
             >
@@ -1424,28 +1267,16 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             }
           >
             <Text
-              accessibilityRole="header"
               style={
                 [
                   {
-                    "fontSize": 48,
-                    "fontWeight": "bold",
-                    "marginVertical": 26.56,
+                    "color": "#2e2e2e",
+                    "fontFamily": "TmoneyRoundWind-ExtraBold",
+                    "fontSize": 24,
+                    "marginVertical": 0,
                   },
-                  [
-                    {
-                      "color": "#2e2e2e",
-                      "fontFamily": "BMJUA",
-                      "fontSize": 24,
-                      "marginVertical": 0,
-                      "paddingBottom": 4,
-                    },
-                    {
-                      "fontWeight": "normal",
-                    },
-                    undefined,
-                    {},
-                  ],
+                  undefined,
+                  {},
                 ]
               }
             >
@@ -1493,28 +1324,16 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             }
           >
             <Text
-              accessibilityRole="header"
               style={
                 [
                   {
-                    "fontSize": 48,
-                    "fontWeight": "bold",
-                    "marginVertical": 26.56,
+                    "color": "#2e2e2e",
+                    "fontFamily": "TmoneyRoundWind-ExtraBold",
+                    "fontSize": 24,
+                    "marginVertical": 0,
                   },
-                  [
-                    {
-                      "color": "#2e2e2e",
-                      "fontFamily": "BMJUA",
-                      "fontSize": 24,
-                      "marginVertical": 0,
-                      "paddingBottom": 4,
-                    },
-                    {
-                      "fontWeight": "normal",
-                    },
-                    undefined,
-                    {},
-                  ],
+                  undefined,
+                  {},
                 ]
               }
             >
@@ -1562,28 +1381,16 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             }
           >
             <Text
-              accessibilityRole="header"
               style={
                 [
                   {
-                    "fontSize": 48,
-                    "fontWeight": "bold",
-                    "marginVertical": 26.56,
+                    "color": "#2e2e2e",
+                    "fontFamily": "TmoneyRoundWind-ExtraBold",
+                    "fontSize": 24,
+                    "marginVertical": 0,
                   },
-                  [
-                    {
-                      "color": "#2e2e2e",
-                      "fontFamily": "BMJUA",
-                      "fontSize": 24,
-                      "marginVertical": 0,
-                      "paddingBottom": 4,
-                    },
-                    {
-                      "fontWeight": "normal",
-                    },
-                    undefined,
-                    {},
-                  ],
+                  undefined,
+                  {},
                 ]
               }
             >
@@ -1631,28 +1438,16 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             }
           >
             <Text
-              accessibilityRole="header"
               style={
                 [
                   {
-                    "fontSize": 48,
-                    "fontWeight": "bold",
-                    "marginVertical": 26.56,
+                    "color": "#2e2e2e",
+                    "fontFamily": "TmoneyRoundWind-ExtraBold",
+                    "fontSize": 24,
+                    "marginVertical": 0,
                   },
-                  [
-                    {
-                      "color": "#2e2e2e",
-                      "fontFamily": "BMJUA",
-                      "fontSize": 24,
-                      "marginVertical": 0,
-                      "paddingBottom": 4,
-                    },
-                    {
-                      "fontWeight": "normal",
-                    },
-                    undefined,
-                    {},
-                  ],
+                  undefined,
+                  {},
                 ]
               }
             >
@@ -1700,28 +1495,16 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             }
           >
             <Text
-              accessibilityRole="header"
               style={
                 [
                   {
-                    "fontSize": 48,
-                    "fontWeight": "bold",
-                    "marginVertical": 26.56,
+                    "color": "#2e2e2e",
+                    "fontFamily": "TmoneyRoundWind-ExtraBold",
+                    "fontSize": 24,
+                    "marginVertical": 0,
                   },
-                  [
-                    {
-                      "color": "#2e2e2e",
-                      "fontFamily": "BMJUA",
-                      "fontSize": 24,
-                      "marginVertical": 0,
-                      "paddingBottom": 4,
-                    },
-                    {
-                      "fontWeight": "normal",
-                    },
-                    undefined,
-                    {},
-                  ],
+                  undefined,
+                  {},
                 ]
               }
             >
@@ -1769,28 +1552,16 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             }
           >
             <Text
-              accessibilityRole="header"
               style={
                 [
                   {
-                    "fontSize": 48,
-                    "fontWeight": "bold",
-                    "marginVertical": 26.56,
+                    "color": "#2e2e2e",
+                    "fontFamily": "TmoneyRoundWind-ExtraBold",
+                    "fontSize": 24,
+                    "marginVertical": 0,
                   },
-                  [
-                    {
-                      "color": "#2e2e2e",
-                      "fontFamily": "BMJUA",
-                      "fontSize": 24,
-                      "marginVertical": 0,
-                      "paddingBottom": 4,
-                    },
-                    {
-                      "fontWeight": "normal",
-                    },
-                    undefined,
-                    {},
-                  ],
+                  undefined,
+                  {},
                 ]
               }
             >
@@ -1838,28 +1609,16 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             }
           >
             <Text
-              accessibilityRole="header"
               style={
                 [
                   {
-                    "fontSize": 48,
-                    "fontWeight": "bold",
-                    "marginVertical": 26.56,
+                    "color": "#2e2e2e",
+                    "fontFamily": "TmoneyRoundWind-ExtraBold",
+                    "fontSize": 24,
+                    "marginVertical": 0,
                   },
-                  [
-                    {
-                      "color": "#2e2e2e",
-                      "fontFamily": "BMJUA",
-                      "fontSize": 24,
-                      "marginVertical": 0,
-                      "paddingBottom": 4,
-                    },
-                    {
-                      "fontWeight": "normal",
-                    },
-                    undefined,
-                    {},
-                  ],
+                  undefined,
+                  {},
                 ]
               }
             >
@@ -1907,28 +1666,16 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             }
           >
             <Text
-              accessibilityRole="header"
               style={
                 [
                   {
-                    "fontSize": 48,
-                    "fontWeight": "bold",
-                    "marginVertical": 26.56,
+                    "color": "#2e2e2e",
+                    "fontFamily": "TmoneyRoundWind-ExtraBold",
+                    "fontSize": 24,
+                    "marginVertical": 0,
                   },
-                  [
-                    {
-                      "color": "#2e2e2e",
-                      "fontFamily": "BMJUA",
-                      "fontSize": 24,
-                      "marginVertical": 0,
-                      "paddingBottom": 4,
-                    },
-                    {
-                      "fontWeight": "normal",
-                    },
-                    undefined,
-                    {},
-                  ],
+                  undefined,
+                  {},
                 ]
               }
             >
@@ -1976,28 +1723,16 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             }
           >
             <Text
-              accessibilityRole="header"
               style={
                 [
                   {
-                    "fontSize": 48,
-                    "fontWeight": "bold",
-                    "marginVertical": 26.56,
+                    "color": "#2e2e2e",
+                    "fontFamily": "TmoneyRoundWind-ExtraBold",
+                    "fontSize": 24,
+                    "marginVertical": 0,
                   },
-                  [
-                    {
-                      "color": "#2e2e2e",
-                      "fontFamily": "BMJUA",
-                      "fontSize": 24,
-                      "marginVertical": 0,
-                      "paddingBottom": 4,
-                    },
-                    {
-                      "fontWeight": "normal",
-                    },
-                    undefined,
-                    {},
-                  ],
+                  undefined,
+                  {},
                 ]
               }
             >
@@ -2045,28 +1780,16 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             }
           >
             <Text
-              accessibilityRole="header"
               style={
                 [
                   {
-                    "fontSize": 48,
-                    "fontWeight": "bold",
-                    "marginVertical": 26.56,
+                    "color": "#2e2e2e",
+                    "fontFamily": "TmoneyRoundWind-ExtraBold",
+                    "fontSize": 24,
+                    "marginVertical": 0,
                   },
-                  [
-                    {
-                      "color": "#2e2e2e",
-                      "fontFamily": "BMJUA",
-                      "fontSize": 24,
-                      "marginVertical": 0,
-                      "paddingBottom": 4,
-                    },
-                    {
-                      "fontWeight": "normal",
-                    },
-                    undefined,
-                    {},
-                  ],
+                  undefined,
+                  {},
                 ]
               }
             >
@@ -2114,28 +1837,16 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             }
           >
             <Text
-              accessibilityRole="header"
               style={
                 [
                   {
-                    "fontSize": 48,
-                    "fontWeight": "bold",
-                    "marginVertical": 26.56,
+                    "color": "#2e2e2e",
+                    "fontFamily": "TmoneyRoundWind-ExtraBold",
+                    "fontSize": 24,
+                    "marginVertical": 0,
                   },
-                  [
-                    {
-                      "color": "#2e2e2e",
-                      "fontFamily": "BMJUA",
-                      "fontSize": 24,
-                      "marginVertical": 0,
-                      "paddingBottom": 4,
-                    },
-                    {
-                      "fontWeight": "normal",
-                    },
-                    undefined,
-                    {},
-                  ],
+                  undefined,
+                  {},
                 ]
               }
             >
@@ -2183,28 +1894,16 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             }
           >
             <Text
-              accessibilityRole="header"
               style={
                 [
                   {
-                    "fontSize": 48,
-                    "fontWeight": "bold",
-                    "marginVertical": 26.56,
+                    "color": "#2e2e2e",
+                    "fontFamily": "TmoneyRoundWind-ExtraBold",
+                    "fontSize": 24,
+                    "marginVertical": 0,
                   },
-                  [
-                    {
-                      "color": "#2e2e2e",
-                      "fontFamily": "BMJUA",
-                      "fontSize": 24,
-                      "marginVertical": 0,
-                      "paddingBottom": 4,
-                    },
-                    {
-                      "fontWeight": "normal",
-                    },
-                    undefined,
-                    {},
-                  ],
+                  undefined,
+                  {},
                 ]
               }
             >
@@ -2252,28 +1951,16 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             }
           >
             <Text
-              accessibilityRole="header"
               style={
                 [
                   {
-                    "fontSize": 48,
-                    "fontWeight": "bold",
-                    "marginVertical": 26.56,
+                    "color": "#2e2e2e",
+                    "fontFamily": "TmoneyRoundWind-ExtraBold",
+                    "fontSize": 24,
+                    "marginVertical": 0,
                   },
-                  [
-                    {
-                      "color": "#2e2e2e",
-                      "fontFamily": "BMJUA",
-                      "fontSize": 24,
-                      "marginVertical": 0,
-                      "paddingBottom": 4,
-                    },
-                    {
-                      "fontWeight": "normal",
-                    },
-                    undefined,
-                    {},
-                  ],
+                  undefined,
+                  {},
                 ]
               }
             >
@@ -2321,28 +2008,16 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             }
           >
             <Text
-              accessibilityRole="header"
               style={
                 [
                   {
-                    "fontSize": 48,
-                    "fontWeight": "bold",
-                    "marginVertical": 26.56,
+                    "color": "#2e2e2e",
+                    "fontFamily": "TmoneyRoundWind-ExtraBold",
+                    "fontSize": 24,
+                    "marginVertical": 0,
                   },
-                  [
-                    {
-                      "color": "#2e2e2e",
-                      "fontFamily": "BMJUA",
-                      "fontSize": 24,
-                      "marginVertical": 0,
-                      "paddingBottom": 4,
-                    },
-                    {
-                      "fontWeight": "normal",
-                    },
-                    undefined,
-                    {},
-                  ],
+                  undefined,
+                  {},
                 ]
               }
             >
@@ -2390,28 +2065,16 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             }
           >
             <Text
-              accessibilityRole="header"
               style={
                 [
                   {
-                    "fontSize": 48,
-                    "fontWeight": "bold",
-                    "marginVertical": 26.56,
+                    "color": "#2e2e2e",
+                    "fontFamily": "TmoneyRoundWind-ExtraBold",
+                    "fontSize": 24,
+                    "marginVertical": 0,
                   },
-                  [
-                    {
-                      "color": "#2e2e2e",
-                      "fontFamily": "BMJUA",
-                      "fontSize": 24,
-                      "marginVertical": 0,
-                      "paddingBottom": 4,
-                    },
-                    {
-                      "fontWeight": "normal",
-                    },
-                    undefined,
-                    {},
-                  ],
+                  undefined,
+                  {},
                 ]
               }
             >
@@ -2459,28 +2122,16 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             }
           >
             <Text
-              accessibilityRole="header"
               style={
                 [
                   {
-                    "fontSize": 48,
-                    "fontWeight": "bold",
-                    "marginVertical": 26.56,
+                    "color": "#2e2e2e",
+                    "fontFamily": "TmoneyRoundWind-ExtraBold",
+                    "fontSize": 24,
+                    "marginVertical": 0,
                   },
-                  [
-                    {
-                      "color": "#2e2e2e",
-                      "fontFamily": "BMJUA",
-                      "fontSize": 24,
-                      "marginVertical": 0,
-                      "paddingBottom": 4,
-                    },
-                    {
-                      "fontWeight": "normal",
-                    },
-                    undefined,
-                    {},
-                  ],
+                  undefined,
+                  {},
                 ]
               }
             >
@@ -2528,28 +2179,16 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             }
           >
             <Text
-              accessibilityRole="header"
               style={
                 [
                   {
-                    "fontSize": 48,
-                    "fontWeight": "bold",
-                    "marginVertical": 26.56,
+                    "color": "#2e2e2e",
+                    "fontFamily": "TmoneyRoundWind-ExtraBold",
+                    "fontSize": 24,
+                    "marginVertical": 0,
                   },
-                  [
-                    {
-                      "color": "#2e2e2e",
-                      "fontFamily": "BMJUA",
-                      "fontSize": 24,
-                      "marginVertical": 0,
-                      "paddingBottom": 4,
-                    },
-                    {
-                      "fontWeight": "normal",
-                    },
-                    undefined,
-                    {},
-                  ],
+                  undefined,
+                  {},
                 ]
               }
             >
@@ -2597,28 +2236,16 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             }
           >
             <Text
-              accessibilityRole="header"
               style={
                 [
                   {
-                    "fontSize": 48,
-                    "fontWeight": "bold",
-                    "marginVertical": 26.56,
+                    "color": "#2e2e2e",
+                    "fontFamily": "TmoneyRoundWind-ExtraBold",
+                    "fontSize": 24,
+                    "marginVertical": 0,
                   },
-                  [
-                    {
-                      "color": "#2e2e2e",
-                      "fontFamily": "BMJUA",
-                      "fontSize": 24,
-                      "marginVertical": 0,
-                      "paddingBottom": 4,
-                    },
-                    {
-                      "fontWeight": "normal",
-                    },
-                    undefined,
-                    {},
-                  ],
+                  undefined,
+                  {},
                 ]
               }
             >
@@ -2666,28 +2293,16 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             }
           >
             <Text
-              accessibilityRole="header"
               style={
                 [
                   {
-                    "fontSize": 48,
-                    "fontWeight": "bold",
-                    "marginVertical": 26.56,
+                    "color": "#2e2e2e",
+                    "fontFamily": "TmoneyRoundWind-ExtraBold",
+                    "fontSize": 24,
+                    "marginVertical": 0,
                   },
-                  [
-                    {
-                      "color": "#2e2e2e",
-                      "fontFamily": "BMJUA",
-                      "fontSize": 24,
-                      "marginVertical": 0,
-                      "paddingBottom": 4,
-                    },
-                    {
-                      "fontWeight": "normal",
-                    },
-                    undefined,
-                    {},
-                  ],
+                  undefined,
+                  {},
                 ]
               }
             >
@@ -2735,28 +2350,16 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             }
           >
             <Text
-              accessibilityRole="header"
               style={
                 [
                   {
-                    "fontSize": 48,
-                    "fontWeight": "bold",
-                    "marginVertical": 26.56,
+                    "color": "#2e2e2e",
+                    "fontFamily": "TmoneyRoundWind-ExtraBold",
+                    "fontSize": 24,
+                    "marginVertical": 0,
                   },
-                  [
-                    {
-                      "color": "#2e2e2e",
-                      "fontFamily": "BMJUA",
-                      "fontSize": 24,
-                      "marginVertical": 0,
-                      "paddingBottom": 4,
-                    },
-                    {
-                      "fontWeight": "normal",
-                    },
-                    undefined,
-                    {},
-                  ],
+                  undefined,
+                  {},
                 ]
               }
             >
@@ -2804,28 +2407,16 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             }
           >
             <Text
-              accessibilityRole="header"
               style={
                 [
                   {
-                    "fontSize": 48,
-                    "fontWeight": "bold",
-                    "marginVertical": 26.56,
+                    "color": "#2e2e2e",
+                    "fontFamily": "TmoneyRoundWind-ExtraBold",
+                    "fontSize": 24,
+                    "marginVertical": 0,
                   },
-                  [
-                    {
-                      "color": "#2e2e2e",
-                      "fontFamily": "BMJUA",
-                      "fontSize": 24,
-                      "marginVertical": 0,
-                      "paddingBottom": 4,
-                    },
-                    {
-                      "fontWeight": "normal",
-                    },
-                    undefined,
-                    {},
-                  ],
+                  undefined,
+                  {},
                 ]
               }
             >
@@ -2873,28 +2464,16 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             }
           >
             <Text
-              accessibilityRole="header"
               style={
                 [
                   {
-                    "fontSize": 48,
-                    "fontWeight": "bold",
-                    "marginVertical": 26.56,
+                    "color": "#2e2e2e",
+                    "fontFamily": "TmoneyRoundWind-ExtraBold",
+                    "fontSize": 24,
+                    "marginVertical": 0,
                   },
-                  [
-                    {
-                      "color": "#2e2e2e",
-                      "fontFamily": "BMJUA",
-                      "fontSize": 24,
-                      "marginVertical": 0,
-                      "paddingBottom": 4,
-                    },
-                    {
-                      "fontWeight": "normal",
-                    },
-                    undefined,
-                    {},
-                  ],
+                  undefined,
+                  {},
                 ]
               }
             >
@@ -2942,28 +2521,16 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             }
           >
             <Text
-              accessibilityRole="header"
               style={
                 [
                   {
-                    "fontSize": 48,
-                    "fontWeight": "bold",
-                    "marginVertical": 26.56,
+                    "color": "#2e2e2e",
+                    "fontFamily": "TmoneyRoundWind-ExtraBold",
+                    "fontSize": 24,
+                    "marginVertical": 0,
                   },
-                  [
-                    {
-                      "color": "#2e2e2e",
-                      "fontFamily": "BMJUA",
-                      "fontSize": 24,
-                      "marginVertical": 0,
-                      "paddingBottom": 4,
-                    },
-                    {
-                      "fontWeight": "normal",
-                    },
-                    undefined,
-                    {},
-                  ],
+                  undefined,
+                  {},
                 ]
               }
             >
@@ -3011,28 +2578,16 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             }
           >
             <Text
-              accessibilityRole="header"
               style={
                 [
                   {
-                    "fontSize": 48,
-                    "fontWeight": "bold",
-                    "marginVertical": 26.56,
+                    "color": "#2e2e2e",
+                    "fontFamily": "TmoneyRoundWind-ExtraBold",
+                    "fontSize": 24,
+                    "marginVertical": 0,
                   },
-                  [
-                    {
-                      "color": "#2e2e2e",
-                      "fontFamily": "BMJUA",
-                      "fontSize": 24,
-                      "marginVertical": 0,
-                      "paddingBottom": 4,
-                    },
-                    {
-                      "fontWeight": "normal",
-                    },
-                    undefined,
-                    {},
-                  ],
+                  undefined,
+                  {},
                 ]
               }
             >
@@ -3080,28 +2635,16 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             }
           >
             <Text
-              accessibilityRole="header"
               style={
                 [
                   {
-                    "fontSize": 48,
-                    "fontWeight": "bold",
-                    "marginVertical": 26.56,
+                    "color": "#2e2e2e",
+                    "fontFamily": "TmoneyRoundWind-ExtraBold",
+                    "fontSize": 24,
+                    "marginVertical": 0,
                   },
-                  [
-                    {
-                      "color": "#2e2e2e",
-                      "fontFamily": "BMJUA",
-                      "fontSize": 24,
-                      "marginVertical": 0,
-                      "paddingBottom": 4,
-                    },
-                    {
-                      "fontWeight": "normal",
-                    },
-                    undefined,
-                    {},
-                  ],
+                  undefined,
+                  {},
                 ]
               }
             >
@@ -3149,28 +2692,16 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             }
           >
             <Text
-              accessibilityRole="header"
               style={
                 [
                   {
-                    "fontSize": 48,
-                    "fontWeight": "bold",
-                    "marginVertical": 26.56,
+                    "color": "#2e2e2e",
+                    "fontFamily": "TmoneyRoundWind-ExtraBold",
+                    "fontSize": 24,
+                    "marginVertical": 0,
                   },
-                  [
-                    {
-                      "color": "#2e2e2e",
-                      "fontFamily": "BMJUA",
-                      "fontSize": 24,
-                      "marginVertical": 0,
-                      "paddingBottom": 4,
-                    },
-                    {
-                      "fontWeight": "normal",
-                    },
-                    undefined,
-                    {},
-                  ],
+                  undefined,
+                  {},
                 ]
               }
             >
@@ -3218,28 +2749,16 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             }
           >
             <Text
-              accessibilityRole="header"
               style={
                 [
                   {
-                    "fontSize": 48,
-                    "fontWeight": "bold",
-                    "marginVertical": 26.56,
+                    "color": "#2e2e2e",
+                    "fontFamily": "TmoneyRoundWind-ExtraBold",
+                    "fontSize": 24,
+                    "marginVertical": 0,
                   },
-                  [
-                    {
-                      "color": "#2e2e2e",
-                      "fontFamily": "BMJUA",
-                      "fontSize": 24,
-                      "marginVertical": 0,
-                      "paddingBottom": 4,
-                    },
-                    {
-                      "fontWeight": "normal",
-                    },
-                    undefined,
-                    {},
-                  ],
+                  undefined,
+                  {},
                 ]
               }
             >
@@ -3287,28 +2806,16 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             }
           >
             <Text
-              accessibilityRole="header"
               style={
                 [
                   {
-                    "fontSize": 48,
-                    "fontWeight": "bold",
-                    "marginVertical": 26.56,
+                    "color": "#2e2e2e",
+                    "fontFamily": "TmoneyRoundWind-ExtraBold",
+                    "fontSize": 24,
+                    "marginVertical": 0,
                   },
-                  [
-                    {
-                      "color": "#2e2e2e",
-                      "fontFamily": "BMJUA",
-                      "fontSize": 24,
-                      "marginVertical": 0,
-                      "paddingBottom": 4,
-                    },
-                    {
-                      "fontWeight": "normal",
-                    },
-                    undefined,
-                    {},
-                  ],
+                  undefined,
+                  {},
                 ]
               }
             >
@@ -3356,28 +2863,16 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             }
           >
             <Text
-              accessibilityRole="header"
               style={
                 [
                   {
-                    "fontSize": 48,
-                    "fontWeight": "bold",
-                    "marginVertical": 26.56,
+                    "color": "#2e2e2e",
+                    "fontFamily": "TmoneyRoundWind-ExtraBold",
+                    "fontSize": 24,
+                    "marginVertical": 0,
                   },
-                  [
-                    {
-                      "color": "#2e2e2e",
-                      "fontFamily": "BMJUA",
-                      "fontSize": 24,
-                      "marginVertical": 0,
-                      "paddingBottom": 4,
-                    },
-                    {
-                      "fontWeight": "normal",
-                    },
-                    undefined,
-                    {},
-                  ],
+                  undefined,
+                  {},
                 ]
               }
             >
@@ -3425,28 +2920,16 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             }
           >
             <Text
-              accessibilityRole="header"
               style={
                 [
                   {
-                    "fontSize": 48,
-                    "fontWeight": "bold",
-                    "marginVertical": 26.56,
+                    "color": "#2e2e2e",
+                    "fontFamily": "TmoneyRoundWind-ExtraBold",
+                    "fontSize": 24,
+                    "marginVertical": 0,
                   },
-                  [
-                    {
-                      "color": "#2e2e2e",
-                      "fontFamily": "BMJUA",
-                      "fontSize": 24,
-                      "marginVertical": 0,
-                      "paddingBottom": 4,
-                    },
-                    {
-                      "fontWeight": "normal",
-                    },
-                    undefined,
-                    {},
-                  ],
+                  undefined,
+                  {},
                 ]
               }
             >
@@ -3494,28 +2977,16 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
             }
           >
             <Text
-              accessibilityRole="header"
               style={
                 [
                   {
-                    "fontSize": 48,
-                    "fontWeight": "bold",
-                    "marginVertical": 26.56,
+                    "color": "#2e2e2e",
+                    "fontFamily": "TmoneyRoundWind-ExtraBold",
+                    "fontSize": 24,
+                    "marginVertical": 0,
                   },
-                  [
-                    {
-                      "color": "#2e2e2e",
-                      "fontFamily": "BMJUA",
-                      "fontSize": 24,
-                      "marginVertical": 0,
-                      "paddingBottom": 4,
-                    },
-                    {
-                      "fontWeight": "normal",
-                    },
-                    undefined,
-                    {},
-                  ],
+                  undefined,
+                  {},
                 ]
               }
             >

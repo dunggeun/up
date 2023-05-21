@@ -5,9 +5,8 @@ exports[`atoms/Text 렌더링 되었을 때 스냅샷이 일치해야 한다 1`]
   style={
     [
       {
-        "fontFamily": "BMJUA",
+        "fontFamily": "TmoneyRoundWind-Regular",
         "fontSize": 16,
-        "paddingBottom": 4,
       },
       undefined,
       {},

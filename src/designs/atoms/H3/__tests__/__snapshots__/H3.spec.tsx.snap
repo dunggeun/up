@@ -2,27 +2,15 @@
 
 exports[`atoms/H3 렌더링 되었을 때 스냅샷이 일치해야 한다 1`] = `
 <Text
-  accessibilityRole="header"
   style={
     [
       {
-        "fontSize": 37.44,
-        "fontWeight": "bold",
-        "marginVertical": 32,
+        "fontFamily": "TmoneyRoundWind-ExtraBold",
+        "fontSize": 20,
+        "marginVertical": 0,
       },
-      [
-        {
-          "fontFamily": "BMJUA",
-          "fontSize": 20,
-          "marginVertical": 0,
-          "paddingBottom": 4,
-        },
-        {
-          "fontWeight": "normal",
-        },
-        undefined,
-        {},
-      ],
+      undefined,
+      {},
     ]
   }
 >
