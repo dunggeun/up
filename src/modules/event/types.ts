@@ -13,7 +13,7 @@ export type AppEventPayload = {
     achieve: Achieve;
   };
   createMission: Mission;
-  doneMission: {
+  endMission: {
     missionId: number;
   };
   deleteMission: any;

@@ -74,6 +74,7 @@
       "data_management": "데이터 관리",
       "restore": "복원하기",
       "password": "암호 입력",
+      "badge_equipped": "뱃지 장착",
       "badge_unlocked": "뱃지 잠금 해제",
       "read_permission": "UP 저장소 읽기 권한",
       "write_permission": "UP 저장소 쓰기 권한"
@@ -152,32 +153,32 @@
         "description": "100레벨을 달성한 당신이 진정한 슈퍼유저 입니다"
       },
       "5": {
-        "label": "새내기 수집가",
-        "description": "임무 5개를 수락했어요"
+        "label": "꽃향기",
+        "description": "사용하지 않는 미션을 깨끗히 정리했어요"
       },
       "6": {
-        "label": "마스터 수집가",
-        "description": "임무 20개를 수락했어요"
-      },
-      "7": {
         "label": "훈련 단원",
         "description": "처음으로 임무를 완수했어요"
       },
-      "8": {
+      "7": {
         "label": "초급 단원",
         "description": "임무를 10회 완수했어요"
       },
-      "9": {
+      "8": {
         "label": "중급 단원",
         "description": "임무를 50회 완수했어요"
       },
-      "10": {
+      "9": {
         "label": "마스터 단원",
         "description": "임무를 100회 완수했어요"
       },
+      "10": {
+        "label": "뉴비 수집가",
+        "description": "임무 5개를 수락했어요"
+      },
       "11": {
-        "label": "청소부",
-        "description": "먼지가 쌓이기 전에 사용하지 않는 퀘스트를 정리했어요"
+        "label": "마스터 수집가",
+        "description": "임무 20개를 수락했어요"
       },
       "12": {
         "label": "인기스타",

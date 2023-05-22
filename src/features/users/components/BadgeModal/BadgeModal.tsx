@@ -9,9 +9,9 @@ import { Modal, type ModalProps } from 'src/components';
 import { t } from 'src/translations';
 import type { Badge } from 'src/modules/app/types';
 
-interface BadgeModalProps extends Pick<ModalProps, 'visible' | 'onClose'> {
+interface BadgeModalProps
+  extends Pick<ModalProps, 'visible' | 'title' | 'onClose'> {
   badge: Badge;
-  showUnlockedTitle?: boolean;
 }
 
 const Content = styled(View)({
@@ -40,20 +40,16 @@ const Message = styled(Text)({
 export const PlainBadgeModal = memo(function BadgeModal({
   badge,
   visible,
-  showUnlockedTitle = false,
+  title,
   onClose,
 }: BadgeModalProps): React.ReactElement {
   return (
-    <Modal
-      onClose={onClose}
-      title={showUnlockedTitle ? t('title.badge_unlocked') : undefined}
-      visible={visible}
-    >
+    <Modal onClose={onClose} title={title} visible={visible}>
       <Content testID="badge-modal">
         <BadgeImageArea
           animate={{ scale: 1 }}
-          from={{ scale: 0 }}
-          transition={{ type: 'spring', damping: 5 }}
+          from={{ scale: 0.5 }}
+          transition={{ type: 'spring', damping: 6 }}
         >
           {badge.image ? <BadgeImage source={badge.image} /> : null}
         </BadgeImageArea>
@@ -84,7 +80,7 @@ export function BadgeModal({
     <PlainBadgeModal
       badge={badge}
       onClose={onClose}
-      showUnlockedTitle
+      title={t('title.badge_unlocked')}
       visible={visible}
     />
   );
