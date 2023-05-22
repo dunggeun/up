@@ -89,15 +89,15 @@ describe('screens/MissionDetailScreen', () => {
     });
   });
 
-  describe('임무 완료 버튼을 눌렀을 때', () => {
+  describe('임무 종료 버튼을 눌렀을 때', () => {
     beforeEach(() => {
       const doneButton = screen.getByText(t('label.mission_done'));
       fireEvent(doneButton, 'press');
     });
 
-    it('임무 완료 안내 모달이 노출되어야 한다', () => {
-      const missionDoneModalContent = screen.getByTestId('mission-done-modal');
-      expect(missionDoneModalContent).not.toBeNull();
+    it('임무 종료 안내 모달이 노출되어야 한다', () => {
+      const missionEndModalContent = screen.getByTestId('mission-end-modal');
+      expect(missionEndModalContent).not.toBeNull();
     });
   });
 

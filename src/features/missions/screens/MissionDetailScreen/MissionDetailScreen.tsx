@@ -5,7 +5,7 @@ import { runAfterModalDismissed } from 'src/utils';
 import { Button, CommonLayout } from 'src/designs';
 import { LoadingIndicator } from 'src/components';
 import { t } from 'src/translations';
-import { MissionDoneModal } from '../../components/MissionDoneModal';
+import { MissionEndModal } from '../../components/MissionEndModal';
 import { MissionInformation } from '../../components/MissionInformation';
 import { useUpdateMission, useMissionDetail } from '../../hooks';
 import type { MissionStackProps } from 'src/navigators/MissionStack/types';
@@ -21,14 +21,14 @@ export function MissionDetailScreen({
   route,
 }: MissionDetailScreenProps): React.ReactElement {
   const { id } = route.params;
-  const [missionDoneModalVisibility, setMissionDoneModalVisibility] =
+  const [missionEndModalVisibility, setMissionEndModalVisibility] =
     useState(false);
   const userColor = useUserThemeColor();
   const { data: missionDetail, isLoading } = useMissionDetail({ id });
   const { mutate } = useUpdateMission({
     invalidateMode: 'listOnly',
     onSuccess: ({ id }) => {
-      setMissionDoneModalVisibility(false);
+      setMissionEndModalVisibility(false);
       runAfterModalDismissed(() => {
         if (id !== undefined) {
           AppEventChannel.getInstance().dispatch('endMission', {
@@ -46,11 +46,11 @@ export function MissionDetailScreen({
   };
 
   const handlePressDoneButton = (): void => {
-    setMissionDoneModalVisibility(true);
+    setMissionEndModalVisibility(true);
   };
 
-  const handleMissionDoneModal = (): void => {
-    setMissionDoneModalVisibility(false);
+  const handleMissionEndModal = (): void => {
+    setMissionEndModalVisibility(false);
   };
 
   const handleDone = (): void => {
@@ -90,10 +90,10 @@ export function MissionDetailScreen({
           </Button>
         </CommonLayout.Footer>
       </CommonLayout>
-      <MissionDoneModal
-        onClose={handleMissionDoneModal}
+      <MissionEndModal
+        onClose={handleMissionEndModal}
         onDone={handleDone}
-        visible={missionDoneModalVisibility}
+        visible={missionEndModalVisibility}
       />
     </>
   );

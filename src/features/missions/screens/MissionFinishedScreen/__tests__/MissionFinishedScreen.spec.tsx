@@ -96,10 +96,8 @@ describe('screens/MissionFinishedScreen', () => {
     });
 
     it('임무 삭제 안내 모달이 노출되어야 한다', () => {
-      const missionDoneModalContent = screen.getByTestId(
-        'mission-delete-modal',
-      );
-      expect(missionDoneModalContent).not.toBeNull();
+      const missionEndModalContent = screen.getByTestId('mission-delete-modal');
+      expect(missionEndModalContent).not.toBeNull();
     });
   });
 

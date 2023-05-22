@@ -5,7 +5,7 @@ import { Button, Text } from 'src/designs';
 import { Modal, type ModalProps } from 'src/components';
 import { t } from 'src/translations';
 
-export interface MissionDoneModalProps extends Omit<ModalProps, 'title'> {
+export interface MissionEndModalProps extends Omit<ModalProps, 'title'> {
   onDone: () => void;
 }
 
@@ -21,16 +21,16 @@ const Message = styled(Text)({
   textAlign: 'center',
 });
 
-export function MissionDoneModal({
+export function MissionEndModal({
   visible,
   onClose,
   onDone,
-}: MissionDoneModalProps): React.ReactElement {
+}: MissionEndModalProps): React.ReactElement {
   const userColor = useUserThemeColor();
 
   return (
     <Modal onClose={onClose} title={t('title.end_mission')} visible={visible}>
-      <Content testID="mission-done-modal">
+      <Content testID="mission-end-modal">
         <Message variant="text.primary">{t('message.end_mission')}</Message>
         <Message variant="text.secondary">
           {`(${t('message.end_mission_guide')})`}
