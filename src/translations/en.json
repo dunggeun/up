@@ -157,19 +157,19 @@
         "description": "Cleaned up unused missions"
       },
       "6": {
-        "label": "Training Unit",
+        "label": "Bronze",
         "description": "Completed a mission for the first time"
       },
       "7": {
-        "label": "Beginner Unit",
+        "label": "Silver",
         "description": "Completed 10 missions"
       },
       "8": {
-        "label": "Intermediate Unit",
+        "label": "Gold",
         "description": "Completed 50 missions"
       },
       "9": {
-        "label": "Master Unit",
+        "label": "Platinum",
         "description": "Completed 100 missions"
       },
       "10": {
