@@ -1,4 +1,4 @@
-import { Dimensions, Platform } from 'react-native';
+import { Dimensions, PixelRatio, Platform } from 'react-native';
 import { version, dependencies } from '../../package.json';
 
 export const VERSION = version;
@@ -53,6 +53,17 @@ export const SHARED_CONFIG = {
 } as const;
 
 export const IS_NATIVE = Platform.OS === 'android' || Platform.OS === 'ios';
+export const IS_TABLET = ((): boolean => {
+  const pixelDensity = PixelRatio.get();
+  const adjustedWidth = WINDOW_WIDTH * pixelDensity;
+  const adjustedHeight = WINDOW_HEIGHT * pixelDensity;
+  if (pixelDensity < 2 && (adjustedWidth >= 1000 || adjustedHeight >= 1000)) {
+    return true;
+  }
+  return (
+    pixelDensity === 2 && (adjustedWidth >= 1920 || adjustedHeight >= 1920)
+  );
+})();
 export const IS_WEB = Platform.OS === 'web';
 export const USE_NATIVE_DRIVER = IS_NATIVE;
 

@@ -17,6 +17,7 @@ import {
   DEFAULT_REMINDER_TIME,
   DEVELOPER_EMAIL,
   IS_NATIVE,
+  IS_TABLET,
   REMINDER_TIME_FORMAT,
   VERSION,
 } from 'src/constants';
@@ -121,10 +122,12 @@ export function MenuScreen(_props: MenuProps): React.ReactElement {
           permissionGranted={notificationStatus.granted}
           remindTime={remindAt ?? null}
         />
-        <HapticFeedbackOption
-          hapticEnabled={hapticEnabled}
-          onChangeToggle={handleChangeHapticFeedbackToggle}
-        />
+        {IS_TABLET ? null : (
+          <HapticFeedbackOption
+            hapticEnabled={hapticEnabled}
+            onChangeToggle={handleChangeHapticFeedbackToggle}
+          />
+        )}
       </>
     );
   };
