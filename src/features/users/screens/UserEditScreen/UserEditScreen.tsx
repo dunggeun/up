@@ -44,8 +44,9 @@ export function UserEditScreen({
   );
 
   const handleChangeUserName = (value: string): void => {
-    lazyEditUser({ name: value });
-    setUserName(value);
+    const trimmedValue = value.trim();
+    lazyEditUser({ name: trimmedValue });
+    setUserName(trimmedValue);
   };
 
   return (

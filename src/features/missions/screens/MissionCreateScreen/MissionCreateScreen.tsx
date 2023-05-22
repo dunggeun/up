@@ -29,7 +29,7 @@ export function MissionCreateScreen({
     phase === MissionFormPhase.EnterMemo ? back : undefined;
 
   const handlePressAcceptButton = (): void => {
-    mutate({ title: name, description: memo });
+    mutate({ title: name.trim(), description: memo.trim() });
   };
 
   const handlePressCloseButton = (): void => {

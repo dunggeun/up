@@ -31,7 +31,7 @@ export function UserRegisterScreen({
   const handlePressStartButton = (): void => {
     send({
       type: 'LOGIN',
-      user: AppHelpers.createUserData(userName),
+      user: AppHelpers.createUserData(userName.trim()),
     });
   };
 
