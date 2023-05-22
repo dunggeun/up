@@ -52,6 +52,7 @@ export function MissionFinishedScreen({
         <CommonLayout.Body>
           <MissionInformation
             achieveList={missionDetail.achieveList}
+            isFinished
             mission={missionDetail.mission}
           />
         </CommonLayout.Body>
