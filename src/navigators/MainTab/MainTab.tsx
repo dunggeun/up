@@ -1,9 +1,10 @@
-import { useMemo } from 'react';
+import { useMemo, useCallback } from 'react';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useDripsyTheme } from 'dripsy';
 import { Home, Menu, Profile } from 'src/assets/icons';
-import { MenuScreen } from 'src/features/misc';
+import { MenuScreen, useGuideModal } from 'src/features/misc';
+import { GuideModal } from 'src/features/misc/components/GuideModal';
 import {
   useUserThemeColor,
   HomeScreen,
@@ -16,6 +17,7 @@ import type { MainTabScreenParamList } from './types';
 const MainTab = createBottomTabNavigator<MainTabScreenParamList>();
 
 export function MainTabNavigator(): React.ReactElement {
+  const { visibility, setVisibility } = useGuideModal();
   const { theme } = useDripsyTheme();
   const { bottom } = useSafeAreaInsets();
   const userColor = useUserThemeColor();
@@ -39,38 +41,45 @@ export function MainTabNavigator(): React.ReactElement {
     [theme, bottom, userColor],
   );
 
+  const handleCloseGuideModal = useCallback(() => {
+    setVisibility(false);
+  }, [setVisibility]);
+
   return (
-    <MainTab.Navigator
-      backBehavior="none"
-      initialRouteName="Home"
-      sceneContainerStyle={{ backgroundColor: theme.colors.$white }}
-      screenOptions={tabBarOptions}
-      tabBar={TabBar}
-    >
-      <MainTab.Screen
-        component={ProfileScreen}
-        name="Profile"
-        options={{
-          title: t('title.profile'),
-          tabBarIcon: Profile,
-        }}
-      />
-      <MainTab.Screen
-        component={HomeScreen}
-        name="Home"
-        options={{
-          title: t('title.home'),
-          tabBarIcon: Home,
-        }}
-      />
-      <MainTab.Screen
-        component={MenuScreen}
-        name="Menu"
-        options={{
-          title: t('title.menu'),
-          tabBarIcon: Menu,
-        }}
-      />
-    </MainTab.Navigator>
+    <>
+      <MainTab.Navigator
+        backBehavior="none"
+        initialRouteName="Home"
+        sceneContainerStyle={{ backgroundColor: theme.colors.$white }}
+        screenOptions={tabBarOptions}
+        tabBar={TabBar}
+      >
+        <MainTab.Screen
+          component={ProfileScreen}
+          name="Profile"
+          options={{
+            title: t('title.profile'),
+            tabBarIcon: Profile,
+          }}
+        />
+        <MainTab.Screen
+          component={HomeScreen}
+          name="Home"
+          options={{
+            title: t('title.home'),
+            tabBarIcon: Home,
+          }}
+        />
+        <MainTab.Screen
+          component={MenuScreen}
+          name="Menu"
+          options={{
+            title: t('title.menu'),
+            tabBarIcon: Menu,
+          }}
+        />
+      </MainTab.Navigator>
+      <GuideModal onClose={handleCloseGuideModal} visible={visibility} />
+    </>
   );
 }

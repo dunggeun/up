@@ -100,6 +100,15 @@
       "notification": {
         "reminder": "Go on mission!"
       },
+      "guide": {
+        "1": "Create new missions and start challenges",
+        "2": "Make your tasks into missions",
+        "3": "Once a day, you can perform a mission you've created by long-pressing it",
+        "4": "Each time you complete a mission, you'll be rewarded with experience.\n\nYou can also earn additional experience by completing daily missions.",
+        "5": "Tap on a mission to see its information and recent history.\n\nYou can also end a mission if you no longer want to do it.",
+        "6": "You can see closed missions by changing the filter.\n\n(closed missions can be deleted completely)",
+        "7": "Level up and collect badges!"
+      },
       "greeting": "Welcome!\nTake the Up Challenge",
       "enter_name": "Please enter your\nname for the Up challenge",
       "reset_data": "All data recorded so far will be lost and can't be reverted back to before.\n\nSure you want to delete it?",
@@ -204,9 +213,6 @@
     },
     "format": {
       "date": "MMM D, YYYY"
-    },
-    "url": {
-      "guide": "https://leegeunhyeok.notion.site/Up-en-84a7d903ba2142d981f460ed868540c1"
     }
   }
 }

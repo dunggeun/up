@@ -12,7 +12,7 @@ import { navigate } from 'src/navigators/helpers';
 import { globalMachineService } from 'src/stores/machines';
 import { notificationStatus as notificationStatusAtom } from 'src/stores/recoil';
 import { useMainTabBarInset } from 'src/hooks';
-import { openMail, openUrl, runAfterModalDismissed } from 'src/utils';
+import { openMail, runAfterModalDismissed } from 'src/utils';
 import {
   DEFAULT_REMINDER_TIME,
   DEVELOPER_EMAIL,
@@ -24,6 +24,7 @@ import {
 import { CommonLayout } from 'src/designs';
 import { FadeInView, ListItem } from 'src/components';
 import { t } from 'src/translations';
+import { useGuideModal } from '../../hooks';
 import { ReminderOption } from './components';
 import { HapticFeedbackOption } from './components/HapticFeedbackOption';
 import type { MainTabProps } from 'src/navigators/MainTab/types';
@@ -35,6 +36,7 @@ export function MenuScreen(_props: MenuProps): React.ReactElement {
   const userColor = useUserThemeColor();
   const { theme } = useDripsyTheme();
   const { bottomInset } = useMainTabBarInset();
+  const { setVisibility } = useGuideModal();
   const [state, send] = useActor(globalMachineService);
   const notificationStatus = useRecoilValue(notificationStatusAtom);
   const remindAt = state.context.user?.remindAt;
@@ -50,7 +52,7 @@ export function MenuScreen(_props: MenuProps): React.ReactElement {
   }, [notificationStatus.granted]);
 
   const handlePressGuide = (): void => {
-    openUrl(t('url.guide'));
+    setVisibility(true);
   };
 
   const handlePressDataManagement = (): void => {
