@@ -13,7 +13,7 @@ import type { MissionStackProps } from 'src/navigators/MissionStack/types';
 type MissionDetailScreenProps = MissionStackProps<'MissionDetail'>;
 
 const ACCESSIBILITY = {
-  doneMission: t('title.end_mission'),
+  endMission: t('title.end_mission'),
 };
 
 export function MissionDetailScreen({
@@ -31,7 +31,7 @@ export function MissionDetailScreen({
       setMissionDoneModalVisibility(false);
       runAfterModalDismissed(() => {
         if (id !== undefined) {
-          AppEventChannel.getInstance().dispatch('doneMission', {
+          AppEventChannel.getInstance().dispatch('endMission', {
             missionId: id,
           });
         }
@@ -57,7 +57,10 @@ export function MissionDetailScreen({
     if (!missionDetail?.mission) return;
 
     const missionId = missionDetail.mission.id;
-    mutate({ missionId, data: { finished_at: Number(new Date()) } });
+    mutate({
+      missionId,
+      data: { id: missionId, finished_at: Number(new Date()) },
+    });
   };
 
   return shouldShowLoadingIndicator ? (
@@ -77,8 +80,8 @@ export function MissionDetailScreen({
         </CommonLayout.Body>
         <CommonLayout.Footer>
           <Button
-            accessibilityHint={ACCESSIBILITY.doneMission}
-            accessibilityLabel={ACCESSIBILITY.doneMission}
+            accessibilityHint={ACCESSIBILITY.endMission}
+            accessibilityLabel={ACCESSIBILITY.endMission}
             color={userColor}
             disableLongPress
             onPress={handlePressDoneButton}

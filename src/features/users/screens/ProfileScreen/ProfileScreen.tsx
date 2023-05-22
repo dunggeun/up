@@ -134,6 +134,7 @@ export function ProfileScreen(_props: ProfileScreenProps): React.ReactElement {
       <PlainBadgeModal
         badge={selectedBadge}
         onClose={handlePressClose}
+        title={t('title.badge_equipped')}
         visible={badgeModalVisibility}
       />
     </FadeInView>

@@ -51,7 +51,7 @@ const levelReachedAt100: BadgeUnlockRule<'levelup'> = {
 const missionCountReachedAt5: BadgeUnlockRule<'createMission'> = {
   description: 'created mission count reached at 5',
   eventType: 'createMission',
-  targetBadgeId: 5,
+  targetBadgeId: 10,
   async evaluation() {
     const count = await StorageManager.getInstance().getMissionCount();
     return count === 5;
@@ -62,7 +62,7 @@ const missionCountReachedAt5: BadgeUnlockRule<'createMission'> = {
 const missionCountReachedAt20: BadgeUnlockRule<'createMission'> = {
   description: 'created mission count reached at 20',
   eventType: 'createMission',
-  targetBadgeId: 6,
+  targetBadgeId: 11,
   evaluation: async () => {
     const count = await StorageManager.getInstance().getMissionCount();
     return count === 20;
@@ -70,10 +70,10 @@ const missionCountReachedAt20: BadgeUnlockRule<'createMission'> = {
 };
 
 // 최초 임무 완료
-const firstMissionDone: BadgeUnlockRule<'doneMission'> = {
+const firstMissionDone: BadgeUnlockRule<'createAchieve'> = {
   description: 'first done mission',
-  eventType: 'doneMission',
-  targetBadgeId: 7,
+  eventType: 'createAchieve',
+  targetBadgeId: 6,
   evaluation(context) {
     const alreadyExist = Boolean(
       context.user.unlockedBadges[this.targetBadgeId],
@@ -85,10 +85,10 @@ const firstMissionDone: BadgeUnlockRule<'doneMission'> = {
 };
 
 // 임무 완료 횟수 10 달성
-const missionDoneCountReactedAt10: BadgeUnlockRule<'doneMission'> = {
+const missionDoneCountReactedAt10: BadgeUnlockRule<'createAchieve'> = {
   description: 'mission done count reached at 10',
-  eventType: 'doneMission',
-  targetBadgeId: 8,
+  eventType: 'createAchieve',
+  targetBadgeId: 7,
   evaluation(context) {
     const alreadyExist = Boolean(
       context.user.unlockedBadges[this.targetBadgeId],
@@ -100,10 +100,10 @@ const missionDoneCountReactedAt10: BadgeUnlockRule<'doneMission'> = {
 };
 
 // 임무 완료 횟수 50 달성
-const missionDoneCountReactedAt50: BadgeUnlockRule<'doneMission'> = {
+const missionDoneCountReactedAt50: BadgeUnlockRule<'createAchieve'> = {
   description: 'mission done count reached at 50',
-  eventType: 'doneMission',
-  targetBadgeId: 9,
+  eventType: 'createAchieve',
+  targetBadgeId: 8,
   evaluation(context) {
     const alreadyExist = Boolean(
       context.user.unlockedBadges[this.targetBadgeId],
@@ -115,10 +115,10 @@ const missionDoneCountReactedAt50: BadgeUnlockRule<'doneMission'> = {
 };
 
 // 임무 완료 횟수 100 달성
-const missionDoneCountReactedAt100: BadgeUnlockRule<'doneMission'> = {
+const missionDoneCountReactedAt100: BadgeUnlockRule<'createAchieve'> = {
   description: 'mission done count reached at 100',
-  eventType: 'doneMission',
-  targetBadgeId: 10,
+  eventType: 'createAchieve',
+  targetBadgeId: 9,
   evaluation(context) {
     const alreadyExist = Boolean(
       context.user.unlockedBadges[this.targetBadgeId],
@@ -133,7 +133,7 @@ const missionDoneCountReactedAt100: BadgeUnlockRule<'doneMission'> = {
 const firstDeleteMission: BadgeUnlockRule<'deleteMission'> = {
   description: 'first delete mission',
   eventType: 'deleteMission',
-  targetBadgeId: 11,
+  targetBadgeId: 5,
   evaluation(context) {
     const alreadyExist = Boolean(
       context.user.unlockedBadges[this.targetBadgeId],

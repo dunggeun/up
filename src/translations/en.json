@@ -74,7 +74,10 @@
       "data_management": "Data management",
       "restore": "Restore",
       "password": "Enter password",
-      "badge_unlocked": "Badge unlocked"
+      "badge_equipped": "Badge equipped",
+      "badge_unlocked": "Badge unlocked",
+      "read_permission": "UP read storage permission",
+      "write_permission": "UP write storage permission"
     },
     "placeholder": {
       "enter_name": "Please enter your name",
@@ -129,6 +132,7 @@
       "reminder_disabled": "Notification disabled",
       "theme_changed": "Color theme changed",
       "create_mission_description": "What you need to do to achieve your goals is your mission\n\nEnter it a simple name\n\n(Example)\nSide projects 2h\nSolve 30 math problems",
+      "enter_password": "Please enter a backup and restore password\n(at least 5 digits)",
       "name_too_long": "Name is too long"
     },
     "badge": {
@@ -149,32 +153,32 @@
         "description": "You have reached level 100 and are a true superuser"
       },
       "5": {
-        "label": "Newbie Collector",
-        "description": "You have accepted 5 missions"
+        "label": "Floral Scent",
+        "description": "Cleaned up unused missions"
       },
       "6": {
-        "label": "Master Collector",
-        "description": "Accepted 20 missions"
-      },
-      "7": {
         "label": "Training Unit",
         "description": "Completed a mission for the first time"
       },
-      "8": {
+      "7": {
         "label": "Beginner Unit",
         "description": "Completed 10 missions"
       },
-      "9": {
+      "8": {
         "label": "Intermediate Unit",
         "description": "Completed 50 missions"
       },
-      "10": {
+      "9": {
         "label": "Master Unit",
         "description": "Completed 100 missions"
       },
+      "10": {
+        "label": "Newbie Collector",
+        "description": "You have accepted 5 missions"
+      },
       "11": {
-        "label": "Scavenger",
-        "description": "Cleaning up unused missions before they gather dust"
+        "label": "Master Collector",
+        "description": "Accepted 20 missions"
       },
       "12": {
         "label": "Popular Stars",
