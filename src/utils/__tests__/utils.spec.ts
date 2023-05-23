@@ -9,16 +9,8 @@ describe('utils', () => {
     describe('delay', () => {
       let duration: number;
 
-      beforeAll(() => {
-        jest.useFakeTimers();
-      });
-
       beforeEach(() => {
         duration = faker.datatype.number();
-      });
-
-      afterAll(() => {
-        jest.useRealTimers();
       });
 
       it('지정된 시간 이후에 resolve 되어야 한다', async () => {
