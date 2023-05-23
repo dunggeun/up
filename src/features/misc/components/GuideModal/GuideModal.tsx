@@ -16,6 +16,7 @@ import KoGuide4 from 'src/assets/images/ko_guide_4.jpg';
 import KoGuide5 from 'src/assets/images/ko_guide_5.jpg';
 import KoGuide6 from 'src/assets/images/ko_guide_6.jpg';
 import KoGuide7 from 'src/assets/images/ko_guide_7.jpg';
+import { ROOT_FONT_SIZE } from 'src/themes';
 import { getCurrentLocale } from 'src/utils';
 import { Text } from 'src/designs';
 import { Modal, type ModalProps } from 'src/components';
@@ -34,7 +35,7 @@ const Content = styled(View)({
 
 const Description = styled(Text, {
   defaultVariant: 'text.primary',
-})({ textAlign: 'center' });
+})({ textAlign: 'center', lineHeight: ROOT_FONT_SIZE * 1.25 });
 
 const GuideContent = styled(View)({
   flex: 1,
@@ -97,7 +98,7 @@ export const GuideModal = memo(function GuideModal(
   );
 
   return (
-    <Modal {...props}>
+    <Modal {...props} title={t('title.guide')}>
       <Content onLayout={handleLayout} testID="guide-modal">
         {width === 0 ? null : (
           <Carousel

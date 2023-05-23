@@ -77,7 +77,8 @@
       "badge_equipped": "Badge equipped",
       "badge_unlocked": "Badge unlocked",
       "read_permission": "UP read storage permission",
-      "write_permission": "UP write storage permission"
+      "write_permission": "UP write storage permission",
+      "guide": "Guide"
     },
     "placeholder": {
       "enter_name": "Please enter your name",

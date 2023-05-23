@@ -77,7 +77,8 @@
       "badge_equipped": "뱃지 장착",
       "badge_unlocked": "뱃지 잠금 해제",
       "read_permission": "UP 저장소 읽기 권한",
-      "write_permission": "UP 저장소 쓰기 권한"
+      "write_permission": "UP 저장소 쓰기 권한",
+      "guide": "이용 가이드"
     },
     "placeholder": {
       "enter_name": "이름을 입력해주세요",
