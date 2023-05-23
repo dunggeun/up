@@ -3,7 +3,7 @@ import React, { memo, useState, useEffect, useLayoutEffect } from 'react';
 import { Animated, type LayoutChangeEvent } from 'react-native';
 import { styled, View } from 'dripsy';
 import { USE_NATIVE_DRIVER } from 'src/constants';
-import { Text } from '../../designs/atoms/Text';
+import { Text } from '../../designs/Text';
 
 interface AnimatedNumberProps {
   value: number;

@@ -4,7 +4,7 @@ import { styled, View } from 'dripsy';
 import { Close } from 'src/assets/icons';
 import { CONTAINER_MAX_WIDTH, TOUCHABLE_OPACITY_HIT_SLOP } from 'src/constants';
 import { t } from 'src/translations';
-import { H2 } from '../../designs/atoms/H2';
+import { H2 } from '../../designs/H2';
 import { HapticFeedback } from '../HapticFeedback';
 
 export interface ModalProps {

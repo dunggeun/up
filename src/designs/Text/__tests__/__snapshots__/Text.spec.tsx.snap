@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Text 렌더링 되었을 때 스냅샷이 일치해야 한다 1`] = `
+<Text
+  style={
+    [
+      {
+        "fontFamily": "TmoneyRoundWind-Regular",
+        "fontSize": 16,
+      },
+      undefined,
+      {},
+    ]
+  }
+>
+  Text
+</Text>
+`;

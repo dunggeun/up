@@ -50,18 +50,17 @@ try {
 const getStories = () => {
   return {
     "./src/components/Demo.stories.tsx": require("../src/components/Demo.stories.tsx"),
-    "./src/components/LinearGradient/LinearGradient.stories.tsx": require("../src/components/LinearGradient/LinearGradient.stories.tsx"),
-    "./src/designs/atoms/Button/Button.stories.tsx": require("../src/designs/atoms/Button/Button.stories.tsx"),
-    "./src/designs/atoms/H1/H1.stories.tsx": require("../src/designs/atoms/H1/H1.stories.tsx"),
-    "./src/designs/atoms/H2/H2.stories.tsx": require("../src/designs/atoms/H2/H2.stories.tsx"),
-    "./src/designs/atoms/H3/H3.stories.tsx": require("../src/designs/atoms/H3/H3.stories.tsx"),
-    "./src/designs/atoms/Input/Input.stories.tsx": require("../src/designs/atoms/Input/Input.stories.tsx"),
-    "./src/designs/atoms/ProgressBar/ProgressBar.stories.tsx": require("../src/designs/atoms/ProgressBar/ProgressBar.stories.tsx"),
-    "./src/designs/atoms/Select/Select.stories.tsx": require("../src/designs/atoms/Select/Select.stories.tsx"),
-    "./src/designs/atoms/Tag/Tag.stories.tsx": require("../src/designs/atoms/Tag/Tag.stories.tsx"),
-    "./src/designs/atoms/Text/Text.stories.tsx": require("../src/designs/atoms/Text/Text.stories.tsx"),
-    "./src/designs/atoms/Toggle/Toggle.stories.tsx": require("../src/designs/atoms/Toggle/Toggle.stories.tsx"),
-    "./src/designs/molecules/AppBar/AppBar.stories.tsx": require("../src/designs/molecules/AppBar/AppBar.stories.tsx"),
+    "./src/designs/AppBar/AppBar.stories.tsx": require("../src/designs/AppBar/AppBar.stories.tsx"),
+    "./src/designs/Button/Button.stories.tsx": require("../src/designs/Button/Button.stories.tsx"),
+    "./src/designs/H1/H1.stories.tsx": require("../src/designs/H1/H1.stories.tsx"),
+    "./src/designs/H2/H2.stories.tsx": require("../src/designs/H2/H2.stories.tsx"),
+    "./src/designs/H3/H3.stories.tsx": require("../src/designs/H3/H3.stories.tsx"),
+    "./src/designs/Input/Input.stories.tsx": require("../src/designs/Input/Input.stories.tsx"),
+    "./src/designs/ProgressBar/ProgressBar.stories.tsx": require("../src/designs/ProgressBar/ProgressBar.stories.tsx"),
+    "./src/designs/Select/Select.stories.tsx": require("../src/designs/Select/Select.stories.tsx"),
+    "./src/designs/Tag/Tag.stories.tsx": require("../src/designs/Tag/Tag.stories.tsx"),
+    "./src/designs/Text/Text.stories.tsx": require("../src/designs/Text/Text.stories.tsx"),
+    "./src/designs/Toggle/Toggle.stories.tsx": require("../src/designs/Toggle/Toggle.stories.tsx"),
   };
 };
 

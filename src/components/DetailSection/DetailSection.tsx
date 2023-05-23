@@ -1,7 +1,7 @@
 import React, { type PropsWithChildren } from 'react';
 import Animated, { FadeIn } from 'react-native-reanimated';
 import { styled, View } from 'dripsy';
-import { H2 } from 'src/designs/atoms/H2';
+import { H2 } from 'src/designs/H2';
 
 export interface DetailSectionProps {
   title: string;

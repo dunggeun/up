@@ -1,6 +1,6 @@
 import React from 'react';
 import { styled, View } from 'dripsy';
-import { H1 } from '../../designs/atoms/H1';
+import { H1 } from '../../designs/H1';
 
 export interface PageTitleProps {
   title: string;

@@ -8,7 +8,7 @@ import Animated, {
 } from 'react-native-reanimated';
 import { styled, useDripsyTheme, View } from 'dripsy';
 import { LinearGradient } from 'src/components/LinearGradient';
-import { BUTTON_HEIGHT } from 'src/designs/atoms/Button/constants';
+import { BUTTON_HEIGHT } from 'src/designs/Button/constants';
 import { useMissions } from 'src/features/missions/hooks';
 import { navigate } from 'src/navigators/helpers';
 import { useMainTabBarInset } from 'src/hooks';

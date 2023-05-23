@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`H3 렌더링 되었을 때 스냅샷이 일치해야 한다 1`] = `
+<Text
+  style={
+    [
+      {
+        "fontFamily": "TmoneyRoundWind-ExtraBold",
+        "fontSize": 20,
+        "marginVertical": 0,
+      },
+      undefined,
+      {},
+    ]
+  }
+>
+  Heading 3
+</Text>
+`;

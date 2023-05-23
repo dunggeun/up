@@ -2,8 +2,8 @@ import React from 'react';
 import { TouchableOpacity } from 'react-native';
 import { styled } from 'dripsy';
 import { MotiView } from 'moti';
-import { H2 } from '../../designs/atoms/H2';
-import { Text } from '../../designs/atoms/Text';
+import { H2 } from '../../designs/H2';
+import { Text } from '../../designs/Text';
 import { HapticFeedback } from '../HapticFeedback';
 
 export interface ListItemProps {

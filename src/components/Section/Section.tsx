@@ -1,8 +1,8 @@
 import React, { type PropsWithChildren } from 'react';
 import { styled, View } from 'dripsy';
 import { match, P } from 'ts-pattern';
-import { H2 } from '../../designs/atoms/H2';
-import { H3 } from '../../designs/atoms/H3';
+import { H2 } from '../../designs/H2';
+import { H3 } from '../../designs/H3';
 
 export interface SectionProps {
   title?: string;
