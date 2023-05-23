@@ -40,6 +40,13 @@ RN.Animated.timing = (): RN.Animated.timing => ({
   },
 });
 
+// @ts-expect-error
+RN.InteractionManager = {
+  runAfterInteractions: jest.fn().mockImplementation((task: () => void) => {
+    task();
+  }),
+};
+
 // eslint-disable-next-line @typescript-eslint/no-empty-function
 self.__reanimatedWorkletInit = (): void => {};
 jest.mock('react-native-reanimated', () => ({
