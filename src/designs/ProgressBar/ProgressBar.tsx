@@ -63,6 +63,7 @@ export function ProgressBar({
     <Container
       accessibilityRole="progressbar"
       accessibilityValue={{ min: 0, max, now: value }}
+      testID="progressbar"
       {...restProps}
     >
       <Animated.View

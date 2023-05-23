@@ -3,6 +3,10 @@ import { render, cleanup } from '@testing-library/react-native';
 import { withProviders } from 'tests/utils';
 import { MenuScreen } from '../MenuScreen';
 
+jest.mock('src/modules/notifications', () => ({
+  requestNotificationPermission: jest.fn(),
+}));
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const getMockedProps = (): any => ({
   navigation: {

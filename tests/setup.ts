@@ -4,6 +4,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 
 import 'node-self';
+import '@testing-library/jest-native';
 import * as RN from 'react-native';
 import 'react-native-gesture-handler/jestSetup';
 

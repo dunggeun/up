@@ -32,8 +32,12 @@ describe('ProgressBar', () => {
     });
 
     it('a11y value 속성이 정상적으로 설정되어야 한다', () => {
-      const progressBar = screen.getByA11yValue({ min: MIN, max, now: value });
-      expect(progressBar).not.toBeNull();
+      const progressBar = screen.getByTestId('progressbar');
+      expect(progressBar).toHaveAccessibilityValue({
+        min: MIN,
+        value,
+        max,
+      });
     });
   });
 });
