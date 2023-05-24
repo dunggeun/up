@@ -49,7 +49,6 @@ const GuideContent = styled(View)({
 const GuideImage = styled(Image)({
   flex: 1,
   width: '100%',
-  height: undefined,
   overflow: 'hidden',
 });
 
@@ -103,7 +102,7 @@ export const GuideModal = memo(function GuideModal(
         {width === 0 ? null : (
           <Carousel
             data={GUIDE_DATA}
-            height={300}
+            height={350}
             loop
             renderItem={renderItem}
             scrollAnimationDuration={1000}
