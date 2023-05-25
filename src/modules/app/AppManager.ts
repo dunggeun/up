@@ -7,6 +7,7 @@ import { queryClient } from 'src/stores/reactQuery';
 import { delay } from 'src/utils/async';
 import { readFile, writeFile } from 'src/utils/fs';
 import { APP_MINIMUM_LOADING_DURATION } from 'src/constants';
+import { preload as preloadAssets } from 'src/assets';
 import { t } from 'src/translations';
 import { StorageManager } from '../database';
 import { Logger } from '../logger';
@@ -26,10 +27,12 @@ export class AppManager {
   private constructor() {
     Logger.info(TAG, 'instance created and initializing...');
     globalMachineService.start();
+
     this.task = Promise.all([
+      preloadAssets(),
+      checkNotificationPermission(),
+      new BadgeController().initialize(),
       (async (): Promise<void> => {
-        checkNotificationPermission();
-        new BadgeController().initialize();
         await StorageManager.getInstance().initialize();
         await this.prefetchUserData();
       })(),

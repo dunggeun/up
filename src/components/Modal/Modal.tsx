@@ -1,8 +1,8 @@
 import React, { type PropsWithChildren } from 'react';
 import { Modal as RNModal, TouchableOpacity } from 'react-native';
 import { styled, View } from 'dripsy';
-import { Close } from 'src/assets/icons';
 import { CONTAINER_MAX_WIDTH, TOUCHABLE_OPACITY_HIT_SLOP } from 'src/constants';
+import { Icons } from 'src/assets';
 import { t } from 'src/translations';
 import { H2 } from '../../designs/H2';
 import { HapticFeedback } from '../HapticFeedback';
@@ -80,7 +80,7 @@ export function Modal({
                 hitSlop={TOUCHABLE_OPACITY_HIT_SLOP}
                 onPress={onClose}
               >
-                <Close />
+                <Icons.Close />
               </CloseButton>
             </HapticFeedback>
           </ModalHeader>

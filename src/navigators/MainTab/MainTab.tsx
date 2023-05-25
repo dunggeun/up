@@ -2,7 +2,6 @@ import { useMemo, useCallback } from 'react';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useDripsyTheme } from 'dripsy';
-import { Home, Menu, Profile } from 'src/assets/icons';
 import { MenuScreen, useGuideModal } from 'src/features/misc';
 import { GuideModal } from 'src/features/misc/components/GuideModal';
 import {
@@ -11,6 +10,7 @@ import {
   ProfileScreen,
 } from 'src/features/users';
 import { TabBar } from 'src/components';
+import { Icons } from 'src/assets';
 import { t } from 'src/translations';
 import type { MainTabScreenParamList } from './types';
 
@@ -59,7 +59,7 @@ export function MainTabNavigator(): React.ReactElement {
           name="Profile"
           options={{
             title: t('title.profile'),
-            tabBarIcon: Profile,
+            tabBarIcon: Icons.Profile,
           }}
         />
         <MainTab.Screen
@@ -67,7 +67,7 @@ export function MainTabNavigator(): React.ReactElement {
           name="Home"
           options={{
             title: t('title.home'),
-            tabBarIcon: Home,
+            tabBarIcon: Icons.Home,
           }}
         />
         <MainTab.Screen
@@ -75,7 +75,7 @@ export function MainTabNavigator(): React.ReactElement {
           name="Menu"
           options={{
             title: t('title.menu'),
-            tabBarIcon: Menu,
+            tabBarIcon: Icons.Menu,
           }}
         />
       </MainTab.Navigator>

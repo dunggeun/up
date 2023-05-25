@@ -8,12 +8,12 @@ import React, {
 import { Animated, TouchableOpacity } from 'react-native';
 import dayjs from 'dayjs';
 import { styled, View, Image } from 'dripsy';
-import { Edit } from 'src/assets/icons';
 import { useAchieveCount } from 'src/features/missions/hooks';
 import * as AppHelpers from 'src/modules/app/helpers';
 import { BORDER_WIDTH, HIT_SLOP } from 'src/constants';
 import { H1, H2 } from 'src/designs';
 import { AnimatedNumber, HapticFeedback, Section } from 'src/components';
+import { Icons } from 'src/assets';
 import { t } from 'src/translations';
 import type { User } from '../../types';
 
@@ -55,7 +55,7 @@ const BadgeImage = styled(Image)({
   height: '100%',
 });
 
-const EditIcon = styled(Edit)({
+const EditIcon = styled(Icons.Edit)({
   color: '$text_primary',
 });
 
