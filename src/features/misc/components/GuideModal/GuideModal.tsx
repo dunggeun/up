@@ -1,5 +1,6 @@
 import React, { memo, useState } from 'react';
 import type { ImageSourcePropType, LayoutChangeEvent } from 'react-native';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import Carousel from 'react-native-reanimated-carousel';
 import { View, styled, Image } from 'dripsy';
 import { ROOT_FONT_SIZE } from 'src/themes';
@@ -15,7 +16,10 @@ interface CarouselItem {
   text: string;
 }
 
+const MODAL_HEIGHT = 360;
+
 const Content = styled(View)({
+  height: MODAL_HEIGHT,
   gap: '$04',
 });
 
@@ -84,18 +88,20 @@ export const GuideModal = memo(function GuideModal(
 
   return (
     <Modal {...props} title={t('title.guide')}>
-      <Content onLayout={handleLayout} testID="guide-modal">
-        {width === 0 ? null : (
-          <Carousel
-            data={GUIDE_DATA}
-            height={350}
-            loop
-            renderItem={renderItem}
-            scrollAnimationDuration={1000}
-            width={width}
-          />
-        )}
-      </Content>
+      <GestureHandlerRootView>
+        <Content onLayout={handleLayout} testID="guide-modal">
+          {width === 0 ? null : (
+            <Carousel
+              data={GUIDE_DATA}
+              height={MODAL_HEIGHT}
+              loop
+              renderItem={renderItem}
+              scrollAnimationDuration={1000}
+              width={width}
+            />
+          )}
+        </Content>
+      </GestureHandlerRootView>
     </Modal>
   );
 });

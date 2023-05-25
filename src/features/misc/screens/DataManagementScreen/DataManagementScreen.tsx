@@ -187,9 +187,7 @@ export function DataManagementScreen({
           <ListItem label={t('label.restore')} onPress={handlePressRestore} />
           <HapticFeedback>
             <DeleteTextButton onPress={handlePressReset}>
-              <Text sx={{ color: '$text_tertiary' }}>
-                {t('label.reset_data')}
-              </Text>
+              <Text variant="tertiary">{t('label.reset_data')}</Text>
             </DeleteTextButton>
           </HapticFeedback>
         </CommonLayout.Body>

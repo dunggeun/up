@@ -72,7 +72,7 @@ export function Modal({
       <ModalBackground>
         <ModalContainer>
           <ModalHeader>
-            <H2>{title}</H2>
+            <H2 variant="primary">{title}</H2>
             <HapticFeedback>
               <CloseButton
                 accessibilityHint={ACCESSIBILITY.close}
