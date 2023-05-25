@@ -1,8 +1,7 @@
 import React from 'react';
 import { styled, View } from 'dripsy';
 import { useUserThemeColor } from 'src/features/users';
-import { Button, Text } from 'src/designs';
-import { Modal, type ModalProps } from 'src/components';
+import { Button, Text, Modal, type ModalProps } from 'src/designs';
 import { t } from 'src/translations';
 
 export interface MissionEndModalProps extends Omit<ModalProps, 'title'> {

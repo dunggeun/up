@@ -4,8 +4,7 @@ import Carousel from 'react-native-reanimated-carousel';
 import { View, styled, Image } from 'dripsy';
 import { ROOT_FONT_SIZE } from 'src/themes';
 import { getCurrentLocale } from 'src/utils';
-import { Text } from 'src/designs';
-import { Modal, type ModalProps } from 'src/components';
+import { Text, Modal, type ModalProps } from 'src/designs';
 import { Images } from 'src/assets';
 import { t } from 'src/translations';
 

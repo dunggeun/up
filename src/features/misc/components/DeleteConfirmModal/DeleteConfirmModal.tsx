@@ -2,8 +2,7 @@ import React, { memo } from 'react';
 import { ActivityIndicator, styled, View } from 'dripsy';
 import { MotiView } from 'moti';
 import { Warning } from 'src/assets/symbols';
-import { Button, Text } from 'src/designs';
-import { Modal, type ModalProps } from 'src/components';
+import { Button, Text, Modal, type ModalProps } from 'src/designs';
 import { t } from 'src/translations';
 
 export interface DeleteConfirmModalProps extends Omit<ModalProps, 'title'> {

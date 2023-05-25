@@ -3,7 +3,7 @@ import { Platform } from 'react-native';
 import Share from 'react-native-share';
 import { useActor } from '@xstate/react';
 import { View } from 'dripsy';
-import { ToastController } from 'src/components/Toast/ToastController';
+import { ToastController } from 'src/modules/app/controllers/ToastController';
 import * as AppHelpers from 'src/modules/app/helpers';
 import { AppEventChannel } from 'src/modules/event';
 import { Logger } from 'src/modules/logger';

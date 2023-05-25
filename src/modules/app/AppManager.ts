@@ -1,7 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import CryptoJS from 'crypto-js';
 import dayjs from 'dayjs';
-import { ToastController } from 'src/components/Toast/ToastController';
+import { ToastController } from 'src/modules/app/controllers/ToastController';
 import { globalMachineService } from 'src/stores/machines/service';
 import { queryClient } from 'src/stores/reactQuery';
 import { delay } from 'src/utils/async';
@@ -12,7 +12,7 @@ import { t } from 'src/translations';
 import { StorageManager } from '../database';
 import { Logger } from '../logger';
 import { checkNotificationPermission } from '../notifications';
-import { BadgeController } from './BadgeController';
+import { BadgeController } from './controllers/BadgeController';
 import type { DumpData } from '../database/types';
 import type { User } from 'src/features/users';
 

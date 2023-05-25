@@ -41,10 +41,10 @@ exports[`screens/SplashScreen 렌더링 되었을 때 스냅샷이 일치해야 
       style={
         [
           {},
+          undefined,
           {
             "flex": 1,
           },
-          {},
         ]
       }
     >
@@ -55,6 +55,7 @@ exports[`screens/SplashScreen 렌더링 되었을 때 스냅샷이 일치해야 
             {
               "flex": 1,
               "gap": 16,
+              "paddingBottom": 24,
             },
             undefined,
             {},

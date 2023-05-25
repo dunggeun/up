@@ -1,8 +1,12 @@
-import React, { memo, useState, useEffect } from 'react';
+import React from 'react';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { styled, useSx, Pressable } from 'dripsy';
 import { AnimatePresence, MotiView } from 'moti';
-import { ToastController } from './ToastController';
+
+export interface ToastProps {
+  content: React.ReactElement | null;
+  onPress?: () => void;
+}
 
 const TOAST_ANIMATE_HEIGHT = -100;
 
@@ -15,8 +19,7 @@ const ToastContent = styled(Pressable)({
   backgroundColor: '$white',
 });
 
-export const Toast = memo(function Toast() {
-  const [content, setContent] = useState<React.ReactNode>(null);
+export function Toast({ content, onPress }: ToastProps): React.ReactElement {
   const { top } = useSafeAreaInsets();
   const sx = useSx();
 
@@ -32,14 +35,6 @@ export const Toast = memo(function Toast() {
     elevation: 5,
   });
 
-  useEffect(() => {
-    ToastController.register((content) => {
-      setContent(content);
-    });
-  }, []);
-
-  const handlePressToast = (): void => setContent(null);
-
   return (
     <AnimatePresence exitBeforeEnter>
       {content ? (
@@ -50,9 +45,9 @@ export const Toast = memo(function Toast() {
           pointerEvents="box-none"
           style={containerStyle}
         >
-          <ToastContent onPress={handlePressToast}>{content}</ToastContent>
+          <ToastContent onPress={onPress}>{content}</ToastContent>
         </MotiView>
       ) : null}
     </AnimatePresence>
   );
-});
+}

@@ -1,9 +1,9 @@
 import React, { memo, useMemo } from 'react';
 import { InteractionManager } from 'react-native';
 import Animated, { ZoomIn, ZoomOutEasyDown } from 'react-native-reanimated';
-import { ToastController } from 'src/components/Toast/ToastController';
 import { useAddAchieve } from 'src/features/missions/hooks';
 import { useUserThemeColor } from 'src/features/users/hooks';
+import { ToastController } from 'src/modules/app/controllers/ToastController';
 import { navigate } from 'src/navigators/helpers';
 import { diffBeforeToday } from 'src/utils';
 import { Button, Tag } from 'src/designs';

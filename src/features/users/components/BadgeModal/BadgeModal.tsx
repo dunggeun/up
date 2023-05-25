@@ -4,8 +4,7 @@ import { MotiView } from 'moti';
 import * as AppHelpers from 'src/modules/app/helpers';
 import { AppEventChannel } from 'src/modules/event';
 import { BORDER_WIDTH } from 'src/constants';
-import { H2, Text } from 'src/designs';
-import { Modal, type ModalProps } from 'src/components';
+import { H2, Text, Modal, type ModalProps } from 'src/designs';
 import { t } from 'src/translations';
 import type { Badge } from 'src/modules/app/types';
 

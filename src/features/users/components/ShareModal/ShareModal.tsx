@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { styled, View } from 'dripsy';
 import { fetchAchievesWithTitleByDate } from 'src/data';
-import { Text } from 'src/designs';
-import { LoadingIndicator, Modal, type ModalProps } from 'src/components';
+import { Text, Modal, type ModalProps } from 'src/designs';
+import { LoadingIndicator } from 'src/components';
 import { t } from 'src/translations';
 import { UserCoverWebView } from '../UserCoverWebView/UserCoverWebView';
 import type { User } from '../../types';

@@ -1,7 +1,7 @@
 import { useActor } from '@xstate/react';
 import { useMutation, type UseMutationResult } from 'react-query';
-import { ToastController } from 'src/components/Toast/ToastController';
 import { addAchieve, type AddAchieveResult } from 'src/data';
+import { ToastController } from 'src/modules/app/controllers/ToastController';
 import { Logger } from 'src/modules/logger';
 import { globalMachineService } from 'src/stores/machines';
 import { queryClient } from 'src/stores/reactQuery';

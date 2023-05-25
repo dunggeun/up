@@ -24,6 +24,7 @@ const ScrollView = styled(Animated.ScrollView)({
 const BodyWrapper = styled(View)({
   flex: 1,
   gap: '$04',
+  paddingBottom: '$06',
 });
 
 const FooterWrapper = styled(View)(
@@ -88,8 +89,7 @@ CommonLayout.Body = function Body({
     : null;
 
   return (
-    // eslint-disable-next-line react-native/no-inline-styles
-    <Container {...additionalProps} style={{ flex: 1 }}>
+    <Container {...additionalProps} sx={{ flex: 1 }}>
       <BodyWrapper>{children}</BodyWrapper>
     </Container>
   );

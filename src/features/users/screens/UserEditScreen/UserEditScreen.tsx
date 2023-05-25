@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { useActor } from '@xstate/react';
-import { ToastController } from 'src/components/Toast/ToastController';
+import { ToastController } from 'src/modules/app/controllers/ToastController';
 import { globalMachineService } from 'src/stores/machines';
 import { useDebounce } from 'src/hooks';
 import { MINIMUM_USER_NAME_LENGTH } from 'src/constants';

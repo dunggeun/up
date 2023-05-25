@@ -379,6 +379,7 @@ exports[`screens/MissionCreateScreen 렌더링 되었을 때 스냅샷이 일치
                   {
                     "flex": 1,
                     "gap": 16,
+                    "paddingBottom": 24,
                   },
                   undefined,
                   {},

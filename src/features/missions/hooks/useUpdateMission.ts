@@ -1,6 +1,6 @@
 import { useMutation, type UseMutationResult } from 'react-query';
-import { ToastController } from 'src/components/Toast/ToastController';
 import { updateMission } from 'src/data';
+import { ToastController } from 'src/modules/app/controllers/ToastController';
 import { Logger } from 'src/modules/logger';
 import { queryClient } from 'src/stores/reactQuery';
 import { t } from 'src/translations';

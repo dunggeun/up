@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Share } from 'react-native';
-import { ToastController } from 'src/components/Toast/ToastController';
 import { useUserThemeColor } from 'src/features/users';
+import { ToastController } from 'src/modules/app/controllers/ToastController';
 import { replacePlaceholder } from 'src/utils';
 import { CommonLayout } from 'src/designs';
 import { TransitionGroup } from 'src/components';

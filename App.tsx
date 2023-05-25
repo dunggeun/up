@@ -13,8 +13,8 @@ import { RecoilExternalPortal } from 'src/stores/recoil';
 import { themeLight } from 'src/themes';
 import { colors } from 'src/themes/colors';
 import { titleFormatter } from 'src/utils';
-import { AnimateSuspense, Toast } from 'src/components';
-import { Modals } from './Modals';
+import { AnimateSuspense } from 'src/components';
+import { AppToast, Modals } from './src/modules/app/components';
 
 // eslint-disable-next-line import/no-named-as-default-member
 const Navigator = React.lazy(() => import('src/navigators'));
@@ -40,7 +40,7 @@ function AppProviders<T = unknown>({
               >
                 {children}
               </NavigationContainer>
-              <Toast />
+              <AppToast />
               <Modals />
             </RecoilRoot>
           </QueryClientProvider>

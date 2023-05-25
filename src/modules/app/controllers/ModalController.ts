@@ -1,8 +1,8 @@
 import { runAfterModalDismissed } from 'src/utils';
-import type { ModalProps } from 'src/components';
-import { AppEventChannel } from '../event';
-import { Logger } from '../logger';
-import type { AppEventType } from '../event/types';
+import type { ModalProps } from 'src/designs';
+import { AppEventChannel } from '../../event';
+import { Logger } from '../../logger';
+import type { AppEventType } from '../../event/types';
 
 interface ModalConfig<Props extends Pick<ModalProps, 'visible' | 'onClose'>> {
   component: React.ReactElement<Props> | React.FC<Props>;

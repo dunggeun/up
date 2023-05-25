@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import { styled, View } from 'dripsy';
 import { useUserThemeColor } from 'src/features/users';
-import { Button, Input, Text } from 'src/designs';
-import { Modal } from 'src/components';
-import type { ModalProps } from 'src/components';
+import { Button, Input, Text, Modal, type ModalProps } from 'src/designs';
 import { t } from 'src/translations';
 
 export interface EnterPasswordModalProps extends Omit<ModalProps, 'title'> {

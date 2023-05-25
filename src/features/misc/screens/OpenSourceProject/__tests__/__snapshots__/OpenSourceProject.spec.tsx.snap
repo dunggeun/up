@@ -355,6 +355,7 @@ exports[`screens/OpenSourceProjectScreen 렌더링 되었을 때 스냅샷이 �
               {
                 "flex": 1,
                 "gap": 16,
+                "paddingBottom": 24,
               },
               undefined,
               {},

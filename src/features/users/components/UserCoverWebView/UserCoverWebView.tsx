@@ -3,7 +3,7 @@ import React, { memo } from 'react';
 import WebView, { type WebViewMessageEvent } from 'react-native-webview';
 import dayjs from 'dayjs';
 import { styled, useSx } from 'dripsy';
-import { ToastController } from 'src/components/Toast/ToastController';
+import { ToastController } from 'src/modules/app/controllers/ToastController';
 import { getExpByLevel } from 'src/modules/app/helpers';
 import { Logger } from 'src/modules/logger';
 import { t } from 'src/translations';

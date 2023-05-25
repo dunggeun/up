@@ -1,7 +1,7 @@
 import { InteractionManager } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { createMachine, assign } from 'xstate';
-import { ToastController } from 'src/components/Toast/ToastController';
+import { ToastController } from 'src/modules/app/controllers/ToastController';
 import * as AppHelpers from 'src/modules/app/helpers';
 import { StorageManager } from 'src/modules/database';
 import { AppEventChannel } from 'src/modules/event';

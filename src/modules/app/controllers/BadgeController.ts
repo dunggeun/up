@@ -1,8 +1,8 @@
 import { globalMachineService } from 'src/stores/machines';
-import { AppEventChannel } from '../event';
-import { Logger } from '../logger';
-import { badgeRules } from './rules';
-import type { Badge } from './types';
+import { AppEventChannel } from '../../event';
+import { Logger } from '../../logger';
+import { badgeRules } from '../rules';
+import type { Badge } from '../types';
 
 const TAG = 'BadgeController';
 

@@ -3,9 +3,8 @@ import { styled, View } from 'dripsy';
 import { MotiView } from 'moti';
 import { Star } from 'src/assets/symbols';
 import { AppEventChannel } from 'src/modules/event';
-import { H2, Text } from 'src/designs';
-import type { ModalProps } from 'src/components';
-import { AnimatedNumber, Modal } from 'src/components';
+import { H2, Text, Modal, type ModalProps } from 'src/designs';
+import { AnimatedNumber } from 'src/components';
 import { t } from 'src/translations';
 
 const CONGRATS_MESSAGE_COUNT = 3;
