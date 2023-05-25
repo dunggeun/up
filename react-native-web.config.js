@@ -51,6 +51,7 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/',
     filename: 'bundle.[hash].js',
+    clean: true,
   },
   resolve: {
     extensions: ['.web.tsx', '.web.ts', '.tsx', '.ts', '.web.js', '.js'],
@@ -74,13 +75,17 @@ module.exports = {
     html: [
       {
         template: './index.html',
-        favicon: './static/icons/favicon.ico',
+        favicon: './static/favicon.ico',
         publicPath: '',
         minify: true,
       },
     ],
     copy: {
-      patterns: ['./static/icons/logo.png', './static/site.webmanifest'],
+      patterns: [
+        './static/assets/**/*',
+        './static/favicon.ico',
+        './static/site.webmanifest',
+      ],
     },
     define: {
       __DEV__: JSON.stringify(process.env.NODE_ENV !== 'production'),
