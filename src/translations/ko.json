@@ -143,7 +143,8 @@
       "theme_changed": "앱 테마가 변경되었어요",
       "create_mission_description": "목표를 달성하기 위해 해야할 일이 곧 임무예요\n\n간단한 이름을 정해주세요\n\n(예시)\n사이드 프로젝트 2시간\n영단어 30개 외우기",
       "enter_password": "백업 및 복원 암호를 입력해주세요\n(최소 5자리 이상)",
-      "name_too_long": "이름이 너무 길어요"
+      "name_too_long": "이름이 너무 길어요",
+      "bonus_exp": "연속 달성 추가 보너스 +%@ EXP"
     },
     "badge": {
       "1": {

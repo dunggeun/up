@@ -4,10 +4,12 @@ import Animated, { ZoomIn, ZoomOutEasyDown } from 'react-native-reanimated';
 import { useAddAchieve } from 'src/features/missions/hooks';
 import { useUserThemeColor } from 'src/features/users/hooks';
 import { ToastController } from 'src/modules/app/controllers/ToastController';
+import { BASE_EXP } from 'src/modules/app/data';
 import { navigate } from 'src/navigators/helpers';
 import { diffBeforeToday } from 'src/utils';
 import { Button, Tag } from 'src/designs';
 import { t } from 'src/translations';
+import { replacePlaceholder } from '../../../../utils/string';
 import type { Mission } from 'src/features/missions';
 
 export interface UserMissionItemProps {
@@ -22,7 +24,16 @@ export const UserMissionItem = memo(function UserMissionItem({
   index,
   animateEnabled,
 }: UserMissionItemProps): React.ReactElement {
-  const { mutate } = useAddAchieve();
+  const { mutate } = useAddAchieve({
+    onSuccess: ({ achieve }) => {
+      if (achieve.exp > BASE_EXP) {
+        const bonusExp = achieve.exp - BASE_EXP;
+        ToastController.show(
+          replacePlaceholder(t('message.bonus_exp'), bonusExp.toString()),
+        );
+      }
+    },
+  });
   const userColor = useUserThemeColor();
 
   const shouldShowBadge = useMemo(() => {

@@ -10,16 +10,27 @@ import type { Mission, MissionDetail } from '../types';
 
 const TAG = 'useAddAchieve';
 
-export const useAddAchieve = (): UseMutationResult<
-  AddAchieveResult,
+type Data = AddAchieveResult;
+type Context = Parameters<typeof addAchieve>[0];
+interface UseAddAchieveOptions {
+  onSuccess?: (data: Data, context: Context) => void;
+}
+
+export const useAddAchieve = (
+  options: UseAddAchieveOptions,
+): UseMutationResult<
+  Data,
   Error,
-  Parameters<typeof addAchieve>[0],
+  Context,
   { previousMission?: Mission; previousMissions?: Mission[] }
 > => {
   const [_, send] = useActor(globalMachineService);
 
   return useMutation(addAchieve, {
-    onSuccess: ({ mission, achieve }, { missionId }) => {
+    onSuccess: (data, context) => {
+      const { mission, achieve } = data;
+      const { missionId } = context;
+
       queryClient.setQueryData<number>(
         ['achieve', 'count'],
         (count) => (count ?? 0) + 1,
@@ -46,6 +57,8 @@ export const useAddAchieve = (): UseMutationResult<
       void queryClient.invalidateQueries(['missions', 'list'], {
         refetchActive: false,
       });
+
+      options.onSuccess?.(data, context);
     },
     onError: (error) => {
       Logger.error(TAG, error.message);

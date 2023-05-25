@@ -3,7 +3,12 @@ import { t } from 'src/translations';
 import type { Theme } from './types';
 import type { User } from 'src/features/users';
 
-export const BASE_EXP = 3;
+// 임무 달성 시 보상으로 받는 기본 경험치 및 연속 달성 최대 경험치 제한
+export const BASE_EXP = 1;
+export const MAX_STREAK_EXP = 7;
+
+// 레벨에 따른 경험치 계산에 사용하는 기본값
+export const LEVEL_BASE_EXP = 3;
 
 export const BASE_USER: Omit<User, 'name' | 'createdAt' | 'updatedAt'> = {
   level: 1,

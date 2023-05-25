@@ -1,12 +1,14 @@
 import { Logger } from 'src/modules/logger';
 import { diffBeforeToday } from 'src/utils';
 import {
+  BASE_USER,
   BASE_EXP,
+  LEVEL_BASE_EXP,
+  MAX_STREAK_EXP,
   BADGE_SET,
   FALLBACK_BADGE,
   THEMES,
   FALLBACK_THEME,
-  BASE_USER,
 } from '../data';
 import type { Badge, Theme } from '../types';
 import type { Mission, Achieve } from 'src/features/missions';
@@ -89,11 +91,13 @@ export const updateMissionForAddAchieve = (mission: Mission): Mission => {
 };
 
 export const getAchieveExpByStreak = (currentStreak: number): number => {
-  return Math.min(7, currentStreak || 1);
+  return Math.min(MAX_STREAK_EXP, currentStreak || BASE_EXP);
 };
 
 export const getExpByLevel = (level: number): number => {
-  return Math.floor(level * BASE_EXP * Math.log10(level)) + BASE_EXP;
+  return (
+    Math.floor(level * LEVEL_BASE_EXP * Math.log10(level)) + LEVEL_BASE_EXP
+  );
 };
 
 export const getBadge = (id: number): Badge => {
