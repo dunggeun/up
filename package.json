@@ -14,7 +14,7 @@
     "start:storybook:web": "storybook dev --port 6006",
     "build:android": "react-native run-android",
     "build:ios": "react-native run-ios --scheme UpDebug",
-    "build:web": "rspack --config react-native-web.config.js",
+    "build:web": "rspack --config react-native-web.config.js && rspack --config service-worker.config.js",
     "build:storybook:web": "storybook build --output-dir public",
     "release": "./scripts/release.sh",
     "pod:install": "cd ios && pod install",
@@ -70,6 +70,8 @@
     "recoil": "^0.7.7",
     "setimmediate": "^1.0.5",
     "ts-pattern": "^4.3.0",
+    "workbox-routing": "^6.5.4",
+    "workbox-strategies": "^6.5.4",
     "xstate": "^4.37.1"
   },
   "devDependencies": {
@@ -129,7 +131,8 @@
     "react-test-renderer": "^18.2.0",
     "storybook": "^7.0.7",
     "ts-node": "^10.9.1",
-    "typescript": "^5.0.4"
+    "typescript": "^5.0.4",
+    "workbox-cli": "^6.5.4"
   },
   "engines": {
     "node": ">=16"

@@ -21,3 +21,7 @@ Object.defineProperties(self, {
     configurable: false,
   },
 });
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js');
+}
