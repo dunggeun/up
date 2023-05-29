@@ -6,10 +6,10 @@ import { useUserThemeColor } from 'src/features/users/hooks';
 import { ToastController } from 'src/modules/app/controllers/ToastController';
 import { BASE_EXP } from 'src/modules/app/data';
 import { navigate } from 'src/navigators/helpers';
+import { replacePlaceholder } from 'src/utils/string';
 import { diffBeforeToday } from 'src/utils';
 import { Button, Tag } from 'src/designs';
 import { t } from 'src/translations';
-import { replacePlaceholder } from '../../../../utils/string';
 import type { Mission } from 'src/features/missions';
 
 export interface UserMissionItemProps {
