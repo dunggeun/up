@@ -10,7 +10,6 @@
 
 ## 소개
 
-
 > 모두의 성장을 위해, `업(Up)`!
 >
 > Up 은 여러분들의 할 일, 목표, 습관으로 만들고 싶은 것 등을 기록하고 이를 꾸준히 수행할 수 있도록 동기부여에 도움을 주는 서비스예요.  
@@ -23,7 +22,10 @@
 ---
 
 - 소개 페이지: [https://team.geundung.dev/projects/up](https://team.geundung.dev/projects/up)
+- 개인정보 처리방침: [https://team.geundung.dev/privacy](https://team.geundung.dev/privacy)
 - 디자인 시스템(Storybook): [https://up-design-system.vercel.app](https://up-design-system.vercel.app)
+- Up 개발기 및 회고 ([1편](https://geundung.dev/118), [2편](https://geundung.dev/119), [3편](https://geundung.dev/120))
+
 
 ## 목차
 
@@ -147,9 +149,6 @@ fastlane ios beta
   auth.token=
   cli.executable=../node_modules/@sentry/cli/bin/sentry-cli
   ```
-## 이용 약관
-
-- https://team.geundung.dev/privacy
 
 ## 라이선스
 
