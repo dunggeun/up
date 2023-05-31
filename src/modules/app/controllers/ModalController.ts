@@ -21,7 +21,7 @@ export class ModalController<
   private queuedModalId: Modals[number]['id'][] = [];
   private callback?: ModalControllerCallback;
 
-  constructor(public modals: Modals) {
+  constructor(modals: Modals) {
     const channel = AppEventChannel.getInstance();
     modals.forEach(({ id, on }) => {
       channel.addEventListener(on, () => this.open(id));
