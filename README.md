@@ -2,7 +2,7 @@
 
 # Up
 
-![logo](https://github.com/dunggeun/up/assets/26512984/ac8bef76-4001-4596-b6ee-7326ffb06c10)
+![logo](https://github.com/dunggeun/up/assets/26512984/dee084ee-21f7-48b0-b6bb-baeb50e46880)
 
 ⭐️ 우리 모두의 성장을 위해, UP
 
