@@ -17,6 +17,7 @@ const TAG = 'ModalController';
 export class ModalController<
   const Modals extends readonly ModalConfig<ModalProps>[],
 > {
+  private modals: Modals;
   private activeModalId: Modals[number]['id'] | null = null;
   private queuedModalId: Modals[number]['id'][] = [];
   private callback?: ModalControllerCallback;
@@ -26,10 +27,15 @@ export class ModalController<
     modals.forEach(({ id, on }) => {
       channel.addEventListener(on, () => this.open(id));
     });
+    this.modals = modals;
   }
 
   private dispatch(): void {
     this.callback?.(this.activeModalId);
+  }
+
+  getModals(): Modals {
+    return this.modals;
   }
 
   on(callback: ModalControllerCallback): void {

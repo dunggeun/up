@@ -17,7 +17,7 @@ export function Modals(): React.ReactElement {
 
   return (
     <>
-      {controller.modals.map(({ id, component: ModalComponent }) => (
+      {controller.getModals().map(({ id, component: ModalComponent }) => (
         <ModalComponent
           key={id}
           onClose={controller.close.bind(controller)}
